@@ -1,7 +1,7 @@
 # Lumina Energy Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-![Version](https://img.shields.io/badge/version-1.1.12-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1.13-blue.svg)
 
 Limuna Energy Card repository is <https://github.com/ratava/lumina-energy-card>.
 
@@ -35,7 +35,7 @@ Lumina Energy Card is a Home Assistant custom Lovelace card that renders animate
 - Adjustable animation speed multiplier (0.25x–4x) and visibility thresholds
 - Optional EV panel with power and SOC display, configurable colour, and typography
 - Daily production badge plus full typography controls for header, PV, battery, load, grid, and EV text
-- Update interval slider (10–60 s, default 30 s) with throttled rendering when editing
+- Update interval slider (0–60 s, default 30 s) with optional real-time refresh when set to 0
 
 ### Installation (EN)
 
@@ -130,7 +130,7 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 
 ### Changelog (EN)
 
-- **1.1.12 (2025)** – Added smooth flow duration easing with dynamic rate scaling, cleanup guards, and a 0s update interval option for real-time refresh.
+- **1.1.13 (2025)** – Added smooth flow duration easing with dynamic rate scaling, cleanup guards, and a 0s update interval option for real-time refresh.
 - **1.1.1 (2025)** – Polished localisation text and prepped packaging for the single-file release.
 - **1.1.0 (2025)** – Localised the Lovelace editor labels/helpers for English, Italian, and German while keeping the single-file distribution.
 - **1.0.8 (2025)** – Converted typography controls to simple text inputs alongside EV settings for quicker edits.

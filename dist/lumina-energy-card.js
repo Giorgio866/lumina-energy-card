@@ -1,7 +1,7 @@
 /**
  * Lumina Energy Card
  * Custom Home Assistant card for energy flow visualization
- * Version: 1.1.12
+ * Version: 1.1.13
  * Tested with Home Assistant 2025.12+
  */
 
@@ -489,7 +489,7 @@ class LuminaEnergyCard extends HTMLElement {
   }
 
   static get version() {
-    return '1.1.12';
+    return '1.1.13';
   }
 }
 
