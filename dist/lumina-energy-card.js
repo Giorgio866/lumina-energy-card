@@ -1,7 +1,7 @@
 /**
  * Lumina Energy Card
  * Custom Home Assistant card for energy flow visualization
- * Version: 1.1.13
+ * Version: 1.1.14-test
  * Tested with Home Assistant 2025.12+
  */
 
@@ -357,8 +357,15 @@ class LuminaEnergyCard extends HTMLElement {
         el.setAttribute('class', className);
         if (flowState.stroke) {
           el.setAttribute('stroke', flowState.stroke);
+          const glowColor = flowState.glowColor || flowState.stroke;
+          if (glowColor) {
+            el.style.setProperty('--flow-glow-color', glowColor);
+          } else {
+            el.style.removeProperty('--flow-glow-color');
+          }
         } else {
           el.removeAttribute('stroke');
+          el.style.removeProperty('--flow-glow-color');
         }
       });
     }
@@ -412,18 +419,26 @@ class LuminaEnergyCard extends HTMLElement {
           box-shadow: none;
         }
         .track-path { stroke: #555555; stroke-width: 2px; fill: none; opacity: 0; }
-        .flow-path { stroke-dasharray: 8 16; stroke-linecap: round; stroke-width: 3px; fill: none; opacity: 0; transition: all 0.5s ease; }
-        @keyframes laser-flow { to { stroke-dashoffset: -320; } }
+        .flow-path {
+          stroke-linecap: round;
+          stroke-width: 3px;
+          fill: none;
+          opacity: 0;
+          transition: opacity 0.5s ease;
+          filter:
+            drop-shadow(0 0 12px var(--flow-glow-color, rgba(0, 255, 255, 0.85)))
+            drop-shadow(0 0 18px var(--flow-glow-color, rgba(0, 255, 255, 0.6)));
+        }
         @keyframes pulse-cyan { 0% { filter: drop-shadow(0 0 2px #00FFFF); opacity: 0.9; } 50% { filter: drop-shadow(0 0 10px #00FFFF); opacity: 1; } 100% { filter: drop-shadow(0 0 2px #00FFFF); opacity: 0.9; } }
         .alive-box { animation: pulse-cyan 3s infinite ease-in-out; stroke: #00FFFF; stroke-width: 2px; fill: rgba(0, 20, 40, 0.7); }
         .alive-text { animation: pulse-cyan 3s infinite ease-in-out; fill: #00FFFF; text-shadow: 0 0 5px #00FFFF; }
         @keyframes wave-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-80px); } }
         .liquid-shape { animation: wave-slide 2s linear infinite; }
-        .flow-pv1 { opacity: 1; animation: laser-flow 2s linear infinite; filter: drop-shadow(0 0 12px #00FFFF); stroke: #00FFFF; }
-        .flow-pv2 { opacity: 1; animation: laser-flow 2s linear infinite; filter: drop-shadow(0 0 12px #0088FF); stroke: #0088FF; }
-        .flow-generic { opacity: 1; animation: laser-flow 2s linear infinite; filter: drop-shadow(0 0 8px #00FFFF); stroke: #00FFFF; }
-        .flow-reverse { opacity: 1; animation: laser-flow 2s linear infinite reverse; filter: drop-shadow(0 0 8px #FFFFFF); stroke: #FFFFFF; }
-        .flow-grid-import { opacity: 1; animation: laser-flow 2s linear infinite reverse; filter: drop-shadow(0 0 8px #FF3333); stroke: #FF3333; }
+        .flow-pv1 { opacity: 1; }
+        .flow-pv2 { opacity: 1; }
+        .flow-generic { opacity: 1; }
+        .flow-reverse { opacity: 1; }
+        .flow-grid-import { opacity: 1; }
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
         .title-text { animation: pulse-cyan 2.5s infinite ease-in-out; fill: #00FFFF; font-weight: 900; font-family: 'Orbitron', sans-serif; text-anchor: middle; letter-spacing: 3px; text-transform: uppercase; }
       </style>
@@ -767,7 +782,7 @@ class LuminaEnergyCard extends HTMLElement {
   }
 
   static get version() {
-    return '1.1.13';
+    return '1.1.14-test';
   }
 }
 
@@ -794,11 +809,18 @@ class LuminaEnergyCardEditor extends HTMLElement {
       en: {
         sections: {
           general: { title: 'Configuration', helper: 'General card settings.' },
-          refresh: { title: 'Refresh & Animation', helper: 'Control polling interval and flow animation speed.' },
+          refresh: { title: 'Refresh Interval', helper: 'Control the polling cadence for card updates.' },
           pv: { title: 'PV (Solar) Sensors', helper: 'Configure up to six PV or input_number entities.' },
           battery: { title: 'Battery Sensors', helper: 'Provide SOC and power sensors for each battery.' },
+          flows: { title: 'Flow Colours', helper: 'Configure thresholds and colours for each energy flow.' },
           other: { title: 'Other Sensors', helper: 'Home load, grid, and inversion options.' },
-          ev: { title: 'EV & Typography', helper: 'Optional EV metrics, styling, and typography tuning.' }
+          ev: { title: 'EV Sensors', helper: 'Optional EV metrics and SOC display.' },
+          typography: { title: 'Typography', helper: 'Fine-tune font sizing for individual labels.' }
+        },
+        groups: {
+          entities: { title: 'Entity Configuration', helper: 'Configure sensors, general settings, and EV inputs.' },
+          colors: { title: 'Colour Configuration', helper: 'Adjust thresholds, flow colours, and accents.' },
+          typography: { title: 'Typography', helper: 'Fine-tune font sizing for the card.' }
         },
         fields: {
           card_title: { label: 'Card Title', helper: 'Title displayed at the top of the card.' },
@@ -806,7 +828,20 @@ class LuminaEnergyCardEditor extends HTMLElement {
           language: { label: 'Language', helper: 'Choose the editor language.' },
           display_unit: { label: 'Display Unit', helper: 'Unit used when formatting power values.' },
           update_interval: { label: 'Update Interval', helper: 'Refresh cadence for card updates (0 disables throttling).' },
-          animation_speed_factor: { label: 'Animation Speed Factor', helper: 'Adjust animation speed multiplier (0.25x-4x).' },
+          animation_speed_factor: { label: 'Animation Speed Multiplier', helper: 'Scales the flow animation speed (1 = default).' },
+          pv_total_threshold: { label: 'PV Threshold (W)', helper: 'Switch PV colour when total production crosses this value.' },
+          pv_total_color_low: { label: 'PV Colour (Below)', helper: 'Colour when PV total is below the threshold.' },
+          pv_total_color_high: { label: 'PV Colour (Above)', helper: 'Colour when PV total exceeds the threshold.' },
+          home_import_threshold: { label: 'Home Import Threshold (W)', helper: 'Switch home flow colour when load exceeds this value.' },
+          home_import_color_low: { label: 'Home Colour (Below)', helper: 'Colour when home import is below the threshold.' },
+          home_import_color_high: { label: 'Home Colour (Above)', helper: 'Colour when home import exceeds the threshold.' },
+          grid_import_threshold: { label: 'Grid Threshold (W)', helper: 'Switch grid colour when absolute grid power crosses this value.' },
+          grid_color_low: { label: 'Grid Colour (Below)', helper: 'Colour when grid power magnitude is below the threshold.' },
+          grid_color_high: { label: 'Grid Colour (Above)', helper: 'Colour when grid power magnitude exceeds the threshold.' },
+          battery_import_color: { label: 'Battery Import Colour', helper: 'Colour when the battery is charging (importing).' },
+          battery_export_color: { label: 'Battery Export Colour', helper: 'Colour when the battery is discharging (exporting).' },
+          car_import_color: { label: 'Car Import Colour', helper: 'Colour when the EV is charging from the system.' },
+          car_export_color: { label: 'Car Export Colour', helper: 'Colour when the EV is supplying power back.' },
           sensor_pv1: { label: 'PV Sensor 1 (Required)', helper: 'Primary solar production sensor.' },
           sensor_pv2: { label: 'PV Sensor 2' },
           sensor_pv3: { label: 'PV Sensor 3' },
@@ -815,13 +850,21 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_pv6: { label: 'PV Sensor 6' },
           sensor_daily: { label: 'Daily Production Sensor', helper: 'Sensor reporting daily production totals.' },
           sensor_bat1_soc: { label: 'Battery 1 SOC' },
-          sensor_bat1_power: { label: 'Battery 1 Power' },
+          sensor_bat1_power: { label: 'Battery 1 Power', helper: 'Net sensor (positive = discharge, negative = charge). When set, the per-direction fields are ignored.' },
+          sensor_bat1_charge: { label: 'Battery 1 Charging', helper: 'Optional charge-only sensor (positive while charging). The card auto-combines charging/discharging values unless a net power sensor is supplied.' },
+          sensor_bat1_discharge: { label: 'Battery 1 Discharging', helper: 'Optional discharge-only sensor (positive while discharging). The card auto-combines charging/discharging values unless a net power sensor is supplied.' },
           sensor_bat2_soc: { label: 'Battery 2 SOC' },
-          sensor_bat2_power: { label: 'Battery 2 Power' },
+          sensor_bat2_power: { label: 'Battery 2 Power', helper: 'Net sensor (positive = discharge, negative = charge). When set, the per-direction fields are ignored.' },
+          sensor_bat2_charge: { label: 'Battery 2 Charging', helper: 'Optional charge-only sensor (positive while charging). The card auto-combines charging/discharging values unless a net power sensor is supplied.' },
+          sensor_bat2_discharge: { label: 'Battery 2 Discharging', helper: 'Optional discharge-only sensor (positive while discharging). The card auto-combines charging/discharging values unless a net power sensor is supplied.' },
           sensor_bat3_soc: { label: 'Battery 3 SOC' },
-          sensor_bat3_power: { label: 'Battery 3 Power' },
+          sensor_bat3_power: { label: 'Battery 3 Power', helper: 'Net sensor (positive = discharge, negative = charge). When set, the per-direction fields are ignored.' },
+          sensor_bat3_charge: { label: 'Battery 3 Charging', helper: 'Optional charge-only sensor (positive while charging). The card auto-combines charging/discharging values unless a net power sensor is supplied.' },
+          sensor_bat3_discharge: { label: 'Battery 3 Discharging', helper: 'Optional discharge-only sensor (positive while discharging). The card auto-combines charging/discharging values unless a net power sensor is supplied.' },
           sensor_bat4_soc: { label: 'Battery 4 SOC' },
-          sensor_bat4_power: { label: 'Battery 4 Power' },
+          sensor_bat4_power: { label: 'Battery 4 Power', helper: 'Net sensor (positive = discharge, negative = charge). When set, the per-direction fields are ignored.' },
+          sensor_bat4_charge: { label: 'Battery 4 Charging', helper: 'Optional charge-only sensor (positive while charging). The card auto-combines charging/discharging values unless a net power sensor is supplied.' },
+          sensor_bat4_discharge: { label: 'Battery 4 Discharging', helper: 'Optional discharge-only sensor (positive while discharging). The card auto-combines charging/discharging values unless a net power sensor is supplied.' },
           sensor_home_load: { label: 'Home Load/Consumption', helper: 'Total household consumption sensor.' },
           sensor_grid_power: { label: 'Grid Power', helper: 'Positive/negative grid flow sensor.' },
           invert_grid: { label: 'Invert Grid Values', helper: 'Enable if import/export polarity is reversed.' },
@@ -855,11 +898,18 @@ class LuminaEnergyCardEditor extends HTMLElement {
       it: {
         sections: {
           general: { title: 'Configurazione', helper: 'Impostazioni generali della scheda.' },
-          refresh: { title: 'Aggiornamento e animazione', helper: 'Controlla intervallo di polling e velocita delle animazioni.' },
+          refresh: { title: 'Aggiornamento', helper: 'Controlla l intervallo di polling della scheda.' },
           pv: { title: 'Sensori FV (solare)', helper: 'Configura fino a sei entita PV o input_number.' },
           battery: { title: 'Sensori batteria', helper: 'Fornisci i sensori SOC e potenza per ogni batteria.' },
+          flows: { title: 'Colori dei flussi', helper: 'Imposta soglie e colori per i diversi flussi energetici.' },
           other: { title: 'Altri sensori', helper: 'Carico casa, rete e opzioni di inversione.' },
-          ev: { title: 'EV e tipografia', helper: 'Metriche EV opzionali, stile e regolazioni tipografiche.' }
+          ev: { title: 'Sensori EV', helper: 'Metriche EV opzionali e visualizzazione SOC.' },
+          typography: { title: 'Tipografia', helper: 'Regola le dimensioni dei font per ogni etichetta.' }
+        },
+        groups: {
+          entities: { title: 'Configurazione entita', helper: 'Imposta sensori, opzioni generali ed ingressi EV.' },
+          colors: { title: 'Configurazione colori', helper: 'Regola soglie, colori dei flussi e accenti.' },
+          typography: { title: 'Tipografia', helper: 'Affina le dimensioni dei font della scheda.' }
         },
         fields: {
           card_title: { label: 'Titolo scheda', helper: 'Titolo mostrato nella parte superiore della scheda.' },
@@ -867,7 +917,20 @@ class LuminaEnergyCardEditor extends HTMLElement {
           language: { label: 'Lingua', helper: 'Seleziona la lingua dell editor.' },
           display_unit: { label: 'Unita di visualizzazione', helper: 'Unita usata per i valori di potenza.' },
           update_interval: { label: 'Intervallo di aggiornamento', helper: 'Frequenza di aggiornamento della scheda (0 disattiva il limite).' },
-          animation_speed_factor: { label: 'Fattore velocita animazioni', helper: 'Regola il moltiplicatore della velocita (0.25x-4x).' },
+          animation_speed_factor: { label: 'Moltiplicatore velocita animazione', helper: 'Regola la velocita dell animazione dei flussi (1 = predefinita).' },
+          pv_total_threshold: { label: 'Soglia PV (W)', helper: 'Cambia colore PV quando la produzione supera questa soglia.' },
+          pv_total_color_low: { label: 'Colore PV (sotto)', helper: 'Colore quando la produzione PV e sotto soglia.' },
+          pv_total_color_high: { label: 'Colore PV (sopra)', helper: 'Colore quando la produzione PV supera la soglia.' },
+          home_import_threshold: { label: 'Soglia carico casa (W)', helper: 'Cambia colore del flusso casa al superare questa soglia.' },
+          home_import_color_low: { label: 'Colore casa (sotto)', helper: 'Colore quando il carico casa e sotto soglia.' },
+          home_import_color_high: { label: 'Colore casa (sopra)', helper: 'Colore quando il carico casa e sopra soglia.' },
+          grid_import_threshold: { label: 'Soglia rete (W)', helper: 'Cambia colore rete quando la potenza assoluta supera questa soglia.' },
+          grid_color_low: { label: 'Colore rete (sotto)', helper: 'Colore quando la potenza rete e sotto soglia.' },
+          grid_color_high: { label: 'Colore rete (sopra)', helper: 'Colore quando la potenza rete supera la soglia.' },
+          battery_import_color: { label: 'Colore import batteria', helper: 'Colore quando la batteria si carica (import).' },
+          battery_export_color: { label: 'Colore export batteria', helper: 'Colore quando la batteria eroga energia (export).' },
+          car_import_color: { label: 'Colore import auto', helper: 'Colore quando l auto si carica dal sistema.' },
+          car_export_color: { label: 'Colore export auto', helper: 'Colore quando l auto restituisce energia.' },
           sensor_pv1: { label: 'Sensore PV 1 (obbligatorio)', helper: 'Sensore principale di produzione solare.' },
           sensor_pv2: { label: 'Sensore PV 2' },
           sensor_pv3: { label: 'Sensore PV 3' },
@@ -876,13 +939,21 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_pv6: { label: 'Sensore PV 6' },
           sensor_daily: { label: 'Sensore produzione giornaliera', helper: 'Sensore che riporta la produzione giornaliera.' },
           sensor_bat1_soc: { label: 'Batteria 1 SOC' },
-          sensor_bat1_power: { label: 'Batteria 1 potenza' },
+          sensor_bat1_power: { label: 'Batteria 1 potenza', helper: 'Sensore netto (positivo = scarica, negativo = carica). Se compilato, i sensori separati vengono ignorati.' },
+          sensor_bat1_charge: { label: 'Batteria 1 carica', helper: 'Sensore opzionale solo carica (valore positivo durante la carica). La scheda combina automaticamente carica/scarica quando non e presente un sensore netto.' },
+          sensor_bat1_discharge: { label: 'Batteria 1 scarica', helper: 'Sensore opzionale solo scarica (valore positivo durante la scarica). La scheda combina automaticamente carica/scarica quando non e presente un sensore netto.' },
           sensor_bat2_soc: { label: 'Batteria 2 SOC' },
-          sensor_bat2_power: { label: 'Batteria 2 potenza' },
+          sensor_bat2_power: { label: 'Batteria 2 potenza', helper: 'Sensore netto (positivo = scarica, negativo = carica). Se compilato, i sensori separati vengono ignorati.' },
+          sensor_bat2_charge: { label: 'Batteria 2 carica', helper: 'Sensore opzionale solo carica (valore positivo durante la carica). La scheda combina automaticamente carica/scarica quando non e presente un sensore netto.' },
+          sensor_bat2_discharge: { label: 'Batteria 2 scarica', helper: 'Sensore opzionale solo scarica (valore positivo durante la scarica). La scheda combina automaticamente carica/scarica quando non e presente un sensore netto.' },
           sensor_bat3_soc: { label: 'Batteria 3 SOC' },
-          sensor_bat3_power: { label: 'Batteria 3 potenza' },
+          sensor_bat3_power: { label: 'Batteria 3 potenza', helper: 'Sensore netto (positivo = scarica, negativo = carica). Se compilato, i sensori separati vengono ignorati.' },
+          sensor_bat3_charge: { label: 'Batteria 3 carica', helper: 'Sensore opzionale solo carica (valore positivo durante la carica). La scheda combina automaticamente carica/scarica quando non e presente un sensore netto.' },
+          sensor_bat3_discharge: { label: 'Batteria 3 scarica', helper: 'Sensore opzionale solo scarica (valore positivo durante la scarica). La scheda combina automaticamente carica/scarica quando non e presente un sensore netto.' },
           sensor_bat4_soc: { label: 'Batteria 4 SOC' },
-          sensor_bat4_power: { label: 'Batteria 4 potenza' },
+          sensor_bat4_power: { label: 'Batteria 4 potenza', helper: 'Sensore netto (positivo = scarica, negativo = carica). Se compilato, i sensori separati vengono ignorati.' },
+          sensor_bat4_charge: { label: 'Batteria 4 carica', helper: 'Sensore opzionale solo carica (valore positivo durante la carica). La scheda combina automaticamente carica/scarica quando non e presente un sensore netto.' },
+          sensor_bat4_discharge: { label: 'Batteria 4 scarica', helper: 'Sensore opzionale solo scarica (valore positivo durante la scarica). La scheda combina automaticamente carica/scarica quando non e presente un sensore netto.' },
           sensor_home_load: { label: 'Carico casa/consumo', helper: 'Sensore del consumo totale dell abitazione.' },
           sensor_grid_power: { label: 'Potenza rete', helper: 'Sensore flusso rete positivo/negativo.' },
           invert_grid: { label: 'Inverti valori rete', helper: 'Attiva se l import/export ha polarita invertita.' },
@@ -903,9 +974,9 @@ class LuminaEnergyCardEditor extends HTMLElement {
         },
         options: {
           languages: [
-            { value: 'en', label: 'Inglese' },
+            { value: 'en', label: 'English' },
             { value: 'it', label: 'Italiano' },
-            { value: 'de', label: 'Tedesco' }
+            { value: 'de', label: 'Deutsch' }
           ],
           display_units: [
             { value: 'W', label: 'Watt (W)' },
@@ -916,11 +987,18 @@ class LuminaEnergyCardEditor extends HTMLElement {
       de: {
         sections: {
           general: { title: 'Konfiguration', helper: 'Allgemeine Karteneinstellungen.' },
-          refresh: { title: 'Aktualisierung und Animation', helper: 'Steuert Abfrageintervall und Animationsgeschwindigkeit.' },
-          pv: { title: 'PV (Solar) Sensoren', helper: 'Bis zu sechs PV oder input_number Entitaeten konfigurieren.' },
-          battery: { title: 'Batteriesensoren', helper: 'SOC und Leistung fuer jede Batterie angeben.' },
-          other: { title: 'Weitere Sensoren', helper: 'Hausverbrauch, Netz und Invertierungsoptionen.' },
-          ev: { title: 'EV und Typografie', helper: 'Optionale EV Metriken, Stil und Schriftanpassungen.' }
+          refresh: { title: 'Aktualisierung', helper: 'Steuert das Aktualisierungsintervall der Karte.' },
+          pv: { title: 'PV (Solar) Sensoren', helper: 'Konfiguriere bis zu sechs PV- oder input_number-Entitaeten.' },
+          battery: { title: 'Batteriesensoren', helper: 'Stelle SOC- und Leistungssensoren fuer jede Batterie bereit.' },
+          flows: { title: 'Flussfarben', helper: 'Lege Schwellwerte und Farben fuer die Energiefluesse fest.' },
+          other: { title: 'Weitere Sensoren', helper: 'Hauslast, Netz und Invertierungsoptionen.' },
+          ev: { title: 'EV-Sensoren', helper: 'Optionale EV-Metriken und SOC-Anzeige.' },
+          typography: { title: 'Typografie', helper: 'Passe die Schriftgroessen einzelner Labels an.' }
+        },
+        groups: {
+          entities: { title: 'Entitaetskonfiguration', helper: 'Sensoren, Grundeinstellungen und EV-Inputs anpassen.' },
+          colors: { title: 'Farbkonfiguration', helper: 'Schwellenwerte, Flussfarben und Akzente einstellen.' },
+          typography: { title: 'Typografie', helper: 'Schriftgroessen der Karte feinjustieren.' }
         },
         fields: {
           card_title: { label: 'Kartentitel', helper: 'Titel oben auf der Karte.' },
@@ -928,7 +1006,20 @@ class LuminaEnergyCardEditor extends HTMLElement {
           language: { label: 'Sprache', helper: 'Editor-Sprache waehlen.' },
           display_unit: { label: 'Anzeigeeinheit', helper: 'Einheit fuer Leistungswerte.' },
           update_interval: { label: 'Aktualisierungsintervall', helper: 'Aktualisierungsfrequenz der Karte (0 deaktiviert das Limit).' },
-          animation_speed_factor: { label: 'Animationsgeschwindigkeit', helper: 'Animationsfaktor zwischen 0.25x und 4x anpassen.' },
+          animation_speed_factor: { label: 'Animationsgeschwindigkeit', helper: 'Skaliert die Flussanimation (1 = Standard).' },
+          pv_total_threshold: { label: 'PV Schwelle (W)', helper: 'Wechselt die PV-Farbe, wenn die Gesamtleistung diese Schwelle ueberschreitet.' },
+          pv_total_color_low: { label: 'PV Farbe (darunter)', helper: 'Farbe, wenn die PV-Leistung unter der Schwelle liegt.' },
+          pv_total_color_high: { label: 'PV Farbe (darueber)', helper: 'Farbe, wenn die PV-Leistung die Schwelle uebersteigt.' },
+          home_import_threshold: { label: 'Haushalt Schwelle (W)', helper: 'Wechselt die Hausfluss-Farbe, wenn der Verbrauch diese Schwelle ueberschreitet.' },
+          home_import_color_low: { label: 'Hausfarbe (darunter)', helper: 'Farbe, wenn der Hausverbrauch unter der Schwelle liegt.' },
+          home_import_color_high: { label: 'Hausfarbe (darueber)', helper: 'Farbe, wenn der Hausverbrauch die Schwelle ueberschreitet.' },
+          grid_import_threshold: { label: 'Netz Schwelle (W)', helper: 'Wechselt die Netzfarbe, wenn die absolute Netzleistung diese Schwelle ueberschreitet.' },
+          grid_color_low: { label: 'Netzfarbe (darunter)', helper: 'Farbe, wenn die Netzleistung unter der Schwelle liegt.' },
+          grid_color_high: { label: 'Netzfarbe (darueber)', helper: 'Farbe, wenn die Netzleistung die Schwelle ueberschreitet.' },
+          battery_import_color: { label: 'Batterie Importfarbe', helper: 'Farbe, wenn die Batterie laedt (Import).' },
+          battery_export_color: { label: 'Batterie Exportfarbe', helper: 'Farbe, wenn die Batterie entlaedt (Export).' },
+          car_import_color: { label: 'Auto Importfarbe', helper: 'Farbe, wenn das EV laedt.' },
+          car_export_color: { label: 'Auto Exportfarbe', helper: 'Farbe, wenn das EV Energie abgibt.' },
           sensor_pv1: { label: 'PV Sensor 1 (Pflicht)', helper: 'Primaerer Solarsensor.' },
           sensor_pv2: { label: 'PV Sensor 2' },
           sensor_pv3: { label: 'PV Sensor 3' },
@@ -937,13 +1028,21 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_pv6: { label: 'PV Sensor 6' },
           sensor_daily: { label: 'Tagesproduktion Sensor', helper: 'Sensor fuer taegliche Produktionssumme.' },
           sensor_bat1_soc: { label: 'Batterie 1 SOC' },
-          sensor_bat1_power: { label: 'Batterie 1 Leistung' },
+          sensor_bat1_power: { label: 'Batterie 1 Leistung', helper: 'Nettosensor (positiv = entladen, negativ = laden). Bei Angabe werden die getrennten Felder ignoriert.' },
+          sensor_bat1_charge: { label: 'Batterie 1 Laden', helper: 'Optionaler Ladesensor (positiv beim Laden). Die Karte kombiniert Lade-/Entladesensoren automatisch, sofern kein Nettosensor vorliegt.' },
+          sensor_bat1_discharge: { label: 'Batterie 1 Entladen', helper: 'Optionaler Entladesensor (positiv beim Entladen). Die Karte kombiniert Lade-/Entladesensoren automatisch, sofern kein Nettosensor vorliegt.' },
           sensor_bat2_soc: { label: 'Batterie 2 SOC' },
-          sensor_bat2_power: { label: 'Batterie 2 Leistung' },
+          sensor_bat2_power: { label: 'Batterie 2 Leistung', helper: 'Nettosensor (positiv = entladen, negativ = laden). Bei Angabe werden die getrennten Felder ignoriert.' },
+          sensor_bat2_charge: { label: 'Batterie 2 Laden', helper: 'Optionaler Ladesensor (positiv beim Laden). Die Karte kombiniert Lade-/Entladesensoren automatisch, sofern kein Nettosensor vorliegt.' },
+          sensor_bat2_discharge: { label: 'Batterie 2 Entladen', helper: 'Optionaler Entladesensor (positiv beim Entladen). Die Karte kombiniert Lade-/Entladesensoren automatisch, sofern kein Nettosensor vorliegt.' },
           sensor_bat3_soc: { label: 'Batterie 3 SOC' },
-          sensor_bat3_power: { label: 'Batterie 3 Leistung' },
+          sensor_bat3_power: { label: 'Batterie 3 Leistung', helper: 'Nettosensor (positiv = entladen, negativ = laden). Bei Angabe werden die getrennten Felder ignoriert.' },
+          sensor_bat3_charge: { label: 'Batterie 3 Laden', helper: 'Optionaler Ladesensor (positiv beim Laden). Die Karte kombiniert Lade-/Entladesensoren automatisch, sofern kein Nettosensor vorliegt.' },
+          sensor_bat3_discharge: { label: 'Batterie 3 Entladen', helper: 'Optionaler Entladesensor (positiv beim Entladen). Die Karte kombiniert Lade-/Entladesensoren automatisch, sofern kein Nettosensor vorliegt.' },
           sensor_bat4_soc: { label: 'Batterie 4 SOC' },
-          sensor_bat4_power: { label: 'Batterie 4 Leistung' },
+          sensor_bat4_power: { label: 'Batterie 4 Leistung', helper: 'Nettosensor (positiv = entladen, negativ = laden). Bei Angabe werden die getrennten Felder ignoriert.' },
+          sensor_bat4_charge: { label: 'Batterie 4 Laden', helper: 'Optionaler Ladesensor (positiv beim Laden). Die Karte kombiniert Lade-/Entladesensoren automatisch, sofern kein Nettosensor vorliegt.' },
+          sensor_bat4_discharge: { label: 'Batterie 4 Entladen', helper: 'Optionaler Entladesensor (positiv beim Entladen). Die Karte kombiniert Lade-/Entladesensoren automatisch, sofern kein Nettosensor vorliegt.' },
           sensor_home_load: { label: 'Hausverbrauch', helper: 'Sensor fuer Gesamtverbrauch des Haushalts.' },
           sensor_grid_power: { label: 'Netzleistung', helper: 'Sensor fuer positiven/negativen Netzfluss.' },
           invert_grid: { label: 'Netzwerte invertieren', helper: 'Aktivieren, wenn Import/Export vertauscht ist.' },
@@ -999,6 +1098,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
 
   _createSchemaDefs(localeStrings, optionDefs) {
     const entitySelector = { entity: { domain: ['sensor', 'input_number'] } };
+    const numberSlider = (min, max, step, unit) => ({ number: { min, max, step, mode: 'slider', unit_of_measurement: unit } });
     const fields = localeStrings.fields;
     const define = (entries) => entries.map((entry) => {
       const result = { ...entry };
@@ -1008,6 +1108,16 @@ class LuminaEnergyCardEditor extends HTMLElement {
       return result;
     });
 
+    const batteryEntries = [];
+    for (let index = 1; index <= 4; index += 1) {
+      batteryEntries.push(
+        { name: `sensor_bat${index}_soc`, label: fields[`sensor_bat${index}_soc`].label, helper: fields[`sensor_bat${index}_soc`].helper, selector: entitySelector },
+        { name: `sensor_bat${index}_power`, label: fields[`sensor_bat${index}_power`].label, helper: fields[`sensor_bat${index}_power`].helper, selector: entitySelector },
+        { name: `sensor_bat${index}_charge`, label: fields[`sensor_bat${index}_charge`].label, helper: fields[`sensor_bat${index}_charge`].helper, selector: entitySelector },
+        { name: `sensor_bat${index}_discharge`, label: fields[`sensor_bat${index}_discharge`].label, helper: fields[`sensor_bat${index}_discharge`].helper, selector: entitySelector }
+      );
+    }
+
     return {
       general: define([
         { name: 'card_title', label: fields.card_title.label, helper: fields.card_title.helper, selector: { text: {} } },
@@ -1016,8 +1126,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
         { name: 'display_unit', label: fields.display_unit.label, helper: fields.display_unit.helper, selector: { select: { options: optionDefs.display_unit } } }
       ]),
       refresh: define([
-        { name: 'update_interval', label: fields.update_interval.label, helper: fields.update_interval.helper, selector: { number: { min: 0, max: 60, step: 5, mode: 'slider', unit_of_measurement: 's' } } },
-        { name: 'animation_speed_factor', label: fields.animation_speed_factor.label, helper: fields.animation_speed_factor.helper, selector: { number: { min: 0.25, max: 4, step: 0.25, mode: 'slider', unit_of_measurement: 'x' } } }
+        { name: 'update_interval', label: fields.update_interval.label, helper: fields.update_interval.helper, selector: numberSlider(0, 60, 5, 's') },
+        { name: 'animation_speed_factor', label: fields.animation_speed_factor.label, helper: fields.animation_speed_factor.helper, selector: numberSlider(0.25, 4, 0.25, 'x') }
       ]),
       pv: define([
         { name: 'sensor_pv1', label: fields.sensor_pv1.label, helper: fields.sensor_pv1.helper, selector: entitySelector },
@@ -1028,16 +1138,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
         { name: 'sensor_pv6', label: fields.sensor_pv6.label, helper: fields.sensor_pv6.helper, selector: entitySelector },
         { name: 'sensor_daily', label: fields.sensor_daily.label, helper: fields.sensor_daily.helper, selector: entitySelector }
       ]),
-      battery: define([
-        { name: 'sensor_bat1_soc', label: fields.sensor_bat1_soc.label, helper: fields.sensor_bat1_soc.helper, selector: entitySelector },
-        { name: 'sensor_bat1_power', label: fields.sensor_bat1_power.label, helper: fields.sensor_bat1_power.helper, selector: entitySelector },
-        { name: 'sensor_bat2_soc', label: fields.sensor_bat2_soc.label, helper: fields.sensor_bat2_soc.helper, selector: entitySelector },
-        { name: 'sensor_bat2_power', label: fields.sensor_bat2_power.label, helper: fields.sensor_bat2_power.helper, selector: entitySelector },
-        { name: 'sensor_bat3_soc', label: fields.sensor_bat3_soc.label, helper: fields.sensor_bat3_soc.helper, selector: entitySelector },
-        { name: 'sensor_bat3_power', label: fields.sensor_bat3_power.label, helper: fields.sensor_bat3_power.helper, selector: entitySelector },
-        { name: 'sensor_bat4_soc', label: fields.sensor_bat4_soc.label, helper: fields.sensor_bat4_soc.helper, selector: entitySelector },
-        { name: 'sensor_bat4_power', label: fields.sensor_bat4_power.label, helper: fields.sensor_bat4_power.helper, selector: entitySelector }
-      ]),
+      battery: define(batteryEntries),
       other: define([
         { name: 'sensor_home_load', label: fields.sensor_home_load.label, helper: fields.sensor_home_load.helper, selector: entitySelector },
         { name: 'sensor_grid_power', label: fields.sensor_grid_power.label, helper: fields.sensor_grid_power.helper, selector: entitySelector },
@@ -1046,8 +1147,25 @@ class LuminaEnergyCardEditor extends HTMLElement {
       ev: define([
         { name: 'sensor_car_power', label: fields.sensor_car_power.label, helper: fields.sensor_car_power.helper, selector: entitySelector },
         { name: 'sensor_car_soc', label: fields.sensor_car_soc.label, helper: fields.sensor_car_soc.helper, selector: entitySelector },
-        { name: 'show_car_soc', label: fields.show_car_soc.label, helper: fields.show_car_soc.helper, selector: { boolean: {} }, default: false },
-        { name: 'car_pct_color', label: fields.car_pct_color.label, helper: fields.car_pct_color.helper, selector: { text: {} }, default: '#00FFFF' },
+        { name: 'show_car_soc', label: fields.show_car_soc.label, helper: fields.show_car_soc.helper, selector: { boolean: {} }, default: false }
+      ]),
+      flows: define([
+        { name: 'pv_total_threshold', label: fields.pv_total_threshold.label, helper: fields.pv_total_threshold.helper, selector: { number: {} } },
+        { name: 'pv_total_color_low', label: fields.pv_total_color_low.label, helper: fields.pv_total_color_low.helper, selector: { text: {} } },
+        { name: 'pv_total_color_high', label: fields.pv_total_color_high.label, helper: fields.pv_total_color_high.helper, selector: { text: {} } },
+        { name: 'home_import_threshold', label: fields.home_import_threshold.label, helper: fields.home_import_threshold.helper, selector: { number: {} } },
+        { name: 'home_import_color_low', label: fields.home_import_color_low.label, helper: fields.home_import_color_low.helper, selector: { text: {} } },
+        { name: 'home_import_color_high', label: fields.home_import_color_high.label, helper: fields.home_import_color_high.helper, selector: { text: {} } },
+        { name: 'grid_import_threshold', label: fields.grid_import_threshold.label, helper: fields.grid_import_threshold.helper, selector: { number: {} } },
+        { name: 'grid_color_low', label: fields.grid_color_low.label, helper: fields.grid_color_low.helper, selector: { text: {} } },
+        { name: 'grid_color_high', label: fields.grid_color_high.label, helper: fields.grid_color_high.helper, selector: { text: {} } },
+        { name: 'battery_import_color', label: fields.battery_import_color.label, helper: fields.battery_import_color.helper, selector: { text: {} } },
+        { name: 'battery_export_color', label: fields.battery_export_color.label, helper: fields.battery_export_color.helper, selector: { text: {} } },
+        { name: 'car_import_color', label: fields.car_import_color.label, helper: fields.car_import_color.helper, selector: { text: {} } },
+        { name: 'car_export_color', label: fields.car_export_color.label, helper: fields.car_export_color.helper, selector: { text: {} } },
+        { name: 'car_pct_color', label: fields.car_pct_color.label, helper: fields.car_pct_color.helper, selector: { text: {} }, default: '#00FFFF' }
+      ]),
+      typography: define([
         { name: 'header_font_size', label: fields.header_font_size.label, helper: fields.header_font_size.helper, selector: { text: {} } },
         { name: 'daily_label_font_size', label: fields.daily_label_font_size.label, helper: fields.daily_label_font_size.helper, selector: { text: {} } },
         { name: 'daily_value_font_size', label: fields.daily_value_font_size.label, helper: fields.daily_value_font_size.helper, selector: { text: {} } },
@@ -1062,15 +1180,39 @@ class LuminaEnergyCardEditor extends HTMLElement {
     };
   }
 
-  _createSectionDefs(localeStrings, schemaDefs) {
+  _createGroupDefs(localeStrings, schemaDefs) {
     const sections = localeStrings.sections;
+    const groups = localeStrings.groups;
     return [
-      { title: sections.general.title, helper: sections.general.helper, schema: schemaDefs.general },
-      { title: sections.refresh.title, helper: sections.refresh.helper, schema: schemaDefs.refresh },
-      { title: sections.pv.title, helper: sections.pv.helper, schema: schemaDefs.pv },
-      { title: sections.battery.title, helper: sections.battery.helper, schema: schemaDefs.battery },
-      { title: sections.other.title, helper: sections.other.helper, schema: schemaDefs.other },
-      { title: sections.ev.title, helper: sections.ev.helper, schema: schemaDefs.ev }
+      {
+        title: groups.entities.title,
+        helper: groups.entities.helper,
+        open: true,
+        sections: [
+          { title: sections.general.title, helper: sections.general.helper, schema: schemaDefs.general },
+          { title: sections.refresh.title, helper: sections.refresh.helper, schema: schemaDefs.refresh },
+          { title: sections.pv.title, helper: sections.pv.helper, schema: schemaDefs.pv },
+          { title: sections.battery.title, helper: sections.battery.helper, schema: schemaDefs.battery },
+          { title: sections.other.title, helper: sections.other.helper, schema: schemaDefs.other },
+          { title: sections.ev.title, helper: sections.ev.helper, schema: schemaDefs.ev }
+        ]
+      },
+      {
+        title: groups.colors.title,
+        helper: groups.colors.helper,
+        open: false,
+        sections: [
+          { title: sections.flows.title, helper: sections.flows.helper, schema: schemaDefs.flows }
+        ]
+      },
+      {
+        title: groups.typography.title,
+        helper: groups.typography.helper,
+        open: false,
+        sections: [
+          { title: sections.typography.title, helper: sections.typography.helper, schema: schemaDefs.typography }
+        ]
+      }
     ];
   }
 
@@ -1099,6 +1241,36 @@ class LuminaEnergyCardEditor extends HTMLElement {
     });
     event.detail = { config: newConfig };
     this.dispatchEvent(event);
+  }
+
+  _createGroup(group) {
+    const panel = document.createElement('details');
+    panel.className = 'group-panel';
+    if (group.open !== false) {
+      panel.open = true;
+    }
+
+    const summary = document.createElement('summary');
+    summary.className = 'group-summary';
+    summary.textContent = group.title;
+    panel.appendChild(summary);
+
+    const body = document.createElement('div');
+    body.className = 'group-body';
+
+    if (group.helper) {
+      const helper = document.createElement('div');
+      helper.className = 'group-helper';
+      helper.textContent = group.helper;
+      body.appendChild(helper);
+    }
+
+    group.sections.forEach((section) => {
+      body.appendChild(this._createSection(section.title, section.helper, section.schema));
+    });
+
+    panel.appendChild(body);
+    return panel;
   }
 
   _createSection(title, helper, schema) {
@@ -1179,10 +1351,15 @@ class LuminaEnergyCardEditor extends HTMLElement {
     const localeStrings = this._getLocaleStrings();
     const optionDefs = this._createOptionDefs(localeStrings);
     const schemaDefs = this._createSchemaDefs(localeStrings, optionDefs);
-    const sections = this._createSectionDefs(localeStrings, schemaDefs);
+    const groups = this._createGroupDefs(localeStrings, schemaDefs);
 
-    sections.forEach((section) => {
-      container.appendChild(this._createSection(section.title, section.helper, section.schema));
+    const versionBadge = document.createElement('div');
+    versionBadge.className = 'version-badge';
+    versionBadge.textContent = `Lumina Energy Card v${LuminaEnergyCard.version}`;
+    container.appendChild(versionBadge);
+
+    groups.forEach((group) => {
+      container.appendChild(this._createGroup(group));
     });
 
     return container;
@@ -1197,25 +1374,59 @@ class LuminaEnergyCardEditor extends HTMLElement {
 
     const style = document.createElement('style');
     style.textContent = `
+      .card-config {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+      }
+      .version-badge {
+        align-self: flex-start;
+        font-size: 0.55em;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(0, 255, 255, 0.12);
+        color: var(--primary-color);
+        border: 1px solid rgba(0, 255, 255, 0.3);
+        text-transform: uppercase;
+      }
+      .group-panel {
+        border: 1px solid var(--divider-color);
+        border-radius: 8px;
+        background: var(--card-background-color);
+      }
+      .group-summary {
+        font-weight: 600;
+        font-size: 1.05em;
+        padding: 12px 16px;
+        cursor: pointer;
+      }
+      .group-body {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 16px 16px;
+      }
+      .group-helper {
+        font-size: 0.9em;
+        color: var(--secondary-text-color);
+        margin-bottom: 8px;
+      }
       .section {
         display: flex;
         flex-direction: column;
         gap: 8px;
       }
-      .card-config {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        padding: 16px;
-      }
       .section-title {
-        font-weight: bold;
-        font-size: 1.1em;
-        margin-top: 16px;
-        margin-bottom: 8px;
+        font-weight: 600;
+        font-size: 1.05em;
+        margin: 8px 0 4px;
         color: var(--primary-color);
-        border-bottom: 1px solid var(--divider-color);
-        padding-bottom: 4px;
+      }
+      .group-body .section:first-of-type .section-title {
+        margin-top: 0;
       }
       .section-helper {
         font-size: 0.9em;

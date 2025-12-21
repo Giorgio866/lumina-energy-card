@@ -2,13 +2,15 @@
 
 Limuna Energy Card repository is <https://github.com/ratava/lumina-energy-card>.
 
-Animated Home Assistant card that visualises PV, battery, grid, load, and EV energy flows in a single dashboard.
+Home Assistant card that visualises PV, battery, grid, load, and EV energy flows with configurable colour thresholds in a single dashboard.
 
 ## Highlights
 
 - Up to six PV strings and four batteries with automatic aggregation
 - Optional EV charging block with power and SOC readouts
-- Animated SVG flows with dynamic coloration, speed scaling, and throttled refresh logic
+- Battery inputs accept either a single net sensor or separate charge/discharge sensors
+- Colour-configurable flow lines with per-path thresholds and throttled refresh logic
+- Distinct colours for battery and EV import/export directions
 - Multi-language UI strings (English, Italiano, Deutsch)
 - Customisable card title, typography, units (W or kW), background image, and update interval
 

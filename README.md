@@ -1,7 +1,7 @@
 # Lumina Energy Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-![Version](https://img.shields.io/badge/version-1.1.13-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1.13--testing6-blue.svg)
 
 Limuna Energy Card repository is <https://github.com/ratava/lumina-energy-card>.
 
@@ -28,14 +28,14 @@ Limuna Energy Card repository is <https://github.com/ratava/lumina-energy-card>.
 
 ### Overview (EN)
 
-Lumina Energy Card is a Home Assistant custom Lovelace card that renders animated energy flows, aggregates PV strings and batteries, and surfaces optional EV charging metrics in a cinematic layout.
+Lumina Energy Card is a Home Assistant custom Lovelace card that renders energy flows with configurable colour thresholds, aggregates PV strings and batteries, and surfaces optional EV charging metrics in a cinematic layout.
 
 ### Key Features (EN)
 
 - Up to six PV sensors with smart per-string or totalised labels
-- Up to four battery systems with SOC averaging and liquid-fill battery visualisation
-- Animated grid, load, PV, battery and EV flows with dynamic colour and speed
-- Adjustable animation speed multiplier (0.25x–4x) and visibility thresholds
+- Up to four battery systems with SOC averaging, liquid-fill battery visualisation, and support for combined or split charge/discharge sensors
+- Flow lines with configurable colour thresholds for PV, home, grid, battery and EV paths
+- Independent import/export colour styling for battery and EV flows
 - Optional EV panel with power and SOC display, configurable colour, and typography
 - Daily production badge plus full typography controls for header, PV, battery, load, grid, and EV text
 - Update interval slider (0–60 s, default 30 s) with optional real-time refresh when set to 0
@@ -95,7 +95,19 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 | `language` | string | `en` | Accepts `en`, `it`, or `de` |
 | `display_unit` | string | `kW` | Display values in `W` or `kW` |
 | `update_interval` | number | `30` | Refresh cadence (0–60, step 5; 0 disables throttling) |
-| `animation_speed_factor` | number | `1` | Flow animation multiplier (0.25–4) |
+| `pv_total_threshold` | number | `1500` | Watts threshold for switching the PV flow colour |
+| `pv_total_color_low` | string | `#00FFFF` | PV flow colour when below the threshold |
+| `pv_total_color_high` | string | `#00FFAA` | PV flow colour when above the threshold |
+| `home_import_threshold` | number | `1500` | Watts threshold for switching the home import colour |
+| `home_import_color_low` | string | `#00FFFF` | Home import colour when below the threshold |
+| `home_import_color_high` | string | `#FFA500` | Home import colour when above the threshold |
+| `grid_import_threshold` | number | `500` | Absolute watts threshold for switching the grid colour |
+| `grid_color_low` | string | `#00FFFF` | Grid flow colour when below the threshold |
+| `grid_color_high` | string | `#FF3333` | Grid flow colour when above the threshold |
+| `battery_import_color` | string | `#00AEEF` | Colour used when the battery is charging (import) |
+| `battery_export_color` | string | `#FFFFFF` | Colour used when the battery is discharging (export) |
+| `car_import_color` | string | `#00FFFF` | Colour used when the EV is charging (import) |
+| `car_export_color` | string | `#FFFFFF` | Colour used when the EV is exporting |
 | `header_font_size` | number | `16` | Typography for the header (12–32 px) |
 | `pv_font_size` | number | `16` | Typography for PV text (12–28 px) |
 | `battery_soc_font_size` | number | `20` | Typography for SOC label (12–32 px) |
@@ -109,7 +121,9 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 | `sensor_pv1` | entity | — | Primary PV sensor (required) |
 | `sensor_daily` | entity | — | Daily production sensor (required) |
 | `sensor_bat1_soc` | entity | — | Battery SOC sensor (required) |
-| `sensor_bat1_power` | entity | — | Battery power sensor (required) |
+| `sensor_bat1_power` | entity | — | Net battery power sensor (positive = discharge). Optional if using separate charge/discharge fields |
+| `sensor_bat1_charge` | entity | — | Optional battery charging sensor (positive while charging); pair with `sensor_bat1_discharge` when no net sensor is available |
+| `sensor_bat1_discharge` | entity | — | Optional battery discharging sensor (positive while discharging); pair with `sensor_bat1_charge` when no net sensor is available |
 | `sensor_home_load` | entity | — | Home load sensor (required) |
 | `sensor_grid_power` | entity | — | Grid import/export sensor (required) |
 | `invert_grid` | boolean | `false` | Flip grid sign if needed |
@@ -133,7 +147,7 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 
 ### Changelog (EN)
 
-- **1.1.13 (2025)** – Added smooth flow duration easing with dynamic rate scaling, cleanup guards, and a 0s update interval option for real-time refresh.
+- **1.1.13-testing6 (2025)** – Removed animated dash flows, added configurable colour thresholds/import-export styling for each energy path, and enabled split battery charge/discharge sensors.
 - **1.1.1 (2025)** – Polished localisation text and prepped packaging for the single-file release.
 - **1.1.0 (2025)** – Localised the Lovelace editor labels/helpers for English, Italian, and German while keeping the single-file distribution.
 - **1.0.8 (2025)** – Converted typography controls to simple text inputs alongside EV settings for quicker edits.
@@ -150,14 +164,14 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 
 ### Panoramica (IT)
 
-Lumina Energy Card è una scheda Lovelace per Home Assistant che offre grafica animata dei flussi energetici, gestione di stringhe FV multiple, batterie e monitor EV opzionale in un'unica interfaccia.
+Lumina Energy Card è una scheda Lovelace per Home Assistant che mostra i flussi energetici con colori configurabili, gestisce stringhe FV multiple, batterie e un monitor EV opzionale in un'unica interfaccia.
 
 ### Funzionalità Chiave (IT)
 
 - Fino a 6 sensori fotovoltaici con etichettatura intelligente
-- Fino a 4 batterie con media SOC e visualizzazione liquida 3D
-- Flussi animati con colori dinamici per rete, casa, FV, batterie ed EV
-- Moltiplicatore di velocità per regolare le animazioni dei flussi (0,25x–4x)
+- Fino a 4 batterie con media SOC, visualizzazione liquida 3D e supporto per sensori combinati o separati di carica/scarica
+- Flussi energetici con colori e soglie personalizzabili per rete, casa, FV, batterie ed EV
+- Colori distinti per import ed export di batteria ed EV
 - Pannello EV opzionale con potenza e SOC personalizzabili
 - Badge produzione giornaliera, titolo, sfondo e unità configurabili
 - Controlli tipografici per titolo, FV, batterie, carichi, rete ed EV
@@ -197,7 +211,7 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 
 ### Suggerimenti (IT)
 
-- Obbligatori: `sensor_pv1`, `sensor_daily`, `sensor_bat1_soc`, `sensor_bat1_power`, `sensor_home_load`, `sensor_grid_power`.
+- Obbligatori: `sensor_pv1`, `sensor_daily`, `sensor_bat1_soc`, `sensor_home_load`, `sensor_grid_power` e **uno tra** `sensor_bat1_power` **oppure** la coppia `sensor_bat1_charge`/`sensor_bat1_discharge`.
 - Per uno sfondo personalizzato copia l'immagine nella stessa cartella del JS e aggiorna `background_image`.
 - Imposta `invert_grid: true` se i valori di rete risultano invertiti.
 
@@ -207,14 +221,14 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 
 ### Überblick (DE)
 
-Die Lumina Energy Card zeigt animierte Energieflüsse in Home Assistant, unterstützt mehrere PV-Stränge, Batteriespeicher und eine optionale EV-Anzeige.
+Die Lumina Energy Card zeigt farbcodierte Energiefluesse in Home Assistant, unterstuetzt mehrere PV-Stroeme, Batteriespeicher und eine optionale EV-Anzeige.
 
 ### Wichtige Funktionen (DE)
 
 - Bis zu 6 PV-Sensoren mit intelligenter Beschriftung
-- Bis zu 4 Batteriesysteme mit SOC-Durchschnitt und kombiniertem Leistungswert
-- Animierte Leitungen für Netz, Haus, PV, Batterie und EV mit Farbcodierung
-- Einstellbarer Animationsfaktor für schnellere oder langsamere Flussvisualisierung (0,25x–4x)
+- Bis zu 4 Batteriesysteme mit SOC-Durchschnitt, kombiniertem Leistungswert sowie Unterstützung für zusammengefasste oder getrennte Lade-/Entladesensoren
+- Leitungen mit konfigurierbaren Schwellen und Farben für Netz, Haus, PV, Batterie und EV
+- Unterschiedliche Farben fuer Batterie- und EV-Import bzw. -Export
 - Optionales EV-Panel inklusive SOC-Farbe
 - Tagesertrag, Kartentitel, Hintergrund und Einheiten anpassbar
 - Typografie-Regler für Titel, PV, Batterie, Last, Netz und EV-Text
@@ -254,7 +268,7 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 
 ### Hinweise (DE)
 
-- Pflichtwerte: PV1, Daily, Batterie SOC/Power, Hauslast, Netzleistung.
+- Pflichtwerte: PV1, Daily, Batterie SOC, Hauslast, Netzleistung sowie **entweder** der Batteriesensor `sensor_bat1_power` **oder** das Duo `sensor_bat1_charge`/`sensor_bat1_discharge`.
 - Für eigene Hintergründe Bild neben die JS-Datei kopieren und `background_image` anpassen.
 - Bei invertierten Netz-Werten `invert_grid: true` setzen.
 
