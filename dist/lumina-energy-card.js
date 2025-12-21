@@ -1,7 +1,7 @@
 /**
  * Lumina Energy Card
  * Custom Home Assistant card for energy flow visualization
- * Version: 1.1.1
+ * Version: 1.1.2 (Flicker Fix & Updates)
  * Tested with Home Assistant 2025.12+
  */
 
@@ -11,7 +11,7 @@ class LuminaEnergyCard extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this._lastRender = 0;
     this._forceRender = false;
-    this._flowAnimationState = new Map();
+    this._initialized = false; // Flag per sapere se abbiamo già disegnato la grafica
   }
 
   setConfig(config) {
@@ -19,15 +19,17 @@ class LuminaEnergyCard extends HTMLElement {
       throw new Error('Invalid configuration');
     }
     this.config = config;
+    // Se cambia la configurazione, forziamo un ridisegno completo
     this._forceRender = true;
+    this._initialized = false; 
     this.render();
   }
 
   set hass(hass) {
     this._hass = hass;
-    if (!this.config) {
-      return;
-    }
+    if (!this.config) return;
+
+    // Se siamo in editor, renderizziamo sempre se forzato
     if (this._isEditorActive()) {
       if (this._forceRender) {
         this.render();
@@ -35,11 +37,15 @@ class LuminaEnergyCard extends HTMLElement {
       this._forceRender = false;
       return;
     }
+
     const now = Date.now();
     const configuredInterval = Number(this.config.update_interval);
     const intervalSeconds = Number.isFinite(configuredInterval) ? configuredInterval : 30;
-    const clampedSeconds = Math.min(Math.max(intervalSeconds, 10), 60);
+    // Minimo 2 secondi per fluidità
+    const clampedSeconds = Math.min(Math.max(intervalSeconds, 2), 60); 
     const intervalMs = clampedSeconds * 1000;
+
+    // Renderizza se: forzato OPPURE mai renderizzato OPPURE passato intervallo
     if (this._forceRender || !this._lastRender || now - this._lastRender >= intervalMs) {
       this.render();
       this._forceRender = false;
@@ -85,127 +91,6 @@ class LuminaEnergyCard extends HTMLElement {
     return Boolean(this.closest('hui-card-preview'));
   }
 
-  disconnectedCallback() {
-    if (typeof super.disconnectedCallback === 'function') {
-      super.disconnectedCallback();
-    }
-    if (this._flowAnimationState) {
-      this._flowAnimationState.forEach((state) => {
-        if (state && state.raf) {
-          cancelAnimationFrame(state.raf);
-        }
-      });
-      this._flowAnimationState.clear();
-    }
-  }
-
-  _applyFlowAnimationTargets(flowDurations) {
-    if (!this.shadowRoot) {
-      return;
-    }
-    if (!this._flowAnimationState) {
-      this._flowAnimationState = new Map();
-    }
-
-    const seenKeys = new Set();
-    Object.entries(flowDurations).forEach(([flowKey, seconds]) => {
-      const elements = this.shadowRoot.querySelectorAll(`[data-flow-key="${flowKey}"]`);
-      if (!elements || elements.length === 0) {
-        return;
-      }
-      seenKeys.add(flowKey);
-      elements.forEach((element) => {
-        this._tweenFlowAnimation(flowKey, seconds, element);
-      });
-    });
-
-    const keysToRemove = [];
-    this._flowAnimationState.forEach((state, key) => {
-      if (!seenKeys.has(key)) {
-        if (state && state.raf) {
-          cancelAnimationFrame(state.raf);
-        }
-        keysToRemove.push(key);
-      }
-    });
-    keysToRemove.forEach((key) => this._flowAnimationState.delete(key));
-  }
-
-  _flowEasingGain() {
-    const rawFactor = Number(this.config && this.config.animation_speed_factor);
-    const clampedFactor = Number.isFinite(rawFactor) ? Math.min(Math.max(rawFactor, 0.25), 4) : 1;
-    const gain = 0.1 + (clampedFactor - 0.25) * 0.066;
-    return Math.min(Math.max(gain, 0.08), 0.35);
-  }
-
-  _tweenFlowAnimation(flowKey, targetSeconds, element) {
-    if (!this._flowAnimationState) {
-      this._flowAnimationState = new Map();
-    }
-
-    let state = this._flowAnimationState.get(flowKey);
-    const easingGain = this._flowEasingGain();
-    const normalizedTarget = Number.isFinite(targetSeconds) ? Math.max(targetSeconds, 0) : 0;
-
-    if (!state) {
-      state = {
-        current: normalizedTarget,
-        target: normalizedTarget,
-        element,
-        raf: null,
-        gain: easingGain
-      };
-      element.style.animationDuration = `${normalizedTarget}s`;
-      this._flowAnimationState.set(flowKey, state);
-      return;
-    }
-
-    state.element = element;
-    state.target = normalizedTarget;
-    state.gain = easingGain;
-
-    if (!Number.isFinite(state.current)) {
-      state.current = normalizedTarget;
-    }
-
-    // Ensure the element reflects the current duration immediately.
-    element.style.animationDuration = `${Math.max(state.current, 0)}s`;
-
-    if (normalizedTarget <= 0) {
-      element.style.animationDuration = '0s';
-      if (state.raf) {
-        cancelAnimationFrame(state.raf);
-        state.raf = null;
-      }
-      state.current = 0;
-      return;
-    }
-
-    if (state.raf) {
-      return;
-    }
-
-    const step = () => {
-      if (!state.element || !state.element.isConnected) {
-        state.raf = null;
-        return;
-      }
-      const diff = state.target - state.current;
-      if (Math.abs(diff) <= 0.01) {
-        state.current = state.target;
-        state.element.style.animationDuration = `${state.current}s`;
-        state.raf = null;
-        return;
-      }
-      const gain = state.gain || 0.15;
-      state.current += diff * gain;
-      state.element.style.animationDuration = `${Math.max(state.current, 0.001)}s`;
-      state.raf = requestAnimationFrame(step);
-    };
-
-    state.raf = requestAnimationFrame(step);
-  }
-
   getStateSafe(entity_id) {
     if (!entity_id || !this._hass.states[entity_id] || 
         this._hass.states[entity_id].state === 'unavailable' || 
@@ -219,7 +104,6 @@ class LuminaEnergyCard extends HTMLElement {
     if (unit && (unit.toLowerCase() === 'kw' || unit.toLowerCase() === 'kwh')) {
       value = value * 1000;
     }
-    
     return value;
   }
 
@@ -230,19 +114,43 @@ class LuminaEnergyCard extends HTMLElement {
     return Math.round(watts) + ' W';
   }
 
+  // --- HELPER PER AGGIORNAMENTO DOM (Anti-Flicker) ---
+  
+  _updateText(id, text) {
+    const el = this.shadowRoot.getElementById(id);
+    if (el) el.textContent = text;
+  }
+
+  _updateAttr(id, attr, value) {
+    const el = this.shadowRoot.getElementById(id);
+    if (el) el.setAttribute(attr, value);
+  }
+
+  _updateStyle(id, prop, value) {
+    const el = this.shadowRoot.getElementById(id);
+    if (el) el.style[prop] = value;
+  }
+  
+  clampValue(value, min, max, fallback) {
+    const num = Number(value);
+    if (!Number.isFinite(num)) return fallback;
+    return Math.min(Math.max(num, min), max);
+  }
+
+  // --- LOGICA PRINCIPALE ---
+
   render() {
     if (!this._hass || !this.config) return;
+    this._lastRender = Date.now();
 
     const config = this.config;
-    this._lastRender = Date.now();
-    
-    // Get PV sensors
+
+    // 1. RACCOLTA E CALCOLO DATI
     const pv_sensors = [
       config.sensor_pv1, config.sensor_pv2, config.sensor_pv3,
       config.sensor_pv4, config.sensor_pv5, config.sensor_pv6
     ].filter(s => s && s !== '');
 
-    // Calculate PV totals
     let total_pv_w = 0;
     let pv1_val = 0, pv2_val = 0;
     pv_sensors.forEach((sensor, i) => {
@@ -252,7 +160,6 @@ class LuminaEnergyCard extends HTMLElement {
       if (i === 1) pv2_val = val;
     });
 
-    // Get battery configs
     const bat_configs = [
       { soc: config.sensor_bat1_soc, pow: config.sensor_bat1_power },
       { soc: config.sensor_bat2_soc, pow: config.sensor_bat2_power },
@@ -260,11 +167,9 @@ class LuminaEnergyCard extends HTMLElement {
       { soc: config.sensor_bat4_soc, pow: config.sensor_bat4_power }
     ].filter(b => b.soc && b.soc !== '');
 
-    // Calculate battery totals
     let total_bat_w = 0;
     let total_soc = 0;
     let active_bat_count = 0;
-    
     bat_configs.forEach(b => {
       if (this._hass.states[b.soc] && this._hass.states[b.soc].state !== 'unavailable') {
         total_soc += this.getStateSafe(b.soc);
@@ -274,73 +179,44 @@ class LuminaEnergyCard extends HTMLElement {
     });
     
     const avg_soc = active_bat_count > 0 ? Math.round(total_soc / active_bat_count) : 0;
-
-    // Get other sensors
     const grid_raw = this.getStateSafe(config.sensor_grid_power);
     const grid = config.invert_grid ? (grid_raw * -1) : grid_raw;
     const load = this.getStateSafe(config.sensor_home_load);
     const daily_raw = this.getStateSafe(config.sensor_daily);
     const total_daily_kwh = (daily_raw / 1000).toFixed(1);
-
-    // EV Car
     const car_w = config.sensor_car_power ? this.getStateSafe(config.sensor_car_power) : 0;
     const car_soc = config.sensor_car_soc ? this.getStateSafe(config.sensor_car_soc) : null;
 
-    // Display settings
-    const bg_img = config.background_image || '/local/community/lumina-energy-card/lumina_background.jpg';
+    // Settings grafici
     const display_unit = config.display_unit || 'W';
     const use_kw = display_unit.toUpperCase() === 'KW';
-    const title_text = config.card_title || 'LUMINA ENERGY';
+    const animation_speed_factor = this.clampValue(config.animation_speed_factor, 0.25, 4, 1);
 
-    const clampValue = (value, min, max, fallback) => {
-      const num = Number(value);
-      if (!Number.isFinite(num)) {
-        return fallback;
-      }
-      return Math.min(Math.max(num, min), max);
-    };
-
-    const header_font_size = clampValue(config.header_font_size, 12, 32, 16);
-    const daily_label_font_size = clampValue(config.daily_label_font_size, 8, 24, 12);
-    const daily_value_font_size = clampValue(config.daily_value_font_size, 12, 32, 20);
-    const pv_font_size = clampValue(config.pv_font_size, 12, 28, 16);
-    const battery_soc_font_size = clampValue(config.battery_soc_font_size, 12, 32, 20);
-    const battery_power_font_size = clampValue(config.battery_power_font_size, 10, 28, 14);
-    const load_font_size = clampValue(config.load_font_size, 10, 28, 15);
-    const grid_font_size = clampValue(config.grid_font_size, 10, 28, 15);
-    const car_power_font_size = clampValue(config.car_power_font_size, 10, 28, 15);
-    const car_soc_font_size = clampValue(config.car_soc_font_size, 8, 24, 12);
-    const animation_speed_factor = clampValue(config.animation_speed_factor, 0.25, 4, 1);
-
-    // Language
-    const lang = config.language || 'en';
-    const dict_daily = { it: 'PRODUZIONE OGGI', en: 'DAILY YIELD', de: 'TAGESERTRAG' };
-    const dict_pv_tot = { it: 'PV TOT', en: 'PV TOT', de: 'PV GES' };
-    const label_daily = dict_daily[lang] || dict_daily['en'];
-    const label_pv_tot = dict_pv_tot[lang] || dict_pv_tot['en'];
-
-    // 3D coordinates
-    const BAT_X = 260, BAT_Y_BASE = 350, BAT_W = 55, BAT_MAX_H = 84;
+    const BAT_MAX_H = 84;
     const current_h = (avg_soc / 100) * BAT_MAX_H;
-    const bat_transform = `translate(${BAT_X}, ${BAT_Y_BASE}) rotate(-6) skewX(-4) skewY(30) translate(-${BAT_X}, -${BAT_Y_BASE})`;
+    
+    // Colori
+    const C_CYAN = '#00FFFF';
+    const C_WHITE = '#FFFFFF';
+    const C_RED = '#FF3333';
+    
+    // Logica classi e flussi
+    const pv1_class = (total_pv_w > 10) ? 'flow-pv1' : '';
+    const show_double_flow = (pv_sensors.length >= 2 && total_pv_w > 10);
+    const pv2_class = show_double_flow ? 'flow-pv2' : '';
+    
+    const load_class = (load > 10) ? 'flow-generic' : '';
+    const car_class = (car_w > 10) ? 'flow-generic' : '';
+    
+    const bat_class = (total_bat_w > 10) ? 'flow-generic' : (total_bat_w < -10) ? 'flow-reverse' : '';
+    const bat_col = (total_bat_w >= 0) ? C_CYAN : C_WHITE;
+    
+    const grid_class = (grid > 10) ? 'flow-grid-import' : (grid < -10) ? 'flow-generic' : '';
+    const grid_col = (grid > 10) ? C_RED : C_CYAN;
+    
+    const liquid_fill = (avg_soc < 25) ? 'rgba(255, 50, 50, 0.85)' : 'rgba(0, 255, 255, 0.85)';
 
-    // Text positions
-    const T_SOLAR_X = 177, T_SOLAR_Y = 320;
-    const T_BAT_X = 245, T_BAT_Y = 375;
-    const T_HOME_X = 460, T_HOME_Y = 245;
-    const T_GRID_X = 580, T_GRID_Y = 90;
-    const T_CAR_X = 590, T_CAR_Y = 305;
-
-    const getTxtTrans = (x, y, r, sx, sy) => 
-      `translate(${x}, ${y}) rotate(${r}) skewX(${sx}) skewY(${sy}) translate(-${x}, -${y})`;
-
-    const trans_solar = getTxtTrans(T_SOLAR_X, T_SOLAR_Y, -16, -20, 0);
-    const trans_bat = getTxtTrans(T_BAT_X, T_BAT_Y, -25, -25, 5);
-    const trans_home = getTxtTrans(T_HOME_X, T_HOME_Y, -20, -20, 3);
-    const trans_grid = getTxtTrans(T_GRID_X, T_GRID_Y, -8, -10, 0);
-    const trans_car = getTxtTrans(T_CAR_X, T_CAR_Y, 16, 20, 0);
-
-    // Animation durations
+    // Calcolo durata animazioni
     const getDur = (watts) => {
       const w = Math.abs(watts);
       if (w < 10) return '0s';
@@ -349,147 +225,247 @@ class LuminaEnergyCard extends HTMLElement {
       return scaled.toFixed(2) + 's';
     };
 
-    const dur_pv1 = getDur(total_pv_w);
-    const dur_pv2 = getDur(total_pv_w);
-    const show_double_flow = (pv_sensors.length >= 2 && total_pv_w > 10);
-    const dur_bat = getDur(total_bat_w);
-    const dur_load = getDur(load);
-    const dur_grid = getDur(grid);
-    const dur_car = getDur(car_w);
-    const toSeconds = (durationStr) => {
-      const parsed = Number.parseFloat(durationStr);
-      return Number.isFinite(parsed) ? Math.max(parsed, 0) : 0;
-    };
-    const flowDurations = {
-      pv1: toSeconds(dur_pv1),
-      pv2: toSeconds(dur_pv2),
-      bat: toSeconds(dur_bat),
-      load: toSeconds(dur_load),
-      grid: toSeconds(dur_grid),
-      car: toSeconds(dur_car)
+    const data = {
+      pv1_val, pv2_val, total_pv_w, total_bat_w, avg_soc, grid, load, total_daily_kwh,
+      car_w, car_soc, use_kw, liquid_fill, current_h, bat_col, grid_col,
+      pv1_class, pv2_class, load_class, car_class, bat_class, grid_class,
+      dur_pv1: getDur(total_pv_w),
+      dur_pv2: getDur(total_pv_w),
+      dur_bat: getDur(total_bat_w),
+      dur_load: getDur(load),
+      dur_grid: getDur(grid),
+      dur_car: getDur(car_w),
+      show_double_flow
     };
 
-    // Colors and classes
-    const C_CYAN = '#00FFFF', C_BLUE = '#0088FF', C_WHITE = '#FFFFFF', C_RED = '#FF3333';
-    const pv1_class = (total_pv_w > 10) ? 'flow-pv1' : '';
-    const pv2_class = show_double_flow ? 'flow-pv2' : '';
-    const load_class = (load > 10) ? 'flow-generic' : '';
-    const car_class = (car_w > 10) ? 'flow-generic' : '';
-    const bat_class = (total_bat_w > 10) ? 'flow-generic' : (total_bat_w < -10) ? 'flow-reverse' : '';
-    const bat_col = (total_bat_w >= 0) ? C_CYAN : C_WHITE;
-    const grid_class = (grid > 10) ? 'flow-grid-import' : (grid < -10) ? 'flow-generic' : '';
-    const grid_col = (grid > 10) ? C_RED : C_CYAN;
-    const liquid_fill = (avg_soc < 25) ? 'rgba(255, 50, 50, 0.85)' : 'rgba(0, 255, 255, 0.85)';
+    // 2. FASE DI RENDERING
+    // Se è la prima volta o l'elemento non esiste, creiamo l'HTML statico
+    if (!this._initialized || !this.shadowRoot.getElementById('lumina-svg')) {
+      this._firstRender(config, pv_sensors, data);
+      this._initialized = true;
+    }
 
-    // SVG paths
+    // 3. FASE DI AGGIORNAMENTO
+    // Aggiorniamo solo i valori e gli attributi, SENZA ricreare l'HTML
+    this._updateContent(data, config);
+  }
+
+  // Crea la struttura HTML una sola volta
+  _firstRender(config, pv_sensors, data) {
+    const bg_img = config.background_image || '/local/community/lumina-energy-card/lumina_background.jpg';
+    const title_text = config.card_title || 'LUMINA ENERGY';
+    
+    // Font settings
+    const header_font_size = this.clampValue(config.header_font_size, 12, 32, 16);
+    const daily_label_font_size = this.clampValue(config.daily_label_font_size, 8, 24, 12);
+    const daily_value_font_size = this.clampValue(config.daily_value_font_size, 12, 32, 20);
+    const pv_font_size = this.clampValue(config.pv_font_size, 12, 28, 16);
+    const battery_soc_font_size = this.clampValue(config.battery_soc_font_size, 12, 32, 20);
+    const battery_power_font_size = this.clampValue(config.battery_power_font_size, 10, 28, 14);
+    const load_font_size = this.clampValue(config.load_font_size, 10, 28, 15);
+    const grid_font_size = this.clampValue(config.grid_font_size, 10, 28, 15);
+    const car_power_font_size = this.clampValue(config.car_power_font_size, 10, 28, 15);
+    const car_soc_font_size = this.clampValue(config.car_soc_font_size, 8, 24, 12);
+
+    // Lang
+    const lang = config.language || 'en';
+    const dict_daily = { it: 'PRODUZIONE OGGI', en: 'DAILY YIELD', de: 'TAGESERTRAG' };
+    const dict_pv_tot = { it: 'PV TOT', en: 'PV TOT', de: 'PV GES' };
+    const label_daily = dict_daily[lang] || dict_daily['en'];
+    const label_pv_tot = dict_pv_tot[lang] || dict_pv_tot['en'];
+
+    // Coordinates
+    const BAT_X = 260, BAT_Y_BASE = 350, BAT_W = 55, BAT_MAX_H = 84;
+    const bat_transform = `translate(${BAT_X}, ${BAT_Y_BASE}) rotate(-6) skewX(-4) skewY(30) translate(-${BAT_X}, -${BAT_Y_BASE})`;
+    const T_SOLAR_X = 177, T_SOLAR_Y = 320;
+    const T_BAT_X = 245, T_BAT_Y = 375;
+    const T_HOME_X = 460, T_HOME_Y = 245;
+    const T_GRID_X = 580, T_GRID_Y = 90;
+    const T_CAR_X = 590, T_CAR_Y = 305;
+    
+    const getTxtTrans = (x, y, r, sx, sy) => `translate(${x}, ${y}) rotate(${r}) skewX(${sx}) skewY(${sy}) translate(-${x}, -${y})`;
+    const trans_solar = getTxtTrans(T_SOLAR_X, T_SOLAR_Y, -16, -20, 0);
+    const trans_bat = getTxtTrans(T_BAT_X, T_BAT_Y, -25, -25, 5);
+    const trans_home = getTxtTrans(T_HOME_X, T_HOME_Y, -20, -20, 3);
+    const trans_grid = getTxtTrans(T_GRID_X, T_GRID_Y, -8, -10, 0);
+    const trans_car = getTxtTrans(T_CAR_X, T_CAR_Y, 16, 20, 0);
+    const TxtStyle = 'font-weight:bold; font-family: sans-serif; text-anchor:middle; text-shadow: 0 0 5px black;';
+
     const PATH_PV1 = 'M 250 237 L 282 230 L 420 280';
     const PATH_PV2 = 'M 200 205 L 282 238 L 420 288';
     const PATH_BAT_INV = 'M 423 310 L 325 350';
     const PATH_LOAD = 'M 471 303 L 550 273 L 380 220';
     const PATH_GRID = 'M 470 280 L 575 240 L 575 223';
     const PATH_CAR = 'M 475 329 L 490 335 L 600 285';
+    const C_CYAN = '#00FFFF'; const C_BLUE = '#0088FF';
 
-    // PV text
-    const TxtStyle = 'font-weight:bold; font-family: sans-serif; text-anchor:middle; text-shadow: 0 0 5px black;';
+    // Costruzione testi PV con ID per aggiornamento
     let pv_text_html = '';
-    
     if (pv_sensors.length === 2) {
       pv_text_html = `
-        <text x="${T_SOLAR_X}" y="${T_SOLAR_Y - 10}" transform="${trans_solar}" fill="${C_CYAN}" font-size="${pv_font_size}" style="${TxtStyle}">S1: ${this.formatPower(pv1_val, use_kw)}</text>
-        <text x="${T_SOLAR_X}" y="${T_SOLAR_Y + 10}" transform="${trans_solar}" fill="${C_BLUE}" font-size="${pv_font_size}" style="${TxtStyle}">S2: ${this.formatPower(pv2_val, use_kw)}</text>
+        <text id="txt-pv-1" x="${T_SOLAR_X}" y="${T_SOLAR_Y - 10}" transform="${trans_solar}" fill="${C_CYAN}" font-size="${pv_font_size}" style="${TxtStyle}">--</text>
+        <text id="txt-pv-2" x="${T_SOLAR_X}" y="${T_SOLAR_Y + 10}" transform="${trans_solar}" fill="${C_BLUE}" font-size="${pv_font_size}" style="${TxtStyle}">--</text>
       `;
     } else if (pv_sensors.length > 2) {
-      pv_text_html = `<text x="${T_SOLAR_X}" y="${T_SOLAR_Y}" transform="${trans_solar}" fill="${C_CYAN}" font-size="${pv_font_size}" style="${TxtStyle}">${label_pv_tot}: ${this.formatPower(total_pv_w, use_kw)}</text>`;
+      pv_text_html = `<text id="txt-pv-tot" x="${T_SOLAR_X}" y="${T_SOLAR_Y}" transform="${trans_solar}" fill="${C_CYAN}" font-size="${pv_font_size}" style="${TxtStyle}">${label_pv_tot}: --</text>`;
     } else {
-      pv_text_html = `<text x="${T_SOLAR_X}" y="${T_SOLAR_Y}" transform="${trans_solar}" fill="${C_CYAN}" font-size="${pv_font_size}" style="${TxtStyle}">${this.formatPower(total_pv_w, use_kw)}</text>`;
+      pv_text_html = `<text id="txt-pv-tot" x="${T_SOLAR_X}" y="${T_SOLAR_Y}" transform="${trans_solar}" fill="${C_CYAN}" font-size="${pv_font_size}" style="${TxtStyle}">--</text>`;
     }
 
     this.shadowRoot.innerHTML = `
       <style>
-        :host {
-          display: block;
-          aspect-ratio: 16/9;
+        :host { display: block; aspect-ratio: 16/9; }
+        ha-card { height: 100%; overflow: hidden; background: transparent; border: none; box-shadow: none; }
+        .track-path { stroke: #555555; stroke-width: 2px; fill: none; opacity: 0.3; }
+        /* Transizione fluida sugli attributi stroke e animation-duration */
+        .flow-path { 
+          stroke-dasharray: 8 16; 
+          stroke-linecap: round; 
+          stroke-width: 3px; 
+          fill: none; 
+          opacity: 0; 
+          transition: stroke 0.5s ease, opacity 0.5s ease, animation-duration 0.5s linear; 
         }
-        ha-card {
-          height: 100%;
-          overflow: hidden;
-          background: transparent;
-          border: none;
-          box-shadow: none;
-        }
-        .track-path { stroke: #555555; stroke-width: 2px; fill: none; opacity: 0; }
-        .flow-path { stroke-dasharray: 8 16; stroke-linecap: round; stroke-width: 3px; fill: none; opacity: 0; transition: all 0.5s ease; }
         @keyframes laser-flow { to { stroke-dashoffset: -320; } }
         @keyframes pulse-cyan { 0% { filter: drop-shadow(0 0 2px #00FFFF); opacity: 0.9; } 50% { filter: drop-shadow(0 0 10px #00FFFF); opacity: 1; } 100% { filter: drop-shadow(0 0 2px #00FFFF); opacity: 0.9; } }
         .alive-box { animation: pulse-cyan 3s infinite ease-in-out; stroke: #00FFFF; stroke-width: 2px; fill: rgba(0, 20, 40, 0.7); }
         .alive-text { animation: pulse-cyan 3s infinite ease-in-out; fill: #00FFFF; text-shadow: 0 0 5px #00FFFF; }
         @keyframes wave-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-80px); } }
-        .liquid-shape { animation: wave-slide 2s linear infinite; }
+        .liquid-shape { animation: wave-slide 2s linear infinite; transition: fill 0.5s ease; }
+        
         .flow-pv1 { opacity: 1; animation: laser-flow 2s linear infinite; filter: drop-shadow(0 0 12px #00FFFF); stroke: #00FFFF; }
         .flow-pv2 { opacity: 1; animation: laser-flow 2s linear infinite; filter: drop-shadow(0 0 12px #0088FF); stroke: #0088FF; }
         .flow-generic { opacity: 1; animation: laser-flow 2s linear infinite; filter: drop-shadow(0 0 8px #00FFFF); stroke: #00FFFF; }
         .flow-reverse { opacity: 1; animation: laser-flow 2s linear infinite reverse; filter: drop-shadow(0 0 8px #FFFFFF); stroke: #FFFFFF; }
         .flow-grid-import { opacity: 1; animation: laser-flow 2s linear infinite reverse; filter: drop-shadow(0 0 8px #FF3333); stroke: #FF3333; }
+        
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
         .title-text { animation: pulse-cyan 2.5s infinite ease-in-out; fill: #00FFFF; font-weight: 900; font-family: 'Orbitron', sans-serif; text-anchor: middle; letter-spacing: 3px; text-transform: uppercase; }
       </style>
       <ha-card>
-        <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%; height: 100%;">
+        <svg id="lumina-svg" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%; height: 100%;">
           <defs>
             <clipPath id="battery-clip"><rect x="${BAT_X}" y="${BAT_Y_BASE - BAT_MAX_H}" width="${BAT_W}" height="${BAT_MAX_H}" rx="2" /></clipPath>
           </defs>
-          
           <image href="${bg_img}" xlink:href="${bg_img}" x="0" y="0" width="800" height="450" preserveAspectRatio="none" />
-          
           <rect x="290" y="10" width="220" height="32" rx="6" ry="6" fill="rgba(0, 20, 40, 0.85)" stroke="#00FFFF" stroke-width="1.5"/>
           <text x="400" y="32" class="title-text" font-size="${header_font_size}">${title_text}</text>
           
           <g transform="translate(600, 370)">
             <rect x="0" y="0" width="180" height="60" rx="10" ry="10" class="alive-box" />
             <text x="90" y="23" class="alive-text" style="font-family: sans-serif; text-anchor:middle; font-size:${daily_label_font_size}px; font-weight:normal; letter-spacing: 1px;">${label_daily}</text>
-            <text x="90" y="50" class="alive-text" style="font-family: sans-serif; text-anchor:middle; font-size:${daily_value_font_size}px; font-weight:bold;">${total_daily_kwh} kWh</text>
+            <text id="txt-daily" x="90" y="50" class="alive-text" style="font-family: sans-serif; text-anchor:middle; font-size:${daily_value_font_size}px; font-weight:bold;">--</text>
           </g>
           
           <g transform="${bat_transform}">
             <g clip-path="url(#battery-clip)">
-              <g style="transition: transform 1s ease-in-out;" transform="translate(0, ${BAT_MAX_H - current_h})">
+              <g id="grp-bat-level" style="transition: transform 0.5s ease-in-out;" transform="translate(0, ${BAT_MAX_H})">
                 <g transform="translate(0, ${BAT_Y_BASE - BAT_MAX_H})">
-                  <path class="liquid-shape" fill="${liquid_fill}" d="M ${BAT_X - 20} 5 Q ${BAT_X} 0 ${BAT_X + 20} 5 T ${BAT_X + 60} 5 T ${BAT_X + 100} 5 T ${BAT_X + 140} 5 V 150 H ${BAT_X - 20} Z" />
+                  <path id="path-bat-liquid" class="liquid-shape" fill="#00FFFF" d="M ${BAT_X - 20} 5 Q ${BAT_X} 0 ${BAT_X + 20} 5 T ${BAT_X + 60} 5 T ${BAT_X + 100} 5 T ${BAT_X + 140} 5 V 150 H ${BAT_X - 20} Z" />
                 </g>
               </g>
             </g>
           </g>
           
-          <path class="track-path" d="${PATH_PV1}" />
-          <path class="flow-path ${pv1_class}" data-flow-key="pv1" d="${PATH_PV1}" />
-          ${show_double_flow ? `<path class="track-path" d="${PATH_PV2}" /><path class="flow-path ${pv2_class}" data-flow-key="pv2" d="${PATH_PV2}" />` : ''}
+          <path class="track-path" d="${PATH_PV1}" /><path id="path-pv1" class="flow-path" d="${PATH_PV1}" />
+          <g id="grp-pv2" style="display:none">
+            <path class="track-path" d="${PATH_PV2}" />
+            <path id="path-pv2" class="flow-path" d="${PATH_PV2}" />
+          </g>
           
-          <path class="track-path" d="${PATH_BAT_INV}" /><path class="flow-path ${bat_class}" data-flow-key="bat" d="${PATH_BAT_INV}" stroke="${bat_col}" />
-          <path class="track-path" d="${PATH_LOAD}" /><path class="flow-path ${load_class}" data-flow-key="load" d="${PATH_LOAD}" stroke="${C_CYAN}" />
-          <path class="track-path" d="${PATH_GRID}" /><path class="flow-path ${grid_class}" data-flow-key="grid" d="${PATH_GRID}" stroke="${grid_col}" />
-          <path class="track-path" d="${PATH_CAR}" /><path class="flow-path ${car_class}" data-flow-key="car" d="${PATH_CAR}" stroke="${C_CYAN}" />
+          <path class="track-path" d="${PATH_BAT_INV}" /><path id="path-bat" class="flow-path" d="${PATH_BAT_INV}" stroke="#00FFFF" />
+          <path class="track-path" d="${PATH_LOAD}" /><path id="path-load" class="flow-path" d="${PATH_LOAD}" stroke="#00FFFF" />
+          <path class="track-path" d="${PATH_GRID}" /><path id="path-grid" class="flow-path" d="${PATH_GRID}" stroke="#00FFFF" />
+          <path class="track-path" d="${PATH_CAR}" /><path id="path-car" class="flow-path" d="${PATH_CAR}" stroke="#00FFFF" />
           
           ${pv_text_html}
           
-          <text x="${T_BAT_X}" y="${T_BAT_Y}" transform="${trans_bat}" fill="${C_WHITE}" font-size="${battery_soc_font_size}" style="${TxtStyle}">${Math.floor(avg_soc)}%</text>
-          <text x="${T_BAT_X}" y="${T_BAT_Y + 20}" transform="${trans_bat}" fill="${bat_col}" font-size="${battery_power_font_size}" style="${TxtStyle}">${this.formatPower(Math.abs(total_bat_w), use_kw)}</text>
+          <text id="txt-bat-soc" x="${T_BAT_X}" y="${T_BAT_Y}" transform="${trans_bat}" fill="${C_WHITE}" font-size="${battery_soc_font_size}" style="${TxtStyle}">--%</text>
+          <text id="txt-bat-pow" x="${T_BAT_X}" y="${T_BAT_Y + 20}" transform="${trans_bat}" fill="#00FFFF" font-size="${battery_power_font_size}" style="${TxtStyle}">--</text>
           
-          <text x="${T_HOME_X}" y="${T_HOME_Y}" transform="${trans_home}" fill="${C_WHITE}" font-size="${load_font_size}" style="${TxtStyle}">${this.formatPower(load, use_kw)}</text>
-          <text x="${T_GRID_X}" y="${T_GRID_Y}" transform="${trans_grid}" fill="${grid_col}" font-size="${grid_font_size}" style="${TxtStyle}">${this.formatPower(Math.abs(grid), use_kw)}</text>
+          <text id="txt-load" x="${T_HOME_X}" y="${T_HOME_Y}" transform="${trans_home}" fill="${C_WHITE}" font-size="${load_font_size}" style="${TxtStyle}">--</text>
+          <text id="txt-grid" x="${T_GRID_X}" y="${T_GRID_Y}" transform="${trans_grid}" fill="#00FFFF" font-size="${grid_font_size}" style="${TxtStyle}">--</text>
           
-          <text x="${T_CAR_X}" y="${T_CAR_Y}" transform="${trans_car}" fill="${C_WHITE}" font-size="${car_power_font_size}" style="${TxtStyle}">${this.formatPower(car_w, use_kw)}</text>
-          ${(config.show_car_soc && car_soc !== null) ? `
-            <text x="${T_CAR_X}" y="${T_CAR_Y + 15}" transform="${trans_car}" fill="${config.car_pct_color || '#00FFFF'}" font-size="${car_soc_font_size}" style="${TxtStyle}">${Math.round(car_soc)}%</text>
-          ` : ''}
+          <text id="txt-car-pow" x="${T_CAR_X}" y="${T_CAR_Y}" transform="${trans_car}" fill="${C_WHITE}" font-size="${car_power_font_size}" style="${TxtStyle}">--</text>
+          <text id="txt-car-soc" x="${T_CAR_X}" y="${T_CAR_Y + 15}" transform="${trans_car}" fill="${config.car_pct_color || '#00FFFF'}" font-size="${car_soc_font_size}" style="${TxtStyle}" display="none">--%</text>
         </svg>
       </ha-card>
     `;
-    this._applyFlowAnimationTargets(flowDurations);
-    this._forceRender = false;
+  }
+
+  // Aggiorna solo i valori, senza toccare l'HTML
+  _updateContent(data, config) {
+    const BAT_MAX_H = 84;
+    
+    // Aggiornamento Testi PV
+    if (this.shadowRoot.getElementById('txt-pv-1')) {
+        this._updateText('txt-pv-1', `S1: ${this.formatPower(data.pv1_val, data.use_kw)}`);
+        this._updateText('txt-pv-2', `S2: ${this.formatPower(data.pv2_val, data.use_kw)}`);
+    } else if (this.shadowRoot.getElementById('txt-pv-tot')) {
+        const el = this.shadowRoot.getElementById('txt-pv-tot');
+        // Mantieni il prefisso "PV TOT:" se presente
+        const currentText = el.textContent || '';
+        const prefix = currentText.includes(':') ? currentText.split(':')[0] + ': ' : '';
+        this._updateText('txt-pv-tot', prefix + this.formatPower(data.total_pv_w, data.use_kw));
+    }
+
+    this._updateText('txt-daily', `${data.total_daily_kwh} kWh`);
+    this._updateText('txt-bat-soc', `${Math.floor(data.avg_soc)}%`);
+    this._updateText('txt-bat-pow', this.formatPower(Math.abs(data.total_bat_w), data.use_kw));
+    this._updateAttr('txt-bat-pow', 'fill', data.bat_col);
+    this._updateText('txt-load', this.formatPower(data.load, data.use_kw));
+    this._updateText('txt-grid', this.formatPower(Math.abs(data.grid), data.use_kw));
+    this._updateAttr('txt-grid', 'fill', data.grid_col);
+    this._updateText('txt-car-pow', this.formatPower(data.car_w, data.use_kw));
+    
+    // Car SOC display
+    const carSocEl = this.shadowRoot.getElementById('txt-car-soc');
+    if (carSocEl) {
+        if (config.show_car_soc && data.car_soc !== null) {
+            carSocEl.style.display = 'block';
+            carSocEl.textContent = `${Math.round(data.car_soc)}%`;
+        } else {
+            carSocEl.style.display = 'none';
+        }
+    }
+
+    // Aggiornamento Animazioni (Classi e Durata)
+    this._updateAttr('path-pv1', 'class', `flow-path ${data.pv1_class}`);
+    this._updateStyle('path-pv1', 'animationDuration', data.dur_pv1);
+
+    const grpPv2 = this.shadowRoot.getElementById('grp-pv2');
+    const pathPv2 = this.shadowRoot.getElementById('path-pv2');
+    if (grpPv2 && pathPv2) {
+         if (data.show_double_flow) {
+             grpPv2.style.display = 'block';
+             pathPv2.setAttribute('class', `flow-path ${data.pv2_class}`);
+             pathPv2.style.animationDuration = data.dur_pv2;
+         } else {
+             grpPv2.style.display = 'none';
+         }
+    }
+
+    this._updateAttr('path-bat', 'class', `flow-path ${data.bat_class}`);
+    this._updateAttr('path-bat', 'stroke', data.bat_col);
+    this._updateStyle('path-bat', 'animationDuration', data.dur_bat);
+
+    this._updateAttr('path-load', 'class', `flow-path ${data.load_class}`);
+    this._updateStyle('path-load', 'animationDuration', data.dur_load);
+
+    this._updateAttr('path-grid', 'class', `flow-path ${data.grid_class}`);
+    this._updateAttr('path-grid', 'stroke', data.grid_col);
+    this._updateStyle('path-grid', 'animationDuration', data.dur_grid);
+
+    this._updateAttr('path-car', 'class', `flow-path ${data.car_class}`);
+    this._updateStyle('path-car', 'animationDuration', data.dur_car);
+
+    // Livello Batteria
+    this._updateAttr('path-bat-liquid', 'fill', data.liquid_fill);
+    this._updateAttr('grp-bat-level', 'transform', `translate(0, ${BAT_MAX_H - data.current_h})`);
   }
 
   static get version() {
-    return '1.1.1';
+    return '1.1.2';
   }
 }
 
@@ -497,6 +473,7 @@ if (!customElements.get('lumina-energy-card')) {
   customElements.define('lumina-energy-card', LuminaEnergyCard);
 }
 
+// --- EDITOR CLASS ---
 class LuminaEnergyCardEditor extends HTMLElement {
   constructor() {
     super();
