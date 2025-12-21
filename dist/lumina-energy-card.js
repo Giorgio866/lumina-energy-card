@@ -11,6 +11,7 @@ class LuminaEnergyCard extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this._lastRender = 0;
     this._forceRender = false;
+    this._flowAnimationState = new Map();
   }
 
   setConfig(config) {
@@ -82,6 +83,116 @@ class LuminaEnergyCard extends HTMLElement {
 
   _isEditorActive() {
     return Boolean(this.closest('hui-card-preview'));
+  }
+
+  disconnectedCallback() {
+    if (typeof super.disconnectedCallback === 'function') {
+      super.disconnectedCallback();
+    }
+    if (this._flowAnimationState) {
+      this._flowAnimationState.forEach((state) => {
+        if (state && state.raf) {
+          cancelAnimationFrame(state.raf);
+        }
+      });
+      this._flowAnimationState.clear();
+    }
+  }
+
+  _applyFlowAnimationTargets(flowDurations) {
+    if (!this.shadowRoot) {
+      return;
+    }
+    if (!this._flowAnimationState) {
+      this._flowAnimationState = new Map();
+    }
+
+    const seenKeys = new Set();
+    Object.entries(flowDurations).forEach(([flowKey, seconds]) => {
+      const elements = this.shadowRoot.querySelectorAll(`[data-flow-key="${flowKey}"]`);
+      if (!elements || elements.length === 0) {
+        return;
+      }
+      seenKeys.add(flowKey);
+      elements.forEach((element) => {
+        this._tweenFlowAnimation(flowKey, seconds, element);
+      });
+    });
+
+    const keysToRemove = [];
+    this._flowAnimationState.forEach((state, key) => {
+      if (!seenKeys.has(key)) {
+        if (state && state.raf) {
+          cancelAnimationFrame(state.raf);
+        }
+        keysToRemove.push(key);
+      }
+    });
+    keysToRemove.forEach((key) => this._flowAnimationState.delete(key));
+  }
+
+  _tweenFlowAnimation(flowKey, targetSeconds, element) {
+    if (!this._flowAnimationState) {
+      this._flowAnimationState = new Map();
+    }
+
+    let state = this._flowAnimationState.get(flowKey);
+    const normalizedTarget = Number.isFinite(targetSeconds) ? Math.max(targetSeconds, 0) : 0;
+
+    if (!state) {
+      state = {
+        current: normalizedTarget,
+        target: normalizedTarget,
+        element,
+        raf: null
+      };
+      element.style.animationDuration = `${normalizedTarget}s`;
+      this._flowAnimationState.set(flowKey, state);
+      return;
+    }
+
+    state.element = element;
+    state.target = normalizedTarget;
+
+    if (!Number.isFinite(state.current)) {
+      state.current = normalizedTarget;
+    }
+
+    // Ensure the element reflects the current duration immediately.
+    element.style.animationDuration = `${Math.max(state.current, 0)}s`;
+
+    if (normalizedTarget <= 0) {
+      element.style.animationDuration = '0s';
+      if (state.raf) {
+        cancelAnimationFrame(state.raf);
+        state.raf = null;
+      }
+      state.current = 0;
+      return;
+    }
+
+    if (state.raf) {
+      return;
+    }
+
+    const step = () => {
+      if (!state.element || !state.element.isConnected) {
+        state.raf = null;
+        return;
+      }
+      const diff = state.target - state.current;
+      if (Math.abs(diff) <= 0.01) {
+        state.current = state.target;
+        state.element.style.animationDuration = `${state.current}s`;
+        state.raf = null;
+        return;
+      }
+      state.current += diff * 0.2;
+      state.element.style.animationDuration = `${Math.max(state.current, 0.001)}s`;
+      state.raf = requestAnimationFrame(step);
+    };
+
+    state.raf = requestAnimationFrame(step);
   }
 
   getStateSafe(entity_id) {
@@ -234,6 +345,18 @@ class LuminaEnergyCard extends HTMLElement {
     const dur_load = getDur(load);
     const dur_grid = getDur(grid);
     const dur_car = getDur(car_w);
+    const toSeconds = (durationStr) => {
+      const parsed = Number.parseFloat(durationStr);
+      return Number.isFinite(parsed) ? Math.max(parsed, 0) : 0;
+    };
+    const flowDurations = {
+      pv1: toSeconds(dur_pv1),
+      pv2: toSeconds(dur_pv2),
+      bat: toSeconds(dur_bat),
+      load: toSeconds(dur_load),
+      grid: toSeconds(dur_grid),
+      car: toSeconds(dur_car)
+    };
 
     // Colors and classes
     const C_CYAN = '#00FFFF', C_BLUE = '#0088FF', C_WHITE = '#FFFFFF', C_RED = '#FF3333';
@@ -326,13 +449,14 @@ class LuminaEnergyCard extends HTMLElement {
             </g>
           </g>
           
-          <path class="track-path" d="${PATH_PV1}" /><path class="flow-path ${pv1_class}" d="${PATH_PV1}" style="animation-duration: ${dur_pv1};" />
-          ${show_double_flow ? `<path class="track-path" d="${PATH_PV2}" /><path class="flow-path ${pv2_class}" d="${PATH_PV2}" style="animation-duration: ${dur_pv2};" />` : ''}
+          <path class="track-path" d="${PATH_PV1}" />
+          <path class="flow-path ${pv1_class}" data-flow-key="pv1" d="${PATH_PV1}" />
+          ${show_double_flow ? `<path class="track-path" d="${PATH_PV2}" /><path class="flow-path ${pv2_class}" data-flow-key="pv2" d="${PATH_PV2}" />` : ''}
           
-          <path class="track-path" d="${PATH_BAT_INV}" /><path class="flow-path ${bat_class}" d="${PATH_BAT_INV}" stroke="${bat_col}" style="animation-duration: ${dur_bat};" />
-          <path class="track-path" d="${PATH_LOAD}" /><path class="flow-path ${load_class}" d="${PATH_LOAD}" stroke="${C_CYAN}" style="animation-duration: ${dur_load};" />
-          <path class="track-path" d="${PATH_GRID}" /><path class="flow-path ${grid_class}" d="${PATH_GRID}" stroke="${grid_col}" style="animation-duration: ${dur_grid};" />
-          <path class="track-path" d="${PATH_CAR}" /><path class="flow-path ${car_class}" d="${PATH_CAR}" stroke="${C_CYAN}" style="animation-duration: ${dur_car};" />
+          <path class="track-path" d="${PATH_BAT_INV}" /><path class="flow-path ${bat_class}" data-flow-key="bat" d="${PATH_BAT_INV}" stroke="${bat_col}" />
+          <path class="track-path" d="${PATH_LOAD}" /><path class="flow-path ${load_class}" data-flow-key="load" d="${PATH_LOAD}" stroke="${C_CYAN}" />
+          <path class="track-path" d="${PATH_GRID}" /><path class="flow-path ${grid_class}" data-flow-key="grid" d="${PATH_GRID}" stroke="${grid_col}" />
+          <path class="track-path" d="${PATH_CAR}" /><path class="flow-path ${car_class}" data-flow-key="car" d="${PATH_CAR}" stroke="${C_CYAN}" />
           
           ${pv_text_html}
           
@@ -349,6 +473,7 @@ class LuminaEnergyCard extends HTMLElement {
         </svg>
       </ha-card>
     `;
+    this._applyFlowAnimationTargets(flowDurations);
     this._forceRender = false;
   }
 
