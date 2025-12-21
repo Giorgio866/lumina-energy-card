@@ -131,12 +131,20 @@ class LuminaEnergyCard extends HTMLElement {
     keysToRemove.forEach((key) => this._flowAnimationState.delete(key));
   }
 
+  _flowEasingGain() {
+    const rawFactor = Number(this.config && this.config.animation_speed_factor);
+    const clampedFactor = Number.isFinite(rawFactor) ? Math.min(Math.max(rawFactor, 0.25), 4) : 1;
+    const gain = 0.1 + (clampedFactor - 0.25) * 0.066;
+    return Math.min(Math.max(gain, 0.08), 0.35);
+  }
+
   _tweenFlowAnimation(flowKey, targetSeconds, element) {
     if (!this._flowAnimationState) {
       this._flowAnimationState = new Map();
     }
 
     let state = this._flowAnimationState.get(flowKey);
+    const easingGain = this._flowEasingGain();
     const normalizedTarget = Number.isFinite(targetSeconds) ? Math.max(targetSeconds, 0) : 0;
 
     if (!state) {
@@ -144,7 +152,8 @@ class LuminaEnergyCard extends HTMLElement {
         current: normalizedTarget,
         target: normalizedTarget,
         element,
-        raf: null
+        raf: null,
+        gain: easingGain
       };
       element.style.animationDuration = `${normalizedTarget}s`;
       this._flowAnimationState.set(flowKey, state);
@@ -153,6 +162,7 @@ class LuminaEnergyCard extends HTMLElement {
 
     state.element = element;
     state.target = normalizedTarget;
+    state.gain = easingGain;
 
     if (!Number.isFinite(state.current)) {
       state.current = normalizedTarget;
@@ -187,7 +197,8 @@ class LuminaEnergyCard extends HTMLElement {
         state.raf = null;
         return;
       }
-      state.current += diff * 0.2;
+      const gain = state.gain || 0.15;
+      state.current += diff * gain;
       state.element.style.animationDuration = `${Math.max(state.current, 0.001)}s`;
       state.raf = requestAnimationFrame(step);
     };
