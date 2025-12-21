@@ -12,6 +12,8 @@ class LuminaEnergyCard extends HTMLElement {
     this._lastRender = 0;
     this._forceRender = false;
     this._flowAnimationState = new Map();
+    this._hasRendered = false;
+    this._domRefs = null;
   }
 
   setConfig(config) {
@@ -20,6 +22,8 @@ class LuminaEnergyCard extends HTMLElement {
     }
     this.config = config;
     this._forceRender = true;
+    this._hasRendered = false;
+    this._domRefs = null;
     this.render();
   }
 
@@ -97,6 +101,8 @@ class LuminaEnergyCard extends HTMLElement {
       });
       this._flowAnimationState.clear();
     }
+    this._hasRendered = false;
+    this._domRefs = null;
   }
 
   _applyFlowAnimationTargets(flowDurations) {
@@ -204,6 +210,274 @@ class LuminaEnergyCard extends HTMLElement {
     };
 
     state.raf = requestAnimationFrame(step);
+  }
+
+  _cacheDomReferences() {
+    if (!this.shadowRoot) {
+      return;
+    }
+    this._domRefs = {
+      background: this.shadowRoot.querySelector('[data-role="background-image"]'),
+      title: this.shadowRoot.querySelector('[data-role="title-text"]'),
+      dailyLabel: this.shadowRoot.querySelector('[data-role="daily-label"]'),
+      dailyValue: this.shadowRoot.querySelector('[data-role="daily-value"]'),
+      batteryLiquidGroup: this.shadowRoot.querySelector('[data-role="battery-liquid-group"]'),
+      batteryLiquidShape: this.shadowRoot.querySelector('[data-role="battery-liquid-shape"]'),
+      pvLineA: this.shadowRoot.querySelector('[data-role="pv-line-a"]'),
+      pvLineB: this.shadowRoot.querySelector('[data-role="pv-line-b"]'),
+      batterySocText: this.shadowRoot.querySelector('[data-role="battery-soc"]'),
+      batteryPowerText: this.shadowRoot.querySelector('[data-role="battery-power"]'),
+      loadText: this.shadowRoot.querySelector('[data-role="load-power"]'),
+      gridText: this.shadowRoot.querySelector('[data-role="grid-power"]'),
+      carPowerText: this.shadowRoot.querySelector('[data-role="car-power"]'),
+      carSocText: this.shadowRoot.querySelector('[data-role="car-soc"]'),
+      flows: {
+        pv1: this.shadowRoot.querySelector('[data-flow-key="pv1"]'),
+        pv2: this.shadowRoot.querySelector('[data-flow-key="pv2"]'),
+        bat: this.shadowRoot.querySelector('[data-flow-key="bat"]'),
+        load: this.shadowRoot.querySelector('[data-flow-key="load"]'),
+        grid: this.shadowRoot.querySelector('[data-flow-key="grid"]'),
+        car: this.shadowRoot.querySelector('[data-flow-key="car"]')
+      }
+    };
+  }
+
+  _updateView(viewState) {
+    if (!this._domRefs) {
+      return;
+    }
+
+    const {
+      background,
+      title,
+      dailyLabel,
+      dailyValue,
+      batteryLiquidGroup,
+      batteryLiquidShape,
+      pvLineA,
+      pvLineB,
+      batterySocText,
+      batteryPowerText,
+      loadText,
+      gridText,
+      carPowerText,
+      carSocText,
+      flows
+    } = this._domRefs;
+
+    if (background) {
+      background.setAttribute('href', viewState.backgroundImage);
+      background.setAttribute('xlink:href', viewState.backgroundImage);
+    }
+
+    if (title) {
+      title.textContent = viewState.title.text;
+      title.setAttribute('font-size', viewState.title.fontSize);
+    }
+
+    if (dailyLabel) {
+      dailyLabel.textContent = viewState.daily.label;
+      dailyLabel.style.fontSize = `${viewState.daily.labelSize}px`;
+    }
+
+    if (dailyValue) {
+      dailyValue.textContent = viewState.daily.value;
+      dailyValue.style.fontSize = `${viewState.daily.valueSize}px`;
+    }
+
+    if (batteryLiquidGroup) {
+      batteryLiquidGroup.setAttribute('transform', `translate(0, ${viewState.battery.liquidOffset})`);
+    }
+
+    if (batteryLiquidShape) {
+      batteryLiquidShape.setAttribute('fill', viewState.battery.liquidFill);
+    }
+
+    if (pvLineA) {
+      pvLineA.textContent = viewState.pv.lineA.text;
+      pvLineA.setAttribute('fill', viewState.pv.lineA.fill);
+      pvLineA.setAttribute('font-size', viewState.pv.fontSize);
+      pvLineA.setAttribute('y', viewState.pv.lineA.y);
+      pvLineA.style.display = viewState.pv.lineA.visible ? '' : 'none';
+    }
+
+    if (pvLineB) {
+      pvLineB.textContent = viewState.pv.lineB.text;
+      pvLineB.setAttribute('fill', viewState.pv.lineB.fill);
+      pvLineB.setAttribute('font-size', viewState.pv.fontSize);
+      pvLineB.setAttribute('y', viewState.pv.lineB.y);
+      pvLineB.style.display = viewState.pv.lineB.visible ? '' : 'none';
+    }
+
+    if (batterySocText) {
+      batterySocText.textContent = viewState.batterySoc.text;
+      batterySocText.setAttribute('font-size', viewState.batterySoc.fontSize);
+      batterySocText.setAttribute('fill', viewState.batterySoc.fill);
+    }
+
+    if (batteryPowerText) {
+      batteryPowerText.textContent = viewState.batteryPower.text;
+      batteryPowerText.setAttribute('font-size', viewState.batteryPower.fontSize);
+      batteryPowerText.setAttribute('fill', viewState.batteryPower.fill);
+    }
+
+    if (loadText) {
+      loadText.textContent = viewState.load.text;
+      loadText.setAttribute('font-size', viewState.load.fontSize);
+      loadText.setAttribute('fill', viewState.load.fill);
+    }
+
+    if (gridText) {
+      gridText.textContent = viewState.grid.text;
+      gridText.setAttribute('font-size', viewState.grid.fontSize);
+      gridText.setAttribute('fill', viewState.grid.fill);
+    }
+
+    if (carPowerText) {
+      carPowerText.textContent = viewState.carPower.text;
+      carPowerText.setAttribute('font-size', viewState.carPower.fontSize);
+      carPowerText.setAttribute('fill', viewState.carPower.fill);
+    }
+
+    if (carSocText) {
+      carSocText.textContent = viewState.carSoc.text;
+      carSocText.setAttribute('font-size', viewState.carSoc.fontSize);
+      carSocText.setAttribute('fill', viewState.carSoc.fill);
+      carSocText.style.display = viewState.carSoc.visible ? '' : 'none';
+    }
+
+    if (flows) {
+      Object.entries(viewState.flows).forEach(([key, flowState]) => {
+        const el = flows[key];
+        if (!el) {
+          return;
+        }
+        const baseClass = 'flow-path';
+        const className = flowState.className ? `${baseClass} ${flowState.className}` : baseClass;
+        el.setAttribute('class', className);
+        if (flowState.stroke) {
+          el.setAttribute('stroke', flowState.stroke);
+        } else {
+          el.removeAttribute('stroke');
+        }
+      });
+    }
+  }
+
+  _buildTemplate(viewState, templateCtx) {
+    const {
+      TxtStyle,
+      BAT_X,
+      BAT_Y_BASE,
+      BAT_W,
+      BAT_MAX_H,
+      T_SOLAR_X,
+      T_SOLAR_Y,
+      T_BAT_X,
+      T_BAT_Y,
+      T_HOME_X,
+      T_HOME_Y,
+      T_GRID_X,
+      T_GRID_Y,
+      T_CAR_X,
+      T_CAR_Y,
+      bat_transform,
+      trans_solar,
+      trans_bat,
+      trans_home,
+      trans_grid,
+      trans_car,
+      PATH_PV1,
+      PATH_PV2,
+      PATH_BAT_INV,
+      PATH_LOAD,
+      PATH_GRID,
+      PATH_CAR
+    } = templateCtx;
+
+    const pvLineBStyle = viewState.pv.lineB.visible ? '' : 'display: none;';
+    const carSocStyle = viewState.carSoc.visible ? '' : 'display: none;';
+
+    return `
+      <style>
+        :host {
+          display: block;
+          aspect-ratio: 16/9;
+        }
+        ha-card {
+          height: 100%;
+          overflow: hidden;
+          background: transparent;
+          border: none;
+          box-shadow: none;
+        }
+        .track-path { stroke: #555555; stroke-width: 2px; fill: none; opacity: 0; }
+        .flow-path { stroke-dasharray: 8 16; stroke-linecap: round; stroke-width: 3px; fill: none; opacity: 0; transition: all 0.5s ease; }
+        @keyframes laser-flow { to { stroke-dashoffset: -320; } }
+        @keyframes pulse-cyan { 0% { filter: drop-shadow(0 0 2px #00FFFF); opacity: 0.9; } 50% { filter: drop-shadow(0 0 10px #00FFFF); opacity: 1; } 100% { filter: drop-shadow(0 0 2px #00FFFF); opacity: 0.9; } }
+        .alive-box { animation: pulse-cyan 3s infinite ease-in-out; stroke: #00FFFF; stroke-width: 2px; fill: rgba(0, 20, 40, 0.7); }
+        .alive-text { animation: pulse-cyan 3s infinite ease-in-out; fill: #00FFFF; text-shadow: 0 0 5px #00FFFF; }
+        @keyframes wave-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-80px); } }
+        .liquid-shape { animation: wave-slide 2s linear infinite; }
+        .flow-pv1 { opacity: 1; animation: laser-flow 2s linear infinite; filter: drop-shadow(0 0 12px #00FFFF); stroke: #00FFFF; }
+        .flow-pv2 { opacity: 1; animation: laser-flow 2s linear infinite; filter: drop-shadow(0 0 12px #0088FF); stroke: #0088FF; }
+        .flow-generic { opacity: 1; animation: laser-flow 2s linear infinite; filter: drop-shadow(0 0 8px #00FFFF); stroke: #00FFFF; }
+        .flow-reverse { opacity: 1; animation: laser-flow 2s linear infinite reverse; filter: drop-shadow(0 0 8px #FFFFFF); stroke: #FFFFFF; }
+        .flow-grid-import { opacity: 1; animation: laser-flow 2s linear infinite reverse; filter: drop-shadow(0 0 8px #FF3333); stroke: #FF3333; }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        .title-text { animation: pulse-cyan 2.5s infinite ease-in-out; fill: #00FFFF; font-weight: 900; font-family: 'Orbitron', sans-serif; text-anchor: middle; letter-spacing: 3px; text-transform: uppercase; }
+      </style>
+      <ha-card>
+        <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%; height: 100%;">
+          <defs>
+            <clipPath id="battery-clip"><rect x="${BAT_X}" y="${BAT_Y_BASE - BAT_MAX_H}" width="${BAT_W}" height="${BAT_MAX_H}" rx="2" /></clipPath>
+          </defs>
+
+          <image data-role="background-image" href="${viewState.backgroundImage}" xlink:href="${viewState.backgroundImage}" x="0" y="0" width="800" height="450" preserveAspectRatio="none" />
+
+          <rect x="290" y="10" width="220" height="32" rx="6" ry="6" fill="rgba(0, 20, 40, 0.85)" stroke="#00FFFF" stroke-width="1.5"/>
+          <text data-role="title-text" x="400" y="32" class="title-text" font-size="${viewState.title.fontSize}">${viewState.title.text}</text>
+
+          <g transform="translate(600, 370)">
+            <rect x="0" y="0" width="180" height="60" rx="10" ry="10" class="alive-box" />
+            <text data-role="daily-label" x="90" y="23" class="alive-text" style="font-family: sans-serif; text-anchor:middle; font-size:${viewState.daily.labelSize}px; font-weight:normal; letter-spacing: 1px;">${viewState.daily.label}</text>
+            <text data-role="daily-value" x="90" y="50" class="alive-text" style="font-family: sans-serif; text-anchor:middle; font-size:${viewState.daily.valueSize}px; font-weight:bold;">${viewState.daily.value}</text>
+          </g>
+
+          <g transform="${bat_transform}">
+            <g clip-path="url(#battery-clip)">
+              <g data-role="battery-liquid-group" style="transition: transform 1s ease-in-out;" transform="translate(0, ${viewState.battery.liquidOffset})">
+                <g transform="translate(0, ${BAT_Y_BASE - BAT_MAX_H})">
+                  <path data-role="battery-liquid-shape" class="liquid-shape" fill="${viewState.battery.liquidFill}" d="M ${BAT_X - 20} 5 Q ${BAT_X} 0 ${BAT_X + 20} 5 T ${BAT_X + 60} 5 T ${BAT_X + 100} 5 T ${BAT_X + 140} 5 V 150 H ${BAT_X - 20} Z" />
+                </g>
+              </g>
+            </g>
+          </g>
+
+          <path class="track-path" d="${PATH_PV1}" />
+          <path class="flow-path ${viewState.flows.pv1.className}" data-flow-key="pv1" d="${PATH_PV1}" stroke="${viewState.flows.pv1.stroke}" />
+          <path class="track-path" d="${PATH_PV2}" />
+          <path class="flow-path ${viewState.flows.pv2.className}" data-flow-key="pv2" d="${PATH_PV2}" stroke="${viewState.flows.pv2.stroke}" />
+
+          <path class="track-path" d="${PATH_BAT_INV}" /><path class="flow-path ${viewState.flows.bat.className}" data-flow-key="bat" d="${PATH_BAT_INV}" stroke="${viewState.flows.bat.stroke}" />
+          <path class="track-path" d="${PATH_LOAD}" /><path class="flow-path ${viewState.flows.load.className}" data-flow-key="load" d="${PATH_LOAD}" stroke="${viewState.flows.load.stroke}" />
+          <path class="track-path" d="${PATH_GRID}" /><path class="flow-path ${viewState.flows.grid.className}" data-flow-key="grid" d="${PATH_GRID}" stroke="${viewState.flows.grid.stroke}" />
+          <path class="track-path" d="${PATH_CAR}" /><path class="flow-path ${viewState.flows.car.className}" data-flow-key="car" d="${PATH_CAR}" stroke="${viewState.flows.car.stroke}" />
+
+          <text data-role="pv-line-a" x="${T_SOLAR_X}" y="${viewState.pv.lineA.y}" transform="${trans_solar}" fill="${viewState.pv.lineA.fill}" font-size="${viewState.pv.fontSize}" style="${TxtStyle}">${viewState.pv.lineA.text}</text>
+          <text data-role="pv-line-b" x="${T_SOLAR_X}" y="${viewState.pv.lineB.y}" transform="${trans_solar}" fill="${viewState.pv.lineB.fill}" font-size="${viewState.pv.fontSize}" style="${TxtStyle}; ${pvLineBStyle}">${viewState.pv.lineB.text}</text>
+
+          <text data-role="battery-soc" x="${T_BAT_X}" y="${T_BAT_Y}" transform="${trans_bat}" fill="${viewState.batterySoc.fill}" font-size="${viewState.batterySoc.fontSize}" style="${TxtStyle}">${viewState.batterySoc.text}</text>
+          <text data-role="battery-power" x="${T_BAT_X}" y="${T_BAT_Y + 20}" transform="${trans_bat}" fill="${viewState.batteryPower.fill}" font-size="${viewState.batteryPower.fontSize}" style="${TxtStyle}">${viewState.batteryPower.text}</text>
+
+          <text data-role="load-power" x="${T_HOME_X}" y="${T_HOME_Y}" transform="${trans_home}" fill="${viewState.load.fill}" font-size="${viewState.load.fontSize}" style="${TxtStyle}">${viewState.load.text}</text>
+          <text data-role="grid-power" x="${T_GRID_X}" y="${T_GRID_Y}" transform="${trans_grid}" fill="${viewState.grid.fill}" font-size="${viewState.grid.fontSize}" style="${TxtStyle}">${viewState.grid.text}</text>
+
+          <text data-role="car-power" x="${T_CAR_X}" y="${T_CAR_Y}" transform="${trans_car}" fill="${viewState.carPower.fill}" font-size="${viewState.carPower.fontSize}" style="${TxtStyle}">${viewState.carPower.text}</text>
+          <text data-role="car-soc" x="${T_CAR_X}" y="${T_CAR_Y + 15}" transform="${trans_car}" fill="${viewState.carSoc.fill}" font-size="${viewState.carSoc.fontSize}" style="${TxtStyle}; ${carSocStyle}">${viewState.carSoc.text}</text>
+        </svg>
+      </ha-card>
+    `;
   }
 
   getStateSafe(entity_id) {
@@ -389,101 +663,105 @@ class LuminaEnergyCard extends HTMLElement {
     const PATH_GRID = 'M 470 280 L 575 240 L 575 223';
     const PATH_CAR = 'M 475 329 L 490 335 L 600 285';
 
-    // PV text
     const TxtStyle = 'font-weight:bold; font-family: sans-serif; text-anchor:middle; text-shadow: 0 0 5px black;';
-    let pv_text_html = '';
-    
+    const pvLineA = {
+      text: this.formatPower(total_pv_w, use_kw),
+      fill: C_CYAN,
+      y: T_SOLAR_Y,
+      visible: true
+    };
+    const pvLineB = {
+      text: '',
+      fill: C_BLUE,
+      y: T_SOLAR_Y + 10,
+      visible: false
+    };
+
     if (pv_sensors.length === 2) {
-      pv_text_html = `
-        <text x="${T_SOLAR_X}" y="${T_SOLAR_Y - 10}" transform="${trans_solar}" fill="${C_CYAN}" font-size="${pv_font_size}" style="${TxtStyle}">S1: ${this.formatPower(pv1_val, use_kw)}</text>
-        <text x="${T_SOLAR_X}" y="${T_SOLAR_Y + 10}" transform="${trans_solar}" fill="${C_BLUE}" font-size="${pv_font_size}" style="${TxtStyle}">S2: ${this.formatPower(pv2_val, use_kw)}</text>
-      `;
+      pvLineA.text = `S1: ${this.formatPower(pv1_val, use_kw)}`;
+      pvLineA.y = T_SOLAR_Y - 10;
+      pvLineB.text = `S2: ${this.formatPower(pv2_val, use_kw)}`;
+      pvLineB.y = T_SOLAR_Y + 10;
+      pvLineB.visible = true;
+      pvLineB.fill = C_BLUE;
     } else if (pv_sensors.length > 2) {
-      pv_text_html = `<text x="${T_SOLAR_X}" y="${T_SOLAR_Y}" transform="${trans_solar}" fill="${C_CYAN}" font-size="${pv_font_size}" style="${TxtStyle}">${label_pv_tot}: ${this.formatPower(total_pv_w, use_kw)}</text>`;
+      pvLineA.text = `${label_pv_tot}: ${this.formatPower(total_pv_w, use_kw)}`;
+      pvLineA.y = T_SOLAR_Y;
+      pvLineB.visible = false;
     } else {
-      pv_text_html = `<text x="${T_SOLAR_X}" y="${T_SOLAR_Y}" transform="${trans_solar}" fill="${C_CYAN}" font-size="${pv_font_size}" style="${TxtStyle}">${this.formatPower(total_pv_w, use_kw)}</text>`;
+      pvLineA.text = this.formatPower(total_pv_w, use_kw);
+      pvLineA.y = T_SOLAR_Y;
+      pvLineB.visible = false;
     }
 
-    this.shadowRoot.innerHTML = `
-      <style>
-        :host {
-          display: block;
-          aspect-ratio: 16/9;
-        }
-        ha-card {
-          height: 100%;
-          overflow: hidden;
-          background: transparent;
-          border: none;
-          box-shadow: none;
-        }
-        .track-path { stroke: #555555; stroke-width: 2px; fill: none; opacity: 0; }
-        .flow-path { stroke-dasharray: 8 16; stroke-linecap: round; stroke-width: 3px; fill: none; opacity: 0; transition: all 0.5s ease; }
-        @keyframes laser-flow { to { stroke-dashoffset: -320; } }
-        @keyframes pulse-cyan { 0% { filter: drop-shadow(0 0 2px #00FFFF); opacity: 0.9; } 50% { filter: drop-shadow(0 0 10px #00FFFF); opacity: 1; } 100% { filter: drop-shadow(0 0 2px #00FFFF); opacity: 0.9; } }
-        .alive-box { animation: pulse-cyan 3s infinite ease-in-out; stroke: #00FFFF; stroke-width: 2px; fill: rgba(0, 20, 40, 0.7); }
-        .alive-text { animation: pulse-cyan 3s infinite ease-in-out; fill: #00FFFF; text-shadow: 0 0 5px #00FFFF; }
-        @keyframes wave-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-80px); } }
-        .liquid-shape { animation: wave-slide 2s linear infinite; }
-        .flow-pv1 { opacity: 1; animation: laser-flow 2s linear infinite; filter: drop-shadow(0 0 12px #00FFFF); stroke: #00FFFF; }
-        .flow-pv2 { opacity: 1; animation: laser-flow 2s linear infinite; filter: drop-shadow(0 0 12px #0088FF); stroke: #0088FF; }
-        .flow-generic { opacity: 1; animation: laser-flow 2s linear infinite; filter: drop-shadow(0 0 8px #00FFFF); stroke: #00FFFF; }
-        .flow-reverse { opacity: 1; animation: laser-flow 2s linear infinite reverse; filter: drop-shadow(0 0 8px #FFFFFF); stroke: #FFFFFF; }
-        .flow-grid-import { opacity: 1; animation: laser-flow 2s linear infinite reverse; filter: drop-shadow(0 0 8px #FF3333); stroke: #FF3333; }
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-        .title-text { animation: pulse-cyan 2.5s infinite ease-in-out; fill: #00FFFF; font-weight: 900; font-family: 'Orbitron', sans-serif; text-anchor: middle; letter-spacing: 3px; text-transform: uppercase; }
-      </style>
-      <ha-card>
-        <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%; height: 100%;">
-          <defs>
-            <clipPath id="battery-clip"><rect x="${BAT_X}" y="${BAT_Y_BASE - BAT_MAX_H}" width="${BAT_W}" height="${BAT_MAX_H}" rx="2" /></clipPath>
-          </defs>
-          
-          <image href="${bg_img}" xlink:href="${bg_img}" x="0" y="0" width="800" height="450" preserveAspectRatio="none" />
-          
-          <rect x="290" y="10" width="220" height="32" rx="6" ry="6" fill="rgba(0, 20, 40, 0.85)" stroke="#00FFFF" stroke-width="1.5"/>
-          <text x="400" y="32" class="title-text" font-size="${header_font_size}">${title_text}</text>
-          
-          <g transform="translate(600, 370)">
-            <rect x="0" y="0" width="180" height="60" rx="10" ry="10" class="alive-box" />
-            <text x="90" y="23" class="alive-text" style="font-family: sans-serif; text-anchor:middle; font-size:${daily_label_font_size}px; font-weight:normal; letter-spacing: 1px;">${label_daily}</text>
-            <text x="90" y="50" class="alive-text" style="font-family: sans-serif; text-anchor:middle; font-size:${daily_value_font_size}px; font-weight:bold;">${total_daily_kwh} kWh</text>
-          </g>
-          
-          <g transform="${bat_transform}">
-            <g clip-path="url(#battery-clip)">
-              <g style="transition: transform 1s ease-in-out;" transform="translate(0, ${BAT_MAX_H - current_h})">
-                <g transform="translate(0, ${BAT_Y_BASE - BAT_MAX_H})">
-                  <path class="liquid-shape" fill="${liquid_fill}" d="M ${BAT_X - 20} 5 Q ${BAT_X} 0 ${BAT_X + 20} 5 T ${BAT_X + 60} 5 T ${BAT_X + 100} 5 T ${BAT_X + 140} 5 V 150 H ${BAT_X - 20} Z" />
-                </g>
-              </g>
-            </g>
-          </g>
-          
-          <path class="track-path" d="${PATH_PV1}" />
-          <path class="flow-path ${pv1_class}" data-flow-key="pv1" d="${PATH_PV1}" />
-          ${show_double_flow ? `<path class="track-path" d="${PATH_PV2}" /><path class="flow-path ${pv2_class}" data-flow-key="pv2" d="${PATH_PV2}" />` : ''}
-          
-          <path class="track-path" d="${PATH_BAT_INV}" /><path class="flow-path ${bat_class}" data-flow-key="bat" d="${PATH_BAT_INV}" stroke="${bat_col}" />
-          <path class="track-path" d="${PATH_LOAD}" /><path class="flow-path ${load_class}" data-flow-key="load" d="${PATH_LOAD}" stroke="${C_CYAN}" />
-          <path class="track-path" d="${PATH_GRID}" /><path class="flow-path ${grid_class}" data-flow-key="grid" d="${PATH_GRID}" stroke="${grid_col}" />
-          <path class="track-path" d="${PATH_CAR}" /><path class="flow-path ${car_class}" data-flow-key="car" d="${PATH_CAR}" stroke="${C_CYAN}" />
-          
-          ${pv_text_html}
-          
-          <text x="${T_BAT_X}" y="${T_BAT_Y}" transform="${trans_bat}" fill="${C_WHITE}" font-size="${battery_soc_font_size}" style="${TxtStyle}">${Math.floor(avg_soc)}%</text>
-          <text x="${T_BAT_X}" y="${T_BAT_Y + 20}" transform="${trans_bat}" fill="${bat_col}" font-size="${battery_power_font_size}" style="${TxtStyle}">${this.formatPower(Math.abs(total_bat_w), use_kw)}</text>
-          
-          <text x="${T_HOME_X}" y="${T_HOME_Y}" transform="${trans_home}" fill="${C_WHITE}" font-size="${load_font_size}" style="${TxtStyle}">${this.formatPower(load, use_kw)}</text>
-          <text x="${T_GRID_X}" y="${T_GRID_Y}" transform="${trans_grid}" fill="${grid_col}" font-size="${grid_font_size}" style="${TxtStyle}">${this.formatPower(Math.abs(grid), use_kw)}</text>
-          
-          <text x="${T_CAR_X}" y="${T_CAR_Y}" transform="${trans_car}" fill="${C_WHITE}" font-size="${car_power_font_size}" style="${TxtStyle}">${this.formatPower(car_w, use_kw)}</text>
-          ${(config.show_car_soc && car_soc !== null) ? `
-            <text x="${T_CAR_X}" y="${T_CAR_Y + 15}" transform="${trans_car}" fill="${config.car_pct_color || '#00FFFF'}" font-size="${car_soc_font_size}" style="${TxtStyle}">${Math.round(car_soc)}%</text>
-          ` : ''}
-        </svg>
-      </ha-card>
-    `;
+    const flowStates = {
+      pv1: { className: pv1_class, stroke: C_CYAN },
+      pv2: { className: pv2_class, stroke: C_BLUE },
+      bat: { className: bat_class, stroke: bat_col },
+      load: { className: load_class, stroke: C_CYAN },
+      grid: { className: grid_class, stroke: grid_col },
+      car: { className: car_class, stroke: C_CYAN }
+    };
+
+    const carSocVisible = Boolean(config.show_car_soc && car_soc !== null);
+    const carSocText = carSocVisible ? `${Math.round(car_soc)}%` : '';
+    const carSocColor = config.car_pct_color || '#00FFFF';
+
+    const viewState = {
+      backgroundImage: bg_img,
+      title: { text: title_text, fontSize: header_font_size },
+      daily: { label: label_daily, value: `${total_daily_kwh} kWh`, labelSize: daily_label_font_size, valueSize: daily_value_font_size },
+      pv: { fontSize: pv_font_size, lineA: pvLineA, lineB: pvLineB },
+      battery: { liquidOffset: BAT_MAX_H - current_h, liquidFill: liquid_fill },
+      batterySoc: { text: `${Math.floor(avg_soc)}%`, fontSize: battery_soc_font_size, fill: C_WHITE },
+      batteryPower: { text: this.formatPower(Math.abs(total_bat_w), use_kw), fontSize: battery_power_font_size, fill: bat_col },
+      load: { text: this.formatPower(load, use_kw), fontSize: load_font_size, fill: C_WHITE },
+      grid: { text: this.formatPower(Math.abs(grid), use_kw), fontSize: grid_font_size, fill: grid_col },
+      carPower: { text: this.formatPower(car_w, use_kw), fontSize: car_power_font_size, fill: C_WHITE },
+      carSoc: { visible: carSocVisible, text: carSocText, fontSize: car_soc_font_size, fill: carSocColor },
+      flows: flowStates
+    };
+
+    const templateCtx = {
+      TxtStyle,
+      BAT_X,
+      BAT_Y_BASE,
+      BAT_W,
+      BAT_MAX_H,
+      T_SOLAR_X,
+      T_SOLAR_Y,
+      T_BAT_X,
+      T_BAT_Y,
+      T_HOME_X,
+      T_HOME_Y,
+      T_GRID_X,
+      T_GRID_Y,
+      T_CAR_X,
+      T_CAR_Y,
+      bat_transform,
+      trans_solar,
+      trans_bat,
+      trans_home,
+      trans_grid,
+      trans_car,
+      PATH_PV1,
+      PATH_PV2,
+      PATH_BAT_INV,
+      PATH_LOAD,
+      PATH_GRID,
+      PATH_CAR
+    };
+
+    const needsTemplate = this._forceRender || !this._hasRendered;
+    if (needsTemplate) {
+      this.shadowRoot.innerHTML = this._buildTemplate(viewState, templateCtx);
+      this._cacheDomReferences();
+      this._hasRendered = true;
+    } else if (!this._domRefs) {
+      this._cacheDomReferences();
+    }
+
+    this._updateView(viewState);
     this._applyFlowAnimationTargets(flowDurations);
     this._forceRender = false;
   }
