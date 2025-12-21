@@ -369,23 +369,223 @@ class LuminaEnergyCardEditor extends HTMLElement {
     this._defaults = (typeof LuminaEnergyCard !== 'undefined' && typeof LuminaEnergyCard.getStubConfig === 'function')
       ? { ...LuminaEnergyCard.getStubConfig() }
       : {};
-    this._schemas = this._buildSchemas();
+    this._strings = this._buildStrings();
     if (window.loadCardHelpers) {
       window.loadCardHelpers();
     }
   }
 
-  _buildSchemas() {
+  _buildStrings() {
+    return {
+      en: {
+        sections: {
+          general: { title: 'Configuration', helper: 'General card settings.' },
+          refresh: { title: 'Refresh & Animation', helper: 'Control polling interval and flow animation speed.' },
+          pv: { title: 'PV (Solar) Sensors', helper: 'Configure up to six PV or input_number entities.' },
+          battery: { title: 'Battery Sensors', helper: 'Provide SOC and power sensors for each battery.' },
+          other: { title: 'Other Sensors', helper: 'Home load, grid, and inversion options.' },
+          ev: { title: 'EV & Typography', helper: 'Optional EV metrics, styling, and typography tuning.' }
+        },
+        fields: {
+          card_title: { label: 'Card Title', helper: 'Title displayed at the top of the card.' },
+          background_image: { label: 'Background Image Path', helper: 'Path to the background image (e.g., /local/community/lumina-energy-card/lumina_background.jpg).' },
+          language: { label: 'Language', helper: 'Choose the editor language.' },
+          display_unit: { label: 'Display Unit', helper: 'Unit used when formatting power values.' },
+          update_interval: { label: 'Update Interval', helper: 'Refresh cadence for card updates.' },
+          animation_speed_factor: { label: 'Animation Speed Factor', helper: 'Adjust animation speed multiplier (0.25x-4x).' },
+          sensor_pv1: { label: 'PV Sensor 1 (Required)', helper: 'Primary solar production sensor.' },
+          sensor_pv2: { label: 'PV Sensor 2' },
+          sensor_pv3: { label: 'PV Sensor 3' },
+          sensor_pv4: { label: 'PV Sensor 4' },
+          sensor_pv5: { label: 'PV Sensor 5' },
+          sensor_pv6: { label: 'PV Sensor 6' },
+          sensor_daily: { label: 'Daily Production Sensor', helper: 'Sensor reporting daily production totals.' },
+          sensor_bat1_soc: { label: 'Battery 1 SOC' },
+          sensor_bat1_power: { label: 'Battery 1 Power' },
+          sensor_bat2_soc: { label: 'Battery 2 SOC' },
+          sensor_bat2_power: { label: 'Battery 2 Power' },
+          sensor_bat3_soc: { label: 'Battery 3 SOC' },
+          sensor_bat3_power: { label: 'Battery 3 Power' },
+          sensor_bat4_soc: { label: 'Battery 4 SOC' },
+          sensor_bat4_power: { label: 'Battery 4 Power' },
+          sensor_home_load: { label: 'Home Load/Consumption', helper: 'Total household consumption sensor.' },
+          sensor_grid_power: { label: 'Grid Power', helper: 'Positive/negative grid flow sensor.' },
+          invert_grid: { label: 'Invert Grid Values', helper: 'Enable if import/export polarity is reversed.' },
+          sensor_car_power: { label: 'Car Power Sensor' },
+          sensor_car_soc: { label: 'Car SOC Sensor' },
+          show_car_soc: { label: 'Show Car SOC' },
+          car_pct_color: { label: 'Car SOC Color', helper: 'Hex color for EV SOC text (e.g., #00FFFF).' },
+          header_font_size: { label: 'Header Font Size (px)', helper: 'Default 16' },
+          daily_label_font_size: { label: 'Daily Label Font Size (px)', helper: 'Default 12' },
+          daily_value_font_size: { label: 'Daily Value Font Size (px)', helper: 'Default 20' },
+          pv_font_size: { label: 'PV Text Font Size (px)', helper: 'Default 16' },
+          battery_soc_font_size: { label: 'Battery SOC Font Size (px)', helper: 'Default 20' },
+          battery_power_font_size: { label: 'Battery Power Font Size (px)', helper: 'Default 14' },
+          load_font_size: { label: 'Load Font Size (px)', helper: 'Default 15' },
+          grid_font_size: { label: 'Grid Font Size (px)', helper: 'Default 15' },
+          car_power_font_size: { label: 'Car Power Font Size (px)', helper: 'Default 15' },
+          car_soc_font_size: { label: 'Car SOC Font Size (px)', helper: 'Default 12' }
+        },
+        options: {
+          languages: [
+            { value: 'en', label: 'English' },
+            { value: 'it', label: 'Italiano' },
+            { value: 'de', label: 'Deutsch' }
+          ],
+          display_units: [
+            { value: 'W', label: 'Watts (W)' },
+            { value: 'kW', label: 'Kilowatts (kW)' }
+          ]
+        }
+      },
+      it: {
+        sections: {
+          general: { title: 'Configurazione', helper: 'Impostazioni generali della scheda.' },
+          refresh: { title: 'Aggiornamento e animazione', helper: 'Controlla intervallo di polling e velocita delle animazioni.' },
+          pv: { title: 'Sensori FV (solare)', helper: 'Configura fino a sei entita PV o input_number.' },
+          battery: { title: 'Sensori batteria', helper: 'Fornisci i sensori SOC e potenza per ogni batteria.' },
+          other: { title: 'Altri sensori', helper: 'Carico casa, rete e opzioni di inversione.' },
+          ev: { title: 'EV e tipografia', helper: 'Metriche EV opzionali, stile e regolazioni tipografiche.' }
+        },
+        fields: {
+          card_title: { label: 'Titolo scheda', helper: 'Titolo mostrato nella parte superiore della scheda.' },
+          background_image: { label: 'Percorso immagine di sfondo', helper: 'Percorso dell immagine di sfondo (es. /local/community/lumina-energy-card/lumina_background.jpg).' },
+          language: { label: 'Lingua', helper: 'Seleziona la lingua dell editor.' },
+          display_unit: { label: 'Unita di visualizzazione', helper: 'Unita usata per i valori di potenza.' },
+          update_interval: { label: 'Intervallo di aggiornamento', helper: 'Frequenza di aggiornamento della scheda.' },
+          animation_speed_factor: { label: 'Fattore velocita animazioni', helper: 'Regola il moltiplicatore della velocita (0.25x-4x).' },
+          sensor_pv1: { label: 'Sensore PV 1 (obbligatorio)', helper: 'Sensore principale di produzione solare.' },
+          sensor_pv2: { label: 'Sensore PV 2' },
+          sensor_pv3: { label: 'Sensore PV 3' },
+          sensor_pv4: { label: 'Sensore PV 4' },
+          sensor_pv5: { label: 'Sensore PV 5' },
+          sensor_pv6: { label: 'Sensore PV 6' },
+          sensor_daily: { label: 'Sensore produzione giornaliera', helper: 'Sensore che riporta la produzione giornaliera.' },
+          sensor_bat1_soc: { label: 'Batteria 1 SOC' },
+          sensor_bat1_power: { label: 'Batteria 1 potenza' },
+          sensor_bat2_soc: { label: 'Batteria 2 SOC' },
+          sensor_bat2_power: { label: 'Batteria 2 potenza' },
+          sensor_bat3_soc: { label: 'Batteria 3 SOC' },
+          sensor_bat3_power: { label: 'Batteria 3 potenza' },
+          sensor_bat4_soc: { label: 'Batteria 4 SOC' },
+          sensor_bat4_power: { label: 'Batteria 4 potenza' },
+          sensor_home_load: { label: 'Carico casa/consumo', helper: 'Sensore del consumo totale dell abitazione.' },
+          sensor_grid_power: { label: 'Potenza rete', helper: 'Sensore flusso rete positivo/negativo.' },
+          invert_grid: { label: 'Inverti valori rete', helper: 'Attiva se l import/export ha polarita invertita.' },
+          sensor_car_power: { label: 'Sensore potenza auto' },
+          sensor_car_soc: { label: 'Sensore SOC auto' },
+          show_car_soc: { label: 'Mostra SOC auto' },
+          car_pct_color: { label: 'Colore SOC auto', helper: 'Colore esadecimale per il testo SOC EV (es. #00FFFF).' },
+          header_font_size: { label: 'Dimensione titolo (px)', helper: 'Predefinita 16' },
+          daily_label_font_size: { label: 'Dimensione etichetta giornaliera (px)', helper: 'Predefinita 12' },
+          daily_value_font_size: { label: 'Dimensione valore giornaliero (px)', helper: 'Predefinita 20' },
+          pv_font_size: { label: 'Dimensione testo PV (px)', helper: 'Predefinita 16' },
+          battery_soc_font_size: { label: 'Dimensione SOC batteria (px)', helper: 'Predefinita 20' },
+          battery_power_font_size: { label: 'Dimensione potenza batteria (px)', helper: 'Predefinita 14' },
+          load_font_size: { label: 'Dimensione carico (px)', helper: 'Predefinita 15' },
+          grid_font_size: { label: 'Dimensione rete (px)', helper: 'Predefinita 15' },
+          car_power_font_size: { label: 'Dimensione potenza auto (px)', helper: 'Predefinita 15' },
+          car_soc_font_size: { label: 'Dimensione SOC auto (px)', helper: 'Predefinita 12' }
+        },
+        options: {
+          languages: [
+            { value: 'en', label: 'Inglese' },
+            { value: 'it', label: 'Italiano' },
+            { value: 'de', label: 'Tedesco' }
+          ],
+          display_units: [
+            { value: 'W', label: 'Watt (W)' },
+            { value: 'kW', label: 'Kilowatt (kW)' }
+          ]
+        }
+      },
+      de: {
+        sections: {
+          general: { title: 'Konfiguration', helper: 'Allgemeine Karteneinstellungen.' },
+          refresh: { title: 'Aktualisierung und Animation', helper: 'Steuert Abfrageintervall und Animationsgeschwindigkeit.' },
+          pv: { title: 'PV (Solar) Sensoren', helper: 'Bis zu sechs PV oder input_number Entitaeten konfigurieren.' },
+          battery: { title: 'Batteriesensoren', helper: 'SOC und Leistung fuer jede Batterie angeben.' },
+          other: { title: 'Weitere Sensoren', helper: 'Hausverbrauch, Netz und Invertierungsoptionen.' },
+          ev: { title: 'EV und Typografie', helper: 'Optionale EV Metriken, Stil und Schriftanpassungen.' }
+        },
+        fields: {
+          card_title: { label: 'Kartentitel', helper: 'Titel oben auf der Karte.' },
+          background_image: { label: 'Pfad zum Hintergrundbild', helper: 'Pfad zum Hintergrundbild (z. B. /local/community/lumina-energy-card/lumina_background.jpg).' },
+          language: { label: 'Sprache', helper: 'Editor-Sprache waehlen.' },
+          display_unit: { label: 'Anzeigeeinheit', helper: 'Einheit fuer Leistungswerte.' },
+          update_interval: { label: 'Aktualisierungsintervall', helper: 'Aktualisierungsfrequenz der Karte.' },
+          animation_speed_factor: { label: 'Animationsgeschwindigkeit', helper: 'Animationsfaktor zwischen 0.25x und 4x anpassen.' },
+          sensor_pv1: { label: 'PV Sensor 1 (Pflicht)', helper: 'Primaerer Solarsensor.' },
+          sensor_pv2: { label: 'PV Sensor 2' },
+          sensor_pv3: { label: 'PV Sensor 3' },
+          sensor_pv4: { label: 'PV Sensor 4' },
+          sensor_pv5: { label: 'PV Sensor 5' },
+          sensor_pv6: { label: 'PV Sensor 6' },
+          sensor_daily: { label: 'Tagesproduktion Sensor', helper: 'Sensor fuer taegliche Produktionssumme.' },
+          sensor_bat1_soc: { label: 'Batterie 1 SOC' },
+          sensor_bat1_power: { label: 'Batterie 1 Leistung' },
+          sensor_bat2_soc: { label: 'Batterie 2 SOC' },
+          sensor_bat2_power: { label: 'Batterie 2 Leistung' },
+          sensor_bat3_soc: { label: 'Batterie 3 SOC' },
+          sensor_bat3_power: { label: 'Batterie 3 Leistung' },
+          sensor_bat4_soc: { label: 'Batterie 4 SOC' },
+          sensor_bat4_power: { label: 'Batterie 4 Leistung' },
+          sensor_home_load: { label: 'Hausverbrauch', helper: 'Sensor fuer Gesamtverbrauch des Haushalts.' },
+          sensor_grid_power: { label: 'Netzleistung', helper: 'Sensor fuer positiven/negativen Netzfluss.' },
+          invert_grid: { label: 'Netzwerte invertieren', helper: 'Aktivieren, wenn Import/Export vertauscht ist.' },
+          sensor_car_power: { label: 'Fahrzeugleistung Sensor' },
+          sensor_car_soc: { label: 'Fahrzeug SOC Sensor' },
+          show_car_soc: { label: 'Fahrzeug SOC anzeigen' },
+          car_pct_color: { label: 'Farbe fuer SOC', helper: 'Hex Farbe fuer EV SOC Text (z. B. #00FFFF).' },
+          header_font_size: { label: 'Schriftgroesse Titel (px)', helper: 'Standard 16' },
+          daily_label_font_size: { label: 'Schriftgroesse Tageslabel (px)', helper: 'Standard 12' },
+          daily_value_font_size: { label: 'Schriftgroesse Tageswert (px)', helper: 'Standard 20' },
+          pv_font_size: { label: 'Schriftgroesse PV Text (px)', helper: 'Standard 16' },
+          battery_soc_font_size: { label: 'Schriftgroesse Batterie SOC (px)', helper: 'Standard 20' },
+          battery_power_font_size: { label: 'Schriftgroesse Batterie Leistung (px)', helper: 'Standard 14' },
+          load_font_size: { label: 'Schriftgroesse Last (px)', helper: 'Standard 15' },
+          grid_font_size: { label: 'Schriftgroesse Netz (px)', helper: 'Standard 15' },
+          car_power_font_size: { label: 'Schriftgroesse Fahrzeugleistung (px)', helper: 'Standard 15' },
+          car_soc_font_size: { label: 'Schriftgroesse Fahrzeug SOC (px)', helper: 'Standard 12' }
+        },
+        options: {
+          languages: [
+            { value: 'en', label: 'Englisch' },
+            { value: 'it', label: 'Italienisch' },
+            { value: 'de', label: 'Deutsch' }
+          ],
+          display_units: [
+            { value: 'W', label: 'Watt (W)' },
+            { value: 'kW', label: 'Kilowatt (kW)' }
+          ]
+        }
+      }
+    };
+  }
+
+  _currentLanguage() {
+    const candidate = (this._config && this._config.language) || this._defaults.language || 'en';
+    if (candidate && this._strings[candidate]) {
+      return candidate;
+    }
+    return 'en';
+  }
+
+  _getLocaleStrings() {
+    const lang = this._currentLanguage();
+    return this._strings[lang] || this._strings.en;
+  }
+
+  _createOptionDefs(localeStrings) {
+    return {
+      language: localeStrings.options.languages,
+      display_unit: localeStrings.options.display_units
+    };
+  }
+
+  _createSchemaDefs(localeStrings, optionDefs) {
     const entitySelector = { entity: { domain: ['sensor', 'input_number'] } };
-    const languageOptions = [
-      { value: 'en', label: 'English' },
-      { value: 'it', label: 'Italiano' },
-      { value: 'de', label: 'Deutsch' }
-    ];
-    const unitOptions = [
-      { value: 'W', label: 'Watts (W)' },
-      { value: 'kW', label: 'Kilowatts (kW)' }
-    ];
+    const fields = localeStrings.fields;
     const define = (entries) => entries.map((entry) => {
       const result = { ...entry };
       if (entry.name && this._defaults[entry.name] !== undefined && result.default === undefined) {
@@ -396,56 +596,68 @@ class LuminaEnergyCardEditor extends HTMLElement {
 
     return {
       general: define([
-        { name: 'card_title', label: 'Card Title', selector: { text: {} }, helper: 'Title displayed at the top of the card.' },
-        { name: 'background_image', label: 'Background Image Path', selector: { text: {} }, helper: 'Path to the background image (e.g., /local/community/lumina-energy-card/lumina_background.jpg).' },
-        { name: 'language', label: 'Language', selector: { select: { options: languageOptions } } },
-        { name: 'display_unit', label: 'Display Unit', selector: { select: { options: unitOptions } } }
+        { name: 'card_title', label: fields.card_title.label, helper: fields.card_title.helper, selector: { text: {} } },
+        { name: 'background_image', label: fields.background_image.label, helper: fields.background_image.helper, selector: { text: {} } },
+        { name: 'language', label: fields.language.label, helper: fields.language.helper, selector: { select: { options: optionDefs.language } } },
+        { name: 'display_unit', label: fields.display_unit.label, helper: fields.display_unit.helper, selector: { select: { options: optionDefs.display_unit } } }
       ]),
       refresh: define([
-        { name: 'update_interval', label: 'Update Interval', selector: { number: { min: 10, max: 60, step: 5, mode: 'slider', unit_of_measurement: 's' } }, helper: 'Refresh cadence for card updates.' },
-        { name: 'animation_speed_factor', label: 'Animation Speed Factor', selector: { number: { min: 0.25, max: 4, step: 0.25, mode: 'slider', unit_of_measurement: 'x' } }, helper: 'Adjust animation speed multiplier (0.25x–4x).' }
+        { name: 'update_interval', label: fields.update_interval.label, helper: fields.update_interval.helper, selector: { number: { min: 10, max: 60, step: 5, mode: 'slider', unit_of_measurement: 's' } } },
+        { name: 'animation_speed_factor', label: fields.animation_speed_factor.label, helper: fields.animation_speed_factor.helper, selector: { number: { min: 0.25, max: 4, step: 0.25, mode: 'slider', unit_of_measurement: 'x' } } }
       ]),
       pv: define([
-        { name: 'sensor_pv1', label: 'PV Sensor 1 (Required)', selector: entitySelector, helper: 'Primary solar production sensor.' },
-        { name: 'sensor_pv2', label: 'PV Sensor 2', selector: entitySelector },
-        { name: 'sensor_pv3', label: 'PV Sensor 3', selector: entitySelector },
-        { name: 'sensor_pv4', label: 'PV Sensor 4', selector: entitySelector },
-        { name: 'sensor_pv5', label: 'PV Sensor 5', selector: entitySelector },
-        { name: 'sensor_pv6', label: 'PV Sensor 6', selector: entitySelector },
-        { name: 'sensor_daily', label: 'Daily Production Sensor', selector: entitySelector, helper: 'Sensor reporting daily production totals.' }
+        { name: 'sensor_pv1', label: fields.sensor_pv1.label, helper: fields.sensor_pv1.helper, selector: entitySelector },
+        { name: 'sensor_pv2', label: fields.sensor_pv2.label, helper: fields.sensor_pv2.helper, selector: entitySelector },
+        { name: 'sensor_pv3', label: fields.sensor_pv3.label, helper: fields.sensor_pv3.helper, selector: entitySelector },
+        { name: 'sensor_pv4', label: fields.sensor_pv4.label, helper: fields.sensor_pv4.helper, selector: entitySelector },
+        { name: 'sensor_pv5', label: fields.sensor_pv5.label, helper: fields.sensor_pv5.helper, selector: entitySelector },
+        { name: 'sensor_pv6', label: fields.sensor_pv6.label, helper: fields.sensor_pv6.helper, selector: entitySelector },
+        { name: 'sensor_daily', label: fields.sensor_daily.label, helper: fields.sensor_daily.helper, selector: entitySelector }
       ]),
       battery: define([
-        { name: 'sensor_bat1_soc', label: 'Battery 1 SOC', selector: entitySelector },
-        { name: 'sensor_bat1_power', label: 'Battery 1 Power', selector: entitySelector },
-        { name: 'sensor_bat2_soc', label: 'Battery 2 SOC', selector: entitySelector },
-        { name: 'sensor_bat2_power', label: 'Battery 2 Power', selector: entitySelector },
-        { name: 'sensor_bat3_soc', label: 'Battery 3 SOC', selector: entitySelector },
-        { name: 'sensor_bat3_power', label: 'Battery 3 Power', selector: entitySelector },
-        { name: 'sensor_bat4_soc', label: 'Battery 4 SOC', selector: entitySelector },
-        { name: 'sensor_bat4_power', label: 'Battery 4 Power', selector: entitySelector }
+        { name: 'sensor_bat1_soc', label: fields.sensor_bat1_soc.label, helper: fields.sensor_bat1_soc.helper, selector: entitySelector },
+        { name: 'sensor_bat1_power', label: fields.sensor_bat1_power.label, helper: fields.sensor_bat1_power.helper, selector: entitySelector },
+        { name: 'sensor_bat2_soc', label: fields.sensor_bat2_soc.label, helper: fields.sensor_bat2_soc.helper, selector: entitySelector },
+        { name: 'sensor_bat2_power', label: fields.sensor_bat2_power.label, helper: fields.sensor_bat2_power.helper, selector: entitySelector },
+        { name: 'sensor_bat3_soc', label: fields.sensor_bat3_soc.label, helper: fields.sensor_bat3_soc.helper, selector: entitySelector },
+        { name: 'sensor_bat3_power', label: fields.sensor_bat3_power.label, helper: fields.sensor_bat3_power.helper, selector: entitySelector },
+        { name: 'sensor_bat4_soc', label: fields.sensor_bat4_soc.label, helper: fields.sensor_bat4_soc.helper, selector: entitySelector },
+        { name: 'sensor_bat4_power', label: fields.sensor_bat4_power.label, helper: fields.sensor_bat4_power.helper, selector: entitySelector }
       ]),
       other: define([
-        { name: 'sensor_home_load', label: 'Home Load/Consumption', selector: entitySelector, helper: 'Total household consumption sensor.' },
-        { name: 'sensor_grid_power', label: 'Grid Power', selector: entitySelector, helper: 'Positive/negative grid flow sensor.' },
-        { name: 'invert_grid', label: 'Invert Grid Values', selector: { boolean: {} }, default: false, helper: 'Enable if import/export polarity is reversed.' }
+        { name: 'sensor_home_load', label: fields.sensor_home_load.label, helper: fields.sensor_home_load.helper, selector: entitySelector },
+        { name: 'sensor_grid_power', label: fields.sensor_grid_power.label, helper: fields.sensor_grid_power.helper, selector: entitySelector },
+        { name: 'invert_grid', label: fields.invert_grid.label, helper: fields.invert_grid.helper, selector: { boolean: {} }, default: false }
       ]),
       ev: define([
-        { name: 'sensor_car_power', label: 'Car Power Sensor', selector: entitySelector },
-        { name: 'sensor_car_soc', label: 'Car SOC Sensor', selector: entitySelector },
-        { name: 'show_car_soc', label: 'Show Car SOC', selector: { boolean: {} }, default: false },
-        { name: 'car_pct_color', label: 'Car SOC Color', selector: { text: {} }, default: '#00FFFF', helper: 'Hex color for EV SOC text (e.g., #00FFFF).' },
-        { name: 'header_font_size', label: 'Header Font Size (px)', selector: { text: {} }, helper: 'Default 16' },
-        { name: 'daily_label_font_size', label: 'Daily Label Font Size (px)', selector: { text: {} }, helper: 'Default 12' },
-        { name: 'daily_value_font_size', label: 'Daily Value Font Size (px)', selector: { text: {} }, helper: 'Default 20' },
-        { name: 'pv_font_size', label: 'PV Text Font Size (px)', selector: { text: {} }, helper: 'Default 16' },
-        { name: 'battery_soc_font_size', label: 'Battery SOC Font Size (px)', selector: { text: {} }, helper: 'Default 20' },
-        { name: 'battery_power_font_size', label: 'Battery Power Font Size (px)', selector: { text: {} }, helper: 'Default 14' },
-        { name: 'load_font_size', label: 'Load Font Size (px)', selector: { text: {} }, helper: 'Default 15' },
-        { name: 'grid_font_size', label: 'Grid Font Size (px)', selector: { text: {} }, helper: 'Default 15' },
-        { name: 'car_power_font_size', label: 'Car Power Font Size (px)', selector: { text: {} }, helper: 'Default 15' },
-        { name: 'car_soc_font_size', label: 'Car SOC Font Size (px)', selector: { text: {} }, helper: 'Default 12' }
+        { name: 'sensor_car_power', label: fields.sensor_car_power.label, helper: fields.sensor_car_power.helper, selector: entitySelector },
+        { name: 'sensor_car_soc', label: fields.sensor_car_soc.label, helper: fields.sensor_car_soc.helper, selector: entitySelector },
+        { name: 'show_car_soc', label: fields.show_car_soc.label, helper: fields.show_car_soc.helper, selector: { boolean: {} }, default: false },
+        { name: 'car_pct_color', label: fields.car_pct_color.label, helper: fields.car_pct_color.helper, selector: { text: {} }, default: '#00FFFF' },
+        { name: 'header_font_size', label: fields.header_font_size.label, helper: fields.header_font_size.helper, selector: { text: {} } },
+        { name: 'daily_label_font_size', label: fields.daily_label_font_size.label, helper: fields.daily_label_font_size.helper, selector: { text: {} } },
+        { name: 'daily_value_font_size', label: fields.daily_value_font_size.label, helper: fields.daily_value_font_size.helper, selector: { text: {} } },
+        { name: 'pv_font_size', label: fields.pv_font_size.label, helper: fields.pv_font_size.helper, selector: { text: {} } },
+        { name: 'battery_soc_font_size', label: fields.battery_soc_font_size.label, helper: fields.battery_soc_font_size.helper, selector: { text: {} } },
+        { name: 'battery_power_font_size', label: fields.battery_power_font_size.label, helper: fields.battery_power_font_size.helper, selector: { text: {} } },
+        { name: 'load_font_size', label: fields.load_font_size.label, helper: fields.load_font_size.helper, selector: { text: {} } },
+        { name: 'grid_font_size', label: fields.grid_font_size.label, helper: fields.grid_font_size.helper, selector: { text: {} } },
+        { name: 'car_power_font_size', label: fields.car_power_font_size.label, helper: fields.car_power_font_size.helper, selector: { text: {} } },
+        { name: 'car_soc_font_size', label: fields.car_soc_font_size.label, helper: fields.car_soc_font_size.helper, selector: { text: {} } }
       ])
     };
+  }
+
+  _createSectionDefs(localeStrings, schemaDefs) {
+    const sections = localeStrings.sections;
+    return [
+      { title: sections.general.title, helper: sections.general.helper, schema: schemaDefs.general },
+      { title: sections.refresh.title, helper: sections.refresh.helper, schema: schemaDefs.refresh },
+      { title: sections.pv.title, helper: sections.pv.helper, schema: schemaDefs.pv },
+      { title: sections.battery.title, helper: sections.battery.helper, schema: schemaDefs.battery },
+      { title: sections.other.title, helper: sections.other.helper, schema: schemaDefs.other },
+      { title: sections.ev.title, helper: sections.ev.helper, schema: schemaDefs.ev }
+    ];
   }
 
   _configWithDefaults() {
@@ -550,14 +762,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
     const container = document.createElement('div');
     container.className = 'card-config';
 
-    const sections = [
-      { title: 'Configuration', helper: 'General card settings.', schema: this._schemas.general },
-      { title: 'Refresh & Animation', helper: 'Control polling interval and flow animation speed.', schema: this._schemas.refresh },
-      { title: 'PV (Solar) Sensors', helper: 'Configure up to six PV or input_number entities.', schema: this._schemas.pv },
-      { title: 'Battery Sensors', helper: 'Provide SOC and power sensors for each battery.', schema: this._schemas.battery },
-      { title: 'Other Sensors', helper: 'Home load, grid, and inversion options.', schema: this._schemas.other },
-      { title: 'EV & Typography', helper: 'Optional EV metrics, styling, and typography tuning.', schema: this._schemas.ev }
-    ];
+    const localeStrings = this._getLocaleStrings();
+    const optionDefs = this._createOptionDefs(localeStrings);
+    const schemaDefs = this._createSchemaDefs(localeStrings, optionDefs);
+    const sections = this._createSectionDefs(localeStrings, schemaDefs);
 
     sections.forEach((section) => {
       container.appendChild(this._createSection(section.title, section.helper, section.schema));
@@ -570,8 +778,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
     if (!this._hass || !this._config) {
       return;
     }
-
-    const config = this._config;
 
     this.shadowRoot.innerHTML = '';
 
