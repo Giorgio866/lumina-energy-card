@@ -8,7 +8,7 @@ Animated Home Assistant card that visualises PV, battery, grid, load, and EV ene
 
 - Up to six PV strings and four batteries with automatic aggregation
 - Optional EV charging block with power and SOC readouts
-- Animated SVG flows with dynamic coloration, speed scaling, and throttled refresh logic
+- Animated SVG flows with dynamic coloration, selectable dash/dot/arrow styles, speed scaling, and throttled refresh logic
 - Multi-language UI strings (English, Italiano, Deutsch)
 - Customisable card title, typography, units (W or kW), background image, and update interval
 
@@ -43,5 +43,7 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 
 - `update_interval`: polling cadence in seconds (10–60, default 30)
 - `display_unit`: choose `W` or `kW`
+- `sensor_pv_total`: optional aggregate PV production sensor for the total line
+- `show_pv_strings`: display both the total and each PV string value simultaneously
 - `invert_grid`: flips grid import/export sign if needed
 - `sensor_car_power` and `sensor_car_soc`: enable EV panel when provided
