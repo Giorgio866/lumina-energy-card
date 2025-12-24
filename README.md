@@ -42,6 +42,10 @@ Lumina Energy Card is a Home Assistant custom Lovelace card that renders animate
 - Load warning/critical colour overrides and a configurable low SOC threshold for the battery liquid fill
 - Update interval slider (0–60 s, default 30 s) with optional real-time refresh when set to 0
 
+
+https://github.com/user-attachments/assets/a598c4a4-2b4c-4827-b1f8-bb561a2089ec
+
+
 ### Installation (EN)
 
 #### HACS (EN)
