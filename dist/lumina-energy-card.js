@@ -2545,10 +2545,26 @@ class LuminaEnergyCardEditor extends HTMLElement {
 
   _createOptionDefs(localeStrings) {
     return {
-      language: localeStrings.options.languages,
+      language: this._getAvailableLanguageOptions(localeStrings),
       display_unit: localeStrings.options.display_units,
       animation_style: localeStrings.options.animation_styles
     };
+  }
+
+  _getAvailableLanguageOptions(localeStrings) {
+    const keys = this._strings ? Object.keys(this._strings) : [];
+    const unique = Array.from(new Set(keys)).filter(k => typeof k === 'string' && k.length === 2);
+    const options = unique.map((lang) => {
+      const label = (localeStrings && localeStrings.options && Array.isArray(localeStrings.options.languages))
+        ? (localeStrings.options.languages.find((o) => o.value === lang) || {}).label
+        : null;
+      return { value: lang, label: label || lang };
+    });
+    // Ensure English is always present and first
+    const hasEn = options.find(o => o.value === 'en');
+    if (!hasEn) options.unshift({ value: 'en', label: 'English' });
+    else options.sort((a, b) => (a.value === 'en' ? -1 : (b.value === 'en' ? 1 : a.value.localeCompare(b.value))));
+    return options;
   }
 
   _createSchemaDefs(localeStrings, optionDefs) {
