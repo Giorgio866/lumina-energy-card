@@ -165,6 +165,32 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 | `car_name_font_size` | number | `15` | Font size for Car name label (px) |
 | `car2_name_font_size` | number | `15` | Font size for Car 2 name label (px) |
 
+### Popups (Editor Options)
+
+The card provides three editable popup groups (PV, House, Battery). Each popup exposes up to six entity slots, optional custom names, per-line colour pickers, and font-size controls.
+
+- PV Popup
+  - `sensor_popup_pv_1` .. `sensor_popup_pv_6`: entity selectors for PV popup lines.
+  - `sensor_popup_pv_1_name` .. `sensor_popup_pv_6_name`: optional custom names (falls back to entity name).
+  - `sensor_popup_pv_1_color` .. `sensor_popup_pv_6_color`: per-line colour pickers (default `#80ffff`).
+  - `sensor_popup_pv_1_font_size` .. `sensor_popup_pv_6_font_size`: per-line font-size (px) (default `14`).
+  - Clickable polygon (PV area) — points: `75,205 200,195 275,245 145,275 75,205`. Click to toggle the PV popup; clicking the popup closes it.
+
+- House Popup
+  - `sensor_popup_house_1` .. `sensor_popup_house_6`: entity selectors for House popup lines.
+  - `sensor_popup_house_1_name` .. `sensor_popup_house_6_name`: optional custom names.
+  - `sensor_popup_house_1_color` .. `sensor_popup_house_6_color`: per-line colour pickers (default `#80ffff`).
+  - `sensor_popup_house_1_font_size` .. `sensor_popup_house_6_font_size`: per-line font-size (px) (default `14`).
+  - House clickable area polygon is provided; click to toggle the House popup and click the popup to close.
+
+- Battery Popup
+  - `sensor_popup_bat_1` .. `sensor_popup_bat_6`: entity selectors for Battery popup lines.
+  - `sensor_popup_bat_1_name` .. `sensor_popup_bat_6_name`: optional custom names.
+  - `sensor_popup_bat_1_color` .. `sensor_popup_bat_6_color`: per-line colour pickers (default `#80ffff`).
+  - `sensor_popup_bat_1_font_size` .. `sensor_popup_bat_6_font_size`: per-line font-size (px) (default `16`).
+  - Battery clickable polygon points: `325,400 350,375 350,275 275,250 250,250 250,350 325,400`. Click to toggle the Battery popup; clicking the popup closes it.
+
+
 ### Additional Array 2 & Options (EN)
 
 - `sensor_pv_total_secondary` | entity | — | Optional second inverter total sensor (treated as PV2). When provided it is included in the PV TOT and used as the secondary PV flow.
@@ -307,6 +333,31 @@ Les options disponibles correspondent à celles listées dans la section anglais
 - `sensor_daily_array2` | entity | — | Capteur production quotidienne pour Array 2 ; la carte affiche le rendement quotidien combiné = `sensor_daily` + `sensor_daily_array2`.
 - `sensor_home_load_secondary` | entity | — | Capteur de charge domestique optionnel associé à l'onduleur 2 ; utilisé pour calculer HOUSE TOT et INV 2 quand Array 2 est configuré.
 
+### Popups (FR)
+
+La carte propose trois popups configurables (PV, Maison, Batterie). Chaque popup permet jusqu'à six lignes avec entité, nom facultatif, couleur et taille de police.
+
+- Popup PV
+  - `sensor_popup_pv_1` .. `sensor_popup_pv_6` : entités utilisées pour les lignes du popup PV.
+  - `sensor_popup_pv_1_name` .. `sensor_popup_pv_6_name` : noms personnalisés facultatifs (par défaut = nom de l'entité).
+  - `sensor_popup_pv_1_color` .. `sensor_popup_pv_6_color` : couleurs par ligne (défaut `#80ffff`).
+  - `sensor_popup_pv_1_font_size` .. `sensor_popup_pv_6_font_size` : taille de police par ligne (px) (défaut `14`).
+  - Polygone cliquable PV avec les points `75,205 200,195 275,245 145,275 75,205` : cliquer pour ouvrir/fermer, cliquer sur le popup pour le masquer.
+
+- Popup Maison
+  - `sensor_popup_house_1` .. `sensor_popup_house_6` : entités pour les lignes du popup Maison.
+  - `sensor_popup_house_1_name` .. `sensor_popup_house_6_name` : noms personnalisés facultatifs.
+  - `sensor_popup_house_1_color` .. `sensor_popup_house_6_color` : couleurs par ligne (défaut `#80ffff`).
+  - `sensor_popup_house_1_font_size` .. `sensor_popup_house_6_font_size` : taille de police par ligne (px) (défaut `14`).
+  - La zone cliquable de la maison ouvre/ferme le popup; cliquer sur le popup le ferme.
+
+- Popup Batterie
+  - `sensor_popup_bat_1` .. `sensor_popup_bat_6` : entités pour les lignes du popup Batterie.
+  - `sensor_popup_bat_1_name` .. `sensor_popup_bat_6_name` : noms personnalisés facultatifs.
+  - `sensor_popup_bat_1_color` .. `sensor_popup_bat_6_color` : couleurs par ligne (défaut `#80ffff`).
+  - `sensor_popup_bat_1_font_size` .. `sensor_popup_bat_6_font_size` : taille de police par ligne (px) (défaut `16`).
+  - Polygone cliquable batterie avec points `325,400 350,375 350,275 275,250 250,250 250,350 325,400` : cliquer pour ouvrir/fermer, cliquer sur le popup pour le fermer.
+
 ### Fond & Dépannage (FR)
 
 - Fond par défaut : `/local/community/lumina-energy-card/lumina_background.jpg` (copiez votre image à côté du fichier JS pour personnaliser).
@@ -433,6 +484,31 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 | `car_name_font_size` | number | `15` | Dimensione font per il nome auto (px) |
 | `car2_name_font_size` | number | `15` | Dimensione font per il nome Auto 2 (px) |
 
+### Popup (IT)
+
+La scheda mette a disposizione tre popup configurabili (FV, Casa, Batteria). Ogni popup offre fino a sei righe con selettore entità, nome facoltativo, colore e dimensione del font.
+
+- Popup FV
+  - `sensor_popup_pv_1` .. `sensor_popup_pv_6`: entità per le righe del popup FV.
+  - `sensor_popup_pv_1_name` .. `sensor_popup_pv_6_name`: nomi personalizzati opzionali (predefinito = nome entità).
+  - `sensor_popup_pv_1_color` .. `sensor_popup_pv_6_color`: selettori colore per riga (default `#80ffff`).
+  - `sensor_popup_pv_1_font_size` .. `sensor_popup_pv_6_font_size`: dimensione font per riga (px) (default `14`).
+  - Poligono cliccabile FV con punti `75,205 200,195 275,245 145,275 75,205`: clicca per aprire il popup; cliccando sul popup lo chiudi.
+
+- Popup Casa
+  - `sensor_popup_house_1` .. `sensor_popup_house_6`: entità per le righe del popup Casa.
+  - `sensor_popup_house_1_name` .. `sensor_popup_house_6_name`: nomi personalizzati opzionali.
+  - `sensor_popup_house_1_color` .. `sensor_popup_house_6_color`: selettori colore per riga (default `#80ffff`).
+  - `sensor_popup_house_1_font_size` .. `sensor_popup_house_6_font_size`: dimensione font per riga (px) (default `14`).
+  - L'area cliccabile della casa apre/chiude il popup; un click sul popup lo nasconde.
+
+- Popup Batteria
+  - `sensor_popup_bat_1` .. `sensor_popup_bat_6`: entità per le righe del popup Batteria.
+  - `sensor_popup_bat_1_name` .. `sensor_popup_bat_6_name`: nomi personalizzati opzionali.
+  - `sensor_popup_bat_1_color` .. `sensor_popup_bat_6_color`: selettori colore per riga (default `#80ffff`).
+  - `sensor_popup_bat_1_font_size` .. `sensor_popup_bat_6_font_size`: dimensione font per riga (px) (default `16`).
+  - Poligono cliccabile batteria con punti `325,400 350,375 350,275 275,250 250,250 250,350 325,400`: clic per aprire/chiudere, click sul popup per chiuderlo.
+
 ---
 
 ## Deutsch
@@ -489,9 +565,31 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 
 ### Hinweise (DE)
 
-- Pflichtwerte: PV1, Daily, Batterie SOC/Power, Hauslast, Netzleistung.
-- Für eigene Hintergründe Bild neben die JS-Datei kopieren und `background_image` anpassen.
-- Bei invertierten Netz-Werten `invert_grid: true` setzen.
+
+### Popups (DE)
+
+Die Karte stellt drei Popup-Gruppen (PV, Haus, Batterie) bereit. Jede Gruppe bietet bis zu sechs Zeilen mit Entitätsauswahl, optionalem Namen, Farbfeld und Schriftgröße.
+
+- PV-Popup
+  - `sensor_popup_pv_1` .. `sensor_popup_pv_6`: Entitäten für die PV-Popup-Zeilen.
+  - `sensor_popup_pv_1_name` .. `sensor_popup_pv_6_name`: optionale benutzerdefinierte Namen (Standard = Entitätsname).
+  - `sensor_popup_pv_1_color` .. `sensor_popup_pv_6_color`: Zeilenfarben (Standard `#80ffff`).
+  - `sensor_popup_pv_1_font_size` .. `sensor_popup_pv_6_font_size`: Schriftgröße pro Zeile (px) (Standard `14`).
+  - Klickbare PV-Fläche mit Punkten `75,205 200,195 275,245 145,275 75,205`: Klick öffnet/schließt das Popup, ein Klick auf das Popup blendet es aus.
+
+- Haus-Popup
+  - `sensor_popup_house_1` .. `sensor_popup_house_6`: Entitäten für die Haus-Popup-Zeilen.
+  - `sensor_popup_house_1_name` .. `sensor_popup_house_6_name`: optionale Namen.
+  - `sensor_popup_house_1_color` .. `sensor_popup_house_6_color`: Zeilenfarben (Standard `#80ffff`).
+  - `sensor_popup_house_1_font_size` .. `sensor_popup_house_6_font_size`: Schriftgröße pro Zeile (px) (Standard `14`).
+  - Die vorhandene Haus-Klickfläche öffnet/schließt das Popup; ein Klick auf das Popup schließt es.
+
+- Batterie-Popup
+  - `sensor_popup_bat_1` .. `sensor_popup_bat_6`: Entitäten für die Batterie-Popup-Zeilen.
+  - `sensor_popup_bat_1_name` .. `sensor_popup_bat_6_name`: optionale Namen.
+  - `sensor_popup_bat_1_color` .. `sensor_popup_bat_6_color`: Zeilenfarben (Standard `#80ffff`).
+  - `sensor_popup_bat_1_font_size` .. `sensor_popup_bat_6_font_size`: Schriftgröße pro Zeile (px) (Standard `16`).
+  - Klickbare Batterie-Fläche mit Punkten `325,400 350,375 350,275 275,250 250,250 250,350 325,400`: Klick öffnet/schließt; Klick auf das Popup schließt es.
 
 ### Optionen (DE)
 
