@@ -111,6 +111,68 @@ const DEFAULT_BATTERY_FILL_HIGH_COLOR = '#00ffff';
 const DEFAULT_BATTERY_FILL_LOW_COLOR = '#ff0000';
 const DEFAULT_BATTERY_LOW_THRESHOLD = 25;
 
+const buildWeatherSunSvg = () => {
+  return `
+    <g data-role="weather-sun" transform="translate(70, 50)" style="display:none;">
+      <defs>
+        <filter id="sunGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#00FFFF;stop-opacity:1" />
+          <stop offset="50%" style="stop-color:#0088FF;stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:#00FFFF;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <circle data-role="sun-core-outer" cx="0" cy="0" r="22" fill="none" stroke="url(#sunGradient)" stroke-width="2" opacity="0.8" filter="url(#sunGlow)"/>
+      <circle data-role="sun-core" cx="0" cy="0" r="18" fill="#00FFFF" opacity="0.9" filter="url(#sunGlow)"/>
+      <circle data-role="sun-inner" cx="0" cy="0" r="14" fill="#0088FF" opacity="0.7"/>
+      <g data-role="sun-rays" stroke="#00FFFF" stroke-width="2" fill="none" opacity="0.9" filter="url(#sunGlow)">
+        <line x1="0" y1="-28" x2="0" y2="-38"/>
+        <line x1="0" y1="28" x2="0" y2="38"/>
+        <line x1="-28" y1="0" x2="-38" y2="0"/>
+        <line x1="28" y1="0" x2="38" y2="0"/>
+        <line x1="-19.8" y1="-19.8" x2="-26.9" y2="-26.9"/>
+        <line x1="19.8" y1="19.8" x2="26.9" y2="26.9"/>
+        <line x1="19.8" y1="-19.8" x2="26.9" y2="-26.9"/>
+        <line x1="-19.8" y1="19.8" x2="-26.9" y2="26.9"/>
+      </g>
+    </g>
+  `;
+};
+
+const buildWeatherRainSvg = () => {
+  return `
+    <g data-role="weather-rain" transform="translate(70, 50)" style="display:none;">
+      <defs>
+        <filter id="rainGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <linearGradient id="rainGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#00FFFF;stop-opacity:0.9" />
+          <stop offset="50%" style="stop-color:#0088FF;stop-opacity:0.7" />
+          <stop offset="100%" style="stop-color:#00FFFF;stop-opacity:0.9" />
+        </linearGradient>
+      </defs>
+      <path data-role="rain-cloud-1" d="M -35,10 Q -25,0 -15,10 T 5,10 T 25,10" stroke="url(#rainGradient)" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8" filter="url(#rainGlow)"/>
+      <path data-role="rain-cloud-2" d="M -30,16 Q -20,6 -10,16 T 10,16 T 30,16" stroke="#0088FF" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7" filter="url(#rainGlow)"/>
+      <circle data-role="rain-drop-1" cx="-20" cy="26" r="3" fill="#00FFFF" filter="url(#rainGlow)" opacity="1"/>
+      <circle data-role="rain-drop-2" cx="-10" cy="31" r="3" fill="#00FFFF" filter="url(#rainGlow)" opacity="1"/>
+      <circle data-role="rain-drop-3" cx="0" cy="28" r="3" fill="#00FFFF" filter="url(#rainGlow)" opacity="1"/>
+      <circle data-role="rain-drop-4" cx="10" cy="34" r="3" fill="#0088FF" filter="url(#rainGlow)" opacity="1"/>
+      <circle data-role="rain-drop-5" cx="20" cy="29" r="3" fill="#00FFFF" filter="url(#rainGlow)" opacity="1"/>
+    </g>
+  `;
+};
+
 const buildArrowGroupSvg = (key, flowState) => {
   const color = flowState && (flowState.glowColor || flowState.stroke) ? (flowState.glowColor || flowState.stroke) : '#00FFFF';
   const activeOpacity = flowState && flowState.active ? 1 : 0;
@@ -131,6 +193,7 @@ class LuminaEnergyCard extends HTMLElement {
     this._prevViewState = null;
     this._eventListenerAttached = false;
     this._flowTweens = new Map();
+    this._weatherTweens = new Map();
     this._gsap = null;
     this._gsapLoading = null;
     this._flowPathLengths = new Map();
@@ -253,7 +316,8 @@ class LuminaEnergyCard extends HTMLElement {
       grid_critical_color: '#ff0000',
       show_pv_strings: false,
       display_unit: 'kW',
-      update_interval: 30
+      update_interval: 30,
+      sensor_weather: ''
     };
   }
 
@@ -266,6 +330,7 @@ class LuminaEnergyCard extends HTMLElement {
       super.disconnectedCallback();
     }
     this._teardownFlowAnimations();
+    this._stopWeatherAnimations();
     this._domRefs = null;
     this._prevViewState = null;
     this._eventListenerAttached = false;
@@ -867,6 +932,168 @@ class LuminaEnergyCard extends HTMLElement {
     this._flowTweens.clear();
   }
 
+  _stopWeatherAnimations() {
+    if (!this._weatherTweens) {
+      return;
+    }
+    this._weatherTweens.forEach((tween) => {
+      if (tween && tween.kill) {
+        tween.kill();
+      }
+    });
+    this._weatherTweens.clear();
+  }
+
+  async _animateWeatherSun() {
+    if (!this._domRefs || !this._domRefs.weatherSun) return;
+    
+    this._stopWeatherAnimations();
+    const gsap = await this._ensureGsap();
+    if (!gsap) return;
+
+    const sun = this._domRefs.weatherSun;
+    const core = this._domRefs.weatherSunCore;
+    const coreOuter = this._domRefs.weatherSunCoreOuter;
+    const inner = this._domRefs.weatherSunInner;
+    const rays = this._domRefs.weatherSunRays;
+
+    if (!core || !rays) return;
+
+    // Animate core pulse with scale and opacity
+    const corePulse = gsap.to(core, {
+      scale: 1.15,
+      opacity: 1,
+      duration: 2,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
+      transformOrigin: 'center center'
+    });
+    this._weatherTweens.set('sun-core', corePulse);
+
+    // Animate outer core pulse
+    if (coreOuter) {
+      const outerPulse = gsap.to(coreOuter, {
+        scale: 1.2,
+        opacity: 0.95,
+        duration: 2.5,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+        transformOrigin: 'center center'
+      });
+      this._weatherTweens.set('sun-outer', outerPulse);
+    }
+
+    // Animate inner glow
+    if (inner) {
+      const innerGlow = gsap.to(inner, {
+        scale: 1.1,
+        opacity: 0.85,
+        duration: 2.2,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+        transformOrigin: 'center center'
+      });
+      this._weatherTweens.set('sun-inner', innerGlow);
+    }
+
+    // Animate rays rotation and pulse
+    const raysRotate = gsap.to(rays, {
+      rotation: 360,
+      duration: 20,
+      ease: 'none',
+      repeat: -1,
+      transformOrigin: 'center center'
+    });
+    this._weatherTweens.set('sun-rays-rotate', raysRotate);
+
+    const raysPulse = gsap.to(rays, {
+      scale: 1.12,
+      opacity: 1,
+      duration: 1.8,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
+      transformOrigin: 'center center'
+    });
+    this._weatherTweens.set('sun-rays-pulse', raysPulse);
+
+    // Entrance animation
+    gsap.fromTo(sun, 
+      { opacity: 0, scale: 0.5 },
+      { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' }
+    );
+  }
+
+  async _animateWeatherRain() {
+    if (!this._domRefs || !this._domRefs.weatherRain) return;
+    
+    this._stopWeatherAnimations();
+    const gsap = await this._ensureGsap();
+    if (!gsap) return;
+
+    const rain = this._domRefs.weatherRain;
+    const cloud1 = this._domRefs.weatherRainCloud1;
+    const cloud2 = this._domRefs.weatherRainCloud2;
+    const drops = this._domRefs.weatherRainDrops.filter(d => d !== null);
+
+    if (!drops.length) return;
+
+    // Animate clouds pulse
+    if (cloud1) {
+      const cloud1Pulse = gsap.to(cloud1, {
+        opacity: 0.9,
+        duration: 2,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true
+      });
+      this._weatherTweens.set('rain-cloud1', cloud1Pulse);
+    }
+
+    if (cloud2) {
+      const cloud2Pulse = gsap.to(cloud2, {
+        opacity: 0.8,
+        duration: 2.3,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true
+      });
+      this._weatherTweens.set('rain-cloud2', cloud2Pulse);
+    }
+
+    // Animate rain drops falling with neon trail effect
+    drops.forEach((drop, index) => {
+      if (!drop) return;
+      const startY = parseFloat(drop.getAttribute('cy') || 26);
+      const duration = 0.8 + (index * 0.15);
+      const delay = index * 0.1;
+
+      const dropTween = gsap.to(drop, {
+        y: 20,
+        opacity: 0,
+        scale: 0.8,
+        duration: duration,
+        ease: 'power2.in',
+        repeat: -1,
+        delay: delay,
+        transformOrigin: 'center center',
+        onRepeat: function() {
+          gsap.set(drop, { y: 0, opacity: 1, scale: 1 });
+        }
+      });
+      this._weatherTweens.set(`rain-drop-${index}`, dropTween);
+    });
+
+    // Entrance animation
+    gsap.fromTo(rain,
+      { opacity: 0, scale: 0.5 },
+      { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' }
+    );
+  }
+
   _normalizeAnimationStyle(style) {
     const normalized = typeof style === 'string' ? style.trim().toLowerCase() : '';
     if (normalized && Object.prototype.hasOwnProperty.call(FLOW_STYLE_PATTERNS, normalized)) {
@@ -1425,6 +1652,32 @@ class LuminaEnergyCard extends HTMLElement {
     const car1View = buildCarView(showCar1, car1Label, car1PowerValue, car1SocValue, car1Transforms, carLayout.car1, car_name_font_size, car_power_font_size, car_soc_font_size, car1Color, car1NameColor, car1SocColor);
     const car2View = buildCarView(showCar2, car2Label, car2PowerValue, car2SocValue, car2Transforms, carLayout.car2, car2_name_font_size, car2_power_font_size, car2_soc_font_size, car2Color, car2NameColor, car2SocColor);
 
+    // Determine weather state
+    let weatherState = 'none'; // 'none', 'sun', 'rain'
+    if (config.sensor_weather && config.sensor_weather !== '') {
+      const weatherEntity = this._hass.states[config.sensor_weather];
+      if (weatherEntity) {
+        const condition = weatherEntity.state ? weatherEntity.state.toLowerCase() : '';
+        const attributes = weatherEntity.attributes || {};
+        const conditionAttr = (attributes.condition || '').toLowerCase();
+        
+        // Rain conditions
+        const rainConditions = ['rainy', 'rain', 'rainy-night', 'pouring', 'hail', 'lightning-rainy'];
+        if (rainConditions.includes(condition) || rainConditions.includes(conditionAttr)) {
+          weatherState = 'rain';
+        } 
+        // Sun/clear conditions
+        else if (condition === 'sunny' || condition === 'clear' || condition === 'clear-night' || 
+                 conditionAttr === 'sunny' || conditionAttr === 'clear' || conditionAttr === 'clear-night') {
+          weatherState = 'sun';
+        }
+        // Default to sun if condition is not explicitly rainy
+        else if (condition && condition !== 'unknown' && condition !== 'unavailable') {
+          weatherState = 'sun'; // Default to sun for other conditions
+        }
+      }
+    }
+
     const viewState = {
       backgroundImage: bg_img,
       animationStyle: animation_style,
@@ -1445,7 +1698,8 @@ class LuminaEnergyCard extends HTMLElement {
       flows,
       flowDurations,
       flowPaths,
-      showDebugGrid
+      showDebugGrid,
+      weather: { state: weatherState }
     };
 
     this._ensureTemplate(viewState);
@@ -1529,6 +1783,9 @@ class LuminaEnergyCard extends HTMLElement {
           <g data-role="debug-grid" class="debug-grid" style="display:none;">
             ${DEBUG_GRID_CONTENT}
           </g>
+
+          ${buildWeatherSunSvg()}
+          ${buildWeatherRainSvg()}
 
           ${viewState.title && viewState.title.text ? `
           <rect x="290" y="10" width="220" height="32" rx="6" ry="6" fill="rgba(0, 20, 40, 0.85)" stroke="#00FFFF" stroke-width="1.5"/>
@@ -1647,6 +1904,21 @@ class LuminaEnergyCard extends HTMLElement {
     this._domRefs = {
       background: root.querySelector('[data-role="background-image"]'),
       debugGrid: root.querySelector('[data-role="debug-grid"]'),
+      weatherSun: root.querySelector('[data-role="weather-sun"]'),
+      weatherRain: root.querySelector('[data-role="weather-rain"]'),
+      weatherSunCore: root.querySelector('[data-role="sun-core"]'),
+      weatherSunCoreOuter: root.querySelector('[data-role="sun-core-outer"]'),
+      weatherSunInner: root.querySelector('[data-role="sun-inner"]'),
+      weatherSunRays: root.querySelector('[data-role="sun-rays"]'),
+      weatherRainCloud1: root.querySelector('[data-role="rain-cloud-1"]'),
+      weatherRainCloud2: root.querySelector('[data-role="rain-cloud-2"]'),
+      weatherRainDrops: [
+        root.querySelector('[data-role="rain-drop-1"]'),
+        root.querySelector('[data-role="rain-drop-2"]'),
+        root.querySelector('[data-role="rain-drop-3"]'),
+        root.querySelector('[data-role="rain-drop-4"]'),
+        root.querySelector('[data-role="rain-drop-5"]')
+      ],
       title: root.querySelector('[data-role="title-text"]'),
       dailyYieldGroup: root.querySelector('[data-role="daily-yield-group"]'),
       dailyLabel: root.querySelector('[data-role="daily-label"]'),
@@ -2122,6 +2394,43 @@ class LuminaEnergyCard extends HTMLElement {
       }
     }
 
+    // Update weather icons with GSAP animations
+    const currentWeatherState = (viewState.weather && viewState.weather.state) || 'none';
+    const prevWeatherState = (prev.weather && prev.weather.state) || 'none';
+    
+    if (currentWeatherState !== prevWeatherState) {
+      if (currentWeatherState === 'sun') {
+        if (refs.weatherSun) {
+          refs.weatherSun.style.display = 'inline';
+          this._animateWeatherSun();
+        }
+        if (refs.weatherRain) {
+          this._stopWeatherAnimations();
+          refs.weatherRain.style.display = 'none';
+        }
+      } else if (currentWeatherState === 'rain') {
+        if (refs.weatherRain) {
+          refs.weatherRain.style.display = 'inline';
+          this._animateWeatherRain();
+        }
+        if (refs.weatherSun) {
+          this._stopWeatherAnimations();
+          refs.weatherSun.style.display = 'none';
+        }
+      } else {
+        // none - hide both
+        this._stopWeatherAnimations();
+        if (refs.weatherSun) refs.weatherSun.style.display = 'none';
+        if (refs.weatherRain) refs.weatherRain.style.display = 'none';
+      }
+    } else if (currentWeatherState === 'sun' && refs.weatherSun && refs.weatherSun.style.display === 'none') {
+      refs.weatherSun.style.display = 'inline';
+      this._animateWeatherSun();
+    } else if (currentWeatherState === 'rain' && refs.weatherRain && refs.weatherRain.style.display === 'none') {
+      refs.weatherRain.style.display = 'inline';
+      this._animateWeatherRain();
+    }
+
     if (refs.title) {
       if (!prev.title || prev.title.text !== viewState.title.text) {
         refs.title.textContent = viewState.title.text;
@@ -2545,7 +2854,8 @@ class LuminaEnergyCard extends HTMLElement {
       } : undefined,
       flows: Object.fromEntries(Object.entries(viewState.flows).map(([key, value]) => [key, { ...value }])),
       flowPaths: { ...viewState.flowPaths },
-      showDebugGrid: Boolean(viewState.showDebugGrid)
+      showDebugGrid: Boolean(viewState.showDebugGrid),
+      weather: viewState.weather ? { ...viewState.weather } : { state: 'none' }
     };
   }
 
@@ -2590,6 +2900,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
         sections: {
           general: { title: 'General Settings', helper: 'Card metadata, background, language, and update cadence.' },
           entities: { title: 'Entity Selection', helper: 'Choose the PV, battery, grid, load, and EV entities used by the card. Either the PV total sensor or your PV string arrays need to be specified as a minimum.' },
+          weather: { title: 'Weather', helper: 'Configure weather entity to display sun or rain icon in the top-left corner.' },
           pvPopup: { title: 'PV Popup', helper: 'Configure entities for the PV popup display.' },
           housePopup: { title: 'House Popup', helper: 'Configure entities for the house popup display.' },
           batteryPopup: { title: 'Battery Popup', helper: 'Configure battery popup display.' },
@@ -2747,7 +3058,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_popup_house_6: { label: 'House Popup 6', helper: 'Entity for house popup line 6.' },
           sensor_popup_house_6_name: { label: 'House Popup 6 Name', helper: 'Optional custom name for house popup line 6. Leave blank to use entity name.' },
           sensor_popup_house_6_color: { label: 'House Popup 6 Color', helper: 'Color for house popup line 6 text.' },
-          sensor_popup_house_6_font_size: { label: 'House Popup 6 Font Size (px)', helper: 'Font size for house popup line 6. Default 16' }
+          sensor_popup_house_6_font_size: { label: 'House Popup 6 Font Size (px)', helper: 'Font size for house popup line 6. Default 16' },
+          sensor_weather: { label: 'Weather Entity', helper: 'Weather entity (e.g., weather.home). Shows sun icon for clear/ sunny conditions, rain icon for rainy conditions.' }
         },
         options: {
           languages: [
@@ -2781,6 +3093,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
         sections: {
           general: { title: 'Impostazioni generali', helper: 'Titolo scheda, sfondo, lingua e frequenza di aggiornamento.' },
           entities: { title: 'Selezione entita', helper: 'Scegli le entita PV, batteria, rete, carico ed EV utilizzate dalla scheda. Come minimo deve essere specificato il sensore PV totale oppure gli array di stringhe PV.' },
+          weather: { title: 'Meteo', helper: 'Configura l\'entità meteo per visualizzare l\'icona del sole o della pioggia nell\'angolo in alto a sinistra.' },
           pvPopup: { title: 'PV Popup', helper: 'Configura le entita per la visualizzazione del popup PV.' },
           housePopup: { title: 'House Popup', helper: 'Configura le entita per la visualizzazione del popup casa.' },
           batteryPopup: { title: 'Popup Batteria', helper: 'Configura il popup della batteria.' },
@@ -2931,7 +3244,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_popup_house_6: { label: 'House Popup 6', helper: 'Entita per la riga 6 del popup casa.' },
           sensor_popup_house_6_name: { label: 'Nome House Popup 6', helper: 'Nome personalizzato opzionale per la riga 6 del popup casa. Lasciare vuoto per usare il nome entità.' },
           sensor_popup_house_6_color: { label: 'Colore House Popup 6', helper: 'Colore per il testo della riga 6 del popup casa.' },
-          sensor_popup_house_6_font_size: { label: 'Dimensione carattere House Popup 6 (px)', helper: 'Dimensione carattere per la riga 6 del popup casa. Predefinita 16' }
+          sensor_popup_house_6_font_size: { label: 'Dimensione carattere House Popup 6 (px)', helper: 'Dimensione carattere per la riga 6 del popup casa. Predefinita 16' },
+          sensor_weather: { label: 'Entità Meteo', helper: 'Entità meteo (es. weather.home). Mostra l\'icona del sole per condizioni chiare/soleggiate, icona della pioggia per condizioni piovose.' }
         },
         options: {
           languages: [
@@ -3931,6 +4245,9 @@ class LuminaEnergyCardEditor extends HTMLElement {
         { name: 'sensor_popup_bat_6', label: (fields.sensor_popup_bat_6 && fields.sensor_popup_bat_6.label) || '', helper: (fields.sensor_popup_bat_6 && fields.sensor_popup_bat_6.helper) || '', selector: { entity: {} } },
         { name: 'sensor_popup_bat_6_name', label: (fields.sensor_popup_bat_6_name && fields.sensor_popup_bat_6_name.label) || '', helper: (fields.sensor_popup_bat_6_name && fields.sensor_popup_bat_6_name.helper) || '', selector: { text: {} } }
       ]),
+      weather: define([
+        { name: 'sensor_weather', label: fields.sensor_weather.label, helper: fields.sensor_weather.helper, selector: { entity: { domain: 'weather' } } }
+      ]),
       housePopup: define([
         { name: 'sensor_popup_house_1', label: (fields.sensor_popup_house_1 && fields.sensor_popup_house_1.label) || '', helper: (fields.sensor_popup_house_1 && fields.sensor_popup_house_1.helper) || '', selector: { entity: {} } },
         { name: 'sensor_popup_house_1_name', label: (fields.sensor_popup_house_1_name && fields.sensor_popup_house_1_name.label) || '', helper: (fields.sensor_popup_house_1_name && fields.sensor_popup_house_1_name.helper) || '', selector: { text: {} } },
@@ -4024,6 +4341,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           return wrapper;
         }
       },
+      { id: 'weather', title: sections.weather.title, helper: sections.weather.helper, schema: schemaDefs.weather, defaultOpen: false },
       { id: 'pvPopup', title: sections.pvPopup.title, helper: sections.pvPopup.helper, schema: schemaDefs.pvPopup, defaultOpen: false },
       { id: 'batteryPopup', title: sections.batteryPopup.title, helper: sections.batteryPopup.helper, schema: schemaDefs.batteryPopup, defaultOpen: false },
       { id: 'housePopup', title: sections.housePopup.title, helper: sections.housePopup.helper, schema: schemaDefs.housePopup, defaultOpen: false },
@@ -4654,3 +4972,4 @@ console.info(
   'color: white; background: #00FFFF; font-weight: 700;',
   'color: #00FFFF; background: black; font-weight: 700;'
 );
+
