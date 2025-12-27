@@ -1,7 +1,7 @@
 /**
  * Lumina Energy Card
  * Custom Home Assistant card for energy flow visualization
- * Version: 1.1.26
+ * Version: 1.1.26-1
  * Tested with Home Assistant 2025.12+
  */
 const BATTERY_GEOMETRY = { X: 260, Y_BASE: 350, WIDTH: 55, MAX_HEIGHT: 84 };
@@ -28,12 +28,14 @@ const FLOW_PATHS = {
   bat: 'M 423 310 L 325 350',
   load: 'M 471 303 L 550 273 L 380 220',
   grid: 'M 470 280 L 575 240 L 575 223',
+  grid_house: 'M 475 205 L 575 245 L 575 223',
+  house_inv: 'M 475 210 L 575 250 L 470 280',
   car1: 'M 475 329 L 490 335 L 600 285',
   car2: 'M 475 341 L 490 347 L 600 310'
 };
 
 const SVG_DIMENSIONS = { width: 800, height: 450 };
-const DEBUG_GRID_SPACING = 50;
+const DEBUG_GRID_SPACING = 25;
 const DEBUG_GRID_MAJOR_SPACING = 100;
 const DEBUG_GRID_MINOR_COLOR = 'rgba(255, 255, 255, 0.25)';
 const DEBUG_GRID_MAJOR_COLOR = 'rgba(255, 255, 255, 0.45)';
@@ -200,6 +202,7 @@ class LuminaEnergyCard extends HTMLElement {
         car2_name_font_size: 15, // Schriftgroesse Fahrzeugname 2 (px)
       animation_speed_factor: 1,
       animation_style: 'dashes',
+      grid_flow_mode: 'grid_to_inverter',
             sensor_pv_total: '',
           sensor_pv_total_secondary: '',
       sensor_pv1: '',
@@ -1356,12 +1359,18 @@ class LuminaEnergyCard extends HTMLElement {
 
     const loadY = (pv_secondary_w > 10) ? (TEXT_POSITIONS.home.y - 28) : TEXT_POSITIONS.home.y;
 
+    const gridFlowMode = config.grid_flow_mode || 'grid_to_inverter';
+    const gridActiveForGrid = gridFlowMode === 'grid_to_inverter' ? gridActive : false;
+    const gridActiveForHouse = gridFlowMode === 'grid_to_house_inverter' ? gridActive : false;
+
     const flows = {
       pv1: { stroke: pvPrimaryColor, glowColor: pvPrimaryColor, active: pv_primary_w > 10 },
       pv2: { stroke: pvSecondaryColor, glowColor: pvSecondaryColor, active: pv_secondary_w > 10 },
       bat: { stroke: bat_col, glowColor: bat_col, active: Math.abs(total_bat_w) > 10, direction: batteryDirectionSign },
       load: { stroke: effectiveLoadFlowColor, glowColor: effectiveLoadFlowColor, active: loadMagnitude > 10, direction: 1 },
-      grid: { stroke: effectiveGridColor, glowColor: effectiveGridColor, active: gridActive, direction: gridAnimationDirection },
+      grid: { stroke: effectiveGridColor, glowColor: effectiveGridColor, active: gridActiveForGrid, direction: gridAnimationDirection },
+      grid_house: { stroke: effectiveGridColor, glowColor: effectiveGridColor, active: gridActiveForHouse, direction: gridAnimationDirection },
+      house_inv: { stroke: effectiveGridColor, glowColor: effectiveGridColor, active: gridActiveForHouse, direction: -gridAnimationDirection },
       car1: { stroke: carFlowColor, glowColor: carFlowColor, active: showCar1 && Math.abs(car1PowerValue) > 10, direction: 1 },
       car2: { stroke: carFlowColor, glowColor: carFlowColor, active: showCar2 && Math.abs(car2PowerValue) > 10, direction: 1 }
     };
@@ -1381,6 +1390,8 @@ class LuminaEnergyCard extends HTMLElement {
       bat: FLOW_PATHS.bat,
       load: FLOW_PATHS.load,
       grid: FLOW_PATHS.grid,
+      grid_house: FLOW_PATHS.grid_house,
+      house_inv: FLOW_PATHS.house_inv,
       car1: carLayout.car1.path,
       car2: carLayout.car2.path
     };
@@ -1566,6 +1577,12 @@ class LuminaEnergyCard extends HTMLElement {
           <path class="track-path" d="${viewState.flowPaths.grid}" />
           <path class="flow-path" data-flow-key="grid" d="${viewState.flowPaths.grid}" stroke="${viewState.flows.grid.stroke}" style="opacity:0;" />
           ${buildArrowGroupSvg('grid', viewState.flows.grid)}
+          <path class="track-path" d="${viewState.flowPaths.grid_house}" />
+          <path class="flow-path" data-flow-key="grid_house" d="${viewState.flowPaths.grid_house}" stroke="${viewState.flows.grid_house.stroke}" style="opacity:0;" />
+          ${buildArrowGroupSvg('grid_house', viewState.flows.grid_house)}
+          <path class="track-path" d="${viewState.flowPaths.house_inv}" />
+          <path class="flow-path" data-flow-key="house_inv" d="${viewState.flowPaths.house_inv}" stroke="${viewState.flows.house_inv.stroke}" style="opacity:0;" />
+          ${buildArrowGroupSvg('house_inv', viewState.flows.house_inv)}
           <path class="track-path" d="${viewState.flowPaths.car1}" />
           <path class="flow-path" data-flow-key="car1" d="${viewState.flowPaths.car1}" stroke="${viewState.flows.car1.stroke}" style="opacity:0;" />
           ${buildArrowGroupSvg('car1', viewState.flows.car1)}
@@ -1682,6 +1699,8 @@ class LuminaEnergyCard extends HTMLElement {
         bat: root.querySelector('[data-flow-key="bat"]'),
         load: root.querySelector('[data-flow-key="load"]'),
         grid: root.querySelector('[data-flow-key="grid"]'),
+        grid_house: root.querySelector('[data-flow-key="grid_house"]'),
+        house_inv: root.querySelector('[data-flow-key="house_inv"]'),
         car1: root.querySelector('[data-flow-key="car1"]'),
         car2: root.querySelector('[data-flow-key="car2"]')
       },
@@ -1691,6 +1710,8 @@ class LuminaEnergyCard extends HTMLElement {
         bat: root.querySelector('[data-arrow-key="bat"]'),
         load: root.querySelector('[data-arrow-key="load"]'),
         grid: root.querySelector('[data-arrow-key="grid"]'),
+        grid_house: root.querySelector('[data-arrow-key="grid_house"]'),
+        house_inv: root.querySelector('[data-arrow-key="house_inv"]'),
         car1: root.querySelector('[data-arrow-key="car1"]'),
         car2: root.querySelector('[data-arrow-key="car2"]')
       },
@@ -1700,6 +1721,8 @@ class LuminaEnergyCard extends HTMLElement {
         bat: Array.from(root.querySelectorAll('[data-arrow-shape="bat"]')),
         load: Array.from(root.querySelectorAll('[data-arrow-shape="load"]')),
         grid: Array.from(root.querySelectorAll('[data-arrow-shape="grid"]')),
+        grid_house: Array.from(root.querySelectorAll('[data-arrow-shape="grid_house"]')),
+        house_inv: Array.from(root.querySelectorAll('[data-arrow-shape="house_inv"]')),
         car1: Array.from(root.querySelectorAll('[data-arrow-shape="car1"]')),
         car2: Array.from(root.querySelectorAll('[data-arrow-shape="car2"]'))
       }
@@ -2564,7 +2587,7 @@ class LuminaEnergyCard extends HTMLElement {
   }
 
   static get version() {
-    return '1.1.26';
+    return '1.1.26-1';
   }
 }
 
@@ -2581,20 +2604,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
       ? { ...LuminaEnergyCard.getStubConfig() }
       : {};
     this._strings = this._buildStrings();
-    // If an embedded locales bundle was provided (embedded-locales.js), merge it now
-    try {
-      if (typeof window !== 'undefined' && window.LUMINA_EMBEDDED_LOCALES) {
-        for (const [lang, data] of Object.entries(window.LUMINA_EMBEDDED_LOCALES)) {
-          this._strings[lang] = Object.assign({}, this._strings[lang] || {}, data);
-        }
-      }
-    } catch (e) {
-      // swallow to avoid breaking editor construction if embedded data malformed
-      console.debug('lumina: failed merging embedded locales', e);
-    }
-    this._externalLocales = null;
-    this._localesBase = null;
-    this._loadExternalLocales();
     this._sectionOpenState = {};
   }
 
@@ -2603,7 +2612,11 @@ class LuminaEnergyCardEditor extends HTMLElement {
       en: {
         sections: {
           general: { title: 'General Settings', helper: 'Card metadata, background, language, and update cadence.' },
-          entities: { title: 'Entity Selection', helper: 'Choose the PV, battery, grid, load, and EV entities used by the card. Either the PV total sensor or your PV string arrays need to be specified as a minimum.' },
+          array1: { title: 'Array 1', helper: 'Choose the PV, battery, grid, load, and EV entities used by the card. Either the PV total sensor or your PV string arrays need to be specified as a minimum.' },
+          array2: { title: 'Array 2', helper: 'If PV Total Sensor (Inverter 2) is set or the PV String values are provided, Array 2 will become active and enable the second inverter. You must also enable Daily Production Sensor (Array 2) and Home Load (Inverter 2).' },
+          battery: { title: 'Battery', helper: 'Configure battery entities.' },
+          grid: { title: 'Grid', helper: 'Configure grid entities.' },
+          car: { title: 'Car', helper: 'Configure EV entities.' },
           pvPopup: { title: 'PV Popup', helper: 'Configure entities for the PV popup display.' },
           housePopup: { title: 'House Popup', helper: 'Configure entities for the house popup display.' },
           batteryPopup: { title: 'Battery Popup', helper: 'Configure battery popup display.' },
@@ -2619,6 +2632,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           update_interval: { label: 'Update Interval', helper: 'Refresh cadence for card updates (0 disables throttling).' },
           animation_speed_factor: { label: 'Animation Speed Factor', helper: 'Adjust animation speed multiplier (-3x to 3x). Set 0 to pause; negatives reverse direction.' },
           animation_style: { label: 'Animation Style', helper: 'Choose the flow animation motif (dashes, dots, or arrows).' },
+          grid_flow_mode: { label: 'Grid Flow', helper: 'Choose how grid flows are displayed.' },
           
           sensor_pv_total: { label: 'PV Total Sensor', helper: 'Optional aggregate production sensor displayed as the combined line.' },
           sensor_pv_total_secondary: { label: 'PV Total Sensor (Inverter 2)', helper: 'Optional second inverter total; added to the PV total when provided.' },
@@ -2654,6 +2668,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_grid_export: { label: 'Grid Export Sensor', helper: 'Optional entity reporting grid export (positive) power.' },
           sensor_grid_import_daily: { label: 'Daily Grid Import Sensor', helper: 'Optional entity reporting cumulative grid import for the current day.' },
           sensor_grid_export_daily: { label: 'Daily Grid Export Sensor', helper: 'Optional entity reporting cumulative grid export for the current day.' },
+          show_daily_grid: { label: 'Show Daily Grid Values', helper: 'Show the daily import/export totals under the current grid flow when enabled.' },
           pv_tot_color: { label: 'PV Total Color', helper: 'Colour applied to the PV TOTAL text line.' },
           pv_primary_color: { label: 'PV 1 Flow Color', helper: 'Colour used for the primary PV animation line.' },
           pv_secondary_color: { label: 'PV 2 Flow Color', helper: 'Colour used for the secondary PV animation line when available.' },
@@ -2684,13 +2699,22 @@ class LuminaEnergyCardEditor extends HTMLElement {
           grid_warning_color: { label: 'Grid Warning Color', helper: 'Hex or CSS color applied at the warning threshold.' },
           grid_threshold_critical: { label: 'Grid Critical Threshold', helper: 'Change grid color when magnitude equals or exceeds this value. Uses the selected display unit.' },
           grid_critical_color: { label: 'Grid Critical Color', helper: 'Hex or CSS color applied at the critical threshold.' },
-            invert_grid: { label: 'Invert Grid Values', helper: 'Enable if import/export polarity is reversed.' },
-            invert_battery: { label: 'Invert Battery Values', helper: 'Enable if charge/discharge polarity is reversed.' },
+          invert_grid: { label: 'Invert Grid Values', helper: 'Enable if import/export polarity is reversed.' },
+          invert_battery: { label: 'Invert Battery Values', helper: 'Enable if charge/discharge polarity is reversed.' },
           sensor_car_power: { label: 'Car 1 Power Sensor' },
           sensor_car_soc: { label: 'Car 1 SOC Sensor' },
+          car_soc: { label: 'Car SOC', helper: 'Sensor for EV battery SOC.' },
+          car_range: { label: 'Car Range', helper: 'Sensor for EV range.' },
+          car_efficiency: { label: 'Car Efficiency', helper: 'Sensor for EV efficiency.' },
+          car_charger_power: { label: 'Car Charger Power', helper: 'Sensor for EV charger power.' },
           car1_label: { label: 'Car 1 Label', helper: 'Text displayed next to the first EV values.' },
           sensor_car2_power: { label: 'Car 2 Power Sensor' },
+          car2_power: { label: 'Car 2 Power', helper: 'Sensor for EV 2 charge/discharge power.' },
           sensor_car2_soc: { label: 'Car 2 SOC Sensor' },
+          car2_soc: { label: 'Car 2 SOC', helper: 'Sensor for EV 2 battery SOC.' },
+          car2_range: { label: 'Car 2 Range', helper: 'Sensor for EV 2 range.' },
+          car2_efficiency: { label: 'Car 2 Efficiency', helper: 'Sensor for EV 2 efficiency.' },
+          car2_charger_power: { label: 'Car 2 Charger Power', helper: 'Sensor for EV 2 charger power.' },
           car2_label: { label: 'Car 2 Label', helper: 'Text displayed next to the second EV values.' },
           show_car_soc: { label: 'Show Car 1', helper: 'Toggle to render the first EV metrics.' },
           show_car2: { label: 'Show Car 2', helper: 'Enable to render the second EV metrics when sensors are provided.' },
@@ -2779,6 +2803,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Dashes (default)' },
             { value: 'dots', label: 'Dots' },
             { value: 'arrows', label: 'Arrows' }
+          ],
+          grid_flow_modes: [
+            { value: 'grid_to_inverter', label: 'Grid to Inverter' },
+            { value: 'grid_to_house_inverter', label: 'Grid to House - Inverter' }
           ]
         }
       ,
@@ -2794,6 +2822,11 @@ class LuminaEnergyCardEditor extends HTMLElement {
       it: {
         sections: {
           general: { title: 'Impostazioni generali', helper: 'Titolo scheda, sfondo, lingua e frequenza di aggiornamento.' },
+          array1: { title: 'Array 1', helper: 'Configura le entita dell Array PV 1.' },
+          array2: { title: 'Array 2', helper: 'If PV Total Sensor (Inverter 2) is set or the PV String values are provided, Array 2 will become active and enable the second inverter. You must also enable Daily Production Sensor (Array 2) and Home Load (Inverter 2).' },
+          battery: { title: 'Batteria', helper: 'Configura le entita della batteria.' },
+          grid: { title: 'Rete', helper: 'Configura le entita della rete.' },
+          car: { title: 'Auto', helper: 'Configura le entita EV.' },
           entities: { title: 'Selezione entita', helper: 'Scegli le entita PV, batteria, rete, carico ed EV utilizzate dalla scheda. Come minimo deve essere specificato il sensore PV totale oppure gli array di stringhe PV.' },
           pvPopup: { title: 'PV Popup', helper: 'Configura le entita per la visualizzazione del popup PV.' },
           housePopup: { title: 'House Popup', helper: 'Configura le entita per la visualizzazione del popup casa.' },
@@ -2810,6 +2843,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           update_interval: { label: 'Intervallo di aggiornamento', helper: 'Frequenza di aggiornamento della scheda (0 disattiva il limite).' },
           animation_speed_factor: { label: 'Fattore velocita animazioni', helper: 'Regola il moltiplicatore (-3x a 3x). Usa 0 per mettere in pausa; valori negativi invertono il flusso.' },
           animation_style: { label: 'Stile animazione', helper: 'Scegli il motivo dei flussi (tratteggi, punti o frecce).' },
+          grid_flow_mode: { label: 'Flusso di rete', helper: 'Scegli come visualizzare i flussi di rete.' },
           
           sensor_pv_total: { label: 'Sensore PV totale', helper: 'Sensore aggregato opzionale mostrato come linea combinata.' },
           sensor_pv_total_secondary: { label: 'Sensore PV totale (Inverter 2)', helper: 'Secondo sensore inverter opzionale; viene sommato al totale PV.' },
@@ -2838,6 +2872,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_grid_export: { label: 'Sensore export rete', helper: 'Entita opzionale che riporta la potenza di export.' },
           sensor_grid_import_daily: { label: 'Sensore import rete giornaliero', helper: 'Entita opzionale che riporta l import cumulativo della rete per il giorno corrente.' },
           sensor_grid_export_daily: { label: 'Sensore export rete giornaliero', helper: 'Entita opzionale che riporta l export cumulativo della rete per il giorno corrente.' },
+          show_daily_grid: { label: 'Mostra valori rete giornalieri', helper: 'Mostra i totali import/export giornalieri sotto il flusso rete corrente quando abilitato.' },
           pv_primary_color: { label: 'Colore flusso FV 1', helper: 'Colore utilizzato per l animazione FV principale.' },
           pv_tot_color: { label: 'Colore PV TOTALE', helper: 'Colore applicato alla riga PV TOTALE.' },
           pv_secondary_color: { label: 'Colore flusso FV 2', helper: 'Colore utilizzato per la seconda linea FV quando presente.' },
@@ -2872,9 +2907,18 @@ class LuminaEnergyCardEditor extends HTMLElement {
             invert_battery: { label: 'Inverti valori batteria', helper: 'Abilita se la polarita carica/scarica e invertita.' },
           sensor_car_power: { label: 'Sensore potenza auto 1' },
           sensor_car_soc: { label: 'Sensore SOC auto 1' },
+          car_soc: { label: 'SOC Auto', helper: 'Sensore per SOC batteria EV.' },
+          car_range: { label: 'Autonomia Auto', helper: 'Sensore per autonomia EV.' },
+          car_efficiency: { label: 'Efficienza Auto', helper: 'Sensore per efficienza EV.' },
+          car_charger_power: { label: 'Potenza Caricabatterie Auto', helper: 'Sensore per potenza caricabatterie EV.' },
           car1_label: { label: 'Etichetta Auto 1', helper: 'Testo mostrato vicino ai valori della prima EV.' },
           sensor_car2_power: { label: 'Sensore potenza auto 2' },
+          car2_power: { label: 'Potenza Auto 2', helper: 'Sensore per potenza carica/scarica EV 2.' },
           sensor_car2_soc: { label: 'Sensore SOC auto 2' },
+          car2_soc: { label: 'SOC Auto 2', helper: 'Sensore per SOC batteria EV 2.' },
+          car2_range: { label: 'Autonomia Auto 2', helper: 'Sensore per autonomia EV 2.' },
+          car2_efficiency: { label: 'Efficienza Auto 2', helper: 'Sensore per efficienza EV 2.' },
+          car2_charger_power: { label: 'Potenza Caricabatterie Auto 2', helper: 'Sensore per potenza caricabatterie EV 2.' },
           car2_label: { label: 'Etichetta Auto 2', helper: 'Testo mostrato vicino ai valori della seconda EV.' },
           show_car_soc: { label: 'Mostra veicolo elettrico 1', helper: 'Attiva per visualizzare i dati della prima EV.' },
           show_car2: { label: 'Mostra veicolo elettrico 2', helper: 'Attiva e fornisci i sensori per visualizzare la seconda EV.' },
@@ -2963,6 +3007,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Tratteggi (predefinito)' },
             { value: 'dots', label: 'Punti' },
             { value: 'arrows', label: 'Frecce' }
+          ],
+          grid_flow_modes: [
+            { value: 'grid_to_inverter', label: 'Rete a Inverter' },
+            { value: 'grid_to_house_inverter', label: 'Rete a Casa - Inverter' }
           ]
         }
       ,
@@ -2978,6 +3026,11 @@ class LuminaEnergyCardEditor extends HTMLElement {
       de: {
         sections: {
           general: { title: 'Allgemeine Einstellungen', helper: 'Kartentitel, Hintergrund, Sprache und Aktualisierungsintervall.' },
+          array1: { title: 'Array 1', helper: 'PV Array 1 Entitaeten konfigurieren.' },
+          array2: { title: 'Array 2', helper: 'If PV Total Sensor (Inverter 2) is set or the PV String values are provided, Array 2 will become active and enable the second inverter. You must also enable Daily Production Sensor (Array 2) and Home Load (Inverter 2).' },
+          battery: { title: 'Batterie', helper: 'Batterie-Entitaeten konfigurieren.' },
+          grid: { title: 'Netz', helper: 'Netz-Entitaeten konfigurieren.' },
+          car: { title: 'Auto', helper: 'EV-Entitaeten konfigurieren.' },
           entities: { title: 'Entitaetenauswahl', helper: 'PV-, Batterie-, Netz-, Verbrauchs- und optionale EV-Entitaeten waehlen. Entweder der PV-Gesamt-Sensor oder Ihre PV-String-Arrays muessen mindestens angegeben werden.' },
           pvPopup: { title: 'PV Popup', helper: 'Entitaeten fuer die PV-Popup-Anzeige konfigurieren.' },
           housePopup: { title: 'House Popup', helper: 'Entitaeten fuer die House-Popup-Anzeige konfigurieren.' },
@@ -2994,6 +3047,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           update_interval: { label: 'Aktualisierungsintervall', helper: 'Aktualisierungsfrequenz der Karte (0 deaktiviert das Limit).' },
           animation_speed_factor: { label: 'Animationsgeschwindigkeit', helper: 'Animationsfaktor zwischen -3x und 3x. 0 pausiert, negative Werte kehren den Fluss um.' },
           animation_style: { label: 'Animationsstil', helper: 'Motiv der Flussanimation waehlen (Striche, Punkte oder Pfeile).' },
+          grid_flow_mode: { label: 'Netzfluss', helper: 'Waehlen, wie Netzfluesse angezeigt werden.' },
           
           sensor_pv_total: { label: 'PV Gesamt Sensor', helper: 'Optionaler aggregierter Sensor fuer die kombinierte Linie.' },
           sensor_pv_total_secondary: { label: 'PV Gesamt Sensor (WR 2)', helper: 'Optionaler zweiter Wechselrichter; wird mit dem PV-Gesamtwert addiert.' },
@@ -3022,6 +3076,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_grid_export: { label: 'Netzexport Sensor', helper: 'Optionale Entitaet fuer positiven Netzexport.' },
           sensor_grid_import_daily: { label: 'Tages-Netzimport Sensor', helper: 'Optionale Entitaet, die den kumulierten Netzimport fuer den aktuellen Tag meldet.' },
           sensor_grid_export_daily: { label: 'Tages-Netzexport Sensor', helper: 'Optionale Entitaet, die den kumulierten Netzexport fuer den aktuellen Tag meldet.' },
+          show_daily_grid: { label: 'Tages-Netzwerte anzeigen', helper: 'Zeigt die taeglichen Import-/Exporttotalen unter dem aktuellen Netzfluss an, wenn aktiviert.' },
           pv_primary_color: { label: 'PV 1 Flussfarbe', helper: 'Farbe fuer die primaere PV-Animationslinie.' },
           pv_tot_color: { label: 'PV Gesamt Farbe', helper: 'Farbe fuer die PV Gesamt Zeile.' },
           pv_secondary_color: { label: 'PV 2 Flussfarbe', helper: 'Farbe fuer die zweite PV-Linie (falls vorhanden).' },
@@ -3056,9 +3111,18 @@ class LuminaEnergyCardEditor extends HTMLElement {
           invert_battery: { label: 'Batterie-Werte invertieren', helper: 'Aktivieren, wenn Lade-/Entlade-Polarität vertauscht ist.' },
           sensor_car_power: { label: 'Fahrzeugleistung Sensor 1' },
           sensor_car_soc: { label: 'Fahrzeug SOC Sensor 1' },
+          car_soc: { label: 'Fahrzeug SOC', helper: 'Sensor für EV-Batterie SOC.' },
+          car_range: { label: 'Fahrzeug Reichweite', helper: 'Sensor für EV-Reichweite.' },
+          car_efficiency: { label: 'Fahrzeug Effizienz', helper: 'Sensor für EV-Effizienz.' },
+          car_charger_power: { label: 'Fahrzeug Ladegerät Leistung', helper: 'Sensor für EV-Ladegerät Leistung.' },
           car1_label: { label: 'Bezeichnung Fahrzeug 1', helper: 'Text neben den Werten des ersten EV.' },
           sensor_car2_power: { label: 'Fahrzeugleistung Sensor 2' },
           sensor_car2_soc: { label: 'Fahrzeug SOC Sensor 2' },
+          car2_soc: { label: 'Fahrzeug 2 SOC', helper: 'Sensor für EV 2-Batterie SOC.' },
+          car2_range: { label: 'Fahrzeug 2 Reichweite', helper: 'Sensor für EV 2-Reichweite.' },
+          car2_efficiency: { label: 'Fahrzeug 2 Effizienz', helper: 'Sensor für EV 2-Effizienz.' },
+          car2_charger_power: { label: 'Fahrzeug 2 Ladegerät Leistung', helper: 'Sensor für EV 2-Ladegerät Leistung.' },
+          car2_power: { label: 'Fahrzeug 2 Leistung', helper: 'Sensor für EV 2-Lade-/Entladeleistung.' },
           car2_label: { label: 'Bezeichnung Fahrzeug 2', helper: 'Text neben den Werten des zweiten EV.' },
           show_car_soc: { label: 'Elektrofahrzeug 1 anzeigen', helper: 'Aktivieren, um die Werte des ersten Fahrzeugs anzuzeigen.' },
           show_car2: { label: 'Elektrofahrzeug 2 anzeigen', helper: 'Aktivieren und Sensoren zuweisen, um das zweite Fahrzeug zu zeigen.' },
@@ -3143,6 +3207,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Striche (Standard)' },
             { value: 'dots', label: 'Punkte' },
             { value: 'arrows', label: 'Pfeile' }
+          ],
+          grid_flow_modes: [
+            { value: 'grid_to_inverter', label: 'Netz zu Wechselrichter' },
+            { value: 'grid_to_house_inverter', label: 'Netz zu Haus - Wechselrichter' }
           ]
         }
       ,
@@ -3158,6 +3226,11 @@ class LuminaEnergyCardEditor extends HTMLElement {
       fr: {
         sections: {
           general: { title: 'Paramètres généraux', helper: 'Métadonnées de la carte, arrière-plan, langue et fréquence de mise à jour.' },
+          array1: { title: 'Array 1', helper: 'Configurer les entités de l Array PV 1.' },
+          array2: { title: 'Array 2', helper: 'If PV Total Sensor (Inverter 2) is set or the PV String values are provided, Array 2 will become active and enable the second inverter. You must also enable Daily Production Sensor (Array 2) and Home Load (Inverter 2).' },
+          battery: { title: 'Batterie', helper: 'Configurer les entités de la batterie.' },
+          grid: { title: 'Réseau', helper: 'Configurer les entités du réseau.' },
+          car: { title: 'Voiture', helper: 'Configurer les entités EV.' },
           entities: { title: 'Sélection d entités', helper: 'Choisissez les entités PV, batterie, réseau, charge et EV utilisées par la carte. Soit le capteur PV total, soit vos tableaux de chaînes PV doivent être spécifiés au minimum.' },
           pvPopup: { title: 'Popup PV', helper: 'Configurer les entités pour l\'affichage du popup PV.' },
           housePopup: { title: 'Popup Maison', helper: 'Configurer les entités pour l\'affichage du popup maison.' },
@@ -3174,6 +3247,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           update_interval: { label: 'Intervalle de mise à jour', helper: 'Fréquence de rafraîchissement des mises à jour de la carte (0 désactive le throttling).' },
           animation_speed_factor: { label: 'Facteur de vitesse d animation', helper: 'Ajuste le multiplicateur de vitesse d animation (-3x à 3x). Mettre 0 pour pause; les négatifs inversent la direction.' },
           animation_style: { label: 'Style d animation', helper: 'Choisissez le motif d animation des flux (tirets, points, flèches).' },
+          grid_flow_mode: { label: 'Flux réseau', helper: 'Choisissez comment afficher les flux réseau.' },
           sensor_pv_total: { label: 'Capteur PV total', helper: 'Capteur de production agrégé optionnel affiché comme ligne combinée.' },
           sensor_pv_total_secondary: { label: 'Capteur PV total (Inverseur 2)', helper: 'Second capteur d onduleur optionnel; ajouté au total PV s il est fourni.' },
           sensor_pv1: { label: 'Chaîne PV 1 (Array 1)', helper: 'Capteur principal de production solaire.' },
@@ -3208,6 +3282,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_grid_export: { label: 'Capteur export réseau', helper: 'Entité optionnelle rapportant l export réseau (valeurs positives).' },
           sensor_grid_import_daily: { label: 'Capteur import réseau journalier', helper: 'Entité optionnelle rapportant l import cumulatif réseau pour la journée en cours.' },
           sensor_grid_export_daily: { label: 'Capteur export réseau journalier', helper: 'Entité optionnelle rapportant l export cumulatif réseau pour la journée en cours.' },
+          show_daily_grid: { label: 'Afficher les valeurs réseau journalières', helper: 'Affiche les totaux import/export journaliers sous le flux réseau actuel lorsqu activé.' },
           pv_tot_color: { label: 'Couleur PV totale', helper: 'Couleur appliquée à la ligne/texte PV TOTAL.' },
           pv_primary_color: { label: 'Couleur flux PV 1', helper: 'Couleur utilisée pour la ligne d animation PV primaire.' },
           pv_secondary_color: { label: 'Couleur flux PV 2', helper: 'Couleur utilisée pour la ligne d animation PV secondaire si disponible.' },
@@ -3239,9 +3314,18 @@ class LuminaEnergyCardEditor extends HTMLElement {
           invert_battery: { label: 'Inverser valeurs batterie', helper: 'Activer si la polarité charge/décharge est inversée.' },
           sensor_car_power: { label: 'Capteur puissance Véhicule 1' },
           sensor_car_soc: { label: 'Capteur SOC Véhicule 1' },
+          car_soc: { label: 'SOC Véhicule', helper: 'Capteur pour SOC batterie EV.' },
+          car_range: { label: 'Autonomie Véhicule', helper: 'Capteur pour autonomie EV.' },
+          car_efficiency: { label: 'Efficacité Véhicule', helper: 'Capteur pour efficacité EV.' },
+          car_charger_power: { label: 'Puissance Chargeur Véhicule', helper: 'Capteur pour puissance chargeur EV.' },
           car1_label: { label: 'Libellé Véhicule 1', helper: 'Texte affiché à côté des valeurs du premier EV.' },
           sensor_car2_power: { label: 'Capteur puissance Véhicule 2' },
           sensor_car2_soc: { label: 'Capteur SOC Véhicule 2' },
+          car2_soc: { label: 'SOC Véhicule 2', helper: 'Capteur pour SOC batterie EV 2.' },
+          car2_range: { label: 'Autonomie Véhicule 2', helper: 'Capteur pour autonomie EV 2.' },
+          car2_efficiency: { label: 'Efficacité Véhicule 2', helper: 'Capteur pour efficacité EV 2.' },
+          car2_charger_power: { label: 'Puissance Chargeur Véhicule 2', helper: 'Capteur pour puissance chargeur EV 2.' },
+          car2_power: { label: 'Puissance Véhicule 2', helper: 'Capteur pour puissance charge/décharge EV 2.' },
           car2_label: { label: 'Libellé Véhicule 2', helper: 'Texte affiché à côté des valeurs du second EV.' },
           show_car_soc: { label: 'Afficher Véhicule 1', helper: 'Activer pour afficher les métriques du premier véhicule.' },
           show_car2: { label: 'Afficher Véhicule 2', helper: 'Activer pour afficher les métriques du second véhicule lorsque les capteurs sont fournis.' },
@@ -3330,6 +3414,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Tirets (par défaut)' },
             { value: 'dots', label: 'Points' },
             { value: 'arrows', label: 'Flèches' }
+          ],
+          grid_flow_modes: [
+            { value: 'grid_to_inverter', label: 'Réseau vers Onduleur' },
+            { value: 'grid_to_house_inverter', label: 'Réseau vers Maison - Onduleur' }
           ]
         }
       ,
@@ -3345,6 +3433,11 @@ class LuminaEnergyCardEditor extends HTMLElement {
       nl: {
         sections: {
           general: { title: 'Algemene instellingen', helper: 'Metadata van de kaart, achtergrond, taal en update frequentie.' },
+          array1: { title: 'Array 1', helper: 'Configureer PV Array 1 entiteiten.' },
+          array2: { title: 'Array 2', helper: 'If PV Total Sensor (Inverter 2) is set or the PV String values are provided, Array 2 will become active and enable the second inverter. You must also enable Daily Production Sensor (Array 2) and Home Load (Inverter 2).' },
+          battery: { title: 'Batterij', helper: 'Configureer batterij entiteiten.' },
+          grid: { title: 'Grid', helper: 'Configureer grid entiteiten.' },
+          car: { title: 'Auto', helper: 'Configureer EV entiteiten.' },
           entities: { title: 'Entiteit selectie', helper: 'Kies de PV, batterij, grid, load en EV entiteiten gebruikt door de kaart. Of de totale PV sensor, of uw PV string arrays moeten minimaal worden gespecificeerd.' },
           pvPopup: { title: 'PV Popup', helper: 'Configureer entiteiten voor de PV popup weergave.' },
           housePopup: { title: 'House Popup', helper: 'Configureer entiteiten voor de House popup weergave.' },
@@ -3361,6 +3454,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           update_interval: { label: 'Update interval', helper: 'Frequentie van kaart updates verversen (0 schakelt throttling uit).' },
           animation_speed_factor: { label: 'Animatie snelheid factor', helper: 'Pas de animatie snelheid multiplier aan (-3x tot 3x). Stel in op 0 voor pauze; negatieven keren richting om.' },
           animation_style: { label: 'Animatie stijl', helper: 'Kies het patroon voor flow animaties (strepen, stippen, pijlen).' },
+          grid_flow_mode: { label: 'Netstroom', helper: 'Kies hoe netstromen worden weergegeven.' },
           sensor_pv_total: { label: 'Totale PV sensor', helper: 'Optionele geaggregeerde productie sensor weergegeven als gecombineerde lijn.' },
           sensor_pv_total_secondary: { label: 'Totale PV sensor (Inverter 2)', helper: 'Tweede optionele inverter sensor; toegevoegd aan totale PV indien opgegeven.' },
           sensor_pv1: { label: 'PV String 1 (Array 1)', helper: 'Primaire zonne productie sensor.' },
@@ -3395,6 +3489,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_grid_export: { label: 'Grid export sensor', helper: 'Optionele entiteit die grid export rapporteert (positieve waarden).' },
           sensor_grid_import_daily: { label: 'Dagelijkse grid import sensor', helper: 'Optionele entiteit die cumulatieve grid import voor de huidige dag rapporteert.' },
           sensor_grid_export_daily: { label: 'Dagelijkse grid export sensor', helper: 'Optionele entiteit die cumulatieve grid export voor de huidige dag rapporteert.' },
+          show_daily_grid: { label: 'Toon dagelijkse grid waarden', helper: 'Toon de dagelijkse import/export totalen onder de huidige grid flow wanneer ingeschakeld.' },
           pv_tot_color: { label: 'Totale PV kleur', helper: 'Kleur toegepast op de PV TOTAL lijn/tekst.' },
           pv_primary_color: { label: 'PV Flow 1 kleur', helper: 'Kleur gebruikt voor de primaire PV animatie lijn.' },
           pv_secondary_color: { label: 'PV Flow 2 kleur', helper: 'Kleur gebruikt voor de secundaire PV animatie lijn indien beschikbaar.' },
@@ -3426,9 +3521,18 @@ class LuminaEnergyCardEditor extends HTMLElement {
           invert_battery: { label: 'Batterij waarden omkeren', helper: 'Inschakelen als laad/ontlaad polariteit omgekeerd is.' },
           sensor_car_power: { label: 'Voertuig 1 vermogen sensor' },
           sensor_car_soc: { label: 'Voertuig 1 SOC sensor' },
+          car_soc: { label: 'Voertuig SOC', helper: 'Sensor voor EV batterij SOC.' },
+          car_range: { label: 'Voertuig bereik', helper: 'Sensor voor EV bereik.' },
+          car_efficiency: { label: 'Voertuig efficiëntie', helper: 'Sensor voor EV efficiëntie.' },
+          car_charger_power: { label: 'Voertuig lader vermogen', helper: 'Sensor voor EV lader vermogen.' },
           car1_label: { label: 'Voertuig 1 label', helper: 'Tekst weergegeven naast de waarden van de eerste EV.' },
           sensor_car2_power: { label: 'Voertuig 2 vermogen sensor' },
           sensor_car2_soc: { label: 'Voertuig 2 SOC sensor' },
+          car2_soc: { label: 'Voertuig 2 SOC', helper: 'Sensor voor EV 2 batterij SOC.' },
+          car2_range: { label: 'Voertuig 2 bereik', helper: 'Sensor voor EV 2 bereik.' },
+          car2_efficiency: { label: 'Voertuig 2 efficiëntie', helper: 'Sensor voor EV 2 efficiëntie.' },
+          car2_charger_power: { label: 'Voertuig 2 lader vermogen', helper: 'Sensor voor EV 2 lader vermogen.' },
+          car2_power: { label: 'Voertuig 2 vermogen', helper: 'Sensor voor EV 2 laad/ontlaad vermogen.' },
           car2_label: { label: 'Voertuig 2 label', helper: 'Tekst weergegeven naast de waarden van de tweede EV.' },
           show_car_soc: { label: 'Toon Voertuig 1', helper: 'Inschakelen om metrics van het eerste voertuig weer te geven.' },
           show_car2: { label: 'Toon Voertuig 2', helper: 'Inschakelen om metrics van het tweede voertuig weer te geven wanneer sensoren zijn opgegeven.' },
@@ -3508,6 +3612,19 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'de', label: 'Deutsch' },
             { value: 'fr', label: 'Français' },
             { value: 'nl', label: 'Nederlands' }
+          ],
+          display_units: [
+            { value: 'W', label: 'Watt (W)' },
+            { value: 'kW', label: 'Kilowatt (kW)' }
+          ],
+          animation_styles: [
+            { value: 'dashes', label: 'Strepen (standaard)' },
+            { value: 'dots', label: 'Stippen' },
+            { value: 'arrows', label: 'Pijlen' }
+          ],
+          grid_flow_modes: [
+            { value: 'grid_to_inverter', label: 'Net naar Omvormer' },
+            { value: 'grid_to_house_inverter', label: 'Net naar Huis - Omvormer' }
           ]
         },
         view: {
@@ -3520,144 +3637,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
         }
       },
     };
-  }
-
-  // Attempt to discover and load external locale files (locales/index.json -> locales/{lang}.json)
-  _detectLocalesBase() {
-    if (this._localesBase) return this._localesBase;
-    try {
-      // Try to find the script tag that loaded this file
-      const scripts = (document && document.scripts) ? Array.from(document.scripts) : [];
-      const match = scripts.find(s => s.src && s.src.indexOf('lumina-energy-card') !== -1);
-      if (match && match.src) {
-        const url = match.src;
-        const base = url.substring(0, url.lastIndexOf('/')) + '/';
-        this._localesBase = base;
-        return base;
-      }
-    } catch (e) {
-      // ignore
-    }
-    // Fallback to common HA community local path
-    this._localesBase = '/local/community/lumina-energy-card/';
-    return this._localesBase;
-  }
-
-  async _tryFetchJson(url) {
-    try {
-      const res = await fetch(url, { cache: 'no-cache' });
-      if (!res || !res.ok) return null;
-      return await res.json();
-    } catch (e) {
-      return null;
-    }
-  }
-
-  _loadScript(src) {
-    return new Promise((resolve, reject) => {
-      try {
-        if (window && window.i18next) return resolve(window.i18next);
-        const existing = document.querySelector(`script[data-i18n-src="${src}"]`);
-        if (existing) {
-          existing.addEventListener('load', () => resolve(window.i18next), { once: true });
-          existing.addEventListener('error', (e) => reject(e), { once: true });
-          return;
-        }
-        const s = document.createElement('script');
-        s.src = src;
-        s.async = true;
-        s.dataset.i18nSrc = src;
-        s.addEventListener('load', () => resolve(window.i18next), { once: true });
-        s.addEventListener('error', (e) => reject(e), { once: true });
-        document.head.appendChild(s);
-      } catch (err) {
-        reject(err);
-      }
-    });
-  }
-
-  async _loadExternalLocales() {
-    const base = this._detectLocalesBase();
-    const indexPaths = [
-      `${base}locales/index.json`,
-      `${base}locales/index.js`,
-      `${base}index.json`,
-      `${base}locales.json`,
-      '/local/community/lumina-energy-card/locales/index.json'
-    ];
-
-    let index = null;
-    for (const p of indexPaths) {
-      index = await this._tryFetchJson(p);
-      if (index) {
-        this._localesBase = p.replace(/locales\/index\.(json|js)$|index\.json$/,'');
-        break;
-      }
-    }
-    if (!index || !Array.isArray(index) || index.length === 0) {
-      return; // no external locales available
-    }
-
-    // Support two index formats:
-    // - Array of language codes: ["en","it"]
-    // - Array of objects: [{ code: 'en', names: { en: 'English', it: 'Inglese' } }, ...]
-    const indexEntries = [];
-    if (typeof index[0] === 'string') {
-      for (const code of index) {
-        if (typeof code === 'string' && code.length === 2) indexEntries.push({ code });
-      }
-    } else if (typeof index[0] === 'object' && index[0].code) {
-      for (const entry of index) {
-        if (entry && typeof entry.code === 'string') indexEntries.push(entry);
-      }
-    }
-
-    if (indexEntries.length === 0) return;
-
-    const resources = {};
-    for (const entry of indexEntries) {
-      const lang = entry.code;
-      const langPath = `${this._localesBase}locales/${lang}.json`;
-      const data = await this._tryFetchJson(langPath);
-      if (data) {
-        resources[lang] = data;
-      }
-    }
-    if (Object.keys(resources).length === 0) return;
-
-    try {
-      // Load i18next if not present
-      if (!window.i18next) {
-        await this._loadScript('https://unpkg.com/i18next@21.9.2/dist/umd/i18next.min.js');
-      }
-      // Initialize i18next with loaded resources
-      if (window.i18next && typeof window.i18next.init === 'function') {
-        window.i18next.init({ resources, lng: 'en', fallbackLng: 'en' });
-      }
-    } catch (e) {
-      // ignore library load errors; we'll just merge resources locally
-    }
-
-    // Merge loaded resources into internal _strings so existing logic can use them
-    this._externalLocales = resources;
-    // Keep a copy of the parsed index entries for option labeling
-    this._localesIndex = indexEntries;
-    for (const [lang, data] of Object.entries(resources)) {
-      this._strings[lang] = data;
-    }
-
-    // Trigger an editor refresh if open or a rerender for runtime
-    this._onLocalesLoaded();
-  }
-
-  _onLocalesLoaded() {
-    try {
-      this._forceRender = true;
-      // Force an immediate re-render so runtime labels update when locales arrive
-      try { this.render(); } catch (e) { /* ignore render errors */ }
-    } catch (e) {
-      // ignore
-    }
   }
 
   _currentLanguage() {
@@ -3678,80 +3657,27 @@ class LuminaEnergyCardEditor extends HTMLElement {
       fields: { ...(base.fields || {}), ...(selected.fields || {}) },
       options: { ...(base.options || {}), ...(selected.options || {}) }
     };
-
-    // If i18next is loaded, prefer its translations where available.
-    if (typeof window !== 'undefined' && window.i18next && typeof window.i18next.t === 'function') {
-      const t = (key, fallback) => this._i18nT(key, fallback);
-      // Sections
-      Object.keys(merged.sections || {}).forEach((secKey) => {
-        const sec = merged.sections[secKey] || {};
-        sec.title = t(`sections.${secKey}.title`, sec.title || '');
-        sec.helper = t(`sections.${secKey}.helper`, sec.helper || '');
-        merged.sections[secKey] = sec;
-      });
-      // Fields
-      Object.keys(merged.fields || {}).forEach((fieldKey) => {
-        const f = merged.fields[fieldKey] || {};
-        f.label = t(`fields.${fieldKey}.label`, f.label || '');
-        f.helper = t(`fields.${fieldKey}.helper`, f.helper || '');
-        merged.fields[fieldKey] = f;
-      });
-      // Options: keep structure but attempt to translate human labels where possible
-      try {
-        if (merged.options && Array.isArray(merged.options.languages)) {
-          merged.options.languages = merged.options.languages.map((opt) => ({
-            value: opt.value,
-            label: t(`options.languages.${opt.value}`, opt.label || opt.value)
-          }));
-        }
-      } catch (e) {
-        // ignore
-      }
-    }
     return merged;
-  }
-
-  _i18nT(key, fallback) {
-    try {
-      if (typeof window !== 'undefined' && window.i18next && typeof window.i18next.t === 'function') {
-        const v = window.i18next.t(key);
-        if (v && v !== key) return v;
-      }
-    } catch (e) {
-      // ignore
-    }
-    return fallback;
   }
 
   _createOptionDefs(localeStrings) {
     return {
       language: this._getAvailableLanguageOptions(localeStrings),
       display_unit: localeStrings.options.display_units,
-      animation_style: localeStrings.options.animation_styles
+      animation_style: localeStrings.options.animation_styles,
+      grid_flow_mode: localeStrings.options.grid_flow_modes
     };
   }
 
   _getAvailableLanguageOptions(localeStrings) {
     const displayLang = this._currentLanguage();
-    let codes = [];
-    if (Array.isArray(this._localesIndex) && this._localesIndex.length > 0) {
-      codes = this._localesIndex.map(e => e.code).filter(Boolean);
-    } else {
-      const keys = this._strings ? Object.keys(this._strings) : [];
-      codes = Array.from(new Set(keys)).filter(k => typeof k === 'string' && k.length === 2);
-    }
+    const keys = this._strings ? Object.keys(this._strings) : [];
+    const codes = Array.from(new Set(keys)).filter(k => typeof k === 'string' && k.length === 2);
 
     const options = codes.map((lang) => {
       let label = null;
-      // Prefer names provided in index.json (translated names per language)
-      if (Array.isArray(this._localesIndex)) {
-        const entry = this._localesIndex.find(e => e && e.code === lang);
-        if (entry && entry.names) {
-          label = entry.names[displayLang] || entry.names.en || Object.values(entry.names)[0];
-        }
-      }
       // Fallback to built-in options block if available
-      if (!label && localeStrings && localeStrings.options && Array.isArray(localeStrings.options.languages)) {
+      if (localeStrings && localeStrings.options && Array.isArray(localeStrings.options.languages)) {
         label = (localeStrings.options.languages.find((o) => o.value === lang) || {}).label;
       }
       return { value: lang, label: label || lang };
@@ -3792,7 +3718,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
         { name: 'animation_style', label: fields.animation_style.label, helper: fields.animation_style.helper, selector: { select: { options: optionDefs.animation_style } } },
         
       ]),
-      entities: define([
+      array1: define([
         { name: 'sensor_pv_total', label: fields.sensor_pv_total.label, helper: fields.sensor_pv_total.helper, selector: entitySelector },
         { name: 'sensor_pv1', label: fields.sensor_pv1.label, helper: fields.sensor_pv1.helper, selector: entitySelector },
         { name: 'sensor_pv2', label: fields.sensor_pv2.label, helper: fields.sensor_pv2.helper, selector: entitySelector },
@@ -3800,8 +3726,26 @@ class LuminaEnergyCardEditor extends HTMLElement {
         { name: 'sensor_pv4', label: fields.sensor_pv4.label, helper: fields.sensor_pv4.helper, selector: entitySelector },
         { name: 'sensor_pv5', label: fields.sensor_pv5.label, helper: fields.sensor_pv5.helper, selector: entitySelector },
         { name: 'sensor_pv6', label: fields.sensor_pv6.label, helper: fields.sensor_pv6.helper, selector: entitySelector },
-        { name: 'show_pv_strings', label: fields.show_pv_strings.label, helper: fields.show_pv_strings.helper, selector: { boolean: {} } },
         { name: 'sensor_daily', label: fields.sensor_daily.label, helper: fields.sensor_daily.helper, selector: entitySelector },
+        { name: 'show_pv_strings', label: fields.show_pv_strings.label, helper: fields.show_pv_strings.helper, selector: { boolean: {} } },
+        { name: 'sensor_home_load', label: fields.sensor_home_load.label, helper: fields.sensor_home_load.helper, selector: entitySelector },
+        
+      ]),
+      array2: define([
+        { name: 'solar_array2_title', label: fields.solar_array2_title.label, helper: fields.solar_array2_title.helper, selector: { text: { mode: 'blur' } } },
+        { name: 'sensor_pv_total_secondary', label: fields.sensor_pv_total_secondary.label, helper: fields.sensor_pv_total_secondary.helper, selector: entitySelector },
+        { name: 'sensor_pv_array2_1', label: fields.sensor_pv_array2_1.label, helper: fields.sensor_pv_array2_1.helper, selector: entitySelector },
+        { name: 'sensor_pv_array2_2', label: fields.sensor_pv_array2_2.label, helper: fields.sensor_pv_array2_2.helper, selector: entitySelector },
+        { name: 'sensor_pv_array2_3', label: fields.sensor_pv_array2_3.label, helper: fields.sensor_pv_array2_3.helper, selector: entitySelector },
+        { name: 'sensor_pv_array2_4', label: fields.sensor_pv_array2_4.label, helper: fields.sensor_pv_array2_4.helper, selector: entitySelector },
+        { name: 'sensor_pv_array2_5', label: fields.sensor_pv_array2_5.label, helper: fields.sensor_pv_array2_5.helper, selector: entitySelector },
+        { name: 'sensor_pv_array2_6', label: fields.sensor_pv_array2_6.label, helper: fields.sensor_pv_array2_6.helper, selector: entitySelector },
+        { name: 'solar_array2_activation_helper', label: fields.solar_array2_activation_helper.label, helper: fields.solar_array2_activation_helper.helper, selector: { text: { mode: 'blur' } } },
+        { name: 'sensor_daily_array2', label: fields.sensor_daily_array2.label, helper: fields.sensor_daily_array2.helper, selector: entitySelector },
+        { name: 'sensor_home_load_secondary', label: fields.sensor_home_load_secondary.label, helper: fields.sensor_home_load_secondary.helper, selector: entitySelector },
+        
+      ]),
+      battery: define([
         { name: 'sensor_bat1_soc', label: fields.sensor_bat1_soc.label, helper: fields.sensor_bat1_soc.helper, selector: entitySelector },
         { name: 'sensor_bat1_power', label: fields.sensor_bat1_power.label, helper: fields.sensor_bat1_power.helper, selector: entitySelector },
         { name: 'sensor_bat2_soc', label: fields.sensor_bat2_soc.label, helper: fields.sensor_bat2_soc.helper, selector: entitySelector },
@@ -3810,22 +3754,31 @@ class LuminaEnergyCardEditor extends HTMLElement {
         { name: 'sensor_bat3_power', label: fields.sensor_bat3_power.label, helper: fields.sensor_bat3_power.helper, selector: entitySelector },
         { name: 'sensor_bat4_soc', label: fields.sensor_bat4_soc.label, helper: fields.sensor_bat4_soc.helper, selector: entitySelector },
         { name: 'sensor_bat4_power', label: fields.sensor_bat4_power.label, helper: fields.sensor_bat4_power.helper, selector: entitySelector },
-        { name: 'invert_battery', label: fields.invert_battery.label, helper: fields.invert_battery.helper, selector: { boolean: {} }, default: false },
-        { name: 'sensor_home_load', label: fields.sensor_home_load.label, helper: fields.sensor_home_load.helper, selector: entitySelector },
+        { name: 'invert_battery', label: fields.invert_battery.label, helper: fields.invert_battery.helper, selector: { boolean: {} } },
+        
+      ]),
+      grid: define([
         { name: 'sensor_grid_power', label: fields.sensor_grid_power.label, helper: fields.sensor_grid_power.helper, selector: entitySelector },
         { name: 'sensor_grid_import', label: fields.sensor_grid_import.label, helper: fields.sensor_grid_import.helper, selector: entitySelector },
         { name: 'sensor_grid_export', label: fields.sensor_grid_export.label, helper: fields.sensor_grid_export.helper, selector: entitySelector },
+        { name: 'invert_grid', label: fields.invert_grid.label, helper: fields.invert_grid.helper, selector: { boolean: {} } },
         { name: 'sensor_grid_import_daily', label: fields.sensor_grid_import_daily.label, helper: fields.sensor_grid_import_daily.helper, selector: entitySelector },
         { name: 'sensor_grid_export_daily', label: fields.sensor_grid_export_daily.label, helper: fields.sensor_grid_export_daily.helper, selector: entitySelector },
-        { name: 'invert_grid', label: fields.invert_grid.label, helper: fields.invert_grid.helper, selector: { boolean: {} }, default: false },
+        { name: 'show_daily_grid', label: fields.show_daily_grid.label, helper: fields.show_daily_grid.helper, selector: { boolean: {} } },
+        { name: 'grid_flow_mode', label: fields.grid_flow_mode.label, helper: fields.grid_flow_mode.helper, selector: { select: { options: optionDefs.grid_flow_mode } } },
+        
+      ]),
+      car: define([
         { name: 'sensor_car_power', label: fields.sensor_car_power.label, helper: fields.sensor_car_power.helper, selector: entitySelector },
-        { name: 'sensor_car_soc', label: fields.sensor_car_soc.label, helper: fields.sensor_car_soc.helper, selector: entitySelector },
-        { name: 'car1_label', label: fields.car1_label.label, helper: fields.car1_label.helper, selector: { text: { mode: 'blur' } } },
-        { name: 'sensor_car2_power', label: fields.sensor_car2_power.label, helper: fields.sensor_car2_power.helper, selector: entitySelector },
-        { name: 'sensor_car2_soc', label: fields.sensor_car2_soc.label, helper: fields.sensor_car2_soc.helper, selector: entitySelector },
-        { name: 'car2_label', label: fields.car2_label.label, helper: fields.car2_label.helper, selector: { text: { mode: 'blur' } } },
-        { name: 'show_car_soc', label: fields.show_car_soc.label, helper: fields.show_car_soc.helper, selector: { boolean: {} }, default: false },
-        { name: 'show_car2', label: fields.show_car2.label, helper: fields.show_car2.helper, selector: { boolean: {} }, default: false }
+        { name: 'car_soc', label: fields.car_soc.label, helper: fields.car_soc.helper, selector: entitySelector },
+        { name: 'car_charger_power', label: fields.car_charger_power.label, helper: fields.car_charger_power.helper, selector: entitySelector },
+        { name: 'car2_power', label: fields.car2_power.label, helper: fields.car2_power.helper, selector: entitySelector },
+        { name: 'car2_soc', label: fields.car2_soc.label, helper: fields.car2_soc.helper, selector: entitySelector },
+        { name: 'car2_charger_power', label: fields.car2_charger_power.label, helper: fields.car2_charger_power.helper, selector: entitySelector },
+        
+      ]),
+      entities: define([
+        
       ]),
       colors: define([
         { name: 'pv_tot_color', label: fields.pv_tot_color.label, helper: fields.pv_tot_color.helper, selector: { color_picker: {} }, default: '#00FFFF' },
@@ -3965,79 +3918,15 @@ class LuminaEnergyCardEditor extends HTMLElement {
   _createSectionDefs(localeStrings, schemaDefs) {
     const sections = localeStrings.sections;
     return [
-      {
-        id: 'entities',
-        title: sections.entities.title,
-        helper: sections.entities.helper,
-        defaultOpen: true,
-        renderContent: () => {
-          const wrapper = document.createElement('div');
-          // Render entities form but inject Solar Array 2 before `sensor_bat1_soc`
-          const allEntities = Array.isArray(schemaDefs.entities) ? schemaDefs.entities : [];
-          const splitIndex = allEntities.findIndex((e) => e && e.name === 'sensor_bat1_soc');
-          let before = allEntities;
-          let after = [];
-          if (splitIndex >= 0) {
-            before = allEntities.slice(0, splitIndex);
-            after = allEntities.slice(splitIndex);
-          }
-          // Ensure the original Home Load field appears above the injected Solar Array 2 section
-          if (after && after.length) {
-            const homeIdx = after.findIndex((e) => e && e.name === 'sensor_home_load');
-            if (homeIdx >= 0) {
-              const [homeEntry] = after.splice(homeIdx, 1);
-              before = (before || []).concat([homeEntry]);
-            }
-          }
-          if (before && before.length) wrapper.appendChild(this._createForm(before));
-
-          // Nested collapsible for Solar Array 2
-          const fields = localeStrings.fields;
-          const entitySelector = { entity: { domain: ['sensor', 'input_number'] } };
-          const solarSchema = [
-          { name: 'sensor_pv_total_secondary', label: fields.sensor_pv_total_secondary.label, helper: fields.sensor_pv_total_secondary.helper, selector: entitySelector },
-          { name: 'sensor_pv_array2_1', label: fields.sensor_pv_array2_1.label, helper: fields.sensor_pv_array2_1.helper, selector: entitySelector },
-          { name: 'sensor_pv_array2_2', label: fields.sensor_pv_array2_2.label, helper: fields.sensor_pv_array2_2.helper, selector: entitySelector },
-          { name: 'sensor_pv_array2_3', label: fields.sensor_pv_array2_3.label, helper: fields.sensor_pv_array2_3.helper, selector: entitySelector },
-          { name: 'sensor_pv_array2_4', label: fields.sensor_pv_array2_4.label, helper: fields.sensor_pv_array2_4.helper, selector: entitySelector },
-          { name: 'sensor_pv_array2_5', label: fields.sensor_pv_array2_5.label, helper: fields.sensor_pv_array2_5.helper, selector: entitySelector },
-          { name: 'sensor_pv_array2_6', label: fields.sensor_pv_array2_6.label, helper: fields.sensor_pv_array2_6.helper, selector: entitySelector },
-          { name: 'sensor_daily_array2', label: fields.sensor_daily_array2.label, helper: fields.sensor_daily_array2.helper, selector: entitySelector },
-          { name: 'sensor_home_load_secondary', label: fields.sensor_home_load_secondary.label, helper: fields.sensor_home_load_secondary.helper, selector: entitySelector }
-          ];
-          // Inline Solar Array 2 fields (remove collapsible section)
-          // Insert visual divider between Home Load and PV Total (Inverter 2)
-          const divider = document.createElement('hr');
-          divider.className = 'editor-divider';
-          wrapper.appendChild(divider);
-          // Localized header for Array 2
-          const array2Header = document.createElement('div');
-          array2Header.className = 'array2-header array2-visual-header';
-          array2Header.textContent = (fields.solar_array2_title && fields.solar_array2_title.label) ? fields.solar_array2_title.label : 'Array 2 (Optional)';
-          // Force visual parity via inline styles to beat external theme overrides
-          array2Header.style.setProperty('color', 'var(--primary-color)', 'important');
-          array2Header.style.setProperty('padding', '12px 16px', 'important');
-          array2Header.style.setProperty('font-weight', '700', 'important');
-          wrapper.appendChild(array2Header);
-          if (fields.solar_array2_title && fields.solar_array2_title.helper) {
-            const array2Helper = document.createElement('div');
-            array2Helper.className = 'field-helper';
-            array2Helper.textContent = fields.solar_array2_title.helper;dist
-          }
-          // Informational helper about activation requirements for Array 2
-          const array2ActivationHelper = document.createElement('div');
-          array2ActivationHelper.className = 'field-helper';
-          array2ActivationHelper.textContent = (fields.solar_array2_activation_helper && fields.solar_array2_activation_helper.label)
-            ? fields.solar_array2_activation_helper.label
-            : 'If PV Total Sensor (Inverter 2) is set or the PV String values are provided, Array 2 will become active and enable the second inverter. You must also enable Daily Production Sensor (Array 2) and Home Load (Inverter 2).';
-          wrapper.appendChild(array2ActivationHelper);
-          if (solarSchema && solarSchema.length) {
-            wrapper.appendChild(this._createForm(solarSchema));
-          }
-          if (after && after.length) wrapper.appendChild(this._createForm(after));
-          return wrapper;
-        }
-      },
+      { id: 'array1', title: sections.array1.title, helper: sections.array1.helper, schema: schemaDefs.array1, defaultOpen: false },
+      { id: 'array2', title: sections.array2.title, helper: sections.array2.helper, renderContent: () => {
+        const wrapper = document.createElement('div');
+        wrapper.appendChild(this._createForm(schemaDefs.array2));
+        return wrapper;
+      }, defaultOpen: false },
+      { id: 'battery', title: sections.battery.title, helper: sections.battery.helper, schema: schemaDefs.battery, defaultOpen: false },
+      { id: 'grid', title: sections.grid.title, helper: sections.grid.helper, schema: schemaDefs.grid, defaultOpen: false },
+      { id: 'car', title: sections.car.title, helper: sections.car.helper, schema: schemaDefs.car, defaultOpen: false },
       { id: 'pvPopup', title: sections.pvPopup.title, helper: sections.pvPopup.helper, schema: schemaDefs.pvPopup, defaultOpen: false },
       { id: 'batteryPopup', title: sections.batteryPopup.title, helper: sections.batteryPopup.helper, schema: schemaDefs.batteryPopup, defaultOpen: false },
       { id: 'housePopup', title: sections.housePopup.title, helper: sections.housePopup.helper, schema: schemaDefs.housePopup, defaultOpen: false },
