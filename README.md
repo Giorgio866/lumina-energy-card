@@ -44,7 +44,11 @@ Lumina Energy Card is a Home Assistant custom Lovelace card that renders animate
 - Popup Information Displays for House, Solar and Battery. Each has 6 slots for entites with name overrides available. Font Size and Color selection
 - Many new features coming with support for more items.
 
+<<<<<<< HEAD
 [Feature walkthrough](https://github.com/user-attachments/assets/a598c4a4-2b4c-4827-b1f8-bb561a2089ec)
+=======
+https://github.com/user-attachments/assets/a598c4a4-2b4c-4827-b1f8-bb561a2089ec
+>>>>>>> 404a2c6d5ba74392da47479e80ae11679c5ee569
 
 ### Installation (EN)
 
