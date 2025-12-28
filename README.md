@@ -214,21 +214,21 @@ a helper to display it.
   - `sensor_popup_pv_1_name` .. `sensor_popup_pv_6_name`: optional custom names (falls back to entity name).
   - `sensor_popup_pv_1_color` .. `sensor_popup_pv_6_color`: per-line colour pickers (default `#80ffff`).
   - `sensor_popup_pv_1_font_size` .. `sensor_popup_pv_6_font_size`: per-line font-size (px) (default `14`).
-  - Clickable polygon (PV area) — points: `75,205 200,195 275,245 145,275 75,205`. Click to toggle the PV popup; clicking the popup closes it.
+  - Clickable areas are the Daily PV Yield box and the Solar Panels. Click to toggle the PV popup; clicking the popup closes it.
 
 - House Popup
   - `sensor_popup_house_1` .. `sensor_popup_house_6`: entity selectors for House popup lines.
   - `sensor_popup_house_1_name` .. `sensor_popup_house_6_name`: optional custom names.
   - `sensor_popup_house_1_color` .. `sensor_popup_house_6_color`: per-line colour pickers (default `#80ffff`).
   - `sensor_popup_house_1_font_size` .. `sensor_popup_house_6_font_size`: per-line font-size (px) (default `14`).
-  - House clickable area polygon is provided; click to toggle the House popup and click the popup to close.
+  - House clickable area is the House; click to toggle the House popup and click the popup to close.
 
 - Battery Popup
   - `sensor_popup_bat_1` .. `sensor_popup_bat_6`: entity selectors for Battery popup lines.
   - `sensor_popup_bat_1_name` .. `sensor_popup_bat_6_name`: optional custom names.
   - `sensor_popup_bat_1_color` .. `sensor_popup_bat_6_color`: per-line colour pickers (default `#80ffff`).
   - `sensor_popup_bat_1_font_size` .. `sensor_popup_bat_6_font_size`: per-line font-size (px) (default `16`).
-  - Battery clickable polygon points: `325,400 350,375 350,275 275,250 250,250 250,350 325,400`. Click to toggle the Battery popup; clicking the popup closes it.
+  - Battery clickable areads is the battery image. Click to toggle the Battery popup; clicking the popup closes it.
 
 ### Additional Array 2 & Options (EN)
 
@@ -239,6 +239,7 @@ a helper to display it.
 - `pv_tot_color` | string | `#00FFFF` | Colour applied to the PV TOT text/line (overrides per-string inheritance when set).
 - `house_total_color`, `inv1_color`, `inv2_color` | string | — | Per-line colours applied to HOUSE TOT, INV 1 and INV 2 labels/flows when Array 2 is active.
 - `invert_battery` | boolean | `false` | Flip battery charge/discharge polarity (swap charge/discharge colours and reverse animation direction when enabled).
+- 'Show Grid Import/Export Name | boolean | `true` | Show's Importing/Exporting with the Grid Power Value if enabled.
 Car colours & fonts: `car1_name_color`, `car2_name_color`, `car1_color`, `car2_color`, `car2_pct_color`, `car_name_font_size`, `car2_name_font_size` — new color and name-font-size options for Car 1 and Car 2 (power and SOC font sizes remain available as `car_power_font_size`, `car2_power_font_size`, `car_soc_font_size`, `car2_soc_font_size`).
 
 Notes:
