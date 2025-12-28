@@ -6,11 +6,11 @@
  */
 const BATTERY_GEOMETRY = { X: 260, Y_BASE: 350, WIDTH: 55, MAX_HEIGHT: 84 };
 const TEXT_POSITIONS = {
-  solar: { x: 177, y: 320, rotate: -16, skewX: -20, skewY: 0 },
+  solar: { x: 170, y: 310, rotate: -16, skewX: -20, skewY: 0 },
   battery: { x: 245, y: 375, rotate: -25, skewX: -25, skewY: 5 },
   home: { x: 460, y: 245, rotate: -20, skewX: -20, skewY: 3 },
   grid: { x: 580, y: 90, rotate: -8, skewX: -10, skewY: 0 },
-  heatPump: { x: 400, y: 250, rotate: -20, skewX: -20, skewY: 3 }
+  heatPump: { x: 315, y: 225, rotate: -20, skewX: -20, skewY: 33 }
 };
 
 const buildTextTransform = ({ x, y, rotate, skewX, skewY }) =>
@@ -30,7 +30,7 @@ const FLOW_PATHS = {
   bat: 'M 423 310 L 325 350',
   load: 'M 471 303 L 550 273 L 380 220',
   grid: 'M 470 280 L 575 240 L 575 223',
-  grid_house: 'M 475 205 L 575 238 L 575 223',
+  grid_house: 'M 470 205 L 575 238 L 575 223',
   house_inv: 'M 470 210 L 575 243 L 480 285',
   car1: 'M 475 329 L 490 335 L 600 285',
   car2: 'M 475 341 L 490 347 L 600 310',
