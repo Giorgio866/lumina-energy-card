@@ -35,17 +35,18 @@ Lumina Energy Card is a Home Assistant custom Lovelace card that renders animate
 
 - Up to six PV sensors with smart per-string or totalised labels
 - Up to four battery systems with SOC averaging and liquid-fill battery visualisation
-- Animated grid, load, PV, battery and EV flows with dynamic colour, speed, and selectable dash/dot/arrow styles
+- Animated grid, load, PV, battery and EV flows with dynamic colour based on thresholds and selectable dash/dot/arrow styles
 - Configurable grid animation threshold (default 100 W) to suppress low-level import/export chatter
 - Adjustable animation speed multiplier (-3x to 3x, default 1x, pause/reverse supported) and per-flow visibility thresholds
-- Optional EV panel with power and SOC display, configurable colour, and typography
+- Optional EV panel with power and SOC display, configurable colour, and typography. 2 Veichles now supported
 - Daily production badge plus full typography controls for header, PV, battery, load, grid, and EV text
+- Daily Import and Export Totals
 - Load warning/critical colour overrides and a configurable low SOC threshold for the battery liquid fill
 - Update interval slider (0–60 s, default 30 s) with optional real-time refresh when set to 0
-
+- Popup Information Displays for House, Solar and Battery. Each has 6 slots for entites with name overrides available. Font Size and Color selection
+- Many new features coming with support for more items.
 
 https://github.com/user-attachments/assets/a598c4a4-2b4c-4827-b1f8-bb561a2089ec
-
 
 ### Installation (EN)
 
