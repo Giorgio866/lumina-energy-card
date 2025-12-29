@@ -1,7 +1,7 @@
 # Lumina Energy Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-![Version](https://img.shields.io/badge/version-1.1.28-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1.29-blue.svg)
 
 Limuna Energy Card repository is <https://github.com/ratava/lumina-energy-card>.
 
@@ -9,7 +9,6 @@ Limuna Energy Card repository is <https://github.com/ratava/lumina-energy-card>.
 
 Support Giorgio [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?style=for-the-badge&logo=paypal)](https://www.paypal.me/giorgiosalierno)
 Support Brent @ratava[![Donate Brent Wesley @ratava](https://github.com/user-attachments/assets/b603f494-a142-4bb0-893f-aaafd5d19dfd)](https://ko-fi.com/brentwesley)
-
 
 **Language / Lingua / Sprache / Langue:** [English](#english) | [Italiano](#italiano) | [Deutsch](#deutsch) | [Français](#fran%C3%A7ais) | [Nederlands](#nederlands)
 
@@ -44,8 +43,9 @@ Lumina Energy Card is a Home Assistant custom Lovelace card that renders animate
 - Popup Information Displays for House, Solar and Battery. Each has 6 slots for entites with name overrides available. Font Size and Color selection
 - Many new features coming with support for more items.
 
+#### Feature Walkthrough (EN)
+
 [Feature walkthrough](https://github.com/user-attachments/assets/a598c4a4-2b4c-4827-b1f8-bb561a2089ec)
-=======
 
 ### Installation (EN)
 
@@ -105,7 +105,6 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `update_interval` | number | `30` | Refresh cadence (0–60 s, step 5; 0 disables throttling). |
 | `animation_speed_factor` | number | `1` | Flow animation multiplier (-3–3, 0 pauses, negatives reverse). |
 | `animation_style` | string | `dashes` | Flow motif (`dashes`, `dots`, or `arrows`). |
-| `grid_flow_mode` | string | `grid_to_inverter` | Choose the single grid path or `grid_to_house_inverter` split. |
 | `header_font_size` | number | `16` | Typography for the header (12–32 px). |
 | `daily_label_font_size` | number | `12` | Typography for the daily label (8–24 px). |
 | `daily_value_font_size` | number | `20` | Typography for the daily total (12–32 px). |
@@ -190,19 +189,14 @@ heat_pump_flow_color: '#FFAA33'
 heat_pump_text_color: '#FFE1B2'
 ```
 
-### Grid Flow Modes (EN)
+### Grid Flow Routing (EN)
 
-Choose how imports are sketched with `grid_flow_mode`:
+The card now selects the grid animation path automatically:
 
-- `grid_to_inverter` (default) renders a single grid path into the inverter block.
-- `grid_to_house_inverter` splits the animation into two strokes (grid→house and house→inverter) so you can emphasise imports that feed the home directly before passing through the hybrid inverter.
+- When a PV total (`sensor_pv_total`) or at least one Array 1 string sensor exists, imports and exports animate along the inverter conduit just like before.
+- If `sensor_pv_total` and all Array 1 string slots are left blank, the card assumes you're running directly from the grid: the animation shifts to the house branch, the grid arrow points at the home, and PV-only UI (Daily Yield badge + PV popup) stays hidden.
 
-```yaml
-type: custom:lumina-energy-card
-sensor_grid_power: sensor.grid_net_power
-grid_flow_mode: grid_to_house_inverter
-grid_activity_threshold: 50
-```
+The legacy grid→house toggle has been removed, so delete any `grid_flow_mode` entries from your YAML. Detection now happens every render and `grid_activity_threshold` still governs when the animation starts.
 
 ### Popups (Editor Options)
 
@@ -381,7 +375,6 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `update_interval` | numero | `30` | Cadenza di aggiornamento (0–60 s, passo 5; 0 disattiva la limitazione). |
 | `animation_speed_factor` | numero | `1` | Moltiplicatore delle animazioni (-3 a 3; 0 in pausa, valori negativi invertono). |
 | `animation_style` | stringa | `dashes` | Stile dei flussi (`dashes`, `dots`, `arrows`). |
-| `grid_flow_mode` | stringa | `grid_to_inverter` | Seleziona il tracciato unico o il percorso diviso `grid_to_house_inverter`. |
 | `header_font_size` | numero | `16` | Dimensione carattere dell'intestazione (12–32 px). |
 | `daily_label_font_size` | numero | `12` | Dimensione etichetta produzione giornaliera (8–24 px). |
 | `daily_value_font_size` | numero | `20` | Dimensione valore produzione giornaliera (12–32 px). |
@@ -464,19 +457,14 @@ heat_pump_flow_color: '#FFAA33'
 heat_pump_text_color: '#FFE1B2'
 ```
 
-### Modalità flusso rete (IT)
+### Flusso rete automatico (IT)
 
-`grid_flow_mode` controlla come vengono disegnati gli import:
+Ora la scheda sceglie automaticamente il percorso della rete:
 
-- `grid_to_inverter` (default) mostra un unico percorso verso l'inverter.
-- `grid_to_house_inverter` divide l'animazione tra rete→casa e casa→inverter per evidenziare l'energia che alimenta direttamente l'abitazione.
+- Quando imposti un sensore FV totale (`sensor_pv_total`) o almeno una stringa per l'Array 1, import/export scorrono verso l'inverter come prima.
+- Se lasci vuoti `sensor_pv_total` e tutte le stringhe dell'Array 1 la scheda presuppone un impianto solo rete: la freccia segue il ramo casa e gli elementi FV (badge produzione giornaliera + popup FV) vengono nascosti.
 
-```yaml
-type: custom:lumina-energy-card
-sensor_grid_power: sensor.potenza_rete
-grid_flow_mode: grid_to_house_inverter
-grid_activity_threshold: 50
-```
+Il vecchio toggle grid→house è stato rimosso: elimina qualsiasi `grid_flow_mode` dal tuo YAML; il rilevamento è automatico e `grid_activity_threshold` controlla ancora l'avvio dell'animazione.
 
 ### Popup (IT)
 
@@ -535,7 +523,6 @@ Note:
 - **1.0.3 (2025)** – Velocità animazioni scalabile, slider tipografia e esempi di entità inline.
 - **1.0.2 (2025)** – Aggiornamento del codice base.
 - **1.0.1 (2025)** – File distributivi spostati in `dist/` e documentazione installazione manuale allineata.
-
 
 ## Français
 
@@ -616,7 +603,6 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `update_interval` | nombre | `30` | Cadence d'actualisation (0–60 s, pas de 5 ; 0 supprime toute limitation). |
 | `animation_speed_factor` | nombre | `1` | Multiplicateur des flux (-3 à 3 ; 0 met en pause, valeurs négatives inversent). |
 | `animation_style` | chaîne | `dashes` | Motif des flux (`dashes`, `dots`, `arrows`). |
-| `grid_flow_mode` | chaîne | `grid_to_inverter` | Choisit le tracé réseau unique ou le mode scindé `grid_to_house_inverter`. |
 | `header_font_size` | nombre | `16` | Taille de police de l'en-tête (12–32 px). |
 | `daily_label_font_size` | nombre | `12` | Taille de l'étiquette quotidienne (8–24 px). |
 | `daily_value_font_size` | nombre | `20` | Taille du total quotidien (12–32 px). |
@@ -699,19 +685,14 @@ heat_pump_flow_color: '#FFAA33'
 heat_pump_text_color: '#FFE1B2'
 ```
 
-### Modes de flux réseau (FR)
+### Routage réseau automatique (FR)
 
-`grid_flow_mode` contrôle la façon dont les importations sont dessinées :
+La carte choisit désormais le tracé réseau automatiquement :
 
-- `grid_to_inverter` (par défaut) dessine une seule trajectoire vers l'onduleur.
-- `grid_to_house_inverter` scinde l'animation en deux traits (réseau→maison et maison→onduleur) pour distinguer la part alimentant directement la maison.
+- Si un total PV (`sensor_pv_total`) ou au moins une chaîne Array 1 est configuré(e), les imports/exports transitent par le conduit de l'onduleur comme auparavant.
+- Si `sensor_pv_total` et toutes les chaînes Array 1 sont laissés vides, la carte suppose un site alimenté directement par le réseau : la flèche suit la branche Maison et les éléments PV (badge de production quotidienne + popup PV) sont masqués.
 
-```yaml
-type: custom:lumina-energy-card
-sensor_grid_power: sensor.grid_net_power
-grid_flow_mode: grid_to_house_inverter
-grid_activity_threshold: 50
-```
+L'ancienne bascule grid→house a été supprimée ; retirez toute entrée `grid_flow_mode` de votre YAML. La détection reste automatique à chaque rendu et `grid_activity_threshold` contrôle toujours le démarrage de l'animation.
 
 ### Popups (FR)
 
@@ -787,7 +768,6 @@ Notes :
 - **1.0.1 (2025)** – Déplacement des fichiers distribuables dans `dist/` et alignement de l'installation manuelle.
 
 ---
-
 
 ### Background & Troubleshooting (EN)
 
@@ -897,7 +877,6 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `update_interval` | Zahl | `30` | Aktualisierungsintervall (0–60 s, Schritt 5; 0 deaktiviert das Throttling). |
 | `animation_speed_factor` | Zahl | `1` | Animationsmultiplikator (-3 bis 3; 0 pausiert, negativ = rückwärts). |
 | `animation_style` | Zeichenkette | `dashes` | Flussstil (`dashes`, `dots`, `arrows`). |
-| `grid_flow_mode` | Zeichenkette | `grid_to_inverter` | Wählt Einzelpfad oder den geteilten Modus `grid_to_house_inverter`. |
 | `header_font_size` | Zahl | `16` | Schriftgröße der Überschrift (12–32 px). |
 | `daily_label_font_size` | Zahl | `12` | Schriftgröße des Tageslabels (8–24 px). |
 | `daily_value_font_size` | Zahl | `20` | Schriftgröße des Tageswerts (12–32 px). |
@@ -980,19 +959,14 @@ heat_pump_flow_color: '#FFAA33'
 heat_pump_text_color: '#FFE1B2'
 ```
 
-### Netzfluss-Modi (DE)
+### Automatischer Netzfluss (DE)
 
-`grid_flow_mode` legt fest, wie die Importe visualisiert werden:
+Die Karte ermittelt den passenden Netzpfad jetzt selbst:
 
-- `grid_to_inverter` (Standard) zeichnet einen einzelnen Weg zum Wechselrichter.
-- `grid_to_house_inverter` teilt die Animation in Netz→Haus und Haus→Wechselrichter auf, um direkte Hauslasten hervorzuheben.
+- Sobald ein PV-Gesamtsensor (`sensor_pv_total`) oder mindestens ein Array-1-Strang konfiguriert ist, laufen Import/Export wie gewohnt über den Wechselrichter-Zweig.
+- Fehlen Array-1-Sensoren komplett (kein `sensor_pv_total`, keine Strings), behandelt die Karte die Anlage als reinen Netzbetrieb: Der Pfeil läuft über den Hauszweig und die PV-UI (Tagesertrags-Badge + PV-Popup) bleibt verborgen.
 
-```yaml
-type: custom:lumina-energy-card
-sensor_grid_power: sensor.netzleistung
-grid_flow_mode: grid_to_house_inverter
-grid_activity_threshold: 50
-```
+Der frühere grid→house-Schalter wurde entfernt – lösche `grid_flow_mode` aus deinem YAML. Die Erkennung passiert bei jedem Render und `grid_activity_threshold` bestimmt weiterhin, ab welcher Leistung animiert wird.
 
 ### Popups (DE)
 
@@ -1051,7 +1025,6 @@ Hinweise:
 - **1.0.3 (2025)** – Animationsgeschwindigkeit skalierbar, Typografie-Slider und Inline-Beispiele.
 - **1.0.2 (2025)** – Basiscode aktualisiert.
 - **1.0.1 (2025)** – Distributables nach `dist/` verschoben und Anleitung angepasst.
-
 
 ## Nederlands
 
@@ -1128,7 +1101,6 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `update_interval` | Nummer | `30` | Updatefrequentie in seconden (0–60; stap 5). |
 | `animation_speed_factor` | Nummer | `1` | Animatiesnelheid (-3 tot 3; 0 pauzeert; negatief = omgekeerd). |
 | `animation_style` | Tekst | `dashes` | Animatiestijl (`dashes`, `dots`, `arrows`). |
-| `grid_flow_mode` | Tekst | `grid_to_inverter` | Kies `grid_to_house_inverter` voor gesplitste netpaden. |
 | `header_font_size` | Nummer | `16` | Tekengrootte titel (12–32 px). |
 | `daily_label_font_size` | Nummer | `12` | Labelgrootte dagopbrengst (8–24 px). |
 | `daily_value_font_size` | Nummer | `20` | Waardegrootte dagopbrengst (12–32 px). |
@@ -1205,12 +1177,14 @@ background_image_heat_pump: /local/community/lumina-energy-card/lumina-energy-ca
 heat_pump_flow_color: '#FFA533'
 ```
 
-### Netmodus (NL)
+### Automatisch netpad (NL)
 
-Met `grid_flow_mode` kies je hoe import wordt weergegeven:
+De kaart kiest nu zelf welk netpad gebruikt wordt:
 
-- `grid_to_inverter` (standaard): één pad naar de omvormer.
-- `grid_to_house_inverter`: splitst de stroom in **Net → Huis** en **Huis → Omvormer** voor meer detail.
+- Zodra er een PV-totaal (`sensor_pv_total`) of minstens één Array 1-streng actief is, loopt de animatie via de omvormer zoals voorheen.
+- Laat je Array 1 volledig leeg (geen `sensor_pv_total`, geen strengen), dan gaat de kaart ervan uit dat je rechtstreeks vanaf het net draait: de pijl volgt het huispad en de PV-UI (dagopbrengstbadge + PV-popup) wordt verborgen.
+
+De oude grid→house-toggle is verwijderd; haal `grid_flow_mode` uit je YAML. Detectie gebeurt nu elke render en `grid_activity_threshold` bepaalt nog steeds wanneer de animatie start.
 
 ### Popups (NL)
 
@@ -1266,7 +1240,6 @@ Tips:
 - **1.0.3 (2025)** – Animatiesnelheidsfactor, typografie-sliders en inline voorbeelden.
 - **1.0.2 (2025)** – Basiscode bijgewerkt.
 - **1.0.1 (2025)** – Distributables verplaatst naar `dist/` en instructies aangepast.
-
 
 ## Repository Details
 

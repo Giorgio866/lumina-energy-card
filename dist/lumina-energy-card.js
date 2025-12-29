@@ -1,7 +1,7 @@
 /**
  * Lumina Energy Card
  * Custom Home Assistant card for energy flow visualization
- * Version: 1.1.28
+ * Version: 1.1.29
  * Tested with Home Assistant 2025.12+
  */
 const BATTERY_GEOMETRY = { X: 260, Y_BASE: 350, WIDTH: 55, MAX_HEIGHT: 84 };
@@ -31,7 +31,6 @@ const FLOW_PATHS = {
   load: 'M 471 303 L 550 273 L 380 220',
   grid: 'M 470 280 L 575 240 L 575 223',
   grid_house: 'M 470 205 L 575 238 L 575 223',
-  house_inv: 'M 470 210 L 575 243 L 480 285',
   car1: 'M 475 329 L 490 335 L 600 285',
   car2: 'M 475 341 L 490 347 L 600 310',
   heatPump: 'M 401 238 L 452 255 L 418 266 L 375 250'
@@ -166,9 +165,6 @@ class LuminaEnergyCard extends HTMLElement {
       return;
     }
     if (this._isEditorActive()) {
-      if (this._forceRender) {
-        this.render();
-      }
       this._forceRender = false;
       return;
     }
@@ -210,7 +206,6 @@ class LuminaEnergyCard extends HTMLElement {
         car2_name_font_size: 15, // Schriftgroesse Fahrzeugname 2 (px)
       animation_speed_factor: 1,
       animation_style: 'dashes',
-      grid_flow_mode: 'grid_to_inverter',
             sensor_pv_total: '',
           sensor_pv_total_secondary: '',
       sensor_pv1: '',
@@ -1436,9 +1431,16 @@ class LuminaEnergyCard extends HTMLElement {
 
     const loadY = (pv_secondary_w > 10) ? (TEXT_POSITIONS.home.y - 28) : TEXT_POSITIONS.home.y;
 
-    const gridFlowMode = config.grid_flow_mode || 'grid_to_inverter';
-    const gridActiveForGrid = gridFlowMode === 'grid_to_inverter' ? gridActive : false;
-    const gridActiveForHouse = gridFlowMode === 'grid_to_house_inverter' ? gridActive : false;
+    const hasPrimarySolar = Boolean((typeof config.sensor_pv_total === 'string' && config.sensor_pv_total.trim()) || pvStringIds.length > 0);
+    const useHouseGridPath = !hasPrimarySolar;
+    const pvUiPreviouslyEnabled = this._pvUiEnabled !== undefined ? this._pvUiEnabled : true;
+    const pvUiEnabled = hasPrimarySolar;
+    if (pvUiPreviouslyEnabled && !pvUiEnabled) {
+      this._hidePvPopup();
+    }
+    this._pvUiEnabled = pvUiEnabled;
+    const gridActiveForGrid = !useHouseGridPath && gridActive;
+    const gridActiveForHouse = useHouseGridPath && gridActive;
 
     const flows = {
       pv1: { stroke: pvPrimaryColor, glowColor: pvPrimaryColor, active: pv_primary_w > 10 },
@@ -1447,7 +1449,6 @@ class LuminaEnergyCard extends HTMLElement {
       load: { stroke: effectiveLoadFlowColor, glowColor: effectiveLoadFlowColor, active: loadMagnitude > 10, direction: 1 },
       grid: { stroke: effectiveGridColor, glowColor: effectiveGridColor, active: gridActiveForGrid, direction: gridAnimationDirection },
       grid_house: { stroke: effectiveGridColor, glowColor: effectiveGridColor, active: gridActiveForHouse, direction: gridAnimationDirection },
-      house_inv: { stroke: effectiveGridColor, glowColor: effectiveGridColor, active: gridActiveForHouse, direction: -gridAnimationDirection },
       car1: { stroke: carFlowColor, glowColor: carFlowColor, active: showCar1 && Math.abs(car1PowerValue) > 10, direction: 1 },
       car2: { stroke: carFlowColor, glowColor: carFlowColor, active: showCar2 && Math.abs(car2PowerValue) > 10, direction: 1 },
       heatPump: { stroke: heatPumpFlowColor, glowColor: heatPumpFlowColor, active: hasHeatPumpSensor && heat_pump_w > 10, direction: 1 }
@@ -1470,7 +1471,6 @@ class LuminaEnergyCard extends HTMLElement {
       load: FLOW_PATHS.load,
       grid: FLOW_PATHS.grid,
       grid_house: FLOW_PATHS.grid_house,
-      house_inv: FLOW_PATHS.house_inv,
       car1: carLayout.car1.path,
       car2: carLayout.car2.path,
       heatPump: FLOW_PATHS.heatPump
@@ -1534,7 +1534,7 @@ class LuminaEnergyCard extends HTMLElement {
       backgroundImage: bg_img,
       animationStyle: animation_style,
       title: { text: title_text, fontSize: header_font_size },
-      daily: { label: label_daily, value: `${total_daily_kwh} kWh`, labelSize: daily_label_font_size, valueSize: daily_value_font_size },
+      daily: { label: label_daily, value: `${total_daily_kwh} kWh`, labelSize: daily_label_font_size, valueSize: daily_value_font_size, visible: pvUiEnabled },
       pv: { fontSize: pv_font_size, lines: pvLines },
       battery: { levelOffset: BATTERY_GEOMETRY.MAX_HEIGHT - current_h, fill: liquid_fill },
       batterySoc: { text: `${Math.floor(avg_soc)}%`, fontSize: battery_soc_font_size, fill: batterySocTextColor },
@@ -1553,6 +1553,7 @@ class LuminaEnergyCard extends HTMLElement {
         lines: popupPvValues.map((valueText, i) => (valueText ? `${popupPvNames[i]}: ${valueText}` : '')),
         hasContent: popupPvValues.some((valueText) => Boolean(valueText))
       },
+      pvUiEnabled,
       flows,
       flowDurations,
       flowPaths,
@@ -1589,6 +1590,10 @@ class LuminaEnergyCard extends HTMLElement {
       const display = line.visible ? 'inline' : 'none';
       return `<text data-role="pv-line-${index}" x="${TEXT_POSITIONS.solar.x}" y="${line.y}" transform="${TEXT_TRANSFORMS.solar}" fill="${line.fill}" font-size="${viewState.pv.fontSize}" style="${TXT_STYLE}; display:${display};">${line.text}</text>`;
     }).join('');
+    const dailyDisplay = viewState.daily && viewState.daily.visible ? 'inline' : 'none';
+    const dailyCursor = viewState.daily && viewState.daily.visible ? 'pointer' : 'default';
+    const pvClickableDisplay = viewState.pvUiEnabled ? 'inline' : 'none';
+    const pvClickableCursor = viewState.pvUiEnabled ? 'pointer' : 'default';
 
     return `
       <style>
@@ -1662,7 +1667,7 @@ class LuminaEnergyCard extends HTMLElement {
           <text data-role="title-text" x="400" y="32" class="title-text" font-size="${viewState.title.fontSize}">${viewState.title.text}</text>
           ` : ''}
 
-          <g data-role="daily-yield-group" transform="translate(600, 370)" style="cursor:pointer;">
+          <g data-role="daily-yield-group" transform="translate(600, 370)" style="cursor:${dailyCursor}; display:${dailyDisplay};">
             <rect x="0" y="0" width="180" height="60" rx="10" ry="10" class="alive-box" />
             <text data-role="daily-label" x="90" y="23" class="alive-text" style="font-family: sans-serif; text-anchor:middle; font-size:${viewState.daily.labelSize}px; font-weight:normal; letter-spacing: 1px;">${viewState.daily.label}</text>
             <text data-role="daily-value" x="90" y="50" class="alive-text" style="font-family: sans-serif; text-anchor:middle; font-size:${viewState.daily.valueSize}px; font-weight:bold;">${viewState.daily.value}</text>
@@ -1696,9 +1701,6 @@ class LuminaEnergyCard extends HTMLElement {
           <path class="track-path" d="${viewState.flowPaths.grid_house}" />
           <path class="flow-path" data-flow-key="grid_house" d="${viewState.flowPaths.grid_house}" stroke="${viewState.flows.grid_house.stroke}" style="opacity:0;" />
           ${buildArrowGroupSvg('grid_house', viewState.flows.grid_house)}
-          <path class="track-path" d="${viewState.flowPaths.house_inv}" />
-          <path class="flow-path" data-flow-key="house_inv" d="${viewState.flowPaths.house_inv}" stroke="${viewState.flows.house_inv.stroke}" style="opacity:0;" />
-          ${buildArrowGroupSvg('house_inv', viewState.flows.house_inv)}
           <path class="track-path" d="${viewState.flowPaths.car1}" />
           <path class="flow-path" data-flow-key="car1" d="${viewState.flowPaths.car1}" stroke="${viewState.flows.car1.stroke}" style="opacity:0;" />
           ${buildArrowGroupSvg('car1', viewState.flows.car1)}
@@ -1742,7 +1744,7 @@ class LuminaEnergyCard extends HTMLElement {
             <text data-role="pv-popup-line-5" x="400" y="300" fill="#FFFFFF" font-size="16" font-family="sans-serif" text-anchor="middle" style="display:none;"></text>
           </g>
 
-          <polygon data-role="pv-clickable-area" points="75,205 200,195 275,245 145,275 75,205" fill="transparent" style="cursor:pointer;" />
+          <polygon data-role="pv-clickable-area" points="75,205 200,195 275,245 145,275 75,205" fill="transparent" style="cursor:${pvClickableCursor}; display:${pvClickableDisplay};" />
 
           <g data-role="battery-popup" style="display:none; cursor:pointer;">
             <rect x="300" y="200" width="200" height="120" rx="10" ry="10" class="alive-box" />
@@ -1824,7 +1826,6 @@ class LuminaEnergyCard extends HTMLElement {
         load: root.querySelector('[data-flow-key="load"]'),
         grid: root.querySelector('[data-flow-key="grid"]'),
         grid_house: root.querySelector('[data-flow-key="grid_house"]'),
-        house_inv: root.querySelector('[data-flow-key="house_inv"]'),
         car1: root.querySelector('[data-flow-key="car1"]'),
         car2: root.querySelector('[data-flow-key="car2"]'),
         heatPump: root.querySelector('[data-flow-key="heatPump"]')
@@ -1836,7 +1837,6 @@ class LuminaEnergyCard extends HTMLElement {
         load: root.querySelector('[data-arrow-key="load"]'),
         grid: root.querySelector('[data-arrow-key="grid"]'),
         grid_house: root.querySelector('[data-arrow-key="grid_house"]'),
-        house_inv: root.querySelector('[data-arrow-key="house_inv"]'),
         car1: root.querySelector('[data-arrow-key="car1"]'),
         car2: root.querySelector('[data-arrow-key="car2"]'),
         heatPump: root.querySelector('[data-arrow-key="heatPump"]')
@@ -1848,7 +1848,6 @@ class LuminaEnergyCard extends HTMLElement {
         load: Array.from(root.querySelectorAll('[data-arrow-shape="load"]')),
         grid: Array.from(root.querySelectorAll('[data-arrow-shape="grid"]')),
         grid_house: Array.from(root.querySelectorAll('[data-arrow-shape="grid_house"]')),
-        house_inv: Array.from(root.querySelectorAll('[data-arrow-shape="house_inv"]')),
         car1: Array.from(root.querySelectorAll('[data-arrow-shape="car1"]')),
         car2: Array.from(root.querySelectorAll('[data-arrow-shape="car2"]')),
         heatPump: Array.from(root.querySelectorAll('[data-arrow-shape="heatPump"]'))
@@ -1870,6 +1869,7 @@ class LuminaEnergyCard extends HTMLElement {
 
   _togglePvPopup() {
     if (!this._domRefs || !this._domRefs.pvPopup) return;
+    if (this._pvUiEnabled === false) return;
     
     // Check if popup has any content by checking if any PV entities are configured
     const config = this._config || this.config || {};
@@ -2337,6 +2337,18 @@ class LuminaEnergyCard extends HTMLElement {
       }
     }
 
+    if (refs.dailyYieldGroup) {
+      const visible = viewState.daily && viewState.daily.visible;
+      const display = visible ? 'inline' : 'none';
+      if (refs.dailyYieldGroup.style.display !== display) {
+        refs.dailyYieldGroup.style.display = display;
+      }
+      const cursor = visible ? 'pointer' : 'default';
+      if (refs.dailyYieldGroup.style.cursor !== cursor) {
+        refs.dailyYieldGroup.style.cursor = cursor;
+      }
+    }
+
     if (refs.batteryLiquidGroup) {
       const transform = `translate(0, ${viewState.battery.levelOffset})`;
       if (refs.batteryLiquidGroup.getAttribute('transform') !== transform) {
@@ -2372,6 +2384,26 @@ class LuminaEnergyCard extends HTMLElement {
           node.style.display = display;
         }
       });
+    }
+
+    if (refs.pvClickableArea) {
+      const display = viewState.pvUiEnabled ? 'inline' : 'none';
+      if (refs.pvClickableArea.style.display !== display) {
+        refs.pvClickableArea.style.display = display;
+      }
+      const cursor = viewState.pvUiEnabled ? 'pointer' : 'default';
+      if (refs.pvClickableArea.style.cursor !== cursor) {
+        refs.pvClickableArea.style.cursor = cursor;
+      }
+    }
+
+    if (!viewState.pvUiEnabled && refs.pvPopup) {
+      if (refs.pvPopup.style.display !== 'none') {
+        refs.pvPopup.style.display = 'none';
+      }
+      if (this._activePopup === 'pv') {
+        this._activePopup = null;
+      }
     }
 
     if (refs.batterySoc) {
@@ -2805,7 +2837,7 @@ class LuminaEnergyCard extends HTMLElement {
   }
 
   static get version() {
-    return '1.1.28';
+    return '1.1.29';
   }
 }
 
@@ -2852,7 +2884,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
           update_interval: { label: 'Update Interval', helper: 'Refresh cadence for card updates (0 disables throttling).' },
           animation_speed_factor: { label: 'Animation Speed Factor', helper: 'Adjust animation speed multiplier (-3x to 3x). Set 0 to pause; negatives reverse direction.' },
           animation_style: { label: 'Animation Style', helper: 'Choose the flow animation motif (dashes, dots, or arrows).' },
-          grid_flow_mode: { label: 'Grid Flow', helper: 'Choose how grid flows are displayed.' },
           
           sensor_pv_total: { label: 'PV Total Sensor', helper: 'Optional aggregate production sensor displayed as the combined line.' },
           sensor_pv_total_secondary: { label: 'PV Total Sensor (Inverter 2)', helper: 'Optional second inverter total; added to the PV total when provided.' },
@@ -3053,10 +3084,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Dashes (default)' },
             { value: 'dots', label: 'Dots' },
             { value: 'arrows', label: 'Arrows' }
-          ],
-          grid_flow_modes: [
-            { value: 'grid_to_inverter', label: 'Grid to Inverter' },
-            { value: 'grid_to_house_inverter', label: 'Grid to House - Inverter' }
           ]
         }
       ,
@@ -3095,7 +3122,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
           update_interval: { label: 'Intervallo di aggiornamento', helper: 'Frequenza di aggiornamento della scheda (0 disattiva il limite).' },
           animation_speed_factor: { label: 'Fattore velocita animazioni', helper: 'Regola il moltiplicatore (-3x a 3x). Usa 0 per mettere in pausa; valori negativi invertono il flusso.' },
           animation_style: { label: 'Stile animazione', helper: 'Scegli il motivo dei flussi (tratteggi, punti o frecce).' },
-          grid_flow_mode: { label: 'Flusso di rete', helper: 'Scegli come visualizzare i flussi di rete.' },
           
           sensor_pv_total: { label: 'Sensore PV totale', helper: 'Sensore aggregato opzionale mostrato come linea combinata.' },
           sensor_pv_total_secondary: { label: 'Sensore PV totale (Inverter 2)', helper: 'Secondo sensore inverter opzionale; viene sommato al totale PV.' },
@@ -3290,10 +3316,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Tratteggi (predefinito)' },
             { value: 'dots', label: 'Punti' },
             { value: 'arrows', label: 'Frecce' }
-          ],
-          grid_flow_modes: [
-            { value: 'grid_to_inverter', label: 'Rete a Inverter' },
-            { value: 'grid_to_house_inverter', label: 'Rete a Casa - Inverter' }
           ]
         }
       ,
@@ -3332,7 +3354,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
           update_interval: { label: 'Aktualisierungsintervall', helper: 'Aktualisierungsfrequenz der Karte (0 deaktiviert das Limit).' },
           animation_speed_factor: { label: 'Animationsgeschwindigkeit', helper: 'Animationsfaktor zwischen -3x und 3x. 0 pausiert, negative Werte kehren den Fluss um.' },
           animation_style: { label: 'Animationsstil', helper: 'Motiv der Flussanimation waehlen (Striche, Punkte oder Pfeile).' },
-          grid_flow_mode: { label: 'Netzfluss', helper: 'Waehlen, wie Netzfluesse angezeigt werden.' },
           
           sensor_pv_total: { label: 'PV Gesamt Sensor', helper: 'Optionaler aggregierter Sensor fuer die kombinierte Linie.' },
           sensor_pv_total_secondary: { label: 'PV Gesamt Sensor (WR 2)', helper: 'Optionaler zweiter Wechselrichter; wird mit dem PV-Gesamtwert addiert.' },
@@ -3523,10 +3544,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Striche (Standard)' },
             { value: 'dots', label: 'Punkte' },
             { value: 'arrows', label: 'Pfeile' }
-          ],
-          grid_flow_modes: [
-            { value: 'grid_to_inverter', label: 'Netz zu Wechselrichter' },
-            { value: 'grid_to_house_inverter', label: 'Netz zu Haus - Wechselrichter' }
           ]
         }
       ,
@@ -3565,7 +3582,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
           update_interval: { label: 'Intervalle de mise à jour', helper: 'Fréquence de rafraîchissement des mises à jour de la carte (0 désactive le throttling).' },
           animation_speed_factor: { label: 'Facteur de vitesse d animation', helper: 'Ajuste le multiplicateur de vitesse d animation (-3x à 3x). Mettre 0 pour pause; les négatifs inversent la direction.' },
           animation_style: { label: 'Style d animation', helper: 'Choisissez le motif d animation des flux (tirets, points, flèches).' },
-          grid_flow_mode: { label: 'Flux réseau', helper: 'Choisissez comment afficher les flux réseau.' },
           sensor_pv_total: { label: 'Capteur PV total', helper: 'Capteur de production agrégé optionnel affiché comme ligne combinée.' },
           sensor_pv_total_secondary: { label: 'Capteur PV total (Inverseur 2)', helper: 'Second capteur d onduleur optionnel; ajouté au total PV s il est fourni.' },
           sensor_pv1: { label: 'Chaîne PV 1 (Array 1)', helper: 'Capteur principal de production solaire.' },
@@ -3762,10 +3778,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Tirets (par défaut)' },
             { value: 'dots', label: 'Points' },
             { value: 'arrows', label: 'Flèches' }
-          ],
-          grid_flow_modes: [
-            { value: 'grid_to_inverter', label: 'Réseau vers Onduleur' },
-            { value: 'grid_to_house_inverter', label: 'Réseau vers Maison - Onduleur' }
           ]
         }
       ,
@@ -3804,7 +3816,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
           update_interval: { label: 'Update interval', helper: 'Frequentie van kaart updates verversen (0 schakelt throttling uit).' },
           animation_speed_factor: { label: 'Animatie snelheid factor', helper: 'Pas de animatie snelheid multiplier aan (-3x tot 3x). Stel in op 0 voor pauze; negatieven keren richting om.' },
           animation_style: { label: 'Animatie stijl', helper: 'Kies het patroon voor flow animaties (strepen, stippen, pijlen).' },
-          grid_flow_mode: { label: 'Netstroom', helper: 'Kies hoe netstromen worden weergegeven.' },
           sensor_pv_total: { label: 'Totale PV sensor', helper: 'Optionele geaggregeerde productie sensor weergegeven als gecombineerde lijn.' },
           sensor_pv_total_secondary: { label: 'Totale PV sensor (Inverter 2)', helper: 'Tweede optionele inverter sensor; toegevoegd aan totale PV indien opgegeven.' },
           sensor_pv1: { label: 'PV String 1 (Array 1)', helper: 'Primaire zonne productie sensor.' },
@@ -4001,10 +4012,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Strepen (standaard)' },
             { value: 'dots', label: 'Stippen' },
             { value: 'arrows', label: 'Pijlen' }
-          ],
-          grid_flow_modes: [
-            { value: 'grid_to_inverter', label: 'Net naar Omvormer' },
-            { value: 'grid_to_house_inverter', label: 'Net naar Huis - Omvormer' }
           ]
         },
         view: {
@@ -4044,8 +4051,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
     return {
       language: this._getAvailableLanguageOptions(localeStrings),
       display_unit: localeStrings.options.display_units,
-      animation_style: localeStrings.options.animation_styles,
-      grid_flow_mode: localeStrings.options.grid_flow_modes
+      animation_style: localeStrings.options.animation_styles
     };
   }
 
@@ -4147,7 +4153,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
         { name: 'show_daily_grid', label: fields.show_daily_grid.label, helper: fields.show_daily_grid.helper, selector: { boolean: {} } },
         { name: 'show_grid_flow_label', label: fields.show_grid_flow_label.label, helper: fields.show_grid_flow_label.helper, selector: { boolean: {} } },
         { name: 'invert_grid', label: fields.invert_grid.label, helper: fields.invert_grid.helper, selector: { boolean: {} } },
-        { name: 'grid_flow_mode', label: fields.grid_flow_mode.label, helper: fields.grid_flow_mode.helper, selector: { select: { options: optionDefs.grid_flow_mode } } },
         
       ]),
       car: define([
