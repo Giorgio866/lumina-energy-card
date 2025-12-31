@@ -1,7 +1,7 @@
 /**
  * Lumina Energy Card
  * Custom Home Assistant card for energy flow visualization
- * Version: 1.1.29
+ * Version: 1.1.30
  * Tested with Home Assistant 2025.12+
  */
 const BATTERY_GEOMETRY = { X: 260, Y_BASE: 350, WIDTH: 55, MAX_HEIGHT: 84 };
@@ -12,6 +12,7 @@ const TEXT_POSITIONS = {
   grid: { x: 580, y: 90, rotate: -8, skewX: -10, skewY: 0 },
   heatPump: { x: 315, y: 225, rotate: -20, skewX: -20, skewY: 33 }
 };
+
 
 const buildTextTransform = ({ x, y, rotate, skewX, skewY }) =>
   `translate(${x}, ${y}) rotate(${rotate}) skewX(${skewX}) skewY(${skewY}) translate(-${x}, -${y})`;
@@ -108,6 +109,9 @@ const FLOW_STYLE_PATTERNS = {
   arrows: { dasharray: null, cycle: 1 }
 };
 
+// Toggle to quickly disable all animated flow visuals without removing the code paths
+const FLOW_VISUALS_ENABLED = false;
+
 const FLOW_BASE_LOOP_RATE = 0.0025;
 const FLOW_MIN_GLOW_SCALE = 0.2;
 const DEFAULT_GRID_ACTIVITY_THRESHOLD = 100;
@@ -140,10 +144,14 @@ class LuminaEnergyCard extends HTMLElement {
     this._flowPathLengths = new Map();
     this._animationSpeedFactor = 1;
     this._animationStyle = FLOW_STYLE_DEFAULT;
+    this._backgroundSvgCache = new Map();
     this._defaults = (typeof LuminaEnergyCard.getStubConfig === 'function')
       ? { ...LuminaEnergyCard.getStubConfig() }
       : {};
     this._debugCoordsActive = false;
+    if (!FLOW_VISUALS_ENABLED) {
+      this.classList.add('flow-visuals-disabled');
+    }
     this._handleDebugPointerMove = this._handleDebugPointerMove.bind(this);
     this._handleDebugPointerLeave = this._handleDebugPointerLeave.bind(this);
   }
@@ -180,15 +188,18 @@ class LuminaEnergyCard extends HTMLElement {
   }
 
   static async getConfigElement() {
+    if (!customElements.get('lumina-energy-card-editor') && customElements.whenDefined) {
+      await customElements.whenDefined('lumina-energy-card-editor');
+    }
     return document.createElement('lumina-energy-card-editor');
   }
 
   static getStubConfig() {
     return {
+      type: 'custom:lumina-energy-card',
       language: 'en',
       card_title: '',
       background_image: '/local/community/lumina-energy-card/lumina_background.png',
-      background_image_heat_pump: '/local/community/lumina-energy-card/lumina-energy-card-hp.png',
       header_font_size: 16,
       daily_label_font_size: 12,
       daily_value_font_size: 20,
@@ -287,6 +298,10 @@ class LuminaEnergyCard extends HTMLElement {
   }
 
   _applyFlowAnimationTargets(flowDurations, flowStates) {
+    if (!FLOW_VISUALS_ENABLED) {
+      this._teardownFlowAnimations();
+      return;
+    }
     if (!this._domRefs || !this._domRefs.flows) {
       return;
     }
@@ -1200,8 +1215,15 @@ class LuminaEnergyCard extends HTMLElement {
 
     // Display settings
     const defaultBackground = config.background_image || '/local/community/lumina-energy-card/lumina_background.png';
-    const heatPumpBackground = config.background_image_heat_pump || '/local/community/lumina-energy-card/lumina-energy-card-hp.png';
-    const bg_img = hasHeatPumpSensor ? heatPumpBackground : defaultBackground;
+    const bg_img = defaultBackground;
+    const backgroundIsSvg = this._isSvgSource(bg_img);
+    if (backgroundIsSvg) {
+      this._ensureBackgroundSvgAsset(bg_img);
+    }
+    const backgroundAsset = backgroundIsSvg ? this._getBackgroundSvgEntry(bg_img) : null;
+    const backgroundSvgMarkup = (backgroundAsset && backgroundAsset.status === 'ready') ? backgroundAsset.markup : null;
+    const backgroundSvgKey = (backgroundAsset && backgroundAsset.status === 'ready') ? backgroundAsset.key : null;
+    const backgroundShowImage = !backgroundIsSvg || !backgroundSvgMarkup;
     const title_text = (typeof config.card_title === 'string' && config.card_title.trim()) ? config.card_title.trim() : null;
 
     const resolveColor = (value, fallback) => {
@@ -1402,10 +1424,10 @@ class LuminaEnergyCard extends HTMLElement {
     let gridLines = [];
     if (config.show_daily_grid) {
       const gridLinesRaw = [];
-      if (config.sensor_grid_import_daily && Number.isFinite(gridImportDaily)) {
+      if (config.sensor_grid_import_daily && gridImportDaily > 0) {
         gridLinesRaw.push({ key: 'grid-import-daily', text: `IMP DAY: ${(gridImportDaily / 1000).toFixed(2)} kWh`, fill: gridImportColor });
       }
-      if (config.sensor_grid_export_daily && Number.isFinite(gridExportDaily)) {
+      if (config.sensor_grid_export_daily && gridExportDaily > 0) {
         gridLinesRaw.push({ key: 'grid-export-daily', text: `EXP DAY: ${(gridExportDaily / 1000).toFixed(2)} kWh`, fill: gridExportColor });
       }
       const gridLineCount = Math.min(gridLinesRaw.length, 2);
@@ -1531,7 +1553,13 @@ class LuminaEnergyCard extends HTMLElement {
     })();
 
     const viewState = {
-      backgroundImage: bg_img,
+      background: {
+        src: bg_img,
+        isSvg: backgroundIsSvg,
+        svgMarkup: backgroundSvgMarkup,
+        svgKey: backgroundSvgKey,
+        showImage: backgroundShowImage
+      },
       animationStyle: animation_style,
       title: { text: title_text, fontSize: header_font_size },
       daily: { label: label_daily, value: `${total_daily_kwh} kWh`, labelSize: daily_label_font_size, valueSize: daily_value_font_size, visible: pvUiEnabled },
@@ -1586,6 +1614,8 @@ class LuminaEnergyCard extends HTMLElement {
     const car1SocDisplay = viewState.car1.soc.visible ? 'inline' : 'none';
     const car2Display = viewState.car2.visible ? 'inline' : 'none';
     const car2SocDisplay = viewState.car2.soc.visible ? 'inline' : 'none';
+    const backgroundImageDisplay = viewState.background && viewState.background.showImage ? 'inline' : 'none';
+    const backgroundSvgDisplay = (viewState.background && viewState.background.isSvg && viewState.background.svgMarkup) ? 'inline' : 'none';
     const pvLineElements = viewState.pv.lines.map((line, index) => {
       const display = line.visible ? 'inline' : 'none';
       return `<text data-role="pv-line-${index}" x="${TEXT_POSITIONS.solar.x}" y="${line.y}" transform="${TEXT_TRANSFORMS.solar}" fill="${line.fill}" font-size="${viewState.pv.fontSize}" style="${TXT_STYLE}; display:${display};">${line.text}</text>`;
@@ -1603,6 +1633,11 @@ class LuminaEnergyCard extends HTMLElement {
         .track-path { stroke: #555555; stroke-width: 2px; fill: none; opacity: 0; }
         .flow-path { stroke-linecap: round; stroke-width: 3px; fill: none; opacity: 0; transition: opacity 0.35s ease; filter: none; }
         .flow-arrow { pointer-events: none; opacity: 0; transition: opacity 0.35s ease; }
+        :host(.flow-visuals-disabled) .track-path,
+        :host(.flow-visuals-disabled) .flow-path,
+        :host(.flow-visuals-disabled) .flow-arrow { display: none !important; }
+        :host(.flow-visuals-disabled) .alive-box,
+        :host(.flow-visuals-disabled) .liquid-shape { animation: none !important; }
         .debug-grid line { pointer-events: none; }
         .debug-grid text { pointer-events: none; font-family: sans-serif; }
         @keyframes pulse-cyan { 0% { filter: drop-shadow(0 0 2px #00FFFF); } 50% { filter: drop-shadow(0 0 10px #00FFFF); } 100% { filter: drop-shadow(0 0 2px #00FFFF); } }
@@ -1656,8 +1691,10 @@ class LuminaEnergyCard extends HTMLElement {
           <defs>
             <clipPath id="battery-clip"><rect x="${BATTERY_GEOMETRY.X}" y="${BATTERY_GEOMETRY.Y_BASE - BATTERY_GEOMETRY.MAX_HEIGHT}" width="${BATTERY_GEOMETRY.WIDTH}" height="${BATTERY_GEOMETRY.MAX_HEIGHT}" rx="2" /></clipPath>
           </defs>
-
-          <image data-role="background-image" href="${viewState.backgroundImage}" xlink:href="${viewState.backgroundImage}" x="0" y="0" width="800" height="450" preserveAspectRatio="none" />
+          <image data-role="background-image" href="${viewState.background && viewState.background.src ? viewState.background.src : ''}" xlink:href="${viewState.background && viewState.background.src ? viewState.background.src : ''}" x="0" y="0" width="800" height="450" preserveAspectRatio="none" style="display:${backgroundImageDisplay};" />
+          <g data-role="background-svg" style="display:${backgroundSvgDisplay};">
+            ${viewState.background && viewState.background.svgMarkup ? viewState.background.svgMarkup : ''}
+          </g>
           <g data-role="debug-grid" class="debug-grid" style="display:none;">
             ${DEBUG_GRID_CONTENT}
           </g>
@@ -1786,7 +1823,8 @@ class LuminaEnergyCard extends HTMLElement {
     }
     this._domRefs = {
       svgRoot: root.querySelector('svg'),
-      background: root.querySelector('[data-role="background-image"]'),
+      backgroundImage: root.querySelector('[data-role="background-image"]'),
+      backgroundSvg: root.querySelector('[data-role="background-svg"]'),
       debugGrid: root.querySelector('[data-role="debug-grid"]'),
       debugCoords: root.querySelector('[data-role="debug-coordinates"]'),
       title: root.querySelector('[data-role="title-text"]'),
@@ -2280,9 +2318,37 @@ class LuminaEnergyCard extends HTMLElement {
     const useArrowsGlobally = animationStyle === 'arrows';
     const styleChanged = prev.animationStyle !== viewState.animationStyle;
 
-    if (refs.background && prev.backgroundImage !== viewState.backgroundImage) {
-      refs.background.setAttribute('href', viewState.backgroundImage);
-      refs.background.setAttribute('xlink:href', viewState.backgroundImage);
+    const currentBackground = viewState.background || {};
+    const prevBackground = prev.background || {};
+    if (refs.backgroundImage) {
+      if (prevBackground.src !== currentBackground.src && currentBackground.src) {
+        refs.backgroundImage.setAttribute('href', currentBackground.src);
+        refs.backgroundImage.setAttribute('xlink:href', currentBackground.src);
+      }
+      const desiredImageDisplay = currentBackground.showImage ? 'inline' : 'none';
+      if (refs.backgroundImage.style.display !== desiredImageDisplay) {
+        refs.backgroundImage.style.display = desiredImageDisplay;
+      }
+    }
+    if (refs.backgroundSvg) {
+      const shouldShowSvg = Boolean(currentBackground.isSvg && currentBackground.svgMarkup);
+      const svgDisplay = shouldShowSvg ? 'inline' : 'none';
+      if (refs.backgroundSvg.style.display !== svgDisplay) {
+        refs.backgroundSvg.style.display = svgDisplay;
+      }
+      if (shouldShowSvg && prevBackground.svgKey !== currentBackground.svgKey) {
+        refs.backgroundSvg.innerHTML = currentBackground.svgMarkup || '';
+        if (currentBackground.svgKey) {
+          refs.backgroundSvg.dataset.key = currentBackground.svgKey;
+        } else if (refs.backgroundSvg.dataset.key) {
+          delete refs.backgroundSvg.dataset.key;
+        }
+      } else if (!shouldShowSvg && prevBackground.isSvg) {
+        refs.backgroundSvg.innerHTML = '';
+        if (refs.backgroundSvg.dataset.key) {
+          delete refs.backgroundSvg.dataset.key;
+        }
+      }
     }
 
     if (refs.debugGrid) {
@@ -2737,6 +2803,130 @@ class LuminaEnergyCard extends HTMLElement {
     this._debugCoordsActive = true;
   }
 
+  _isSvgSource(path) {
+    if (typeof path !== 'string') {
+      return false;
+    }
+    const trimmed = path.trim();
+    if (!trimmed) {
+      return false;
+    }
+    if (trimmed.startsWith('<svg') || trimmed.startsWith('data:image/svg+xml')) {
+      return true;
+    }
+    const noQuery = trimmed.split('?')[0].split('#')[0];
+    return noQuery.toLowerCase().endsWith('.svg');
+  }
+
+  _getBackgroundSvgEntry(src) {
+    if (!this._backgroundSvgCache) {
+      this._backgroundSvgCache = new Map();
+    }
+    return this._backgroundSvgCache.get(src) || null;
+  }
+
+  _ensureBackgroundSvgAsset(src) {
+    if (!this._isSvgSource(src)) {
+      return;
+    }
+    if (!this._backgroundSvgCache) {
+      this._backgroundSvgCache = new Map();
+    }
+    const existing = this._backgroundSvgCache.get(src);
+    if (existing && (existing.status === 'loading' || existing.status === 'ready')) {
+      return;
+    }
+    const setReady = (markup) => {
+      if (markup) {
+        const key = `${src}|${Date.now()}`;
+        this._backgroundSvgCache.set(src, { status: 'ready', markup, key });
+        this._requestBackgroundRefresh();
+      } else {
+        this._backgroundSvgCache.set(src, { status: 'error' });
+      }
+    };
+    const inlineMarkup = src.trim().startsWith('<svg') ? src : null;
+    if (inlineMarkup) {
+      setReady(this._normalizeSvgMarkup(inlineMarkup));
+      return;
+    }
+    if (src.trim().startsWith('data:image/svg+xml')) {
+      const decoded = this._decodeDataSvg(src);
+      setReady(decoded ? this._normalizeSvgMarkup(decoded) : null);
+      return;
+    }
+    this._backgroundSvgCache.set(src, { status: 'loading' });
+    fetch(src)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        return response.text();
+      })
+      .then((text) => {
+        const normalized = this._normalizeSvgMarkup(text);
+        setReady(normalized);
+        if (!normalized) {
+          console.warn('Lumina Energy Card: background SVG could not be parsed', src);
+        }
+      })
+      .catch((err) => {
+        console.warn('Lumina Energy Card: failed to load SVG background', src, err);
+        this._backgroundSvgCache.set(src, { status: 'error', error: err });
+      });
+  }
+
+  _normalizeSvgMarkup(rawText) {
+    try {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(rawText, 'image/svg+xml');
+      const svgEl = doc.documentElement;
+      if (!svgEl || svgEl.nodeName.toLowerCase() !== 'svg') {
+        return null;
+      }
+      svgEl.setAttribute('width', `${SVG_DIMENSIONS.width}`);
+      svgEl.setAttribute('height', `${SVG_DIMENSIONS.height}`);
+      if (!svgEl.getAttribute('viewBox')) {
+        svgEl.setAttribute('viewBox', `0 0 ${SVG_DIMENSIONS.width} ${SVG_DIMENSIONS.height}`);
+      }
+      svgEl.setAttribute('preserveAspectRatio', 'none');
+      const existingClass = svgEl.getAttribute('class');
+      const mergedClass = existingClass ? `${existingClass} lumina-bg-svg` : 'lumina-bg-svg';
+      svgEl.setAttribute('class', mergedClass);
+      return svgEl.outerHTML;
+    } catch (error) {
+      console.warn('Lumina Energy Card: SVG normalization error', error);
+      return null;
+    }
+  }
+
+  _decodeDataSvg(dataUrl) {
+    try {
+      const commaIndex = dataUrl.indexOf(',');
+      if (commaIndex === -1) {
+        return null;
+      }
+      const meta = dataUrl.substring(0, commaIndex);
+      let payload = dataUrl.substring(commaIndex + 1);
+      if (meta.includes(';base64')) {
+        payload = atob(payload);
+      } else {
+        payload = decodeURIComponent(payload);
+      }
+      return payload;
+    } catch (err) {
+      console.warn('Lumina Energy Card: unable to decode SVG data URL', err);
+      return null;
+    }
+  }
+
+  _requestBackgroundRefresh() {
+    this._forceRender = true;
+    if (this._hass && this.config) {
+      this.render();
+    }
+  }
+
   _attachEventListeners() {
     if (!this.shadowRoot || !this._domRefs) return;
 
@@ -2804,7 +2994,12 @@ class LuminaEnergyCard extends HTMLElement {
 
   _snapshotViewState(viewState) {
     return {
-      backgroundImage: viewState.backgroundImage,
+      background: viewState.background ? {
+        src: viewState.background.src,
+        isSvg: viewState.background.isSvg,
+        svgKey: viewState.background.svgKey,
+        showImage: viewState.background.showImage
+      } : undefined,
       animationStyle: viewState.animationStyle,
       title: { ...viewState.title },
       daily: { ...viewState.daily },
@@ -2837,12 +3032,8 @@ class LuminaEnergyCard extends HTMLElement {
   }
 
   static get version() {
-    return '1.1.29';
+    return '1.1.30';
   }
-}
-
-if (!customElements.get('lumina-energy-card')) {
-  customElements.define('lumina-energy-card', LuminaEnergyCard);
 }
 
 class LuminaEnergyCardEditor extends HTMLElement {
@@ -2878,7 +3069,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
         fields: {
           card_title: { label: 'Card Title', helper: 'Title displayed at the top of the card. Leave blank to disable.' },
           background_image: { label: 'Background Image Path', helper: 'Path to the background image (e.g., /local/community/lumina-energy-card/lumina_background.png).' },
-          background_image_heat_pump: { label: 'Background Image Heat Pump', helper: 'Path to the heat pump background image (e.g., /local/community/lumina-energy-card/lumina-energy-card-hp.png).' },
           language: { label: 'Language', helper: 'Choose the editor language.' },
           display_unit: { label: 'Display Unit', helper: 'Unit used when formatting power values.' },
           update_interval: { label: 'Update Interval', helper: 'Refresh cadence for card updates (0 disables throttling).' },
@@ -3116,7 +3306,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
         fields: {
           card_title: { label: 'Titolo scheda', helper: 'Titolo mostrato nella parte superiore della scheda. Lasciare vuoto per disabilitare.' },
           background_image: { label: 'Percorso immagine di sfondo', helper: 'Percorso dell immagine di sfondo (es. /local/community/lumina-energy-card/lumina_background.png).' },
-          background_image_heat_pump: { label: 'Immagine di sfondo pompa di calore', helper: 'Percorso dell immagine di sfondo per la pompa di calore (es. /local/community/lumina-energy-card/lumina-energy-card-hp.png).' },
           language: { label: 'Lingua', helper: 'Seleziona la lingua dell editor.' },
           display_unit: { label: 'Unita di visualizzazione', helper: 'Unita usata per i valori di potenza.' },
           update_interval: { label: 'Intervallo di aggiornamento', helper: 'Frequenza di aggiornamento della scheda (0 disattiva il limite).' },
@@ -3348,7 +3537,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
         fields: {
           card_title: { label: 'Kartentitel', helper: 'Titel oben auf der Karte. Leer lassen, um zu deaktivieren.' },
           background_image: { label: 'Pfad zum Hintergrundbild', helper: 'Pfad zum Hintergrundbild (z. B. /local/community/lumina-energy-card/lumina_background.png).' },
-          background_image_heat_pump: { label: 'Hintergrundbild Waermepumpe', helper: 'Pfad zum Waermepumpen-Hintergrundbild (z. B. /local/community/lumina-energy-card/lumina-energy-card-hp.png).' },
           language: { label: 'Sprache', helper: 'Editor-Sprache waehlen.' },
           display_unit: { label: 'Anzeigeeinheit', helper: 'Einheit fuer Leistungswerte.' },
           update_interval: { label: 'Aktualisierungsintervall', helper: 'Aktualisierungsfrequenz der Karte (0 deaktiviert das Limit).' },
@@ -3576,7 +3764,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
         fields: {
           card_title: { label: 'Titre de la carte', helper: 'Titre affiché en haut de la carte. Laisser vide pour désactiver.' },
           background_image: { label: 'Chemin image d arrière-plan', helper: 'Chemin vers l image d arrière-plan (ex. /local/community/lumina-energy-card/lumina_background.png).' },
-          background_image_heat_pump: { label: 'Image d arrière-plan pompe à chaleur', helper: 'Chemin vers l image d arrière-plan pompe à chaleur (ex. /local/community/lumina-energy-card/lumina-energy-card-hp.png).' },
           language: { label: 'Langue', helper: 'Choisissez la langue de l éditeur.' },
           display_unit: { label: 'Unité d affichage', helper: 'Unité utilisée pour formater les valeurs de puissance.' },
           update_interval: { label: 'Intervalle de mise à jour', helper: 'Fréquence de rafraîchissement des mises à jour de la carte (0 désactive le throttling).' },
@@ -3810,7 +3997,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
         fields: {
           card_title: { label: 'Kaart titel', helper: 'Titel weergegeven bovenaan de kaart. Leeg laten om uit te schakelen.' },
           background_image: { label: 'Achtergrond afbeelding pad', helper: 'Pad naar achtergrond afbeelding (bijv. /local/community/lumina-energy-card/lumina_background.png).' },
-          background_image_heat_pump: { label: 'Achtergrond afbeelding warmtepomp', helper: 'Pad naar warmtepomp achtergrond afbeelding (bijv. /local/community/lumina-energy-card/lumina-energy-card-hp.png).' },
           language: { label: 'Taal', helper: 'Kies de taal van de editor.' },
           display_unit: { label: 'Weergave eenheid', helper: 'Eenheid gebruikt om kracht waarden te formatteren.' },
           update_interval: { label: 'Update interval', helper: 'Frequentie van kaart updates verversen (0 schakelt throttling uit).' },
@@ -4098,7 +4284,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
       general: define([
         { name: 'card_title', label: fields.card_title.label, helper: fields.card_title.helper, selector: { text: { mode: 'blur' } } },
         { name: 'background_image', label: fields.background_image.label, helper: fields.background_image.helper, selector: { text: { mode: 'blur' } } },
-        { name: 'background_image_heat_pump', label: fields.background_image_heat_pump.label, helper: fields.background_image_heat_pump.helper, selector: { text: { mode: 'blur' } } },
         { name: 'language', label: fields.language.label, helper: fields.language.helper, selector: { select: { options: optionDefs.language } } },
         { name: 'display_unit', label: fields.display_unit.label, helper: fields.display_unit.helper, selector: { select: { options: optionDefs.display_unit } } },
         { name: 'update_interval', label: fields.update_interval.label, helper: fields.update_interval.helper, selector: { number: { min: 0, max: 60, step: 5, mode: 'slider', unit_of_measurement: 's' } } },
@@ -4340,6 +4525,15 @@ class LuminaEnergyCardEditor extends HTMLElement {
     return { ...this._defaults, ...this._config };
   }
 
+  _buildConfigPayload(config) {
+    const normalized = { ...(config || {}) };
+    normalized.type = 'custom:lumina-energy-card';
+    if (typeof normalized.type === 'string') {
+      normalized.type = normalized.type.trim() || 'custom:lumina-energy-card';
+    }
+    return normalized;
+  }
+
   setConfig(config) {
     this._config = { ...config };
     this._rendered = false;
@@ -4363,7 +4557,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
       bubbles: true,
       composed: true,
     });
-    event.detail = { config: newConfig };
+    event.detail = { config: this._buildConfigPayload(newConfig) };
     this.dispatchEvent(event);
   }
 
@@ -4942,6 +5136,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
 
 if (!customElements.get('lumina-energy-card-editor')) {
   customElements.define('lumina-energy-card-editor', LuminaEnergyCardEditor);
+}
+
+if (!customElements.get('lumina-energy-card')) {
+  customElements.define('lumina-energy-card', LuminaEnergyCard);
 }
 
 window.customCards = window.customCards || [];
