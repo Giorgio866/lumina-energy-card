@@ -7,9 +7,7 @@ Limuna Energy Card repository is <https://github.com/ratava/lumina-energy-card>.
 
 ![Lumina Energy Card Background](dist/lumina_background.png)
 
-Support Giorgio [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?style=for-the-badge&logo=paypal)](https://www.paypal.me/giorgiosalierno)
-Support Brent @ratava[![Donate Brent Wesley @ratava](https://github.com/user-attachments/assets/b603f494-a142-4bb0-893f-aaafd5d19dfd)](https://ko-fi.com/brentwesley)
-
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?style=for-the-badge&logo=paypal)](https://www.paypal.me/giorgiosalierno)
 
 **Language / Lingua / Sprache / Langue:** [English](#english) | [Italiano](#italiano) | [Deutsch](#deutsch) | [Français](#fran%C3%A7ais) | [Nederlands](#nederlands)
 
