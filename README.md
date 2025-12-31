@@ -14,6 +14,8 @@ Support Brent @ratava[![Donate Brent Wesley @ratava](https://github.com/user-att
 
 ## Quick Install (Custom HACS Repository)
 
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ratava&repository=lumina-energy-card&category=Dashboard)
+
 1. Open HACS in Home Assistant and choose **Frontend**.
 1. Click the three-dot menu and select **Custom repositories**.
 1. Paste `https://github.com/ratava/lumina-energy-card`, set the category to **Dashboard**, and click **Add**.
@@ -50,6 +52,8 @@ Lumina Energy Card is a Home Assistant custom Lovelace card that renders animate
 ### Installation (EN)
 
 #### HACS (EN)
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ratava&repository=lumina-energy-card&category=Dashboard)
 
 1. Open HACS in Home Assistant and choose **Frontend**.
 1. Use the three-dot menu → **Custom repositories**.
@@ -321,6 +325,8 @@ Lumina Energy Card è una scheda Lovelace personalizzata per Home Assistant che 
 
 #### HACS (IT)
 
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ratava&repository=lumina-energy-card&category=Dashboard)
+
 1. Apri HACS in Home Assistant e scegli **Frontend**.
 1. Dal menu a tre punti seleziona **Repository personalizzati**.
 1. Inserisci `https://github.com/ratava/lumina-energy-card`, imposta la categoria su **Dashboard** e premi **Aggiungi**.
@@ -548,6 +554,8 @@ Lumina Energy Card est une carte Lovelace personnalisée pour Home Assistant qui
 ### Installation (FR)
 
 #### HACS (FR)
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ratava&repository=lumina-energy-card&category=Dashboard)
 
 1. Ouvrez HACS dans Home Assistant et choisissez **Frontend**.
 1. Cliquez sur le menu à trois points et sélectionnez **Custom repositories**.
@@ -823,6 +831,8 @@ Lumina Energy Card ist eine benutzerdefinierte Lovelace-Karte für Home Assistan
 
 #### HACS (DE)
 
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ratava&repository=lumina-energy-card&category=Dashboard)
+
 1. Öffne HACS in Home Assistant und wähle **Frontend**.
 1. Drei-Punkte-Menü → **Custom repositories**.
 1. Trage `https://github.com/ratava/lumina-energy-card` ein, setze die Kategorie auf **Dashboard** und klicke **Add**.
@@ -1047,6 +1057,8 @@ De Lumina Energy Card is een aangepaste Lovelace-kaart voor Home Assistant die e
 ### Installatie (NL)
 
 #### HACS (NL)
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ratava&repository=lumina-energy-card&category=Dashboard)
 
 1. Open HACS → **Frontend** in Home Assistant.
 1. Klik op het menu met drie puntjes → **Custom repositories**.
