@@ -1,4 +1,3 @@
 tools/
 .vscode/
-locales/
-dist/lumina.svg
+locales

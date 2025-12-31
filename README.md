@@ -1,7 +1,7 @@
 # Lumina Energy Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-![Version](https://img.shields.io/badge/version-1.1.29-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1.30-blue.svg)
 
 Limuna Energy Card repository is <https://github.com/ratava/lumina-energy-card>.
 
@@ -99,6 +99,7 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | --- | --- | --- | --- |
 | `card_title` | string | — | Optional header text; blank keeps the title hidden. |
 | `background_image` | string | `/local/community/lumina-energy-card/lumina_background.png` | Default 16:9 background asset. |
+| `background_image_heat_pump` | string | `/local/community/lumina-energy-card/lumina-energy-card-hp.png` | Automatically used when a heat pump sensor is configured. |
 | `language` | string | `en` | Supported editor languages: `en`, `it`, `de`, `fr`, `nl`. |
 | `display_unit` | string | `kW` | Display values in `W` or `kW`. |
 | `update_interval` | number | `30` | Refresh cadence (0–60 s, step 5; 0 disables throttling). |
@@ -176,13 +177,14 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 
 ### Heat Pump Overlay (EN)
 
-Set `sensor_heat_pump_consumption` to expose the dedicated heat pump conduit. When the sensor exists the card renders the live reading next to the house and animates the orange SVG path over the primary background. Tune the visuals with `heat_pump_flow_color`, `heat_pump_text_color`, and `heat_pump_font_size`.
+Set `sensor_heat_pump_consumption` to expose the dedicated heat pump conduit. When the sensor exists the card auto-loads `background_image_heat_pump`, renders the live reading next to the house, and animates the orange SVG path. Tune the visuals with `heat_pump_flow_color`, `heat_pump_text_color`, and `heat_pump_font_size`.
 
 Example snippet:
 
 ```yaml
 type: custom:lumina-energy-card
 sensor_heat_pump_consumption: sensor.heat_pump_power
+background_image_heat_pump: /local/community/lumina-energy-card/lumina-energy-card-hp.png
 heat_pump_flow_color: '#FFAA33'
 heat_pump_text_color: '#FFE1B2'
 ```
@@ -367,6 +369,7 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | --- | --- | --- | --- |
 | `card_title` | stringa | — | Testo intestazione opzionale; se vuoto il titolo resta nascosto. |
 | `background_image` | stringa | `/local/community/lumina-energy-card/lumina_background.png` | Immagine di sfondo 16:9 predefinita. |
+| `background_image_heat_pump` | stringa | `/local/community/lumina-energy-card/lumina-energy-card-hp.png` | Caricata automaticamente quando è configurato il sensore pompa di calore. |
 | `language` | stringa | `en` | Lingue supportate: `en`, `it`, `de`, `fr`, `nl`. |
 | `display_unit` | stringa | `kW` | Visualizza i valori in `W` o `kW`. |
 | `update_interval` | numero | `30` | Cadenza di aggiornamento (0–60 s, passo 5; 0 disattiva la limitazione). |
@@ -444,11 +447,12 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 
 ### Sovrapposizione Pompa di Calore (IT)
 
-Imposta `sensor_heat_pump_consumption` per attivare il condotto dedicato: la carta mostra la lettura arancione vicino alla casa e anima il percorso sopra lo sfondo principale. Personalizza con `heat_pump_flow_color`, `heat_pump_text_color` e `heat_pump_font_size`.
+Imposta `sensor_heat_pump_consumption` per attivare il condotto dedicato: la carta carica automaticamente `background_image_heat_pump`, mostra la lettura arancione vicino alla casa e anima il percorso. Personalizza con `heat_pump_flow_color`, `heat_pump_text_color` e `heat_pump_font_size`.
 
 ```yaml
 type: custom:lumina-energy-card
 sensor_heat_pump_consumption: sensor.heat_pump_power
+background_image_heat_pump: /local/community/lumina-energy-card/lumina-energy-card-hp.png
 heat_pump_flow_color: '#FFAA33'
 heat_pump_text_color: '#FFE1B2'
 ```
@@ -593,6 +597,7 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | --- | --- | --- | --- |
 | `card_title` | chaîne | — | Texte d'en-tête optionnel ; vide = titre masqué. |
 | `background_image` | chaîne | `/local/community/lumina-energy-card/lumina_background.png` | Image de fond 16:9 par défaut. |
+| `background_image_heat_pump` | chaîne | `/local/community/lumina-energy-card/lumina-energy-card-hp.png` | Chargée automatiquement lorsqu'un capteur de pompe à chaleur est configuré. |
 | `language` | chaîne | `en` | Langues prises en charge : `en`, `it`, `de`, `fr`, `nl`. |
 | `display_unit` | chaîne | `kW` | Affiche les valeurs en `W` ou `kW`. |
 | `update_interval` | nombre | `30` | Cadence d'actualisation (0–60 s, pas de 5 ; 0 supprime toute limitation). |
@@ -670,11 +675,12 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 
 ### Superposition pompe à chaleur (FR)
 
-Définissez `sensor_heat_pump_consumption` pour activer le conduit dédié : la carte affiche la consommation en orange près de la maison et anime la conduite au-dessus de l'arrière-plan principal. Ajustez `heat_pump_flow_color`, `heat_pump_text_color` et `heat_pump_font_size` si nécessaire.
+Définissez `sensor_heat_pump_consumption` pour activer le conduit dédié : la carte charge automatiquement `background_image_heat_pump`, affiche la consommation en orange près de la maison et anime la conduite. Ajustez `heat_pump_flow_color`, `heat_pump_text_color` et `heat_pump_font_size` si nécessaire.
 
 ```yaml
 type: custom:lumina-energy-card
 sensor_heat_pump_consumption: sensor.heat_pump_power
+background_image_heat_pump: /local/community/lumina-energy-card/lumina-energy-card-hp.png
 heat_pump_flow_color: '#FFAA33'
 heat_pump_text_color: '#FFE1B2'
 ```
@@ -865,6 +871,7 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | --- | --- | --- | --- |
 | `card_title` | Zeichenkette | — | Optionaler Kopfzeilentext; leer blendet den Titel aus. |
 | `background_image` | Zeichenkette | `/local/community/lumina-energy-card/lumina_background.png` | Standard-Background (16:9). |
+| `background_image_heat_pump` | Zeichenkette | `/local/community/lumina-energy-card/lumina-energy-card-hp.png` | Wird automatisch geladen, wenn ein Wärmepumpensensor gesetzt ist. |
 | `language` | Zeichenkette | `en` | Unterstützte Sprachen: `en`, `it`, `de`, `fr`, `nl`. |
 | `display_unit` | Zeichenkette | `kW` | Anzeige in `W` oder `kW`. |
 | `update_interval` | Zahl | `30` | Aktualisierungsintervall (0–60 s, Schritt 5; 0 deaktiviert das Throttling). |
@@ -942,11 +949,12 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 
 ### Wärmepumpen-Overlay (DE)
 
-Setze `sensor_heat_pump_consumption`, um den Wärmepumpenpfad zu aktivieren. Die Karte zeigt den orangenen Wert neben dem Haus und animiert den Pfad über dem Standardhintergrund. Farben und Schrift lassen sich mit `heat_pump_flow_color`, `heat_pump_text_color` und `heat_pump_font_size` anpassen.
+Setze `sensor_heat_pump_consumption`, um den Wärmepumpenpfad zu aktivieren. Die Karte lädt automatisch `background_image_heat_pump`, zeigt den orangenen Wert neben dem Haus und animiert den Pfad. Farben und Schrift lassen sich mit `heat_pump_flow_color`, `heat_pump_text_color` und `heat_pump_font_size` anpassen.
 
 ```yaml
 type: custom:lumina-energy-card
 sensor_heat_pump_consumption: sensor.heat_pump_power
+background_image_heat_pump: /local/community/lumina-energy-card/lumina-energy-card-hp.png
 heat_pump_flow_color: '#FFAA33'
 heat_pump_text_color: '#FFE1B2'
 ```
@@ -1087,6 +1095,7 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | --- | --- | --- | --- |
 | `card_title` | Tekst | — | Optionele titel bovenaan; leeg laat de titel weg. |
 | `background_image` | Tekst | `/local/community/lumina-energy-card/lumina_background.png` | Hoofdachtergrond (16:9) of eigen afbeelding. |
+| `background_image_heat_pump` | Tekst | `/local/community/lumina-energy-card/lumina-energy-card-hp.png` | Wordt automatisch gebruikt zodra een warmtepompsensor is ingesteld. |
 | `language` | Tekst | `en` | UI-taal (`en`, `it`, `de`, `fr`, `nl`). |
 | `display_unit` | Tekst | `kW` | Kies tussen `kW` en `W`. |
 | `update_interval` | Nummer | `30` | Updatefrequentie in seconden (0–60; stap 5). |
@@ -1159,11 +1168,12 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 
 ### Warmtepompoverlay (NL)
 
-Wanneer `sensor_heat_pump_consumption` is ingesteld, toont de kaart een oranje label naast het huis en animeert de warmtepompstroom boven de primaire achtergrond. Pas kleuren/lettertypes aan via `heat_pump_flow_color`, `heat_pump_text_color` en `heat_pump_font_size`.
+Wanneer `sensor_heat_pump_consumption` is ingesteld, schakelt de kaart automatisch naar `background_image_heat_pump`, toont een oranje label naast het huis en animeert de warmtepompstroom. Pas kleuren/lettertypes aan via `heat_pump_flow_color`, `heat_pump_text_color` en `heat_pump_font_size`.
 
 ```yaml
 type: custom:lumina-energy-card
 sensor_heat_pump_consumption: sensor.wp_vermogen
+background_image_heat_pump: /local/community/lumina-energy-card/lumina-energy-card-hp.png
 heat_pump_flow_color: '#FFA533'
 ```
 
