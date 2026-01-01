@@ -4600,10 +4600,14 @@ class LuminaEnergyCardEditor extends HTMLElement {
 
   setConfig(config) {
     this._config = { ...config };
-    this._rendered = false;
-    this.render();
+    
+    // Fix focus loss: Do not re-render the editor on every config change (keystroke).
+    // Only render if it hasn't been rendered yet.
+    if (!this._rendered) {
+      this.render();
+    }
   }
-
+  
   get value() {
     return this._config;
   }
