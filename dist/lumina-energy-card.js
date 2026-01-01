@@ -929,7 +929,8 @@ class LuminaEnergyCard extends HTMLElement {
       return '';
     }
     const entity = this._hass.states[resolvedId];
-    const rawState = entity && entity.state !== undefined && entity.state !== null
+    
+    let rawState = entity && entity.state !== undefined && entity.state !== null
       ? entity.state.toString().trim()
       : '';
     if (!rawState) {
@@ -939,6 +940,12 @@ class LuminaEnergyCard extends HTMLElement {
     if (lowerState === 'unknown' || lowerState === 'unavailable') {
       return rawState;
     }
+    // Round to 2 decimals if numeric
+    const numericValue = parseFloat(rawState);
+    if (!isNaN(numericValue)) {
+      rawState = numericValue.toFixed(2);
+    }
+    
     const unit = (entity.attributes && typeof entity.attributes.unit_of_measurement === 'string')
       ? entity.attributes.unit_of_measurement.trim()
       : '';
@@ -1260,19 +1267,19 @@ class LuminaEnergyCard extends HTMLElement {
     }
     // Fallback to small built-in dictionaries if locales don't provide values
     if (!label_daily) {
-      const dict_daily = { it: 'PRODUZIONE OGGI', en: 'DAILY YIELD', de: 'TAGESERTRAG' };
+      const dict_daily = { it: 'PRODUZIONE OGGI', en: 'DAILY YIELD', de: 'TAGESERTRAG', pl: 'DZIENNY UZYSK'  };
       label_daily = dict_daily[lang] || dict_daily['en'];
     }
     if (!label_pv_tot) {
-      const dict_pv_tot = { it: 'PV TOTALE', en: 'PV TOTAL', de: 'PV GESAMT' };
+      const dict_pv_tot = { it: 'PV TOTALE', en: 'PV TOTAL', de: 'PV GESAMT', pl: 'PV SUMA'  };
       label_pv_tot = dict_pv_tot[lang] || dict_pv_tot['en'];
     }
     if (!label_importing) {
-      const dict_importing = { it: 'IMPORTAZIONE', en: 'IMPORTING', de: 'IMPORTIEREN', fr: 'IMPORTATION', nl: 'IMPORTEREN' };
+      const dict_importing = { it: 'IMPORTAZIONE', en: 'IMPORTING', de: 'IMPORTIEREN', fr: 'IMPORTATION', nl: 'IMPORTEREN', pl: 'POBIERANIE' };
       label_importing = dict_importing[lang] || dict_importing['en'];
     }
     if (!label_exporting) {
-      const dict_exporting = { it: 'ESPORTAZIONE', en: 'EXPORTING', de: 'EXPORTIEREN', fr: 'EXPORTATION', nl: 'EXPORTEREN' };
+      const dict_exporting = { it: 'ESPORTAZIONE', en: 'EXPORTING', de: 'EXPORTIEREN', fr: 'EXPORTATION', nl: 'EXPORTEREN', pl: 'WYSYŁANIE' };
       label_exporting = dict_exporting[lang] || dict_exporting['en'];
     }
 
@@ -1401,13 +1408,18 @@ class LuminaEnergyCard extends HTMLElement {
 
     // Build optional grid daily lines (import/export cumulative values)
     let gridLines = [];
+   // Localized labels
+    const currentLang = config.language || 'en';
+    const txt_imp = { pl: 'IMP DZIŚ', de: 'IMP TAG', it: 'IMP OGGI', en: 'IMP DAY' }[currentLang] || 'IMP DAY';
+    const txt_exp = { pl: 'EXP DZIŚ', de: 'EXP TAG', it: 'EXP OGGI', en: 'EXP DAY' }[currentLang] || 'EXP DAY';
+    
     if (config.show_daily_grid) {
       const gridLinesRaw = [];
       if (config.sensor_grid_import_daily && Number.isFinite(gridImportDaily)) {
-        gridLinesRaw.push({ key: 'grid-import-daily', text: `IMP DAY: ${(gridImportDaily / 1000).toFixed(2)} kWh`, fill: gridImportColor });
+        gridLinesRaw.push({ key: 'grid-import-daily', text: `${txt_imp}: ${(gridImportDaily / 1000).toFixed(2)} kWh`, fill: gridImportColor });
       }
       if (config.sensor_grid_export_daily && Number.isFinite(gridExportDaily)) {
-        gridLinesRaw.push({ key: 'grid-export-daily', text: `EXP DAY: ${(gridExportDaily / 1000).toFixed(2)} kWh`, fill: gridExportColor });
+        gridLinesRaw.push({ key: 'grid-export-daily', text: `${txt_exp}: ${(gridExportDaily / 1000).toFixed(2)} kWh`, fill: gridExportColor });
       }
       const gridLineCount = Math.min(gridLinesRaw.length, 2);
       if (gridLineCount > 0) {
