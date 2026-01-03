@@ -1,7 +1,7 @@
 /**
  * Lumina Energy Card
  * Custom Home Assistant card for energy flow visualization
- * Version: 1.1.32
+ * Version: 1.1.31-svg7
  * Tested with Home Assistant 2025.12+
  */
 const BATTERY_GEOMETRY = { X: 260, Y_BASE: 350, WIDTH: 55, MAX_HEIGHT: 84 };
@@ -22,18 +22,6 @@ const TEXT_TRANSFORMS = {
   home: buildTextTransform(TEXT_POSITIONS.home),
   grid: buildTextTransform(TEXT_POSITIONS.grid),
   heatPump: buildTextTransform(TEXT_POSITIONS.heatPump)
-};
-
-const FLOW_PATHS = {
-  pv1: 'M 250 237 L 282 230 L 420 280',
-  pv2: 'M 200 205 L 282 238 L 420 288',
-  bat: 'M 423 310 L 325 350',
-  load: 'M 471 303 L 550 273 L 380 220',
-  grid: 'M 470 280 L 575 240 L 575 223',
-  grid_house: 'M 470 205 L 575 238 L 575 223',
-  car1: 'M 475 329 L 490 335 L 600 285',
-  car2: 'M 475 341 L 490 347 L 600 310',
-  heatPump: 'M 401 238 L 452 255 L 418 266 L 375 250'
 };
 
 const SVG_DIMENSIONS = { width: 800, height: 450 };
@@ -69,6 +57,11 @@ const DEBUG_GRID_CONTENT = (() => {
 // Enable/disable debug grid overlay for development (set true to show grid)
 const DEBUG_GRID_ENABLED = false;
 
+// Layer visibility toggles for development/testing (set true to force show layers)
+const DEBUG_LAYER_NOSOLAR_ENABLED = false;
+const DEBUG_LAYER_1ARRAY_ENABLED = false;
+const DEBUG_LAYER_2ARRAY_ENABLED = false;
+
 const CAR_TEXT_BASE = { x: 590, rotate: 16, skewX: 20, skewY: 0 };
 const CAR_LAYOUTS = {
   single: {
@@ -97,14 +90,263 @@ const BATTERY_TRANSFORM = `translate(${BATTERY_GEOMETRY.X}, ${BATTERY_GEOMETRY.Y
 const BATTERY_OFFSET_BASE = BATTERY_GEOMETRY.Y_BASE - BATTERY_GEOMETRY.MAX_HEIGHT;
 
 const TXT_STYLE = 'font-weight:bold; font-family: sans-serif; text-anchor:middle; text-shadow: 0 0 5px black;';
-const FLOW_ARROW_COUNT = 5;
+const FLOW_ARROW_COUNT = 10;
+
+// SVG Layer Visibility Configuration
+// Maps configuration options to SVG elements that should be shown/hidden
+const SVG_LAYER_CONFIG = [
+  // Base layer - always visible
+  {
+    layerName: 'Base',
+    svgSelector: '[data-layer="Base"]',
+    condition: () => true  // Always visible
+  },
+
+  // Day/Night background layers (optional)
+  // When config.night_mode is enabled, show background-night and hide background-day.
+  {
+    layerName: 'BackgroundDay',
+    svgSelector: '[data-role="background-day"]',
+    condition: (config) => !Boolean(config.night_mode)
+  },
+  {
+    layerName: 'BackgroundNight',
+    svgSelector: '[data-role="background-night"]',
+    condition: (config) => Boolean(config.night_mode)
+  },
+
+  // NoSolar layer - shown when no PV settings configured (grid power only)
+  {
+    layerName: 'NoSolar',
+    svgSelector: '[data-layer="NoSolar"]',
+    condition: (config) => {
+      // Array 1 is valid if any PV strings are configured OR total sensor is set
+      const hasArray1PVStrings = config.sensor_pv1 || config.sensor_pv2 || config.sensor_pv3 ||
+                                config.sensor_pv4 || config.sensor_pv5 || config.sensor_pv6;
+      const hasArray1Total = config.sensor_pv_total;
+
+      // Array 2 is valid if any Array 2 PV strings are configured OR secondary total sensor is set
+      const hasArray2PVStrings = config.sensor_pv_array2_1 || config.sensor_pv_array2_2 || config.sensor_pv_array2_3 ||
+                                config.sensor_pv_array2_4 || config.sensor_pv_array2_5 || config.sensor_pv_array2_6;
+      const hasArray2Total = config.sensor_pv_total_secondary;
+
+      const hasArray1 = Boolean(hasArray1PVStrings || hasArray1Total);
+      const hasArray2 = Boolean(hasArray2PVStrings || hasArray2Total);
+
+      return !hasArray1 && !hasArray2;  // Show when no PV arrays configured
+    }
+  },
+
+  // Inverter image/icon - shown whenever solar exists (hide for NoSolar)
+  {
+    layerName: 'Inverter',
+    svgSelector: '[data-role="inverter"]',
+    condition: (config) => {
+      const hasArray1PVStrings = config.sensor_pv1 || config.sensor_pv2 || config.sensor_pv3 ||
+                                config.sensor_pv4 || config.sensor_pv5 || config.sensor_pv6;
+      const hasArray1Total = config.sensor_pv_total;
+
+      const hasArray2PVStrings = config.sensor_pv_array2_1 || config.sensor_pv_array2_2 || config.sensor_pv_array2_3 ||
+                                config.sensor_pv_array2_4 || config.sensor_pv_array2_5 || config.sensor_pv_array2_6;
+      const hasArray2Total = config.sensor_pv_total_secondary;
+
+      const hasArray1 = Boolean(hasArray1PVStrings || hasArray1Total);
+      const hasArray2 = Boolean(hasArray2PVStrings || hasArray2Total);
+
+      return hasArray1 || hasArray2;  // Show inverter when any PV array exists
+    }
+  },
+
+  // 1Array layer - shown when Array 1 has valid configuration but Array 2 does not
+  {
+    layerName: '1Array',
+    svgSelector: '[data-layer="1Array"]',
+    condition: (config) => {
+      // Array 1 is valid if any PV strings are configured OR total sensor is set
+      const hasPVStrings = config.sensor_pv1 || config.sensor_pv2 || config.sensor_pv3 ||
+                          config.sensor_pv4 || config.sensor_pv5 || config.sensor_pv6;
+      const hasTotalSensor = config.sensor_pv_total;
+      const hasArray1 = Boolean(hasPVStrings || hasTotalSensor);
+
+      // Array 2 is valid if any Array 2 PV strings are configured OR secondary total sensor is set
+      const hasArray2PVStrings = config.sensor_pv_array2_1 || config.sensor_pv_array2_2 || config.sensor_pv_array2_3 ||
+                                config.sensor_pv_array2_4 || config.sensor_pv_array2_5 || config.sensor_pv_array2_6;
+      const hasArray2Total = config.sensor_pv_total_secondary;
+      const hasArray2 = Boolean(hasArray2PVStrings || hasArray2Total);
+
+      return hasArray1 && !hasArray2;  // Show when Array 1 is configured but Array 2 is not
+    }
+  },
+
+  // 2Array layer - shown when both Array 1 and Array 2 have valid configuration
+  {
+    layerName: '2Array',
+    svgSelector: '[data-layer="2Array"]',
+    condition: (config) => {
+      // Array 1 is valid if any PV strings are configured OR total sensor is set
+      const hasArray1PVStrings = config.sensor_pv1 || config.sensor_pv2 || config.sensor_pv3 ||
+                                config.sensor_pv4 || config.sensor_pv5 || config.sensor_pv6;
+      const hasArray1Total = config.sensor_pv_total;
+
+      // Array 2 is valid if any Array 2 PV strings are configured OR secondary total sensor is set
+      const hasArray2PVStrings = config.sensor_pv_array2_1 || config.sensor_pv_array2_2 || config.sensor_pv_array2_3 ||
+                                config.sensor_pv_array2_4 || config.sensor_pv_array2_5 || config.sensor_pv_array2_6;
+      const hasArray2Total = config.sensor_pv_total_secondary;
+
+      const hasArray1 = Boolean(hasArray1PVStrings || hasArray1Total);
+      const hasArray2 = Boolean(hasArray2PVStrings || hasArray2Total);
+
+      return hasArray1 && hasArray2;  // Show when both arrays are configured
+    }
+  },
+
+  // Individual elements within layers - show/hide based on specific entity configuration
+
+  // Battery elements - show when battery sensors are configured
+  {
+    configKey: 'battery_system',
+    svgSelector: '[data-role="battery-soc"], [data-role="battery-power"], [data-role="battery-fill"]',
+    condition: (config) => config.sensor_bat1_soc || config.sensor_bat2_soc || config.sensor_bat3_soc || config.sensor_bat4_soc
+  },
+
+  // Heat pump object - show when heat pump consumption entity is configured
+  {
+    configKey: 'heatpump',
+    svgSelector: '[data-role="heatpump"]',
+    condition: (config) => Boolean(config.sensor_heat_pump_consumption)
+  },
+
+  // Car 1 elements - show when car sensors are configured
+  {
+    configKey: 'car1',
+    svgSelector: '[data-role="car1"]',
+    condition: (config) => config.show_car_soc !== false && (config.sensor_car_power || config.sensor_car_soc)
+  },
+
+  // Car 2 elements - show when car2 sensors are configured
+  {
+    configKey: 'car2',
+    svgSelector: '[data-role="car2"]',
+    condition: (config) => config.show_car2 && (config.sensor_car2_power || config.sensor_car2_soc)
+  },
+
+  // Daily yield - show when daily sensor is configured
+  {
+    configKey: 'daily_yield',
+    svgSelector: '[data-role="daily-yield"]',
+    condition: (config) => Boolean(config.sensor_daily)
+  },
+
+  // Grid daily values - show when daily grid sensors are configured
+  {
+    configKey: 'grid_daily',
+    svgSelector: '[data-role="grid-daily"]',
+    condition: (config) => Boolean(config.show_daily_grid)
+  }
+];
+
+// Function to apply SVG layer visibility based on configuration
+function applySvgLayerVisibility(svgElement, config) {
+  // console.log('=== SVG Layer Visibility Report ===');
+
+  SVG_LAYER_CONFIG.forEach(layer => {
+    let shouldShow = layer.condition ? layer.condition(config) : Boolean(config[layer.configKey]);
+
+    // Override with debug toggles if enabled
+    if (layer.layerName === 'NoSolar' && DEBUG_LAYER_NOSOLAR_ENABLED) {
+      shouldShow = true;
+      // console.log(`🔧 DEBUG: Forcing NoSolar layer to show`);
+    } else if (layer.layerName === '1Array' && DEBUG_LAYER_1ARRAY_ENABLED) {
+      shouldShow = true;
+      // console.log(`🔧 DEBUG: Forcing 1Array layer to show`);
+    } else if (layer.layerName === '2Array' && DEBUG_LAYER_2ARRAY_ENABLED) {
+      shouldShow = true;
+      // console.log(`🔧 DEBUG: Forcing 2Array layer to show`);
+    }
+
+    // console.log(`${shouldShow ? '✅' : '❌'} Layer "${layer.layerName}" (${layer.svgSelector}): ${shouldShow ? 'VISIBLE' : 'HIDDEN'}`);
+
+    const elements = svgElement.querySelectorAll(layer.svgSelector);
+
+    elements.forEach((element, index) => {
+      const wasVisible = element.style.display !== 'none';
+      const willBeVisible = shouldShow;
+
+      if (shouldShow) {
+        element.style.display = element.dataset.originalDisplay || '';
+        // Remove display:none if it was set
+        if (element.style.display === 'none') {
+          element.style.display = '';
+        }
+      } else {
+        // Store original display value before hiding
+        if (!element.dataset.originalDisplay) {
+          const computedStyle = window.getComputedStyle(element);
+          element.dataset.originalDisplay = computedStyle.display;
+        }
+        element.style.display = 'none';
+      }
+
+      const elementType = element.tagName.toLowerCase();
+      const dataRole = element.getAttribute('data-role') || 'no-role';
+      const dataLayer = element.getAttribute('data-layer') || 'no-layer';
+
+      // console.log(`   ${index + 1}. <${elementType}> [data-role="${dataRole}"] [data-layer="${dataLayer}"]: ${wasVisible ? 'was visible' : 'was hidden'} → ${willBeVisible ? 'now visible' : 'now hidden'}`);
+    });
+  });
+
+  // console.log('=== End Layer Visibility Report ===');
+
+  // Log all SVG groups and their visibility status
+  // console.log('=== All SVG Groups Status ===');
+  const allGroups = svgElement.querySelectorAll('g');
+  allGroups.forEach((group, index) => {
+    const dataLayer = group.getAttribute('data-layer') || 'no-layer';
+    const dataRole = group.getAttribute('data-role') || 'no-role';
+    const display = group.style.display || window.getComputedStyle(group).display;
+    const isVisible = display !== 'none';
+
+    // console.log(`${index + 1}. <g> [data-layer="${dataLayer}"] [data-role="${dataRole}"]: ${isVisible ? 'VISIBLE' : 'HIDDEN'} (${display})`);
+  });
+  // console.log('=== End All SVG Groups Status ===');
+
+  // Log all elements with data-role attributes
+  // console.log('=== All Data-Role Elements Status ===');
+  const allDataRoleElements = svgElement.querySelectorAll('[data-role]');
+  allDataRoleElements.forEach((element, index) => {
+    const dataRole = element.getAttribute('data-role');
+    const tagName = element.tagName.toLowerCase();
+    const display = element.style.display || window.getComputedStyle(element).display;
+    const isVisible = display !== 'none';
+
+    // console.log(`${index + 1}. <${tagName}> [data-role="${dataRole}"]: ${isVisible ? 'VISIBLE' : 'HIDDEN'} (${display})`);
+  });
+  // console.log('=== End All Data-Role Elements Status ===');
+
+  // Configuration summary
+  // console.log('=== Configuration Summary ===');
+  const hasArray1PVStrings = config.sensor_pv1 || config.sensor_pv2 || config.sensor_pv3 ||
+                            config.sensor_pv4 || config.sensor_pv5 || config.sensor_pv6;
+  const hasArray1Total = config.sensor_pv_total;
+  const hasArray1 = Boolean(hasArray1PVStrings || hasArray1Total);
+
+  const hasArray2PVStrings = config.sensor_pv_array2_1 || config.sensor_pv_array2_2 || config.sensor_pv_array2_3 ||
+                            config.sensor_pv_array2_4 || config.sensor_pv_array2_5 || config.sensor_pv_array2_6;
+  const hasArray2Total = config.sensor_pv_total_secondary;
+  const hasArray2 = Boolean(hasArray2PVStrings || hasArray2Total);
+
+  // console.log(`Array 1 configured: ${hasArray1} (PV strings: ${!!hasArray1PVStrings}, Total sensor: ${!!hasArray1Total})`);
+  // console.log(`Array 2 configured: ${hasArray2} (PV strings: ${!!hasArray2PVStrings}, Total sensor: ${!!hasArray2Total})`);
+  // console.log(`Expected active layers: Base (always) + ${hasArray1 && hasArray2 ? '2Array' : hasArray1 ? '1Array' : 'NoSolar'}`);
+  // console.log('=== End Configuration Summary ===');
+}
 const MAX_PV_STRINGS = 6;
 const MAX_PV_LINES = MAX_PV_STRINGS + 1;
 const PV_LINE_SPACING = 14;
 const FLOW_STYLE_DEFAULT = 'dashes';
 const FLOW_STYLE_PATTERNS = {
-  dashes: { dasharray: '18 12', cycle: 32 },
-  dots: { dasharray: '1 16', cycle: 22 },
+  dashes: { dasharray: '10 10', cycle: 20 },
+  dots: { dasharray: '2 18', cycle: 20 },
   arrows: { dasharray: null, cycle: 1 }
 };
 
@@ -115,16 +357,46 @@ const DEFAULT_BATTERY_FILL_HIGH_COLOR = '#00ffff';
 const DEFAULT_BATTERY_FILL_LOW_COLOR = '#ff0000';
 const DEFAULT_BATTERY_LOW_THRESHOLD = 25;
 
+// SVG text binding: place <text> elements in the background SVG with matching data-role values.
+// JS will only populate text / visibility (positioning stays in the SVG).
+//
+// Supported roles (initial migration set):
+// - title-text                <- viewState.title.text
+// - daily-label               <- viewState.daily.label
+// - daily-value               <- viewState.daily.value
+// - pv-line-0..pv-line-(N)     <- viewState.pv.lines[i].text (also sets fill + font-size)
+// - pv1-total                  <- viewState.pv1Total.text (Array 1 total output)
+// - pv2-total                  <- viewState.pv2Total.text (Array 2 total output)
+// - pv1-string1..pv1-string6   <- viewState.pv1Strings[i].text (Array 1 per-string output)
+// - battery1                   <- viewState.battery1.text (Battery 1 power)
+// - battery2                   <- viewState.battery2.text (Battery 2 power)
+// - battery3                   <- viewState.battery3.text (Battery 3 power)
+// - battery1-soc               <- viewState.battery1Soc.text
+// - battery1-power             <- viewState.battery1Power.text
+// - battery2-soc               <- viewState.battery2Soc.text
+// - battery2-power             <- viewState.battery2Power.text
+// - battery3-soc               <- viewState.battery3Soc.text
+// - battery3-power             <- viewState.battery3Power.text
+// - battery4-soc               <- viewState.battery4Soc.text
+// - battery4-power             <- viewState.battery4Power.text
+// - battery-soc               <- viewState.batterySoc.text
+// - battery-power             <- viewState.batteryPower.text
+// - load-power OR load-line-0..2
+// - grid-power OR grid-line-0..1
+// - heat-pump-power            <- viewState.heatPump.text (visible when viewState.heatPump.visible)
+// - car1-label / car1-power / car1-soc
+// - car2-label / car2-power / car2-soc
+
 const buildArrowGroupSvg = (key, flowState) => {
   const color = flowState && (flowState.glowColor || flowState.stroke) ? (flowState.glowColor || flowState.stroke) : '#00FFFF';
   const activeOpacity = flowState && flowState.active ? 1 : 0;
   const segments = Array.from({ length: FLOW_ARROW_COUNT }, (_, index) =>
-    `<polygon data-arrow-shape="${key}" data-arrow-index="${index}" points="-12,-5 0,0 -12,5" fill="${color}" />`
+    `<polygon data-arrow-shape="${key}" data-arrow-index="${index}" points="-8,-3 0,0 -8,3" fill="${color}" />`
   ).join('');
   return `<g class="flow-arrow" data-arrow-key="${key}" style="opacity:${activeOpacity};">${segments}</g>`;
 };
 
-class LuminaEnergyCard extends HTMLElement {
+class LuminaEnergyCardTest extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -140,8 +412,8 @@ class LuminaEnergyCard extends HTMLElement {
     this._flowPathLengths = new Map();
     this._animationSpeedFactor = 1;
     this._animationStyle = FLOW_STYLE_DEFAULT;
-    this._defaults = (typeof LuminaEnergyCard.getStubConfig === 'function')
-      ? { ...LuminaEnergyCard.getStubConfig() }
+    this._defaults = (typeof LuminaEnergyCardTest.getStubConfig === 'function')
+      ? { ...LuminaEnergyCardTest.getStubConfig() }
       : {};
     this._debugCoordsActive = false;
     this._handleDebugPointerMove = this._handleDebugPointerMove.bind(this);
@@ -187,8 +459,8 @@ class LuminaEnergyCard extends HTMLElement {
     return {
       language: 'en',
       card_title: '',
-      background_image: '/local/community/lumina-energy-card/lumina_background.png',
-      background_image_heat_pump: '/local/community/lumina-energy-card/lumina-energy-card-hp.png',
+      background_image: '/local/community/lumina-energy-card/lumina_background.svg',
+      night_mode: false,
       header_font_size: 16,
       daily_label_font_size: 12,
       daily_value_font_size: 20,
@@ -213,6 +485,8 @@ class LuminaEnergyCard extends HTMLElement {
       sensor_daily_array2: '',
       sensor_bat1_soc: '',
       sensor_bat1_power: '',
+      sensor_bat2_power: '',
+      sensor_bat3_power: '',
       sensor_home_load: '',
       sensor_home_load_secondary: '',
       sensor_heat_pump_consumption: '',
@@ -255,6 +529,9 @@ class LuminaEnergyCard extends HTMLElement {
       show_car_soc: false,
       show_car2: false,
       invert_battery: false,
+      invert_bat1: false,
+      invert_bat2: false,
+      invert_bat3: false,
       battery_fill_high_color: DEFAULT_BATTERY_FILL_HIGH_COLOR,
       battery_fill_low_color: DEFAULT_BATTERY_FILL_LOW_COLOR,
       battery_fill_low_threshold: DEFAULT_BATTERY_LOW_THRESHOLD,
@@ -482,7 +759,7 @@ class LuminaEnergyCard extends HTMLElement {
       }
     }
     const baseDirection = flowState && typeof flowState.direction === 'number' && flowState.direction !== 0 ? Math.sign(flowState.direction) : 1;
-    const effectiveDirection = baseDirection * directionSign;
+    const effectiveDirection = baseDirection;
     const isActive = seconds > 0;
     let entry = this._flowTweens.get(flowKey);
 
@@ -494,17 +771,40 @@ class LuminaEnergyCard extends HTMLElement {
 
     const ensurePattern = () => {
       element.setAttribute('data-flow-style', animationStyle);
-      if (useArrows) {
-        element.removeAttribute('stroke-dasharray');
-        element.style.strokeDashoffset = '';
-      } else if (pattern && pattern.dasharray) {
-        element.setAttribute('stroke-dasharray', pattern.dasharray);
-        if (!element.style.strokeDashoffset) {
-          element.style.strokeDashoffset = '0';
+      const targets = element.tagName === 'g' ? element.querySelectorAll('path') : [element];
+      targets.forEach(target => {
+        // Smooth corners and ends on polyline-like path segments
+        target.style.strokeLinecap = 'round';
+        target.style.strokeLinejoin = 'round';
+        if (useArrows) {
+          target.style.strokeDasharray = '';
+          target.style.strokeDashoffset = '';
+        } else if (pattern && pattern.dasharray) {
+          target.style.strokeDasharray = pattern.dasharray;
+          if (!target.style.strokeDashoffset) {
+            target.style.strokeDashoffset = '0';
+          }
+
+          // Inkscape often uses marker-start/mid/end arrowheads which render as triangles.
+          // When we're animating dashes/dots, those markers are unwanted, so strip them.
+          target.removeAttribute('marker-start');
+          target.removeAttribute('marker-mid');
+          target.removeAttribute('marker-end');
+          target.style.markerStart = '';
+          target.style.markerMid = '';
+          target.style.markerEnd = '';
         }
-      }
+        target.style.stroke = strokeColor;
+      });
     };
     ensurePattern();
+
+    if (element.tagName === 'g') {
+      const paths = element.querySelectorAll('path');
+      paths.forEach(path => path.style.opacity = isActive ? '1' : '0');
+    } else {
+      element.style.opacity = isActive ? '1' : '0';
+    }
 
     if (useArrows && arrowShapes && arrowShapes.length) {
       arrowShapes.forEach((shape) => {
@@ -530,7 +830,12 @@ class LuminaEnergyCard extends HTMLElement {
       }
       this._setFlowGlow(element, strokeColor, isActive ? 0.8 : 0.25);
       if (!useArrows) {
-        element.style.strokeDashoffset = '0';
+        if (element.tagName === 'g') {
+          const paths = element.querySelectorAll('path');
+          paths.forEach(path => path.style.strokeDashoffset = '0');
+        } else {
+          element.style.strokeDashoffset = '0';
+        }
       }
       hideArrows();
       return;
@@ -542,7 +847,7 @@ class LuminaEnergyCard extends HTMLElement {
       }
 
       const glowState = { value: isActive ? 0.8 : 0.25 };
-      const motionState = { phase: Math.random() };
+      const motionState = { phase: Math.random(), distance: 0 };
       const directionState = { value: effectiveDirection };
       const newEntry = {
         flowKey,
@@ -562,6 +867,7 @@ class LuminaEnergyCard extends HTMLElement {
         dashCycle: pattern && pattern.cycle ? pattern.cycle : 24,
         speedMagnitude,
         loopRate,
+        arrowSpeedPx: baseLoopRate * dashReferenceCycle,
         active: isActive
       };
 
@@ -609,10 +915,14 @@ class LuminaEnergyCard extends HTMLElement {
       entry.dashCycle = pattern && pattern.cycle ? pattern.cycle : entry.dashCycle;
       entry.speedMagnitude = speedMagnitude;
       entry.loopRate = loopRate;
+      entry.arrowSpeedPx = baseLoopRate * dashReferenceCycle;
       entry.direction = effectiveDirection;
       entry.active = isActive;
       if (!entry.motionState) {
-        entry.motionState = { phase: Math.random() };
+        entry.motionState = { phase: Math.random(), distance: 0 };
+      }
+      if (typeof entry.motionState.distance !== 'number' || !Number.isFinite(entry.motionState.distance)) {
+        entry.motionState.distance = 0;
       }
       if (!entry.directionState) {
         entry.directionState = { value: effectiveDirection };
@@ -628,13 +938,8 @@ class LuminaEnergyCard extends HTMLElement {
         entry.directionTween = null;
       }
       if (entry.directionState.value !== effectiveDirection) {
-        entry.directionTween = this._gsap.to(entry.directionState, {
-          value: effectiveDirection,
-          duration: 0.4,
-          ease: 'sine.inOut',
-          onUpdate: () => this._updateFlowMotion(entry),
-          onComplete: () => { entry.directionTween = null; }
-        });
+        entry.directionState.value = effectiveDirection;
+        this._updateFlowMotion(entry);
       }
       if (useArrows && arrowGroup) {
         const arrowVisible = isActive && loopRate > 0;
@@ -661,15 +966,15 @@ class LuminaEnergyCard extends HTMLElement {
         entry.directionTween.kill();
         entry.directionTween = null;
       }
-      entry.directionTween = this._gsap.to(entry.directionState, {
-        value: 0,
-        duration: 0.3,
-        ease: 'sine.inOut',
-        onUpdate: () => this._updateFlowMotion(entry),
-        onComplete: () => { entry.directionTween = null; }
-      });
       if (!useArrows) {
-        element.style.strokeDashoffset = '0';
+        if (element.tagName === 'g') {
+          const paths = element.querySelectorAll('path');
+          paths.forEach(path => path.style.strokeDashoffset = '0');
+          paths.forEach(path => path.style.opacity = isActive ? '1' : '0');
+        } else {
+          element.style.strokeDashoffset = '0';
+          element.style.opacity = isActive ? '1' : '0';
+        }
       }
       hideArrows();
       if (entry.tween) {
@@ -681,6 +986,7 @@ class LuminaEnergyCard extends HTMLElement {
     entry.active = true;
     entry.speedMagnitude = speedMagnitude;
     entry.loopRate = loopRate;
+    entry.arrowSpeedPx = baseLoopRate * dashReferenceCycle;
     if (useArrows) {
       if (loopRate === 0) {
         hideArrows();
@@ -757,7 +1063,14 @@ class LuminaEnergyCard extends HTMLElement {
       entry.motionState.phase = 0;
     }
     if (entry.element && entry.mode && entry.mode !== 'arrows') {
-      entry.element.style.strokeDashoffset = '0';
+      if (entry.element.tagName === 'g') {
+        const paths = entry.element.querySelectorAll('path');
+        paths.forEach(path => path.style.strokeDashoffset = '0');
+        paths.forEach(path => path.style.opacity = '0');
+      } else {
+        entry.element.style.strokeDashoffset = '0';
+        entry.element.style.opacity = '0';
+      }
     }
     if (entry.arrowElement) {
       entry.arrowElement.style.opacity = '0';
@@ -776,10 +1089,20 @@ class LuminaEnergyCard extends HTMLElement {
     }
     const paths = this._domRefs && this._domRefs.flows ? this._domRefs.flows : null;
     const element = paths ? paths[flowKey] : null;
-    if (!element || typeof element.getTotalLength !== 'function') {
+    if (!element) {
       return 0;
     }
-    const length = element.getTotalLength();
+    let length = 0;
+    const geometry = this._getFlowGeometryPaths(element);
+    if (geometry && geometry.length) {
+      geometry.forEach((path) => {
+        try {
+          length += path.getTotalLength();
+        } catch (err) {
+          // ignore
+        }
+      });
+    }
     if (!this._flowPathLengths) {
       this._flowPathLengths = new Map();
     }
@@ -787,23 +1110,19 @@ class LuminaEnergyCard extends HTMLElement {
     return length;
   }
 
-  _positionArrow(entry, progress, shape) {
-    if (!entry || !shape || !entry.element || typeof entry.element.getPointAtLength !== 'function') {
+  _positionArrowOnPath(pathElement, distance, shape, directionSign) {
+    if (!pathElement || !shape || typeof pathElement.getPointAtLength !== 'function' || typeof pathElement.getTotalLength !== 'function') {
       return;
     }
-    const length = entry.pathLength || this._getFlowPathLength(entry.flowKey);
+    const length = pathElement.getTotalLength();
     if (!Number.isFinite(length) || length <= 0) {
       return;
     }
-    const normalized = ((progress % 1) + 1) % 1;
-    const distance = normalized * length;
-    const point = entry.element.getPointAtLength(distance);
-    const ahead = entry.element.getPointAtLength(Math.min(distance + 2, length));
+    const wrapped = ((Number(distance) % length) + length) % length;
+    const point = pathElement.getPointAtLength(wrapped);
+    const ahead = pathElement.getPointAtLength(Math.min(wrapped + 2, length));
     const angle = Math.atan2(ahead.y - point.y, ahead.x - point.x) * (180 / Math.PI);
-    const directionValue = entry.directionState && Number.isFinite(entry.directionState.value)
-      ? entry.directionState.value
-      : (entry.direction || 1);
-    const flip = directionValue < 0 ? 180 : 0;
+    const flip = directionSign < 0 ? 180 : 0;
     shape.setAttribute('transform', `translate(${point.x}, ${point.y}) rotate(${angle + flip})`);
   }
 
@@ -817,22 +1136,68 @@ class LuminaEnergyCard extends HTMLElement {
     }
     const phase = Number(motionState.phase) || 0;
     if (entry.mode === 'arrows' && entry.arrowShapes && entry.arrowShapes.length) {
-      const count = entry.arrowShapes.length;
-      const normalized = ((phase % 1) + 1) % 1;
       const directionValue = entry.directionState && Number.isFinite(entry.directionState.value)
         ? entry.directionState.value
         : (entry.direction || 1);
       const directionSign = directionValue >= 0 ? 1 : -1;
-      entry.arrowShapes.forEach((shape, index) => {
-        const offset = directionSign >= 0
-          ? normalized + index / count
-          : normalized - index / count;
-        this._positionArrow(entry, offset, shape);
+
+      const baseDistance = entry.motionState && Number.isFinite(entry.motionState.distance)
+        ? entry.motionState.distance
+        : 0;
+
+      const geometry = this._getFlowGeometryPaths(entry.element);
+      if (!geometry || geometry.length === 0) {
+        return;
+      }
+
+      // Group arrow polygons by track index so multi-path flows get arrows on each path
+      const shapesByTrack = new Map();
+      entry.arrowShapes.forEach((shape) => {
+        const attr = shape.getAttribute('data-arrow-track');
+        const trackIndex = attr ? Number(attr) : 0;
+        const safeIndex = Number.isFinite(trackIndex) ? trackIndex : 0;
+        if (!shapesByTrack.has(safeIndex)) {
+          shapesByTrack.set(safeIndex, []);
+        }
+        shapesByTrack.get(safeIndex).push(shape);
+      });
+
+      geometry.forEach((path, trackIndex) => {
+        const shapes = shapesByTrack.get(trackIndex) || [];
+        const count = shapes.length || 0;
+        if (!count) {
+          return;
+        }
+        let pathLength = 0;
+        try {
+          pathLength = path.getTotalLength();
+        } catch (err) {
+          pathLength = 0;
+        }
+        if (!Number.isFinite(pathLength) || pathLength <= 0) {
+          return;
+        }
+        shapes.forEach((shape, index) => {
+          const spacing = pathLength / count;
+          const distance = directionSign >= 0
+            ? baseDistance + index * spacing
+            : baseDistance - index * spacing;
+          this._positionArrowOnPath(path, distance, shape, directionSign);
+        });
       });
     } else if (entry.mode !== 'arrows') {
       const cycle = entry.dashCycle || 24;
-      const offset = -phase * cycle;
-      entry.element.style.strokeDashoffset = `${offset}`;
+      const directionValue = entry.directionState && Number.isFinite(entry.directionState.value)
+        ? entry.directionState.value
+        : (entry.direction || 1);
+      const directionSign = directionValue >= 0 ? 1 : -1;
+      const offset = -phase * cycle * directionSign;
+      if (entry.element.tagName === 'g') {
+        const paths = entry.element.querySelectorAll('path');
+        paths.forEach(path => path.style.strokeDashoffset = `${offset}`);
+      } else {
+        entry.element.style.strokeDashoffset = `${offset}`;
+      }
     }
   }
 
@@ -844,28 +1209,39 @@ class LuminaEnergyCard extends HTMLElement {
       if (!entry || !entry.active) {
         return;
       }
-      const loopRate = entry.loopRate || 0;
-      if (loopRate === 0) {
-        return;
-      }
       const directionValue = entry.directionState && Number.isFinite(entry.directionState.value)
         ? entry.directionState.value
         : (entry.direction || 0);
       if (directionValue === 0) {
         return;
       }
-      const delta = deltaTime * loopRate * directionValue;
-      if (!Number.isFinite(delta) || delta === 0) {
-        return;
-      }
       if (!entry.motionState) {
-        entry.motionState = { phase: 0 };
+        entry.motionState = { phase: 0, distance: 0 };
       }
-      entry.motionState.phase = (Number(entry.motionState.phase) || 0) + delta;
-      if (!Number.isFinite(entry.motionState.phase)) {
-        entry.motionState.phase = 0;
-      } else if (entry.motionState.phase > 1000 || entry.motionState.phase < -1000) {
-        entry.motionState.phase = entry.motionState.phase % 1;
+
+      if (entry.mode === 'arrows') {
+        const speedPx = Number(entry.arrowSpeedPx) || 0;
+        const delta = deltaTime * speedPx * (directionValue >= 0 ? 1 : -1);
+        if (!Number.isFinite(delta) || delta === 0) {
+          return;
+        }
+        entry.motionState.distance = (Number(entry.motionState.distance) || 0) + delta;
+        if (!Number.isFinite(entry.motionState.distance)) {
+          entry.motionState.distance = 0;
+        }
+      } else {
+        const loopRate = entry.loopRate || 0;
+        if (loopRate === 0) {
+          return;
+        }
+        const delta = deltaTime * loopRate * directionValue;
+        if (!Number.isFinite(delta) || delta === 0) {
+          return;
+        }
+        entry.motionState.phase = (Number(entry.motionState.phase) || 0) + delta;
+        if (!Number.isFinite(entry.motionState.phase)) {
+          entry.motionState.phase = 0;
+        }
       }
       this._updateFlowMotion(entry);
     };
@@ -1200,9 +1576,8 @@ class LuminaEnergyCard extends HTMLElement {
     ];
 
     // Display settings
-    const defaultBackground = config.background_image || '/local/community/lumina-energy-card/lumina_background.png';
-    const heatPumpBackground = config.background_image_heat_pump || '/local/community/lumina-energy-card/lumina-energy-card-hp.png';
-    const bg_img = hasHeatPumpSensor ? heatPumpBackground : defaultBackground;
+    const defaultBackground = config.background_image || '/local/community/lumina-energy-card/lumina.svg';
+    const bg_img = defaultBackground;
     const title_text = (typeof config.card_title === 'string' && config.card_title.trim()) ? config.card_title.trim() : null;
 
     const resolveColor = (value, fallback) => {
@@ -1236,7 +1611,7 @@ class LuminaEnergyCard extends HTMLElement {
     const car_name_font_size = clampValue(config.car_name_font_size !== undefined ? config.car_name_font_size : config.car_power_font_size, 8, 28, car_power_font_size);
     const car2_name_font_size = clampValue(config.car2_name_font_size !== undefined ? config.car2_name_font_size : (config.car2_power_font_size !== undefined ? config.car2_power_font_size : config.car_power_font_size), 8, 28, car2_power_font_size);
     const animation_speed_factor = clampValue(config.animation_speed_factor, -3, 3, 1);
-    this._animationSpeedFactor = animation_speed_factor;
+    this._animationSpeedFactor = 1; // Disabled for testing
     const animation_style = this._normalizeAnimationStyle(config.animation_style);
     this._animationStyle = animation_style;
 
@@ -1264,13 +1639,6 @@ class LuminaEnergyCard extends HTMLElement {
       label_daily = dict_daily[lang] || dict_daily['en'];
     }
     if (!label_pv_tot) {
-      const dict_pv_tot = { it: 'PV TOTALE', en: 'PV TOTAL', de: 'PV GESAMT' };
-      label_pv_tot = dict_pv_tot[lang] || dict_pv_tot['en'];
-    }
-    if (!label_importing) {
-      const dict_importing = { it: 'IMPORTAZIONE', en: 'IMPORTING', de: 'IMPORTIEREN', fr: 'IMPORTATION', nl: 'IMPORTEREN' };
-      label_importing = dict_importing[lang] || dict_importing['en'];
-    }
     if (!label_exporting) {
       const dict_exporting = { it: 'ESPORTAZIONE', en: 'EXPORTING', de: 'EXPORTIEREN', fr: 'EXPORTATION', nl: 'EXPORTEREN' };
       label_exporting = dict_exporting[lang] || dict_exporting['en'];
@@ -1340,12 +1708,74 @@ class LuminaEnergyCard extends HTMLElement {
       return loadTextBaseColor;
     })();
     const invertBattery = Boolean(config.invert_battery);
+    const invertBat1 = Boolean(config.invert_bat1);
+    const invertBat2 = Boolean(config.invert_bat2);
+    const invertBat3 = Boolean(config.invert_bat3);
     const isBatPositive = total_bat_w >= 0;
     const bat_col = isBatPositive
       ? (invertBattery ? batteryDischargeColor : batteryChargeColor)
       : (invertBattery ? batteryChargeColor : batteryDischargeColor);
     let batteryDirectionSign = isBatPositive ? 1 : -1;
     if (invertBattery) batteryDirectionSign *= -1;
+
+    const resolveEntityId = (value) => (typeof value === 'string' ? value.trim() : '');
+    const isEntityAvailable = (entityId) => {
+      if (!entityId || !this._hass || !this._hass.states || !this._hass.states[entityId]) {
+        return false;
+      }
+      const state = this._hass.states[entityId].state;
+      return state !== 'unavailable' && state !== 'unknown';
+    };
+
+    const bat1SocId = resolveEntityId(config.sensor_bat1_soc);
+    const bat2SocId = resolveEntityId(config.sensor_bat2_soc);
+    const bat3SocId = resolveEntityId(config.sensor_bat3_soc);
+    const bat4SocId = resolveEntityId(config.sensor_bat4_soc);
+
+    const hasBat1SocValue = Boolean(bat1SocId) && isEntityAvailable(bat1SocId);
+    const hasBat2SocValue = Boolean(bat2SocId) && isEntityAvailable(bat2SocId);
+    const hasBat3SocValue = Boolean(bat3SocId) && isEntityAvailable(bat3SocId);
+    const hasBat4SocValue = Boolean(bat4SocId) && isEntityAvailable(bat4SocId);
+
+    const bat1SocValue = hasBat1SocValue ? this.getStateSafe(bat1SocId) : null;
+    const bat2SocValue = hasBat2SocValue ? this.getStateSafe(bat2SocId) : null;
+    const bat3SocValue = hasBat3SocValue ? this.getStateSafe(bat3SocId) : null;
+    const bat4SocValue = hasBat4SocValue ? this.getStateSafe(bat4SocId) : null;
+
+    const bat1PowerId = resolveEntityId(config.sensor_bat1_power);
+    const bat2PowerId = resolveEntityId(config.sensor_bat2_power);
+    const bat3PowerId = resolveEntityId(config.sensor_bat3_power);
+    const bat4PowerId = resolveEntityId(config.sensor_bat4_power);
+
+    const hasBat1PowerSensor = Boolean(bat1PowerId);
+    const hasBat2PowerSensor = Boolean(bat2PowerId);
+    const hasBat3PowerSensor = Boolean(bat3PowerId);
+    const hasBat4PowerSensor = Boolean(bat4PowerId);
+
+    const hasBat1PowerValue = hasBat1PowerSensor && isEntityAvailable(bat1PowerId);
+    const hasBat2PowerValue = hasBat2PowerSensor && isEntityAvailable(bat2PowerId);
+    const hasBat3PowerValue = hasBat3PowerSensor && isEntityAvailable(bat3PowerId);
+    const hasBat4PowerValue = hasBat4PowerSensor && isEntityAvailable(bat4PowerId);
+
+    const bat1PowerW = hasBat1PowerValue ? (invertBat1 ? -this.getStateSafe(bat1PowerId) : this.getStateSafe(bat1PowerId)) : 0;
+    const bat2PowerW = hasBat2PowerValue ? (invertBat2 ? -this.getStateSafe(bat2PowerId) : this.getStateSafe(bat2PowerId)) : 0;
+    const bat3PowerW = hasBat3PowerValue ? (invertBat3 ? -this.getStateSafe(bat3PowerId) : this.getStateSafe(bat3PowerId)) : 0;
+    const bat4PowerW = hasBat4PowerValue ? this.getStateSafe(bat4PowerId) : 0;
+
+    const resolveBatteryFlowState = (powerW) => {
+      const isPositive = Number(powerW) >= 0;
+      const stroke = isPositive
+        ? (invertBattery ? batteryDischargeColor : batteryChargeColor)
+        : (invertBattery ? batteryChargeColor : batteryDischargeColor);
+      let direction = isPositive ? 1 : -1;
+      if (invertBattery) direction *= -1;
+      return { stroke, glowColor: stroke, direction };
+    };
+
+    const bat1Flow = resolveBatteryFlowState(bat1PowerW);
+    const bat2Flow = resolveBatteryFlowState(bat2PowerW);
+    const bat3Flow = resolveBatteryFlowState(bat3PowerW);
+    const bat4Flow = resolveBatteryFlowState(bat4PowerW);
     const base_grid_color = belowGridActivityThreshold
       ? gridExportColor
       : (gridDirectionSign >= 0 ? gridImportColor : gridExportColor);
@@ -1444,10 +1874,14 @@ class LuminaEnergyCard extends HTMLElement {
     const gridActiveForHouse = useHouseGridPath && gridActive;
 
     const flows = {
-      pv1: { stroke: pvPrimaryColor, glowColor: pvPrimaryColor, active: pv_primary_w > 10 },
-      pv2: { stroke: pvSecondaryColor, glowColor: pvSecondaryColor, active: pv_secondary_w > 10 },
+      pv1: { stroke: pvPrimaryColor, glowColor: pvPrimaryColor, active: pv_primary_w > 0 && !(pv_secondary_w > 0) },
+      pv2: { stroke: pvSecondaryColor, glowColor: pvSecondaryColor, active: pv_secondary_w > 0 },
       bat: { stroke: bat_col, glowColor: bat_col, active: Math.abs(total_bat_w) > 10, direction: batteryDirectionSign },
+      battery1: { stroke: bat1Flow.stroke, glowColor: bat1Flow.glowColor, active: Boolean(hasBat1PowerSensor) && Math.abs(bat1PowerW) > 10, direction: bat1Flow.direction },
+      battery2: { stroke: bat2Flow.stroke, glowColor: bat2Flow.glowColor, active: Boolean(hasBat2PowerSensor) && Math.abs(bat2PowerW) > 10, direction: bat2Flow.direction },
+      battery3: { stroke: bat3Flow.stroke, glowColor: bat3Flow.glowColor, active: Boolean(hasBat3PowerSensor) && Math.abs(bat3PowerW) > 10, direction: bat3Flow.direction },
       load: { stroke: effectiveLoadFlowColor, glowColor: effectiveLoadFlowColor, active: loadMagnitude > 10, direction: 1 },
+      'house-load': { stroke: effectiveLoadFlowColor, glowColor: effectiveLoadFlowColor, active: loadMagnitude > 10, direction: 1 },
       grid: { stroke: effectiveGridColor, glowColor: effectiveGridColor, active: gridActiveForGrid, direction: gridAnimationDirection },
       grid_house: { stroke: effectiveGridColor, glowColor: effectiveGridColor, active: gridActiveForHouse, direction: gridAnimationDirection },
       car1: { stroke: carFlowColor, glowColor: carFlowColor, active: showCar1 && Math.abs(car1PowerValue) > 10, direction: 1 },
@@ -1464,18 +1898,6 @@ class LuminaEnergyCard extends HTMLElement {
     const flowDurations = Object.fromEntries(
       Object.entries(flows).map(([key, state]) => [key, state.active ? 1 : 0])
     );
-
-    const flowPaths = {
-      pv1: FLOW_PATHS.pv1,
-      pv2: FLOW_PATHS.pv2,
-      bat: FLOW_PATHS.bat,
-      load: FLOW_PATHS.load,
-      grid: FLOW_PATHS.grid,
-      grid_house: FLOW_PATHS.grid_house,
-      car1: carLayout.car1.path,
-      car2: carLayout.car2.path,
-      heatPump: FLOW_PATHS.heatPump
-    };
 
     const car1Color = resolveColor(config.car1_color, C_WHITE);
     const car2Color = resolveColor(config.car2_color, C_WHITE);
@@ -1531,16 +1953,49 @@ class LuminaEnergyCard extends HTMLElement {
       return gridValueText;
     })();
 
+    // PV Array 1 per-string SVG placeholders (pv1-string1..pv1-string6)
+    const pv1StringSensorIds = [
+      config.sensor_pv1, config.sensor_pv2, config.sensor_pv3,
+      config.sensor_pv4, config.sensor_pv5, config.sensor_pv6
+    ];
+    const pv1Strings = pv1StringSensorIds.map((sensorId, index) => {
+      const hasSensor = typeof sensorId === 'string' && sensorId.trim();
+      const value = hasSensor ? this.getStateSafe(sensorId) : 0;
+      return {
+        text: hasSensor ? this.formatPower(value, use_kw) : '',
+        fontSize: pv_font_size,
+        fill: getPvStringColor(index),
+        visible: Boolean(hasSensor)
+      };
+    });
+
     const viewState = {
       backgroundImage: bg_img,
       animationStyle: animation_style,
       title: { text: title_text, fontSize: header_font_size },
       daily: { label: label_daily, value: `${total_daily_kwh} kWh`, labelSize: daily_label_font_size, valueSize: daily_value_font_size, visible: pvUiEnabled },
       pv: { fontSize: pv_font_size, lines: pvLines },
+      pv1Total: { text: this.formatPower(pv_primary_w, use_kw), fontSize: pv_font_size, fill: pvTotColor, visible: pvUiEnabled },
+      pv2Total: { text: this.formatPower(pv_secondary_w, use_kw), fontSize: pv_font_size, fill: pvTotColor, visible: pv_secondary_w > 10 },
+      pv1Strings,
       battery: { levelOffset: BATTERY_GEOMETRY.MAX_HEIGHT - current_h, fill: liquid_fill },
       batterySoc: { text: `${Math.floor(avg_soc)}%`, fontSize: battery_soc_font_size, fill: batterySocTextColor },
       batteryPower: { text: this.formatPower(Math.abs(total_bat_w), use_kw), fontSize: battery_power_font_size, fill: bat_col },
+      battery1: { text: hasBat1PowerValue ? this.formatPower(Math.abs(bat1PowerW), use_kw) : '', fontSize: battery_power_font_size, fill: bat1Flow.stroke, visible: Boolean(hasBat1PowerSensor) },
+      battery2: { text: hasBat2PowerValue ? this.formatPower(Math.abs(bat2PowerW), use_kw) : '', fontSize: battery_power_font_size, fill: bat2Flow.stroke, visible: Boolean(hasBat2PowerSensor) },
+      battery3: { text: hasBat3PowerValue ? this.formatPower(Math.abs(bat3PowerW), use_kw) : '', fontSize: battery_power_font_size, fill: bat3Flow.stroke, visible: Boolean(hasBat3PowerSensor) },
+
+      // Per-battery SVG placeholders
+      battery1Soc: { text: (bat1SocValue !== null) ? `${Math.round(bat1SocValue)}%` : '', fontSize: battery_soc_font_size, fill: batterySocTextColor, visible: Boolean(bat1SocId) },
+      battery1Power: { text: hasBat1PowerValue ? this.formatPower(Math.abs(bat1PowerW), use_kw) : '', fontSize: battery_power_font_size, fill: bat1Flow.stroke, visible: Boolean(hasBat1PowerSensor) },
+      battery2Soc: { text: (bat2SocValue !== null) ? `${Math.round(bat2SocValue)}%` : '', fontSize: battery_soc_font_size, fill: batterySocTextColor, visible: Boolean(bat2SocId) },
+      battery2Power: { text: hasBat2PowerValue ? this.formatPower(Math.abs(bat2PowerW), use_kw) : '', fontSize: battery_power_font_size, fill: bat2Flow.stroke, visible: Boolean(hasBat2PowerSensor) },
+      battery3Soc: { text: (bat3SocValue !== null) ? `${Math.round(bat3SocValue)}%` : '', fontSize: battery_soc_font_size, fill: batterySocTextColor, visible: Boolean(bat3SocId) },
+      battery3Power: { text: hasBat3PowerValue ? this.formatPower(Math.abs(bat3PowerW), use_kw) : '', fontSize: battery_power_font_size, fill: bat3Flow.stroke, visible: Boolean(hasBat3PowerSensor) },
+      battery4Soc: { text: (bat4SocValue !== null) ? `${Math.round(bat4SocValue)}%` : '', fontSize: battery_soc_font_size, fill: batterySocTextColor, visible: Boolean(bat4SocId) },
+      battery4Power: { text: hasBat4PowerValue ? this.formatPower(Math.abs(bat4PowerW), use_kw) : '', fontSize: battery_power_font_size, fill: bat4Flow.stroke, visible: Boolean(hasBat4PowerSensor) },
       load: (loadLines && loadLines.length) ? { lines: loadLines, y: loadY, fontSize: load_font_size, fill: effectiveLoadTextColor } : { text: this.formatPower(loadValue, use_kw), fontSize: load_font_size, fill: effectiveLoadTextColor },
+      houseLoad: { text: this.formatPower(loadValue, use_kw), fontSize: load_font_size, fill: effectiveLoadFlowColor, visible: true },
       grid: { text: gridText, fontSize: grid_font_size, fill: effectiveGridColor, lines: gridLines },
       heatPump: {
         text: hasHeatPumpSensor ? this.formatPower(heat_pump_w, use_kw) : '',
@@ -1557,7 +2012,6 @@ class LuminaEnergyCard extends HTMLElement {
       pvUiEnabled,
       flows,
       flowDurations,
-      flowPaths,
       showDebugGrid
     };
 
@@ -1571,6 +2025,8 @@ class LuminaEnergyCard extends HTMLElement {
     this._forceRender = false;
   }
 
+  }
+
   _ensureTemplate(viewState) {
     if (this._rootInitialized) {
       return;
@@ -1578,6 +2034,12 @@ class LuminaEnergyCard extends HTMLElement {
     this.shadowRoot.innerHTML = this._buildTemplate(viewState);
     this._rootInitialized = true;
     this._cacheDomReferences();
+
+    // Apply SVG layer visibility based on configuration
+    const svgElement = this.shadowRoot.querySelector('svg');
+    if (svgElement) {
+      applySvgLayerVisibility(svgElement, this.config);
+    }
   }
 
   _buildTemplate(viewState) {
@@ -1593,13 +2055,11 @@ class LuminaEnergyCard extends HTMLElement {
     }).join('');
     const dailyDisplay = viewState.daily && viewState.daily.visible ? 'inline' : 'none';
     const dailyCursor = viewState.daily && viewState.daily.visible ? 'pointer' : 'default';
-    const pvClickableDisplay = viewState.pvUiEnabled ? 'inline' : 'none';
-    const pvClickableCursor = viewState.pvUiEnabled ? 'pointer' : 'default';
 
     return `
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-        :host { display: block; aspect-ratio: 16/9; }
+        :host { display: block; }
         ha-card { position: relative; height: 100%; overflow: hidden; background: transparent; border: none; box-shadow: none; }
         .track-path { stroke: #555555; stroke-width: 2px; fill: none; opacity: 0; }
         .flow-path { stroke-linecap: round; stroke-width: 3px; fill: none; opacity: 0; transition: opacity 0.35s ease; filter: none; }
@@ -1653,27 +2113,33 @@ class LuminaEnergyCard extends HTMLElement {
         }
       </style>
       <ha-card>
-        <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%; height: 100%;">
+        <svg viewBox="0 0 800 450" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%; height: 100%;">
           <defs>
             <clipPath id="battery-clip"><rect x="${BATTERY_GEOMETRY.X}" y="${BATTERY_GEOMETRY.Y_BASE - BATTERY_GEOMETRY.MAX_HEIGHT}" width="${BATTERY_GEOMETRY.WIDTH}" height="${BATTERY_GEOMETRY.MAX_HEIGHT}" rx="2" /></clipPath>
           </defs>
 
-          <image data-role="background-image" href="${viewState.backgroundImage}" xlink:href="${viewState.backgroundImage}" x="0" y="0" width="800" height="450" preserveAspectRatio="none" />
+          <g data-role="background-svg"></g>
           <g data-role="debug-grid" class="debug-grid" style="display:none;">
             ${DEBUG_GRID_CONTENT}
           </g>
 
+          <!--
           ${viewState.title && viewState.title.text ? `
           <rect x="290" y="10" width="220" height="32" rx="6" ry="6" fill="rgba(0, 20, 40, 0.85)" stroke="#00FFFF" stroke-width="1.5"/>
           <text data-role="title-text" x="400" y="32" class="title-text" font-size="${viewState.title.fontSize}">${viewState.title.text}</text>
           ` : ''}
+          -->
 
+          <!--
           <g data-role="daily-yield-group" transform="translate(600, 370)" style="cursor:${dailyCursor}; display:${dailyDisplay};">
             <rect x="0" y="0" width="180" height="60" rx="10" ry="10" class="alive-box" />
             <text data-role="daily-label" x="90" y="23" class="alive-text" style="font-family: sans-serif; text-anchor:middle; font-size:${viewState.daily.labelSize}px; font-weight:normal; letter-spacing: 1px;">${viewState.daily.label}</text>
             <text data-role="daily-value" x="90" y="50" class="alive-text" style="font-family: sans-serif; text-anchor:middle; font-size:${viewState.daily.valueSize}px; font-weight:bold;">${viewState.daily.value}</text>
           </g>
+          -->
 
+          <!-- Old battery fill - commented out for SVG transition -->
+          <!--
           <g transform="${BATTERY_TRANSFORM}">
             <g clip-path="url(#battery-clip)">
               <g data-role="battery-liquid-group" style="transition: transform 1s ease-in-out;" transform="translate(0, ${viewState.battery.levelOffset})">
@@ -1683,44 +2149,26 @@ class LuminaEnergyCard extends HTMLElement {
               </g>
             </g>
           </g>
+          -->
 
-          <path class="track-path" d="${viewState.flowPaths.pv1}" />
-          <path class="flow-path" data-flow-key="pv1" d="${viewState.flowPaths.pv1}" stroke="${viewState.flows.pv1.stroke}" style="opacity:0;" />
-          ${buildArrowGroupSvg('pv1', viewState.flows.pv1)}
-          <path class="track-path" d="${viewState.flowPaths.pv2}" />
-          <path class="flow-path" data-flow-key="pv2" d="${viewState.flowPaths.pv2}" stroke="${viewState.flows.pv2.stroke}" style="opacity:0;" />
-          ${buildArrowGroupSvg('pv2', viewState.flows.pv2)}
-          <path class="track-path" d="${viewState.flowPaths.bat}" />
-          <path class="flow-path" data-flow-key="bat" d="${viewState.flowPaths.bat}" stroke="${viewState.flows.bat.stroke}" style="opacity:0;" />
-          ${buildArrowGroupSvg('bat', viewState.flows.bat)}
-          <path class="track-path" d="${viewState.flowPaths.load}" />
-          <path class="flow-path" data-flow-key="load" d="${viewState.flowPaths.load}" stroke="${viewState.flows.load.stroke}" style="opacity:0;" />
-          ${buildArrowGroupSvg('load', viewState.flows.load)}
-          <path class="track-path" d="${viewState.flowPaths.grid}" />
-          <path class="flow-path" data-flow-key="grid" d="${viewState.flowPaths.grid}" stroke="${viewState.flows.grid.stroke}" style="opacity:0;" />
-          ${buildArrowGroupSvg('grid', viewState.flows.grid)}
-          <path class="track-path" d="${viewState.flowPaths.grid_house}" />
-          <path class="flow-path" data-flow-key="grid_house" d="${viewState.flowPaths.grid_house}" stroke="${viewState.flows.grid_house.stroke}" style="opacity:0;" />
-          ${buildArrowGroupSvg('grid_house', viewState.flows.grid_house)}
-          <path class="track-path" d="${viewState.flowPaths.car1}" />
-          <path class="flow-path" data-flow-key="car1" d="${viewState.flowPaths.car1}" stroke="${viewState.flows.car1.stroke}" style="opacity:0;" />
-          ${buildArrowGroupSvg('car1', viewState.flows.car1)}
-          <path class="track-path" d="${viewState.flowPaths.car2}" />
-          <path class="flow-path" data-flow-key="car2" d="${viewState.flowPaths.car2}" stroke="${viewState.flows.car2.stroke}" style="opacity:0;" />
-          ${buildArrowGroupSvg('car2', viewState.flows.car2)}
-          <path class="track-path" d="${viewState.flowPaths.heatPump}" />
-          <path class="flow-path" data-flow-key="heatPump" d="${viewState.flowPaths.heatPump}" stroke="${viewState.flows.heatPump.stroke}" style="opacity:0;" />
-          ${buildArrowGroupSvg('heatPump', viewState.flows.heatPump)}
 
-          ${pvLineElements}
+          <!-- Old PV power and string values - commented out for SVG transition -->
+          <!-- ${pvLineElements} -->
 
+          <!-- Old battery SOC and power text - commented out for SVG transition -->
+          <!--
           <text data-role="battery-soc" x="${TEXT_POSITIONS.battery.x}" y="${TEXT_POSITIONS.battery.y}" transform="${TEXT_TRANSFORMS.battery}" fill="${viewState.batterySoc.fill}" font-size="${viewState.batterySoc.fontSize}" style="${TXT_STYLE}">${viewState.batterySoc.text}</text>
           <text data-role="battery-power" x="${TEXT_POSITIONS.battery.x}" y="${TEXT_POSITIONS.battery.y + 20}" transform="${TEXT_TRANSFORMS.battery}" fill="${viewState.batteryPower.fill}" font-size="${viewState.batteryPower.fontSize}" style="${TXT_STYLE}">${viewState.batteryPower.text}</text>
+          -->
 
+          <!-- Old house consumption - commented out for SVG transition -->
+          <!--
           <text data-role="load-power" x="${TEXT_POSITIONS.home.x}" y="${TEXT_POSITIONS.home.y}" transform="${TEXT_TRANSFORMS.home}" fill="${viewState.load.fill}" font-size="${viewState.load.fontSize}" style="${TXT_STYLE}">${viewState.load.text || ''}</text>
           <text data-role="load-line-0" x="${TEXT_POSITIONS.home.x}" y="${TEXT_POSITIONS.home.y}" transform="${TEXT_TRANSFORMS.home}" fill="${(viewState.load.lines && viewState.load.lines[0] && viewState.load.lines[0].fill) || viewState.load.fill}" font-size="${viewState.load.fontSize}" style="${TXT_STYLE}; display:none;"></text>
           <text data-role="load-line-1" x="${TEXT_POSITIONS.home.x}" y="${TEXT_POSITIONS.home.y}" transform="${TEXT_TRANSFORMS.home}" fill="${(viewState.load.lines && viewState.load.lines[1] && viewState.load.lines[1].fill) || viewState.load.fill}" font-size="${viewState.load.fontSize}" style="${TXT_STYLE}; display:none;"></text>
           <text data-role="load-line-2" x="${TEXT_POSITIONS.home.x}" y="${TEXT_POSITIONS.home.y}" transform="${TEXT_TRANSFORMS.home}" fill="${(viewState.load.lines && viewState.load.lines[2] && viewState.load.lines[2].fill) || viewState.load.fill}" font-size="${viewState.load.fontSize}" style="${TXT_STYLE}; display:none;"></text>
+          -->
+          <!--
           <text data-role="heat-pump-power" x="${TEXT_POSITIONS.heatPump.x}" y="${TEXT_POSITIONS.heatPump.y}" transform="${TEXT_TRANSFORMS.heatPump}" fill="${viewState.heatPump.fill}" font-size="${viewState.heatPump.fontSize}" style="${TXT_STYLE}; display:${viewState.heatPump.visible ? 'inline' : 'none'};">${viewState.heatPump.text}</text>
           <text data-role="grid-power" x="${TEXT_POSITIONS.grid.x}" y="${TEXT_POSITIONS.grid.y}" transform="${TEXT_TRANSFORMS.grid}" fill="${viewState.grid.fill}" font-size="${viewState.grid.fontSize}" style="${TXT_STYLE}">${viewState.grid.text}</text>
 
@@ -1734,6 +2182,7 @@ class LuminaEnergyCard extends HTMLElement {
           <text data-role="car2-label" x="${viewState.car2.label.x}" y="${viewState.car2.label.y}" transform="${viewState.car2.label.transform}" fill="${viewState.car2.label.fill}" font-size="${viewState.car2.label.fontSize}" style="${TXT_STYLE}; display:${car2Display};">${viewState.car2.label.text}</text>
           <text data-role="car2-power" x="${viewState.car2.power.x}" y="${viewState.car2.power.y}" transform="${viewState.car2.power.transform}" fill="${viewState.car2.power.fill}" font-size="${viewState.car2.power.fontSize}" style="${TXT_STYLE}; display:${car2Display};">${viewState.car2.power.text}</text>
           <text data-role="car2-soc" x="${viewState.car2.soc.x}" y="${viewState.car2.soc.y}" transform="${viewState.car2.soc.transform}" fill="${viewState.car2.soc.fill}" font-size="${viewState.car2.soc.fontSize}" style="${TXT_STYLE}; display:${car2SocDisplay};">${viewState.car2.soc.text}</text>
+          -->
 
           <g data-role="pv-popup" style="display:none; cursor:pointer;">
             <rect x="300" y="200" width="200" height="120" rx="10" ry="10" class="alive-box" />
@@ -1745,8 +2194,6 @@ class LuminaEnergyCard extends HTMLElement {
             <text data-role="pv-popup-line-5" x="400" y="300" fill="#FFFFFF" font-size="16" font-family="sans-serif" text-anchor="middle" style="display:none;"></text>
           </g>
 
-          <polygon data-role="pv-clickable-area" points="75,205 200,195 275,245 145,275 75,205" fill="transparent" style="cursor:${pvClickableCursor}; display:${pvClickableDisplay};" />
-
           <g data-role="battery-popup" style="display:none; cursor:pointer;">
             <rect x="300" y="200" width="200" height="120" rx="10" ry="10" class="alive-box" />
             <text data-role="battery-popup-line-0" x="400" y="225" fill="#FFFFFF" font-size="16" font-family="sans-serif" text-anchor="middle" style="display:none;"></text>
@@ -1756,14 +2203,6 @@ class LuminaEnergyCard extends HTMLElement {
             <text data-role="battery-popup-line-4" x="400" y="285" fill="#FFFFFF" font-size="16" font-family="sans-serif" text-anchor="middle" style="display:none;"></text>
             <text data-role="battery-popup-line-5" x="400" y="300" fill="#FFFFFF" font-size="16" font-family="sans-serif" text-anchor="middle" style="display:none;"></text>
           </g>
-
-          <polygon data-role="battery-clickable-area" points="325,400 350,375 350,275 275,250 250,250 250,350 325,400" fill="transparent" style="cursor:pointer;" />
-
-          <polygon data-role="house-clickable-area" points="300,200 300,150 350,100 450,75 500,150 500,200 395,250" fill="transparent" style="cursor:pointer;" />
-
-          <polygon data-role="grid-clickable-area" points="555,100 550,230 610,210 610,90 555,100" fill="transparent" style="cursor:pointer;" />
-
-          <path data-role="inverter-clickable-area" d="M 400 290 L 445 270 L 485 290 L 485 315 L 445 340 L 400 320 L 400 290" fill="transparent" style="cursor:pointer;" />
 
           <g data-role="house-popup" style="display:none; cursor:pointer;">
             <rect x="300" y="200" width="200" height="120" rx="10" ry="10" class="alive-box" />
@@ -1811,7 +2250,7 @@ class LuminaEnergyCard extends HTMLElement {
     }
     this._domRefs = {
       svgRoot: root.querySelector('svg'),
-      background: root.querySelector('[data-role="background-image"]'),
+      backgroundSvg: root.querySelector('[data-role="background-svg"]'),
       debugGrid: root.querySelector('[data-role="debug-grid"]'),
       debugCoords: root.querySelector('[data-role="debug-coordinates"]'),
       title: root.querySelector('[data-role="title-text"]'),
@@ -1836,66 +2275,244 @@ class LuminaEnergyCard extends HTMLElement {
       car2Soc: root.querySelector('[data-role="car2-soc"]'),
       pvPopup: root.querySelector('[data-role="pv-popup"]'),
       pvPopupLines: Array.from({ length: 6 }, (_, index) => root.querySelector(`[data-role="pv-popup-line-${index}"]`)),
-      pvClickableArea: root.querySelector('[data-role="pv-clickable-area"]'),
       batteryPopup: root.querySelector('[data-role="battery-popup"]'),
       batteryPopupLines: Array.from({ length: 6 }, (_, index) => root.querySelector(`[data-role="battery-popup-line-${index}"]`)),
       housePopup: root.querySelector('[data-role="house-popup"]'),
       housePopupLines: Array.from({ length: 6 }, (_, index) => root.querySelector(`[data-role="house-popup-line-${index}"]`)),
-      houseClickableArea: root.querySelector('[data-role="house-clickable-area"]'),
-      batteryClickableArea: root.querySelector('[data-role="battery-clickable-area"]'),
       gridPopup: root.querySelector('[data-role="grid-popup"]'),
       gridPopupLines: Array.from({ length: 6 }, (_, index) => root.querySelector(`[data-role="grid-popup-line-${index}"]`)),
-      gridClickableArea: root.querySelector('[data-role="grid-clickable-area"]'),
       inverterPopup: root.querySelector('[data-role="inverter-popup"]'),
       inverterPopupLines: Array.from({ length: 6 }, (_, index) => root.querySelector(`[data-role="inverter-popup-line-${index}"]`)),
-      inverterClickableArea: root.querySelector('[data-role="inverter-clickable-area"]'),
 
       flows: {
         pv1: root.querySelector('[data-flow-key="pv1"]'),
         pv2: root.querySelector('[data-flow-key="pv2"]'),
         bat: root.querySelector('[data-flow-key="bat"]'),
+        battery1: root.querySelector('[data-flow-key="battery1"]'),
+        battery2: root.querySelector('[data-flow-key="battery2"]'),
+        battery3: root.querySelector('[data-flow-key="battery3"]'),
         load: root.querySelector('[data-flow-key="load"]'),
+        'house-load': root.querySelector('[data-flow-key="house-load"]'),
         grid: root.querySelector('[data-flow-key="grid"]'),
         grid_house: root.querySelector('[data-flow-key="grid_house"]'),
         car1: root.querySelector('[data-flow-key="car1"]'),
         car2: root.querySelector('[data-flow-key="car2"]'),
         heatPump: root.querySelector('[data-flow-key="heatPump"]')
-      },
-      arrows: {
-        pv1: root.querySelector('[data-arrow-key="pv1"]'),
-        pv2: root.querySelector('[data-arrow-key="pv2"]'),
-        bat: root.querySelector('[data-arrow-key="bat"]'),
-        load: root.querySelector('[data-arrow-key="load"]'),
-        grid: root.querySelector('[data-arrow-key="grid"]'),
-        grid_house: root.querySelector('[data-arrow-key="grid_house"]'),
-        car1: root.querySelector('[data-arrow-key="car1"]'),
-        car2: root.querySelector('[data-arrow-key="car2"]'),
-        heatPump: root.querySelector('[data-arrow-key="heatPump"]')
-      },
-      arrowShapes: {
-        pv1: Array.from(root.querySelectorAll('[data-arrow-shape="pv1"]')),
-        pv2: Array.from(root.querySelectorAll('[data-arrow-shape="pv2"]')),
-        bat: Array.from(root.querySelectorAll('[data-arrow-shape="bat"]')),
-        load: Array.from(root.querySelectorAll('[data-arrow-shape="load"]')),
-        grid: Array.from(root.querySelectorAll('[data-arrow-shape="grid"]')),
-        grid_house: Array.from(root.querySelectorAll('[data-arrow-shape="grid_house"]')),
-        car1: Array.from(root.querySelectorAll('[data-arrow-shape="car1"]')),
-        car2: Array.from(root.querySelectorAll('[data-arrow-shape="car2"]')),
-        heatPump: Array.from(root.querySelectorAll('[data-arrow-shape="heatPump"]'))
       }
     };
 
+    // Ensure arrow groups exist inside the loaded SVG so the "arrows" animation style can work
     if (this._domRefs && this._domRefs.flows) {
-      Object.entries(this._domRefs.flows).forEach(([key, path]) => {
-        if (path && typeof path.getTotalLength === 'function') {
-          try {
-            this._flowPathLengths.set(key, path.getTotalLength());
-          } catch (err) {
-            console.warn('Lumina Energy Card: unable to compute path length', key, err);
-          }
+      this._ensureArrowGroups(this._domRefs.flows);
+    }
+
+    // Cache arrow groups/shapes after ensuring they exist
+    this._domRefs.arrows = {
+      pv1: root.querySelector('[data-arrow-key="pv1"]'),
+      pv2: root.querySelector('[data-arrow-key="pv2"]'),
+      bat: root.querySelector('[data-arrow-key="bat"]'),
+      battery1: root.querySelector('[data-arrow-key="battery1"]'),
+      battery2: root.querySelector('[data-arrow-key="battery2"]'),
+      battery3: root.querySelector('[data-arrow-key="battery3"]'),
+      load: root.querySelector('[data-arrow-key="load"]'),
+      'house-load': root.querySelector('[data-arrow-key="house-load"]'),
+      grid: root.querySelector('[data-arrow-key="grid"]'),
+      grid_house: root.querySelector('[data-arrow-key="grid_house"]'),
+      car1: root.querySelector('[data-arrow-key="car1"]'),
+      car2: root.querySelector('[data-arrow-key="car2"]'),
+      heatPump: root.querySelector('[data-arrow-key="heatPump"]')
+    };
+    this._domRefs.arrowShapes = {
+      pv1: Array.from(root.querySelectorAll('[data-arrow-shape="pv1"]')),
+      pv2: Array.from(root.querySelectorAll('[data-arrow-shape="pv2"]')),
+      bat: Array.from(root.querySelectorAll('[data-arrow-shape="bat"]')),
+      battery1: Array.from(root.querySelectorAll('[data-arrow-shape="battery1"]')),
+      battery2: Array.from(root.querySelectorAll('[data-arrow-shape="battery2"]')),
+      battery3: Array.from(root.querySelectorAll('[data-arrow-shape="battery3"]')),
+      load: Array.from(root.querySelectorAll('[data-arrow-shape="load"]')),
+      'house-load': Array.from(root.querySelectorAll('[data-arrow-shape="house-load"]')),
+      grid: Array.from(root.querySelectorAll('[data-arrow-shape="grid"]')),
+      grid_house: Array.from(root.querySelectorAll('[data-arrow-shape="grid_house"]')),
+      car1: Array.from(root.querySelectorAll('[data-arrow-shape="car1"]')),
+      car2: Array.from(root.querySelectorAll('[data-arrow-shape="car2"]')),
+      heatPump: Array.from(root.querySelectorAll('[data-arrow-shape="heatPump"]'))
+    };
+
+    if (this._domRefs && this._domRefs.flows) {
+      Object.entries(this._domRefs.flows).forEach(([key, element]) => {
+        const geometry = this._getFlowGeometryPaths(element);
+        if (!geometry || geometry.length === 0) {
+          return;
+        }
+        try {
+          // For multi-path flows, store the total length (used for rough normalization)
+          const total = geometry.reduce((acc, path) => {
+            if (path && typeof path.getTotalLength === 'function') {
+              return acc + path.getTotalLength();
+            }
+            return acc;
+          }, 0);
+          this._flowPathLengths.set(key, total);
+        } catch (err) {
+          console.warn('Lumina Energy Card: unable to compute path length', key, err);
         }
       });
     }
+
+    // Log SVG structure for debugging
+    this._logSvgStructure();
+  }
+
+  _getFlowGeometryPaths(element) {
+    if (!element) {
+      return [];
+    }
+    if (typeof element.getTotalLength === 'function') {
+      return [element];
+    }
+    if (element.tagName === 'g') {
+      return Array.from(element.querySelectorAll('path')).filter((p) => typeof p.getTotalLength === 'function');
+    }
+    return [];
+  }
+
+  _ensureArrowGroups(flows) {
+    if (!this.shadowRoot || !flows) {
+      return;
+    }
+    const svgRoot = this.shadowRoot.querySelector('svg');
+    if (!svgRoot) {
+      return;
+    }
+    const ns = 'http://www.w3.org/2000/svg';
+
+    Object.entries(flows).forEach(([flowKey, element]) => {
+      if (!element) {
+        return;
+      }
+
+      const container = element.tagName === 'g' ? element : element.parentNode;
+      if (!container || typeof container.querySelector !== 'function') {
+        return;
+      }
+
+      // If already present, do nothing
+      if (container.querySelector(`[data-arrow-key="${flowKey}"]`)) {
+        return;
+      }
+
+      const paths = this._getFlowGeometryPaths(element);
+      if (!paths || paths.length === 0) {
+        return;
+      }
+
+      const arrowGroup = document.createElementNS(ns, 'g');
+      arrowGroup.setAttribute('class', 'flow-arrow');
+      arrowGroup.setAttribute('data-arrow-key', flowKey);
+      arrowGroup.style.opacity = '0';
+
+      paths.forEach((path, trackIndex) => {
+        for (let i = 0; i < FLOW_ARROW_COUNT; i++) {
+          const poly = document.createElementNS(ns, 'polygon');
+          poly.setAttribute('data-arrow-shape', flowKey);
+          poly.setAttribute('data-arrow-index', String(i));
+          poly.setAttribute('data-arrow-track', String(trackIndex));
+          poly.setAttribute('points', '-8,-3 0,0 -8,3');
+          poly.setAttribute('fill', '#00FFFF');
+          arrowGroup.appendChild(poly);
+        }
+      });
+
+      container.appendChild(arrowGroup);
+    });
+  }
+
+  _logSvgStructure() {
+    if (!this._domRefs || !this._domRefs.svgRoot) {
+      return;
+    }
+
+    const svg = this._domRefs.svgRoot;
+    // console.log('=== SVG Structure Analysis ===');
+
+    // Log all groups with data attributes
+    // console.log('📁 SVG Groups (<g> elements):');
+    const groups = svg.querySelectorAll('g');
+    groups.forEach((group, index) => {
+      const dataLayer = group.getAttribute('data-layer') || 'none';
+      const dataRole = group.getAttribute('data-role') || 'none';
+      const id = group.getAttribute('id') || 'none';
+      const className = group.getAttribute('class') || 'none';
+      // console.log(`  ${index + 1}. <g> id="${id}" class="${className}" data-layer="${dataLayer}" data-role="${dataRole}"`);
+    });
+
+    // Log all elements with data-layer attributes
+    // console.log('🏷️  Data Layer Elements:');
+    const layerElements = svg.querySelectorAll('[data-layer]');
+    layerElements.forEach((element, index) => {
+      const tagName = element.tagName.toLowerCase();
+      const dataLayer = element.getAttribute('data-layer');
+      const dataRole = element.getAttribute('data-role') || 'none';
+      // console.log(`  ${index + 1}. <${tagName}> data-layer="${dataLayer}" data-role="${dataRole}"`);
+    });
+
+    // Log all elements with data-role attributes
+    // console.log('🎭 Data Role Elements:');
+    const roleElements = svg.querySelectorAll('[data-role]');
+    roleElements.forEach((element, index) => {
+      const tagName = element.tagName.toLowerCase();
+      const dataRole = element.getAttribute('data-role');
+      const dataLayer = element.getAttribute('data-layer') || 'none';
+      // console.log(`  ${index + 1}. <${tagName}> data-role="${dataRole}" data-layer="${dataLayer}"`);
+    });
+
+    // Log all elements with data-flow-key attributes
+    // console.log('🌊 Flow Elements:');
+    const flowElements = svg.querySelectorAll('[data-flow-key]');
+    flowElements.forEach((element, index) => {
+      const tagName = element.tagName.toLowerCase();
+      const flowKey = element.getAttribute('data-flow-key');
+      // console.log(`  ${index + 1}. <${tagName}> data-flow-key="${flowKey}"`);
+    });
+
+    // Log all elements with data-arrow-shape attributes
+    // console.log('➡️  Arrow Shape Elements:');
+    const arrowElements = svg.querySelectorAll('[data-arrow-shape]');
+    arrowElements.forEach((element, index) => {
+      const tagName = element.tagName.toLowerCase();
+      const arrowShape = element.getAttribute('data-arrow-shape');
+      // console.log(`  ${index + 1}. <${tagName}> data-arrow-shape="${arrowShape}"`);
+    });
+
+    // Log all SVG shapes (rect, circle, polygon, path)
+    // console.log('🎨 SVG Shapes:');
+    const shapes = svg.querySelectorAll('rect, circle, polygon, path, ellipse, line');
+    shapes.forEach((shape, index) => {
+      const tagName = shape.tagName.toLowerCase();
+      const dataRole = shape.getAttribute('data-role') || 'none';
+      const dataLayer = shape.getAttribute('data-layer') || 'none';
+      const id = shape.getAttribute('id') || 'none';
+      // console.log(`  ${index + 1}. <${tagName}> id="${id}" data-role="${dataRole}" data-layer="${dataLayer}"`);
+    });
+
+    // Log all text elements
+    // console.log('📝 Text Elements:');
+    const textElements = svg.querySelectorAll('text, tspan');
+    textElements.forEach((text, index) => {
+      const tagName = text.tagName.toLowerCase();
+      const dataRole = text.getAttribute('data-role') || 'none';
+      const dataLayer = text.getAttribute('data-layer') || 'none';
+      // console.log(`  ${index + 1}. <${tagName}> data-role="${dataRole}" data-layer="${dataLayer}"`);
+    });
+
+    // console.log('=== End SVG Structure Analysis ===');
+
+    // Log layer configuration for reference
+    // console.log('=== Layer Configuration Reference ===');
+    SVG_LAYER_CONFIG.forEach((layer, index) => {
+      // console.log(`${index + 1}. "${layer.layerName}" → ${layer.svgSelector} (${layer.condition ? 'conditional' : 'config-based'})`);
+    });
+    // console.log('=== End Layer Configuration Reference ===');
   }
 
   _togglePvPopup() {
@@ -2681,9 +3298,29 @@ class LuminaEnergyCard extends HTMLElement {
     const useArrowsGlobally = animationStyle === 'arrows';
     const styleChanged = prev.animationStyle !== viewState.animationStyle;
 
-    if (refs.background && prev.backgroundImage !== viewState.backgroundImage) {
-      refs.background.setAttribute('href', viewState.backgroundImage);
-      refs.background.setAttribute('xlink:href', viewState.backgroundImage);
+    if (refs.backgroundSvg && prev.backgroundImage !== viewState.backgroundImage) {
+      // Fetch and insert SVG content for dynamic layer control
+      fetch(viewState.backgroundImage)
+        .then(response => response.text())
+        .then(svgText => {
+          const parser = new DOMParser();
+          const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+          const svgElement = svgDoc.documentElement;
+          // Clear existing content
+          refs.backgroundSvg.innerHTML = '';
+          // Append all children of the SVG to the group
+          Array.from(svgElement.children).forEach(child => {
+            refs.backgroundSvg.appendChild(document.importNode(child, true));
+          });
+          // Apply layer visibility after loading
+          applySvgLayerVisibility(refs.backgroundSvg, this.config);
+
+          // Populate any SVG-embedded text placeholders once the SVG is present.
+          this._applySvgTextBindings(viewState);
+        })
+        .catch(error => {
+          console.error('Failed to load background SVG:', error);
+        });
     }
 
     if (refs.debugGrid) {
@@ -2706,35 +3343,6 @@ class LuminaEnergyCard extends HTMLElement {
           refs.debugCoords.style.display = 'none';
         }
         this._setDebugCoordinateText(null, null);
-      }
-    }
-
-    if (refs.title) {
-      if (!prev.title || prev.title.text !== viewState.title.text) {
-        refs.title.textContent = viewState.title.text;
-      }
-      if (!prev.title || prev.title.fontSize !== viewState.title.fontSize) {
-        refs.title.setAttribute('font-size', viewState.title.fontSize);
-      }
-    }
-
-    if (refs.dailyLabel) {
-      if (!prev.daily || prev.daily.label !== viewState.daily.label) {
-        refs.dailyLabel.textContent = viewState.daily.label;
-      }
-      const desired = `${viewState.daily.labelSize}px`;
-      if (refs.dailyLabel.style.fontSize !== desired) {
-        refs.dailyLabel.style.fontSize = desired;
-      }
-    }
-
-    if (refs.dailyValue) {
-      if (!prev.daily || prev.daily.value !== viewState.daily.value) {
-        refs.dailyValue.textContent = viewState.daily.value;
-      }
-      const desired = `${viewState.daily.valueSize}px`;
-      if (refs.dailyValue.style.fontSize !== desired) {
-        refs.dailyValue.style.fontSize = desired;
       }
     }
 
@@ -2761,43 +3369,6 @@ class LuminaEnergyCard extends HTMLElement {
       refs.batteryLiquidShape.setAttribute('fill', viewState.battery.fill);
     }
 
-    if (refs.pvLines && refs.pvLines.length) {
-      viewState.pv.lines.forEach((line, index) => {
-        const node = refs.pvLines[index];
-        if (!node) {
-          return;
-        }
-        const prevLine = prev.pv && prev.pv.lines ? prev.pv.lines[index] : undefined;
-        if (!prevLine || prevLine.text !== line.text) {
-          node.textContent = line.text;
-        }
-        if (!prevLine || prevLine.fill !== line.fill) {
-          node.setAttribute('fill', line.fill);
-        }
-        if (!prev.pv || prev.pv.fontSize !== viewState.pv.fontSize) {
-          node.setAttribute('font-size', viewState.pv.fontSize);
-        }
-        if (!prevLine || prevLine.y !== line.y) {
-          node.setAttribute('y', line.y);
-        }
-        const display = line.visible ? 'inline' : 'none';
-        if (node.style.display !== display) {
-          node.style.display = display;
-        }
-      });
-    }
-
-    if (refs.pvClickableArea) {
-      const display = viewState.pvUiEnabled ? 'inline' : 'none';
-      if (refs.pvClickableArea.style.display !== display) {
-        refs.pvClickableArea.style.display = display;
-      }
-      const cursor = viewState.pvUiEnabled ? 'pointer' : 'default';
-      if (refs.pvClickableArea.style.cursor !== cursor) {
-        refs.pvClickableArea.style.cursor = cursor;
-      }
-    }
-
     if (!viewState.pvUiEnabled && refs.pvPopup) {
       if (refs.pvPopup.style.display !== 'none') {
         refs.pvPopup.style.display = 'none';
@@ -2806,225 +3377,6 @@ class LuminaEnergyCard extends HTMLElement {
         this._activePopup = null;
       }
     }
-
-    if (refs.batterySoc) {
-      if (!prev.batterySoc || prev.batterySoc.text !== viewState.batterySoc.text) {
-        refs.batterySoc.textContent = viewState.batterySoc.text;
-      }
-      if (!prev.batterySoc || prev.batterySoc.fill !== viewState.batterySoc.fill) {
-        refs.batterySoc.setAttribute('fill', viewState.batterySoc.fill);
-      }
-      if (!prev.batterySoc || prev.batterySoc.fontSize !== viewState.batterySoc.fontSize) {
-        refs.batterySoc.setAttribute('font-size', viewState.batterySoc.fontSize);
-      }
-    }
-
-    if (refs.batteryPower) {
-      if (!prev.batteryPower || prev.batteryPower.text !== viewState.batteryPower.text) {
-        refs.batteryPower.textContent = viewState.batteryPower.text;
-      }
-      if (!prev.batteryPower || prev.batteryPower.fill !== viewState.batteryPower.fill) {
-        refs.batteryPower.setAttribute('fill', viewState.batteryPower.fill);
-      }
-      if (!prev.batteryPower || prev.batteryPower.fontSize !== viewState.batteryPower.fontSize) {
-        refs.batteryPower.setAttribute('font-size', viewState.batteryPower.fontSize);
-      }
-    }
-
-    if (refs.loadText) {
-      const lines = viewState.load && viewState.load.lines && viewState.load.lines.length ? viewState.load.lines : null;
-      if (lines) {
-        // Multi-line mode: update individual load-line nodes
-        if (refs.loadLines && refs.loadLines.length) {
-          const baseY = viewState.load.y || TEXT_POSITIONS.home.y;
-          const lineSpacing = viewState.load.fontSize + 4;
-          lines.forEach((l, idx) => {
-            const node = refs.loadLines[idx];
-            if (!node) return;
-            if (!prev.load || !prev.load.lines || (prev.load.lines[idx] || {}).text !== l.text) {
-              node.textContent = l.text;
-            }
-            if (!prev.load || !prev.load.lines || (prev.load.lines[idx] || {}).fill !== l.fill) {
-              node.setAttribute('fill', l.fill || viewState.load.fill);
-            }
-            if (!prev.load || prev.load.fontSize !== viewState.load.fontSize) {
-              node.setAttribute('font-size', viewState.load.fontSize);
-            }
-            const desiredY = baseY + idx * lineSpacing;
-            if (!prev.load || prev.load.y !== desiredY) {
-              node.setAttribute('y', desiredY);
-            }
-            if (node.style.display !== 'inline') node.style.display = 'inline';
-          });
-          // hide unused lines
-          for (let i = lines.length; i < refs.loadLines.length; i++) {
-            const node = refs.loadLines[i];
-            if (node && node.style.display !== 'none') node.style.display = 'none';
-          }
-        }
-        // hide single-line element
-        if (refs.loadText.style.display !== 'none') refs.loadText.style.display = 'none';
-      } else {
-        // Single-line mode
-        if (!prev.load || prev.load.text !== viewState.load.text) {
-          refs.loadText.textContent = viewState.load.text || '';
-        }
-        // restore default y if previously modified
-        if (!prev.load || prev.load.y !== undefined) {
-          refs.loadText.setAttribute('y', TEXT_POSITIONS.home.y);
-        }
-        if (refs.loadLines && refs.loadLines.length) {
-          refs.loadLines.forEach((node) => { if (node && node.style.display !== 'none') node.style.display = 'none'; });
-        }
-        if (refs.loadText.style.display !== 'inline') refs.loadText.style.display = 'inline';
-      }
-      if (!prev.load || prev.load.fill !== viewState.load.fill) {
-        refs.loadText.setAttribute('fill', viewState.load.fill);
-      }
-      if (!prev.load || prev.load.fontSize !== viewState.load.fontSize) {
-        refs.loadText.setAttribute('font-size', viewState.load.fontSize);
-      }
-    }
-
-    if (refs.gridText) {
-      const lines = viewState.grid && viewState.grid.lines && viewState.grid.lines.length ? viewState.grid.lines : null;
-      if (lines) {
-        // Show daily totals above the current grid power
-        if (refs.gridLines && refs.gridLines.length) {
-          const baseY = TEXT_POSITIONS.grid.y - 40; // Position daily lines 40px above main grid text
-          const lineSpacing = viewState.grid.fontSize + 4;
-          lines.forEach((l, idx) => {
-            const node = refs.gridLines[idx];
-            if (!node) return;
-            const prevLine = prev.grid && prev.grid.lines ? (prev.grid.lines[idx] || {}) : undefined;
-            if (!prev.grid || !prev.grid.lines || prevLine.text !== l.text) {
-              node.textContent = l.text;
-            }
-            if (!prev.grid || !prev.grid.lines || prevLine.fill !== l.fill) {
-              node.setAttribute('fill', l.fill || viewState.grid.fill);
-            }
-            if (!prev.grid || prev.grid.fontSize !== viewState.grid.fontSize) {
-              node.setAttribute('font-size', viewState.grid.fontSize);
-            }
-            const desiredY = baseY + idx * lineSpacing;
-            if (!prev.grid || prev.grid.y !== desiredY) {
-              node.setAttribute('y', desiredY);
-            }
-            if (node.style.display !== 'inline') node.style.display = 'inline';
-          });
-          for (let i = lines.length; i < refs.gridLines.length; i++) {
-            const node = refs.gridLines[i];
-            if (node && node.style.display !== 'none') node.style.display = 'none';
-          }
-        }
-        // Always show the main grid text below the daily totals
-        if (!prev.grid || prev.grid.text !== viewState.grid.text) {
-          refs.gridText.textContent = viewState.grid.text || '';
-        }
-        if (!prev.grid || prev.grid.y !== undefined) {
-          refs.gridText.setAttribute('y', TEXT_POSITIONS.grid.y);
-        }
-        if (refs.gridText.style.display !== 'inline') refs.gridText.style.display = 'inline';
-      } else {
-        // No daily totals, just show main grid text
-        if (!prev.grid || prev.grid.text !== viewState.grid.text) {
-          refs.gridText.textContent = viewState.grid.text || '';
-        }
-        if (!prev.grid || prev.grid.y !== undefined) {
-          refs.gridText.setAttribute('y', TEXT_POSITIONS.grid.y);
-        }
-        if (refs.gridLines && refs.gridLines.length) {
-          refs.gridLines.forEach((node) => { if (node && node.style.display !== 'none') node.style.display = 'none'; });
-        }
-        if (refs.gridText.style.display !== 'inline') refs.gridText.style.display = 'inline';
-      }
-      if (!prev.grid || prev.grid.fill !== viewState.grid.fill) {
-        refs.gridText.setAttribute('fill', viewState.grid.fill);
-      }
-      if (!prev.grid || prev.grid.fontSize !== viewState.grid.fontSize) {
-        refs.gridText.setAttribute('font-size', viewState.grid.fontSize);
-      }
-    }
-
-    if (refs.gridText) {
-      if (!prev.grid || prev.grid.text !== viewState.grid.text) {
-        refs.gridText.textContent = viewState.grid.text;
-      }
-      if (!prev.grid || prev.grid.fill !== viewState.grid.fill) {
-        refs.gridText.setAttribute('fill', viewState.grid.fill);
-      }
-      if (!prev.grid || prev.grid.fontSize !== viewState.grid.fontSize) {
-        refs.gridText.setAttribute('font-size', viewState.grid.fontSize);
-      }
-    }
-
-    if (refs.heatPumpText && viewState.heatPump) {
-      const nextHeatPump = viewState.heatPump;
-      const prevHeatPump = prev.heatPump || {};
-      const isVisible = Boolean(nextHeatPump.visible);
-      const desiredDisplay = isVisible ? 'inline' : 'none';
-      if (refs.heatPumpText.style.display !== desiredDisplay) {
-        refs.heatPumpText.style.display = desiredDisplay;
-      }
-      if (isVisible) {
-        if (!prev.heatPump || prevHeatPump.text !== nextHeatPump.text) {
-          refs.heatPumpText.textContent = nextHeatPump.text;
-        }
-        if (!prev.heatPump || prevHeatPump.fill !== nextHeatPump.fill) {
-          refs.heatPumpText.setAttribute('fill', nextHeatPump.fill);
-        }
-        if (!prev.heatPump || prevHeatPump.fontSize !== nextHeatPump.fontSize) {
-          refs.heatPumpText.setAttribute('font-size', nextHeatPump.fontSize);
-        }
-      } else if (refs.heatPumpText.textContent !== '') {
-        refs.heatPumpText.textContent = '';
-      }
-    }
-
-    const syncCarText = (node, viewEntry, prevEntry, displayFlag) => {
-      if (!node || !viewEntry) {
-        return;
-      }
-      const desiredDisplay = displayFlag ? 'inline' : 'none';
-      if (node.style.display !== desiredDisplay) {
-        node.style.display = desiredDisplay;
-      }
-      if (!displayFlag) {
-        return;
-      }
-      if (!prevEntry || prevEntry.text !== viewEntry.text) {
-        node.textContent = viewEntry.text;
-      }
-      if (!prevEntry || prevEntry.fill !== viewEntry.fill) {
-        node.setAttribute('fill', viewEntry.fill);
-      }
-      if (!prevEntry || prevEntry.fontSize !== viewEntry.fontSize) {
-        node.setAttribute('font-size', viewEntry.fontSize);
-      }
-      if (!prevEntry || prevEntry.x !== viewEntry.x) {
-        node.setAttribute('x', viewEntry.x);
-      }
-      if (!prevEntry || prevEntry.y !== viewEntry.y) {
-        node.setAttribute('y', viewEntry.y);
-      }
-      if (!prevEntry || prevEntry.transform !== viewEntry.transform) {
-        node.setAttribute('transform', viewEntry.transform);
-      }
-    };
-
-    const syncCarSection = (key) => {
-      const carView = viewState[key];
-      if (!carView) {
-        return;
-      }
-      const prevCar = prev[key] || {};
-      syncCarText(refs[`${key}Label`], carView.label, prevCar.label, carView.visible);
-      syncCarText(refs[`${key}Power`], carView.power, prevCar.power, carView.visible);
-      syncCarText(refs[`${key}Soc`], carView.soc, prevCar.soc, carView.soc.visible);
-    };
-
-    syncCarSection('car1');
-    syncCarSection('car2');
 
     // PV popup lines are updated in _showPvPopup when needed
 
@@ -3078,39 +3430,404 @@ class LuminaEnergyCard extends HTMLElement {
       }
     });
 
-    if (refs.flows && viewState.flowPaths) {
-      Object.entries(viewState.flowPaths).forEach(([key, dValue]) => {
-        const path = refs.flows[key];
-        if (!path || typeof dValue !== 'string') {
-          return;
-        }
-        if (path.getAttribute('d') !== dValue) {
-          path.setAttribute('d', dValue);
-          if (this._flowPathLengths && this._flowPathLengths.has(key)) {
-            this._flowPathLengths.delete(key);
-          }
+    // Safety: if we are not in arrow mode, force-hide ANY arrow groups/shapes.
+    // This protects against leftover arrow polygons when switching styles.
+    if (!useArrowsGlobally && refs.svgRoot) {
+      const arrowGroups = refs.svgRoot.querySelectorAll('[data-arrow-key], .flow-arrow');
+      arrowGroups.forEach((group) => {
+        if (group && group.style && group.style.opacity !== '0') {
+          group.style.opacity = '0';
         }
       });
+      const arrowShapesAll = refs.svgRoot.querySelectorAll('[data-arrow-shape]');
+      arrowShapesAll.forEach((shape) => shape.removeAttribute('transform'));
     }
+
+    // Apply layer visibility if background is already loaded
+    if (refs.backgroundSvg && refs.backgroundSvg.children.length > 0) {
+      applySvgLayerVisibility(refs.backgroundSvg, this.config);
+    }
+
+    // Populate SVG-embedded text placeholders (safe no-op if none exist).
+    this._applySvgTextBindings(viewState);
 
     // Re-attach event listeners after DOM updates
     this._cacheDomReferences(); // Re-cache refs in case DOM was updated
     this._attachEventListeners();
   }
 
+  _applySvgTextBindings(viewState) {
+    if (!this._domRefs || !this._domRefs.backgroundSvg) {
+      return;
+    }
+    const svgRoot = this._domRefs.backgroundSvg;
+    if (!svgRoot || !svgRoot.children || svgRoot.children.length === 0) {
+      return;
+    }
+
+    const shouldApplyConfiguredTextStyle = (node, options = {}) => {
+      // Configuration styling always wins (fill/font-size from viewState/config override SVG).
+      return true;
+    };
+
+    const getVisibilityTarget = (node) => {
+      if (!node || typeof node.closest !== 'function') {
+        return node;
+      }
+      const textHost = node.closest('text');
+      return textHost || node;
+    };
+
+    const applyTextContent = (node, nextText) => {
+      if (!node) return;
+      const tag = (node.tagName || '').toLowerCase();
+      if (tag === 'text') {
+        const tspans = node.querySelectorAll(':scope > tspan');
+        if (tspans && tspans.length) {
+          tspans.forEach((tspan, index) => {
+            const value = index === 0 ? nextText : '';
+            if (tspan.textContent !== value) {
+              tspan.textContent = value;
+            }
+          });
+          return;
+        }
+      }
+      if (node.textContent !== nextText) {
+        node.textContent = nextText;
+      }
+    };
+
+    const updateRole = (role, text, options = {}) => {
+      const nodes = svgRoot.querySelectorAll(`[data-role="${role}"]`);
+      if (!nodes || nodes.length === 0) {
+        return;
+      }
+      const visible = options.visible !== undefined ? Boolean(options.visible) : true;
+      const display = visible ? 'inline' : 'none';
+      const nextText = (text === null || text === undefined) ? '' : String(text);
+
+      nodes.forEach((node) => {
+        const visibilityTarget = getVisibilityTarget(node);
+        applyTextContent(node, nextText);
+        if (visibilityTarget) {
+          if (visibilityTarget.style.display !== display) {
+            visibilityTarget.style.display = display;
+          }
+          if (display === 'inline') {
+            if (visibilityTarget.getAttribute('display') === 'none') {
+              visibilityTarget.removeAttribute('display');
+            }
+            if (visibilityTarget.getAttribute('visibility') === 'hidden') {
+              visibilityTarget.removeAttribute('visibility');
+            }
+            if (visibilityTarget.getAttribute('opacity') === '0') {
+              visibilityTarget.removeAttribute('opacity');
+            }
+            if (visibilityTarget.style.opacity === '0') {
+              visibilityTarget.style.opacity = '';
+            }
+          }
+        }
+        const applyStyle = shouldApplyConfiguredTextStyle(node, options);
+        if (applyStyle) {
+          if (typeof options.fill === 'string' && options.fill) {
+            node.setAttribute('fill', options.fill);
+            node.style.fill = options.fill;
+          }
+          if (typeof options.fontSize === 'number' && Number.isFinite(options.fontSize)) {
+            node.setAttribute('font-size', String(options.fontSize));
+            node.style.fontSize = `${options.fontSize}px`;
+
+            const tag = (node.tagName || '').toLowerCase();
+            if (tag === 'text') {
+              const tspans = node.querySelectorAll(':scope > tspan');
+              if (tspans && tspans.length) {
+                tspans.forEach((tspan) => {
+                  tspan.setAttribute('font-size', String(options.fontSize));
+                  tspan.style.fontSize = `${options.fontSize}px`;
+                });
+              }
+            } else if (tag === 'tspan') {
+              const host = getVisibilityTarget(node);
+              if (host && host !== node && host.style) {
+                host.setAttribute('font-size', String(options.fontSize));
+                host.style.fontSize = `${options.fontSize}px`;
+              }
+            }
+          }
+        }
+      });
+    };
+
+    const updateIndexedRoles = (prefix, lines, defaults = {}) => {
+      const allNodes = svgRoot.querySelectorAll(`[data-role^="${prefix}-"]`);
+      if (allNodes && allNodes.length) {
+        allNodes.forEach((node) => {
+          const visibilityTarget = getVisibilityTarget(node);
+          const role = node.getAttribute('data-role') || '';
+          const match = role.match(new RegExp(`^${prefix}-(\\d+)$`));
+          const index = match ? Number(match[1]) : NaN;
+          const line = Number.isFinite(index) && Array.isArray(lines) ? lines[index] : null;
+          const visible = Boolean(line && line.visible);
+          const display = visible ? 'inline' : 'none';
+          if (visibilityTarget) {
+            if (visibilityTarget.style.display !== display) {
+              visibilityTarget.style.display = display;
+            }
+            if (display === 'inline') {
+              if (visibilityTarget.getAttribute('display') === 'none') {
+                visibilityTarget.removeAttribute('display');
+              }
+              if (visibilityTarget.getAttribute('visibility') === 'hidden') {
+                visibilityTarget.removeAttribute('visibility');
+              }
+              if (visibilityTarget.getAttribute('opacity') === '0') {
+                visibilityTarget.removeAttribute('opacity');
+              }
+              if (visibilityTarget.style.opacity === '0') {
+                visibilityTarget.style.opacity = '';
+              }
+            }
+          }
+          const nextText = visible ? String(line.text || '') : '';
+          applyTextContent(node, nextText);
+          const applyStyle = shouldApplyConfiguredTextStyle(node, defaults);
+          if (applyStyle) {
+            const fill = (line && typeof line.fill === 'string' && line.fill) ? line.fill : defaults.fill;
+            if (typeof fill === 'string' && fill) {
+              node.setAttribute('fill', fill);
+            }
+            if (typeof defaults.fontSize === 'number' && Number.isFinite(defaults.fontSize)) {
+              node.setAttribute('font-size', String(defaults.fontSize));
+            }
+          }
+        });
+      }
+
+      if (Array.isArray(lines)) {
+        lines.forEach((line, index) => {
+          updateRole(`${prefix}-${index}`, line.text || '', {
+            visible: Boolean(line.visible),
+            fill: line.fill || defaults.fill,
+            fontSize: defaults.fontSize
+          });
+        });
+      }
+    };
+
+    // Title + daily
+    updateRole('title-text', viewState.title ? viewState.title.text : '', {
+      visible: Boolean(viewState.title && viewState.title.text),
+      fontSize: viewState.title ? viewState.title.fontSize : undefined
+    });
+    const dailyVisible = Boolean(viewState.daily && viewState.daily.visible);
+    updateRole('daily-label', viewState.daily ? viewState.daily.label : '', {
+      visible: dailyVisible,
+      fontSize: viewState.daily ? viewState.daily.labelSize : undefined
+    });
+    updateRole('daily-value', viewState.daily ? viewState.daily.value : '', {
+      visible: dailyVisible,
+      fontSize: viewState.daily ? viewState.daily.valueSize : undefined
+    });
+
+    // PV lines
+    updateIndexedRoles('pv-line', viewState.pv ? viewState.pv.lines : [], {
+      fontSize: viewState.pv ? viewState.pv.fontSize : undefined
+    });
+
+    // PV Array 1 total (direct binding)
+    updateRole('pv1-total', viewState.pv1Total ? viewState.pv1Total.text : '', {
+      visible: Boolean(viewState.pv1Total && viewState.pv1Total.visible),
+      fill: viewState.pv1Total ? viewState.pv1Total.fill : undefined,
+      fontSize: viewState.pv1Total ? viewState.pv1Total.fontSize : undefined
+    });
+
+    // PV Array 2 total (direct binding)
+    updateRole('pv2-total', viewState.pv2Total ? viewState.pv2Total.text : '', {
+      visible: Boolean(viewState.pv2Total && viewState.pv2Total.visible),
+      fill: viewState.pv2Total ? viewState.pv2Total.fill : undefined,
+      fontSize: viewState.pv2Total ? viewState.pv2Total.fontSize : undefined
+    });
+
+    // PV Array 1 per-string output (direct binding)
+    const pv1Strings = Array.isArray(viewState.pv1Strings) ? viewState.pv1Strings : [];
+    for (let i = 0; i < 6; i++) {
+      const line = pv1Strings[i];
+      updateRole(`pv1-string${i + 1}`, line ? line.text : '', {
+        visible: Boolean(line && line.visible),
+        fill: line ? line.fill : undefined,
+        fontSize: line ? line.fontSize : undefined
+      });
+    }
+
+    // Battery
+    updateRole('battery-soc', viewState.batterySoc ? viewState.batterySoc.text : '', {
+      visible: Boolean(viewState.batterySoc),
+      fill: viewState.batterySoc ? viewState.batterySoc.fill : undefined,
+      fontSize: viewState.batterySoc ? viewState.batterySoc.fontSize : undefined
+    });
+    updateRole('battery-power', viewState.batteryPower ? viewState.batteryPower.text : '', {
+      visible: Boolean(viewState.batteryPower),
+      fill: viewState.batteryPower ? viewState.batteryPower.fill : undefined,
+      fontSize: viewState.batteryPower ? viewState.batteryPower.fontSize : undefined
+    });
+
+    // Individual batteries (power)
+    updateRole('battery1', viewState.battery1 ? viewState.battery1.text : '', {
+      visible: Boolean(viewState.battery1 && viewState.battery1.visible),
+      fill: viewState.battery1 ? viewState.battery1.fill : undefined,
+      fontSize: viewState.battery1 ? viewState.battery1.fontSize : undefined
+    });
+    updateRole('battery2', viewState.battery2 ? viewState.battery2.text : '', {
+      visible: Boolean(viewState.battery2 && viewState.battery2.visible),
+      fill: viewState.battery2 ? viewState.battery2.fill : undefined,
+      fontSize: viewState.battery2 ? viewState.battery2.fontSize : undefined
+    });
+    updateRole('battery3', viewState.battery3 ? viewState.battery3.text : '', {
+      visible: Boolean(viewState.battery3 && viewState.battery3.visible),
+      fill: viewState.battery3 ? viewState.battery3.fill : undefined,
+      fontSize: viewState.battery3 ? viewState.battery3.fontSize : undefined
+    });
+
+    // Individual batteries (SVG placeholders)
+    updateRole('battery1-soc', viewState.battery1Soc ? viewState.battery1Soc.text : '', {
+      visible: Boolean(viewState.battery1Soc && viewState.battery1Soc.visible),
+      fill: viewState.battery1Soc ? viewState.battery1Soc.fill : undefined,
+      fontSize: viewState.battery1Soc ? viewState.battery1Soc.fontSize : undefined
+    });
+    updateRole('battery1-power', viewState.battery1Power ? viewState.battery1Power.text : '', {
+      visible: Boolean(viewState.battery1Power && viewState.battery1Power.visible),
+      fill: viewState.battery1Power ? viewState.battery1Power.fill : undefined,
+      fontSize: viewState.battery1Power ? viewState.battery1Power.fontSize : undefined
+    });
+    updateRole('battery2-soc', viewState.battery2Soc ? viewState.battery2Soc.text : '', {
+      visible: Boolean(viewState.battery2Soc && viewState.battery2Soc.visible),
+      fill: viewState.battery2Soc ? viewState.battery2Soc.fill : undefined,
+      fontSize: viewState.battery2Soc ? viewState.battery2Soc.fontSize : undefined
+    });
+    updateRole('battery2-power', viewState.battery2Power ? viewState.battery2Power.text : '', {
+      visible: Boolean(viewState.battery2Power && viewState.battery2Power.visible),
+      fill: viewState.battery2Power ? viewState.battery2Power.fill : undefined,
+      fontSize: viewState.battery2Power ? viewState.battery2Power.fontSize : undefined
+    });
+    updateRole('battery3-soc', viewState.battery3Soc ? viewState.battery3Soc.text : '', {
+      visible: Boolean(viewState.battery3Soc && viewState.battery3Soc.visible),
+      fill: viewState.battery3Soc ? viewState.battery3Soc.fill : undefined,
+      fontSize: viewState.battery3Soc ? viewState.battery3Soc.fontSize : undefined
+    });
+    updateRole('battery3-power', viewState.battery3Power ? viewState.battery3Power.text : '', {
+      visible: Boolean(viewState.battery3Power && viewState.battery3Power.visible),
+      fill: viewState.battery3Power ? viewState.battery3Power.fill : undefined,
+      fontSize: viewState.battery3Power ? viewState.battery3Power.fontSize : undefined
+    });
+    updateRole('battery4-soc', viewState.battery4Soc ? viewState.battery4Soc.text : '', {
+      visible: Boolean(viewState.battery4Soc && viewState.battery4Soc.visible),
+      fill: viewState.battery4Soc ? viewState.battery4Soc.fill : undefined,
+      fontSize: viewState.battery4Soc ? viewState.battery4Soc.fontSize : undefined
+    });
+    updateRole('battery4-power', viewState.battery4Power ? viewState.battery4Power.text : '', {
+      visible: Boolean(viewState.battery4Power && viewState.battery4Power.visible),
+      fill: viewState.battery4Power ? viewState.battery4Power.fill : undefined,
+      fontSize: viewState.battery4Power ? viewState.battery4Power.fontSize : undefined
+    });
+
+    // Load
+    const hasLoadLines = Boolean(viewState.load && Array.isArray(viewState.load.lines) && viewState.load.lines.length);
+    updateRole('load-power', viewState.load ? viewState.load.text : '', {
+      visible: Boolean(viewState.load && !hasLoadLines),
+      fill: viewState.load ? viewState.load.fill : undefined,
+      fontSize: viewState.load ? viewState.load.fontSize : undefined
+    });
+    updateIndexedRoles('load-line', hasLoadLines ? viewState.load.lines : [], {
+      fill: viewState.load ? viewState.load.fill : undefined,
+      fontSize: viewState.load ? viewState.load.fontSize : undefined
+    });
+
+    // House load (SVG-embedded text)
+    updateRole('house-load', viewState.houseLoad ? viewState.houseLoad.text : '', {
+      visible: Boolean(viewState.houseLoad && viewState.houseLoad.visible),
+      fill: viewState.houseLoad ? viewState.houseLoad.fill : undefined,
+      fontSize: viewState.houseLoad ? viewState.houseLoad.fontSize : undefined
+    });
+
+    // Grid
+    updateRole('grid-power', viewState.grid ? viewState.grid.text : '', {
+      visible: Boolean(viewState.grid),
+      fill: viewState.grid ? viewState.grid.fill : undefined,
+      fontSize: viewState.grid ? viewState.grid.fontSize : undefined
+    });
+    updateIndexedRoles('grid-line', viewState.grid ? viewState.grid.lines : [], {
+      fill: viewState.grid ? viewState.grid.fill : undefined,
+      fontSize: viewState.grid ? viewState.grid.fontSize : undefined
+    });
+
+    // Heat pump
+    const heatPumpVisible = Boolean(viewState.heatPump && viewState.heatPump.visible);
+    updateRole('heat-pump-power', viewState.heatPump ? viewState.heatPump.text : '', {
+      visible: heatPumpVisible,
+      fill: viewState.heatPump ? viewState.heatPump.fill : undefined,
+      fontSize: viewState.heatPump ? viewState.heatPump.fontSize : undefined
+    });
+
+    // Cars
+    const car1Visible = Boolean(viewState.car1 && viewState.car1.visible);
+    updateRole('car1-label', viewState.car1 && viewState.car1.label ? viewState.car1.label.text : '', {
+      visible: car1Visible,
+      fill: viewState.car1 && viewState.car1.label ? viewState.car1.label.fill : undefined,
+      fontSize: viewState.car1 && viewState.car1.label ? viewState.car1.label.fontSize : undefined
+    });
+    updateRole('car1-power', viewState.car1 && viewState.car1.power ? viewState.car1.power.text : '', {
+      visible: car1Visible,
+      fill: viewState.car1 && viewState.car1.power ? viewState.car1.power.fill : undefined,
+      fontSize: viewState.car1 && viewState.car1.power ? viewState.car1.power.fontSize : undefined
+    });
+    const car1SocVisible = Boolean(viewState.car1 && viewState.car1.soc && viewState.car1.soc.visible);
+    updateRole('car1-soc', viewState.car1 && viewState.car1.soc ? viewState.car1.soc.text : '', {
+      visible: car1SocVisible,
+      fill: viewState.car1 && viewState.car1.soc ? viewState.car1.soc.fill : undefined,
+      fontSize: viewState.car1 && viewState.car1.soc ? viewState.car1.soc.fontSize : undefined
+    });
+
+    const car2Visible = Boolean(viewState.car2 && viewState.car2.visible);
+    updateRole('car2-label', viewState.car2 && viewState.car2.label ? viewState.car2.label.text : '', {
+      visible: car2Visible,
+      fill: viewState.car2 && viewState.car2.label ? viewState.car2.label.fill : undefined,
+      fontSize: viewState.car2 && viewState.car2.label ? viewState.car2.label.fontSize : undefined
+    });
+    updateRole('car2-power', viewState.car2 && viewState.car2.power ? viewState.car2.power.text : '', {
+      visible: car2Visible,
+      fill: viewState.car2 && viewState.car2.power ? viewState.car2.power.fill : undefined,
+      fontSize: viewState.car2 && viewState.car2.power ? viewState.car2.power.fontSize : undefined
+    });
+    const car2SocVisible = Boolean(viewState.car2 && viewState.car2.soc && viewState.car2.soc.visible);
+    updateRole('car2-soc', viewState.car2 && viewState.car2.soc ? viewState.car2.soc.text : '', {
+      visible: car2SocVisible,
+      fill: viewState.car2 && viewState.car2.soc ? viewState.car2.soc.fill : undefined,
+      fontSize: viewState.car2 && viewState.car2.soc ? viewState.car2.soc.fontSize : undefined
+    });
+  }
+
   _handleDebugPointerMove(event) {
-    if (!DEBUG_GRID_ENABLED || !this._domRefs || !this._domRefs.svgRoot) {
+    // Additional safety check in case DEBUG_GRID_ENABLED is accidentally enabled
+    if (!DEBUG_GRID_ENABLED || !this._domRefs || !this._domRefs.svgRoot || !this.shadowRoot) {
       return;
     }
-    const rect = this._domRefs.svgRoot.getBoundingClientRect();
-    const width = rect.width || 0;
-    const height = rect.height || 0;
-    if (width === 0 || height === 0) {
+    try {
+      const rect = this._domRefs.svgRoot.getBoundingClientRect();
+      const width = rect.width || 0;
+      const height = rect.height || 0;
+      if (width === 0 || height === 0) {
+        return;
+      }
+      const relativeX = ((event.clientX - rect.left) / width) * SVG_DIMENSIONS.width;
+      const relativeY = ((event.clientY - rect.top) / height) * SVG_DIMENSIONS.height;
+      this._setDebugCoordinateText(relativeX, relativeY);
+    } catch (error) {
+      // Silently handle any DOM access errors
+      console.warn('Debug pointer move error:', error);
       return;
     }
-    const relativeX = ((event.clientX - rect.left) / width) * SVG_DIMENSIONS.width;
-    const relativeY = ((event.clientY - rect.top) / height) * SVG_DIMENSIONS.height;
-    this._setDebugCoordinateText(relativeX, relativeY);
   }
 
   _handleDebugPointerLeave() {
@@ -3121,21 +3838,33 @@ class LuminaEnergyCard extends HTMLElement {
   }
 
   _setDebugCoordinateText(x, y) {
-    if (!this._domRefs || !this._domRefs.debugCoords) {
+    if (!DEBUG_GRID_ENABLED || !this._domRefs || !this._domRefs.debugCoords) {
       return;
     }
-    const node = this._domRefs.debugCoords;
-    if (x === null || y === null || Number.isNaN(Number(x)) || Number.isNaN(Number(y))) {
-      node.textContent = 'X: ---, Y: ---';
-      this._debugCoordsActive = false;
+    try {
+      const node = this._domRefs.debugCoords;
+      if (x === null || y === null || Number.isNaN(Number(x)) || Number.isNaN(Number(y))) {
+        // Show layer status when not hovering
+        const layers = [];
+        if (DEBUG_LAYER_NOSOLAR_ENABLED) layers.push('NoSolar');
+        if (DEBUG_LAYER_1ARRAY_ENABLED) layers.push('1Array');
+        if (DEBUG_LAYER_2ARRAY_ENABLED) layers.push('2Array');
+        const layerText = layers.length > 0 ? ` | DEBUG: ${layers.join(', ')}` : '';
+        node.textContent = `X: ---, Y: ---${layerText}`;
+        this._debugCoordsActive = false;
+        return;
+      }
+      const clampedX = Math.max(0, Math.min(Math.round(x), SVG_DIMENSIONS.width));
+      const clampedY = Math.max(0, Math.min(Math.round(y), SVG_DIMENSIONS.height));
+      const formattedX = clampedX.toString().padStart(3, '0');
+      const formattedY = clampedY.toString().padStart(3, '0');
+      node.textContent = `X: ${formattedX}, Y: ${formattedY}`;
+      this._debugCoordsActive = true;
+    } catch (error) {
+      // Silently handle any DOM access errors
+      console.warn('Debug coordinate text error:', error);
       return;
     }
-    const clampedX = Math.max(0, Math.min(Math.round(x), SVG_DIMENSIONS.width));
-    const clampedY = Math.max(0, Math.min(Math.round(y), SVG_DIMENSIONS.height));
-    const formattedX = clampedX.toString().padStart(3, '0');
-    const formattedY = clampedY.toString().padStart(3, '0');
-    node.textContent = `X: ${formattedX}, Y: ${formattedY}`;
-    this._debugCoordsActive = true;
   }
 
   _attachEventListeners() {
@@ -3149,45 +3878,6 @@ class LuminaEnergyCard extends HTMLElement {
     if (this._domRefs.dailyYieldGroup) {
       this._domRefs.dailyYieldGroup.addEventListener('click', () => {
         this._togglePvPopup();
-      });
-    }
-
-    // Attach click listener to house clickable area for house popup
-    if (this._domRefs.houseClickableArea) {
-      this._domRefs.houseClickableArea.addEventListener('click', () => {
-        this._toggleHousePopup();
-      });
-    }
-
-    // Attach click listener to PV clickable area for PV popup
-    if (this._domRefs.pvClickableArea) {
-      this._domRefs.pvClickableArea.addEventListener('click', () => {
-        console.debug('Lumina Energy Card: PV clickable area clicked');
-        this._togglePvPopup();
-      });
-    }
-
-    // Attach click listener to battery clickable area for battery popup
-    if (this._domRefs.batteryClickableArea) {
-      this._domRefs.batteryClickableArea.addEventListener('click', () => {
-        console.debug('Lumina Energy Card: battery clickable area clicked');
-        this._toggleBatteryPopup();
-      });
-    }
-
-    // Attach click listener to grid clickable area for grid popup
-    if (this._domRefs.gridClickableArea) {
-      this._domRefs.gridClickableArea.addEventListener('click', () => {
-        console.debug('Lumina Energy Card: grid clickable area clicked');
-        this._toggleGridPopup();
-      });
-    }
-
-    // Attach click listener to inverter clickable area for inverter popup
-    if (this._domRefs.inverterClickableArea) {
-      this._domRefs.inverterClickableArea.addEventListener('click', () => {
-        console.debug('Lumina Energy Card: inverter clickable area clicked');
-        this._toggleInverterPopup();
       });
     }
 
@@ -3227,9 +3917,13 @@ class LuminaEnergyCard extends HTMLElement {
       });
     }
 
-    if (DEBUG_GRID_ENABLED && this._domRefs.svgRoot) {
-      this._domRefs.svgRoot.addEventListener('pointermove', this._handleDebugPointerMove);
-      this._domRefs.svgRoot.addEventListener('pointerleave', this._handleDebugPointerLeave);
+    if (DEBUG_GRID_ENABLED && this._domRefs.svgRoot && this.shadowRoot) {
+      try {
+        this._domRefs.svgRoot.addEventListener('pointermove', this._handleDebugPointerMove);
+        this._domRefs.svgRoot.addEventListener('pointerleave', this._handleDebugPointerLeave);
+      } catch (error) {
+        console.warn('Failed to attach debug event listeners:', error);
+      }
     }
   }
 
@@ -3262,27 +3956,32 @@ class LuminaEnergyCard extends HTMLElement {
         soc: { ...viewState.car2.soc }
       } : undefined,
       flows: Object.fromEntries(Object.entries(viewState.flows).map(([key, value]) => [key, { ...value }])),
-      flowPaths: { ...viewState.flowPaths },
       showDebugGrid: Boolean(viewState.showDebugGrid)
     };
   }
 
   static get version() {
-    return '1.1.31';
+    return '1.1.31-svg10';
   }
 }
 
-if (!customElements.get('lumina-energy-card')) {
-  customElements.define('lumina-energy-card', LuminaEnergyCard);
+// if (!customElements.get('lumina-energy-card')) {
+//   customElements.define('lumina-energy-card', LuminaEnergyCard;
+// }
+
+if (!customElements.get('lumina-energy-card-test')) {
+  customElements.define('lumina-energy-card-test', LuminaEnergyCardTest);
 }
 
-class LuminaEnergyCardEditor extends HTMLElement {
+// class LuminaEnergyCardEditor extends HTMLElement {
+
+class LuminaEnergyCardTestEditor extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
     this._rendered = false;
-    this._defaults = (typeof LuminaEnergyCard !== 'undefined' && typeof LuminaEnergyCard.getStubConfig === 'function')
-      ? { ...LuminaEnergyCard.getStubConfig() }
+    this._defaults = (typeof LuminaEnergyCardTest !== 'undefined' && typeof LuminaEnergyCardTest.getStubConfig === 'function')
+      ? { ...LuminaEnergyCardTest.getStubConfig() }
       : {};
     this._strings = this._buildStrings();
     this._sectionOpenState = {};
@@ -3310,8 +4009,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
         },
         fields: {
           card_title: { label: 'Card Title', helper: 'Title displayed at the top of the card. Leave blank to disable.' },
-          background_image: { label: 'Background Image Path', helper: 'Path to the background image (e.g., /local/community/lumina-energy-card/lumina_background.png).' },
-          background_image_heat_pump: { label: 'Background Image Heat Pump', helper: 'Path to the heat pump background image (e.g., /local/community/lumina-energy-card/lumina-energy-card-hp.png).' },
+          background_image: { label: 'Background Image Path', helper: 'Path to the background image (e.g., /local/community/lumina-energy-card/lumina_background.svg).' },
+          night_mode: { label: 'Day/Night', helper: 'Toggle between [data-role="background-day"] and [data-role="background-night"] layers inside the background SVG.' },
           language: { label: 'Language', helper: 'Choose the editor language.' },
           display_unit: { label: 'Display Unit', helper: 'Unit used when formatting power values.' },
           update_interval: { label: 'Update Interval', helper: 'Refresh cadence for card updates (0 disables throttling).' },
@@ -3326,7 +4025,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_pv4: { label: 'PV String 4 (Array 1)' },
           sensor_pv5: { label: 'PV String 5 (Array 1)' },
           sensor_pv6: { label: 'PV String 6 (Array 1)' },
-          solar_array2_title: { label: 'Array 2 (Optional)' },
           sensor_pv_array2_1: { label: 'PV String 1 (Array 2)', helper: 'Array 2 solar production sensor.' },
           sensor_pv_array2_2: { label: 'PV String 2 (Array 2)', helper: 'Array 2 solar production sensor.' },
           sensor_pv_array2_3: { label: 'PV String 3 (Array 2)', helper: 'Array 2 solar production sensor.' },
@@ -3388,6 +4086,9 @@ class LuminaEnergyCardEditor extends HTMLElement {
           grid_critical_color: { label: 'Grid Critical Color', helper: 'Hex or CSS color applied at the critical threshold.' },
           invert_grid: { label: 'Invert Grid Values', helper: 'Enable if import/export polarity is reversed.' },
           invert_battery: { label: 'Invert Battery Values', helper: 'Enable if charge/discharge polarity is reversed.' },
+          invert_bat1: { label: 'Invert Battery 1 Values', helper: 'Enable if Battery 1 charge/discharge polarity is reversed.' },
+          invert_bat2: { label: 'Invert Battery 2 Values', helper: 'Enable if Battery 2 charge/discharge polarity is reversed.' },
+          invert_bat3: { label: 'Invert Battery 3 Values', helper: 'Enable if Battery 3 charge/discharge polarity is reversed.' },
           sensor_car_power: { label: 'Car 1 Power Sensor' },
           sensor_car_soc: { label: 'Car 1 SOC Sensor' },
           car_soc: { label: 'Car SOC', helper: 'Sensor for EV battery SOC.' },
@@ -3598,8 +4299,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
         },
         fields: {
           card_title: { label: 'Titolo scheda', helper: 'Titolo mostrato nella parte superiore della scheda. Lasciare vuoto per disabilitare.' },
-          background_image: { label: 'Percorso immagine di sfondo', helper: 'Percorso dell immagine di sfondo (es. /local/community/lumina-energy-card/lumina_background.png).' },
-          background_image_heat_pump: { label: 'Immagine di sfondo pompa di calore', helper: 'Percorso dell immagine di sfondo per la pompa di calore (es. /local/community/lumina-energy-card/lumina-energy-card-hp.png).' },
+          background_image: { label: 'Percorso immagine di sfondo', helper: 'Percorso dell immagine di sfondo (es. /local/community/lumina-energy-card/lumina_background.svg).' },
           language: { label: 'Lingua', helper: 'Seleziona la lingua dell editor.' },
           display_unit: { label: 'Unita di visualizzazione', helper: 'Unita usata per i valori di potenza.' },
           update_interval: { label: 'Intervallo di aggiornamento', helper: 'Frequenza di aggiornamento della scheda (0 disattiva il limite).' },
@@ -3614,7 +4314,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_pv4: { label: 'PV String 4 (Array 1)' },
           sensor_pv5: { label: 'PV String 5 (Array 1)' },
           sensor_pv6: { label: 'PV String 6 (Array 1)' },
-          solar_array2_title: { label: 'Array 2 (Opzionale)' },
           show_pv_strings: { label: 'Mostra stringhe PV', helper: 'Attiva per mostrare la linea totale piu ogni stringa PV separata.' },
           sensor_daily: { label: 'Sensore produzione giornaliera (Obbligatorio)', helper: 'Sensore che riporta la produzione giornaliera. Come minimo deve essere specificato il sensore PV totale oppure gli array di stringhe PV.' },
           sensor_daily_array2: { label: 'Sensore produzione giornaliera (Array 2)', helper: 'Sensore che riporta la produzione giornaliera per l Array 2.' },
@@ -3670,6 +4369,9 @@ class LuminaEnergyCardEditor extends HTMLElement {
           grid_critical_color: { label: 'Colore critico rete', helper: 'Colore applicato alla soglia critica.' },
             invert_grid: { label: 'Inverti valori rete', helper: 'Attiva se l import/export ha polarita invertita.' },
             invert_battery: { label: 'Inverti valori batteria', helper: 'Abilita se la polarita carica/scarica e invertita.' },
+            invert_bat1: { label: 'Inverti Batteria 1', helper: 'Abilita se la polarita carica/scarica della Batteria 1 e invertita.' },
+            invert_bat2: { label: 'Inverti Batteria 2', helper: 'Abilita se la polarita carica/scarica della Batteria 2 e invertita.' },
+            invert_bat3: { label: 'Inverti Batteria 3', helper: 'Abilita se la polarita carica/scarica della Batteria 3 e invertita.' },
           sensor_car_power: { label: 'Sensore potenza auto 1' },
           sensor_car_soc: { label: 'Sensore SOC auto 1' },
           car_soc: { label: 'SOC Auto', helper: 'Sensore per SOC batteria EV.' },
@@ -3880,8 +4582,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
         },
         fields: {
           card_title: { label: 'Kartentitel', helper: 'Titel oben auf der Karte. Leer lassen, um zu deaktivieren.' },
-          background_image: { label: 'Pfad zum Hintergrundbild', helper: 'Pfad zum Hintergrundbild (z. B. /local/community/lumina-energy-card/lumina_background.png).' },
-          background_image_heat_pump: { label: 'Hintergrundbild Waermepumpe', helper: 'Pfad zum Waermepumpen-Hintergrundbild (z. B. /local/community/lumina-energy-card/lumina-energy-card-hp.png).' },
+          background_image: { label: 'Pfad zum Hintergrundbild', helper: 'Pfad zum Hintergrundbild (z. B. /local/community/lumina-energy-card/lumina_background.svg).' },
           language: { label: 'Sprache', helper: 'Editor-Sprache waehlen.' },
           display_unit: { label: 'Anzeigeeinheit', helper: 'Einheit fuer Leistungswerte.' },
           update_interval: { label: 'Aktualisierungsintervall', helper: 'Aktualisierungsfrequenz der Karte (0 deaktiviert das Limit).' },
@@ -3896,7 +4597,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_pv4: { label: 'PV String 4 (Array 1)' },
           sensor_pv5: { label: 'PV String 5 (Array 1)' },
           sensor_pv6: { label: 'PV String 6 (Array 1)' },
-          solar_array2_title: { label: 'Array 2 (Optional)' },
           show_pv_strings: { label: 'PV Strings einzeln anzeigen', helper: 'Gesamte Linie plus jede PV-String-Zeile separat einblenden.' },
           sensor_daily: { label: 'Tagesproduktion Sensor (Erforderlich)', helper: 'Sensor fuer taegliche Produktionssumme. Entweder der PV-Gesamt-Sensor oder Ihre PV-String-Arrays muessen mindestens angegeben werden.' },
           sensor_daily_array2: { label: 'Tagesproduktion Sensor (Array 2)', helper: 'Sensor fuer die taegliche Produktionssumme von Array 2.' },
@@ -3952,6 +4652,9 @@ class LuminaEnergyCardEditor extends HTMLElement {
           grid_critical_color: { label: 'Netz Kritische Farbe', helper: 'Farbe bei Erreichen der kritischen Schwelle.' },
           invert_grid: { label: 'Netzwerte invertieren', helper: 'Aktivieren, wenn Import/Export vertauscht ist.' },
           invert_battery: { label: 'Batterie-Werte invertieren', helper: 'Aktivieren, wenn Lade-/Entlade-Polarität vertauscht ist.' },
+          invert_bat1: { label: 'Batterie 1 invertieren', helper: 'Aktivieren, wenn die Lade-/Entlade-Polarität von Batterie 1 vertauscht ist.' },
+          invert_bat2: { label: 'Batterie 2 invertieren', helper: 'Aktivieren, wenn die Lade-/Entlade-Polarität von Batterie 2 vertauscht ist.' },
+          invert_bat3: { label: 'Batterie 3 invertieren', helper: 'Aktivieren, wenn die Lade-/Entlade-Polarität von Batterie 3 vertauscht ist.' },
           sensor_car_power: { label: 'Fahrzeugleistung Sensor 1' },
           sensor_car_soc: { label: 'Fahrzeug SOC Sensor 1' },
           car_soc: { label: 'Fahrzeug SOC', helper: 'Sensor für EV-Batterie SOC.' },
@@ -4158,8 +4861,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
         },
         fields: {
           card_title: { label: 'Titre de la carte', helper: 'Titre affiché en haut de la carte. Laisser vide pour désactiver.' },
-          background_image: { label: 'Chemin image d arrière-plan', helper: 'Chemin vers l image d arrière-plan (ex. /local/community/lumina-energy-card/lumina_background.png).' },
-          background_image_heat_pump: { label: 'Image d arrière-plan pompe à chaleur', helper: 'Chemin vers l image d arrière-plan pompe à chaleur (ex. /local/community/lumina-energy-card/lumina-energy-card-hp.png).' },
+          background_image: { label: 'Chemin image d arrière-plan', helper: 'Chemin vers l image d arrière-plan (ex. /local/community/lumina-energy-card/lumina_background.svg).' },
           language: { label: 'Langue', helper: 'Choisissez la langue de l éditeur.' },
           display_unit: { label: 'Unité d affichage', helper: 'Unité utilisée pour formater les valeurs de puissance.' },
           update_interval: { label: 'Intervalle de mise à jour', helper: 'Fréquence de rafraîchissement des mises à jour de la carte (0 désactive le throttling).' },
@@ -4173,7 +4875,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_pv4: { label: 'Chaîne PV 4 (Array 1)' },
           sensor_pv5: { label: 'Chaîne PV 5 (Array 1)' },
           sensor_pv6: { label: 'Chaîne PV 6 (Array 1)' },
-          solar_array2_title: { label: 'Array 2 (Optionnel)' },
           sensor_pv_array2_1: { label: 'Chaîne PV 1 (Array 2)', helper: 'Capteur de production solaire de l Array 2.' },
           sensor_pv_array2_2: { label: 'Chaîne PV 2 (Array 2)', helper: 'Capteur de production solaire de l Array 2.' },
           sensor_pv_array2_3: { label: 'Chaîne PV 3 (Array 2)', helper: 'Capteur de production solaire de l Array 2.' },
@@ -4232,6 +4933,9 @@ class LuminaEnergyCardEditor extends HTMLElement {
           grid_critical_color: { label: 'Couleur critique réseau', helper: 'Couleur appliquée au seuil critique.' },
           invert_grid: { label: 'Inverser valeurs réseau', helper: 'Activer si la polarité import/export est inversée.' },
           invert_battery: { label: 'Inverser valeurs batterie', helper: 'Activer si la polarité charge/décharge est inversée.' },
+          invert_bat1: { label: 'Inverser Batterie 1', helper: 'Activer si la polarité charge/décharge de la Batterie 1 est inversée.' },
+          invert_bat2: { label: 'Inverser Batterie 2', helper: 'Activer si la polarité charge/décharge de la Batterie 2 est inversée.' },
+          invert_bat3: { label: 'Inverser Batterie 3', helper: 'Activer si la polarité charge/décharge de la Batterie 3 est inversée.' },
           sensor_car_power: { label: 'Capteur puissance Véhicule 1' },
           sensor_car_soc: { label: 'Capteur SOC Véhicule 1' },
           car_soc: { label: 'SOC Véhicule', helper: 'Capteur pour SOC batterie EV.' },
@@ -4442,8 +5146,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
         },
         fields: {
           card_title: { label: 'Kaart titel', helper: 'Titel weergegeven bovenaan de kaart. Leeg laten om uit te schakelen.' },
-          background_image: { label: 'Achtergrond afbeelding pad', helper: 'Pad naar achtergrond afbeelding (bijv. /local/community/lumina-energy-card/lumina_background.png).' },
-          background_image_heat_pump: { label: 'Achtergrond afbeelding warmtepomp', helper: 'Pad naar warmtepomp achtergrond afbeelding (bijv. /local/community/lumina-energy-card/lumina-energy-card-hp.png).' },
+          background_image: { label: 'Achtergrond afbeelding pad', helper: 'Pad naar achtergrond afbeelding (bijv. /local/community/lumina-energy-card/lumina_background.svg).' },
           language: { label: 'Taal', helper: 'Kies de taal van de editor.' },
           display_unit: { label: 'Weergave eenheid', helper: 'Eenheid gebruikt om kracht waarden te formatteren.' },
           update_interval: { label: 'Update interval', helper: 'Frequentie van kaart updates verversen (0 schakelt throttling uit).' },
@@ -4457,7 +5160,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_pv4: { label: 'PV String 4 (Array 1)' },
           sensor_pv5: { label: 'PV String 5 (Array 1)' },
           sensor_pv6: { label: 'PV String 6 (Array 1)' },
-          solar_array2_title: { label: 'Array 2 (Optioneel)' },
           sensor_pv_array2_1: { label: 'PV String 1 (Array 2)', helper: 'Zonne productie sensor voor Array 2.' },
           sensor_pv_array2_2: { label: 'PV String 2 (Array 2)', helper: 'Zonne productie sensor voor Array 2.' },
           sensor_pv_array2_3: { label: 'PV String 3 (Array 2)', helper: 'Zonne productie sensor voor Array 2.' },
@@ -4516,6 +5218,9 @@ class LuminaEnergyCardEditor extends HTMLElement {
           grid_critical_color: { label: 'Grid kritieke kleur', helper: 'Kleur toegepast op kritieke drempel.' },
           invert_grid: { label: 'Grid waarden omkeren', helper: 'Inschakelen als import/export polariteit omgekeerd is.' },
           invert_battery: { label: 'Batterij waarden omkeren', helper: 'Inschakelen als laad/ontlaad polariteit omgekeerd is.' },
+          invert_bat1: { label: 'Batterij 1 omkeren', helper: 'Inschakelen als laad/ontlaad polariteit van Batterij 1 omgekeerd is.' },
+          invert_bat2: { label: 'Batterij 2 omkeren', helper: 'Inschakelen als laad/ontlaad polariteit van Batterij 2 omgekeerd is.' },
+          invert_bat3: { label: 'Batterij 3 omkeren', helper: 'Inschakelen als laad/ontlaad polariteit van Batterij 3 omgekeerd is.' },
           sensor_car_power: { label: 'Voertuig 1 vermogen sensor' },
           sensor_car_soc: { label: 'Voertuig 1 SOC sensor' },
           car_soc: { label: 'Voertuig SOC', helper: 'Sensor voor EV batterij SOC.' },
@@ -4779,7 +5484,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
       general: define([
         { name: 'card_title', label: fields.card_title.label, helper: fields.card_title.helper, selector: { text: { mode: 'blur' } } },
         { name: 'background_image', label: fields.background_image.label, helper: fields.background_image.helper, selector: { text: { mode: 'blur' } } },
-        { name: 'background_image_heat_pump', label: fields.background_image_heat_pump.label, helper: fields.background_image_heat_pump.helper, selector: { text: { mode: 'blur' } } },
+        { name: 'night_mode', label: fields.night_mode.label, helper: fields.night_mode.helper, selector: { boolean: {} } },
         { name: 'language', label: fields.language.label, helper: fields.language.helper, selector: { select: { options: optionDefs.language } } },
         { name: 'display_unit', label: fields.display_unit.label, helper: fields.display_unit.helper, selector: { select: { options: optionDefs.display_unit } } },
         { name: 'update_interval', label: fields.update_interval.label, helper: fields.update_interval.helper, selector: { number: { min: 0, max: 60, step: 5, mode: 'slider', unit_of_measurement: 's' } } },
@@ -4801,7 +5506,6 @@ class LuminaEnergyCardEditor extends HTMLElement {
         
       ]),
       array2: define([
-        { name: 'solar_array2_title', label: fields.solar_array2_title.label, helper: fields.solar_array2_title.helper, selector: { text: { mode: 'blur' } } },
         { name: 'sensor_pv_total_secondary', label: fields.sensor_pv_total_secondary.label, helper: fields.sensor_pv_total_secondary.helper, selector: entitySelector },
         { name: 'sensor_pv_array2_1', label: fields.sensor_pv_array2_1.label, helper: fields.sensor_pv_array2_1.helper, selector: entitySelector },
         { name: 'sensor_pv_array2_2', label: fields.sensor_pv_array2_2.label, helper: fields.sensor_pv_array2_2.helper, selector: entitySelector },
@@ -4823,6 +5527,9 @@ class LuminaEnergyCardEditor extends HTMLElement {
         { name: 'sensor_bat4_soc', label: fields.sensor_bat4_soc.label, helper: fields.sensor_bat4_soc.helper, selector: entitySelector },
         { name: 'sensor_bat4_power', label: fields.sensor_bat4_power.label, helper: fields.sensor_bat4_power.helper, selector: entitySelector },
         { name: 'invert_battery', label: fields.invert_battery.label, helper: fields.invert_battery.helper, selector: { boolean: {} } },
+        { name: 'invert_bat1', label: fields.invert_bat1.label, helper: fields.invert_bat1.helper, selector: { boolean: {} } },
+        { name: 'invert_bat2', label: fields.invert_bat2.label, helper: fields.invert_bat2.helper, selector: { boolean: {} } },
+        { name: 'invert_bat3', label: fields.invert_bat3.label, helper: fields.invert_bat3.helper, selector: { boolean: {} } },
         
       ]),
       grid: define([
@@ -5174,7 +5881,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
 
     const version = document.createElement('div');
     version.className = 'about-version';
-    version.textContent = `Version ${typeof LuminaEnergyCard !== 'undefined' && LuminaEnergyCard.version ? LuminaEnergyCard.version : 'Unknown'}`;
+    version.textContent = `Version ${typeof LuminaEnergyCardTest !== 'undefined' && LuminaEnergyCardTest.version ? LuminaEnergyCardTest.version : 'Unknown'}`;
     container.appendChild(version);
 
     const links = document.createElement('div');
@@ -5676,20 +6383,20 @@ class LuminaEnergyCardEditor extends HTMLElement {
 }
 
 if (!customElements.get('lumina-energy-card-editor')) {
-  customElements.define('lumina-energy-card-editor', LuminaEnergyCardEditor);
+  customElements.define('lumina-energy-card-editor', LuminaEnergyCardTestEditor);
 }
 
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: 'lumina-energy-card',
-  name: 'Lumina Energy Card',
+  type: 'lumina-energy-card-test',
+  name: 'Lumina Energy Card Test',
   description: 'Advanced energy flow visualization card with support for multiple PV strings and batteries',
   preview: true,
   documentationURL: 'https://github.com/ratava/lumina-energy-card'
 });
 
 console.info(
-  `%c LUMINA ENERGY CARD %c v${LuminaEnergyCard.version} `,
+  `%c LUMINA ENERGY CARD %c v${LuminaEnergyCardTest.version} `,
   'color: white; background: #00FFFF; font-weight: 700;',
   'color: #00FFFF; background: black; font-weight: 700;'
 );
