@@ -12,14 +12,26 @@ Support Brent @ratava[![Donate Brent Wesley @ratava](https://github.com/user-att
 
 **Language / Lingua / Sprache / Langue:** [English](#english) | [Italiano](#italiano) | [Deutsch](#deutsch) | [Français](#fran%C3%A7ais) | [Nederlands](#nederlands)
 
-## Quick Install (Custom HACS Repository)
 
-1. Open HACS in Home Assistant and choose **Frontend**.
-1. Click the three-dot menu and select **Custom repositories**.
-1. Paste `https://github.com/ratava/lumina-energy-card`, set the category to **Dashboard**, and click **Add**.
-1. Close the dialog, locate **Lumina Energy Card** in the Frontend list, and install it.
-1. Restart Home Assistant if requested, then add the card from the Lovelace visual editor.
+<summary>With HACS (Recommended)</summary>
 
+<br>
+
+This method allows you to get updates directly on the HACS main page
+
+1. If HACS is not installed yet, download it following the instructions on [https://hacs.xyz/docs/setup/download/](https://hacs.xyz/docs/use/download/download/)
+2. Proceed to the HACS initial configuration following the instructions on [https://hacs.xyz/docs/configuration/basic](https://hacs.xyz/docs/configuration/basic)
+3. On your sidebar go to `HACS` 
+4. Now search for `Lumina Energy Card` and then click on the card entry to open it.
+5. Click on Download in the botom right corner to download it.
+6. Go back on your dashboard and click on the icon at the right top corner then on `Edit dashboard`
+7. You can now click on `Add card` in the bottom right corner and search for `Lumina Energy Card`
+
+If it's not working, try to clear your browser cache.
+
+<br>
+[![Open Bubble Card on Home Assistant Community Store (HACS).](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ratava&repository=Lumina-Energy-Card&category=frontend)
+<br>
 ---
 
 ## English
