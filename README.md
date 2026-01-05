@@ -29,9 +29,7 @@ This method allows you to get updates directly on the HACS main page
 
 If it's not working, try to clear your browser cache.
 
-<br>
-[![Open Bubble Card on Home Assistant Community Store (HACS).](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ratava&repository=Lumina-Energy-Card&category=frontend)
-<br>
+[![Open Lumina Energy Card on HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ratava&repository=Lumina-Energy-Card&category=frontend)
 ---
 
 ## English
