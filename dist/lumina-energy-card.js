@@ -1,7 +1,7 @@
 /**
  * Lumina Energy Card
  * Custom Home Assistant card for energy flow visualization
- * Version: 2.0.1
+ * Version: 2.0.1b1
  * Tested with Home Assistant 2025.12+
  */
 const BATTERY_GEOMETRY = { X: 260, Y_BASE: 350, WIDTH: 55, MAX_HEIGHT: 84 };
@@ -787,8 +787,8 @@ class LuminaEnergyCard extends HTMLElement {
     return {
       language: 'en',
       card_title: '',
-      title_text_color: '',
-      title_bg_color: '',
+      title_text_color: '#00FFFF',
+      title_bg_color: '#0080ff',
       font_family: 'B612',
       odometer_font_family: 'B612 Mono',
       background_image: '/local/community/lumina-energy-card/lumina-modern-day.svg',
@@ -9824,7 +9824,7 @@ class LuminaEnergyCard extends HTMLElement {
   }
 
   static get version() {
-    return '2.0.1';
+    return '2.0.1b1';
   }
 }
 
