@@ -1,36 +1,25 @@
 # Lumina Energy Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-![Version](https://img.shields.io/badge/version-1.1.32-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.0-beta1-blue.svg)
 
-Limuna Energy Card repository is <https://github.com/ratava/lumina-energy-card>.
+Limuna Energy Card repository is <https://github.com/Giorgio866/lumina-energy-card>.
 
-![Lumina Energy Card Background](dist/lumina_background.png)
+![Lumina Energy Card Background](dist/lumina-modern-day.png)
 
 Support Giorgio [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?style=for-the-badge&logo=paypal)](https://www.paypal.me/giorgiosalierno)
 Support Brent ratava[![Donate Brent Wesley @ratava](https://github.com/user-attachments/assets/b603f494-a142-4bb0-893f-aaafd5d19dfd)](https://ko-fi.com/brentwesley)
-[![GitHub Sponsors](https://img.shields.io/badge/Sponsor-Giorgio866-pink?style=for-the-badge&logo=github-sponsors)](https://github.com/sponsors/Giorgio866)
 
 **Language / Lingua / Sprache / Langue:** [English](#english) | [Italiano](#italiano) | [Deutsch](#deutsch) | [Français](#fran%C3%A7ais) | [Nederlands](#nederlands)
 
+## Quick Install (Custom HACS Repository)
 
-<summary>With HACS (Recommended)</summary>
+1. Open HACS in Home Assistant and choose **Frontend**.
+1. Click the three-dot menu and select **Custom repositories**.
+1. Paste `https://github.com/ratava/lumina-energy-card`, set the category to **Dashboard**, and click **Add**.
+1. Close the dialog, locate **Lumina Energy Card** in the Frontend list, and install it.
+1. Restart Home Assistant if requested, then add the card from the Lovelace visual editor.
 
-<br>
-
-This method allows you to get updates directly on the HACS main page
-
-1. If HACS is not installed yet, download it following the instructions on [https://hacs.xyz/docs/setup/download/](https://hacs.xyz/docs/use/download/download/)
-2. Proceed to the HACS initial configuration following the instructions on [https://hacs.xyz/docs/configuration/basic](https://hacs.xyz/docs/configuration/basic)
-3. On your sidebar go to `HACS` 
-4. Now search for `Lumina Energy Card` and then click on the card entry to open it.
-5. Click on Download in the botom right corner to download it.
-6. Go back on your dashboard and click on the icon at the right top corner then on `Edit dashboard`
-7. You can now click on `Add card` in the bottom right corner and search for `Lumina Energy Card`
-
-If it's not working, try to clear your browser cache.
-
-[![Open Lumina Energy Card on HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ratava&repository=Lumina-Energy-Card&category=frontend)
 ---
 
 ## English
@@ -41,22 +30,25 @@ Lumina Energy Card is a Home Assistant custom Lovelace card that renders animate
 
 ### Key Features (EN)
 
-- Up to six PV sensors with smart per-string or totalised labels
-- Up to four battery systems with SOC averaging and liquid-fill battery visualisation
-- Animated grid, load, PV, battery and EV flows with dynamic colour based on thresholds and selectable dash/dot/arrow styles
-- Configurable grid animation threshold (default 100 W) to suppress low-level import/export chatter
-- Adjustable animation speed multiplier (-3x to 3x, default 1x, pause/reverse supported) and per-flow visibility thresholds
-- Optional EV panel with power and SOC display, configurable colour, and typography. 2 Veichles now supported
-- Daily production badge plus full typography controls for header, PV, battery, load, grid, and EV text
-- Daily Import and Export Totals
-- Load warning/critical colour overrides and a configurable low SOC threshold for the battery liquid fill
-- Update interval slider (0–60 s, default 30 s) with optional real-time refresh when set to 0
-- Popup Information Displays for House, Solar, Battery, Grid and Inverter. Each has 6 slots for entities with name overrides available. Font Size and Color selection
-- Many new features coming with support for more items.
-
-#### Feature Walkthrough (EN)
-
-[Feature walkthrough](https://github.com/user-attachments/assets/a598c4a4-2b4c-4827-b1f8-bb561a2089ec)
+- New modern house with a completely redesigned graphics system, allowing for more functionality  
+  - Day and night images with selectable or automatic switching at sunset/sunrise
+- Up to six PV sensors with two arrays supported per string or totalized inputs
+- Up to four battery systems with SOC, power, and battery‑level visualization for two batteries  
+  - Additional battery information displayed in the battery popup
+- Dynamic display of windmill power and up to two EVs with state of charge and power consumption or return
+- Animated grid, load, PV, battery, and EV flows with dynamic color based on thresholds and selectable animation styles
+- Configurable grid animation threshold (default 100 W) to suppress low‑level import/export chatter
+- Adjustable animation speed multiplier (-3× to 3×, default 1×, pause/reverse supported) and per‑flow visibility thresholds
+- Daily energy production badge
+- Daily import and export totals
+- Swimming pool power consumption now shown on the main graphic
+- Heat pump/AC power consumption now shown
+- Load warning/critical color overrides and a configurable low‑SOC threshold for the battery liquid fill
+- Font selection, font size, and text color available for all displayed entities
+- Update interval slider (0–60 s, default 5 s) with optional real‑time refresh when set to 0
+- Popup information displays for House, Solar, Battery, Grid, and Inverter  
+  - Each has six slots for entities with name overrides and font‑color overrides
+- Many new features coming, with support for more items
 
 ### Installation (EN)
 
@@ -70,10 +62,9 @@ Lumina Energy Card is a Home Assistant custom Lovelace card that renders animate
 
 #### Manual Installation (EN)
 
-1. Download `dist/lumina-energy-card.js` from the [latest release](https://github.com/ratava/lumina-energy-card/releases).
-1. Copy the file to `/config/www/community/lumina-energy-card/`.
-1. Place `dist/lumina_background.png` in the same directory.
-1. Add the Lovelace resource:
+1. Download all files from `dist/` from the [latest release](https://github.com/Giorgio866/lumina-energy-card/releases).
+2. Copy the files to `/config/www/community/lumina-energy-card/`.
+3. Add the Lovelace resource:
 
 ```yaml
 lovelace:
@@ -101,7 +92,28 @@ sensor_bat1_soc: sensor.battery_soc
 sensor_bat1_power: sensor.battery_power
 sensor_home_load: sensor.home_consumption
 sensor_grid_power: sensor.grid_power
-background_image: /local/community/lumina-energy-card/lumina_background.png
+```
+
+Day/Night animation style example:
+
+```yaml
+type: custom:lumina-energy-card
+
+# Day/Night switching
+day_night_mode: auto  # day | night | auto (auto follows sun.sun)
+background_day: /local/community/lumina-energy-card/lumina-modern-day.svg
+background_night: /local/community/lumina-energy-card/lumina-modern-night.svg
+
+# Use different flow animation motifs per mode
+animation_style: dashes         # Day Animation Style
+night_animation_style: fluid_flow  # Night Animation Style
+
+sensor_pv1: sensor.solar_production
+sensor_daily: sensor.daily_production
+sensor_bat1_soc: sensor.battery_soc
+sensor_bat1_power: sensor.battery_power
+sensor_home_load: sensor.home_consumption
+sensor_grid_power: sensor.grid_power
 ```
 
 ### Options (EN)
@@ -109,13 +121,26 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | Option | Type | Default | Notes |
 | --- | --- | --- | --- |
 | `card_title` | string | — | Optional header text; blank keeps the title hidden. |
-| `background_image` | string | `/local/community/lumina-energy-card/lumina_background.png` | Default 16:9 background asset. |
-| `background_image_heat_pump` | string | `/local/community/lumina-energy-card/lumina-energy-card-hp.png` | Automatically used when a heat pump sensor is configured. |
+| `title_render_mode` | string | `html` | How the title is rendered: `html` (recommended) or `svg` (legacy). |
+| `title_text_color` | string | — | Optional override for title text color (hex). |
+| `title_bg_color` | string | — | Optional override for the title background rectangle (hex). |
+| `font_family` | string | `sans-serif` | Font family for the card text (CSS font-family). |
+| `odometer_font_family` | string | — | Optional alternate font used by odometer-styled animated numbers; falls back to `font_family` when unset. |
+| `background_image` | string | `/local/community/lumina-energy-card/lumina-modern-day.svg` | Default 16:9 background asset. |
+| `background_day` | string | `/local/community/lumina-energy-card/lumina-modern-day.svg` | Day background (used when `day_night_mode` is `day` or in `auto` during daytime). |
+| `background_night` | string | `/local/community/lumina-energy-card/lumina-modern-night.svg` | Night background (used when `day_night_mode` is `night` or in `auto` during nighttime). |
 | `language` | string | `en` | Supported editor languages: `en`, `it`, `de`, `fr`, `nl`. |
 | `display_unit` | string | `kW` | Display values in `W` or `kW`. |
 | `update_interval` | number | `30` | Refresh cadence (0–60 s, step 5; 0 disables throttling). |
 | `animation_speed_factor` | number | `1` | Flow animation multiplier (-3–3, 0 pauses, negatives reverse). |
-| `animation_style` | string | `dashes` | Flow motif (`dashes`, `dots`, or `arrows`). |
+| `animation_style` | string | `dashes` | Day animation style. Flow motif (`dashes`, `dashes_glow`, `fluid_flow`, `dots`, `arrows`). |
+| `night_animation_style` | string | `dashes` | Night animation style (same options as `animation_style`). When blank/unset, falls back to `animation_style`. |
+| `dashes_glow_intensity` | number | `1` | Glow intensity for `dashes_glow` style (0–3). |
+| `flow_stroke_width` | number | `3` | Stroke width (px) for `dashes`/`dashes_glow`/`dots`/`arrows`. |
+| `fluid_flow_stroke_width` | number | `4` | Stroke width (px) for `fluid_flow`. |
+| `fluid_flow_outer_glow` | boolean | `false` | Adds an outer glow effect for `fluid_flow`. |
+| `day_night_mode` | string | `day` | Selects Day/Night: `day`, `night`, or `auto` (auto follows `sun.sun`). |
+| `night_mode` | boolean | `false` | Legacy boolean night mode (deprecated). Prefer `day_night_mode`. |
 | `header_font_size` | number | `16` | Typography for the header (12–32 px). |
 | `daily_label_font_size` | number | `12` | Typography for the daily label (8–24 px). |
 | `daily_value_font_size` | number | `20` | Typography for the daily total (12–32 px). |
@@ -123,29 +148,64 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `battery_soc_font_size` | number | `20` | Typography for the SOC label (12–32 px). |
 | `battery_power_font_size` | number | `14` | Typography for the battery wattage (10–28 px). |
 | `load_font_size` | number | `15` | Typography for the load text (10–28 px). |
+| `inv1_power_font_size` | number | `15` | Font size for the INV 1 power line (10–28 px). Defaults to `load_font_size`. |
+| `inv2_power_font_size` | number | `15` | Font size for the INV 2 power line (10–28 px). Defaults to `load_font_size`. |
 | `grid_font_size` | number | `15` | Typography for the grid text (10–28 px). |
+| `grid_daily_font_size` | number | `15` | Font size for the daily import/export totals (defaults to `grid_font_size`). |
+| `grid_current_odometer` | boolean | `false` | Enables the odometer animation on the live grid value. |
+| `grid_current_odometer_duration` | number | `350` | Duration (ms) for the grid odometer animation (50–2000). |
 | `heat_pump_font_size` | number | `16` | Typography for the heat pump readout (10–28 px). |
+| `pool_font_size` | number | `16` | Typography for the pool readout (10–28 px). |
+| `washing_machine_font_size` | number | `16` | Typography for the washer label/power (inherits `heat_pump_font_size` when unset). |
+| `dryer_font_size` | number | `16` | Typography for the dryer label/power (inherits `heat_pump_font_size` when unset). |
+| `refrigerator_font_size` | number | `16` | Typography for the refrigerator label/power (inherits `heat_pump_font_size` when unset). |
 | `car_power_font_size` | number | `15` | Typography for Car 1 power (10–28 px). |
 | `car2_power_font_size` | number | `15` | Typography for Car 2 power (10–28 px, falls back to Car 1 value). |
 | `car_soc_font_size` | number | `12` | Typography for Car 1 SOC (8–24 px). |
 | `car2_soc_font_size` | number | `12` | Typography for Car 2 SOC (8–24 px, falls back to Car 1 value). |
 | `car_name_font_size` | number | `15` | Typography for Car 1 name label (px). |
 | `car2_name_font_size` | number | `15` | Typography for Car 2 name label (px). |
+| `car1_label` | string | — | Optional label override for Car 1 (display name). |
+| `car2_label` | string | — | Optional label override for Car 2 (display name). |
 | `sensor_pv_total` | entity | — | Optional aggregate PV production sensor. Provide either this sensor **or** at least one PV string. |
 | `sensor_pv1` .. `sensor_pv6` | entity | — | PV string sensors for Array 1. When no total is given, at least one string is required and all configured strings are summed to produce PV TOTAL. |
-| `show_pv_strings` | boolean | `false` | Display the PV total plus each configured PV string. |
 | `sensor_daily` | entity | — | Daily production sensor (required). |
 | `sensor_bat1_soc` | entity | — | Battery SOC sensor (required only when a battery is displayed). |
-| `sensor_bat1_power` | entity | — | Battery power sensor (required only when a battery is displayed). |
+| `sensor_bat1_power` | entity | — | Combined net power sensor for Battery 1. Provide this or both split sensors below. |
+| `sensor_bat1_charge_power` | entity | — | Battery 1 charging sensor (positive values, W or kW). Use with `sensor_bat1_discharge_power` when no combined sensor exists. |
+| `sensor_bat1_discharge_power` | entity | — | Battery 1 discharging sensor (positive values). |
+| `sensor_bat2_soc` | entity | — | Optional Battery 2 SOC sensor. |
+| `sensor_bat2_power` | entity | — | Combined net power sensor for Battery 2. Provide this or both split sensors below. |
+| `sensor_bat2_charge_power` | entity | — | Battery 2 charging sensor (positive values). |
+| `sensor_bat2_discharge_power` | entity | — | Battery 2 discharging sensor (positive values). |
+| `sensor_bat3_soc` | entity | — | Optional Battery 3 SOC sensor. |
+| `sensor_bat3_power` | entity | — | Combined net power sensor for Battery 3. Provide this or both split sensors below. |
+| `sensor_bat3_charge_power` | entity | — | Battery 3 charging sensor (positive values). |
+| `sensor_bat3_discharge_power` | entity | — | Battery 3 discharging sensor (positive values). |
+| `sensor_bat4_soc` | entity | — | Optional Battery 4 SOC sensor. |
+| `sensor_bat4_power` | entity | — | Combined net power sensor for Battery 4. Provide this or both split sensors below. |
+| `sensor_bat4_charge_power` | entity | — | Battery 4 charging sensor (positive values). |
+| `sensor_bat4_discharge_power` | entity | — | Battery 4 discharging sensor (positive values). |
 | `sensor_home_load` | entity | — | Home load/consumption sensor (required). |
 | `sensor_grid_power` | entity | — | Net grid sensor (required unless import/export pair supplied). |
 | `sensor_grid_import` | entity | — | Optional import-only sensor (positive values). |
 | `sensor_grid_export` | entity | — | Optional export-only sensor (positive values). |
 | `sensor_grid_import_daily` | entity | — | Optional cumulative daily grid import sensor. |
 | `sensor_grid_export_daily` | entity | — | Optional cumulative daily grid export sensor. |
+| `sensor_grid2_power` | entity | — | Optional second grid net power sensor. |
+| `sensor_grid2_import` | entity | — | Optional second grid import-only sensor (positive values). |
+| `sensor_grid2_export` | entity | — | Optional second grid export-only sensor (positive values). |
+| `sensor_grid2_import_daily` | entity | — | Optional cumulative daily import for grid 2. |
+| `sensor_grid2_export_daily` | entity | — | Optional cumulative daily export for grid 2. |
 | `show_daily_grid` | boolean | `false` | Shows the daily import/export totals above the live grid value. |
 | `show_grid_flow_label` | boolean | `true` | Prepends “Importing/Exporting” before the grid value. |
 | `sensor_heat_pump_consumption` | entity | — | Heat pump sensor; unlocks the orange flow and swaps the background. |
+| `sensor_pool_consumption` | entity | — | Optional pool consumption sensor; enables the pool branch/label when present. |
+| `sensor_washing_machine_consumption` | entity | — | Optional washing machine consumption sensor that drives the washer label. |
+| `sensor_dryer_consumption` | entity | — | Optional dryer consumption sensor. |
+| `sensor_refrigerator_consumption` | entity | — | Optional refrigerator consumption sensor. |
+| `sensor_windmill_total` | entity | — | Optional windmill total generation sensor. |
+| `sensor_windmill_daily` | entity | — | Optional windmill daily generation sensor. |
 | `sensor_car_power` | entity | — | Optional Car 1 charging power sensor. |
 | `sensor_car_soc` | entity | — | Optional Car 1 SOC sensor. |
 | `sensor_car2_power` | entity | — | Optional Car 2 charging power sensor. |
@@ -173,32 +233,38 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `battery_discharge_color` | string | `#FFFFFF` | Battery discharge flow colour. |
 | `grid_import_color` | string | `#FF3333` | Grid import flow colour. |
 | `grid_export_color` | string | `#00ff00` | Grid export flow colour. |
+| `grid2_import_color` | string | `#FF3333` | Grid 2 import flow colour. |
+| `grid2_export_color` | string | `#00ff00` | Grid 2 export flow colour. |
 | `heat_pump_flow_color` | string | `#FFA500` | Flow colour for the dedicated heat pump conduit. |
 | `heat_pump_text_color` | string | `#FFA500` | Text colour for the heat pump wattage label. |
+| `pool_flow_color` | string | `#0080ff` | Pool flow colour. |
+| `pool_text_color` | string | `#FFFFFF` | Pool text colour. |
+| `washing_machine_text_color` | string | `#FFFFFF` | Washer text colour (defaults to the load text colour when unset). |
+| `dryer_text_color` | string | `#FFFFFF` | Dryer text colour (defaults to the load text colour when unset). |
+| `refrigerator_text_color` | string | `#FFFFFF` | Refrigerator text colour (defaults to the load text colour when unset). |
+| `windmill_flow_color` | string | `#00FFFF` | Windmill flow colour. |
+| `windmill_text_color` | string | `#FFFFFF` | Windmill text colour. |
+| `windmill_power_font_size` | number | `16` | Font size for windmill power readout (px). |
 | `battery_fill_high_color` | string | `#00ffff` | Battery liquid fill colour above the low threshold. |
 | `battery_fill_low_color` | string | `#ff0000` | Battery liquid fill colour at or below the low threshold. |
 | `battery_fill_low_threshold` | number | `25` | SOC percentage that flips to the low fill colour. |
+| `battery_fill_opacity` | number | `1` | Opacity for the battery liquid fill (0–1). |
 | `grid_activity_threshold` | number | `100` | Minimum absolute grid power (W) before flows animate. |
 | `grid_threshold_warning` | number | — | Trigger warning colour when grid magnitude meets this value. |
 | `grid_warning_color` | string | `#ff8000` | Grid warning colour. |
 | `grid_threshold_critical` | number | — | Trigger critical colour when magnitude meets this value. |
 | `grid_critical_color` | string | `#ff0000` | Grid critical colour. |
+| `grid2_threshold_warning` | number | — | Trigger warning colour when Grid 2 magnitude meets this value. |
+| `grid2_warning_color` | string | `#ff8000` | Grid 2 warning colour. |
+| `grid2_threshold_critical` | number | — | Trigger critical colour when Grid 2 magnitude meets this value. |
+| `grid2_critical_color` | string | `#ff0000` | Grid 2 critical colour. |
 | `invert_grid` | boolean | `false` | Flip grid polarity if import/export are reversed. |
 | `invert_battery` | boolean | `false` | Flip battery polarity and swap charge/discharge hues. |
+| `invert_bat1` | boolean | `false` | Override only Battery 1 polarity when its sensors are reversed. |
+| `invert_bat2` | boolean | `false` | Override only Battery 2 polarity when its sensors are reversed. |
+| `invert_bat3` | boolean | `false` | Override only Battery 3 polarity when its sensors are reversed. |
 
-### Heat Pump Overlay (EN)
-
-Set `sensor_heat_pump_consumption` to expose the dedicated heat pump conduit. When the sensor exists the card auto-loads `background_image_heat_pump`, renders the live reading next to the house, and animates the orange SVG path. Tune the visuals with `heat_pump_flow_color`, `heat_pump_text_color`, and `heat_pump_font_size`.
-
-Example snippet:
-
-```yaml
-type: custom:lumina-energy-card
-sensor_heat_pump_consumption: sensor.heat_pump_power
-background_image_heat_pump: /local/community/lumina-energy-card/lumina-energy-card-hp.png
-heat_pump_flow_color: '#FFAA33'
-heat_pump_text_color: '#FFE1B2'
-```
+> **Battery sensor requirement (EN):** For each battery (`bat1`..`bat4`) supply either the combined `sensor_batX_power` **or** both `sensor_batX_charge_power` and `sensor_batX_discharge_power`. Readings may be in W or kW; the card handles conversions automatically.
 
 ### Grid Flow Routing (EN)
 
@@ -256,7 +322,7 @@ a helper to display it.
 | Option | Type | Default | Notes |
 | --- | --- | --- | --- |
 | `sensor_pv_total_secondary` | entity | — | Optional second inverter total (PV2). When provided it is added to PV TOT and drives the secondary PV flow. |
-| `sensor_pv_array2_1` .. `sensor_pv_array2_6` | entities | — | Up to six per-string sensors for Array 2. When `show_pv_strings` is enabled they render as separate PV lines. |
+| `sensor_pv_array2_1` .. `sensor_pv_array2_6` | entities | — | Up to six per-string sensors for Array 2. Used for aggregation when no total is provided; per-string values can be shown via the PV popup. |
 | `sensor_daily_array2` | entity | — | Daily production sensor for Array 2; combined daily yield = `sensor_daily` + `sensor_daily_array2`. |
 | `sensor_home_load_secondary` | entity | — | Optional home load sensor tied to inverter 2; required for HOUSE TOT / INV 2 lines when Array 2 is active. |
 | `pv_tot_color` | string | `#00FFFF` | Overrides the PV TOT line/text colour (also affects string inheritance when set). |
@@ -269,13 +335,13 @@ Notes:
 
 - When Array 2 is active the PV flow mapping is: `pv1` → Array 1 (primary), `pv2` → Array 2 (secondary). The PV TOT line shows the combined production where applicable.
 
-- Enabling `show_pv_strings` will show per-string lines for the active array(s); when Array 2 is present the card will render PV TOT / Array1 total / Array2 total and the HOUSE section will render `HOUSE TOT / INV 1 / INV 2` as separate lines.
+- Individual PV strings are no longer rendered on the main card; use the PV popup (`sensor_popup_pv_1` .. `sensor_popup_pv_6`) to show per-string sensors if desired.
 
 ### Ulteriori opzioni Array 2 (IT)
 
 `sensor_pv_total_secondary` | entity | — | Sensore totale opzionale per il secondo inverter (trattato come PV2). Quando presente viene sommato al PV TOT e usato come flusso FV secondario.
 
-`sensor_pv_array2_1` .. `sensor_pv_array2_6` | entities | — | Fino a sei sensori per stringa per un secondo array FV (Array 2). Se `show_pv_strings` è abilitato appaiono come linee separate sotto il totale PV.
+`sensor_pv_array2_1` .. `sensor_pv_array2_6` | entities | — | Fino a sei sensori per stringa per un secondo array FV (Array 2). Usati per l'aggregazione quando manca il totale; i valori per stringa si possono mostrare nel popup PV.
 
 `sensor_daily_array2` | entity | — | Sensore di produzione giornaliera per Array 2; la scheda mostra il totale giornaliero combinato = `sensor_daily` + `sensor_daily_array2`.
 
@@ -293,13 +359,13 @@ Note:
 
 - Quando Array 2 è attivo il mapping dei flussi FV è: `pv1` → Array 1 (primario), `pv2` → Array 2 (secondario). La riga PV TOT mostra la produzione combinata quando disponibile.
 
-- Abilitando `show_pv_strings` verranno mostrate le linee per stringa per gli array attivi; quando Array 2 è presente la scheda renderizzerà PV TOT / Totale Array1 / Totale Array2 e la sezione HOUSE mostrerà `HOUSE TOT / INV 1 / INV 2` come linee separate.
+- Le singole stringhe FV non vengono più mostrate sulla card; usa il popup PV (`sensor_popup_pv_1` .. `sensor_popup_pv_6`) per visualizzare sensori per stringa.
 
 ### Zusätzliche Array-2-Optionen (DE, Kurzfassung)
 
 `sensor_pv_total_secondary` | entity | — | Optionaler Gesamtwertsensor für den zweiten Wechselrichter (als PV2 behandelt). Wenn vorhanden wird er in PV TOT einbezogen und als sekundärer PV-Fluss verwendet.
 
-`sensor_pv_array2_1` .. `sensor_pv_array2_6` | entities | — | Bis zu sechs Einzelstring-Sensoren für ein zweites PV-Array (Array 2). Wenn `show_pv_strings` aktiviert ist, werden diese als separate Zeilen unter der PV-Gesamtlinie angezeigt.
+`sensor_pv_array2_1` .. `sensor_pv_array2_6` | entities | — | Bis zu sechs Strangsensoren für ein zweites PV-Array (Array 2). Fuer Aggregation genutzt, wenn kein Gesamtsensor vorhanden ist; Einzelwerte koennen im PV-Popup angezeigt werden.
 
 `sensor_daily_array2` | entity | — | Tagesproduktionssensor für Array 2; die Karte zeigt den kombinierten Tagesertrag = `sensor_daily` + `sensor_daily_array2`.
 
@@ -317,7 +383,7 @@ Hinweise:
 
 - Wenn Array 2 aktiv ist, gilt folgende PV-Fluss-Zuordnung: `pv1` → Array 1 (primär), `pv2` → Array 2 (sekundär). Die PV TOT Zeile zeigt die kombinierte Produktion, falls vorhanden.
 
-- Wenn `show_pv_strings` aktiviert ist, werden pro String Zeilen für die aktiven Arrays angezeigt; wenn Array 2 vorhanden ist, rendert die Karte PV TOT / Array1 Gesamt / Array2 Gesamt und der HOUSE-Bereich rendert `HOUSE TOT / INV 1 / INV 2` als separate Zeilen.
+- Einzelne PV-Strings werden nicht mehr auf der Karte gerendert; nutze das PV-Popup (`sensor_popup_pv_1` .. `sensor_popup_pv_6`) um Strangsensoren anzuzeigen.
 
 ---
 
@@ -329,18 +395,25 @@ Lumina Energy Card è una scheda Lovelace personalizzata per Home Assistant che 
 
 ### Funzionalità Chiave (IT)
 
-- Fino a sei sensori fotovoltaici con etichettatura intelligente per stringa o totale.
-- Fino a quattro sistemi batteria con media SOC e visualizzazione a riempimento liquido.
-- Flussi animati per rete, carichi, FV, batterie ed EV con colori dinamici e stili trattini/punti/frecce selezionabili.
-- Soglia di animazione della rete configurabile (default 100 W) per sopprimere micro import/export.
-- Moltiplicatore di velocità (-3x a 3x, 0 in pausa, valori negativi invertono) e soglie dedicate per ogni flusso.
-- Pannello EV opzionale con potenza e SOC, colori e tipografia personalizzabili, con supporto per due veicoli.
-- Badge della produzione giornaliera più controlli tipografici completi per intestazione, FV, batteria, carichi, rete ed EV.
-- Totali giornalieri di import ed export rete quando i sensori sono disponibili.
-- Colori di avviso/critico per il carico domestico e soglia SOC bassa configurabile per il riempimento della batteria.
-- Cursore dell'intervallo di aggiornamento (0–60 s, default 30 s) con aggiornamento in tempo reale impostando 0 s.
-- Popup informativi per Casa, Solare, Batteria, Rete e Inverter con sei righe configurabili (nome, colore, dimensione font).
-- Modalità dedicate per pompa di calore, doppio flusso di rete e future estensioni.
+- Nuova casa moderna con un sistema grafico completamente ridisegnato, che consente più funzionalità
+  - Immagini giorno/notte con commutazione selezionabile o automatica al tramonto/all'alba
+- Fino a sei sensori FV con supporto di due array per stringa o ingressi totalizzati
+- Fino a quattro sistemi batteria con SOC, potenza e visualizzazione del livello batteria per due batterie
+  - Informazioni aggiuntive sulla batteria mostrate nel popup Batteria
+- Visualizzazione dinamica della potenza eolica e fino a due EV con stato di carica e consumo/restituzione di potenza
+- Flussi animati per rete, carichi, FV, batterie ed EV con colore dinamico basato su soglie e stili di animazione selezionabili
+- Soglia di animazione della rete configurabile (default 100 W) per sopprimere il rumore di import/export a bassa potenza
+- Moltiplicatore di velocità regolabile (-3× a 3×, default 1×, pausa/inversione supportate) e soglie di visibilità per ciascun flusso
+- Badge della produzione giornaliera
+- Totali giornalieri di import ed export
+- Consumo della piscina ora mostrato sulla grafica principale
+- Consumo della pompa di calore/AC ora mostrato
+- Override colori avviso/critico del carico e soglia SOC bassa configurabile per il riempimento liquido della batteria
+- Selezione font, dimensione font e colore testo disponibili per tutte le entità visualizzate
+- Cursore dell'intervallo di aggiornamento (0–60 s, default 5 s) con aggiornamento in tempo reale quando impostato a 0
+- Popup informativi per Casa, Solare, Batteria, Rete e Inverter
+  - Ognuno ha sei slot per entità con override del nome e override del colore del font
+- Molte nuove funzionalità in arrivo, con supporto per altri elementi
 
 ### Installazione (IT)
 
@@ -354,9 +427,8 @@ Lumina Energy Card è una scheda Lovelace personalizzata per Home Assistant che 
 
 #### Installazione manuale (IT)
 
-1. Scarica `dist/lumina-energy-card.js` dall'[ultima release](https://github.com/ratava/lumina-energy-card/releases).
-1. Copia il file in `/config/www/community/lumina-energy-card/`.
-1. Copia `dist/lumina_background.png` nella stessa cartella.
+1. Scarica tutti i file dalla cartella `dist/` dall'[ultima release](https://github.com/Giorgio866/lumina-energy-card/releases).
+1. Copia i file in `/config/www/community/lumina-energy-card/`.
 1. Aggiungi la risorsa Lovelace:
 
 ```yaml
@@ -393,13 +465,26 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | Opzione | Tipo | Predefinito | Note |
 | --- | --- | --- | --- |
 | `card_title` | stringa | — | Testo intestazione opzionale; se vuoto il titolo resta nascosto. |
-| `background_image` | stringa | `/local/community/lumina-energy-card/lumina_background.png` | Immagine di sfondo 16:9 predefinita. |
-| `background_image_heat_pump` | stringa | `/local/community/lumina-energy-card/lumina-energy-card-hp.png` | Caricata automaticamente quando è configurato il sensore pompa di calore. |
+| `title_render_mode` | stringa | `html` | Modalità titolo: `html` (consigliato) o `svg` (legacy). |
+| `title_text_color` | stringa | — | Colore testo titolo (hex) opzionale. |
+| `title_bg_color` | stringa | — | Colore sfondo titolo (hex) opzionale. |
+| `font_family` | stringa | `sans-serif` | Font per il testo della scheda (CSS font-family). |
+| `odometer_font_family` | stringa | — | Font alternativo per i numeri animati stile odometro; se vuoto usa `font_family`. |
+| `background_image` | stringa | `/local/community/lumina-energy-card/lumina-modern-day.svg` | Immagine di sfondo 16:9 predefinita. |
+| `background_day` | stringa | `/local/community/lumina-energy-card/lumina-modern-day.svg` | Sfondo diurno (usato in `day` o in `auto` di giorno). |
+| `background_night` | stringa | `/local/community/lumina-energy-card/lumina-modern-day.svg` | Sfondo notturno (usato in `night` o in `auto` di notte). |
 | `language` | stringa | `en` | Lingue supportate: `en`, `it`, `de`, `fr`, `nl`. |
 | `display_unit` | stringa | `kW` | Visualizza i valori in `W` o `kW`. |
 | `update_interval` | numero | `30` | Cadenza di aggiornamento (0–60 s, passo 5; 0 disattiva la limitazione). |
 | `animation_speed_factor` | numero | `1` | Moltiplicatore delle animazioni (-3 a 3; 0 in pausa, valori negativi invertono). |
-| `animation_style` | stringa | `dashes` | Stile dei flussi (`dashes`, `dots`, `arrows`). |
+| `animation_style` | stringa | `dashes` | Stile animazione Giorno (`dashes`, `dashes_glow`, `fluid_flow`, `dots`, `arrows`). |
+| `night_animation_style` | stringa | `dashes` | Stile animazione Notte (stesse opzioni di `animation_style`). |
+| `dashes_glow_intensity` | numero | `1` | Intensità glow per `dashes_glow` (0–3). |
+| `flow_stroke_width` | numero | `3` | Spessore linea (px) per `dashes`/`dashes_glow`/`dots`/`arrows`. |
+| `fluid_flow_stroke_width` | numero | `4` | Spessore linea (px) per `fluid_flow`. |
+| `fluid_flow_outer_glow` | booleano | `false` | Abilita un bagliore esterno per `fluid_flow`. |
+| `day_night_mode` | stringa | `day` | Modalità Giorno/Notte: `day`, `night`, `auto` (segue `sun.sun`). |
+| `night_mode` | booleano | `false` | Modalità notte legacy (deprecata). Preferire `day_night_mode`. |
 | `header_font_size` | numero | `16` | Dimensione carattere dell'intestazione (12–32 px). |
 | `daily_label_font_size` | numero | `12` | Dimensione etichetta produzione giornaliera (8–24 px). |
 | `daily_value_font_size` | numero | `20` | Dimensione valore produzione giornaliera (12–32 px). |
@@ -407,29 +492,64 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `battery_soc_font_size` | numero | `20` | Dimensione etichetta SOC (12–32 px). |
 | `battery_power_font_size` | numero | `14` | Dimensione testo potenza batteria (10–28 px). |
 | `load_font_size` | numero | `15` | Dimensione testo carico (10–28 px). |
+| `inv1_power_font_size` | numero | `15` | Dimensione testo potenza INV 1 (10–28 px). Predefinita come `load_font_size`. |
+| `inv2_power_font_size` | numero | `15` | Dimensione testo potenza INV 2 (10–28 px). Predefinita come `load_font_size`. |
 | `grid_font_size` | numero | `15` | Dimensione testo rete (10–28 px). |
+| `grid_daily_font_size` | numero | `15` | Dimensione font per i totali giornalieri import/export (predefinita `grid_font_size`). |
+| `grid_current_odometer` | booleano | `false` | Abilita l'animazione odometro sul valore live della rete. |
+| `grid_current_odometer_duration` | numero | `350` | Durata (ms) dell'animazione odometro della rete (50–2000). |
 | `heat_pump_font_size` | numero | `16` | Dimensione testo pompa di calore (10–28 px). |
+| `pool_font_size` | numero | `16` | Dimensione testo piscina (10–28 px). |
+| `washing_machine_font_size` | numero | `16` | Dimensione testo lavatrice (eredita `heat_pump_font_size` se non impostato). |
+| `dryer_font_size` | numero | `16` | Dimensione testo asciugatrice (eredita `heat_pump_font_size`). |
+| `refrigerator_font_size` | numero | `16` | Dimensione testo frigorifero (eredita `heat_pump_font_size`). |
 | `car_power_font_size` | numero | `15` | Dimensione testo potenza Auto 1 (10–28 px). |
 | `car2_power_font_size` | numero | `15` | Dimensione testo potenza Auto 2 (10–28 px, ricade su Auto 1 se assente). |
 | `car_soc_font_size` | numero | `12` | Dimensione SOC Auto 1 (8–24 px). |
 | `car2_soc_font_size` | numero | `12` | Dimensione SOC Auto 2 (8–24 px, ricade su Auto 1). |
 | `car_name_font_size` | numero | `15` | Dimensione nome Auto 1. |
 | `car2_name_font_size` | numero | `15` | Dimensione nome Auto 2. |
+| `car1_label` | stringa | — | Etichetta opzionale per Auto 1. |
+| `car2_label` | stringa | — | Etichetta opzionale per Auto 2. |
 | `sensor_pv_total` | entità | — | Sensore totale FV opzionale. Specificare questo sensore **oppure** almeno una stringa. |
 | `sensor_pv1` .. `sensor_pv6` | entità | — | Sensori stringa FV per Array 1. Se manca il totale è richiesta almeno una stringa e tutte quelle configurate vengono sommate. |
-| `show_pv_strings` | booleano | `false` | Mostra PV TOT e ogni stringa configurata. |
 | `sensor_daily` | entità | — | Sensore produzione giornaliera (obbligatorio). |
 | `sensor_bat1_soc` | entità | — | Sensore SOC batteria (obbligatorio solo se la batteria è mostrata). |
-| `sensor_bat1_power` | entità | — | Sensore potenza batteria (obbligatorio solo se la batteria è mostrata). |
+| `sensor_bat1_power` | entità | — | Sensore combinato di potenza Batteria 1. In alternativa fornisci entrambi i sensori separati qui sotto. |
+| `sensor_bat1_charge_power` | entità | — | Sensore di carica Batteria 1 (valori positivi, W o kW). Usalo insieme a `sensor_bat1_discharge_power` se manca il sensore combinato. |
+| `sensor_bat1_discharge_power` | entità | — | Sensore di scarica Batteria 1 (valori positivi). |
+| `sensor_bat2_soc` | entità | — | Sensore SOC batteria 2 (opzionale). |
+| `sensor_bat2_power` | entità | — | Sensore combinato di potenza Batteria 2 (oppure usa entrambi i sensori separati). |
+| `sensor_bat2_charge_power` | entità | — | Sensore di carica Batteria 2 (valori positivi). |
+| `sensor_bat2_discharge_power` | entità | — | Sensore di scarica Batteria 2 (valori positivi). |
+| `sensor_bat3_soc` | entità | — | Sensore SOC batteria 3 (opzionale). |
+| `sensor_bat3_power` | entità | — | Sensore combinato di potenza Batteria 3 (oppure usa entrambi i sensori separati). |
+| `sensor_bat3_charge_power` | entità | — | Sensore di carica Batteria 3 (valori positivi). |
+| `sensor_bat3_discharge_power` | entità | — | Sensore di scarica Batteria 3 (valori positivi). |
+| `sensor_bat4_soc` | entità | — | Sensore SOC batteria 4 (opzionale). |
+| `sensor_bat4_power` | entità | — | Sensore combinato di potenza Batteria 4 (oppure usa entrambi i sensori separati). |
+| `sensor_bat4_charge_power` | entità | — | Sensore di carica Batteria 4 (valori positivi). |
+| `sensor_bat4_discharge_power` | entità | — | Sensore di scarica Batteria 4 (valori positivi). |
 | `sensor_home_load` | entità | — | Sensore carico casa (obbligatorio). |
 | `sensor_grid_power` | entità | — | Sensore rete netto (obbligatorio salvo coppia import/export). |
 | `sensor_grid_import` | entità | — | Sensore di import positivo opzionale. |
 | `sensor_grid_export` | entità | — | Sensore di export positivo opzionale. |
 | `sensor_grid_import_daily` | entità | — | Sensore import giornaliero cumulativo (opzionale). |
 | `sensor_grid_export_daily` | entità | — | Sensore export giornaliero cumulativo (opzionale). |
+| `sensor_grid2_power` | entità | — | Sensore potenza rete 2 (opzionale). |
+| `sensor_grid2_import` | entità | — | Sensore import rete 2 (opzionale). |
+| `sensor_grid2_export` | entità | — | Sensore export rete 2 (opzionale). |
+| `sensor_grid2_import_daily` | entità | — | Import giornaliero rete 2 (opzionale). |
+| `sensor_grid2_export_daily` | entità | — | Export giornaliero rete 2 (opzionale). |
 | `show_daily_grid` | booleano | `false` | Mostra i totali giornalieri import/export sopra il valore live. |
 | `show_grid_flow_label` | booleano | `true` | Antepone “Importazione/Esportazione” al valore di rete. |
 | `sensor_heat_pump_consumption` | entità | — | Sensore pompa di calore; abilita flusso arancione e sfondo dedicato. |
+| `sensor_pool_consumption` | entità | — | Sensore consumo piscina (opzionale). |
+| `sensor_washing_machine_consumption` | entità | — | Sensore consumo lavatrice (opzionale). |
+| `sensor_dryer_consumption` | entità | — | Sensore consumo asciugatrice (opzionale). |
+| `sensor_refrigerator_consumption` | entità | — | Sensore consumo frigorifero (opzionale). |
+| `sensor_windmill_total` | entità | — | Sensore totale eolico (opzionale). |
+| `sensor_windmill_daily` | entità | — | Sensore giornaliero eolico (opzionale). |
 | `sensor_car_power` | entità | — | Sensore potenza carica Auto 1 (opzionale). |
 | `sensor_car_soc` | entità | — | Sensore SOC Auto 1 (opzionale). |
 | `sensor_car2_power` | entità | — | Sensore potenza carica Auto 2 (opzionale). |
@@ -457,30 +577,38 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `battery_discharge_color` | stringa | `#FFFFFF` | Colore del flusso di scarica batteria. |
 | `grid_import_color` | stringa | `#FF3333` | Colore del flusso di import rete. |
 | `grid_export_color` | stringa | `#00ff00` | Colore del flusso di export rete. |
+| `grid2_import_color` | stringa | `#FF3333` | Colore import rete 2. |
+| `grid2_export_color` | stringa | `#00ff00` | Colore export rete 2. |
 | `heat_pump_flow_color` | stringa | `#FFA500` | Colore del flusso della pompa di calore. |
 | `heat_pump_text_color` | stringa | `#FFA500` | Colore del testo pompa di calore. |
+| `pool_flow_color` | stringa | `#0080ff` | Colore flusso piscina. |
+| `pool_text_color` | stringa | `#FFFFFF` | Colore testo piscina. |
+| `washing_machine_text_color` | stringa | `#FFFFFF` | Colore testo lavatrice (di default eredita il colore del carico). |
+| `dryer_text_color` | stringa | `#FFFFFF` | Colore testo asciugatrice (eredita il colore del carico). |
+| `refrigerator_text_color` | stringa | `#FFFFFF` | Colore testo frigorifero (eredita il colore del carico). |
+| `windmill_flow_color` | stringa | `#00FFFF` | Colore flusso eolico. |
+| `windmill_text_color` | stringa | `#FFFFFF` | Colore testo eolico. |
+| `windmill_power_font_size` | numero | `16` | Dimensione testo potenza eolico (px). |
 | `battery_fill_high_color` | stringa | `#00ffff` | Colore di riempimento batteria sopra la soglia bassa. |
 | `battery_fill_low_color` | stringa | `#ff0000` | Colore di riempimento batteria sotto la soglia bassa. |
 | `battery_fill_low_threshold` | numero | `25` | Percentuale SOC che attiva la colorazione bassa. |
+| `battery_fill_opacity` | numero | `1` | Opacità riempimento batteria (0–1). |
 | `grid_activity_threshold` | numero | `100` | Potenza minima di rete (W) prima di animare i flussi. |
 | `grid_threshold_warning` | numero | — | Soglia per la colorazione di avviso rete. |
 | `grid_warning_color` | stringa | `#ff8000` | Colore di avviso rete. |
 | `grid_threshold_critical` | numero | — | Soglia per la colorazione critica rete. |
 | `grid_critical_color` | stringa | `#ff0000` | Colore critico rete. |
+| `grid2_threshold_warning` | numero | — | Soglia avviso rete 2. |
+| `grid2_warning_color` | stringa | `#ff8000` | Colore avviso rete 2. |
+| `grid2_threshold_critical` | numero | — | Soglia critica rete 2. |
+| `grid2_critical_color` | stringa | `#ff0000` | Colore critico rete 2. |
 | `invert_grid` | booleano | `false` | Inverte la polarità della rete se import/export risultano invertiti. |
 | `invert_battery` | booleano | `false` | Inverte polarità, colori e direzione dell'animazione della batteria. |
+| `invert_bat1` | booleano | `false` | Inverte solo la Batteria 1 se i sensori risultano invertiti. |
+| `invert_bat2` | booleano | `false` | Inverte solo la Batteria 2 se i sensori risultano invertiti. |
+| `invert_bat3` | booleano | `false` | Inverte solo la Batteria 3 se i sensori risultano invertiti. |
 
-### Sovrapposizione Pompa di Calore (IT)
-
-Imposta `sensor_heat_pump_consumption` per attivare il condotto dedicato: la carta carica automaticamente `background_image_heat_pump`, mostra la lettura arancione vicino alla casa e anima il percorso. Personalizza con `heat_pump_flow_color`, `heat_pump_text_color` e `heat_pump_font_size`.
-
-```yaml
-type: custom:lumina-energy-card
-sensor_heat_pump_consumption: sensor.heat_pump_power
-background_image_heat_pump: /local/community/lumina-energy-card/lumina-energy-card-hp.png
-heat_pump_flow_color: '#FFAA33'
-heat_pump_text_color: '#FFE1B2'
-```
+> **Regola sensori batteria (IT):** per ogni batteria (`bat1`..`bat4`) è necessario indicare il sensore combinato `sensor_batX_power` **oppure** entrambe le letture separate `sensor_batX_charge_power` e `sensor_batX_discharge_power`. I valori possono essere in W o kW: la scheda converte automaticamente.
 
 ### Flusso rete automatico (IT)
 
@@ -508,7 +636,7 @@ I campi disponibili includono `sensor_popup_*`, `*_name`, `*_color`, `*_font_siz
 | Opzione | Tipo | Predefinito | Note |
 | --- | --- | --- | --- |
 | `sensor_pv_total_secondary` | entità | — | Sensore totale per il secondo inverter (PV2); sommato a PV TOT e usato per il flusso secondario. |
-| `sensor_pv_array2_1` .. `sensor_pv_array2_6` | entità | — | Fino a sei sensori per stringa dell'Array 2; visibili singolarmente con `show_pv_strings`. |
+| `sensor_pv_array2_1` .. `sensor_pv_array2_6` | entità | — | Fino a sei sensori per stringa dell'Array 2; usati per aggregazione quando manca il totale e visualizzabili nel popup PV. |
 | `sensor_daily_array2` | entità | — | Sensore produzione giornaliera per l'Array 2; totale = `sensor_daily` + `sensor_daily_array2`. |
 | `sensor_home_load_secondary` | entità | — | Sensore carico casa legato all'inverter 2; necessario per HOUSE TOT / INV 2 con Array 2 attivo. |
 | `pv_tot_color` | stringa | `#00FFFF` | Sovrascrive la colorazione della riga PV TOT (influenza anche le stringhe). |
@@ -520,7 +648,7 @@ Colori e font delle auto: `car1_name_color`, `car2_name_color`, `car1_color`, `c
 Note:
 
 - Con Array 2 attivo `pv1` alimenta l'array primario e `pv2` quello secondario; la riga PV TOT mostra la produzione combinata.
-- Abilitando `show_pv_strings` compaiono PV TOT / Array 1 / Array 2 e nella sezione Casa vengono visualizzate le righe `HOUSE TOT / INV 1 / INV 2`.
+- Le singole stringhe FV non vengono più mostrate sulla card; usa il popup PV (`sensor_popup_pv_1` .. `sensor_popup_pv_6`) per visualizzare sensori per stringa.
 
 ### Sfondo & Risoluzione problemi (IT)
 
@@ -559,18 +687,25 @@ Lumina Energy Card est une carte Lovelace personnalisée pour Home Assistant qui
 
 ### Fonctionnalités clés (FR)
 
-- Jusqu'à six capteurs PV avec étiquetage intelligent par chaîne ou totalisé.
-- Jusqu'à quatre systèmes de batteries avec moyenne SOC et visualisation liquide animée.
-- Flux animés pour réseau, charge, PV, batterie et EV avec couleurs dynamiques et styles dash/points/flèches sélectionnables.
-- Seuil d'animation du réseau configurable (100 W par défaut) pour masquer le bruit d'import/export faible.
-- Multiplicateur de vitesse (-3x à 3x, 0 en pause, valeurs négatives inversent) et seuils de visibilité dédiés pour chaque flux.
-- Panneau EV optionnel incluant puissance et SOC, couleurs et typographie personnalisables, avec prise en charge de deux véhicules.
-- Badge de production quotidienne et commandes typographiques complètes pour l'en-tête, les PV, les batteries, la charge, le réseau et l'EV.
-- Totaux quotidiens d'import et d'export du réseau lorsque les capteurs correspondants sont fournis.
-- Couleurs d'avertissement/critique pour la charge domestique et seuil SOC bas configurable pour le remplissage liquide de la batterie.
-- Curseur d'intervalle de mise à jour (0–60 s, valeur par défaut 30 s) avec rafraîchissement temps réel si réglé sur 0 s.
-- Cinq popups d'information (Maison, Solaire, Batterie, Réseau, Onduleur) avec six lignes configurables (nom, couleur, taille de police).
-- Prise en charge d'un second onduleur, d'un flux pompe à chaleur dédié et d'autres évolutions à venir.
+- Nouvelle maison moderne avec un système graphique entièrement repensé, permettant davantage de fonctionnalités
+  - Images jour/nuit avec bascule sélectionnable ou automatique au coucher/lever du soleil
+- Jusqu'à six capteurs PV avec prise en charge de deux arrays par chaîne ou d'entrées totalisées
+- Jusqu'à quatre systèmes de batteries avec SOC, puissance et visualisation de niveau de batterie pour deux batteries
+  - Informations supplémentaires affichées dans le popup Batterie
+- Affichage dynamique de la puissance éolienne et jusqu'à deux EV avec état de charge et consommation/restitution de puissance
+- Flux animés pour réseau, charge, PV, batterie et EV avec couleur dynamique selon des seuils et styles d'animation sélectionnables
+- Seuil d'animation du réseau configurable (100 W par défaut) pour supprimer le « bruit » import/export de faible niveau
+- Multiplicateur de vitesse ajustable (-3× à 3×, 1× par défaut, pause/inversion prises en charge) et seuils de visibilité par flux
+- Badge de production quotidienne
+- Totaux quotidiens d'import et d'export
+- Consommation de la piscine désormais affichée sur le graphique principal
+- Consommation de la pompe à chaleur / AC désormais affichée
+- Overrides de couleurs avertissement/critique de la charge et seuil SOC bas configurable pour le remplissage liquide de la batterie
+- Choix de la police, taille et couleur du texte disponibles pour toutes les entités affichées
+- Curseur d'intervalle de mise à jour (0–60 s, 5 s par défaut) avec rafraîchissement temps réel quand réglé sur 0
+- Popups d'information pour Maison, Solaire, Batterie, Réseau et Onduleur
+  - Chacun dispose de six emplacements pour des entités avec override de nom et override de couleur de police
+- Beaucoup de nouvelles fonctionnalités à venir, avec prise en charge de davantage d'éléments
 
 ### Installation (FR)
 
@@ -584,9 +719,8 @@ Lumina Energy Card est une carte Lovelace personnalisée pour Home Assistant qui
 
 #### Installation manuelle (FR)
 
-1. Téléchargez `dist/lumina-energy-card.js` depuis la [dernière release](https://github.com/ratava/lumina-energy-card/releases).
-1. Copiez le fichier dans `/config/www/community/lumina-energy-card/`.
-1. Placez `dist/lumina_background.png` dans le même dossier.
+1. Téléchargez tous les fichiers du dossier `dist/` depuis la [dernière release](https://github.com/Giorgio866/lumina-energy-card/releases).
+1. Copiez les fichiers dans `/config/www/community/lumina-energy-card/`.
 1. Ajoutez la ressource Lovelace :
 
 ```yaml
@@ -623,13 +757,26 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | Option | Type | Par défaut | Remarques |
 | --- | --- | --- | --- |
 | `card_title` | chaîne | — | Texte d'en-tête optionnel ; vide = titre masqué. |
-| `background_image` | chaîne | `/local/community/lumina-energy-card/lumina_background.png` | Image de fond 16:9 par défaut. |
-| `background_image_heat_pump` | chaîne | `/local/community/lumina-energy-card/lumina-energy-card-hp.png` | Chargée automatiquement lorsqu'un capteur de pompe à chaleur est configuré. |
+| `title_render_mode` | chaîne | `html` | Mode de rendu du titre : `html` (recommandé) ou `svg` (legacy). |
+| `title_text_color` | chaîne | — | Couleur du texte du titre (hex) (optionnel). |
+| `title_bg_color` | chaîne | — | Couleur du fond du titre (hex) (optionnel). |
+| `font_family` | chaîne | `sans-serif` | Police utilisée par la carte (CSS font-family). |
+| `odometer_font_family` | chaîne | — | Police alternative pour les nombres animés façon odomètre ; revient à `font_family` si omise. |
+| `background_image` | chaîne | `/local/community/lumina-energy-card/lumina-modern-day.svg` | Image de fond 16:9 par défaut. |
+| `background_day` | chaîne | `/local/community/lumina-energy-card/lumina-modern-day.svg` | Fond de jour (utilisé en `day` ou en `auto` le jour). |
+| `background_night` | chaîne | `/local/community/lumina-energy-card/lumina-modern-night.svg` | Fond de nuit (utilisé en `night` ou en `auto` la nuit). |
 | `language` | chaîne | `en` | Langues prises en charge : `en`, `it`, `de`, `fr`, `nl`. |
 | `display_unit` | chaîne | `kW` | Affiche les valeurs en `W` ou `kW`. |
 | `update_interval` | nombre | `30` | Cadence d'actualisation (0–60 s, pas de 5 ; 0 supprime toute limitation). |
 | `animation_speed_factor` | nombre | `1` | Multiplicateur des flux (-3 à 3 ; 0 met en pause, valeurs négatives inversent). |
-| `animation_style` | chaîne | `dashes` | Motif des flux (`dashes`, `dots`, `arrows`). |
+| `animation_style` | chaîne | `dashes` | Style d'animation Jour (`dashes`, `dashes_glow`, `fluid_flow`, `dots`, `arrows`). |
+| `night_animation_style` | chaîne | `dashes` | Style d'animation Nuit (mêmes options que `animation_style`). |
+| `dashes_glow_intensity` | nombre | `1` | Intensité du glow pour `dashes_glow` (0–3). |
+| `flow_stroke_width` | nombre | `3` | Épaisseur de trait (px) pour `dashes`/`dashes_glow`/`dots`/`arrows`. |
+| `fluid_flow_stroke_width` | nombre | `4` | Épaisseur de trait (px) pour `fluid_flow`. |
+| `fluid_flow_outer_glow` | booléen | `false` | Ajoute un glow externe pour `fluid_flow`. |
+| `day_night_mode` | chaîne | `day` | Mode Jour/Nuit : `day`, `night`, `auto` (suit `sun.sun`). |
+| `night_mode` | booléen | `false` | Mode nuit legacy (déprécié). Préférer `day_night_mode`. |
 | `header_font_size` | nombre | `16` | Taille de police de l'en-tête (12–32 px). |
 | `daily_label_font_size` | nombre | `12` | Taille de l'étiquette quotidienne (8–24 px). |
 | `daily_value_font_size` | nombre | `20` | Taille du total quotidien (12–32 px). |
@@ -637,29 +784,64 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `battery_soc_font_size` | nombre | `20` | Taille du libellé SOC (12–32 px). |
 | `battery_power_font_size` | nombre | `14` | Taille du texte puissance batterie (10–28 px). |
 | `load_font_size` | nombre | `15` | Taille du texte de charge (10–28 px). |
+| `inv1_power_font_size` | nombre | `15` | Taille du texte puissance INV 1 (10–28 px). Par défaut = `load_font_size`. |
+| `inv2_power_font_size` | nombre | `15` | Taille du texte puissance INV 2 (10–28 px). Par défaut = `load_font_size`. |
 | `grid_font_size` | nombre | `15` | Taille du texte réseau (10–28 px). |
+| `grid_daily_font_size` | nombre | `15` | Taille de police des totaux quotidiens import/export (par défaut `grid_font_size`). |
+| `grid_current_odometer` | booléen | `false` | Active l'animation odomètre sur la valeur réseau en direct. |
+| `grid_current_odometer_duration` | nombre | `350` | Durée (ms) de l'animation odomètre de la grille (50–2000). |
 | `heat_pump_font_size` | nombre | `16` | Taille du texte pompe à chaleur (10–28 px). |
+| `pool_font_size` | nombre | `16` | Taille du texte piscine (10–28 px). |
+| `washing_machine_font_size` | nombre | `16` | Taille du texte lave-linge (hérite `heat_pump_font_size` si vide). |
+| `dryer_font_size` | nombre | `16` | Taille du texte sèche-linge (hérite `heat_pump_font_size`). |
+| `refrigerator_font_size` | nombre | `16` | Taille du texte réfrigérateur (hérite `heat_pump_font_size`). |
 | `car_power_font_size` | nombre | `15` | Taille du texte puissance voiture 1 (10–28 px). |
 | `car2_power_font_size` | nombre | `15` | Taille du texte puissance voiture 2 (10–28 px, retombe sur Car 1 si absent). |
 | `car_soc_font_size` | nombre | `12` | Taille du SOC voiture 1 (8–24 px). |
 | `car2_soc_font_size` | nombre | `12` | Taille du SOC voiture 2 (8–24 px, retombe sur Car 1). |
 | `car_name_font_size` | nombre | `15` | Taille du nom de la voiture 1. |
 | `car2_name_font_size` | nombre | `15` | Taille du nom de la voiture 2. |
+| `car1_label` | chaîne | — | Libellé optionnel pour voiture 1. |
+| `car2_label` | chaîne | — | Libellé optionnel pour voiture 2. |
 | `sensor_pv_total` | entité | — | Capteur PV total optionnel. Fournissez ce capteur **ou** au moins une chaîne PV. |
 | `sensor_pv1` .. `sensor_pv6` | entité | — | Capteurs PV par chaîne pour Array 1. Sans total, au moins une chaîne est requise et toutes les chaînes configurées sont additionnées. |
-| `show_pv_strings` | booléen | `false` | Affiche le total PV ainsi que chaque chaîne configurée. |
 | `sensor_daily` | entité | — | Capteur de production quotidienne (obligatoire). |
 | `sensor_bat1_soc` | entité | — | Capteur SOC batterie (obligatoire si une batterie apparaît). |
-| `sensor_bat1_power` | entité | — | Capteur de puissance batterie (obligatoire si une batterie apparaît). |
+| `sensor_bat1_power` | entité | — | Capteur combiné (net) pour la Batterie 1. Fournissez-le ou utilisez les capteurs séparés ci-dessous. |
+| `sensor_bat1_charge_power` | entité | — | Capteur de charge Batterie 1 (valeurs positives, W ou kW). À utiliser avec `sensor_bat1_discharge_power` si aucun capteur combiné n'est disponible. |
+| `sensor_bat1_discharge_power` | entité | — | Capteur de décharge Batterie 1 (valeurs positives). |
+| `sensor_bat2_soc` | entité | — | Capteur SOC batterie 2 (optionnel). |
+| `sensor_bat2_power` | entité | — | Capteur combiné pour la Batterie 2 (ou utilisez les capteurs séparés). |
+| `sensor_bat2_charge_power` | entité | — | Capteur de charge Batterie 2 (valeurs positives). |
+| `sensor_bat2_discharge_power` | entité | — | Capteur de décharge Batterie 2 (valeurs positives). |
+| `sensor_bat3_soc` | entité | — | Capteur SOC batterie 3 (optionnel). |
+| `sensor_bat3_power` | entité | — | Capteur combiné pour la Batterie 3 (ou capteurs séparés). |
+| `sensor_bat3_charge_power` | entité | — | Capteur de charge Batterie 3 (valeurs positives). |
+| `sensor_bat3_discharge_power` | entité | — | Capteur de décharge Batterie 3 (valeurs positives). |
+| `sensor_bat4_soc` | entité | — | Capteur SOC batterie 4 (optionnel). |
+| `sensor_bat4_power` | entité | — | Capteur combiné pour la Batterie 4 (ou capteurs séparés). |
+| `sensor_bat4_charge_power` | entité | — | Capteur de charge Batterie 4 (valeurs positives). |
+| `sensor_bat4_discharge_power` | entité | — | Capteur de décharge Batterie 4 (valeurs positives). |
 | `sensor_home_load` | entité | — | Capteur de charge domestique (obligatoire). |
 | `sensor_grid_power` | entité | — | Capteur net réseau (obligatoire sauf si import/export séparés fournis). |
 | `sensor_grid_import` | entité | — | Capteur d'import positif facultatif. |
 | `sensor_grid_export` | entité | — | Capteur d'export positif facultatif. |
 | `sensor_grid_import_daily` | entité | — | Capteur d'import quotidien cumulé (facultatif). |
 | `sensor_grid_export_daily` | entité | — | Capteur d'export quotidien cumulé (facultatif). |
+| `sensor_grid2_power` | entité | — | Capteur net réseau 2 (optionnel). |
+| `sensor_grid2_import` | entité | — | Capteur import réseau 2 (optionnel). |
+| `sensor_grid2_export` | entité | — | Capteur export réseau 2 (optionnel). |
+| `sensor_grid2_import_daily` | entité | — | Import quotidien réseau 2 (optionnel). |
+| `sensor_grid2_export_daily` | entité | — | Export quotidien réseau 2 (optionnel). |
 | `show_daily_grid` | booléen | `false` | Affiche les totaux d'import/export quotidiens au-dessus de la valeur live. |
 | `show_grid_flow_label` | booléen | `true` | Ajoute « Importation » ou « Exportation » avant la valeur réseau. |
 | `sensor_heat_pump_consumption` | entité | — | Capteur pompe à chaleur ; active le flux orange et l'arrière-plan dédié. |
+| `sensor_pool_consumption` | entité | — | Capteur consommation piscine (optionnel). |
+| `sensor_washing_machine_consumption` | entité | — | Capteur consommation lave-linge (optionnel). |
+| `sensor_dryer_consumption` | entité | — | Capteur consommation sèche-linge (optionnel). |
+| `sensor_refrigerator_consumption` | entité | — | Capteur consommation réfrigérateur (optionnel). |
+| `sensor_windmill_total` | entité | — | Capteur total éolienne (optionnel). |
+| `sensor_windmill_daily` | entité | — | Capteur journalier éolienne (optionnel). |
 | `sensor_car_power` | entité | — | Capteur de puissance de charge voiture 1 (facultatif). |
 | `sensor_car_soc` | entité | — | Capteur SOC voiture 1 (facultatif). |
 | `sensor_car2_power` | entité | — | Capteur de puissance de charge voiture 2 (facultatif). |
@@ -687,30 +869,38 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `battery_discharge_color` | chaîne | `#FFFFFF` | Couleur du flux de décharge batterie. |
 | `grid_import_color` | chaîne | `#FF3333` | Couleur du flux d'import réseau. |
 | `grid_export_color` | chaîne | `#00ff00` | Couleur du flux d'export réseau. |
+| `grid2_import_color` | chaîne | `#FF3333` | Couleur import réseau 2. |
+| `grid2_export_color` | chaîne | `#00ff00` | Couleur export réseau 2. |
 | `heat_pump_flow_color` | chaîne | `#FFA500` | Couleur du flux dédié pompe à chaleur. |
 | `heat_pump_text_color` | chaîne | `#FFA500` | Couleur du texte pompe à chaleur. |
+| `pool_flow_color` | chaîne | `#0080ff` | Couleur du flux piscine. |
+| `pool_text_color` | chaîne | `#FFFFFF` | Couleur du texte piscine. |
+| `washing_machine_text_color` | chaîne | `#FFFFFF` | Couleur du texte lave-linge (hérite la couleur de charge par défaut). |
+| `dryer_text_color` | chaîne | `#FFFFFF` | Couleur du texte sèche-linge (hérite la couleur de charge). |
+| `refrigerator_text_color` | chaîne | `#FFFFFF` | Couleur du texte réfrigérateur (hérite la couleur de charge). |
+| `windmill_flow_color` | chaîne | `#00FFFF` | Couleur du flux éolienne. |
+| `windmill_text_color` | chaîne | `#FFFFFF` | Couleur du texte éolienne. |
+| `windmill_power_font_size` | nombre | `16` | Taille de police puissance éolienne (px). |
 | `battery_fill_high_color` | chaîne | `#00ffff` | Couleur de remplissage batterie au-dessus du seuil bas. |
 | `battery_fill_low_color` | chaîne | `#ff0000` | Couleur de remplissage batterie sous le seuil bas. |
 | `battery_fill_low_threshold` | nombre | `25` | Pourcentage SOC qui déclenche la couleur basse. |
+| `battery_fill_opacity` | nombre | `1` | Opacité du remplissage batterie (0–1). |
 | `grid_activity_threshold` | nombre | `100` | Puissance réseau minimale (W) avant animation. |
 | `grid_threshold_warning` | nombre | — | Seuil déclenchant la couleur d'avertissement réseau. |
 | `grid_warning_color` | chaîne | `#ff8000` | Couleur d'avertissement réseau. |
 | `grid_threshold_critical` | nombre | — | Seuil déclenchant la couleur critique réseau. |
 | `grid_critical_color` | chaîne | `#ff0000` | Couleur critique réseau. |
+| `grid2_threshold_warning` | nombre | — | Seuil d'avertissement réseau 2. |
+| `grid2_warning_color` | chaîne | `#ff8000` | Couleur d'avertissement réseau 2. |
+| `grid2_threshold_critical` | nombre | — | Seuil critique réseau 2. |
+| `grid2_critical_color` | chaîne | `#ff0000` | Couleur critique réseau 2. |
 | `invert_grid` | booléen | `false` | Inverse l'import/export si la polarité est inversée. |
 | `invert_battery` | booléen | `false` | Inverse la polarité et les couleurs de charge/décharge batterie. |
+| `invert_bat1` | booléen | `false` | Inverse uniquement la Batterie 1 si ses capteurs sont inversés. |
+| `invert_bat2` | booléen | `false` | Inverse uniquement la Batterie 2 si ses capteurs sont inversés. |
+| `invert_bat3` | booléen | `false` | Inverse uniquement la Batterie 3 si ses capteurs sont inversés. |
 
-### Superposition pompe à chaleur (FR)
-
-Définissez `sensor_heat_pump_consumption` pour activer le conduit dédié : la carte charge automatiquement `background_image_heat_pump`, affiche la consommation en orange près de la maison et anime la conduite. Ajustez `heat_pump_flow_color`, `heat_pump_text_color` et `heat_pump_font_size` si nécessaire.
-
-```yaml
-type: custom:lumina-energy-card
-sensor_heat_pump_consumption: sensor.heat_pump_power
-background_image_heat_pump: /local/community/lumina-energy-card/lumina-energy-card-hp.png
-heat_pump_flow_color: '#FFAA33'
-heat_pump_text_color: '#FFE1B2'
-```
+> **Règle capteurs batterie (FR) :** pour chaque batterie (`bat1`..`bat4`), fournissez soit le capteur combiné `sensor_batX_power`, soit les deux capteurs séparés `sensor_batX_charge_power` et `sensor_batX_discharge_power`. Les valeurs peuvent être en W ou kW, la carte gère la conversion.
 
 ### Routage réseau automatique (FR)
 
@@ -765,7 +955,7 @@ Les cinq groupes de popups (PV, Maison, Batterie, Réseau, Onduleur) offrent cha
 | Option | Type | Par défaut | Remarques |
 | --- | --- | --- | --- |
 | `sensor_pv_total_secondary` | entité | — | Capteur total optionnel pour le deuxième onduleur (PV2). Ajouté à PV TOT et alimente le flux PV secondaire. |
-| `sensor_pv_array2_1` .. `sensor_pv_array2_6` | entités | — | Jusqu'à six capteurs par chaîne pour Array 2 ; visibles individuellement si `show_pv_strings` est activé. |
+| `sensor_pv_array2_1` .. `sensor_pv_array2_6` | entités | — | Jusqu'à six capteurs par chaîne pour Array 2 ; utilisés pour l'agrégation si le total n'est pas fourni et affichables via le popup PV. |
 | `sensor_daily_array2` | entité | — | Capteur de production quotidienne pour Array 2 ; total quotidien = `sensor_daily` + `sensor_daily_array2`. |
 | `sensor_home_load_secondary` | entité | — | Capteur de charge maison lié à l'onduleur 2 ; requis pour HOUSE TOT / INV 2 lorsque Array 2 est actif. |
 | `pv_tot_color` | chaîne | `#00FFFF` | Remplace la couleur de la ligne/texte PV TOTAL (affecte aussi les chaînes). |
@@ -777,7 +967,7 @@ Couleurs et polices des voitures : `car1_name_color`, `car2_name_color`, `car1_c
 Notes :
 
 - Lorsque Array 2 est actif : `pv1` alimente l'Array 1 (primaire) et `pv2` l'Array 2 (secondaire). La ligne PV TOT affiche la production combinée.
-- Avec `show_pv_strings`, la carte affiche PV TOT / Array 1 / Array 2 ainsi que `HOUSE TOT / INV 1 / INV 2` dans la section Maison.
+- Les chaînes PV individuelles ne sont plus affichées sur la carte ; utilisez le popup PV (`sensor_popup_pv_1` .. `sensor_popup_pv_6`) pour afficher des capteurs par chaîne.
 
 ### Fond & Dépannage (FR)
 
@@ -847,18 +1037,25 @@ Lumina Energy Card ist eine benutzerdefinierte Lovelace-Karte für Home Assistan
 
 ### Wichtige Funktionen (DE)
 
-- Bis zu sechs PV-Sensoren mit intelligenter pro-Strang- oder Gesamtbeschriftung.
-- Bis zu vier Batteriesysteme mit SOC-Mittelwert und animierter Flüssigfüllung.
-- Animierte Netz-, Haus-, PV-, Batterie- und EV-Flüsse mit dynamischen Farben sowie wählbaren Strich/Punkt/Pfeil-Stilen.
-- Konfigurierbare Netzanimationsschwelle (Standard 100 W) blendet Kleinstimporte/-exporte aus.
-- Einstellbarer Geschwindigkeitsfaktor (-3x bis 3x, 0 pausiert, negative Werte kehren um) plus individuelle Schwellen pro Fluss.
-- Optionales EV-Panel mit Leistung und SOC, konfigurierbaren Farben und Typografie, inklusive Unterstützung für zwei Fahrzeuge.
-- Tagesertrags-Badge und vollständige Typografie-Kontrollen für Kopfzeile, PV, Batterie, Last, Netz und EV.
-- Tägliche Import-/Export-Summen des Netzes, sofern Sensoren vorhanden sind.
-- Konfigurierbare Lastwarn-/Kritikfarben und ein SOC-Untergrenzwert für die Batteriefüllung.
-- Update-Intervall-Schieberegler (0–60 s, Standard 30 s) mit Live-Refresh bei 0 s.
-- Info-Popups für Haus, Solar, Batterie, Netz und Wechselrichter mit je sechs konfigurierbaren Zeilen (Name, Farbe, Schriftgröße).
-- Dedizierter Wärmepumpenpfad, zweigeteilte Netzflüsse und weitere geplante Funktionen.
+- Neues modernes Haus mit komplett neu gestaltetem Grafiksystem, das mehr Funktionen ermöglicht
+  - Tag- und Nachtbilder mit wählbarer oder automatischer Umschaltung bei Sonnenuntergang/-aufgang
+- Bis zu sechs PV-Sensoren mit Unterstützung für zwei Arrays pro String oder für totalisierte Eingänge
+- Bis zu vier Batteriesysteme mit SOC, Leistung und Batteriestands-Visualisierung für zwei Batterien
+  - Zusätzliche Batterieinformationen werden im Batterie-Popup angezeigt
+- Dynamische Anzeige der Windradleistung und bis zu zwei EVs mit Ladezustand sowie Leistungsaufnahme oder Rückspeisung
+- Animierte Netz-, Last-, PV-, Batterie- und EV-Flüsse mit dynamischer Farbe basierend auf Schwellen und wählbaren Animationsstilen
+- Konfigurierbare Netzanimationsschwelle (Standard 100 W) zur Unterdrückung von geringem Import/Export-Rauschen
+- Einstellbarer Geschwindigkeitsmultiplikator (-3× bis 3×, Standard 1×, Pause/Umkehr unterstützt) und Sichtbarkeitsschwellen pro Fluss
+- Badge für die tägliche Energieproduktion
+- Tägliche Import- und Export-Gesamtsummen
+- Pool-Stromverbrauch wird jetzt in der Hauptgrafik angezeigt
+- Wärmepumpen-/AC-Stromverbrauch wird jetzt angezeigt
+- Warn-/Kritikfarben-Overrides für die Hauslast und ein konfigurierbarer Low-SOC-Schwellwert für die Batteriefüllung
+- Schriftartauswahl, Schriftgröße und Textfarbe für alle angezeigten Entitäten
+- Update-Intervall-Slider (0–60 s, Standard 5 s) mit optionalem Echtzeit-Refresh bei 0
+- Informations-Popups für Haus, Solar, Batterie, Netz und Wechselrichter
+  - Jeweils sechs Slots für Entitäten mit Namens-Override und Schriftfarben-Override
+- Viele weitere Funktionen in Arbeit, mit Unterstützung für zusätzliche Elemente
 
 ### Installation (DE)
 
@@ -872,9 +1069,8 @@ Lumina Energy Card ist eine benutzerdefinierte Lovelace-Karte für Home Assistan
 
 #### Manuelle Installation (DE)
 
-1. Lade `dist/lumina-energy-card.js` aus dem [aktuellen Release](https://github.com/ratava/lumina-energy-card/releases).
-1. Kopiere die Datei nach `/config/www/community/lumina-energy-card/`.
-1. Lege `dist/lumina_background.png` im selben Ordner ab.
+1. Lade alle Dateien aus `dist/` aus dem [aktuellen Release](https://github.com/Giorgio866/lumina-energy-card/releases) herunter.
+1. Kopiere die Dateien nach `/config/www/community/lumina-energy-card/`.
 1. Ergänze die Lovelace-Ressource:
 
 ```yaml
@@ -911,13 +1107,26 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | Option | Typ | Standard | Hinweise |
 | --- | --- | --- | --- |
 | `card_title` | Zeichenkette | — | Optionaler Kopfzeilentext; leer blendet den Titel aus. |
-| `background_image` | Zeichenkette | `/local/community/lumina-energy-card/lumina_background.png` | Standard-Background (16:9). |
-| `background_image_heat_pump` | Zeichenkette | `/local/community/lumina-energy-card/lumina-energy-card-hp.png` | Wird automatisch geladen, wenn ein Wärmepumpensensor gesetzt ist. |
+| `title_render_mode` | Zeichenkette | `html` | Titel-Render-Modus: `html` (empfohlen) oder `svg` (legacy). |
+| `title_text_color` | Zeichenkette | — | Optionale Titel-Textfarbe (hex). |
+| `title_bg_color` | Zeichenkette | — | Optionale Titel-Hintergrundfarbe (hex). |
+| `font_family` | Zeichenkette | `sans-serif` | Schriftfamilie fuer Kartentext (CSS font-family). |
+| `odometer_font_family` | Zeichenkette | — | Alternative Schrift fuer die Odometer-Animation; faellt auf `font_family` zurueck, wenn leer. |
+| `background_image` | Zeichenkette | `/local/community/lumina-energy-card/lumina-modern-day.svg` | Standard-Background (16:9). |
+| `background_day` | Zeichenkette | `/local/community/lumina-energy-card/lumina-modern-day.svg` | Tag-Hintergrund (bei `day` oder `auto` tagsueber). |
+| `background_night` | Zeichenkette | `/local/community/lumina-energy-card/lumina-modern-night.svg` | Nacht-Hintergrund (bei `night` oder `auto` nachts). |
 | `language` | Zeichenkette | `en` | Unterstützte Sprachen: `en`, `it`, `de`, `fr`, `nl`. |
 | `display_unit` | Zeichenkette | `kW` | Anzeige in `W` oder `kW`. |
 | `update_interval` | Zahl | `30` | Aktualisierungsintervall (0–60 s, Schritt 5; 0 deaktiviert das Throttling). |
 | `animation_speed_factor` | Zahl | `1` | Animationsmultiplikator (-3 bis 3; 0 pausiert, negativ = rückwärts). |
-| `animation_style` | Zeichenkette | `dashes` | Flussstil (`dashes`, `dots`, `arrows`). |
+| `animation_style` | Zeichenkette | `dashes` | Animationsstil Tag (`dashes`, `dashes_glow`, `fluid_flow`, `dots`, `arrows`). |
+| `night_animation_style` | Zeichenkette | `dashes` | Animationsstil Nacht (wie `animation_style`). |
+| `dashes_glow_intensity` | Zahl | `1` | Glow-Intensitaet fuer `dashes_glow` (0–3). |
+| `flow_stroke_width` | Zahl | `3` | Strichstaerke (px) fuer `dashes`/`dashes_glow`/`dots`/`arrows`. |
+| `fluid_flow_stroke_width` | Zahl | `4` | Strichstaerke (px) fuer `fluid_flow`. |
+| `fluid_flow_outer_glow` | Boolesch | `false` | Aktiviert aussenliegenden Glow fuer `fluid_flow`. |
+| `day_night_mode` | Zeichenkette | `day` | Tag/Nacht: `day`, `night`, `auto` (folgt `sun.sun`). |
+| `night_mode` | Boolesch | `false` | Legacy-Nachtmodus (deprecate). Prefer `day_night_mode`. |
 | `header_font_size` | Zahl | `16` | Schriftgröße der Überschrift (12–32 px). |
 | `daily_label_font_size` | Zahl | `12` | Schriftgröße des Tageslabels (8–24 px). |
 | `daily_value_font_size` | Zahl | `20` | Schriftgröße des Tageswerts (12–32 px). |
@@ -925,29 +1134,64 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `battery_soc_font_size` | Zahl | `20` | Schriftgröße für den SOC-Text (12–32 px). |
 | `battery_power_font_size` | Zahl | `14` | Schriftgröße für die Batterieleistung (10–28 px). |
 | `load_font_size` | Zahl | `15` | Schriftgröße für den Hausverbrauch (10–28 px). |
+| `inv1_power_font_size` | Zahl | `15` | Schriftgröße für die INV 1 Leistungszeile (10–28 px). Standard = `load_font_size`. |
+| `inv2_power_font_size` | Zahl | `15` | Schriftgröße für die INV 2 Leistungszeile (10–28 px). Standard = `load_font_size`. |
 | `grid_font_size` | Zahl | `15` | Schriftgröße für den Netztext (10–28 px). |
+| `grid_daily_font_size` | Zahl | `15` | Schriftgröße für die täglichen Import/Export-Werte (Standard `grid_font_size`). |
+| `grid_current_odometer` | Boolesch | `false` | Aktiviert die Odometer-Animation für den Live-Netzwert. |
+| `grid_current_odometer_duration` | Zahl | `350` | Dauer (ms) der Odometer-Animation (50–2000). |
 | `heat_pump_font_size` | Zahl | `16` | Schriftgröße des Wärmepumpenlabels (10–28 px). |
+| `pool_font_size` | Zahl | `16` | Schriftgroesse Pool (10–28 px). |
+| `washing_machine_font_size` | Zahl | `16` | Schriftgröße für Waschmaschine (erbt `heat_pump_font_size`). |
+| `dryer_font_size` | Zahl | `16` | Schriftgröße für Trockner (erbt `heat_pump_font_size`). |
+| `refrigerator_font_size` | Zahl | `16` | Schriftgröße für Kühlschrank (erbt `heat_pump_font_size`). |
 | `car_power_font_size` | Zahl | `15` | Schriftgröße der Leistung von Fahrzeug 1 (10–28 px). |
 | `car2_power_font_size` | Zahl | `15` | Schriftgröße der Leistung von Fahrzeug 2 (10–28 px, fallback Fahrzeug 1). |
 | `car_soc_font_size` | Zahl | `12` | Schriftgröße des SOC Fahrzeug 1 (8–24 px). |
 | `car2_soc_font_size` | Zahl | `12` | Schriftgröße des SOC Fahrzeug 2 (8–24 px, fallback Fahrzeug 1). |
 | `car_name_font_size` | Zahl | `15` | Schriftgröße des Namens für Fahrzeug 1. |
 | `car2_name_font_size` | Zahl | `15` | Schriftgröße des Namens für Fahrzeug 2. |
+| `car1_label` | Zeichenkette | — | Optionales Label fuer Fahrzeug 1. |
+| `car2_label` | Zeichenkette | — | Optionales Label fuer Fahrzeug 2. |
 | `sensor_pv_total` | Entität | — | Optionaler Gesamt-PV-Sensor. Entweder diesen Sensor oder mindestens einen PV-Strang angeben. |
 | `sensor_pv1` .. `sensor_pv6` | Entität | — | PV-Strangsensoren für Array 1. Ohne Gesamtwert ist mindestens ein Strang nötig; alle gesetzten Stränge werden summiert. |
-| `show_pv_strings` | Boolesch | `false` | Zeigt PV TOTAL plus jeden konfigurierten Strang. |
 | `sensor_daily` | Entität | — | Tagesertragssensor (Pflichtfeld). |
 | `sensor_bat1_soc` | Entität | — | Batterien-SOC (nur erforderlich, wenn eine Batterie angezeigt wird). |
-| `sensor_bat1_power` | Entität | — | Batterieleistung (nur erforderlich, wenn eine Batterie angezeigt wird). |
+| `sensor_bat1_power` | Entität | — | Kombinierter Leistungssensor für Batterie 1. Alternativ beide Einzelwerte unten angeben. |
+| `sensor_bat1_charge_power` | Entität | — | Ladesensor Batterie 1 (positive Werte, W oder kW). Mit `sensor_bat1_discharge_power` nutzen, falls kein Kombisensor vorhanden ist. |
+| `sensor_bat1_discharge_power` | Entität | — | Entladesensor Batterie 1 (positive Werte). |
+| `sensor_bat2_soc` | Entität | — | Optionaler SOC Sensor Batterie 2. |
+| `sensor_bat2_power` | Entität | — | Kombinierter Leistungssensor Batterie 2 (oder beide Einzelwerte verwenden). |
+| `sensor_bat2_charge_power` | Entität | — | Ladesensor Batterie 2 (positive Werte). |
+| `sensor_bat2_discharge_power` | Entität | — | Entladesensor Batterie 2 (positive Werte). |
+| `sensor_bat3_soc` | Entität | — | Optionaler SOC Sensor Batterie 3. |
+| `sensor_bat3_power` | Entität | — | Kombinierter Leistungssensor Batterie 3 (oder beide Einzelwerte). |
+| `sensor_bat3_charge_power` | Entität | — | Ladesensor Batterie 3 (positive Werte). |
+| `sensor_bat3_discharge_power` | Entität | — | Entladesensor Batterie 3 (positive Werte). |
+| `sensor_bat4_soc` | Entität | — | Optionaler SOC Sensor Batterie 4. |
+| `sensor_bat4_power` | Entität | — | Kombinierter Leistungssensor Batterie 4 (oder beide Einzelwerte). |
+| `sensor_bat4_charge_power` | Entität | — | Ladesensor Batterie 4 (positive Werte). |
+| `sensor_bat4_discharge_power` | Entität | — | Entladesensor Batterie 4 (positive Werte). |
 | `sensor_home_load` | Entität | — | Hausverbrauchssensor (Pflicht). |
 | `sensor_grid_power` | Entität | — | Netzsensorsaldo (Pflicht, außer Import/Export-Paar vorhanden). |
 | `sensor_grid_import` | Entität | — | Optionaler Import-Sensor (positive Werte). |
 | `sensor_grid_export` | Entität | — | Optionaler Export-Sensor (positive Werte). |
 | `sensor_grid_import_daily` | Entität | — | Optionaler Tagesimport-Zähler. |
 | `sensor_grid_export_daily` | Entität | — | Optionaler Tagesexport-Zähler. |
+| `sensor_grid2_power` | Entität | — | Optionaler zweiter Netzsaldo-Sensor. |
+| `sensor_grid2_import` | Entität | — | Optionaler Import-Sensor fuer Netz 2. |
+| `sensor_grid2_export` | Entität | — | Optionaler Export-Sensor fuer Netz 2. |
+| `sensor_grid2_import_daily` | Entität | — | Optionaler Tagesimport fuer Netz 2. |
+| `sensor_grid2_export_daily` | Entität | — | Optionaler Tagesexport fuer Netz 2. |
 | `show_daily_grid` | Boolesch | `false` | Zeigt Tagesimporte/-exporte oberhalb des Live-Netzwerts. |
 | `show_grid_flow_label` | Boolesch | `true` | Präfix „Importiert/Exportiert“ vor dem Netztext. |
 | `sensor_heat_pump_consumption` | Entität | — | Wärmepumpensensor; aktiviert den orangefarbenen Fluss und das alternative Hintergrundbild. |
+| `sensor_pool_consumption` | Entität | — | Optionaler Pool-Verbrauchssensor. |
+| `sensor_washing_machine_consumption` | Entität | — | Optionaler Verbrauchssensor für die Waschmaschine. |
+| `sensor_dryer_consumption` | Entität | — | Optionaler Trockner-Verbrauchssensor. |
+| `sensor_refrigerator_consumption` | Entität | — | Optionaler Kühlschrank-Verbrauchssensor. |
+| `sensor_windmill_total` | Entität | — | Optionaler Windrad-Gesamtertragssensor. |
+| `sensor_windmill_daily` | Entität | — | Optionaler Windrad-Tagesertragssensor. |
 | `sensor_car_power` | Entität | — | Optionaler Leistungssensor für Fahrzeug 1. |
 | `sensor_car_soc` | Entität | — | Optionaler SOC-Sensor für Fahrzeug 1. |
 | `sensor_car2_power` | Entität | — | Optionaler Leistungssensor für Fahrzeug 2. |
@@ -975,30 +1219,38 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `battery_discharge_color` | Zeichenkette | `#FFFFFF` | Farbe des Batteriespeiseflusses. |
 | `grid_import_color` | Zeichenkette | `#FF3333` | Farbe des Netzimports. |
 | `grid_export_color` | Zeichenkette | `#00ff00` | Farbe des Netzexports. |
+| `grid2_import_color` | Zeichenkette | `#FF3333` | Farbe Netzimport 2. |
+| `grid2_export_color` | Zeichenkette | `#00ff00` | Farbe Netzexport 2. |
 | `heat_pump_flow_color` | Zeichenkette | `#FFA500` | Farbe für den Wärmepumpenfluss. |
 | `heat_pump_text_color` | Zeichenkette | `#FFA500` | Farbe für das Wärmepumpenlabel. |
+| `pool_flow_color` | Zeichenkette | `#0080ff` | Pool-Flussfarbe. |
+| `pool_text_color` | Zeichenkette | `#FFFFFF` | Pool-Textfarbe. |
+| `washing_machine_text_color` | Zeichenkette | `#FFFFFF` | Textfarbe für die Waschmaschine (erbt standardmäßig die Hauslastfarbe). |
+| `dryer_text_color` | Zeichenkette | `#FFFFFF` | Textfarbe für den Trockner (erbt die Hauslastfarbe). |
+| `refrigerator_text_color` | Zeichenkette | `#FFFFFF` | Textfarbe für den Kühlschrank (erbt die Hauslastfarbe). |
+| `windmill_flow_color` | Zeichenkette | `#00FFFF` | Windrad-Flussfarbe. |
+| `windmill_text_color` | Zeichenkette | `#FFFFFF` | Windrad-Textfarbe. |
+| `windmill_power_font_size` | Zahl | `16` | Schriftgroesse Windrad-Leistung (px). |
 | `battery_fill_high_color` | Zeichenkette | `#00ffff` | Füllfarbe oberhalb der SOC-Schwelle. |
 | `battery_fill_low_color` | Zeichenkette | `#ff0000` | Füllfarbe bei/unter der niedrigen SOC-Schwelle. |
 | `battery_fill_low_threshold` | Zahl | `25` | SOC-Prozentsatz für die Umschaltung auf die niedrige Farbe. |
+| `battery_fill_opacity` | Zahl | `1` | Transparenz Batteriefuellung (0–1). |
 | `grid_activity_threshold` | Zahl | `100` | Minimale Netzleistung (W), bevor Animationen starten. |
 | `grid_threshold_warning` | Zahl | — | Schwelle für die Netz-Warnfarbe. |
 | `grid_warning_color` | Zeichenkette | `#ff8000` | Netz-Warnfarbe. |
 | `grid_threshold_critical` | Zahl | — | Schwelle für die Netz-Kritikfarbe. |
 | `grid_critical_color` | Zeichenkette | `#ff0000` | Netz-Kritikfarbe. |
+| `grid2_threshold_warning` | Zahl | — | Warnschwelle fuer Netz 2. |
+| `grid2_warning_color` | Zeichenkette | `#ff8000` | Warnfarbe Netz 2. |
+| `grid2_threshold_critical` | Zahl | — | Kritische Schwelle fuer Netz 2. |
+| `grid2_critical_color` | Zeichenkette | `#ff0000` | Kritische Farbe Netz 2. |
 | `invert_grid` | Boolesch | `false` | Kehrt die Netzpolung um, falls Import/Export vertauscht sind. |
 | `invert_battery` | Boolesch | `false` | Kehrt Batterielade-/Entladepolarität, Farben und Animationsrichtung um. |
+| `invert_bat1` | Boolesch | `false` | Invertiert nur Batterie 1, falls deren Sensoren vertauscht sind. |
+| `invert_bat2` | Boolesch | `false` | Invertiert nur Batterie 2, falls deren Sensoren vertauscht sind. |
+| `invert_bat3` | Boolesch | `false` | Invertiert nur Batterie 3, falls deren Sensoren vertauscht sind. |
 
-### Wärmepumpen-Overlay (DE)
-
-Setze `sensor_heat_pump_consumption`, um den Wärmepumpenpfad zu aktivieren. Die Karte lädt automatisch `background_image_heat_pump`, zeigt den orangenen Wert neben dem Haus und animiert den Pfad. Farben und Schrift lassen sich mit `heat_pump_flow_color`, `heat_pump_text_color` und `heat_pump_font_size` anpassen.
-
-```yaml
-type: custom:lumina-energy-card
-sensor_heat_pump_consumption: sensor.heat_pump_power
-background_image_heat_pump: /local/community/lumina-energy-card/lumina-energy-card-hp.png
-heat_pump_flow_color: '#FFAA33'
-heat_pump_text_color: '#FFE1B2'
-```
+> **Batteriesensor-Regel (DE):** Für jede Batterie (`bat1`..`bat4`) muss entweder der kombinierte Sensor `sensor_batX_power` **oder** das Paar `sensor_batX_charge_power` + `sensor_batX_discharge_power` angegeben werden. Werte in W oder kW werden automatisch konvertiert.
 
 ### Automatischer Netzfluss (DE)
 
@@ -1026,7 +1278,7 @@ Felder: `sensor_popup_*`, `*_name`, `*_color`, `*_font_size` (Standardfarbe `#80
 | Option | Typ | Standard | Hinweise |
 | --- | --- | --- | --- |
 | `sensor_pv_total_secondary` | Entität | — | Optionaler Gesamtwertsensor für den zweiten Wechselrichter (PV2); wird zu PV TOT addiert und treibt den sekundären PV-Fluss an. |
-| `sensor_pv_array2_1` .. `sensor_pv_array2_6` | Entitäten | — | Bis zu sechs Strangsensoren für Array 2; sichtbar, wenn `show_pv_strings` aktiv ist. |
+| `sensor_pv_array2_1` .. `sensor_pv_array2_6` | Entitäten | — | Bis zu sechs Strangsensoren für Array 2; fuer Aggregation genutzt, wenn kein Gesamtsensor vorhanden ist, und im PV-Popup darstellbar. |
 | `sensor_daily_array2` | Entität | — | Tagesertragssensor für Array 2; Gesamtertrag = `sensor_daily` + `sensor_daily_array2`. |
 | `sensor_home_load_secondary` | Entität | — | Optionaler Hausverbrauch für Wechselrichter 2; nötig für HOUSE TOT / INV 2 bei aktivem Array 2. |
 | `pv_tot_color` | Zeichenkette | `#00FFFF` | Überschreibt die Farbe der PV-TOTAL-Zeile (vererbt an Strings). |
@@ -1038,7 +1290,7 @@ Fahrzeugfarben/-schriften: `car1_name_color`, `car2_name_color`, `car1_color`, `
 Hinweise:
 
 - Mit aktivem Array 2: `pv1` → Array 1 (primär), `pv2` → Array 2 (sekundär). PV TOT zeigt den kombinierten Wert.
-- `show_pv_strings` blendet PV TOT / Array 1 / Array 2 sowie `HOUSE TOT / INV 1 / INV 2` als getrennte Zeilen ein.
+- Einzelne PV-Strings werden nicht mehr auf der Karte gerendert; nutze das PV-Popup (`sensor_popup_pv_1` .. `sensor_popup_pv_6`) um Strangsensoren anzuzeigen.
 
 ### Hintergrund & Fehlerbehebung (DE)
 
@@ -1077,15 +1329,25 @@ De Lumina Energy Card is een aangepaste Lovelace-kaart voor Home Assistant die e
 
 ### Belangrijkste functies (NL)
 
-- Tot zes PV-sensoren met slimme labeling (per string of totaal) plus optionele tweede array.
-- Tot vier batterijen met gemiddelde SOC, geanimeerde vloeivulling en waarschuwingen bij lage SOC.
-- Animaties voor PV, batterij, net, huislast, EV en warmtepomp met configureerbare stijl (streepjes, punten, pijlen) en snelheid (-3× tot 3×; 0 pauzeert, negatieve waarden draaien om).
-- Instelbare netdrempel (standaard 100 W) om kleine import-/exportwaarden te onderdrukken.
-- EV-paneel met vermogen, SOC, kleuren en typografie, inclusief ondersteuning voor twee voertuigen.
-- Dagelijkse import-/exporttellers (indien sensors aanwezig) plus badge voor PV-daginbreng.
-- Typografie-instellingen per sectie (kop, PV, batterij, load, grid, EV, warmtepomp).
-- Popups voor huis, PV en batterij (elk zes rijen) voor extra informatie.
-- Dediceerde warmtepompoverlay en gesplitste netweergave `grid_to_house_inverter`.
+- Een nieuw modern huis met een volledig opnieuw ontworpen grafisch systeem, waardoor meer functionaliteit mogelijk is
+  - Dag- en nachtbeelden met handmatige keuze of automatisch schakelen bij zonsondergang/zonsopkomst
+- Tot zes PV-sensoren met ondersteuning voor twee arrays per string of totaalwaarden
+- Tot vier batterijsystemen met SOC, vermogen en batterijniveau-visualisatie voor twee batterijen
+  - Extra batterij-informatie wordt getoond in de batterij-popup
+- Dynamische weergave van windmolenvermogen en maximaal twee EV's met laadstatus en verbruik/teruglevering
+- Geanimeerde grid-, load-, PV-, batterij- en EV-stromen met dynamische kleur op basis van drempels en selecteerbare animatiestijlen
+- Instelbare grid-animatiedrempel (standaard 100 W) om laag import/export-gedrag te onderdrukken
+- Instelbare snelheidsmultiplier (-3× tot 3×, standaard 1×, pauze/omkeren ondersteund) en zichtbaarheiddrempels per flow
+- Badge voor dagelijkse energieproductie
+- Dagelijkse import- en exporttotalen
+- Zwembadverbruik wordt nu op de hoofdafbeelding getoond
+- Warmtepomp/airco-verbruik wordt nu getoond
+- Waarschuwings-/kritiekkleur-overrides voor load en een instelbare lage-SOC-drempel voor de batterijvulling
+- Fontkeuze, lettergrootte en tekstkleur beschikbaar voor alle weergegeven entiteiten
+- Update-interval slider (0–60 s, standaard 5 s) met realtime verversen wanneer op 0 gezet
+- Informatie-popups voor Huis, Solar, Batterij, Grid en Omvormer
+  - Elk heeft zes slots voor entiteiten met naam-override en letterkleur-override
+- Veel nieuwe functies in aantocht, met ondersteuning voor meer onderdelen
 
 ### Installatie (NL)
 
@@ -1099,9 +1361,8 @@ De Lumina Energy Card is een aangepaste Lovelace-kaart voor Home Assistant die e
 
 #### Handmatig (NL)
 
-1. Download `dist/lumina-energy-card.js` uit de [laatste release](https://github.com/ratava/lumina-energy-card/releases).
-1. Plaats het bestand in `/config/www/community/lumina-energy-card/`.
-1. Kopieer `dist/lumina_background.png` naar dezelfde map.
+1. Download alle bestanden uit `dist/` uit de [laatste release](https://github.com/Giorgio866/lumina-energy-card/releases).
+1. Plaats de bestanden in `/config/www/community/lumina-energy-card/`.
 1. Voeg de Lovelace-resource toe:
 
 ```yaml
@@ -1137,13 +1398,26 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | Optie | Type | Standaard | Toelichting |
 | --- | --- | --- | --- |
 | `card_title` | Tekst | — | Optionele titel bovenaan; leeg laat de titel weg. |
-| `background_image` | Tekst | `/local/community/lumina-energy-card/lumina_background.png` | Hoofdachtergrond (16:9) of eigen afbeelding. |
-| `background_image_heat_pump` | Tekst | `/local/community/lumina-energy-card/lumina-energy-card-hp.png` | Wordt automatisch gebruikt zodra een warmtepompsensor is ingesteld. |
+| `title_render_mode` | Tekst | `html` | Titelrendering: `html` (aanbevolen) of `svg` (legacy). |
+| `title_text_color` | Tekst | — | Optionele kleur voor titeltekst (hex). |
+| `title_bg_color` | Tekst | — | Optionele kleur voor titelachtergrond (hex). |
+| `font_family` | Tekst | `sans-serif` | Lettertype voor kaarttekst (CSS font-family). |
+| `odometer_font_family` | Tekst | — | Alternatief lettertype voor de odometeranimatie; valt terug op `font_family` indien leeg. |
+| `background_image` | Tekst | `/local/community/lumina-energy-card/lumina-modern-day.svg` | Hoofdachtergrond (16:9) of eigen afbeelding. |
+| `background_day` | Tekst | `/local/community/lumina-energy-card/lumina-modern-day.svg` | Dagachtergrond (bij `day` of `auto` overdag). |
+| `background_night` | Tekst | `/local/community/lumina-energy-card/lumina-modern-night.svg` | Nachtachtergrond (bij `night` of `auto` 's nachts). |
 | `language` | Tekst | `en` | UI-taal (`en`, `it`, `de`, `fr`, `nl`). |
 | `display_unit` | Tekst | `kW` | Kies tussen `kW` en `W`. |
 | `update_interval` | Nummer | `30` | Updatefrequentie in seconden (0–60; stap 5). |
 | `animation_speed_factor` | Nummer | `1` | Animatiesnelheid (-3 tot 3; 0 pauzeert; negatief = omgekeerd). |
-| `animation_style` | Tekst | `dashes` | Animatiestijl (`dashes`, `dots`, `arrows`). |
+| `animation_style` | Tekst | `dashes` | Animatiestijl Dag (`dashes`, `dashes_glow`, `fluid_flow`, `dots`, `arrows`). |
+| `night_animation_style` | Tekst | `dashes` | Animatiestijl Nacht (zelfde opties als `animation_style`). |
+| `dashes_glow_intensity` | Nummer | `1` | Glow-intensiteit voor `dashes_glow` (0–3). |
+| `flow_stroke_width` | Nummer | `3` | Lijndikte (px) voor `dashes`/`dashes_glow`/`dots`/`arrows`. |
+| `fluid_flow_stroke_width` | Nummer | `4` | Lijndikte (px) voor `fluid_flow`. |
+| `fluid_flow_outer_glow` | Boolean | `false` | Voegt een outer glow toe voor `fluid_flow`. |
+| `day_night_mode` | Tekst | `day` | Dag/Nacht: `day`, `night`, `auto` (volgt `sun.sun`). |
+| `night_mode` | Boolean | `false` | Legacy nachtmodus (verouderd). Gebruik `day_night_mode`. |
 | `header_font_size` | Nummer | `16` | Tekengrootte titel (12–32 px). |
 | `daily_label_font_size` | Nummer | `12` | Labelgrootte dagopbrengst (8–24 px). |
 | `daily_value_font_size` | Nummer | `20` | Waardegrootte dagopbrengst (12–32 px). |
@@ -1151,29 +1425,64 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `battery_soc_font_size` | Nummer | `20` | SOC-tekst (12–32 px). |
 | `battery_power_font_size` | Nummer | `14` | Batterijvermogen (10–28 px). |
 | `load_font_size` | Nummer | `15` | Huislast (10–28 px). |
+| `inv1_power_font_size` | Nummer | `15` | Lettergrootte INV 1 vermogen regel (10–28 px). Standaard = `load_font_size`. |
+| `inv2_power_font_size` | Nummer | `15` | Lettergrootte INV 2 vermogen regel (10–28 px). Standaard = `load_font_size`. |
 | `grid_font_size` | Nummer | `15` | Netlabel (10–28 px). |
+| `grid_daily_font_size` | Nummer | `15` | Lettergrootte voor dagelijkse import-/exportwaarden (standaard `grid_font_size`). |
+| `grid_current_odometer` | Boolean | `false` | Schakelt de odometeranimatie op de live netwaarde in. |
+| `grid_current_odometer_duration` | Nummer | `350` | Duur (ms) van de net-odometeranimatie (50–2000). |
 | `heat_pump_font_size` | Nummer | `16` | Warmtepomplabel (10–28 px). |
+| `pool_font_size` | Nummer | `16` | Zwembadlabel (10–28 px). |
+| `washing_machine_font_size` | Nummer | `16` | Lettergrootte wasmachine (erft `heat_pump_font_size`). |
+| `dryer_font_size` | Nummer | `16` | Lettergrootte droger (erft `heat_pump_font_size`). |
+| `refrigerator_font_size` | Nummer | `16` | Lettergrootte koelkast (erft `heat_pump_font_size`). |
 | `car_power_font_size` | Nummer | `15` | Vermogen EV 1 (10–28 px). |
 | `car2_power_font_size` | Nummer | `15` | Vermogen EV 2 (fallback EV 1). |
 | `car_soc_font_size` | Nummer | `12` | SOC EV 1 (8–24 px). |
 | `car2_soc_font_size` | Nummer | `12` | SOC EV 2 (fallback EV 1). |
 | `car_name_font_size` | Nummer | `15` | Naam EV 1. |
 | `car2_name_font_size` | Nummer | `15` | Naam EV 2. |
+| `car1_label` | Tekst | — | Optioneel label voor EV 1. |
+| `car2_label` | Tekst | — | Optioneel label voor EV 2. |
 | `sensor_pv_total` | Entiteit | — | Totale PV-output. Vereist indien geen individuele strengen zijn opgegeven. |
 | `sensor_pv1` .. `sensor_pv6` | Entiteiten | — | PV-strengen voor array 1. Minstens één streng of totaal nodig. |
-| `show_pv_strings` | Boolean | `false` | Toont PV TOTAL + individuele strengen (en, indien ingesteld, array 2). |
 | `sensor_daily` | Entiteit | — | Dagelijkse PV-opbrengst (vereist). |
 | `sensor_bat1_soc` | Entiteit | — | SOC batterij 1 (vereist voor batterijweergave). |
-| `sensor_bat1_power` | Entiteit | — | Vermogen batterij 1 (vereist voor batterijweergave). |
+| `sensor_bat1_power` | Entiteit | — | Gecombineerde vermogenssensor voor batterij 1. Gebruik deze of beide gesplitste sensoren hieronder. |
+| `sensor_bat1_charge_power` | Entiteit | — | Laadsensor batterij 1 (positieve waarden, W of kW). Gebruik samen met `sensor_bat1_discharge_power` wanneer geen gecombineerde sensor beschikbaar is. |
+| `sensor_bat1_discharge_power` | Entiteit | — | Ontlaadsensor batterij 1 (positieve waarden). |
+| `sensor_bat2_soc` | Entiteit | — | SOC batterij 2 (optioneel). |
+| `sensor_bat2_power` | Entiteit | — | Gecombineerde vermogenssensor voor batterij 2 (of gebruik beide gesplitste sensoren). |
+| `sensor_bat2_charge_power` | Entiteit | — | Laadsensor batterij 2 (positieve waarden). |
+| `sensor_bat2_discharge_power` | Entiteit | — | Ontlaadsensor batterij 2 (positieve waarden). |
+| `sensor_bat3_soc` | Entiteit | — | SOC batterij 3 (optioneel). |
+| `sensor_bat3_power` | Entiteit | — | Gecombineerde vermogenssensor voor batterij 3. |
+| `sensor_bat3_charge_power` | Entiteit | — | Laadsensor batterij 3 (positieve waarden). |
+| `sensor_bat3_discharge_power` | Entiteit | — | Ontlaadsensor batterij 3 (positieve waarden). |
+| `sensor_bat4_soc` | Entiteit | — | SOC batterij 4 (optioneel). |
+| `sensor_bat4_power` | Entiteit | — | Gecombineerde vermogenssensor voor batterij 4. |
+| `sensor_bat4_charge_power` | Entiteit | — | Laadsensor batterij 4 (positieve waarden). |
+| `sensor_bat4_discharge_power` | Entiteit | — | Ontlaadsensor batterij 4 (positieve waarden). |
 | `sensor_home_load` | Entiteit | — | Huisverbruik (vereist). |
 | `sensor_grid_power` | Entiteit | — | Actuele netbalans (vereist, tenzij import/export-sensors zijn ingesteld). |
 | `sensor_grid_import` | Entiteit | — | Positieve import. |
 | `sensor_grid_export` | Entiteit | — | Positieve export. |
 | `sensor_grid_import_daily` | Entiteit | — | Dagelijkse importteller. |
 | `sensor_grid_export_daily` | Entiteit | — | Dagelijkse exportteller. |
+| `sensor_grid2_power` | Entiteit | — | Tweede netbalans (optioneel). |
+| `sensor_grid2_import` | Entiteit | — | Import net 2 (optioneel). |
+| `sensor_grid2_export` | Entiteit | — | Export net 2 (optioneel). |
+| `sensor_grid2_import_daily` | Entiteit | — | Dagimport net 2 (optioneel). |
+| `sensor_grid2_export_daily` | Entiteit | — | Dagexport net 2 (optioneel). |
 | `show_daily_grid` | Boolean | `false` | Toont dagimport/-export boven de livewaarde. |
 | `show_grid_flow_label` | Boolean | `true` | Plaatst "Importeert"/"Exporteert" vóór de netwaarde. |
 | `sensor_heat_pump_consumption` | Entiteit | — | Activeert warmtepompoverlay. |
+| `sensor_pool_consumption` | Entiteit | — | Zwembadverbruik (optioneel). |
+| `sensor_washing_machine_consumption` | Entiteit | — | Wasmachineverbruik (optioneel). |
+| `sensor_dryer_consumption` | Entiteit | — | Drogerverbruik (optioneel). |
+| `sensor_refrigerator_consumption` | Entiteit | — | Koelkastverbruik (optioneel). |
+| `sensor_windmill_total` | Entiteit | — | Windmolen totaal (optioneel). |
+| `sensor_windmill_daily` | Entiteit | — | Windmolen dag (optioneel). |
 | `sensor_car_power` / `sensor_car_soc` | Entiteiten | — | EV 1 vermogen/SOC. |
 | `sensor_car2_power` / `sensor_car2_soc` | Entiteiten | — | EV 2 vermogen/SOC. |
 | `show_car_soc` | Boolean | `false` | Toont EV-paneel (vermogen + SOC). |
@@ -1196,29 +1505,38 @@ background_image: /local/community/lumina-energy-card/lumina_background.png
 | `battery_discharge_color` | Tekst | `#FFFFFF` | Kleur ontlaadstroom. |
 | `grid_import_color` | Tekst | `#FF3333` | Kleur netimport. |
 | `grid_export_color` | Tekst | `#00ff00` | Kleur netexport. |
+| `grid2_import_color` | Tekst | `#FF3333` | Kleur netimport 2. |
+| `grid2_export_color` | Tekst | `#00ff00` | Kleur netexport 2. |
 | `heat_pump_flow_color` | Tekst | `#FFA500` | Kleur warmtepompflow. |
 | `heat_pump_text_color` | Tekst | `#FFA500` | Labelkleur warmtepomp. |
+| `pool_flow_color` | Tekst | `#0080ff` | Kleur zwembadflow. |
+| `pool_text_color` | Tekst | `#FFFFFF` | Tekstkleur zwembad. |
+| `washing_machine_text_color` | Tekst | `#FFFFFF` | Tekstkleur wasmachine (standaard dezelfde als de loadtekst). |
+| `dryer_text_color` | Tekst | `#FFFFFF` | Tekstkleur droger (erft de loadkleur). |
+| `refrigerator_text_color` | Tekst | `#FFFFFF` | Tekstkleur koelkast (erft de loadkleur). |
+| `windmill_flow_color` | Tekst | `#00FFFF` | Kleur windmolenflow. |
+| `windmill_text_color` | Tekst | `#FFFFFF` | Tekstkleur windmolen. |
+| `windmill_power_font_size` | Nummer | `16` | Lettergrootte windmolenvermogen (px). |
 | `battery_fill_high_color` | Tekst | `#00ffff` | Kleur voor SOC boven drempel. |
 | `battery_fill_low_color` | Tekst | `#ff0000` | Kleur onder de drempel. |
 | `battery_fill_low_threshold` | Nummer | `25` | SOC-percentage voor lage kleur. |
+| `battery_fill_opacity` | Nummer | `1` | Opaciteit batterijvulling (0–1). |
 | `grid_activity_threshold` | Nummer | `100` | Minimum netverbruik voor animatie (W). |
 | `grid_threshold_warning` | Nummer | — | Waarschuwingsdrempel net. |
 | `grid_warning_color` | Tekst | `#ff8000` | Waarschuwingskleur net. |
 | `grid_threshold_critical` | Nummer | — | Kritieke drempel net. |
 | `grid_critical_color` | Tekst | `#ff0000` | Kritieke kleur net. |
+| `grid2_threshold_warning` | Nummer | — | Waarschuwingsdrempel net 2. |
+| `grid2_warning_color` | Tekst | `#ff8000` | Waarschuwingskleur net 2. |
+| `grid2_threshold_critical` | Nummer | — | Kritieke drempel net 2. |
+| `grid2_critical_color` | Tekst | `#ff0000` | Kritieke kleur net 2. |
 | `invert_grid` | Boolean | `false` | Draait de netpolariteit om indien import/export zijn omgekeerd. |
 | `invert_battery` | Boolean | `false` | Draait batterijpolariteit, kleuren en animatie om. |
+| `invert_bat1` | Boolean | `false` | Draait alleen batterij 1 om wanneer de sensoren omgekeerd zijn. |
+| `invert_bat2` | Boolean | `false` | Draait alleen batterij 2 om wanneer de sensoren omgekeerd zijn. |
+| `invert_bat3` | Boolean | `false` | Draait alleen batterij 3 om wanneer de sensoren omgekeerd zijn. |
 
-### Warmtepompoverlay (NL)
-
-Wanneer `sensor_heat_pump_consumption` is ingesteld, schakelt de kaart automatisch naar `background_image_heat_pump`, toont een oranje label naast het huis en animeert de warmtepompstroom. Pas kleuren/lettertypes aan via `heat_pump_flow_color`, `heat_pump_text_color` en `heat_pump_font_size`.
-
-```yaml
-type: custom:lumina-energy-card
-sensor_heat_pump_consumption: sensor.wp_vermogen
-background_image_heat_pump: /local/community/lumina-energy-card/lumina-energy-card-hp.png
-heat_pump_flow_color: '#FFA533'
-```
+> **Batterijsensorregel (NL):** voor elke batterij (`bat1`..`bat4`) moet je ofwel de gecombineerde sensor `sensor_batX_power` opgeven, of **beide** gesplitste sensoren `sensor_batX_charge_power` en `sensor_batX_discharge_power`. Waarden in W of kW worden automatisch omgerekend.
 
 ### Automatisch netpad (NL)
 
@@ -1273,7 +1591,7 @@ De vijf popupgroepen (PV, Huis, Batterij, Net, Omvormer) bieden elk zes plaatsen
 | Optie | Type | Standaard | Toelichting |
 | --- | --- | --- | --- |
 | `sensor_pv_total_secondary` | Entiteit | — | Extra totaal voor tweede omvormer; wordt bij PV TOTAL opgeteld. |
-| `sensor_pv_array2_1` .. `sensor_pv_array2_6` | Entiteiten | — | Tweede set PV-strengen; zichtbaar met `show_pv_strings`. |
+| `sensor_pv_array2_1` .. `sensor_pv_array2_6` | Entiteiten | — | Tweede set PV-strengen; gebruikt voor aggregatie als geen totaalsensor is opgegeven en te tonen via de PV popup. |
 | `sensor_daily_array2` | Entiteit | — | Dagopbrengst voor array 2; totaal = array1 + array2. |
 | `sensor_home_load_secondary` | Entiteit | — | Secundaire huislast voor INV2/HOUSE TOT wanneer array 2 actief is. |
 | `house_total_color`, `inv1_color`, `inv2_color` | Tekst | — | Lijnkleuren voor HOUSE TOT / INV 1 / INV 2. |
@@ -1281,7 +1599,7 @@ De vijf popupgroepen (PV, Huis, Batterij, Net, Omvormer) bieden elk zes plaatsen
 
 Tips:
 
-- Met array 2 actief geeft PV TOT beide arrays weer, terwijl `show_pv_strings` PV TOTAL, ARRAY 1, ARRAY 2 en individuele strings toont.
+- Individuele PV-strengen worden niet meer op de kaart weergegeven; gebruik de PV popup (`sensor_popup_pv_1` .. `sensor_popup_pv_6`) om per-string sensoren te tonen.
 - EV-sectie gebruikt `car_flow_color`, `car*_color`, `car*_name_color` en `car*_soc_font_size` voor twee voertuigen.
 
 ### Achtergrond & probleemoplossing (NL)

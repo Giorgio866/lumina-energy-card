@@ -48,7 +48,7 @@ background_image: /local/community/lumina-energy-card/lumina_background.jpg
 - `animation_speed_factor`: flow speed multiplier (-3 to 3, default 1; 0 pauses, negatives reverse)
 - `animation_style`: choose the flow motif (`dashes`, `dots`, `arrows`)
 - `sensor_pv_total`: optional aggregate PV production sensor for the total line
-- `show_pv_strings`: display both the total and each PV string value simultaneously
+- PV string sensors (`sensor_pv1` .. `sensor_pv6`, `sensor_pv_array2_1` .. `sensor_pv_array2_6`) are used for aggregation when totals are not provided; per-string values can be shown via the PV popup configuration
 - `sensor_grid_import` / `sensor_grid_export`: optional dedicated import/export sensors (positive values)
 - `grid_activity_threshold`: minimum grid magnitude (W) before grid flow animates (default 100)
 - `grid_threshold_warning` / `grid_threshold_critical`: change grid colours when magnitude reaches warning/critical levels
