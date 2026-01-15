@@ -8,9 +8,9 @@
   <inkscape:path-effect effect="spiro" id="path-effect6" is_visible="true" lpeversion="1" /><inkscape:path-effect effect="spiro" id="path-effect13" is_visible="true" lpeversion="1" /><inkscape:path-effect effect="spiro" id="path-effect6-4" is_visible="true" lpeversion="1" /></defs>
   <g inkscape:label="base" id="base" transform="translate(0,0)" sodipodi:insensitive="true">
     
-  <image width="677.33337" height="423.33334" preserveAspectRatio="none" xlink:href="nightnocar.png" id="image1" x="0.88917" y="0.54299" inkscape:label="nightnocar" data-role="nightnocar" sodipodi:insensitive="true" style="display:inline" />
-  <image width="677.33337" height="423.33334" preserveAspectRatio="none" xlink:href="night1car.png" id="image1-7" x="0.88916999" y="0.54299003" inkscape:label="night1car" data-role="night1car" sodipodi:insensitive="true" style="display:none" />
-  <image width="677.33337" height="423.33334" preserveAspectRatio="none" xlink:href="night2car.png" id="image1-1" x="0.88916999" y="0.54299003" inkscape:label="night2car" data-role="night2car" sodipodi:insensitive="true" style="display:inline" />
+  <image width="677.33337" height="423.33334" preserveAspectRatio="none" xlink:href="nightnocar.webp" id="image1" x="0.88917" y="0.54299" inkscape:label="nightnocar" data-role="nightnocar" sodipodi:insensitive="true" style="display:inline" />
+  <image width="677.33337" height="423.33334" preserveAspectRatio="none" xlink:href="night1car.webp" id="image1-7" x="0.88916999" y="0.54299003" inkscape:label="night1car" data-role="night1car" sodipodi:insensitive="true" style="display:none" />
+  <image width="677.33337" height="423.33334" preserveAspectRatio="none" xlink:href="night2car.webp" id="image1-1" x="0.88916999" y="0.54299003" inkscape:label="night2car" data-role="night2car" sodipodi:insensitive="true" style="display:inline" />
 
   </g>
 

@@ -8,9 +8,9 @@
   <inkscape:path-effect effect="spiro" id="path-effect9" is_visible="true" lpeversion="1" /><inkscape:path-effect effect="spiro" id="path-effect7" is_visible="true" lpeversion="1" /></defs>
   <g inkscape:label="base" id="base" transform="translate(189.10794,194.75858)" sodipodi:insensitive="true">
     
-  <image width="677.33337" height="423.33334" preserveAspectRatio="none" xlink:href="daynocar.png" id="daynocar" x="-188.21877" y="-194.21559" sodipodi:insensitive="true" inkscape:label="daynocar" style="display:inline" data-role="daynocar" />
-  <image width="677.33337" height="423.33334" preserveAspectRatio="none" xlink:href="day1car.png" id="day1car" x="-188.21877" y="-194.21559" inkscape:label="day1car" style="display:inline" sodipodi:insensitive="true" data-role="day1car" />
-  <image width="677.33337" height="423.33334" preserveAspectRatio="none" xlink:href="day2car.png" id="day2car" x="-188.21877" y="-194.21559" style="display:inline" sodipodi:insensitive="true" inkscape:label="day2car" data-role="day2car" />
+  <image width="677.33337" height="423.33334" preserveAspectRatio="none" xlink:href="daynocar.webp" id="daynocar" x="-188.21877" y="-194.21559" sodipodi:insensitive="true" inkscape:label="daynocar" style="display:inline" data-role="daynocar" />
+  <image width="677.33337" height="423.33334" preserveAspectRatio="none" xlink:href="day1car.webp" id="day1car" x="-188.21877" y="-194.21559" inkscape:label="day1car" style="display:inline" sodipodi:insensitive="true" data-role="day1car" />
+  <image width="677.33337" height="423.33334" preserveAspectRatio="none" xlink:href="day2car.webp" id="day2car" x="-188.21877" y="-194.21559" style="display:inline" sodipodi:insensitive="true" inkscape:label="day2car" data-role="day2car" />
   </g>
   
   <g id="g1" transform="translate(189.10794,194.75858)" inkscape:label="pv1" data-flow-key="pv1" style="opacity:1">
