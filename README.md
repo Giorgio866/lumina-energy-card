@@ -1,11 +1,11 @@
 # Lumina Energy Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-![Version](https://img.shields.io/badge/version-2.0.0-beta1-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.1-blue.svg)
 
 Limuna Energy Card repository is <https://github.com/Giorgio866/lumina-energy-card>.
 
-![Lumina Energy Card Background](dist/lumina-modern-day.png)
+![Lumina Energy Card Background](images/lumina-modern-day.png)
 
 Support Giorgio [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?style=for-the-badge&logo=paypal)](https://www.paypal.me/giorgiosalierno)
 Support Brent ratava[![Donate Brent Wesley @ratava](https://github.com/user-attachments/assets/b603f494-a142-4bb0-893f-aaafd5d19dfd)](https://ko-fi.com/brentwesley)
