@@ -1,4 +1,4 @@
-const _0x3df41e=_0x42ff;function _0x4c78(){const _0xb257cb=['B2jQzwn0','ndK0odq3mePbsMTszq','ztq0yZLMzti','ww5wELPysMO','mZuZmZm3mhfSzLDbua','CM94Es4Zzha','BgfZDfn0yxq','wti5A1Prpt0','wKrKA1KYrMO','CMvHC29U','z2v0sxrLBq','AxngAw5PDgu','C3rYAw5N','zNvUy3rPB24','y3jLyxrLrwW','lNDVCMTLCNm','BgfZDevYCG','yJi1mfPxnta','p3q9','BhvTAw5HlwW','y2HHCKnVzgu','C3rYAw5NAwy','AwnLBNnLlxa','yxnL','wLy5mK13pt0','BgfZDe9Rqxq','y21wEgrxvNO','rwXLBwvUDa','yvC5Dq','zfCXCgjTrMy','C29UCf8','AxnbCNjHEq','tg1oDMjtouG','m2u1ngjHzwi','yM9VBgvHBG','BhvTAw5Hx2q','jNq9','Dg9vChbLCKm','yJy0owjKmJi','mwq4mdaWzgm','mJbLzdfIyJy','zwj1z19SAwm','tNPnD01hvMO','Aw5KzxHpzG','Aef0','zgvSzxrLtM8','yKHwDgfxnwG','yvC1Bwj3pt0','BhvTAw5Hx2O','BgfZDezLDgm','y2fSBgjHy2S','yLDSBMnTrJa','BwfW','Ahr0Chm6lY8','u2nYAxb0igW','yxbWzw5Kq2G','mdeYmZq1nJC','zw5Zzq','yvC5EvOYBhy','B25LCNjVCG','Bwf0y2G','Aw5JBhvKzxm','zMXVB3i','wdjwDvPysM4','wM1nmLPQstu','y2HHCKf0','Dgv4Da','C2v0sxrLBq','C3rHDhvZ','C3rHCNrZv2K','mtqXotG5vMXtEw9K','CMvTB3zLq2G','C3bSAxq','zNjVBunOyxi','DhjPBq','ohv2wMrOta','zgqWmMrKmgu','AwXK','zee9pq','C2XPy2u','t0rzmKWYrM0','txPNEe56ute','zw1LBNq','mta2nJKWmgvPBuvoEG','yM9KEq','zM9Yy2u','mZu5mdG4quHrENbd','zg9JDw1LBNq','CMfUzg9T','nJe0mJG1n1HyALblCW','zvy5ALLysMS','C3jJ','tvrjnu1etMG','BwvZC2fNzq','mtG4v1bXD0PR','BgfZDenVDw4','CgfYzw50tM8','oeL4DMfbBW','tdnkAgr5oxm','q29Kzq','vgLTzw91Da','yxrL','zwj1z191Cgq','yuHsmgnitty','Dg9tDhjPBMC','zfHcA1LyuMW','tevdlq','BM93','thK5BMfytJa','BNvTyMvY','mJaWotvgBMnyDuy','odLHyMnKzwy','Dg9mB3DLCKm','mJe3yJi2yMi','wdnwCfPbpt0','zM9YrwfJAa','B2fKigvYCM8','tg1KCgrhAde','C2nYAxb0','BgvUz3rO','CMvWBgfJzq','ChvZAa','mgrMotGWoty','lMrLDG','CMLUDdG2mty'];_0x4c78=function(){return _0xb257cb;};return _0x4c78();}(function(_0x44cf04,_0x3a906d){const _0x4ecefd=_0x42ff,_0x475b11=_0x44cf04();while(!![]){try{const _0x4996f3=parseInt(_0x4ecefd(0x164))/0x1+parseInt(_0x4ecefd(0x17f))/0x2*(parseInt(_0x4ecefd(0x174))/0x3)+parseInt(_0x4ecefd(0x17c))/0x4*(parseInt(_0x4ecefd(0x18c))/0x5)+-parseInt(_0x4ecefd(0x19f))/0x6+-parseInt(_0x4ecefd(0x177))/0x7*(-parseInt(_0x4ecefd(0x169))/0x8)+-parseInt(_0x4ecefd(0x19c))/0x9+-parseInt(_0x4ecefd(0x171))/0xa;if(_0x4996f3===_0x3a906d)break;else _0x475b11['push'](_0x475b11['shift']());}catch(_0x10b0d5){_0x475b11['push'](_0x475b11['shift']());}}}(_0x4c78,0x6bdca));const LUMINA_SHA256=_0x36cf67=>{const _0x18ff53=_0x42ff,_0x563042=(_0x49e648,_0x4cc426)=>{const _0x10c353=(0xffff&_0x49e648)+(0xffff&_0x4cc426);return(_0x49e648>>0x10)+(_0x4cc426>>0x10)+(_0x10c353>>0x10)<<0x10|0xffff&_0x10c353;},_0x7fd607=(_0x59bbee,_0x4dd8bb)=>_0x59bbee>>>_0x4dd8bb|_0x59bbee<<0x20-_0x4dd8bb,_0x1e5633=(_0x3a4b68,_0x354bf8)=>_0x3a4b68>>>_0x354bf8,_0x347f01=(_0x4121ed,_0x5352c8,_0x50b5cb)=>_0x4121ed&_0x5352c8^~_0x4121ed&_0x50b5cb,_0x55a81e=(_0x174c83,_0x41e318,_0x2c87e0)=>_0x174c83&_0x41e318^_0x174c83&_0x2c87e0^_0x41e318&_0x2c87e0,_0x254fec=_0x4b10f6=>_0x7fd607(_0x4b10f6,0x2)^_0x7fd607(_0x4b10f6,0xd)^_0x7fd607(_0x4b10f6,0x16),_0x2ce8c8=_0x153f51=>_0x7fd607(_0x153f51,0x6)^_0x7fd607(_0x153f51,0xb)^_0x7fd607(_0x153f51,0x19),_0x5a754b=_0x48524e=>_0x7fd607(_0x48524e,0x7)^_0x7fd607(_0x48524e,0x12)^_0x1e5633(_0x48524e,0x3),_0x3869df=_0x4c8a8e=>_0x7fd607(_0x4c8a8e,0x11)^_0x7fd607(_0x4c8a8e,0x13)^_0x1e5633(_0x4c8a8e,0xa),_0x1d45f1=(_0x31d4ac=>{const _0x71764a=_0x42ff;_0x31d4ac=_0x31d4ac[_0x71764a(0x196)](/\r\n/g,'\x0a');let _0x469a6a='';for(let _0x25b906=0x0;_0x25b906<_0x31d4ac[_0x71764a(0x195)];_0x25b906++){const _0x5e8180=_0x31d4ac[_0x71764a(0x1af)+'At'](_0x25b906);_0x5e8180<0x80?_0x469a6a+=String[_0x71764a(0x167)+_0x71764a(0x181)](_0x5e8180):_0x5e8180>0x7f&&_0x5e8180<0x800?(_0x469a6a+=String[_0x71764a(0x167)+_0x71764a(0x181)](_0x5e8180>>0x6|0xc0),_0x469a6a+=String[_0x71764a(0x167)+_0x71764a(0x181)](0x3f&_0x5e8180|0x80)):(_0x469a6a+=String[_0x71764a(0x167)+_0x71764a(0x181)](_0x5e8180>>0xc|0xe0),_0x469a6a+=String[_0x71764a(0x167)+_0x71764a(0x181)](_0x5e8180>>0x6&0x3f|0x80),_0x469a6a+=String[_0x71764a(0x167)+_0x71764a(0x181)](0x3f&_0x5e8180|0x80));}return _0x469a6a;})(_0x36cf67);return(_0x1e1815=>{const _0x5049ad=_0x42ff;let _0x49fc58='';for(let _0x24ca98=0x0;_0x24ca98<0x4*_0x1e1815[_0x5049ad(0x195)];_0x24ca98++)_0x49fc58+=(_0x5049ad(0x156)+_0x5049ad(0x18d))[_0x5049ad(0x15f)](_0x1e1815[_0x24ca98>>0x2]>>0x8*(0x3-_0x24ca98%0x4)+0x4&0xf)+(_0x5049ad(0x156)+_0x5049ad(0x18d))[_0x5049ad(0x15f)](_0x1e1815[_0x24ca98>>0x2]>>0x8*(0x3-_0x24ca98%0x4)&0xf);return _0x49fc58;})(((_0x3d9e15,_0x432cd1)=>{const _0x192f31=_0x42ff,_0x23c668=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0xfc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x6ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2],_0x25b862=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19],_0x27120d=new Array(0x40);let _0x5065ce,_0x30b5ef,_0x1a7813,_0xd12604,_0x28463d,_0xc6795a,_0x4ac15c,_0x2701a0,_0xf5fc20,_0x29fb51,_0x485683,_0x12346e;for(_0x3d9e15[_0x432cd1>>0x5]|=0x80<<0x18-_0x432cd1%0x20,_0x3d9e15[0xf+(_0x432cd1+0x40>>0x9<<0x4)]=_0x432cd1,_0xf5fc20=0x0;_0xf5fc20<_0x3d9e15[_0x192f31(0x195)];_0xf5fc20+=0x10){for(_0x5065ce=_0x25b862[0x0],_0x30b5ef=_0x25b862[0x1],_0x1a7813=_0x25b862[0x2],_0xd12604=_0x25b862[0x3],_0x28463d=_0x25b862[0x4],_0xc6795a=_0x25b862[0x5],_0x4ac15c=_0x25b862[0x6],_0x2701a0=_0x25b862[0x7],_0x29fb51=0x0;_0x29fb51<0x40;_0x29fb51++)_0x27120d[_0x29fb51]=_0x29fb51<0x10?_0x3d9e15[_0x29fb51+_0xf5fc20]:_0x563042(_0x563042(_0x563042(_0x3869df(_0x27120d[_0x29fb51-0x2]),_0x27120d[_0x29fb51-0x7]),_0x5a754b(_0x27120d[_0x29fb51-0xf])),_0x27120d[_0x29fb51-0x10]),_0x485683=_0x563042(_0x563042(_0x563042(_0x563042(_0x2701a0,_0x2ce8c8(_0x28463d)),_0x347f01(_0x28463d,_0xc6795a,_0x4ac15c)),_0x23c668[_0x29fb51]),_0x27120d[_0x29fb51]),_0x12346e=_0x563042(_0x254fec(_0x5065ce),_0x55a81e(_0x5065ce,_0x30b5ef,_0x1a7813)),_0x2701a0=_0x4ac15c,_0x4ac15c=_0xc6795a,_0xc6795a=_0x28463d,_0x28463d=_0x563042(_0xd12604,_0x485683),_0xd12604=_0x1a7813,_0x1a7813=_0x30b5ef,_0x30b5ef=_0x5065ce,_0x5065ce=_0x563042(_0x485683,_0x12346e);_0x25b862[0x0]=_0x563042(_0x5065ce,_0x25b862[0x0]),_0x25b862[0x1]=_0x563042(_0x30b5ef,_0x25b862[0x1]),_0x25b862[0x2]=_0x563042(_0x1a7813,_0x25b862[0x2]),_0x25b862[0x3]=_0x563042(_0xd12604,_0x25b862[0x3]),_0x25b862[0x4]=_0x563042(_0x28463d,_0x25b862[0x4]),_0x25b862[0x5]=_0x563042(_0xc6795a,_0x25b862[0x5]),_0x25b862[0x6]=_0x563042(_0x4ac15c,_0x25b862[0x6]),_0x25b862[0x7]=_0x563042(_0x2701a0,_0x25b862[0x7]);}return _0x25b862;})((_0x1e2a65=>{const _0x1d54ac=_0x42ff,_0x443d44=[];for(let _0x5bd254=0x0;_0x5bd254<0x8*_0x1e2a65[_0x1d54ac(0x195)];_0x5bd254+=0x8)_0x443d44[_0x5bd254>>0x5]|=(0xff&_0x1e2a65[_0x1d54ac(0x1af)+'At'](_0x5bd254/0x8))<<0x18-_0x5bd254%0x20;return _0x443d44;})(_0x1d45f1),0x8*_0x1d45f1[_0x18ff53(0x195)]));},LUMINA_REMOTE_URL=atob(_0x3df41e(0x185)+_0x3df41e(0x18a)+_0x3df41e(0x193)+_0x3df41e(0x19e)+_0x3df41e(0x1ac)+_0x3df41e(0x13e)+_0x3df41e(0x158)+_0x3df41e(0x16e)+_0x3df41e(0x15e)+_0x3df41e(0x1a3)+_0x3df41e(0x16f)+_0x3df41e(0x17a)+_0x3df41e(0x148)+_0x3df41e(0x180)+_0x3df41e(0x13b)+_0x3df41e(0x1a2));let LUMINA_AUTH_LIST_V1=null,LUMINA_AUTH_LIST_V2=null,LUMINA_AUTH_LIST_V3=null,LUMINA_FETCHING=!0x1,LUMINA_AUTH_META={'lastFetchAt':0x0,'lastOkAt':0x0,'lastErr':'','lastCount':0x0,'lastStatus':0x0};function _0x42ff(_0x1d746f,_0xc0941b){_0x1d746f=_0x1d746f-0x138;const _0x4c78cb=_0x4c78();let _0x42ff69=_0x4c78cb[_0x1d746f];if(_0x42ff['zjeVLW']===undefined){var _0x536c22=function(_0x12d5dd){const _0x1e1172='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x36cf67='',_0x563042='';for(let _0x7fd607=0x0,_0x1e5633,_0x347f01,_0x55a81e=0x0;_0x347f01=_0x12d5dd['charAt'](_0x55a81e++);~_0x347f01&&(_0x1e5633=_0x7fd607%0x4?_0x1e5633*0x40+_0x347f01:_0x347f01,_0x7fd607++%0x4)?_0x36cf67+=String['fromCharCode'](0xff&_0x1e5633>>(-0x2*_0x7fd607&0x6)):0x0){_0x347f01=_0x1e1172['indexOf'](_0x347f01);}for(let _0x254fec=0x0,_0x2ce8c8=_0x36cf67['length'];_0x254fec<_0x2ce8c8;_0x254fec++){_0x563042+='%'+('00'+_0x36cf67['charCodeAt'](_0x254fec)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x563042);};_0x42ff['URxwAD']=_0x536c22,_0x42ff['bcroVz']={},_0x42ff['zjeVLW']=!![];}const _0xe0ac75=_0x4c78cb[0x0],_0x708098=_0x1d746f+_0xe0ac75,_0x9ed089=_0x42ff['bcroVz'][_0x708098];return!_0x9ed089?(_0x42ff69=_0x42ff['URxwAD'](_0x42ff69),_0x42ff['bcroVz'][_0x708098]=_0x42ff69):_0x42ff69=_0x9ed089,_0x42ff69;}const LUMINA_UNLOCK_V1_IDS=[_0x3df41e(0x19d)+_0x3df41e(0x16a)+_0x3df41e(0x13f)+_0x3df41e(0x198)+_0x3df41e(0x144)+_0x3df41e(0x18f)+_0x3df41e(0x146)+_0x3df41e(0x145)],LUMINA_UNLOCK_V3_IDS=[],LUMINA_DEBUG_LICENSE=((()=>{const _0x51f698=_0x3df41e;try{return'1'===localStorage[_0x51f698(0x1a5)](_0x51f698(0x141)+_0x51f698(0x147)+_0x51f698(0x157));}catch(_0x436621){return!0x1;}})()),LUMINA_UID_KEY=atob(_0x3df41e(0x14c)+_0x3df41e(0x15d)+_0x3df41e(0x178)+_0x3df41e(0x190)),getLuminaUID=()=>{const _0x56f559=_0x3df41e;try{const _0x28b89e=localStorage[_0x56f559(0x1a5)](LUMINA_UID_KEY);if(_0x28b89e&&_0x56f559(0x1a7)==typeof _0x28b89e&&_0x28b89e[_0x56f559(0x163)+'th'](_0x56f559(0x188)))return _0x28b89e;const _0x267a46=(Math[_0x56f559(0x176)]()[_0x56f559(0x186)](0x10)[_0x56f559(0x16d)](0x2)+Math[_0x56f559(0x176)]()[_0x56f559(0x186)](0x10)[_0x56f559(0x16d)](0x2))[_0x56f559(0x143)+_0x56f559(0x1b2)](),_0xfce7ef=_0x56f559(0x188)+Date[_0x56f559(0x189)]()[_0x56f559(0x186)](0x10)[_0x56f559(0x143)+_0x56f559(0x1b2)]()+'-'+_0x267a46[_0x56f559(0x16d)](0x0,0x10);return localStorage[_0x56f559(0x161)](LUMINA_UID_KEY,_0xfce7ef),_0xfce7ef;}catch(_0x20b7f6){const _0x32621f=Math[_0x56f559(0x176)]()[_0x56f559(0x186)](0x10)[_0x56f559(0x16d)](0x2,0xa)[_0x56f559(0x143)+_0x56f559(0x1b2)]();return _0x56f559(0x188)+Date[_0x56f559(0x189)]()[_0x56f559(0x186)](0x10)[_0x56f559(0x143)+_0x56f559(0x1b2)]()+'-'+_0x32621f;}},LUMINA_LICENSE_ENDPOINT=_0x3df41e(0x153)+_0x3df41e(0x1ae)+_0x3df41e(0x1b1)+_0x3df41e(0x1a0)+_0x3df41e(0x19a)+_0x3df41e(0x1aa)+_0x3df41e(0x199),LUMINA_ACT_REQ=atob(_0x3df41e(0x138)+_0x3df41e(0x16c)),LUMINA_ACT_MIG=atob(_0x3df41e(0x151)+_0x3df41e(0x13a)),LUMINA_ACT_UPDATEINFO=atob(_0x3df41e(0x187)+_0x3df41e(0x14d)),LUMINA_ACT_MIGRATE_V3=atob(_0x3df41e(0x151)+_0x3df41e(0x1b3)),LUMINA_DEBUG_UPDATE=((()=>{const _0x293464=_0x3df41e;try{return'1'===localStorage[_0x293464(0x1a5)](_0x293464(0x141)+_0x293464(0x184)+_0x293464(0x183));}catch(_0x1f3e76){return!0x1;}})()),LUMINA_JSONP=(_0x241d9d,_0x259796=0x3a98)=>new Promise((_0x111026,_0xf7ae0)=>{const _0x33c33d=_0x3df41e;try{const _0x3f50f6=_0x33c33d(0x14e)+_0x33c33d(0x13c)+Date[_0x33c33d(0x189)]()+'_'+Math[_0x33c33d(0x15c)](0x3b9aca00*Math[_0x33c33d(0x176)]()),_0x2ab0a1=document[_0x33c33d(0x1a9)+_0x33c33d(0x170)](_0x33c33d(0x194));let _0x10dcef=!0x1;const _0x430777=_0x302d16=>{const _0x40b8de=_0x33c33d;if(!_0x10dcef){if(_0x10dcef=!0x0,_0x302d16&&_0x302d16[_0x40b8de(0x14b)+'w'])try{delete window[_0x3f50f6];}catch(_0x4f0618){try{window[_0x3f50f6]=void 0x0;}catch(_0x119748){}}else{try{window[_0x3f50f6]=()=>{};}catch(_0x8e9bbf){}try{setTimeout(()=>{try{delete window[_0x3f50f6];}catch(_0x5941cd){}},0x1d4c0);}catch(_0x4afec2){}}try{_0x2ab0a1&&_0x2ab0a1[_0x40b8de(0x17e)+'de']&&_0x2ab0a1[_0x40b8de(0x17e)+'de'][_0x40b8de(0x165)+_0x40b8de(0x16b)](_0x2ab0a1);}catch(_0x366da6){}}},_0x22928c=setTimeout(()=>{const _0x8e0847=_0x33c33d;_0x430777({'deleteNow':!0x1}),_0xf7ae0(new Error(_0x8e0847(0x182)));},_0x259796);window[_0x3f50f6]=_0x3ba782=>{clearTimeout(_0x22928c),_0x430777({'deleteNow':!0x0}),_0x111026(_0x3ba782);},_0x2ab0a1[_0x33c33d(0x159)]=()=>{const _0x400dab=_0x33c33d;clearTimeout(_0x22928c),_0x430777({'deleteNow':!0x0}),_0xf7ae0(new Error(_0x400dab(0x154)+_0x400dab(0x192)+'r'));},_0x2ab0a1[_0x33c33d(0x179)]=_0x241d9d+(_0x241d9d[_0x33c33d(0x149)]('?')>=0x0?'&':'?')+(_0x33c33d(0x150)+'=')+_0x3f50f6+_0x33c33d(0x142)+Date[_0x33c33d(0x189)](),(document[_0x33c33d(0x172)]||document[_0x33c33d(0x175)+_0x33c33d(0x139)])[_0x33c33d(0x155)+_0x33c33d(0x16b)](_0x2ab0a1);}catch(_0x5bdfcc){_0xf7ae0(_0x5bdfcc);}}),LUMINA_PACK=_0xf5c881=>{const _0x364b89=_0x3df41e;try{const _0x1e2cdc=JSON[_0x364b89(0x1b0)+'y'](_0xf5c881||{});return btoa(unescape(encodeURIComponent(_0x1e2cdc)))[_0x364b89(0x196)](/\+/g,'-')[_0x364b89(0x196)](/\//g,'_')[_0x364b89(0x196)](/=+$/g,'');}catch(_0x2aa16f){return'';}},LUMINA_VERSION_CMP=(_0x55afdf,_0x2eaf16)=>{const _0x48a671=_0x3df41e,_0x2f5585=String(_0x55afdf||'')[_0x48a671(0x168)]()[_0x48a671(0x166)]('.')[_0x48a671(0x152)](_0xef28e4=>parseInt(_0xef28e4,0xa)),_0x131bbb=String(_0x2eaf16||'')[_0x48a671(0x168)]()[_0x48a671(0x166)]('.')[_0x48a671(0x152)](_0x19abbc=>parseInt(_0x19abbc,0xa));for(let _0x50285d=0x0;_0x50285d<0x3;_0x50285d++){const _0x494f6f=Number[_0x48a671(0x1a6)](_0x2f5585[_0x50285d])?_0x2f5585[_0x50285d]:0x0,_0x5dc2ca=Number[_0x48a671(0x1a6)](_0x131bbb[_0x50285d])?_0x131bbb[_0x50285d]:0x0;if(_0x494f6f<_0x5dc2ca)return-0x1;if(_0x494f6f>_0x5dc2ca)return 0x1;}return 0x0;},LUMINA_REFRESH_AUTH=async _0x3894da=>{const _0x1f8978=_0x3df41e;let _0x24d776=null,_0x5730bc=!0x1,_0x3120d0='';if(_0x1f8978(0x1a8)==typeof _0x3894da?_0x24d776=_0x3894da:_0x1f8978(0x140)==typeof _0x3894da?_0x5730bc=_0x3894da:_0x3894da&&_0x1f8978(0x19b)==typeof _0x3894da&&(_0x24d776=_0x1f8978(0x1a8)==typeof _0x3894da[_0x1f8978(0x150)]?_0x3894da[_0x1f8978(0x150)]:null,_0x5730bc=!!_0x3894da[_0x1f8978(0x173)],_0x3894da[_0x1f8978(0x1a4)]?String(_0x3894da[_0x1f8978(0x1a4)]):''),!_0x5730bc&&null!==LUMINA_AUTH_LIST_V1&&null!==LUMINA_AUTH_LIST_V2&&null!==LUMINA_AUTH_LIST_V3)return LUMINA_AUTH_LIST_V1;if(LUMINA_FETCHING)return null;LUMINA_FETCHING=!0x0,LUMINA_AUTH_META[_0x1f8978(0x14f)+_0x1f8978(0x14a)]=Date[_0x1f8978(0x189)](),LUMINA_AUTH_META[_0x1f8978(0x1ab)]='';try{const _0x2240ee=LUMINA_REMOTE_URL+_0x1f8978(0x1ad)+Date[_0x1f8978(0x189)](),_0x4e816c=await fetch(_0x2240ee);try{LUMINA_AUTH_META[_0x1f8978(0x1a1)+'us']=_0x4e816c&&_0x1f8978(0x18b)==typeof _0x4e816c[_0x1f8978(0x162)]?_0x4e816c[_0x1f8978(0x162)]:0x0;}catch(_0x325783){LUMINA_AUTH_META[_0x1f8978(0x1a1)+'us']=0x0;}const _0x414a0e=(await _0x4e816c[_0x1f8978(0x160)]())[_0x1f8978(0x166)](/\r?\n/);LUMINA_AUTH_LIST_V1=[],LUMINA_AUTH_LIST_V2=[],LUMINA_AUTH_LIST_V3=[];for(let _0x4ea5a3=0x0;_0x4ea5a3<_0x414a0e[_0x1f8978(0x195)];_0x4ea5a3++){const _0x537820=_0x414a0e[_0x4ea5a3][_0x1f8978(0x168)](),_0x562d5a=_0x537820[_0x1f8978(0x15a)](/v1:([0-9a-fA-F]{64})/);_0x562d5a&&_0x562d5a[0x1]&&LUMINA_AUTH_LIST_V1[_0x1f8978(0x197)](String(_0x562d5a[0x1])[_0x1f8978(0x18e)+_0x1f8978(0x1b2)]());const _0x4bec31=_0x537820[_0x1f8978(0x15a)](/v2:([0-9a-fA-F]{64})/);_0x4bec31&&_0x4bec31[0x1]&&LUMINA_AUTH_LIST_V2[_0x1f8978(0x197)](String(_0x4bec31[0x1])[_0x1f8978(0x18e)+_0x1f8978(0x1b2)]());const _0x4f0697=_0x537820[_0x1f8978(0x15a)](/v3:([0-9a-fA-F]{64})/);_0x4f0697&&_0x4f0697[0x1]&&LUMINA_AUTH_LIST_V3[_0x1f8978(0x197)](String(_0x4f0697[0x1])[_0x1f8978(0x18e)+_0x1f8978(0x1b2)]());}Array[_0x1f8978(0x13d)](LUMINA_UNLOCK_V1_IDS)&&LUMINA_UNLOCK_V1_IDS[_0x1f8978(0x191)](_0x175610=>{const _0x5d35a8=_0x1f8978;if(_0x175610&&_0x5d35a8(0x1a7)==typeof _0x175610&&0x40===_0x175610[_0x5d35a8(0x195)]){const _0x52ece2=_0x175610[_0x5d35a8(0x18e)+_0x5d35a8(0x1b2)]();LUMINA_AUTH_LIST_V1[_0x5d35a8(0x15b)](_0x52ece2)||LUMINA_AUTH_LIST_V1[_0x5d35a8(0x197)](_0x52ece2);}}),Array[_0x1f8978(0x13d)](LUMINA_UNLOCK_V3_IDS)&&LUMINA_UNLOCK_V3_IDS[_0x1f8978(0x191)](_0xb53b5c=>{const _0x1d3949=_0x1f8978;if(_0xb53b5c&&_0x1d3949(0x1a7)==typeof _0xb53b5c&&0x40===_0xb53b5c[_0x1d3949(0x195)]){const _0x24b139=_0xb53b5c[_0x1d3949(0x18e)+_0x1d3949(0x1b2)]();LUMINA_AUTH_LIST_V3[_0x1d3949(0x15b)](_0x24b139)||LUMINA_AUTH_LIST_V3[_0x1d3949(0x197)](_0x24b139);}}),LUMINA_AUTH_META[_0x1f8978(0x1b4)]=Date[_0x1f8978(0x189)]();const _0x2fbfb9=Array[_0x1f8978(0x13d)](LUMINA_AUTH_LIST_V1)?LUMINA_AUTH_LIST_V1[_0x1f8978(0x195)]:0x0,_0x735b08=Array[_0x1f8978(0x13d)](LUMINA_AUTH_LIST_V2)?LUMINA_AUTH_LIST_V2[_0x1f8978(0x195)]:0x0,_0x4ab6c9=Array[_0x1f8978(0x13d)](LUMINA_AUTH_LIST_V3)?LUMINA_AUTH_LIST_V3[_0x1f8978(0x195)]:0x0;LUMINA_AUTH_META[_0x1f8978(0x17d)+'t']=_0x2fbfb9+_0x735b08+_0x4ab6c9,_0x24d776&&_0x24d776();}catch(_0x3854c8){LUMINA_AUTH_META[_0x1f8978(0x1ab)]=_0x3854c8&&_0x3854c8[_0x1f8978(0x17b)]?String(_0x3854c8[_0x1f8978(0x17b)]):String(_0x3854c8),LUMINA_AUTH_LIST_V1=[],LUMINA_AUTH_LIST_V2=[],LUMINA_AUTH_LIST_V3=[],Array[_0x1f8978(0x13d)](LUMINA_UNLOCK_V1_IDS)&&LUMINA_UNLOCK_V1_IDS[_0x1f8978(0x191)](_0x151691=>{const _0x5d3527=_0x1f8978;if(_0x151691&&_0x5d3527(0x1a7)==typeof _0x151691&&0x40===_0x151691[_0x5d3527(0x195)]){const _0x4283c6=_0x151691[_0x5d3527(0x18e)+_0x5d3527(0x1b2)]();LUMINA_AUTH_LIST_V1[_0x5d3527(0x15b)](_0x4283c6)||LUMINA_AUTH_LIST_V1[_0x5d3527(0x197)](_0x4283c6);}}),Array[_0x1f8978(0x13d)](LUMINA_UNLOCK_V3_IDS)&&LUMINA_UNLOCK_V3_IDS[_0x1f8978(0x191)](_0x179e06=>{const _0x343d2c=_0x1f8978;if(_0x179e06&&_0x343d2c(0x1a7)==typeof _0x179e06&&0x40===_0x179e06[_0x343d2c(0x195)]){const _0x5ad5ab=_0x179e06[_0x343d2c(0x18e)+_0x343d2c(0x1b2)]();LUMINA_AUTH_LIST_V3[_0x343d2c(0x15b)](_0x5ad5ab)||LUMINA_AUTH_LIST_V3[_0x343d2c(0x197)](_0x5ad5ab);}}),_0x24d776&&_0x24d776();}finally{LUMINA_FETCHING=!0x1;}return LUMINA_AUTH_LIST_V1;};const __s = (...a) => a.join('');
+function _0x2c23(_0x18676,_0x184dc3){_0x18676=_0x18676-0xf5;const _0x4a6309=_0x4a63();let _0x2c234a=_0x4a6309[_0x18676];if(_0x2c23['TyJJSo']===undefined){var _0xfb5bdb=function(_0xf1625c){const _0x2dbe2='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x562ad8='',_0x7f91e8='';for(let _0x3a66e5=0x0,_0x344018,_0x48738f,_0x3a2275=0x0;_0x48738f=_0xf1625c['charAt'](_0x3a2275++);~_0x48738f&&(_0x344018=_0x3a66e5%0x4?_0x344018*0x40+_0x48738f:_0x48738f,_0x3a66e5++%0x4)?_0x562ad8+=String['fromCharCode'](0xff&_0x344018>>(-0x2*_0x3a66e5&0x6)):0x0){_0x48738f=_0x2dbe2['indexOf'](_0x48738f);}for(let _0xa51c9=0x0,_0x390a2f=_0x562ad8['length'];_0xa51c9<_0x390a2f;_0xa51c9++){_0x7f91e8+='%'+('00'+_0x562ad8['charCodeAt'](_0xa51c9)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x7f91e8);};_0x2c23['IzfRjG']=_0xfb5bdb,_0x2c23['XroyEG']={},_0x2c23['TyJJSo']=!![];}const _0x376bad=_0x4a6309[0x0],_0x3a9820=_0x18676+_0x376bad,_0x1f3505=_0x2c23['XroyEG'][_0x3a9820];return!_0x1f3505?(_0x2c234a=_0x2c23['IzfRjG'](_0x2c234a),_0x2c23['XroyEG'][_0x3a9820]=_0x2c234a):_0x2c234a=_0x1f3505,_0x2c234a;}function _0x4a63(){const _0x225c84=['BgfZDevYCG','m2u1ngjHzwi','yuHsmgnitty','C3bSAxq','CMfUzg9T','q29Kzq','y3jLyxrLrwW','yxbWzw5Kq2G','Dgv4Da','ndeYmJaWwKrpven4','odLHyMnKzwy','zg9JDw1LBNq','CMvWBgfJzq','mtq2murLDML4rW','AwXK','yLDSBMnTrJa','yvC5EvOYBhy','mtGZndi5tNviD1vh','C3jJ','Aw5JBhvKzxm','tvrjnu1etMG','C2XPy2u','BNvTyMvY','Dg9vChbLCKm','oty2ofrLA3jTBa','BgfZDfn0yxq','mJC1mZi0mhPHExPtAG','rwXLBwvUDa','AwnLBNnLlxa','Aw5KzxHpzG','u2nYAxb0igW','mgrMotGWoty','DhjPBq','BgfZDenVDw4','vgLTzw91Da','zgqWmMrKmgu','mdeYmZq1nJC','tg1oDMjtouG','zgvSzxrLtM8','Aef0','BgfZDe9Rqxq','yxnL','wti5A1Prpt0','wLy5mK13pt0','zw1LBNq','C3rHCNrZv2K','ndqYmZm4nunqyKzisG','zwj1z19SAwm','mJe3yJi2yMi','BgfZDezLDgm','C3rHDhvZ','thK5BMfytJa','zM9Yy2u','p3q9','zee9pq','zfCXCgjTrMy','B25LCNjVCG','y2fSBgjHy2S','BhvTAw5HlwW','CM94Es4Zzha','yxrL','wdnwCfPbpt0','Bwf0y2G','zw5Zzq','otj2vu1Xwvi','lMrLDG','BhvTAw5Hx2O','ww5wELPysMO','BwfW','mtuXnJq2yuTWzwve','tevdlq','mJbLzdfIyJy','t0rzmKWYrM0','CMvHC29U','y21wEgrxvNO','y2HHCKnVzgu','mtCZmgLJuK54yq','BwvZC2fNzq','jNq9','yvC5Dq','zNvUy3rPB24','zfHcA1LyuMW','yJi1mfPxnta','zMXVB3i','ChvZAa','og56BhDQDG','zM9YrwfJAa','C3rYAw5N','C2v0sxrLBq','CMvTB3zLq2G','tg1KCgrhAde','yvC1Bwj3pt0','zvy5ALLysMS','yKHwDgfxnwG','wdjwDvPysM4','AxnbCNjHEq','Dg9mB3DLCKm','B2fKigvYCM8','yM9KEq','yJy0owjKmJi','z2v0sxrLBq','tNPnD01hvMO','txPNEe56ute','tdnkAgr5oxm','y2HHCKf0','Dg9tDhjPBMC','BhvTAw5Hx2q','mwq4mdaWzgm','Ahr0Chm6lY8','ztq0yZLMzti','C3rYAw5NAwy','lNDVCMTLCNm','yM9VBgvHBG','C29UCf8','C2nYAxb0','wM1nmLPQstu','B2jQzwn0','AxngAw5PDgu','zNjVBunOyxi','wKrKA1KYrMO','CgfYzw50tM8','BgvUz3rO','CMLUDdG2mty','BM93','mtG2mtfJuhzjDxa','zwj1z191Cgq'];_0x4a63=function(){return _0x225c84;};return _0x4a63();}const _0x3a2751=_0x2c23;(function(_0x37a99f,_0x427f04){const _0x3c3ff4=_0x2c23,_0x459bce=_0x37a99f();while(!![]){try{const _0x2911dd=-parseInt(_0x3c3ff4(0x15e))/0x1*(-parseInt(_0x3c3ff4(0x122))/0x2)+parseInt(_0x3c3ff4(0x16d))/0x3*(-parseInt(_0x3c3ff4(0xfa))/0x4)+-parseInt(_0x3c3ff4(0x110))/0x5+-parseInt(_0x3c3ff4(0x169))/0x6+-parseInt(_0x3c3ff4(0xfc))/0x7+-parseInt(_0x3c3ff4(0x137))/0x8*(parseInt(_0x3c3ff4(0x171))/0x9)+parseInt(_0x3c3ff4(0x12e))/0xa*(parseInt(_0x3c3ff4(0x127))/0xb);if(_0x2911dd===_0x427f04)break;else _0x459bce['push'](_0x459bce['shift']());}catch(_0xd86fb9){_0x459bce['push'](_0x459bce['shift']());}}}(_0x4a63,0xaa25f));const LUMINA_SHA256=_0x562ad8=>{const _0x299640=_0x2c23,_0x7f91e8=(_0x1fff6,_0x2612b6)=>{const _0x1b6f38=(0xffff&_0x1fff6)+(0xffff&_0x2612b6);return(_0x1fff6>>0x10)+(_0x2612b6>>0x10)+(_0x1b6f38>>0x10)<<0x10|0xffff&_0x1b6f38;},_0x3a66e5=(_0x546f23,_0x26a9d2)=>_0x546f23>>>_0x26a9d2|_0x546f23<<0x20-_0x26a9d2,_0x344018=(_0x8ca3f0,_0x4a6d7c)=>_0x8ca3f0>>>_0x4a6d7c,_0x48738f=(_0x1b0001,_0x59b3c7,_0x47ba74)=>_0x1b0001&_0x59b3c7^~_0x1b0001&_0x47ba74,_0x3a2275=(_0x4b1dc0,_0x23a9e2,_0x559590)=>_0x4b1dc0&_0x23a9e2^_0x4b1dc0&_0x559590^_0x23a9e2&_0x559590,_0xa51c9=_0x43f3ca=>_0x3a66e5(_0x43f3ca,0x2)^_0x3a66e5(_0x43f3ca,0xd)^_0x3a66e5(_0x43f3ca,0x16),_0x390a2f=_0xae864a=>_0x3a66e5(_0xae864a,0x6)^_0x3a66e5(_0xae864a,0xb)^_0x3a66e5(_0xae864a,0x19),_0x3b518e=_0x346994=>_0x3a66e5(_0x346994,0x7)^_0x3a66e5(_0x346994,0x12)^_0x344018(_0x346994,0x3),_0x48e6e2=_0x2853a5=>_0x3a66e5(_0x2853a5,0x11)^_0x3a66e5(_0x2853a5,0x13)^_0x344018(_0x2853a5,0xa),_0x29fe3c=(_0x568c7f=>{const _0x11ea73=_0x2c23;_0x568c7f=_0x568c7f[_0x11ea73(0x16c)](/\r\n/g,'\x0a');let _0x56b431='';for(let _0x3e1ffc=0x0;_0x3e1ffc<_0x568c7f[_0x11ea73(0x15b)];_0x3e1ffc++){const _0x8edbcd=_0x568c7f[_0x11ea73(0x12d)+'At'](_0x3e1ffc);_0x8edbcd<0x80?_0x56b431+=String[_0x11ea73(0x158)+_0x11ea73(0x165)](_0x8edbcd):_0x8edbcd>0x7f&&_0x8edbcd<0x800?(_0x56b431+=String[_0x11ea73(0x158)+_0x11ea73(0x165)](_0x8edbcd>>0x6|0xc0),_0x56b431+=String[_0x11ea73(0x158)+_0x11ea73(0x165)](0x3f&_0x8edbcd|0x80)):(_0x56b431+=String[_0x11ea73(0x158)+_0x11ea73(0x165)](_0x8edbcd>>0xc|0xe0),_0x56b431+=String[_0x11ea73(0x158)+_0x11ea73(0x165)](_0x8edbcd>>0x6&0x3f|0x80),_0x56b431+=String[_0x11ea73(0x158)+_0x11ea73(0x165)](0x3f&_0x8edbcd|0x80));}return _0x56b431;})(_0x562ad8);return(_0x2e1bcd=>{const _0x28ebf9=_0x2c23;let _0x23796c='';for(let _0x5456f5=0x0;_0x5456f5<0x4*_0x2e1bcd[_0x28ebf9(0x15b)];_0x5456f5++)_0x23796c+=(_0x28ebf9(0x106)+_0x28ebf9(0x16a))[_0x28ebf9(0x14a)](_0x2e1bcd[_0x5456f5>>0x2]>>0x8*(0x3-_0x5456f5%0x4)+0x4&0xf)+(_0x28ebf9(0x106)+_0x28ebf9(0x16a))[_0x28ebf9(0x14a)](_0x2e1bcd[_0x5456f5>>0x2]>>0x8*(0x3-_0x5456f5%0x4)&0xf);return _0x23796c;})(((_0x235433,_0xc7d549)=>{const _0x45eac0=_0x2c23,_0x190747=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0xfc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x6ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2],_0xe56087=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19],_0x8d6d98=new Array(0x40);let _0x287224,_0xee0edb,_0x567339,_0x3d3766,_0x313fec,_0x3f6bbb,_0x30e07b,_0x5e3848,_0x56f135,_0x91de52,_0x548c04,_0x348e2f;for(_0x235433[_0xc7d549>>0x5]|=0x80<<0x18-_0xc7d549%0x20,_0x235433[0xf+(_0xc7d549+0x40>>0x9<<0x4)]=_0xc7d549,_0x56f135=0x0;_0x56f135<_0x235433[_0x45eac0(0x15b)];_0x56f135+=0x10){for(_0x287224=_0xe56087[0x0],_0xee0edb=_0xe56087[0x1],_0x567339=_0xe56087[0x2],_0x3d3766=_0xe56087[0x3],_0x313fec=_0xe56087[0x4],_0x3f6bbb=_0xe56087[0x5],_0x30e07b=_0xe56087[0x6],_0x5e3848=_0xe56087[0x7],_0x91de52=0x0;_0x91de52<0x40;_0x91de52++)_0x8d6d98[_0x91de52]=_0x91de52<0x10?_0x235433[_0x91de52+_0x56f135]:_0x7f91e8(_0x7f91e8(_0x7f91e8(_0x48e6e2(_0x8d6d98[_0x91de52-0x2]),_0x8d6d98[_0x91de52-0x7]),_0x3b518e(_0x8d6d98[_0x91de52-0xf])),_0x8d6d98[_0x91de52-0x10]),_0x548c04=_0x7f91e8(_0x7f91e8(_0x7f91e8(_0x7f91e8(_0x5e3848,_0x390a2f(_0x313fec)),_0x48738f(_0x313fec,_0x3f6bbb,_0x30e07b)),_0x190747[_0x91de52]),_0x8d6d98[_0x91de52]),_0x348e2f=_0x7f91e8(_0xa51c9(_0x287224),_0x3a2275(_0x287224,_0xee0edb,_0x567339)),_0x5e3848=_0x30e07b,_0x30e07b=_0x3f6bbb,_0x3f6bbb=_0x313fec,_0x313fec=_0x7f91e8(_0x3d3766,_0x548c04),_0x3d3766=_0x567339,_0x567339=_0xee0edb,_0xee0edb=_0x287224,_0x287224=_0x7f91e8(_0x548c04,_0x348e2f);_0xe56087[0x0]=_0x7f91e8(_0x287224,_0xe56087[0x0]),_0xe56087[0x1]=_0x7f91e8(_0xee0edb,_0xe56087[0x1]),_0xe56087[0x2]=_0x7f91e8(_0x567339,_0xe56087[0x2]),_0xe56087[0x3]=_0x7f91e8(_0x3d3766,_0xe56087[0x3]),_0xe56087[0x4]=_0x7f91e8(_0x313fec,_0xe56087[0x4]),_0xe56087[0x5]=_0x7f91e8(_0x3f6bbb,_0xe56087[0x5]),_0xe56087[0x6]=_0x7f91e8(_0x30e07b,_0xe56087[0x6]),_0xe56087[0x7]=_0x7f91e8(_0x5e3848,_0xe56087[0x7]);}return _0xe56087;})((_0x521e8b=>{const _0x54d59d=_0x2c23,_0x1b223d=[];for(let _0x2a113a=0x0;_0x2a113a<0x8*_0x521e8b[_0x54d59d(0x15b)];_0x2a113a+=0x8)_0x1b223d[_0x2a113a>>0x5]|=(0xff&_0x521e8b[_0x54d59d(0x12d)+'At'](_0x2a113a/0x8))<<0x18-_0x2a113a%0x20;return _0x1b223d;})(_0x29fe3c),0x8*_0x29fe3c[_0x299640(0x15b)]));},LUMINA_REMOTE_URL=atob(_0x3a2751(0x162)+_0x3a2751(0x115)+_0x3a2751(0x13c)+_0x3a2751(0x125)+_0x3a2751(0x134)+_0x3a2751(0x107)+_0x3a2751(0x170)+_0x3a2751(0x12a)+_0x3a2751(0x155)+_0x3a2751(0x159)+_0x3a2751(0x148)+_0x3a2751(0xf6)+_0x3a2751(0x147)+_0x3a2751(0x149)+_0x3a2751(0x119)+_0x3a2751(0x10c));let LUMINA_AUTH_LIST_V1=null,LUMINA_AUTH_LIST_V2=null,LUMINA_AUTH_LIST_V3=null,LUMINA_FETCHING=!0x1,LUMINA_AUTH_META={'lastFetchAt':0x0,'lastOkAt':0x0,'lastErr':'','lastCount':0x0,'lastStatus':0x0};const LUMINA_UNLOCK_V1_IDS=[_0x3a2751(0x14f)+_0x3a2751(0x105)+_0x3a2751(0x161)+_0x3a2751(0x101)+_0x3a2751(0x145)+_0x3a2751(0x112)+_0x3a2751(0x129)+_0x3a2751(0x14d)],LUMINA_UNLOCK_V3_IDS=[],LUMINA_DEBUG_LICENSE=((()=>{const _0x2aeadf=_0x3a2751;try{return'1'===localStorage[_0x2aeadf(0x146)](_0x2aeadf(0x14c)+_0x2aeadf(0x111)+_0x2aeadf(0x121));}catch(_0x30eecd){return!0x1;}})()),LUMINA_UID_KEY=atob(_0x3a2751(0x13f)+_0x3a2751(0x140)+_0x3a2751(0x13e)+_0x3a2751(0x11f)),getLuminaUID=()=>{const _0x5d52d1=_0x3a2751;try{const _0xb8bb68=localStorage[_0x5d52d1(0x146)](LUMINA_UID_KEY);if(_0xb8bb68&&_0x5d52d1(0x139)==typeof _0xb8bb68&&_0xb8bb68[_0x5d52d1(0x10f)+'th'](_0x5d52d1(0x128)))return _0xb8bb68;const _0x4763a0=(Math[_0x5d52d1(0x164)]()[_0x5d52d1(0x14b)](0x10)[_0x5d52d1(0xf7)](0x2)+Math[_0x5d52d1(0x164)]()[_0x5d52d1(0x14b)](0x10)[_0x5d52d1(0xf7)](0x2))[_0x5d52d1(0xf9)+_0x5d52d1(0x10b)](),_0x522113=_0x5d52d1(0x128)+Date[_0x5d52d1(0x15d)]()[_0x5d52d1(0x14b)](0x10)[_0x5d52d1(0xf9)+_0x5d52d1(0x10b)]()+'-'+_0x4763a0[_0x5d52d1(0xf7)](0x0,0x10);return localStorage[_0x5d52d1(0x13a)](LUMINA_UID_KEY,_0x522113),_0x522113;}catch(_0x41059c){const _0x501599=Math[_0x5d52d1(0x164)]()[_0x5d52d1(0x14b)](0x10)[_0x5d52d1(0xf7)](0x2,0xa)[_0x5d52d1(0xf9)+_0x5d52d1(0x10b)]();return _0x5d52d1(0x128)+Date[_0x5d52d1(0x15d)]()[_0x5d52d1(0x14b)](0x10)[_0x5d52d1(0xf9)+_0x5d52d1(0x10b)]()+'-'+_0x501599;}},LUMINA_LICENSE_ENDPOINT=_0x3a2751(0x14e)+_0x3a2751(0x11c)+_0x3a2751(0xfe)+_0x3a2751(0x11d)+_0x3a2751(0x15c)+_0x3a2751(0x151)+_0x3a2751(0x123),LUMINA_ACT_REQ=atob(_0x3a2751(0x12c)+_0x3a2751(0x118)),LUMINA_ACT_MIG=atob(_0x3a2751(0x16f)+_0x3a2751(0x131)),LUMINA_ACT_UPDATEINFO=atob(_0x3a2751(0x133)+_0x3a2751(0x13d)),LUMINA_ACT_MIGRATE_V3=atob(_0x3a2751(0x16f)+_0x3a2751(0x10d)),LUMINA_DEBUG_UPDATE=((()=>{const _0x33e917=_0x3a2751;try{return'1'===localStorage[_0x33e917(0x146)](_0x33e917(0x14c)+_0x33e917(0x15f)+_0x33e917(0x11e));}catch(_0x51e67c){return!0x1;}})()),LUMINA_JSONP=(_0x28e330,_0xdca46=0x3a98)=>new Promise((_0x311cfc,_0x32b0e7)=>{const _0x588616=_0x3a2751;try{const _0x312863=_0x588616(0x124)+_0x588616(0x153)+Date[_0x588616(0x15d)]()+'_'+Math[_0x588616(0x135)](0x3b9aca00*Math[_0x588616(0x164)]()),_0x3b54b9=document[_0x588616(0x166)+_0x588616(0x10e)](_0x588616(0x154));let _0x246338=!0x1;const _0x43f389=_0x23a3e2=>{const _0x4a0e6f=_0x588616;if(!_0x246338){if(_0x246338=!0x0,_0x23a3e2&&_0x23a3e2[_0x4a0e6f(0x108)+'w'])try{delete window[_0x312863];}catch(_0x3c3c09){try{window[_0x312863]=void 0x0;}catch(_0x1abbb7){}}else{try{window[_0x312863]=()=>{};}catch(_0x535457){}try{setTimeout(()=>{try{delete window[_0x312863];}catch(_0x552fe0){}},0x1d4c0);}catch(_0x16b7db){}}try{_0x3b54b9&&_0x3b54b9[_0x4a0e6f(0x15a)+'de']&&_0x3b54b9[_0x4a0e6f(0x15a)+'de'][_0x4a0e6f(0x13b)+_0x4a0e6f(0x16e)](_0x3b54b9);}catch(_0x554e10){}}},_0x47ca24=setTimeout(()=>{const _0x4ca3a6=_0x588616;_0x43f389({'deleteNow':!0x1}),_0x32b0e7(new Error(_0x4ca3a6(0x104)));},_0xdca46);window[_0x312863]=_0x5d1443=>{clearTimeout(_0x47ca24),_0x43f389({'deleteNow':!0x0}),_0x311cfc(_0x5d1443);},_0x3b54b9[_0x588616(0x11a)]=()=>{const _0xebbf96=_0x588616;clearTimeout(_0x47ca24),_0x43f389({'deleteNow':!0x0}),_0x32b0e7(new Error(_0xebbf96(0x100)+_0xebbf96(0x143)+'r'));},_0x3b54b9[_0x588616(0x172)]=_0x28e330+(_0x28e330[_0x588616(0xff)]('?')>=0x0?'&':'?')+(_0x588616(0x11b)+'=')+_0x312863+_0x588616(0x130)+Date[_0x588616(0x15d)](),(document[_0x588616(0x144)]||document[_0x588616(0x16b)+_0x588616(0xfd)])[_0x588616(0x167)+_0x588616(0x16e)](_0x3b54b9);}catch(_0x4ad072){_0x32b0e7(_0x4ad072);}}),LUMINA_PACK=_0x999e60=>{const _0x438dc0=_0x3a2751;try{const _0x231314=JSON[_0x438dc0(0x150)+'y'](_0x999e60||{});return btoa(unescape(encodeURIComponent(_0x231314)))[_0x438dc0(0x16c)](/\+/g,'-')[_0x438dc0(0x16c)](/\//g,'_')[_0x438dc0(0x16c)](/=+$/g,'');}catch(_0x2c171c){return'';}},LUMINA_VERSION_CMP=(_0x77a8a6,_0xaa7da3)=>{const _0x1c5412=_0x3a2751,_0xe742bb=String(_0x77a8a6||'')[_0x1c5412(0x102)]()[_0x1c5412(0x163)]('.')[_0x1c5412(0x126)](_0x4e8f9d=>parseInt(_0x4e8f9d,0xa)),_0x2189fd=String(_0xaa7da3||'')[_0x1c5412(0x102)]()[_0x1c5412(0x163)]('.')[_0x1c5412(0x126)](_0x21d6c2=>parseInt(_0x21d6c2,0xa));for(let _0xd2a6b7=0x0;_0xd2a6b7<0x3;_0xd2a6b7++){const _0x290fe0=Number[_0x1c5412(0x157)](_0xe742bb[_0xd2a6b7])?_0xe742bb[_0xd2a6b7]:0x0,_0x272054=Number[_0x1c5412(0x157)](_0x2189fd[_0xd2a6b7])?_0x2189fd[_0xd2a6b7]:0x0;if(_0x290fe0<_0x272054)return-0x1;if(_0x290fe0>_0x272054)return 0x1;}return 0x0;},LUMINA_REFRESH_AUTH=async _0x2e760c=>{const _0x21bbe7=_0x3a2751;let _0x3b7a07=null,_0x10cc73=!0x1,_0x451546='';if(_0x21bbe7(0x132)==typeof _0x2e760c?_0x3b7a07=_0x2e760c:_0x21bbe7(0x152)==typeof _0x2e760c?_0x10cc73=_0x2e760c:_0x2e760c&&_0x21bbe7(0x156)==typeof _0x2e760c&&(_0x3b7a07=_0x21bbe7(0x132)==typeof _0x2e760c[_0x21bbe7(0x11b)]?_0x2e760c[_0x21bbe7(0x11b)]:null,_0x10cc73=!!_0x2e760c[_0x21bbe7(0x116)],_0x2e760c[_0x21bbe7(0x12b)]?String(_0x2e760c[_0x21bbe7(0x12b)]):''),!_0x10cc73&&null!==LUMINA_AUTH_LIST_V1&&null!==LUMINA_AUTH_LIST_V2&&null!==LUMINA_AUTH_LIST_V3)return LUMINA_AUTH_LIST_V1;if(LUMINA_FETCHING)return null;LUMINA_FETCHING=!0x0,LUMINA_AUTH_META[_0x21bbe7(0x113)+_0x21bbe7(0x109)]=Date[_0x21bbe7(0x15d)](),LUMINA_AUTH_META[_0x21bbe7(0x160)]='';try{const _0x479585=LUMINA_REMOTE_URL+_0x21bbe7(0x117)+Date[_0x21bbe7(0x15d)](),_0x298b45=await fetch(_0x479585);try{LUMINA_AUTH_META[_0x21bbe7(0xfb)+'us']=_0x298b45&&_0x21bbe7(0xf8)==typeof _0x298b45[_0x21bbe7(0x114)]?_0x298b45[_0x21bbe7(0x114)]:0x0;}catch(_0x1edb87){LUMINA_AUTH_META[_0x21bbe7(0xfb)+'us']=0x0;}const _0x1e9537=(await _0x298b45[_0x21bbe7(0x168)]())[_0x21bbe7(0x163)](/\r?\n/);LUMINA_AUTH_LIST_V1=[],LUMINA_AUTH_LIST_V2=[],LUMINA_AUTH_LIST_V3=[];for(let _0x195970=0x0;_0x195970<_0x1e9537[_0x21bbe7(0x15b)];_0x195970++){const _0x1ccb43=_0x1e9537[_0x195970][_0x21bbe7(0x102)](),_0x3e3846=_0x1ccb43[_0x21bbe7(0x120)](/v1:([0-9a-fA-F]{64})/);_0x3e3846&&_0x3e3846[0x1]&&LUMINA_AUTH_LIST_V1[_0x21bbe7(0x136)](String(_0x3e3846[0x1])[_0x21bbe7(0x142)+_0x21bbe7(0x10b)]());const _0x4a23a4=_0x1ccb43[_0x21bbe7(0x120)](/v2:([0-9a-fA-F]{64})/);_0x4a23a4&&_0x4a23a4[0x1]&&LUMINA_AUTH_LIST_V2[_0x21bbe7(0x136)](String(_0x4a23a4[0x1])[_0x21bbe7(0x142)+_0x21bbe7(0x10b)]());const _0x12275f=_0x1ccb43[_0x21bbe7(0x120)](/v3:([0-9a-fA-F]{64})/);_0x12275f&&_0x12275f[0x1]&&LUMINA_AUTH_LIST_V3[_0x21bbe7(0x136)](String(_0x12275f[0x1])[_0x21bbe7(0x142)+_0x21bbe7(0x10b)]());}Array[_0x21bbe7(0x141)](LUMINA_UNLOCK_V1_IDS)&&LUMINA_UNLOCK_V1_IDS[_0x21bbe7(0x138)](_0xa5354a=>{const _0x4ed829=_0x21bbe7;if(_0xa5354a&&_0x4ed829(0x139)==typeof _0xa5354a&&0x40===_0xa5354a[_0x4ed829(0x15b)]){const _0x8e997=_0xa5354a[_0x4ed829(0x142)+_0x4ed829(0x10b)]();LUMINA_AUTH_LIST_V1[_0x4ed829(0xf5)](_0x8e997)||LUMINA_AUTH_LIST_V1[_0x4ed829(0x136)](_0x8e997);}}),Array[_0x21bbe7(0x141)](LUMINA_UNLOCK_V3_IDS)&&LUMINA_UNLOCK_V3_IDS[_0x21bbe7(0x138)](_0x4e2ef6=>{const _0x7739fa=_0x21bbe7;if(_0x4e2ef6&&_0x7739fa(0x139)==typeof _0x4e2ef6&&0x40===_0x4e2ef6[_0x7739fa(0x15b)]){const _0x2cb7a7=_0x4e2ef6[_0x7739fa(0x142)+_0x7739fa(0x10b)]();LUMINA_AUTH_LIST_V3[_0x7739fa(0xf5)](_0x2cb7a7)||LUMINA_AUTH_LIST_V3[_0x7739fa(0x136)](_0x2cb7a7);}}),LUMINA_AUTH_META[_0x21bbe7(0x10a)]=Date[_0x21bbe7(0x15d)]();const _0x5795c5=Array[_0x21bbe7(0x141)](LUMINA_AUTH_LIST_V1)?LUMINA_AUTH_LIST_V1[_0x21bbe7(0x15b)]:0x0,_0x2935ff=Array[_0x21bbe7(0x141)](LUMINA_AUTH_LIST_V2)?LUMINA_AUTH_LIST_V2[_0x21bbe7(0x15b)]:0x0,_0x45f30a=Array[_0x21bbe7(0x141)](LUMINA_AUTH_LIST_V3)?LUMINA_AUTH_LIST_V3[_0x21bbe7(0x15b)]:0x0;LUMINA_AUTH_META[_0x21bbe7(0x103)+'t']=_0x5795c5+_0x2935ff+_0x45f30a,_0x3b7a07&&_0x3b7a07();}catch(_0x41b8df){LUMINA_AUTH_META[_0x21bbe7(0x160)]=_0x41b8df&&_0x41b8df[_0x21bbe7(0x12f)]?String(_0x41b8df[_0x21bbe7(0x12f)]):String(_0x41b8df),LUMINA_AUTH_LIST_V1=[],LUMINA_AUTH_LIST_V2=[],LUMINA_AUTH_LIST_V3=[],Array[_0x21bbe7(0x141)](LUMINA_UNLOCK_V1_IDS)&&LUMINA_UNLOCK_V1_IDS[_0x21bbe7(0x138)](_0x537a96=>{const _0x5480b8=_0x21bbe7;if(_0x537a96&&_0x5480b8(0x139)==typeof _0x537a96&&0x40===_0x537a96[_0x5480b8(0x15b)]){const _0x16d308=_0x537a96[_0x5480b8(0x142)+_0x5480b8(0x10b)]();LUMINA_AUTH_LIST_V1[_0x5480b8(0xf5)](_0x16d308)||LUMINA_AUTH_LIST_V1[_0x5480b8(0x136)](_0x16d308);}}),Array[_0x21bbe7(0x141)](LUMINA_UNLOCK_V3_IDS)&&LUMINA_UNLOCK_V3_IDS[_0x21bbe7(0x138)](_0x1fc556=>{const _0x17140e=_0x21bbe7;if(_0x1fc556&&_0x17140e(0x139)==typeof _0x1fc556&&0x40===_0x1fc556[_0x17140e(0x15b)]){const _0x5455f0=_0x1fc556[_0x17140e(0x142)+_0x17140e(0x10b)]();LUMINA_AUTH_LIST_V3[_0x17140e(0xf5)](_0x5455f0)||LUMINA_AUTH_LIST_V3[_0x17140e(0x136)](_0x5455f0);}}),_0x3b7a07&&_0x3b7a07();}finally{LUMINA_FETCHING=!0x1;}return LUMINA_AUTH_LIST_V1;};const __s = (...a) => a.join('');
 const __b64 = (s) => {
   try {
     return (typeof atob === 'function') ? atob(s) : s;
@@ -69,6 +69,8 @@ const __URL_GH_SPONSORS = __b64(__s(
   'aHR0cHM6Ly9naXRodWIuY29tL3Nwb25zb3JzL0dpb3Jn',
   'aW84NjY='
 ));
+/** All user-facing PayPal payment CTAs in the editor use this money-pool (colletta) link. */
+const LUMINA_PAYPAL_COLLETTA_URL = 'https://www.paypal.com/pool/9mz595V3BW?sr=ancr';
 
 /** Max slots for PRO custom flows and custom texts (editor + card). */
 const LUMINA_CUSTOM_FLOW_TEXT_SLOTS = 20;
@@ -1282,15 +1284,8 @@ class LuminaEnergyCard extends HTMLElement {
     }
   }
 
-  /** Hi-tech font preset / template rebuild diagnostics. Enable via YAML `debug_font_preset: true` or console `window.__LUMINA_DEBUG_FONT__ = true`. */
-  _luminaFontLog_(tag, data) {
-    try {
-      const winOn = typeof window !== 'undefined' && window.__LUMINA_DEBUG_FONT__;
-      const cfgOn = this.config && this.config.debug_font_preset;
-      if (!winOn && !cfgOn) return;
-      if (typeof console !== 'undefined' && console.info) console.info('[Lumina font]', tag, data);
-    } catch (e) { /* ignore */ }
-  }
+  /** No-op: font debug logging removed. */
+  _luminaFontLog_(_tag, _data) {}
   
   /**
    * Phase A Optimization: Batch DOM updates helper
@@ -2415,10 +2410,10 @@ class LuminaEnergyCard extends HTMLElement {
       overlay_image_5_width: 800,
       overlay_image_5_height: 450,
       overlay_image_5_opacity: 1.0,
-      overlay_image_6_enabled: true, overlay_image_6: '/local/community/lumina-energy-card/littleboyreal.png', overlay_image_6_x: 645, overlay_image_6_y: 198, overlay_image_6_width: 30, overlay_image_6_height: 70, overlay_image_6_opacity: 1.0,
-      overlay_image_7_enabled: true, overlay_image_7: '/local/community/lumina-energy-card/womanreal.png', overlay_image_7_x: 383, overlay_image_7_y: 221, overlay_image_7_width: 30, overlay_image_7_height: 90, overlay_image_7_opacity: 1.0,
-      overlay_image_8_enabled: true, overlay_image_8: '/local/community/lumina-energy-card/manreal.png', overlay_image_8_x: 593, overlay_image_8_y: 121, overlay_image_8_width: 30, overlay_image_8_height: 80, overlay_image_8_opacity: 1.0,
-      overlay_image_9_enabled: true, overlay_image_9: '/local/community/lumina-energy-card/littlegirlreal.png', overlay_image_9_x: 698, overlay_image_9_y: 180, overlay_image_9_width: 30, overlay_image_9_height: 69, overlay_image_9_opacity: 1.0,
+      overlay_image_6_enabled: false, overlay_image_6: '', overlay_image_6_x: 168, overlay_image_6_y: 292, overlay_image_6_width: 30, overlay_image_6_height: 60, overlay_image_6_opacity: 1.0,
+      overlay_image_7_enabled: false, overlay_image_7: '', overlay_image_7_x: 168, overlay_image_7_y: 292, overlay_image_7_width: 30, overlay_image_7_height: 60, overlay_image_7_opacity: 1.0,
+      overlay_image_8_enabled: false, overlay_image_8: '', overlay_image_8_x: 168, overlay_image_8_y: 292, overlay_image_8_width: 30, overlay_image_8_height: 60, overlay_image_8_opacity: 1.0,
+      overlay_image_9_enabled: false, overlay_image_9: '', overlay_image_9_x: 168, overlay_image_9_y: 292, overlay_image_9_width: 30, overlay_image_9_height: 60, overlay_image_9_opacity: 1.0,
       overlay_image_10_enabled: false, overlay_image_10: '', overlay_image_10_x: 0, overlay_image_10_y: 0, overlay_image_10_width: 800, overlay_image_10_height: 450, overlay_image_10_opacity: 1.0,
       people_1_entity: null, people_1_show_status: true, people_1_status_size: 12, people_1_status_color: '#00FFFF', people_1_status_offset_y: -8,
       people_2_entity: null, people_2_show_status: true, people_2_status_size: 12, people_2_status_color: '#00FFFF', people_2_status_offset_y: -8,
@@ -2826,10 +2821,10 @@ class LuminaEnergyCard extends HTMLElement {
       solar_forecast_x: 407,
       solar_forecast_y: 88,
       solar_forecast_color: '#00FFFF',
-      solar_forecast_size: 16,
+      solar_forecast_size: 15,
       solar_forecast_popup_width: 156,
       solar_forecast_popup_height: 72,
-      solar_forecast_popup_text_size: 10,
+      solar_forecast_popup_text_size: 15,
       solar_forecast_today_label_x: null,
       solar_forecast_today_label_y: null,
       solar_forecast_today_value_x: null,
@@ -2857,8 +2852,12 @@ class LuminaEnergyCard extends HTMLElement {
       solar_forecast_week_col_5_color: '#e8c24a',
       solar_forecast_week_col_6_color: '#22b35a',
       solar_forecast_week_col_7_color: '#f0ad22',
+      solar_forecast_hud_enabled: false,
       solar_forecast_hud_width: 500,
       solar_forecast_hud_height: 200,
+      solar_forecast_hud_week_mode: false,
+      solar_forecast_svg_popup_visible: false,
+      solar_forecast_svg_popup_scale: 1,
       weather_rain_entity: null,
       sensor_solar_forecast_day_1: null,
       sensor_solar_forecast_day_2: null,
@@ -2868,6 +2867,7 @@ class LuminaEnergyCard extends HTMLElement {
       sensor_solar_forecast_day_6: null,
       sensor_solar_forecast_day_7: null,
       solar_forecast_week_text_scale: 1,
+      solar_forecast_text_size_scale: 1,
       ...Object.fromEntries(
         Array.from({ length: 7 }, (_, j) => {
           const i = j + 1;
@@ -3322,16 +3322,17 @@ class LuminaEnergyCard extends HTMLElement {
     try {
       if (window.localStorage && window.localStorage.getItem(seenKey) === '1') return;
     } catch (eLs0) { /* ignore */ }
-    if (window.__luminaFirstBootIntroShown === true || window.__luminaFirstBootIntroInFlight === true) return;
+    if (window.__luminaFirstBootIntroInFlight === true) return;
     if (document.getElementById('lumina-first-boot-intro')) return;
     window.__luminaFirstBootIntroInFlight = true;
-    this._showFirstBootLuminaIntro_(seenKey).finally(() => {
+    this._showFirstBootLuminaIntro_().finally(() => {
       window.__luminaFirstBootIntroInFlight = false;
     });
   }
 
-  async _showFirstBootLuminaIntro_(seenKey) {
+  async _showFirstBootLuminaIntro_() {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
+    const seenKey = 'lumina_energy_card:first_boot_intro_seen:v2';
     const gsap = await this._ensureGsap();
     if (!gsap) return;
 
@@ -3417,7 +3418,6 @@ class LuminaEnergyCard extends HTMLElement {
       if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
     };
     const completeAndClose = () => {
-      window.__luminaFirstBootIntroShown = true;
       try {
         if (window.localStorage) window.localStorage.setItem(seenKey, '1');
       } catch (eLs1) { /* ignore */ }
@@ -8239,6 +8239,7 @@ class LuminaEnergyCard extends HTMLElement {
           }
           const weekStripEnabled = Boolean(config.solar_forecast_week_strip) || configuredWeekEntities >= 2;
           const weekStrip = weekStripEnabled && weekStripDays.length >= 2;
+          const fcTextMul = Math.max(0.5, Math.min(4, (() => { const t = Number(config.solar_forecast_text_size_scale); return (Number.isFinite(t) && t > 0) ? t : 1; })()));
           // Always create _solarForecastData when enabled and sensor configured - icon always visible
           this._solarForecastData = {
             enabled: true,
@@ -8252,10 +8253,10 @@ class LuminaEnergyCard extends HTMLElement {
             textColor: resolveColor(config.solar_forecast_text_color || config.solar_forecast_color, '#00FFFF'),
             barColor: resolveColor(config.solar_forecast_bar_color || config.solar_forecast_color, '#00FFFF'),
             sunColor: resolveColor(config.solar_forecast_sun_color || config.solar_forecast_color, '#00FFFF'),
-            size: Number(config.solar_forecast_size) || 16,
+            size: Math.min(64, Math.round((Number(config.solar_forecast_size) || 15) * fcTextMul)),
             popupWidth: Math.max(120, Number(config.solar_forecast_popup_width) || 156),
             popupHeight: Math.max(56, Number(config.solar_forecast_popup_height) || 72),
-            popupTextSize: Math.max(7, Number(config.solar_forecast_popup_text_size) || 10),
+            popupTextSize: Math.max(8, Math.min(64, Math.round((Number(config.solar_forecast_popup_text_size) || 15) * fcTextMul))),
             text: displayText,
             weekStrip,
             weekStripDays,
@@ -8273,7 +8274,7 @@ class LuminaEnergyCard extends HTMLElement {
             transform: '',
             draggable: false,
             color: resolveColor(config.solar_forecast_text_color || config.solar_forecast_color, '#00FFFF'),
-            size: Number(config.solar_forecast_size) || 16
+            size: Math.min(64, Math.round((Number(config.solar_forecast_size) || 15) * fcTextMul))
           });
         }
       }
@@ -9425,93 +9426,109 @@ class LuminaEnergyCard extends HTMLElement {
         .forecast-hud-panel {
           position: absolute;
           z-index: 26;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
           border-radius: 16px;
-          border: 1px solid rgba(120, 235, 255, 0.55);
-          background: linear-gradient(180deg, rgba(8, 22, 44, 0.92), rgba(6, 16, 34, 0.9));
-          box-shadow: 0 0 16px rgba(70, 220, 255, 0.28), inset 0 0 16px rgba(70, 220, 255, 0.1);
+          border: 1px solid rgba(120, 220, 255, 0.16);
+          background:
+            radial-gradient(ellipse 90% 75% at 50% 42%, rgba(6, 18, 38, 0.12) 0%, rgba(8, 24, 48, 0.45) 45%, rgba(4, 12, 28, 0.58) 100%),
+            linear-gradient(180deg, rgba(8, 22, 44, 0.48), rgba(5, 14, 30, 0.62));
+          box-shadow: 0 0 0 1px rgba(100, 210, 255, 0.07) inset, 0 0 18px rgba(20, 80, 120, 0.12);
           overflow: hidden;
-          padding: 10px 12px;
-          backdrop-filter: blur(1.5px);
+          padding: 12px 12px 10px 12px;
+          backdrop-filter: blur(0.5px);
+          font-family: var(--lumina-body-font, system-ui, sans-serif);
+          /* Base size follows user/rem; default +25% vs earlier HUD; --forecast-text-mul = week_text * forecast_text from YAML */
+          font-size: calc(0.8125rem * 1.25 * var(--forecast-text-mul, 1));
         }
         .forecast-hud-head {
           display: flex;
           align-items: center;
           justify-content: space-between;
           color: #8de9ff;
-          font-size: 12px;
+          font-size: 1.1em;
           letter-spacing: 0.6px;
-          margin-bottom: 6px;
+          margin-bottom: 7px;
+          margin-top: 0;
           text-transform: uppercase;
           font-weight: 600;
         }
         .forecast-hud-days {
           display: grid;
-          grid-template-columns: repeat(7, 1fr);
-          gap: 0;
+          grid-template-columns: repeat(7, minmax(0, 1fr));
+          gap: 0 1px;
+          align-items: start;
           margin-bottom: 6px;
+          width: 100%;
+        }
+        .forecast-hud-days.forecast-hud-days--2 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
         .forecast-hud-day {
-          border-left: none;
-          padding-left: 0;
-          min-width: 0;
-          text-align: center;
-        }
-        .forecast-hud-day-top {
           display: flex;
+          flex-direction: column;
           align-items: center;
-          gap: 4px;
-          color: #9eefff;
-          font-size: 10px;
-          margin-bottom: 2px;
-          text-transform: uppercase;
+          justify-content: flex-start;
+          min-width: 0;
+          width: 100%;
+          text-align: center;
+          box-sizing: border-box;
+          padding: 0 1px;
+          gap: 0.25em;
         }
-        .forecast-hud-day-val {
+        .forecast-hud-day-name {
+          color: #9eefff;
+          font-size: 0.92em;
+          line-height: 1.2;
+          font-weight: 700;
+          text-transform: uppercase;
+          width: 100%;
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .forecast-hud-day-stack {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: baseline;
+          justify-content: center;
+          width: 100%;
+          gap: 0.15em;
+          min-height: 1.1em;
+        }
+        .forecast-hud-day-num {
           color: #94f3ff;
-          font-size: 14px;
+          font-size: 1.05em;
           font-weight: 700;
           line-height: 1.1;
           white-space: nowrap;
         }
         .forecast-hud-day-unit {
           color: #b6cdd9;
-          font-size: 10px;
-          margin-left: 2px;
+          font-size: 0.72em;
+          font-weight: 600;
+          line-height: 1.1;
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
+          flex-shrink: 0;
         }
         .forecast-hud-day-date {
           color: #77bfd0;
-          font-size: 9px;
-          line-height: 1.1;
-        }
-        .forecast-icon-sun {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background: #ffd75e;
-          box-shadow: 0 0 8px rgba(255, 215, 94, 0.8);
-          animation: forecast-sun-spin 8s linear infinite;
-        }
-        .forecast-icon-rain {
-          width: 11px;
-          height: 8px;
-          border-radius: 10px;
-          background: #8dc8ff;
-          box-shadow: 0 0 6px rgba(141, 200, 255, 0.65);
-          position: relative;
-        }
-        .forecast-icon-rain::after {
-          content: "";
-          position: absolute;
-          left: 2px;
-          right: 2px;
-          bottom: -4px;
-          height: 4px;
-          background: repeating-linear-gradient(90deg, rgba(143,212,255,0.9) 0 1px, transparent 1px 3px);
-          animation: forecast-rain-drop 0.9s linear infinite;
+          font-size: 0.88em;
+          line-height: 1.15;
+          width: 100%;
+          margin-top: 0.1em;
         }
         .forecast-hud-canvas {
           width: 100%;
-          height: 126px;
+          height: auto;
           display: block;
+          flex: 1 1 auto;
+          min-height: 0;
+          image-rendering: -webkit-optimize-contrast;
         }
         .forecast-scale-controls {
           position: absolute;
@@ -9546,14 +9563,6 @@ class LuminaEnergyCard extends HTMLElement {
           font-size: 11px;
           font-weight: 700;
           letter-spacing: 0.4px;
-        }
-        @keyframes forecast-sun-spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes forecast-rain-drop {
-          from { transform: translateY(-2px); opacity: 0.85; }
-          to { transform: translateY(1px); opacity: 0.45; }
         }
       </style>
       <ha-card>
@@ -9695,107 +9704,19 @@ class LuminaEnergyCard extends HTMLElement {
 
           ${(() => {
             const solarForecast = viewState.solarForecast;
-            if (true) return '';
+            if (!config.solar_forecast_svg_popup_visible) return '';
             if (!solarForecast || !solarForecast.enabled || viewState.isNight) return '';
+            const _sfp0 = Math.max(0.1, Math.min(2.5, Number(config.solar_forecast_popup_scale) || 0.85));
+            const _sfe0 = (config.solar_forecast_svg_popup_scale != null && String(config.solar_forecast_svg_popup_scale) !== '') ? Number(config.solar_forecast_svg_popup_scale) : 1;
+            const _sfLgS0 = Math.max(0.1, Math.min(2.5, _sfp0 * (Number.isFinite(_sfe0) && _sfe0 > 0 ? _sfe0 : 1)));
             const x = Number(solarForecast.x) || 400;
             const y = Number(solarForecast.y) || 400;
             const weekDaysStrip = Array.isArray(solarForecast.weekStripDays) ? solarForecast.weekStripDays : [];
-            if (Boolean(solarForecast.weekStrip) && weekDaysStrip.length >= 3) {
-              const textColorWs = resolveColor(solarForecast.textColor || '#e9eef6', '#e9eef6');
-              const dragWs = (viewState.showDebugGrid || isPreviewCard) ? 'all' : 'none';
-              const dragCursorWs = (viewState.showDebugGrid || isPreviewCard) ? 'grab' : 'default';
-              const readOptPosWs = (raw, fallback) => {
-                if (raw === null || raw === undefined || raw === '') return fallback;
-                const n = Number(raw);
-                return Number.isFinite(n) ? n : fallback;
-              };
-              const langWs = String(config.language || 'en').toLowerCase();
-              const dayLabelDictWs = {
-                it: { today: 'Oggi', tomorrow: 'Domani' },
-                en: { today: 'Today', tomorrow: 'Tomorrow' },
-                de: { today: 'Heute', tomorrow: 'Morgen' },
-                fr: { today: "Aujourd'hui", tomorrow: 'Demain' },
-                nl: { today: 'Vandaag', tomorrow: 'Morgen' },
-                es: { today: 'Hoy', tomorrow: 'Manana' }
-              };
-              const dayLabelsWs = dayLabelDictWs[langWs] || dayLabelDictWs.en;
-              const localeTagWs = langWs === 'it' ? 'it-IT' : langWs === 'de' ? 'de-DE' : langWs === 'fr' ? 'fr-FR' : langWs === 'es' ? 'es-ES' : langWs === 'nl' ? 'nl-NL' : langWs === 'pt' ? 'pt-PT' : langWs === 'ru' ? 'ru-RU' : 'en-GB';
-              const nCol = Math.min(7, weekDaysStrip.length);
-              const vals = weekDaysStrip.map((d) => (d && Number.isFinite(Number(d.value))) ? Number(d.value) : 0);
-              const maxV = Math.max(1e-9, ...vals);
-              const colGap = 90;
-              const dayTopY = Math.round(y - 120);
-              const barsBottomY = dayTopY + 230;
-              const maxBarH = 138;
-              const minBarH = 26;
-              const barW = 52;
-              const stripW = (nCol - 1) * colGap + 92;
-              const ox = Math.round(x - stripW / 2);
-              const tierColorWs = (vv) => {
-                if (!Number.isFinite(vv) || vv <= 0) return '#c8626d';
-                const r = vv / maxV;
-                if (r < 0.26) return '#de6576';
-                if (r < 0.52) return '#f0ad22';
-                if (r < 0.78) return '#e8c24a';
-                return '#22b35a';
-              };
-              const pad2 = (v) => (v < 10 ? '0' + v : String(v));
-              const esc = (v) => String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;');
-              let colSvg = '';
-              for (let wi = 0; wi < nCol; wi++) {
-                const vRaw = weekDaysStrip[wi] && weekDaysStrip[wi].value;
-                const vNum = Number.isFinite(Number(vRaw)) ? Number(vRaw) : null;
-                const ratio = vNum == null ? 0.2 : Math.max(0, Math.min(1, vNum / maxV));
-                const fillH = Math.round(minBarH + ((maxBarH - minBarH) * ratio));
-                const fillTop = barsBottomY - fillH;
-                const barFill = tierColorWs(vNum == null ? 0 : vNum);
-                const providedDate = (weekDaysStrip[wi] && weekDaysStrip[wi].date) ? new Date(weekDaysStrip[wi].date) : null;
-                const dt = (providedDate && Number.isFinite(providedDate.getTime())) ? providedDate : new Date();
-                if (!(providedDate && Number.isFinite(providedDate.getTime()))) {
-                  dt.setHours(12, 0, 0, 0);
-                  dt.setDate(dt.getDate() + wi);
-                }
-                const dateStr = `${pad2(dt.getDate())}/${pad2(dt.getMonth() + 1)}`;
-                let wn = wi === 0 ? dayLabelsWs.today : (() => { try { return String(dt.toLocaleDateString(localeTagWs, { weekday: 'short' })); } catch (eWs) { return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][dt.getDay()]; } })();
-                wn = String(wn).replace('.', '');
-                if (wi > 0) wn = wn.charAt(0).toUpperCase() + wn.slice(1, 3).toLowerCase();
-                const slot = wi + 1;
-                const roleBase = `solar-forecast-week-${slot}`;
-                const defaultCenterX = ox + 46 + wi * colGap;
-                const valueX = readOptPosWs(config[`solar_forecast_week_${slot}_value_x`], defaultCenterX);
-                const valueY = readOptPosWs(config[`solar_forecast_week_${slot}_value_y`], dayTopY + 18);
-                const kwhX = readOptPosWs(config[`solar_forecast_week_${slot}_kwh_x`], valueX);
-                const kwhY = readOptPosWs(config[`solar_forecast_week_${slot}_kwh_y`], valueY + 24);
-                const barX = readOptPosWs(config[`solar_forecast_week_${slot}_bar_x`], defaultCenterX - (barW / 2));
-                const barY = readOptPosWs(config[`solar_forecast_week_${slot}_bar_y`], fillTop);
-                const dayX = readOptPosWs(config[`solar_forecast_week_${slot}_day_x`], defaultCenterX);
-                const dayY = readOptPosWs(config[`solar_forecast_week_${slot}_day_y`], barsBottomY + 34);
-                const dateX = readOptPosWs(config[`solar_forecast_week_${slot}_date_x`], defaultCenterX);
-                const dateY = readOptPosWs(config[`solar_forecast_week_${slot}_date_y`], barsBottomY + 62);
-                const numTxt = vNum == null ? '--' : esc(this.formatNumberLocale(vNum, 1));
-                const dayFill = wi === 0 ? '#ffb14a' : '#dbe4ef';
-                if (wi === 0) {
-                  const panelX = readOptPosWs(config[`solar_forecast_week_${slot}_panel_x`], defaultCenterX - 44);
-                  const panelY = readOptPosWs(config[`solar_forecast_week_${slot}_panel_y`], dayTopY - 12);
-                  const dashX = readOptPosWs(config[`solar_forecast_week_${slot}_dash_x`], defaultCenterX - 16);
-                  const dashY = readOptPosWs(config[`solar_forecast_week_${slot}_dash_y`], barsBottomY - 38);
-                  const purpleX = readOptPosWs(config[`solar_forecast_week_${slot}_purple_x`], defaultCenterX - 24);
-                  const purpleY = readOptPosWs(config[`solar_forecast_week_${slot}_purple_y`], barsBottomY - 14);
-                  colSvg += '<rect data-role="' + roleBase + '-panel" x="' + panelX + '" y="' + panelY + '" width="88" height="312" rx="18" ry="18" fill="rgba(65,74,89,0.72)" style="pointer-events:' + dragWs + ';cursor:' + dragCursorWs + ';"/>';
-                  colSvg += '<rect data-role="' + roleBase + '-dash" x="' + dashX + '" y="' + dashY + '" width="32" height="60" rx="10" ry="10" fill="none" stroke="#d79f3a" stroke-dasharray="8,8" stroke-width="2.4" style="pointer-events:' + dragWs + ';cursor:' + dragCursorWs + ';"/>';
-                  colSvg += '<rect data-role="' + roleBase + '-purple" x="' + purpleX + '" y="' + purpleY + '" width="48" height="26" rx="8" ry="8" fill="url(#batteryGradient)" opacity="0.95" style="pointer-events:' + dragWs + ';cursor:' + dragCursorWs + ';"/>';
-                }
-                colSvg += '<text data-role="' + roleBase + '-value" class="' + (shouldShowTexts ? '' : 'text-hidden') + '" x="' + valueX + '" y="' + valueY + '" text-anchor="middle" fill="#f5f8fd" font-size="15" font-weight="700" style="font-family:' + viewState.bodyFont + ';pointer-events:' + dragWs + ';cursor:' + dragCursorWs + ';">' + numTxt + '</text>';
-                colSvg += '<text data-role="' + roleBase + '-kwh" class="' + (shouldShowTexts ? '' : 'text-hidden') + '" x="' + kwhX + '" y="' + kwhY + '" text-anchor="middle" fill="#b3becd" font-size="10" style="font-family:' + viewState.bodyFont + ';pointer-events:' + dragWs + ';cursor:' + dragCursorWs + ';">kWh</text>';
-                colSvg += '<rect data-role="' + roleBase + '-bar" x="' + barX + '" y="' + barY + '" width="' + barW + '" height="' + fillH + '" rx="' + (barW / 2) + '" ry="' + (barW / 2) + '" fill="' + barFill + '" style="filter:drop-shadow(0 0 9px ' + barFill + ');pointer-events:' + dragWs + ';cursor:' + dragCursorWs + ';"/>';
-                colSvg += '<text data-role="' + roleBase + '-day" class="' + (shouldShowTexts ? '' : 'text-hidden') + '" x="' + dayX + '" y="' + dayY + '" text-anchor="middle" fill="' + dayFill + '" font-size="11" font-weight="700" style="font-family:' + viewState.bodyFont + ';pointer-events:' + dragWs + ';cursor:' + dragCursorWs + ';">' + esc(wn) + '</text>';
-                colSvg += '<text data-role="' + roleBase + '-date" class="' + (shouldShowTexts ? '' : 'text-hidden') + '" x="' + dateX + '" y="' + dateY + '" text-anchor="middle" fill="#b3becd" font-size="9" style="font-family:' + viewState.bodyFont + ';pointer-events:' + dragWs + ';cursor:' + dragCursorWs + ';">' + esc(dateStr) + '</text>';
-              }
-              return '<g data-role="solar-forecast-sun"><rect data-role="custom-text-solar_forecast" x="' + (ox - 16) + '" y="' + (dayTopY - 28) + '" width="' + (stripW + 32) + '" height="352" rx="20" ry="20" fill="rgba(30,48,83,0.88)" style="pointer-events:' + dragWs + ';cursor:' + dragCursorWs + ';"/>' + colSvg + '</g>';
+            if (weekDaysStrip.length >= 2) {
+              return '';
             }
             const percentageRaw = Number(solarForecast.percentage);
             const percentage = Number.isFinite(percentageRaw) ? Math.max(0, Math.min(100, percentageRaw)) : 0;
-            const isRain = Boolean(solarForecast.isRain);
             const sunColor = resolveColor(solarForecast.sunColor || solarForecast.color, '#00FFFF');
             const barColor = resolveColor(solarForecast.barColor || solarForecast.color, '#00FFFF');
             const textColor = resolveColor(solarForecast.textColor || solarForecast.color, '#00FFFF');
@@ -9803,11 +9724,9 @@ class LuminaEnergyCard extends HTMLElement {
             const textBelow = String(rawText).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             const panelW = Math.max(120, Number(solarForecast.popupWidth) || 156);
             const panelH = Math.max(56, Number(solarForecast.popupHeight) || 72);
-            const popupTextSize = Math.max(7, Number(solarForecast.popupTextSize) || 10);
+            const popupTextSize = Math.max(8, Math.min(28, Number(solarForecast.popupTextSize) || 15));
             const px = Math.round(x - panelW / 2);
             const py = Math.round(y + 8);
-            const iconCx = px + 20;
-            const iconCy = py + Math.max(14, Math.min(26, Math.round(panelH * 0.28)));
             const barX = px + 58;
             const barW = panelW - 66;
             const barH = Math.max(6, Math.min(10, Math.round(popupTextSize * 0.65)));
@@ -9871,40 +9790,28 @@ class LuminaEnergyCard extends HTMLElement {
               const fillW = Math.round((barW * rowPct) / 100);
               const rowLabel = row.key === 'tomorrow' ? dayLabels.tomorrow : dayLabels.today;
               const rowKwhNum = val == null ? '--' : String(this.formatNumberLocale(val, 2)).replace(/&/g, '&amp;').replace(/</g, '&lt;');
-              const rowValFs = Math.max(8, popupTextSize - 1);
-              const rowUnitFs = Math.max(7, popupTextSize - 3);
+              const rowValFs = popupTextSize;
+              const rowUnitFs = Math.max(8, popupTextSize - 2);
               const rowLabelX = idx === 0 ? todayLabelX : tomorrowLabelX;
               const rowLabelY = idx === 0 ? todayLabelY : tomorrowLabelY;
               const rowValueX = idx === 0 ? todayValueX : tomorrowValueX;
               const rowValueY = idx === 0 ? todayValueY : tomorrowValueY;
               return `
-                <text data-role="${idx === 0 ? 'solar-forecast-today-label' : 'solar-forecast-tomorrow-label'}" class="${shouldShowTexts ? '' : 'text-hidden'}" x="${rowLabelX}" y="${rowLabelY}" fill="${textColor}" font-size="${Math.max(8, popupTextSize - 1)}" text-anchor="end" style="font-family: ${viewState.bodyFont}; opacity:0.92; pointer-events:${dragEnabled}; cursor:${(viewState.showDebugGrid || isPreviewCard) ? 'grab' : 'default'};">${rowLabel}</text>
+                <text data-role="${idx === 0 ? 'solar-forecast-today-label' : 'solar-forecast-tomorrow-label'}" class="${shouldShowTexts ? '' : 'text-hidden'}" x="${rowLabelX}" y="${rowLabelY}" fill="${textColor}" font-size="${popupTextSize}" text-anchor="end" style="font-family: ${viewState.bodyFont}; opacity:0.92; pointer-events:${dragEnabled}; cursor:${(viewState.showDebugGrid || isPreviewCard) ? 'grab' : 'default'};">${rowLabel}</text>
                 <rect x="${barX}" y="${rowY}" width="${barW}" height="${barH}" rx="3.5" ry="3.5" fill="rgba(255,255,255,0.08)" stroke="${barColor}" stroke-opacity="0.30" stroke-width="0.7"/>
                 <rect x="${barX}" y="${rowY}" width="${Math.max(0, fillW)}" height="${barH}" rx="3.5" ry="3.5" fill="${barColor}" opacity="0.9"/>
                 <text data-role="${idx === 0 ? 'solar-forecast-today-value' : 'solar-forecast-tomorrow-value'}" class="${shouldShowTexts ? '' : 'text-hidden'}" x="${rowValueX}" y="${rowValueY}" fill="${textColor}" font-size="${rowValFs}" text-anchor="end" style="font-family: ${viewState.bodyFont}; opacity:0.95; pointer-events:${dragEnabled}; cursor:${(viewState.showDebugGrid || isPreviewCard) ? 'grab' : 'default'};"><tspan font-weight="700">${rowKwhNum}</tspan><tspan x="${rowValueX}" dy="13" font-size="${rowUnitFs}" fill="#b8c4d0" opacity="0.9">kWh</tspan></text>
               `;
             }).join('');
-            const iconSvg = isRain
-              ? `<g>
-                  <ellipse cx="${iconCx}" cy="${iconCy - 2}" rx="10" ry="6" fill="${sunColor}" opacity="0.35"/>
-                  <line x1="${iconCx - 7}" y1="${iconCy + 7}" x2="${iconCx - 7}" y2="${iconCy + 13}" stroke="${sunColor}" stroke-width="1.4" opacity="0.9" stroke-linecap="round"/>
-                  <line x1="${iconCx}" y1="${iconCy + 7}" x2="${iconCx}" y2="${iconCy + 14}" stroke="${sunColor}" stroke-width="1.4" opacity="0.9" stroke-linecap="round"/>
-                  <line x1="${iconCx + 7}" y1="${iconCy + 7}" x2="${iconCx + 7}" y2="${iconCy + 13}" stroke="${sunColor}" stroke-width="1.4" opacity="0.9" stroke-linecap="round"/>
-                </g>`
-              : `<g>
-                  <circle cx="${iconCx}" cy="${iconCy}" r="7.5" fill="${sunColor}" opacity="0.9"/>
-                  <line x1="${iconCx}" y1="${iconCy - 13}" x2="${iconCx}" y2="${iconCy - 9}" stroke="${sunColor}" stroke-width="1.4" stroke-linecap="round"/>
-                  <line x1="${iconCx}" y1="${iconCy + 9}" x2="${iconCx}" y2="${iconCy + 13}" stroke="${sunColor}" stroke-width="1.4" stroke-linecap="round"/>
-                  <line x1="${iconCx - 13}" y1="${iconCy}" x2="${iconCx - 9}" y2="${iconCy}" stroke="${sunColor}" stroke-width="1.4" stroke-linecap="round"/>
-                  <line x1="${iconCx + 9}" y1="${iconCy}" x2="${iconCx + 13}" y2="${iconCy}" stroke="${sunColor}" stroke-width="1.4" stroke-linecap="round"/>
-                </g>`;
+            const _sfp2c = _sfLgS0;
+            const sCx2c = Math.round(px + (panelW / 2));
+            const sCy2c = Math.round(py + (panelH / 2));
             return `
-          <g data-role="solar-forecast-sun">
+          <g data-role="solar-forecast-sun" transform="translate(${sCx2c},${sCy2c}) scale(${_sfp2c}) translate(${-sCx2c},${-sCy2c})">
             <rect data-role="custom-text-solar_forecast" x="${px}" y="${py}" width="${panelW}" height="${panelH}" rx="9" ry="9" fill="rgba(0,8,18,0.60)" stroke="${sunColor}" stroke-opacity="0.55" stroke-width="1.1" style="filter: drop-shadow(0 0 5px ${sunColor}); pointer-events:${dragEnabled}; cursor:${(viewState.showDebugGrid || isPreviewCard) ? 'grab' : 'default'};"/>
-            ${iconSvg}
             ${dayBarsSvg}
-            <text data-role="solar-forecast-title" class="${shouldShowTexts ? '' : 'text-hidden'}" x="${titleX}" y="${titleY}" fill="${textColor}" font-size="${Math.max(8, popupTextSize - 1)}" text-anchor="start" style="font-family: ${viewState.bodyFont}; opacity:0.9; pointer-events:${dragEnabled}; cursor:${(viewState.showDebugGrid || isPreviewCard) ? 'grab' : 'default'};">${forecastLabel}</text>
-            <text data-role="solar-forecast-subtitle" class="${shouldShowTexts ? '' : 'text-hidden'}" x="${subtitleX}" y="${subtitleY}" fill="${textColor}" font-size="${Math.max(8, popupTextSize - 1)}" text-anchor="end" style="font-family: ${viewState.bodyFont}; opacity:0.95; pointer-events:${dragEnabled}; cursor:${(viewState.showDebugGrid || isPreviewCard) ? 'grab' : 'default'};">${textBelow}</text>
+            <text data-role="solar-forecast-title" class="${shouldShowTexts ? '' : 'text-hidden'}" x="${titleX}" y="${titleY}" fill="${textColor}" font-size="${popupTextSize}" text-anchor="start" style="font-family: ${viewState.bodyFont}; opacity:0.9; pointer-events:${dragEnabled}; cursor:${(viewState.showDebugGrid || isPreviewCard) ? 'grab' : 'default'};">${forecastLabel}</text>
+            <text data-role="solar-forecast-subtitle" class="${shouldShowTexts ? '' : 'text-hidden'}" x="${subtitleX}" y="${subtitleY}" fill="${textColor}" font-size="${popupTextSize}" text-anchor="end" style="font-family: ${viewState.bodyFont}; opacity:0.95; pointer-events:${dragEnabled}; cursor:${(viewState.showDebugGrid || isPreviewCard) ? 'grab' : 'default'};">${textBelow}</text>
           </g>
           `;
           })()}
@@ -10365,8 +10272,11 @@ class LuminaEnergyCard extends HTMLElement {
           }).join('')}
           ${(() => {
             const solarForecast = viewState.solarForecast;
-            if (true) return '';
+            if (!config.solar_forecast_svg_popup_visible) return '';
             if (!solarForecast || !solarForecast.enabled || viewState.isNight) return '';
+            const _sfp1 = Math.max(0.1, Math.min(2.5, Number(config.solar_forecast_popup_scale) || 0.85));
+            const _sfe1 = (config.solar_forecast_svg_popup_scale != null && String(config.solar_forecast_svg_popup_scale) !== '') ? Number(config.solar_forecast_svg_popup_scale) : 1;
+            const _sfLgS1 = Math.max(0.1, Math.min(2.5, _sfp1 * (Number.isFinite(_sfe1) && _sfe1 > 0 ? _sfe1 : 1)));
             const weekDaysStrip = Array.isArray(solarForecast.weekStripDays) ? solarForecast.weekStripDays : [];
             if (weekDaysStrip.length < 2) return '';
             const x = Number(solarForecast.x) || 400;
@@ -10398,9 +10308,6 @@ class LuminaEnergyCard extends HTMLElement {
             const weekAccentColor = resolveColor(solarForecast.color || '#ffb14a', '#ffb14a');
             const weekBarColor = resolveColor(solarForecast.barColor || '', '');
             const weekPanelColor = resolveColor(config.solar_forecast_week_panel_color || 'rgba(30,48,83,0.88)', 'rgba(30,48,83,0.88)');
-            const popupScale = Math.max(0.5, Math.min(2.5, Number(config.solar_forecast_popup_scale) || 0.85));
-            const weekIconColor = resolveColor(solarForecast.sunColor || solarForecast.color || '#ffd35a', '#ffd35a');
-            const isRainWeek = Boolean(solarForecast.isRain);
             const colGap = 90;
             const dayTopY = Math.round(y - 120);
             const barsBottomY = dayTopY + 230;
@@ -10409,7 +10316,8 @@ class LuminaEnergyCard extends HTMLElement {
             const barW = 52;
             const stripW = (nCol - 1) * colGap + 92;
             const ox = Math.round(x - stripW / 2);
-            const baseTextScale = Math.max(0.5, Math.min(2.5, Number(config.solar_forecast_week_text_scale) || 1));
+            const fcTextMulStrip = Math.max(0.5, Math.min(4, (() => { const t = Number(config.solar_forecast_text_size_scale); return (Number.isFinite(t) && t > 0) ? t : 1; })()));
+            const baseTextScale = Math.max(0.5, Math.min(4, (Number(config.solar_forecast_week_text_scale) || 1) * fcTextMulStrip));
             const tierColorWs = (vv) => {
               if (!Number.isFinite(vv) || vv <= 0) return '#c8626d';
               const r = vv / maxV;
@@ -10432,6 +10340,7 @@ class LuminaEnergyCard extends HTMLElement {
               const ratio = vNum == null ? 0.2 : Math.max(0, Math.min(1, vNum / maxV));
               const fillH = Math.round(minBarH + ((maxBarH - minBarH) * ratio));
               const fillTop = barsBottomY - fillH;
+              const slot = wi + 1;
               const barFill = weekBarColor || resolveColor(config[`solar_forecast_week_col_${slot}_color`] || '', tierColorWs(vNum == null ? 0 : vNum));
               const providedDate = (weekDaysStrip[wi] && weekDaysStrip[wi].date) ? new Date(weekDaysStrip[wi].date) : null;
               const dt = (providedDate && Number.isFinite(providedDate.getTime())) ? providedDate : new Date();
@@ -10443,7 +10352,6 @@ class LuminaEnergyCard extends HTMLElement {
               let wn = wi === 0 ? dayLabelsWs.today : (() => { try { return String(dt.toLocaleDateString(localeTagWs, { weekday: 'short' })); } catch (eWs) { return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][dt.getDay()]; } })();
               wn = String(wn).replace('.', '');
               if (wi > 0) wn = wn.charAt(0).toUpperCase() + wn.slice(1, 3).toLowerCase();
-              const slot = wi + 1;
               const roleBase = `solar-forecast-week-${slot}`;
               const defaultCenterX = ox + 46 + wi * colGap;
               const columnDx = readOptPosWs(config[`solar_forecast_week_${slot}_column_x`], 0);
@@ -10467,9 +10375,9 @@ class LuminaEnergyCard extends HTMLElement {
               const numTxt = vNum == null ? '--' : esc(this.formatNumberLocale(vNum, 1));
               const dayFill = wi === 0 ? weekAccentColor : weekTextColor;
               const baseFsValue = 15 * baseTextScale * valueScale;
-              const baseFsKwh = 10 * baseTextScale * kwhScale;
-              const baseFsDay = 11 * baseTextScale * dayScale;
-              const baseFsDate = 9 * baseTextScale * dateScale;
+              const baseFsKwh = 15 * baseTextScale * kwhScale;
+              const baseFsDay = 15 * baseTextScale * dayScale;
+              const baseFsDate = 15 * baseTextScale * dateScale;
               let oneCol = '';
               if (wi === 0) {
                 const panelX = readOptPosWs(config[`solar_forecast_week_${slot}_panel_x`], defaultCenterX - 44);
@@ -10486,15 +10394,9 @@ class LuminaEnergyCard extends HTMLElement {
               oneCol += '<rect data-role="' + roleBase + '-bar" x="' + barX + '" y="' + barY + '" width="' + barW + '" height="' + fillH + '" rx="' + (barW / 2) + '" ry="' + (barW / 2) + '" fill="' + barFill + '"' + rectTransform(barX, barY, barW, fillH, barScale) + ' style="filter:drop-shadow(0 0 9px ' + barFill + ');pointer-events:none;"/>';
               oneCol += '<text data-role="' + roleBase + '-day" class="' + (shouldShowTexts ? '' : 'text-hidden') + '" x="' + dayX + '" y="' + dayY + '" text-anchor="middle" fill="' + dayFill + '" font-size="' + baseFsDay + '" font-weight="700" style="font-family:' + viewState.bodyFont + ';pointer-events:none;">' + esc(wn) + '</text>';
               oneCol += '<text data-role="' + roleBase + '-date" class="' + (shouldShowTexts ? '' : 'text-hidden') + '" x="' + dateX + '" y="' + dateY + '" text-anchor="middle" fill="' + weekKwhColor + '" font-size="' + baseFsDate + '" style="font-family:' + viewState.bodyFont + ';pointer-events:none;">' + esc(dateStr) + '</text>';
-              const iconX = defaultCenterX;
-              const iconY = barsBottomY + 78;
-              const iconSvg = isRainWeek
-                ? '<g style="pointer-events:none;"><ellipse cx="' + iconX + '" cy="' + iconY + '" rx="7" ry="4.2" fill="' + weekIconColor + '" opacity="0.35"/><line x1="' + (iconX - 4) + '" y1="' + (iconY + 5) + '" x2="' + (iconX - 4) + '" y2="' + (iconY + 9) + '" stroke="' + weekIconColor + '" stroke-width="1.2" stroke-linecap="round"><animate attributeName="y1" values="' + (iconY + 5) + ';' + (iconY + 9) + ';' + (iconY + 5) + '" dur="1.2s" repeatCount="indefinite"/></line><line x1="' + iconX + '" y1="' + (iconY + 6) + '" x2="' + iconX + '" y2="' + (iconY + 10) + '" stroke="' + weekIconColor + '" stroke-width="1.2" stroke-linecap="round"><animate attributeName="y1" values="' + (iconY + 6) + ';' + (iconY + 10) + ';' + (iconY + 6) + '" dur="1.1s" repeatCount="indefinite"/></line><line x1="' + (iconX + 4) + '" y1="' + (iconY + 5) + '" x2="' + (iconX + 4) + '" y2="' + (iconY + 9) + '" stroke="' + weekIconColor + '" stroke-width="1.2" stroke-linecap="round"><animate attributeName="y1" values="' + (iconY + 5) + ';' + (iconY + 9) + ';' + (iconY + 5) + '" dur="1.3s" repeatCount="indefinite"/></line></g>'
-                : '<g style="pointer-events:none;"><g transform="translate(' + iconX + ',' + iconY + ')"><animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="10s" repeatCount="indefinite"/><circle cx="0" cy="0" r="4.4" fill="' + weekIconColor + '" opacity="0.9"/><line x1="0" y1="-8" x2="0" y2="-6" stroke="' + weekIconColor + '" stroke-width="1.1" stroke-linecap="round"/><line x1="0" y1="6" x2="0" y2="8" stroke="' + weekIconColor + '" stroke-width="1.1" stroke-linecap="round"/><line x1="-8" y1="0" x2="-6" y2="0" stroke="' + weekIconColor + '" stroke-width="1.1" stroke-linecap="round"/><line x1="6" y1="0" x2="8" y2="0" stroke="' + weekIconColor + '" stroke-width="1.1" stroke-linecap="round"/></g></g>';
-              oneCol += iconSvg;
               colSvg += '<g transform="translate(' + columnDx + ',' + columnDy + ') translate(' + defaultCenterX + ',' + (barsBottomY - 20) + ') scale(' + columnScale + ') translate(' + (-defaultCenterX) + ',' + (-(barsBottomY - 20)) + ')">' + oneCol + '</g>';
             }
-            return '<g data-role="solar-forecast-sun" transform="translate(' + x + ',' + y + ') scale(' + popupScale + ') translate(' + (-x) + ',' + (-y) + ')"><rect data-role="custom-text-solar_forecast" x="' + (ox - 16) + '" y="' + (dayTopY - 28) + '" width="' + (stripW + 32) + '" height="352" rx="20" ry="20" fill="' + weekPanelColor + '" style="pointer-events:' + dragWs + ';cursor:' + dragCursorWs + ';"/>' + colSvg + '</g>';
+            return '<g data-role="solar-forecast-sun" transform="translate(' + x + ',' + y + ') scale(' + _sfLgS1 + ') translate(' + (-x) + ',' + (-y) + ')"><rect data-role="custom-text-solar_forecast" x="' + (ox - 16) + '" y="' + (dayTopY - 28) + '" width="' + (stripW + 32) + '" height="352" rx="20" ry="20" fill="' + weekPanelColor + '" style="pointer-events:' + dragWs + ';cursor:' + dragCursorWs + ';"/>' + colSvg + '</g>';
           })()}
 
         </svg>
@@ -10515,24 +10417,31 @@ class LuminaEnergyCard extends HTMLElement {
         ${(() => {
           const sf = viewState.solarForecast;
           if (!sf || !sf.enabled || viewState.isNight) return '';
-          const isFsPreview = typeof this._isLuminaForecastPreview_ === 'function' && this._isLuminaForecastPreview_();
-          const days = (Array.isArray(sf.weekStripDays) ? sf.weekStripDays : []).slice(0, 7);
+          if (config.solar_forecast_hud_enabled !== true) return '';
+          const hudWeek = Boolean(config.solar_forecast_hud_week_mode);
+          const dayCap = hudWeek ? 7 : 2;
+          const days = (Array.isArray(sf.weekStripDays) ? sf.weekStripDays : []).slice(0, dayCap);
           if (days.length < 2) return '';
           const x = Number(sf.x) || 400;
           const y = Number(sf.y) || 230;
-          const baseScale = Math.max(0.5, Math.min(2.5, Number(config.solar_forecast_popup_scale) || 0.85));
+          const baseScale = Math.max(0.1, Math.min(2.5, Number(config.solar_forecast_popup_scale) || 0.85));
           const tuneScale = 1;
           // Match dashboard: same config scale in preview. Stage zoom is capped separately (_applyPreviewScale_).
           const scale = Math.max(0.1, Math.min(2.5, baseScale * tuneScale));
           const effectiveScale = scale;
-          const panelW = Math.max(360, Number(config.solar_forecast_hud_width) || 500);
-          const panelH = Math.max(170, Number(config.solar_forecast_hud_height) || 200);
-          const canvasW = Math.max(220, panelW - 24);
-          const canvasH = Math.max(86, panelH - 96);
-          const scaledPanelW = panelW * effectiveScale;
-          const scaledPanelH = panelH * effectiveScale;
-          const leftPct = ((x - (scaledPanelW / 2)) / 800) * 100;
-          const topPct = ((y - (scaledPanelH / 2)) / 450) * 100;
+          const panelW = Math.max(50, Number(config.solar_forecast_hud_width) || 500);
+          const panelH = Math.max(50, Number(config.solar_forecast_hud_height) || 200);
+          const textMulF = Math.max(0.5, Math.min(4, (() => { const t = Number(config.solar_forecast_text_size_scale); return (Number.isFinite(t) && t > 0) ? t : 1; })()));
+          const fcHudMul = Math.max(0.5, Math.min(4, (Number(config.solar_forecast_week_text_scale) || 1) * textMulF));
+          const headReserve = Math.max(52, Math.min(96, Math.round(panelH * 0.24) + (fcHudMul > 1.2 ? 6 : 0)));
+          const canvasW = Math.max(20, panelW - 24);
+          const midGap = 6 + (fcHudMul > 1.3 ? 4 : 0);
+          const canvasH = Math.max(18, Math.max(0, panelH - headReserve - midGap - 4));
+          // Same 800x450 artboard as SVG: % of ha-card, center anchor, then scale (no fixed px that diverge in preview)
+          const widthPct = (panelW / 800) * 100;
+          const heightPct = (panelH / 450) * 100;
+          const leftPct = (x / 800) * 100;
+          const topPct = (y / 450) * 100;
           const lang = String(config.language || 'en').toLowerCase();
           const localeTag = lang === 'it' ? 'it-IT' : lang === 'de' ? 'de-DE' : lang === 'fr' ? 'fr-FR' : lang === 'es' ? 'es-ES' : lang === 'nl' ? 'nl-NL' : 'en-GB';
           const todayLabelDict = {
@@ -10546,7 +10455,6 @@ class LuminaEnergyCard extends HTMLElement {
             ru: 'Сегодня'
           };
           const esc = (v) => String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-          const weatherClass = sf.isRain ? 'forecast-icon-rain' : 'forecast-icon-sun';
           const daysHtml = days.map((d, i) => {
             const dtRaw = d && d.date ? new Date(d.date) : null;
             const dt = (dtRaw && Number.isFinite(dtRaw.getTime())) ? dtRaw : new Date(Date.now() + (i * 86400000));
@@ -10555,12 +10463,16 @@ class LuminaEnergyCard extends HTMLElement {
               : String(dt.toLocaleDateString(localeTag, { weekday: 'short' })).replace('.', '');
             const dateLbl = String(dt.toLocaleDateString(localeTag, { day: '2-digit', month: '2-digit' }));
             const val = (d && Number.isFinite(Number(d.value))) ? this.formatNumberLocale(Number(d.value), 1) : '--';
-            return `<div class="forecast-hud-day"><div class="forecast-hud-day-top"><span class="${weatherClass}"></span><span>${esc(dayLbl)}</span></div><div class="forecast-hud-day-val">${esc(val)}<span class="forecast-hud-day-unit">kWh</span></div><div class="forecast-hud-day-date">${esc(dateLbl)}</div></div>`;
+            return `<div class="forecast-hud-day"><div class="forecast-hud-day-name">${esc(dayLbl)}</div><div class="forecast-hud-day-stack"><span class="forecast-hud-day-num">${esc(val)}</span><span class="forecast-hud-day-unit">kWh</span></div><div class="forecast-hud-day-date">${esc(dateLbl)}</div></div>`;
           }).join('');
-          return `<div class="forecast-hud-panel" data-role="custom-text-solar_forecast" data-forecast-hud="1" style="left:${leftPct}%;top:${topPct}%;width:${panelW}px;height:${panelH}px;transform:scale(${effectiveScale});transform-origin: top left;pointer-events:${(viewState.showDebugGrid || isPreviewCard) ? 'all' : 'auto'};cursor:${(viewState.showDebugGrid || isPreviewCard) ? 'grab' : 'default'};">
-            <div class="forecast-hud-head"><span>Lumina Solare Forecast</span><span>Produzione Settimanale</span></div>
-            <div class="forecast-hud-days">${daysHtml}</div>
-            <canvas class="forecast-hud-canvas" data-role="forecast-hud-canvas" width="${canvasW}" height="${canvasH}"></canvas>
+          const daysRowClass = 'forecast-hud-days' + (hudWeek ? '' : ' forecast-hud-days--2');
+          const subWeekly = { it: 'Produzione Settimanale', en: 'Weekly forecast', de: 'Wochenprognose', fr: 'Prévision 7 j.', nl: 'Weekverwachting', es: 'Pronostico semanal' };
+          const sub2 = { it: 'Oggi e domani', en: 'Today & tomorrow', de: 'Heute & morgen', fr: "Aujourd'hui & demain", nl: 'Vandaag & morgen', es: 'Hoy y manana' };
+          const subHead = hudWeek ? (subWeekly[lang] || subWeekly.en) : (sub2[lang] || sub2.en);
+          return `<div class="forecast-hud-panel" data-role="custom-text-solar_forecast" data-forecast-hud="1" style="--forecast-text-mul:${fcHudMul};left:${leftPct}%;top:${topPct}%;width:${widthPct}%;height:${heightPct}%;transform:translate(-50%,-50%) scale(${effectiveScale});transform-origin:center;pointer-events:${(viewState.showDebugGrid || isPreviewCard) ? 'all' : 'auto'};cursor:${(viewState.showDebugGrid || isPreviewCard) ? 'grab' : 'default'};">
+            <div class="forecast-hud-head"><span>Lumina Solare Forecast</span><span>${esc(subHead)}</span></div>
+            <div class="${daysRowClass}">${daysHtml}</div>
+            <canvas class="forecast-hud-canvas" data-role="forecast-hud-canvas" width="${canvasW}" height="${canvasH}" style="width:100%;height:auto;aspect-ratio:${canvasW} / ${canvasH};"></canvas>
           </div>`;
         })()}
         ${(() => {
@@ -16446,11 +16358,6 @@ class LuminaEnergyCard extends HTMLElement {
     if (!Number.isFinite(n)) return;
     this._forecastPopupScaleTune = Math.max(0.1, Math.min(2.5, n));
     this._saveForecastPopupTuneToStorage_();
-    try {
-      if (typeof console !== 'undefined' && console.info) {
-        console.info('[Lumina][ForecastScale][updateTune]', { nextTune: this._forecastPopupScaleTune });
-      }
-    } catch (eFsLog0) { /* ignore */ }
     try { this._applyForecastPopupScaleToDom_(); } catch (eApplyFs) { /* ignore */ }
     this._forceRender = true;
     this.render();
@@ -16466,11 +16373,6 @@ class LuminaEnergyCard extends HTMLElement {
       if (el[key]) return;
       el[key] = true;
       el.addEventListener(eventName, handler, true);
-      try {
-        if (typeof console !== 'undefined' && console.info) {
-          console.info('[Lumina][ForecastScale][bind]', { role: roleName || null, eventName });
-        }
-      } catch (eFsLog1) { /* ignore */ }
     };
     bindOnce(refs.forecastScaleControls, 'pointerdown', (e) => { if (e && e.stopPropagation) e.stopPropagation(); }, 'controls');
     bindOnce(refs.forecastScaleControls, 'click', (e) => { if (e && e.stopPropagation) e.stopPropagation(); }, 'controls');
@@ -16490,46 +16392,35 @@ class LuminaEnergyCard extends HTMLElement {
     const refs = this._domRefs || {};
     const panel = refs.forecastHudPanel || (this.shadowRoot && this.shadowRoot.querySelector ? this.shadowRoot.querySelector('[data-forecast-hud="1"]') : null);
     if (!panel) return;
-    const baseScale = Math.max(0.5, Math.min(2.5, Number((this.config && this.config.solar_forecast_popup_scale) || 0.85)));
+    const baseScale = Math.max(0.1, Math.min(2.5, Number((this.config && this.config.solar_forecast_popup_scale) || 0.85)));
     const tuneScale = Math.max(0.1, Math.min(2.5, Number(this._forecastPopupScaleTune) || 1));
-    const effectiveScale = Math.max(0.5, Math.min(2.5, baseScale * tuneScale));
-    panel.style.transform = `scale(${effectiveScale})`;
-    panel.style.transformOrigin = 'top left';
+    const effectiveScale = Math.max(0.1, Math.min(2.5, baseScale * tuneScale));
+    panel.style.transform = `translate(-50%, -50%) scale(${effectiveScale})`;
+    panel.style.transformOrigin = 'center';
     if (refs.forecastScaleLabel) refs.forecastScaleLabel.textContent = `${Math.round(tuneScale * 100)}%`;
-    try {
-      if (typeof console !== 'undefined' && console.info) {
-        console.info('[Lumina][ForecastScale][applyDom]', { baseScale, tuneScale, effectiveScale, hasPanel: !!panel });
-      }
-    } catch (eFsLog2) { /* ignore */ }
   }
 
   _handleForecastScaleDown(event) {
     if (event && event.stopPropagation) event.stopPropagation();
     if (typeof this._isLuminaForecastPreview_ !== 'function' || !this._isLuminaForecastPreview_()) {
-      try { if (typeof console !== 'undefined' && console.info) console.info('[Lumina][ForecastScale][skip]', { reason: 'not_preview', action: 'down' }); } catch (eFsLogSkip0) { /* ignore */ }
       return;
     }
-    try { if (typeof console !== 'undefined' && console.info) console.info('[Lumina][ForecastScale][click]', { action: 'down' }); } catch (eFsLog3) { /* ignore */ }
     this._updateForecastPopupTune_((Number(this._forecastPopupScaleTune) || 1) - 0.05);
   }
 
   _handleForecastScaleUp(event) {
     if (event && event.stopPropagation) event.stopPropagation();
     if (typeof this._isLuminaForecastPreview_ !== 'function' || !this._isLuminaForecastPreview_()) {
-      try { if (typeof console !== 'undefined' && console.info) console.info('[Lumina][ForecastScale][skip]', { reason: 'not_preview', action: 'up' }); } catch (eFsLogSkip1) { /* ignore */ }
       return;
     }
-    try { if (typeof console !== 'undefined' && console.info) console.info('[Lumina][ForecastScale][click]', { action: 'up' }); } catch (eFsLog4) { /* ignore */ }
     this._updateForecastPopupTune_((Number(this._forecastPopupScaleTune) || 1) + 0.05);
   }
 
   _handleForecastScaleReset(event) {
     if (event && event.stopPropagation) event.stopPropagation();
     if (typeof this._isLuminaForecastPreview_ !== 'function' || !this._isLuminaForecastPreview_()) {
-      try { if (typeof console !== 'undefined' && console.info) console.info('[Lumina][ForecastScale][skip]', { reason: 'not_preview', action: 'reset' }); } catch (eFsLogSkip2) { /* ignore */ }
       return;
     }
-    try { if (typeof console !== 'undefined' && console.info) console.info('[Lumina][ForecastScale][click]', { action: 'reset' }); } catch (eFsLog5) { /* ignore */ }
     this._updateForecastPopupTune_(1);
   }
 
@@ -18273,57 +18164,7 @@ class LuminaEnergyCard extends HTMLElement {
     try { this._debugForecastSizing_(viewState); } catch (eForecastDbg) { /* ignore */ }
   }
 
-  _debugForecastSizing_(viewState) {
-    try {
-      const sf = viewState && viewState.solarForecast;
-      if (!sf || !sf.enabled) return;
-      const now = Date.now();
-      const last = Number(this._forecastDebugLastTs || 0);
-      if (now - last < 1200) return;
-      this._forecastDebugLastTs = now;
-      const root = this.shadowRoot;
-      if (!root) return;
-      const hostRect = this.getBoundingClientRect ? this.getBoundingClientRect() : null;
-      const card = root.querySelector('ha-card');
-      const cardRect = card && card.getBoundingClientRect ? card.getBoundingClientRect() : null;
-      const svg = root.querySelector('svg');
-      const svgRect = svg && svg.getBoundingClientRect ? svg.getBoundingClientRect() : null;
-      const forecastSvgGroup = root.querySelector('svg [data-role="solar-forecast-sun"]');
-      const forecastSvgGroupRect = forecastSvgGroup && forecastSvgGroup.getBoundingClientRect ? forecastSvgGroup.getBoundingClientRect() : null;
-      const forecastSvgPanel = root.querySelector('svg [data-role="custom-text-solar_forecast"]');
-      const forecastSvgPanelRect = forecastSvgPanel && forecastSvgPanel.getBoundingClientRect ? forecastSvgPanel.getBoundingClientRect() : null;
-      const forecastHudPanel = root.querySelector('[data-forecast-hud="1"]');
-      const forecastHudRect = forecastHudPanel && forecastHudPanel.getBoundingClientRect ? forecastHudPanel.getBoundingClientRect() : null;
-      const fmtRect = (r) => (r ? ({
-        w: Number(r.width.toFixed(2)),
-        h: Number(r.height.toFixed(2)),
-        x: Number(r.x.toFixed(2)),
-        y: Number(r.y.toFixed(2))
-      }) : null);
-      const popupScaleCfg = Math.max(0.5, Math.min(2.5, Number((this.config && this.config.solar_forecast_popup_scale) || 0.85)));
-      const isPreviewCard = Boolean(this.classList && this.classList.contains('editor-preview-card'));
-      const isEditorActive = Boolean(typeof this._isEditorActive === 'function' && this._isEditorActive());
-      if (typeof console !== 'undefined' && console.log) {
-        console.log('[Lumina][ForecastDebug]', {
-          isPreviewCard,
-          isEditorActive,
-          popupScaleCfg,
-          popupPreviewScale: (isPreviewCard || isEditorActive) ? 0.82 : 1,
-          hudPreviewScaleFix: (isPreviewCard || isEditorActive) ? 0.62 : 1,
-          host: fmtRect(hostRect),
-          haCard: fmtRect(cardRect),
-          svg: fmtRect(svgRect),
-          forecastSvgGroup: fmtRect(forecastSvgGroupRect),
-          forecastSvgPanel: fmtRect(forecastSvgPanelRect),
-          forecastHudPanel: fmtRect(forecastHudRect),
-          hudTransform: forecastHudPanel && forecastHudPanel.style ? (forecastHudPanel.style.transform || '') : '',
-          svgGroupTransform: forecastSvgGroup && forecastSvgGroup.getAttribute ? (forecastSvgGroup.getAttribute('transform') || '') : ''
-        });
-      }
-    } catch (e) {
-      // ignore
-    }
-  }
+  _debugForecastSizing_(_viewState) {}
 
   _drawForecastHudCanvas_(viewState, animNow) {
     const refs = this._domRefs || {};
@@ -18336,15 +18177,49 @@ class LuminaEnergyCard extends HTMLElement {
       try { this._stopForecastHudAnimation_(); } catch (eStopAnim) { /* ignore */ }
       return;
     }
-    const days = (Array.isArray(sf.weekStripDays) ? sf.weekStripDays : []).slice(0, 7);
+    const hudWeek = this.config && this.config.solar_forecast_hud_week_mode === true;
+    const dayCap = hudWeek ? 7 : 2;
+    const days = (Array.isArray(sf.weekStripDays) ? sf.weekStripDays : []).slice(0, dayCap);
     if (days.length < 2) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
-    const w = canvas.width || 596;
-    const h = canvas.height || 126;
+    const dpr = (typeof window !== 'undefined' && window.devicePixelRatio) ? Math.min(2, Math.max(1, window.devicePixelRatio)) : 1;
+    let w;
+    let h;
+    if (typeof canvas.getBoundingClientRect === 'function') {
+      const r = canvas.getBoundingClientRect();
+      if (r.width > 2 && r.height > 2) {
+        w = r.width;
+        h = r.height;
+        const bw = Math.max(1, Math.round(r.width * dpr));
+        const bh = Math.max(1, Math.round(r.height * dpr));
+        if (canvas.width !== bw || canvas.height !== bh) {
+          canvas.width = bw;
+          canvas.height = bh;
+        }
+      } else {
+        const aw = Number(canvas.getAttribute('width')) || 596;
+        const ah = Number(canvas.getAttribute('height')) || 126;
+        w = aw;
+        h = ah;
+        const bw = Math.max(1, Math.round(aw * dpr));
+        const bh = Math.max(1, Math.round(ah * dpr));
+        if (canvas.width !== bw || canvas.height !== bh) {
+          canvas.width = bw;
+          canvas.height = bh;
+        }
+      }
+    } else {
+      w = canvas.width || 596;
+      h = canvas.height || 126;
+    }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     ctx.clearRect(0, 0, w, h);
-    const padL = 12;
-    const padR = 12;
+    // Horizontal padding 0: plot uses full canvas width so X-centers match the 7 equal CSS grid columns above (no double inset).
+    const padL = 0;
+    const padR = 0;
     const padT = 8;
     const padB = 18;
     const cw = w - padL - padR;
@@ -18352,8 +18227,10 @@ class LuminaEnergyCard extends HTMLElement {
     const baseY = padT + ch;
     ctx.fillStyle = 'rgba(9,20,44,0.28)';
     ctx.fillRect(padL, padT, cw, ch);
-    ctx.strokeStyle = 'rgba(90,180,220,0.34)';
+    ctx.strokeStyle = 'rgba(95,190,225,0.5)';
     ctx.lineWidth = 1;
+    ctx.lineCap = 'butt';
+    ctx.lineJoin = 'miter';
     const gridSteps = 4;
     for (let g = 0; g <= gridSteps; g++) {
       const y = padT + (ch * g / 4);
@@ -18372,8 +18249,8 @@ class LuminaEnergyCard extends HTMLElement {
       return { x, y, v };
     });
     const grad = ctx.createLinearGradient(0, padT, 0, baseY);
-    grad.addColorStop(0, 'rgba(120,255,255,0.45)');
-    grad.addColorStop(1, 'rgba(50,130,220,0.10)');
+    grad.addColorStop(0, 'rgba(120,255,255,0.38)');
+    grad.addColorStop(1, 'rgba(50,130,220,0.08)');
     ctx.fillStyle = grad;
     ctx.beginPath();
     ctx.moveTo(points[0].x, baseY);
@@ -18381,12 +18258,13 @@ class LuminaEnergyCard extends HTMLElement {
     ctx.lineTo(points[points.length - 1].x, baseY);
     ctx.closePath();
     ctx.fill();
-    // Soft companion curves for hi-tech look
-    const drawCurve = (offsetMul, color, width, blur) => {
-      ctx.strokeStyle = color;
-      ctx.lineWidth = width;
-      ctx.shadowColor = color;
-      ctx.shadowBlur = blur;
+    // Light guide lines (no blur — keeps preview sharp)
+    ctx.save();
+    ctx.globalAlpha = 0.35;
+    ctx.strokeStyle = 'rgba(130,210,255,0.55)';
+    ctx.lineWidth = 1;
+    ctx.shadowBlur = 0;
+    const drawCurve = (offsetMul) => {
       ctx.beginPath();
       points.forEach((p, i) => {
         const yy = p.y + Math.sin((i + 1) * 0.8) * offsetMul;
@@ -18395,33 +18273,42 @@ class LuminaEnergyCard extends HTMLElement {
       });
       ctx.stroke();
     };
-    drawCurve(9, 'rgba(130,220,255,0.48)', 1.6, 5);
-    drawCurve(-7, 'rgba(90,180,255,0.42)', 1.4, 4);
+    drawCurve(2.5);
+    drawCurve(-2.5);
+    ctx.restore();
 
-    const neon = 'rgba(116,244,255,0.96)';
+    const neon = 'rgba(90,245,255,0.98)';
     ctx.strokeStyle = neon;
-    ctx.lineWidth = 2.8;
-    ctx.shadowColor = 'rgba(116,244,255,0.8)';
-    ctx.shadowBlur = 10;
+    ctx.lineWidth = 2;
+    ctx.shadowBlur = 0;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
     ctx.beginPath();
     points.forEach((p, i) => {
       if (i === 0) ctx.moveTo(p.x, p.y);
       else ctx.lineTo(p.x, p.y);
     });
     ctx.stroke();
-    ctx.shadowBlur = 0;
+    ctx.strokeStyle = 'rgba(200,255,255,0.95)';
+    ctx.lineWidth = 0.85;
+    ctx.beginPath();
+    points.forEach((p, i) => {
+      if (i === 0) ctx.moveTo(p.x, p.y);
+      else ctx.lineTo(p.x, p.y);
+    });
+    ctx.stroke();
     points.forEach((p, i) => {
       const barTop = baseY - (Math.max(0, vals[i]) / maxV) * ch;
       const palette = ['#e3bf52', '#f0ad22', '#de6576', '#d9bc4f', '#cfb24a', '#2bbd66', '#c8a24a'];
       const col = palette[i] || '#63dfff';
-      const alpha = 0.24 + (0.52 * (vals[i] / maxV));
+      const alpha = 0.35 + (0.45 * (vals[i] / maxV));
       ctx.globalAlpha = alpha;
       ctx.fillStyle = col;
       ctx.fillRect(p.x - 8, barTop, 16, baseY - barTop);
       ctx.globalAlpha = 1;
-      ctx.fillStyle = '#a9f8ff';
+      ctx.fillStyle = '#c5fcff';
       ctx.beginPath();
-      ctx.arc(p.x, p.y, 3.8, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, 3.2, 0, Math.PI * 2);
       ctx.fill();
     });
 
@@ -18449,21 +18336,19 @@ class LuminaEnergyCard extends HTMLElement {
     };
     const drawDot = (pt, color, radius) => {
       if (!pt) return;
-      ctx.shadowColor = color;
-      ctx.shadowBlur = 14;
+      ctx.shadowBlur = 0;
       ctx.fillStyle = color;
       ctx.beginPath();
       ctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
       ctx.fill();
-      ctx.shadowBlur = 0;
-      ctx.fillStyle = '#e9fdff';
+      ctx.fillStyle = '#f0ffff';
       ctx.beginPath();
-      ctx.arc(pt.x, pt.y, Math.max(1.4, radius * 0.35), 0, Math.PI * 2);
+      ctx.arc(pt.x, pt.y, Math.max(1.2, radius * 0.35), 0, Math.PI * 2);
       ctx.fill();
     };
-    drawDot(pointOnLine(points, t, 0), 'rgba(120,255,255,0.95)', 4.4);
-    drawDot(pointOnLine(points, Math.min(1, t + 0.12), 9), 'rgba(145,228,255,0.85)', 3.6);
-    drawDot(pointOnLine(points, Math.max(0, t - 0.12), -7), 'rgba(105,193,255,0.82)', 3.2);
+    drawDot(pointOnLine(points, t, 0), 'rgba(60,230,255,0.98)', 3.8);
+    drawDot(pointOnLine(points, Math.min(1, t + 0.12), 9), 'rgba(120,220,255,0.9)', 3.2);
+    drawDot(pointOnLine(points, Math.max(0, t - 0.12), -7), 'rgba(100,200,255,0.88)', 2.9);
   }
 
   _ensureForecastHudAnimation_() {
@@ -19368,6 +19253,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
   }
 
   connectedCallback() {
+    // Show PRO donation welcome again each time the editor is attached (e.g. new card or reopen after close).
+    this._proDonationWelcomeModalFired = false;
     try {
       this._applyHaPreviewVisibility_();
     } catch (e) { /* ignore */ }
@@ -20077,16 +19964,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
     }
   }
 
-  _logPreviewScaleDebug_(payload) {
-    try {
-      const now = Date.now();
-      if (now - (this._previewScaleDebugLastAt || 0) < 600) return;
-      this._previewScaleDebugLastAt = now;
-      if (typeof console !== 'undefined' && console.warn) {
-        console.warn('[Lumina][PreviewAutoFit]', payload);
-      }
-    } catch (e) { /* ignore */ }
-  }
+  _logPreviewScaleDebug_(_payload) {}
 
   _dumpPreviewAutoFitDebug_() {
     try {
@@ -24257,7 +24135,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           text_visibility_sensor: { label: 'Text Visibility Motion Sensor (PRO)', helper: '⚠️ PRO FEATURE: Motion sensor entity. When motion is detected, texts appear. Perfect for wall tablets with camera.' },
           solar_forecast_enabled: { label: 'Enable Solar Forecast', helper: '⚠️ PRO FEATURE: Display estimated solar production with sun status (lots/moderate/little sun).' },
           solar_forecast_week_strip: { label: '7-day forecast strip', helper: 'Shows up to 7 pill columns when the main forecast sensor exposes a forecast array (3+ days), e.g. Forecast.Solar or similar integrations.' },
-          solar_forecast_week_text_scale: { label: '7-day text scale', helper: 'Scale factor for all labels in the 7-day strip. 1 = default.' },
+          solar_forecast_week_text_scale: { label: '7-day text scale', helper: 'Scale factor for the 7-day strip and the HTML forecast HUD. 1 = default.' },
+          solar_forecast_text_size_scale: { label: 'Forecast text size', helper: 'Scales all forecast UI text: SVG 7-day strip, 2-day popup, and HTML HUD. 1 = default. Up to 4×.' },
           solar_forecast_popup_scale: { label: '7-day popup scale', helper: 'Uniform scale of the whole 7-day popup (texts auto-scale together).' },
           solar_forecast_kwh_color: { label: 'kWh/date text color', helper: 'Secondary text color used for kWh and dates.' },
           solar_forecast_week_panel_color: { label: '7-day panel color', helper: 'Background color of the forecast popup panel.' },
@@ -24268,6 +24147,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           solar_forecast_week_col_5_color: { label: 'Day 5 column color', helper: 'Bar color for day 5.' },
           solar_forecast_week_col_6_color: { label: 'Day 6 column color', helper: 'Bar color for day 6.' },
           solar_forecast_week_col_7_color: { label: 'Day 7 column color', helper: 'Bar color for day 7.' },
+          solar_forecast_hud_enabled: { label: 'Show HTML forecast HUD', helper: 'Default off. Enable the layered HTML forecast panel on the card.' },
+          solar_forecast_hud_week_mode: { label: 'HUD: 7-day columns', helper: 'Off = 2 day columns. On = up to 7. Requires “Show HTML forecast HUD”.' },
+          solar_forecast_svg_popup_visible: { label: 'Show SVG solar popup', helper: 'Legacy SVG forecast on the 800×450 artboard. Default off.' },
+          solar_forecast_svg_popup_scale: { label: 'SVG solar popup scale', helper: 'Multiplies 7-day popup scale for the legacy SVG only (0.1–2.5).' },
           solar_forecast_hud_width: { label: 'Forecast HUD width (px)', helper: 'Width of the HTML forecast panel.' },
           solar_forecast_hud_height: { label: 'Forecast HUD height (px)', helper: 'Height of the HTML forecast panel.' },
           solar_forecast_subtitle_x: { label: 'Summary line X (px)', helper: 'Classic layout: bottom summary line horizontal position.' },
@@ -24369,7 +24252,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_hero_unlock: 'Unlock Lumina PRO in 1 minute - 5EUR',
           pro_hero_desc: 'Overlay images, advanced popups, custom flows and PRO drag-and-drop tools.',
           pro_hero_discover: 'Discover PRO features',
-          pro_hero_pay: 'Pay 5EUR',
+          pro_hero_pay: 'PayPal — 5EUR',
+          pro_hero_pay_github: 'GitHub — 5EUR',
           pro_welcome_title: 'Lumina PRO - Unlock for 5EUR',
           pro_welcome_badge: 'ONE-TIME',
           pro_welcome_desc: 'Unlock all advanced features and fully customize your card. Suggested payment: 5EUR via PayPal (donation) or GitHub Sponsors.',
@@ -24377,6 +24261,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_welcome_feat_2: 'Custom flows, custom popups (Classic / Tactical / Life Sign), custom text',
           pro_welcome_feat_3: 'Personal background, advanced drag and drop editor, PRO tools',
           pro_welcome_feat_4: 'More visual options, layouts and detailed UI control',
+          pro_welcome_feat_5: 'Mini Cam: camera stream on the map, with label and position controls',
+          pro_welcome_feat_6: 'Custom popups: advanced styles for your entity popups (Classic, Tactical, Life Sign, …)',
+          pro_welcome_feat_7: 'People section: add and show Home Assistant “person” / people on the card',
+          pro_welcome_feat_8: 'Solar forecast: new production forecast service and on-card HUD',
           pro_welcome_close: 'Got it',
           pro_welcome_after_note: 'After payment, use the form below to request your PRO password.',
           pro_welcome_paypal: 'PayPal 5EUR',
@@ -24673,8 +24561,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           house_humidity_5: { label: 'Humidity 5', helper: '' },
           house_humidity_6: { label: 'Humidity 6', helper: '' },
           pro_license_title: '💰 PRO License',
-          pro_license_line1: 'Option 1: Send <b>5€ as DONATION</b> to PayPal: <b>3dprint8616@gmail.com</b>',
-          pro_license_line2: 'Option 2: Sponsor via <b>GitHub Sponsors</b> (same amount).',
+          pro_license_line1: 'Option 1: Pay the <b>5€ donation</b> using the blue <b>PayPal (Colletta)</b> button in the section above.',
+          pro_license_line2: 'Option 2: Pay the <b>same amount</b> using the <b>GitHub Sponsors</b> button in the section above.',
           pro_license_line3: 'After payment, fill the form below and choose <b>PayPal</b> (payment email + name/surname) or <b>GitHub Sponsors</b> (GitHub username).',
           pro_license_auto_note: 'Automatic system: if no match is found, the password will NOT be sent.',
           pro_license_line4: 'Donations: <b>10€</b> = contributors names in the card; <b>50€</b> = priority for personal features. Always contact <b>luminaenergycard@gmail.com</b> or via Telegram group. Also check your <b>SPAM</b> folder.',
@@ -25100,7 +24988,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
             text_visibility_sensor: { label: 'Sensore Movimento Visibilità Testi (PRO)', helper: '⚠️ FUNZIONE PRO: Entità sensore di movimento. Quando viene rilevato movimento, i testi appaiono. Perfetto per tablet a muro con telecamera.' },
             solar_forecast_enabled: { label: 'Abilita Previsione Solare', helper: '⚠️ FUNZIONE PRO: Mostra la produzione solare stimata con stato del sole (tanto/moderato/poco sole).' },
             solar_forecast_week_strip: { label: 'Striscia previsione 7 giorni', helper: 'Mostra fino a 7 colonne a pillola se il sensore principale espone un array forecast (3+ giorni).' },
-            solar_forecast_week_text_scale: { label: 'Scala testo 7 giorni', helper: 'Fattore scala per tutte le etichette nella striscia 7 giorni. 1 = default.' },
+            solar_forecast_week_text_scale: { label: 'Scala testo 7 giorni', helper: 'Scala striscia 7 giorni e HUD forecast HTML. 1 = default.' },
+            solar_forecast_text_size_scale: { label: 'Dimensione testo previsione', helper: 'Scala tutto il testo previsione: striscia SVG 7 giorni, popup 2 giorni, HUD HTML. 1 = predefinito. Fino a 4×.' },
             solar_forecast_popup_scale: { label: 'Scala popup 7 giorni', helper: 'Scala uniforme dell intero popup 7 giorni (i testi scalano insieme).' },
             solar_forecast_kwh_color: { label: 'Colore testo kWh/data', helper: 'Colore secondario usato per kWh e date.' },
             solar_forecast_week_panel_color: { label: 'Colore pannello 7 giorni', helper: 'Colore di sfondo del pannello forecast.' },
@@ -25111,6 +25000,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
             solar_forecast_week_col_5_color: { label: 'Colore colonna giorno 5', helper: 'Colore barra per il giorno 5.' },
             solar_forecast_week_col_6_color: { label: 'Colore colonna giorno 6', helper: 'Colore barra per il giorno 6.' },
             solar_forecast_week_col_7_color: { label: 'Colore colonna giorno 7', helper: 'Colore barra per il giorno 7.' },
+            solar_forecast_hud_enabled: { label: 'Mostra HUD forecast (HTML)', helper: 'Disattivato di default. Abilita il pannello HTML sovrapposto (grafico + kWh).' },
+            solar_forecast_hud_week_mode: { label: 'HUD: 7 colonne', helper: 'Spento = solo 2 giorni. Acceso = fino a 7. Richiede “Mostra HUD forecast”.' },
+            solar_forecast_svg_popup_visible: { label: 'Mostra popup SVG solare', helper: 'Blocco forecast SVG sulla tela 800×450. Di default disattivato; si usa l HUD HTML.' },
+            solar_forecast_svg_popup_scale: { label: 'Scala popup SVG', helper: 'Moltiplica la scala 7gg solo per il blocco SVG (0,1–2,5).' },
             solar_forecast_hud_width: { label: 'Larghezza HUD forecast (px)', helper: 'Larghezza del pannello forecast HTML.' },
             solar_forecast_hud_height: { label: 'Altezza HUD forecast (px)', helper: 'Altezza del pannello forecast HTML.' },
             solar_forecast_subtitle_x: { label: 'Riga riepilogo X (px)', helper: 'Layout classico: posizione orizzontale della riga di riepilogo in basso.' },
@@ -25221,7 +25114,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_hero_unlock: 'Sblocca Lumina PRO in 1 minuto - 5EUR',
           pro_hero_desc: 'Overlay immagini, popup avanzati, flow personalizzati e strumenti drag and drop PRO.',
           pro_hero_discover: 'Scopri funzioni PRO',
-          pro_hero_pay: 'Paga 5EUR',
+          pro_hero_pay: 'PayPal — 5€',
+          pro_hero_pay_github: 'GitHub — 5€',
           pro_welcome_title: 'Lumina PRO - Sblocca con 5EUR',
           pro_welcome_badge: 'UNA VOLTA',
           pro_welcome_desc: 'Sblocca tutte le funzioni avanzate e personalizza la card in modo totale. Pagamento consigliato: 5EUR via PayPal (donazione) o GitHub Sponsors.',
@@ -25229,6 +25123,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_welcome_feat_2: 'Custom flow, custom popup (Classico / Tactical / Life Sign), custom text',
           pro_welcome_feat_3: 'Background personale, editor drag and drop avanzato, strumenti PRO',
           pro_welcome_feat_4: 'Piu opzioni visuali, layout e controllo dettagliato della UI',
+          pro_welcome_feat_5: 'Mini Cam: stream telecamera sulla mappa, con etichetta e posizione',
+          pro_welcome_feat_6: 'Popup personalizzati: stili avanzati (Classico, Tactical, Life Sign, …)',
+          pro_welcome_feat_7: 'Sezione persone: aggiungi e mostra le “person” / persone in card',
+          pro_welcome_feat_8: 'Previsione solare: servizio previsione produzione e HUD sulla card',
           pro_welcome_close: 'Ho capito',
           pro_welcome_after_note: 'Dopo il pagamento usa il form sottostante per richiedere la password PRO.',
           pro_welcome_paypal: 'PayPal 5EUR',
@@ -25525,8 +25423,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           house_humidity_5: { label: 'Umidità 5', helper: '' },
           house_humidity_6: { label: 'Umidità 6', helper: '' },
           pro_license_title: '💰 Licenza PRO',
-          pro_license_line1: 'Opzione 1: invia <b>5€ come DONAZIONE</b> su PayPal: <b>3dprint8616@gmail.com</b>',
-          pro_license_line2: 'Opzione 2: sponsor su <b>GitHub Sponsors</b> (stesso importo).',
+          pro_license_line1: 'Opzione 1: paga <b>5€ in donazione</b> con il pulsante blu <b>PayPal (Colletta)</b> nella sezione in alto.',
+          pro_license_line2: 'Opzione 2: paga lo <b>stesso importo</b> con il pulsante <b>GitHub Sponsors</b> nella sezione in alto.',
           pro_license_line3: 'Dopo il pagamento, compila il form sotto e scegli <b>PayPal</b> (email pagamento + nome/cognome) oppure <b>GitHub Sponsors</b> (username GitHub).',
           pro_license_auto_note: 'Sistema automatico: se non viene trovata corrispondenza, la password NON verrà inviata.',
           pro_license_line4: 'Donazioni: <b>10€</b> = nomi dei contributori nella card; <b>50€</b> = priorità per funzionalità personali. Contattare sempre <b>luminaenergycard@gmail.com</b> o tramite gruppo Telegram. Controlla anche lo <b>SPAM</b>.',
@@ -26248,7 +26146,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_hero_unlock: 'Lumina PRO in 1 Minute freischalten - 5EUR',
           pro_hero_desc: 'Overlay-Bilder, erweiterte Popups, benutzerdefinierte Flows und PRO Drag-and-Drop-Tools.',
           pro_hero_discover: 'PRO-Funktionen entdecken',
-          pro_hero_pay: '5EUR bezahlen',
+          pro_hero_pay: 'PayPal — 5€',
+          pro_hero_pay_github: 'GitHub — 5€',
           pro_welcome_title: 'Lumina PRO - Fuer 5EUR freischalten',
           pro_welcome_badge: 'EINMALIG',
           pro_welcome_desc: 'Schalte alle erweiterten Funktionen frei und passe deine Karte komplett an. Empfohlene Zahlung: 5EUR per PayPal (Spende) oder GitHub Sponsors.',
@@ -26256,6 +26155,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_welcome_feat_2: 'Custom Flows, Custom Popups (Klassisch / Tactical / Life Sign), Custom Text',
           pro_welcome_feat_3: 'Persoenlicher Hintergrund, erweiterter Drag-and-Drop-Editor, PRO-Tools',
           pro_welcome_feat_4: 'Mehr visuelle Optionen, Layouts und detaillierte UI-Steuerung',
+          pro_welcome_feat_5: 'Mini-Cam: Kamera-Stream auf der Karte mit Beschriftung und Position',
+          pro_welcome_feat_6: 'Eigene Popups: erweiterte Stile (Klassisch, Tactical, Life Sign, …)',
+          pro_welcome_feat_7: 'Personen-Bereich: Home-Assistant-„Person“/Personen auf der Karte',
+          pro_welcome_feat_8: 'Solarprognose: neuer Prognose-Dienst und HUD auf der Karte',
           pro_welcome_close: 'Verstanden',
           pro_welcome_after_note: 'Nach der Zahlung nutze das Formular unten, um dein PRO-Passwort anzufordern.',
           pro_welcome_paypal: 'PayPal 5EUR',
@@ -26298,8 +26201,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           password_ok: '✓ Passwort akzeptiert. PRO ist aktiv.',
           password_bad: '❌ Ungültiges Passwort. Bitte prüfen und erneut versuchen.',
           pro_license_title: '💰 PRO-Lizenz',
-          pro_license_line1: 'Option 1: Sende <b>5€ als SPENDE</b> an PayPal: <b>3dprint8616@gmail.com</b>',
-          pro_license_line2: 'Option 2: Unterstütze über <b>GitHub Sponsors</b> (gleicher Betrag).',
+          pro_license_line1: 'Option 1: Zahl die <b>5€ Spende</b> mit dem blauen <b>PayPal (Colletta)</b>-Button im Bereich oben.',
+          pro_license_line2: 'Option 2: Zahl den <b>gleichen Betrag</b> mit dem <b>GitHub-Sponsors</b>-Button im Bereich oben.',
           pro_license_line3: 'Nach der Zahlung fülle das Formular unten aus und wähle <b>PayPal</b> (Zahlungs-E-Mail + Vorname/Nachname) oder <b>GitHub Sponsors</b> (GitHub Benutzername).',
           pro_license_auto_note: 'Automatisches System: Wenn keine Übereinstimmung gefunden wird, wird das Passwort NICHT gesendet.',
           pro_license_line4: 'Spenden: <b>10€</b> = Namen der Unterstützer in der Card; <b>50€</b> = Priorität für persönliche Funktionen. Immer kontaktieren: <b>luminaenergycard@gmail.com</b> oder per Telegram-Gruppe. Bitte auch den <b>SPAM</b>-Ordner prüfen.',
@@ -27011,7 +26914,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_hero_unlock: 'Debloquez Lumina PRO en 1 minute - 5EUR',
           pro_hero_desc: 'Images overlay, popups avances, flux personnalises et outils PRO drag and drop.',
           pro_hero_discover: 'Decouvrir les fonctions PRO',
-          pro_hero_pay: 'Payer 5EUR',
+          pro_hero_pay: 'PayPal — 5€',
+          pro_hero_pay_github: 'GitHub — 5€',
           pro_welcome_title: 'Lumina PRO - Debloquez pour 5EUR',
           pro_welcome_badge: 'UNE FOIS',
           pro_welcome_desc: 'Debloquez toutes les fonctions avancees et personnalisez totalement votre carte. Paiement recommande : 5EUR via PayPal (don) ou GitHub Sponsors.',
@@ -27019,6 +26923,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_welcome_feat_2: 'Flux personnalises, popups personnalises (Classic / Tactical / Life Sign), textes personnalises',
           pro_welcome_feat_3: 'Fond personnel, editeur drag and drop avance, outils PRO',
           pro_welcome_feat_4: 'Plus d options visuelles, de layouts et de controle detaille de l interface',
+          pro_welcome_feat_5: 'Mini Cam: flux camera sur la carte, etiquette et position',
+          pro_welcome_feat_6: 'Popups personnalises: styles avances (Classic, Tactical, Life Sign, …)',
+          pro_welcome_feat_7: 'Section personnes: afficher les entites « person » / personnes sur la carte',
+          pro_welcome_feat_8: 'Prevision solaire: nouveau service de prevision et HUD sur la carte',
           pro_welcome_close: 'Compris',
           pro_welcome_after_note: 'Apres paiement, utilisez le formulaire ci-dessous pour demander votre mot de passe PRO.',
           pro_welcome_paypal: 'PayPal 5EUR',
@@ -27061,8 +26969,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           password_ok: '✓ Mot de passe accepté. PRO est actif.',
           password_bad: '❌ Mot de passe invalide. Veuillez vérifier et réessayer.',
           pro_license_title: '💰 Licence PRO',
-          pro_license_line1: 'Option 1 : Envoyez <b>5€ en DON</b> sur PayPal : <b>3dprint8616@gmail.com</b>',
-          pro_license_line2: 'Option 2 : Sponsorisez via <b>GitHub Sponsors</b> (même montant).',
+          pro_license_line1: 'Option 1 : Payez le <b>don de 5€</b> avec le bouton bleu <b>PayPal (Colletta)</b> dans la section du haut.',
+          pro_license_line2: 'Option 2 : payez le <b>même montant</b> avec le bouton <b>GitHub Sponsors</b> dans la section du haut.',
           pro_license_line3: 'Après le paiement, remplissez le formulaire ci-dessous et choisissez <b>PayPal</b> (e-mail de paiement + prénom/nom) ou <b>GitHub Sponsors</b> (nom d’utilisateur GitHub).',
           pro_license_auto_note: 'Système automatique : si aucune correspondance n’est trouvée, le mot de passe ne sera PAS envoyé.',
           pro_license_line4: 'Dons : <b>10€</b> = noms des contributeurs dans la carte ; <b>50€</b> = priorité pour des fonctionnalités personnelles. Contactez toujours <b>luminaenergycard@gmail.com</b> ou via le groupe Telegram. Vérifiez aussi le dossier <b>SPAM</b>.',
@@ -27778,7 +27686,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_hero_unlock: 'Ontgrendel Lumina PRO in 1 minuut - 5EUR',
           pro_hero_desc: 'Overlay-afbeeldingen, geavanceerde popups, aangepaste flows en PRO drag-and-drop-tools.',
           pro_hero_discover: 'Ontdek PRO-functies',
-          pro_hero_pay: 'Betaal 5EUR',
+          pro_hero_pay: 'PayPal — 5€',
+          pro_hero_pay_github: 'GitHub — 5€',
           pro_welcome_title: 'Lumina PRO - Ontgrendel voor 5EUR',
           pro_welcome_badge: 'EENMALIG',
           pro_welcome_desc: 'Ontgrendel alle geavanceerde functies en personaliseer je kaart volledig. Aanbevolen betaling: 5EUR via PayPal (donatie) of GitHub Sponsors.',
@@ -27786,6 +27695,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_welcome_feat_2: 'Aangepaste flows, aangepaste popups (Classic / Tactical / Life Sign), aangepaste tekst',
           pro_welcome_feat_3: 'Persoonlijke achtergrond, geavanceerde drag-and-drop editor, PRO-tools',
           pro_welcome_feat_4: 'Meer visuele opties, layouts en gedetailleerde UI-controle',
+          pro_welcome_feat_5: 'Mini-cam: camerastream op de kaart met label en positie',
+          pro_welcome_feat_6: 'Aangepaste popups: geavanceerde stijlen (Classic, Tactical, Life Sign, …)',
+          pro_welcome_feat_7: 'Personen: Home Assistant “person”/personen op de kaart',
+          pro_welcome_feat_8: 'Zonvoorspelling: nieuwe productie-prognose en HUD op de kaart',
           pro_welcome_close: 'Begrepen',
           pro_welcome_after_note: 'Gebruik na betaling het onderstaande formulier om je PRO-wachtwoord aan te vragen.',
           pro_welcome_paypal: 'PayPal 5EUR',
@@ -27828,8 +27741,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           password_ok: '✓ Wachtwoord geaccepteerd. PRO is actief.',
           password_bad: '❌ Ongeldig wachtwoord. Controleer en probeer opnieuw.',
           pro_license_title: '💰 PRO-licentie',
-          pro_license_line1: 'Optie 1: Stuur <b>5€ als DONATIE</b> naar PayPal: <b>3dprint8616@gmail.com</b>',
-          pro_license_line2: 'Optie 2: Sponsor via <b>GitHub Sponsors</b> (zelfde bedrag).',
+          pro_license_line1: 'Optie 1: Betaal de <b>5€ donatie</b> met de blauwe <b>PayPal (Colletta)</b>-knop in de sectie hierboven.',
+          pro_license_line2: 'Optie 2: Betaal het <b>zelfde bedrag</b> met de <b>GitHub Sponsors</b>-knop in de sectie hierboven.',
           pro_license_line3: 'Na betaling vul je het formulier hieronder in en kies je <b>PayPal</b> (betaal-e-mail + voornaam/achternaam) of <b>GitHub Sponsors</b> (GitHub gebruikersnaam).',
           pro_license_auto_note: 'Automatisch systeem: als er geen match wordt gevonden, wordt het wachtwoord NIET verstuurd.',
           pro_license_line4: 'Donaties: <b>10€</b> = namen van bijdragers in de kaart; <b>50€</b> = prioriteit voor persoonlijke functies. Neem altijd contact op met <b>luminaenergycard@gmail.com</b> of via de Telegram-groep. Controleer ook je <b>SPAM</b>.',
@@ -28277,7 +28190,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_hero_unlock: 'Разблокируйте Lumina PRO за 1 минуту - 5EUR',
           pro_hero_desc: 'Overlay-изображения, расширенные popup, кастомные потоки и PRO drag-and-drop инструменты.',
           pro_hero_discover: 'Показать функции PRO',
-          pro_hero_pay: 'Оплатить 5EUR',
+          pro_hero_pay: 'PayPal — 5€',
+          pro_hero_pay_github: 'GitHub — 5€',
           pro_welcome_title: 'Lumina PRO - Разблокировка за 5EUR',
           pro_welcome_badge: 'ОДИН РАЗ',
           pro_welcome_desc: 'Разблокируйте все расширенные функции и полностью настройте карту. Рекомендуемый платеж: 5EUR через PayPal (пожертвование) или GitHub Sponsors.',
@@ -28285,6 +28199,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_welcome_feat_2: 'Кастомные потоки, кастомные popup (Classic / Tactical / Life Sign), кастомный текст',
           pro_welcome_feat_3: 'Персональный фон, продвинутый drag-and-drop редактор, PRO-инструменты',
           pro_welcome_feat_4: 'Больше визуальных опций, макетов и детального контроля UI',
+          pro_welcome_feat_5: 'Mini Cam: видео с камеры на карте, подпись и положение',
+          pro_welcome_feat_6: 'Кастомные всплывающие окна: расширенные стили (Classic, Tactical, Life Sign, …)',
+          pro_welcome_feat_7: 'Секция людей: сущности person / люди Home Assistant на карте',
+          pro_welcome_feat_8: 'Солнечный прогноз: сервис прогноза выработки и HUD на карте',
           pro_welcome_close: 'Понятно',
           pro_welcome_after_note: 'После оплаты используйте форму ниже, чтобы запросить PRO-пароль.',
           pro_welcome_paypal: 'PayPal 5EUR',
@@ -28324,10 +28242,11 @@ class LuminaEnergyCardEditor extends HTMLElement {
           password_ok: '✓ Пароль принят. PRO активен.',
           password_bad: '❌ Неверный пароль. Проверьте и попробуйте снова.',
           pro_license_title: '💰 PRO лицензия',
-          pro_license_line1: 'Вариант 1: отправьте <b>5€ как пожертвование</b> в PayPal: <b>3dprint8616@gmail.com</b>',
-          pro_license_line2: 'Вариант 2: оплатите через <b>GitHub Sponsors</b> (та же сумма).',
+          pro_license_line1: 'Вариант 1: оплатите <b>5€</b> (пожертвование) через синюю кнопку <b>PayPal (коллекта)</b> в блоке выше.',
+          pro_license_line2: 'Вариант 2: оплатите <b>ту же сумму</b> кнопкой <b>GitHub Sponsors</b> в блоке выше.',
           pro_license_line3: 'После оплаты заполните форму ниже и выберите <b>PayPal</b> (e-mail оплаты + имя/фамилия) или <b>GitHub Sponsors</b> (GitHub username).',
           pro_license_auto_note: 'Система автоматическая: если соответствие платежа не найдено, пароль НЕ будет отправлен.',
+          pro_license_line4: 'Пожертвования: <b>10€</b> — имена на карточке; <b>50€</b> — приоритет кастомных функций. Связь: <b>luminaenergycard@gmail.com</b> или Telegram. Проверьте <b>SPAM</b>.',
           pro_license_line_red: 'Отправляйте как пожертвование, а не как товары и услуги. Оплата будет возвращена при отказе.',
           payment_method_colletta: 'Сбор 5€ PayPal'
         },
@@ -28592,7 +28511,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_hero_unlock: 'Desbloqueie o Lumina PRO em 1 minuto - 5EUR',
           pro_hero_desc: 'Imagens overlay, popups avancados, fluxos personalizados e ferramentas PRO drag and drop.',
           pro_hero_discover: 'Ver funcoes PRO',
-          pro_hero_pay: 'Pagar 5EUR',
+          pro_hero_pay: 'PayPal — 5€',
+          pro_hero_pay_github: 'GitHub — 5€',
           pro_welcome_title: 'Lumina PRO - Desbloquear por 5EUR',
           pro_welcome_badge: 'UMA VEZ',
           pro_welcome_desc: 'Desbloqueie todas as funcoes avancadas e personalize o cartao por completo. Pagamento recomendado: 5EUR via PayPal (doacao) ou GitHub Sponsors.',
@@ -28600,6 +28520,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_welcome_feat_2: 'Fluxos personalizados, popups personalizados (Classic / Tactical / Life Sign), textos personalizados',
           pro_welcome_feat_3: 'Fundo pessoal, editor drag and drop avancado, ferramentas PRO',
           pro_welcome_feat_4: 'Mais opcoes visuais, layouts e controlo detalhado da interface',
+          pro_welcome_feat_5: 'Mini Cam: stream de camera no mapa, com etiqueta e posicao',
+          pro_welcome_feat_6: 'Popups personalizados: estilos avancados (Classic, Tactical, Life Sign, …)',
+          pro_welcome_feat_7: 'Pessoas: mostrar “person” / pessoas do Home Assistant no cartao',
+          pro_welcome_feat_8: 'Previsao solar: novo servico de previsao e HUD no cartao',
           pro_welcome_close: 'Percebi',
           pro_welcome_after_note: 'Apos o pagamento, use o formulario abaixo para pedir a sua palavra-passe PRO.',
           pro_welcome_paypal: 'PayPal 5EUR',
@@ -28639,10 +28563,11 @@ class LuminaEnergyCardEditor extends HTMLElement {
           password_ok: '✓ Palavra-passe aceite. PRO ativo.',
           password_bad: '❌ Palavra-passe inválida. Verifique e tente novamente.',
           pro_license_title: '💰 Licença PRO',
-          pro_license_line1: 'Opção 1: envie <b>5€ como DOAÇÃO</b> no PayPal: <b>3dprint8616@gmail.com</b>',
-          pro_license_line2: 'Opção 2: patrocine via <b>GitHub Sponsors</b> (mesmo valor).',
+          pro_license_line1: 'Opção 1: pague a <b>doação de 5€</b> com o botão azul <b>PayPal (Colletta)</b> na secção acima.',
+          pro_license_line2: 'Opção 2: pague o <b>mesmo valor</b> com o botão <b>GitHub Sponsors</b> na secção acima.',
           pro_license_line3: 'Após o pagamento, preencha o formulário abaixo e escolha <b>PayPal</b> (e-mail de pagamento + nome/apelido) ou <b>GitHub Sponsors</b> (utilizador GitHub).',
           pro_license_auto_note: 'Sistema automático: se não for encontrada correspondência, a palavra-passe NÃO será enviada.',
+          pro_license_line4: 'Doações: <b>10€</b> = nomes no cartão; <b>50€</b> = prioridade para funções. Contacte <b>luminaenergycard@gmail.com</b> ou Telegram. Verifique o <b>SPAM</b>.',
           pro_license_line_red: 'Enviar como DOAÇÃO, não como bens e serviços. O pagamento será reembolsado em caso negativo.',
           payment_method_colletta: 'Vaquinha 5€ PayPal',
         },
@@ -28997,7 +28922,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_hero_unlock: 'Desbloquea Lumina PRO en 1 minuto - 5EUR',
           pro_hero_desc: 'Imagenes overlay, popups avanzados, flujos personalizados y herramientas PRO de drag and drop.',
           pro_hero_discover: 'Descubrir funciones PRO',
-          pro_hero_pay: 'Pagar 5EUR',
+          pro_hero_pay: 'PayPal — 5€',
+          pro_hero_pay_github: 'GitHub — 5€',
           pro_welcome_title: 'Lumina PRO - Desbloquea por 5EUR',
           pro_welcome_badge: 'UNA VEZ',
           pro_welcome_desc: 'Desbloquea todas las funciones avanzadas y personaliza la tarjeta por completo. Pago recomendado: 5EUR por PayPal (donacion) o GitHub Sponsors.',
@@ -29005,6 +28931,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pro_welcome_feat_2: 'Flujos personalizados, popups personalizados (Classic / Tactical / Life Sign), texto personalizado',
           pro_welcome_feat_3: 'Fondo personal, editor avanzado de drag and drop, herramientas PRO',
           pro_welcome_feat_4: 'Mas opciones visuales, layouts y control detallado de la interfaz',
+          pro_welcome_feat_5: 'Mini Cam: stream de camara en el mapa, con etiqueta y posicion',
+          pro_welcome_feat_6: 'Popups personalizados: estilos avanzados (Classic, Tactical, Life Sign, …)',
+          pro_welcome_feat_7: 'Seccion personas: entidades “person” / personas de Home Assistant en la tarjeta',
+          pro_welcome_feat_8: 'Prevision solar: servicio de prevision de produccion y HUD en la tarjeta',
           pro_welcome_close: 'Entendido',
           pro_welcome_after_note: 'Despues del pago, usa el formulario de abajo para pedir tu contrasena PRO.',
           pro_welcome_paypal: 'PayPal 5EUR',
@@ -29261,14 +29191,14 @@ class LuminaEnergyCardEditor extends HTMLElement {
           house_humidity_4: { label: 'Humedad 4', helper: '' },
           house_humidity_5: { label: 'Humedad 5', helper: '' },
           house_humidity_6: { label: 'Humedad 6', helper: '' },
-          pro_license_title: '💰 PRO License',
-          pro_license_line1: 'Option 1: Send <b>5€ as DONATION</b> to PayPal: <b>3dprint8616@gmail.com</b>',
-          pro_license_line2: 'Option 2: Sponsor via <b>GitHub Sponsors</b> (same amount).',
-          pro_license_line3: 'After payment, fill the form below and choose <b>PayPal</b> (payment email + name/surname) or <b>GitHub Sponsors</b> (GitHub username).',
-          pro_license_auto_note: 'Automatic system: if no match is found, the password will NOT be sent.',
-          pro_license_line4: 'Donations: <b>10€</b> = contributors names in the card; <b>50€</b> = priority for personal features. Always contact <b>luminaenergycard@gmail.com</b> or via Telegram group. Also check your <b>SPAM</b> folder.',
-          pro_license_line_red: 'Send as DONATION, NOT as Goods & Services. Payment will be refunded if request is denied.',
-          payment_method_colletta: 'Pool 5€ PayPal',
+          pro_license_title: '💰 Licencia PRO',
+          pro_license_line1: 'Opción 1: paga la <b>donación de 5€</b> con el botón azul <b>PayPal (Colletta)</b> en la sección superior.',
+          pro_license_line2: 'Opción 2: paga <b>el mismo importe</b> con el botón de <b>GitHub Sponsors</b> en la sección superior.',
+          pro_license_line3: 'Tras el pago, rellena el formulario de abajo y elige <b>PayPal</b> (email de pago + nombre/apellidos) o <b>GitHub Sponsors</b> (usuario de GitHub).',
+          pro_license_auto_note: 'Sistema automático: si no hay coincidencia, la contraseña NO se enviará.',
+          pro_license_line4: 'Donaciones: <b>10€</b> = nombres en la tarjeta; <b>50€</b> = prioridad para funciones. Contacta <b>luminaenergycard@gmail.com</b> o el grupo de Telegram. Revisa <b>SPAM</b>.',
+          pro_license_line_red: 'Envía como DONACIÓN, no como bienes y servicios. El pago se reembolsará si se deniega.',
+          payment_method_colletta: 'Colecta 5€ PayPal',
           follow_title: 'Community',
           telegram_button: 'Telegram Group',
           tiktok_button: 'TikTok Channel',
@@ -30245,13 +30175,9 @@ class LuminaEnergyCardEditor extends HTMLElement {
           const n = i + 6;
           const base = n === 1 ? 'overlay_image' : `overlay_image_${n}`;
           const labelNum = i + 1;
-          const defaultPeople = [
-            { enabled: true, photo: '/local/community/lumina-energy-card/littleboyreal.png', x: 645, y: 198, width: 30, height: 70, opacity: 1.0 },
-            { enabled: true, photo: '/local/community/lumina-energy-card/womanreal.png', x: 383, y: 221, width: 30, height: 90, opacity: 1.0 },
-            { enabled: true, photo: '/local/community/lumina-energy-card/manreal.png', x: 593, y: 121, width: 30, height: 80, opacity: 1.0 },
-            { enabled: true, photo: '/local/community/lumina-energy-card/littlegirlreal.png', x: 698, y: 180, width: 30, height: 69, opacity: 1.0 }
-          ];
-          const defaults = defaultPeople[i] || { enabled: false, photo: '', x: 0, y: 0, width: 180, height: 220, opacity: 1.0 };
+          const personDefault = { enabled: false, photo: '', x: 168, y: 292, width: 30, height: 60, opacity: 1.0 };
+          const defaultPeople = [ { ...personDefault }, { ...personDefault }, { ...personDefault }, { ...personDefault } ];
+          const defaults = defaultPeople[i] || { ...personDefault };
           return [
             { name: `${base}_enabled`, label: (fields[`people_${labelNum}_enabled`] && fields[`people_${labelNum}_enabled`].label) || `Person ${labelNum} enabled`, helper: (fields[`people_${labelNum}_enabled`] && fields[`people_${labelNum}_enabled`].helper) || 'Show or hide this person image.', selector: { boolean: {} }, default: defaults.enabled },
             { name: `${base}`, label: (fields[`people_${labelNum}_photo`] && fields[`people_${labelNum}_photo`].label) || `Person ${labelNum} photo`, helper: (fields[`people_${labelNum}_photo`] && fields[`people_${labelNum}_photo`].helper) || 'Pick one of your uploaded person images.', selector: { select: { options: peoplePhotoOptions } }, default: defaults.photo },
@@ -30320,10 +30246,15 @@ class LuminaEnergyCardEditor extends HTMLElement {
       // Previsioni solari (entity + opzioni)
       { name: 'solar_forecast_enabled', label: (fields.solar_forecast_enabled && fields.solar_forecast_enabled.label) || 'Enable Solar Forecast', helper: (fields.solar_forecast_enabled && fields.solar_forecast_enabled.helper) || 'Display estimated solar production with sun/rain icon and status.', selector: { boolean: {} }, default: false },
       { name: 'solar_forecast_week_strip', label: (fields.solar_forecast_week_strip && fields.solar_forecast_week_strip.label) || '7-day strip layout', helper: (fields.solar_forecast_week_strip && fields.solar_forecast_week_strip.helper) || 'When ON and the main forecast sensor exposes a forecast array (3+ days), shows a horizontal strip similar to a weekly chart. Uses the same X/Y anchor as the classic popup.', selector: { boolean: {} }, default: false },
-      { name: 'solar_forecast_popup_scale', label: (fields.solar_forecast_popup_scale && fields.solar_forecast_popup_scale.label) || '7-day popup scale', helper: (fields.solar_forecast_popup_scale && fields.solar_forecast_popup_scale.helper) || 'Uniform scale of the whole popup (texts scale automatically).', selector: { number: { min: 0.5, max: 2.5, step: 0.05, mode: 'slider' } }, default: 0.85 },
+      { name: 'solar_forecast_popup_scale', label: (fields.solar_forecast_popup_scale && fields.solar_forecast_popup_scale.label) || '7-day popup scale', helper: (fields.solar_forecast_popup_scale && fields.solar_forecast_popup_scale.helper) || 'Uniform scale of the whole popup (texts scale automatically).', selector: { number: { min: 0.1, max: 2.5, step: 0.05, mode: 'slider' } }, default: 0.85 },
       { name: 'solar_forecast_dot_motion_enabled', label: (fields.solar_forecast_dot_motion_enabled && fields.solar_forecast_dot_motion_enabled.label) || 'Animate forecast cyan dot', helper: (fields.solar_forecast_dot_motion_enabled && fields.solar_forecast_dot_motion_enabled.helper) || 'When OFF, the cyan dot stays static.', selector: { boolean: {} }, default: false },
-      { name: 'solar_forecast_hud_width', label: (fields.solar_forecast_hud_width && fields.solar_forecast_hud_width.label) || 'Forecast HUD width (px)', helper: (fields.solar_forecast_hud_width && fields.solar_forecast_hud_width.helper) || 'Width of the forecast panel.', selector: { number: { min: 320, max: 780, step: 1, mode: 'box', unit_of_measurement: 'px' } }, default: 500 },
-      { name: 'solar_forecast_hud_height', label: (fields.solar_forecast_hud_height && fields.solar_forecast_hud_height.label) || 'Forecast HUD height (px)', helper: (fields.solar_forecast_hud_height && fields.solar_forecast_hud_height.helper) || 'Height of the forecast panel.', selector: { number: { min: 170, max: 420, step: 1, mode: 'box', unit_of_measurement: 'px' } }, default: 200 },
+      { name: 'solar_forecast_hud_enabled', label: (fields.solar_forecast_hud_enabled && fields.solar_forecast_hud_enabled.label) || 'Show HTML forecast HUD', helper: (fields.solar_forecast_hud_enabled && fields.solar_forecast_hud_enabled.helper) || 'New cards default off. Enable to show the layered forecast panel (week chart + kWh).', selector: { boolean: {} }, default: false },
+      { name: 'solar_forecast_hud_week_mode', label: (fields.solar_forecast_hud_week_mode && fields.solar_forecast_hud_week_mode.label) || 'HUD: 7-day columns', helper: (fields.solar_forecast_hud_week_mode && fields.solar_forecast_hud_week_mode.helper) || 'Off = only 2 day columns in the HUD. On = up to 7 days. Requires “Show HTML forecast HUD”.', selector: { boolean: {} }, default: false },
+      { name: 'solar_forecast_svg_popup_visible', label: (fields.solar_forecast_svg_popup_visible && fields.solar_forecast_svg_popup_visible.label) || 'Show SVG solar popup', helper: (fields.solar_forecast_svg_popup_visible && fields.solar_forecast_svg_popup_visible.helper) || 'Legacy SVG forecast block on the 800×450 canvas. Default off; use the HTML HUD instead.', selector: { boolean: {} }, default: false },
+      { name: 'solar_forecast_svg_popup_scale', label: (fields.solar_forecast_svg_popup_scale && fields.solar_forecast_svg_popup_scale.label) || 'SVG solar popup scale', helper: (fields.solar_forecast_svg_popup_scale && fields.solar_forecast_svg_popup_scale.helper) || 'Scales the legacy SVG block (7-day and 2-day). Use with “7-day popup scale”; range 0.1–2.5.', selector: { number: { min: 0.1, max: 2.5, step: 0.05, mode: 'slider' } }, default: 1 },
+      { name: 'solar_forecast_hud_width', label: (fields.solar_forecast_hud_width && fields.solar_forecast_hud_width.label) || 'Forecast HUD width (px)', helper: (fields.solar_forecast_hud_width && fields.solar_forecast_hud_width.helper) || 'Width of the forecast panel.', selector: { number: { min: 50, max: 780, step: 1, mode: 'box', unit_of_measurement: 'px' } }, default: 500 },
+      { name: 'solar_forecast_hud_height', label: (fields.solar_forecast_hud_height && fields.solar_forecast_hud_height.label) || 'Forecast HUD height (px)', helper: (fields.solar_forecast_hud_height && fields.solar_forecast_hud_height.helper) || 'Height of the forecast panel.', selector: { number: { min: 50, max: 420, step: 1, mode: 'box', unit_of_measurement: 'px' } }, default: 200 },
+      { name: 'solar_forecast_text_size_scale', label: (fields.solar_forecast_text_size_scale && fields.solar_forecast_text_size_scale.label) || 'Forecast text size', helper: (fields.solar_forecast_text_size_scale && fields.solar_forecast_text_size_scale.helper) || 'Scales all forecast text (7-day strip, 2-day popup, HTML HUD). 1 = default. Max 4×.', selector: { number: { min: 0.5, max: 4, step: 0.02, mode: 'slider' } }, default: 1 },
       { name: 'sensor_solar_forecast_today', label: (fields.sensor_solar_forecast_today && fields.sensor_solar_forecast_today.label) || 'Solar Forecast Today (kWh)', helper: (fields.sensor_solar_forecast_today && fields.sensor_solar_forecast_today.helper) || 'Optional. Entity with forecast energy for today.', selector: entitySelector },
       { name: 'sensor_solar_forecast_tomorrow', label: (fields.sensor_solar_forecast_tomorrow && fields.sensor_solar_forecast_tomorrow.label) || 'Solar Forecast Tomorrow (kWh)', helper: (fields.sensor_solar_forecast_tomorrow && fields.sensor_solar_forecast_tomorrow.helper) || 'Optional. Entity with forecast energy for tomorrow.', selector: entitySelector },
       ...Array.from({ length: 7 }, (_, idx) => ({
@@ -30746,6 +30677,7 @@ _createUpdatesContent_() {
     addNumberRow('solar_forecast_x', -200, 1000, labelOf('solar_forecast_x', 'Solar Forecast X (px)'));
     addNumberRow('solar_forecast_y', -200, 700, labelOf('solar_forecast_y', 'Solar Forecast Y (px)'));
     addNumberRow('solar_forecast_week_text_scale', 0.5, 2.5, labelOf('solar_forecast_week_text_scale', '7-day text scale'), '0.05');
+    addNumberRow('solar_forecast_text_size_scale', 0.5, 4, labelOf('solar_forecast_text_size_scale', 'Forecast text size'), '0.02');
     addColorRow('solar_forecast_text_color', labelOf('solar_forecast_text_color', 'Forecast text color'));
     addColorRow('solar_forecast_kwh_color', labelOf('solar_forecast_kwh_color', 'Forecast kWh/date color'));
     addColorRow('solar_forecast_bar_color', labelOf('solar_forecast_bar_color', 'Forecast bar color'));
@@ -30879,8 +30811,29 @@ _createSectionDefs(localeStrings, schemaDefs) {
 
     // Se l'editor è già disegnato, aggiorna solo i dati senza render() che distrugge gli input.
     if (this.shadowRoot && this.shadowRoot.querySelector('ha-form')) {
+      const leftCol = this.shadowRoot.querySelector('.lumina-editor-split-left');
+      const prevLeftScrollTop = leftCol ? leftCol.scrollTop : null;
+      const prevWinScrollY = (typeof window !== 'undefined' && Number.isFinite(window.scrollY)) ? window.scrollY : null;
       const data = this._configWithDefaults();
       if (data) this._applyHaFormSchemasChunked_(data);
+      if (leftCol || prevWinScrollY != null) {
+        const restore = () => {
+          try {
+            if (leftCol && prevLeftScrollTop != null) leftCol.scrollTop = prevLeftScrollTop;
+            if (prevWinScrollY != null && typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+              window.scrollTo(0, prevWinScrollY);
+            }
+          } catch (eR) { /* ignore */ }
+        };
+        if (typeof requestAnimationFrame === 'function') {
+          requestAnimationFrame(() => {
+            restore();
+            requestAnimationFrame(restore);
+          });
+        } else {
+          setTimeout(restore, 0);
+        }
+      }
       return;
     }
 
@@ -32119,20 +32072,13 @@ _createSectionDefs(localeStrings, schemaDefs) {
     }
     if (isAuthorized) wrapper.classList.add('authorized');
 
-    const PAYPAL_EMAIL = '3dprint8616@gmail.com';
-    const paypalUrl =
-      __URL_PAYPAL_DONATE +
-      '&business=' + encodeURIComponent(PAYPAL_EMAIL) +
-      '&currency_code=EUR' +
-      '&amount=5';
-    
     const linkRow = document.createElement('div');
     linkRow.className = 'paypal-links-row';
 
-    const paypalDisabled = !!(ui && ui.disable_paypal);
+    const paypalDisabled = !!(ui && (ui.disable_paypal || ui.disable_colletta));
     const paypalEl = document.createElement(paypalDisabled ? 'div' : 'a');
     if (!paypalDisabled) {
-      paypalEl.href = paypalUrl;
+      paypalEl.href = LUMINA_PAYPAL_COLLETTA_URL;
       paypalEl.target = '_blank';
       paypalEl.rel = 'noopener noreferrer';
     } else {
@@ -32197,13 +32143,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
     const isPaypalDisabled = !!(ui && ui.disable_paypal);
     const isCollettaDisabled = !!(ui && ui.disable_colletta);
 
-    const PAYPAL_EMAIL = '3dprint8616@gmail.com';
     const SUPPORT_EMAIL = 'luminaenergycard@gmail.com';
-    const PAYPAL_DONATE_URL =
-      __URL_PAYPAL_DONATE +
-      '&business=' + encodeURIComponent(PAYPAL_EMAIL) +
-      '&currency_code=EUR' +
-      '&amount=5';
     const PAYPAL_BUTTON_TEXT = (fields && fields.paypal_button) ? fields.paypal_button : 'Donate 5€';
     const GITHUB_SPONSORS_URL = __URL_GH_SPONSORS;
 
@@ -32257,8 +32197,8 @@ _createSectionDefs(localeStrings, schemaDefs) {
       password_ok: fields.password_ok || '✓ Password accepted. PRO is now active.',
       password_bad: fields.password_bad || '❌ Invalid password. Please check and try again.',
       pro_license_title: fields.pro_license_title || '💰 PRO License',
-      pro_license_line1: fields.pro_license_line1 || 'Send <b>5€ as DONATION</b> to PayPal:',
-      pro_license_line2: fields.pro_license_line2 || 'Then fill the form below (<b>email</b>, <b>PayPal payment email</b>, <b>PayPal first name</b>, <b>PayPal last name</b>).',
+      pro_license_line1: fields.pro_license_line1 || 'Option 1: Pay the <b>5€ donation</b> using the blue <b>PayPal (Colletta)</b> button in the section above.',
+      pro_license_line2: fields.pro_license_line2 || 'Option 2: Pay the <b>same amount</b> using the <b>GitHub Sponsors</b> button in the section above.',
       pro_license_line3: fields.pro_license_line3 || '',
       pro_license_line4: fields.pro_license_line4 || '',
       pro_license_line_red: fields.pro_license_line_red || 'Send as DONATION, NOT as Goods & Services. Payment will be refunded if request is denied.',
@@ -32269,7 +32209,8 @@ _createSectionDefs(localeStrings, schemaDefs) {
       pro_hero_unlock: fields.pro_hero_unlock || 'Unlock Lumina PRO in 1 minute - 5EUR',
       pro_hero_desc: fields.pro_hero_desc || 'Overlay images, advanced popups, custom flows and PRO drag-and-drop tools.',
       pro_hero_discover: fields.pro_hero_discover || 'Discover PRO features',
-      pro_hero_pay: fields.pro_hero_pay || 'Pay 5EUR',
+      pro_hero_pay: fields.pro_hero_pay || 'PayPal — 5EUR',
+      pro_hero_pay_github: fields.pro_hero_pay_github || 'GitHub — 5EUR',
       pro_welcome_title: fields.pro_welcome_title || 'Lumina PRO - Unlock for 5EUR',
       pro_welcome_badge: fields.pro_welcome_badge || 'ONE-TIME',
       pro_welcome_desc: fields.pro_welcome_desc || 'Unlock all advanced features and fully customize your card. Suggested payment: <b>5EUR</b> via PayPal (donation) or GitHub Sponsors.',
@@ -32277,6 +32218,10 @@ _createSectionDefs(localeStrings, schemaDefs) {
       pro_welcome_feat_2: fields.pro_welcome_feat_2 || 'Custom flows, custom popups (Classic / Tactical / Life Sign), custom text',
       pro_welcome_feat_3: fields.pro_welcome_feat_3 || 'Personal background, advanced drag & drop editor, PRO tools',
       pro_welcome_feat_4: fields.pro_welcome_feat_4 || 'More visual options, layouts and detailed UI control',
+      pro_welcome_feat_5: fields.pro_welcome_feat_5 || 'Mini Cam: camera stream on the map, with label and position controls',
+      pro_welcome_feat_6: fields.pro_welcome_feat_6 || 'Custom popups: advanced styles for your entity popups (Classic, Tactical, Life Sign, …)',
+      pro_welcome_feat_7: fields.pro_welcome_feat_7 || 'People section: add and show Home Assistant “person” / people on the card',
+      pro_welcome_feat_8: fields.pro_welcome_feat_8 || 'Solar forecast: new production forecast service and on-card HUD',
       pro_welcome_close: fields.pro_welcome_close || 'Got it',
       pro_welcome_after_note: fields.pro_welcome_after_note || 'After payment, use the form below to request your PRO password.',
       pro_welcome_paypal: fields.pro_welcome_paypal || 'PayPal 5EUR',
@@ -32287,52 +32232,6 @@ _createSectionDefs(localeStrings, schemaDefs) {
       fundraiser_title: fields.fundraiser_title || 'Support',
       support_email: fields.support_email || SUPPORT_EMAIL,
       custom_paid_note: fields.custom_paid_note || ('For substantial changes/customizations contact ' + SUPPORT_EMAIL + ' (paid service).')
-    };
-    const PRO_WELCOME_STORAGE_KEY = 'lumina_energy_card:pro_welcome_seen:v2';
-    const markProWelcomeSeen = () => {
-      try { localStorage.setItem(PRO_WELCOME_STORAGE_KEY, '1'); } catch (eSeen) { /* ignore */ }
-    };
-    const openProWelcomeModal = () => {
-      const host = document.body || document.documentElement;
-      if (!host) return;
-      const existing = host.querySelector('#lumina-pro-welcome-modal');
-      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
-
-      const overlay = document.createElement('div');
-      overlay.id = 'lumina-pro-welcome-modal';
-      overlay.style.cssText = 'position:fixed; inset:0; z-index:999999; background:rgba(4,10,18,0.76); backdrop-filter:blur(3px); display:flex; align-items:center; justify-content:center; padding:16px;';
-      const modal = document.createElement('div');
-      modal.style.cssText = 'width:min(680px,96vw); max-height:90vh; overflow:auto; border-radius:14px; background:linear-gradient(160deg, rgba(8,18,30,0.98), rgba(7,22,36,0.98)); border:1px solid rgba(0,249,249,0.45); box-shadow:0 0 28px rgba(0,249,249,0.25), inset 0 0 0 1px rgba(0,255,255,0.08); color:#eaffff; padding:18px 18px 16px;';
-      modal.innerHTML =
-        '<div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;">' +
-          '<div style="font-size:19px; font-weight:900; color:#00f9f9;">' + labels.pro_welcome_title + '</div>' +
-          '<div style="font-size:12px; color:#98f3ff; font-weight:700; padding:4px 9px; border-radius:999px; border:1px solid rgba(0,249,249,0.4); background:rgba(0,249,249,0.08);">' + labels.pro_welcome_badge + '</div>' +
-        '</div>' +
-        '<div style="font-size:13px; color:#c8f8ff; line-height:1.55; margin-bottom:10px;">' + labels.pro_welcome_desc + '</div>' +
-        '<ul style="margin:0 0 12px 18px; padding:0; color:#d8fbff; font-size:13px; line-height:1.6;">' +
-          '<li>' + labels.pro_welcome_feat_1 + '</li>' +
-          '<li>' + labels.pro_welcome_feat_2 + '</li>' +
-          '<li>' + labels.pro_welcome_feat_3 + '</li>' +
-          '<li>' + labels.pro_welcome_feat_4 + '</li>' +
-        '</ul>' +
-        '<div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">' +
-          '<a data-role="pro-paypal" href="' + PAYPAL_DONATE_URL + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; padding:10px 14px; border-radius:10px; background:#0070ba; color:#fff; text-decoration:none; font-weight:900;">' + labels.pro_welcome_paypal + '</a>' +
-          '<a data-role="pro-github" href="' + GITHUB_SPONSORS_URL + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; padding:10px 14px; border-radius:10px; background:#24292f; color:#fff; text-decoration:none; font-weight:900;">' + labels.pro_welcome_github + '</a>' +
-          '<button data-role="pro-close" type="button" style="padding:10px 14px; border-radius:10px; background:transparent; color:#9efbff; border:1px solid rgba(0,249,249,0.4); font-weight:800; cursor:pointer;">' + labels.pro_welcome_close + '</button>' +
-        '</div>' +
-        '<div style="font-size:11px; color:#9ddbe4;">' + labels.pro_welcome_after_note + '</div>';
-      overlay.appendChild(modal);
-      host.appendChild(overlay);
-      markProWelcomeSeen();
-      const closeBtn = modal.querySelector('[data-role="pro-close"]');
-      if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-          if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-        });
-      }
-      overlay.addEventListener('click', (ev) => {
-        if (ev.target === overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
-      });
     };
 
     if (isProSectionDisabled) {
@@ -32398,16 +32297,25 @@ _createSectionDefs(localeStrings, schemaDefs) {
     heroInfoBtn.type = 'button';
     heroInfoBtn.textContent = labels.pro_hero_discover;
     heroInfoBtn.style.cssText = 'padding:8px 12px; border-radius:8px; border:1px solid rgba(0,249,249,0.45); background:rgba(0,249,249,0.14); color:#dbfeff; font-weight:800; cursor:pointer;';
-    heroInfoBtn.addEventListener('click', () => openProWelcomeModal());
+    heroInfoBtn.addEventListener('click', () => { try { this._openProDonationWelcomeModal_(); } catch (eHw) { /* ignore */ } });
     heroActions.appendChild(heroInfoBtn);
     if (!isLicenseActive) {
       const heroPayBtn = document.createElement('a');
-      heroPayBtn.href = PAYPAL_DONATE_URL;
+      heroPayBtn.href = LUMINA_PAYPAL_COLLETTA_URL;
       heroPayBtn.target = '_blank';
       heroPayBtn.rel = 'noopener noreferrer';
       heroPayBtn.textContent = labels.pro_hero_pay;
+      heroPayBtn.title = 'PayPal (Colletta)';
       heroPayBtn.style.cssText = 'display:inline-flex; align-items:center; padding:8px 12px; border-radius:8px; background:#0070ba; color:#fff; text-decoration:none; font-weight:900;';
+      const heroGithubBtn = document.createElement('a');
+      heroGithubBtn.href = GITHUB_SPONSORS_URL;
+      heroGithubBtn.target = '_blank';
+      heroGithubBtn.rel = 'noopener noreferrer';
+      heroGithubBtn.textContent = labels.pro_hero_pay_github;
+      heroGithubBtn.title = 'GitHub Sponsors';
+      heroGithubBtn.style.cssText = 'display:inline-flex; align-items:center; padding:8px 12px; border-radius:8px; background:#24292f; color:#fff; text-decoration:none; font-weight:900;';
       heroActions.appendChild(heroPayBtn);
+      heroActions.appendChild(heroGithubBtn);
     }
     heroCard.appendChild(heroTitle);
     heroCard.appendChild(heroDesc);
@@ -32642,8 +32550,17 @@ _createSectionDefs(localeStrings, schemaDefs) {
     const collettaDisabledMsgHtml = isCollettaDisabled
       ? `<div style="margin-top:10px; padding: 10px 12px; border-radius: 10px; background: rgba(255,165,0,0.12); border: 1px solid rgba(255,165,0,0.28); color:#ffa500; font-weight:900; font-size:12px; line-height:1.35;">${escHtml(collettaDisabledMsg)}</div>`
       : '';
-    const PAYPAL_POOL_URL = 'https://www.paypal.com/pool/9mz595V3BW?sr=ancr';
     const collettaLabel = labels.payment_method_colletta || 'Colletta';
+    const paypalCollettaBlocked = isPaypalDisabled || isCollettaDisabled;
+    const collettaInstructionBtn = paypalCollettaBlocked
+      ? `<div aria-disabled="true" title="${escHtml(paypalDisabledMsg + ' ' + collettaDisabledMsg)}"
+             style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:10px;background:#0070ba;color:#fff;font-weight:900;opacity:0.55;cursor:not-allowed;pointer-events:none;">
+             <span>${escHtml(collettaLabel)}</span>
+           </div>`
+      : `<a href="${LUMINA_PAYPAL_COLLETTA_URL}" target="_blank" rel="noopener noreferrer" title="PayPal — Colletta (money pool)"
+             style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:10px;background:#0070ba;color:#fff;text-decoration:none;font-weight:900;">
+             <span>${escHtml(collettaLabel)}</span>
+           </a>`;
     instructions.innerHTML = `
       <div style="font-size: 15px; color: #ffffff; font-weight: 900; margin-bottom: 10px;">${labels.pro_license_title}</div>
       <div style="font-size: 14px; color: #ffffff; font-weight: 700; line-height: 1.6;">
@@ -32654,19 +32571,8 @@ _createSectionDefs(localeStrings, schemaDefs) {
         ${(labels.pro_license_line_red && String(labels.pro_license_line_red).trim()) ? ('<span style="display:block;margin-top:10px;color:#d32f2f;font-weight:900;">' + labels.pro_license_line_red + '</span>') : ''}
         ${(labels.pro_license_auto_note && String(labels.pro_license_auto_note).trim()) ? ('<span style="display:block;margin-top:8px;color:#ffa500;font-weight:900;">' + labels.pro_license_auto_note + '</span>') : ''}
       </div>
-      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-        ${
-          isCollettaDisabled
-            ? `<div aria-disabled="true"
-                 style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:10px;background:#0070ba;color:#fff;text-decoration:none;font-weight:900; opacity:0.55; cursor:not-allowed; pointer-events:none;">
-                 <span>${collettaLabel}</span>
-               </div>`
-            : `<a href="${PAYPAL_POOL_URL}" target="_blank" rel="noopener noreferrer"
-                 style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:10px;background:#0070ba;color:#fff;text-decoration:none;font-weight:900;">
-                 <span>${collettaLabel}</span>
-               </a>`
-        }
-        
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        ${collettaInstructionBtn}
         <a href="${GITHUB_SPONSORS_URL}" target="_blank" rel="noopener noreferrer"
            style="display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:10px;background:#24292f;color:#fff;text-decoration:none;font-weight:900;">
           <span>GitHub</span>
@@ -33101,8 +33007,13 @@ _createSectionDefs(localeStrings, schemaDefs) {
           'solar_forecast_y',
           'solar_forecast_popup_scale',
           'solar_forecast_dot_motion_enabled',
+          'solar_forecast_hud_enabled',
+          'solar_forecast_hud_week_mode',
+          'solar_forecast_svg_popup_visible',
+          'solar_forecast_svg_popup_scale',
           'solar_forecast_hud_width',
-          'solar_forecast_hud_height'
+          'solar_forecast_hud_height',
+          'solar_forecast_text_size_scale'
         ].includes(n) || n.startsWith('sensor_solar_forecast_day_');
       });
       const schemaImages = proSchema.filter(f => f.name.startsWith('overlay_image'));
@@ -33323,14 +33234,6 @@ _createSectionDefs(localeStrings, schemaDefs) {
     }
 
     if (proFeaturesDiv) container.appendChild(proFeaturesDiv);
-    if (!isLicenseActive && !this._proWelcomeModalShown) {
-      this._proWelcomeModalShown = true;
-      let alreadySeen = false;
-      try { alreadySeen = localStorage.getItem(PRO_WELCOME_STORAGE_KEY) === '1'; } catch (eLs) { alreadySeen = false; }
-      if (!alreadySeen) {
-        setTimeout(() => { openProWelcomeModal(); }, 180);
-      }
-    }
 
     return container;
   }
@@ -36235,9 +36138,120 @@ _createSectionDefs(localeStrings, schemaDefs) {
       this._updateSectionVisibility(installationType);
     }, 0);
 
+    try {
+      this._scheduleProDonationWelcomeModalOnEditorOpen_();
+    } catch (eProDon) { /* ignore */ }
+
     this._rendered = true;
   }
 }
+
+/** PRO donation intro modal — PayPal: only Colletta (LUMINA_PAYPAL_COLLETTA_URL). */
+LuminaEnergyCardEditor.prototype._openProDonationWelcomeModal_ = function() {
+  const ui = (typeof this._getRemoteUiControl_ === 'function') ? this._getRemoteUiControl_() : null;
+  if (ui && ui.disable_pro_section) return;
+  if ((ui && ui.disable_paypal) || (ui && ui.disable_colletta)) return;
+  const config = this._configWithDefaults();
+  const haUserIdPro = (this._hass && this._hass.user && this._hass.user.id) ? String(this._hass.user.id || '').trim() : '';
+  let isLicenseActive = false;
+  const proPassword = config.pro_password;
+  if (proPassword && typeof proPassword === 'string' && proPassword.trim()) {
+    const trimmedPw = proPassword.trim();
+    const v3UsedPro = haUserIdPro && typeof localStorage !== 'undefined' && localStorage.getItem('lumina_energy_card:v3_used:' + haUserIdPro);
+    if (v3UsedPro) {
+      const h3 = haUserIdPro ? LUMINA_SHA256(trimmedPw + haUserIdPro) : '';
+      if (h3 && Array.isArray(LUMINA_AUTH_LIST_V3) && LUMINA_AUTH_LIST_V3.includes(h3)) isLicenseActive = true;
+    } else {
+      const h1 = LUMINA_SHA256(trimmedPw);
+      const uid = getLuminaUID();
+      const h2 = LUMINA_SHA256(trimmedPw + uid);
+      const h3 = haUserIdPro ? LUMINA_SHA256(trimmedPw + haUserIdPro) : '';
+      const isV3Match = !!(h3 && Array.isArray(LUMINA_AUTH_LIST_V3) && LUMINA_AUTH_LIST_V3.includes(h3));
+      if ((Array.isArray(LUMINA_AUTH_LIST_V1) && LUMINA_AUTH_LIST_V1.includes(h1)) ||
+          (Array.isArray(LUMINA_AUTH_LIST_V2) && LUMINA_AUTH_LIST_V2.includes(h2)) ||
+          isV3Match) isLicenseActive = true;
+    }
+  }
+  if (isLicenseActive) return;
+  const fields = (this._getLocaleStrings() && this._getLocaleStrings().fields) ? this._getLocaleStrings().fields : {};
+  const GITHUB_SPONSORS_URL = __URL_GH_SPONSORS;
+  const wl = (k, en) => (fields && fields[k]) || en;
+  const proWelcomePaypalLabel = (fields && fields.payment_method_colletta) || (fields && fields.pro_welcome_paypal) || 'Colletta PayPal 5€';
+  const labels = {
+    pro_welcome_title: wl('pro_welcome_title', 'Lumina PRO - Unlock for 5EUR'),
+    pro_welcome_badge: wl('pro_welcome_badge', 'ONE-TIME'),
+    pro_welcome_desc: wl('pro_welcome_desc', 'Unlock all advanced features and fully customize your card. Suggested: <b>5EUR</b> via PayPal (colletta) or GitHub Sponsors.'),
+    pro_welcome_feat_1: wl('pro_welcome_feat_1', 'Custom overlay images (up to 5) with free positioning'),
+    pro_welcome_feat_2: wl('pro_welcome_feat_2', 'Custom flows, custom popups, custom text'),
+    pro_welcome_feat_3: wl('pro_welcome_feat_3', 'Personal background, advanced drag & drop editor, PRO tools'),
+    pro_welcome_feat_4: wl('pro_welcome_feat_4', 'More visual options, layouts and detailed UI control'),
+    pro_welcome_feat_5: wl('pro_welcome_feat_5', 'Mini Cam: camera stream on the map, with label and position controls'),
+    pro_welcome_feat_6: wl('pro_welcome_feat_6', 'Custom popups: advanced styles for your entity popups (Classic, Tactical, Life Sign, …)'),
+    pro_welcome_feat_7: wl('pro_welcome_feat_7', 'People section: add and show Home Assistant “person” / people on the card'),
+    pro_welcome_feat_8: wl('pro_welcome_feat_8', 'Solar forecast: new production forecast service and on-card HUD'),
+    pro_welcome_close: wl('pro_welcome_close', 'Got it'),
+    pro_welcome_after_note: wl('pro_welcome_after_note', 'After payment, use the form below to request your PRO password.'),
+    pro_welcome_paypal: proWelcomePaypalLabel,
+    pro_welcome_github: wl('pro_welcome_github', 'GitHub Sponsors')
+  };
+  const host = document.body || document.documentElement;
+  if (!host) return;
+  const existing = host.querySelector('#lumina-pro-welcome-modal');
+  if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+  const overlay = document.createElement('div');
+  overlay.id = 'lumina-pro-welcome-modal';
+  overlay.style.cssText = 'position:fixed; inset:0; z-index:999999; background:rgba(4,10,18,0.76); backdrop-filter:blur(3px); display:flex; align-items:center; justify-content:center; padding:16px;';
+  const modal = document.createElement('div');
+  modal.style.cssText = 'width:min(680px,96vw); max-height:90vh; overflow:auto; border-radius:14px; background:linear-gradient(160deg, rgba(8,18,30,0.98), rgba(7,22,36,0.98)); border:1px solid rgba(0,249,249,0.45); box-shadow:0 0 28px rgba(0,249,249,0.25), inset 0 0 0 1px rgba(0,255,255,0.08); color:#eaffff; padding:18px 18px 16px;';
+  modal.innerHTML =
+    '<div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;">' +
+      '<div style="font-size:19px; font-weight:900; color:#00f9f9;">' + labels.pro_welcome_title + '</div>' +
+      '<div style="font-size:12px; color:#98f3ff; font-weight:700; padding:4px 9px; border-radius:999px; border:1px solid rgba(0,249,249,0.4); background:rgba(0,249,249,0.08);">' + labels.pro_welcome_badge + '</div>' +
+    '</div>' +
+    '<div style="font-size:13px; color:#c8f8ff; line-height:1.55; margin-bottom:10px;">' + labels.pro_welcome_desc + '</div>' +
+    '<ul style="margin:0 0 12px 18px; padding:0; color:#d8fbff; font-size:13px; line-height:1.6;">' +
+      '<li>' + labels.pro_welcome_feat_1 + '</li>' +
+      '<li>' + labels.pro_welcome_feat_2 + '</li>' +
+      '<li>' + labels.pro_welcome_feat_3 + '</li>' +
+      '<li>' + labels.pro_welcome_feat_4 + '</li>' +
+      '<li>' + labels.pro_welcome_feat_5 + '</li>' +
+      '<li>' + labels.pro_welcome_feat_6 + '</li>' +
+      '<li>' + labels.pro_welcome_feat_7 + '</li>' +
+      '<li>' + labels.pro_welcome_feat_8 + '</li>' +
+    '</ul>' +
+    '<div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">' +
+      '<a data-role="pro-paypal" href="' + LUMINA_PAYPAL_COLLETTA_URL + '" target="_blank" rel="noopener noreferrer" title="PayPal — Colletta" style="display:inline-flex; align-items:center; justify-content:center; padding:10px 14px; border-radius:10px; background:#0070ba; color:#fff; text-decoration:none; font-weight:900;">' + labels.pro_welcome_paypal + '</a>' +
+      '<a data-role="pro-github" href="' + GITHUB_SPONSORS_URL + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; padding:10px 14px; border-radius:10px; background:#24292f; color:#fff; text-decoration:none; font-weight:900;">' + labels.pro_welcome_github + '</a>' +
+      '<button data-role="pro-close" type="button" style="padding:10px 14px; border-radius:10px; background:transparent; color:#9efbff; border:1px solid rgba(0,249,249,0.4); font-weight:800; cursor:pointer;">' + labels.pro_welcome_close + '</button>' +
+    '</div>' +
+    '<div style="font-size:11px; color:#9ddbe4;">' + labels.pro_welcome_after_note + '</div>';
+  overlay.appendChild(modal);
+  host.appendChild(overlay);
+  const closeBtn = modal.querySelector('[data-role="pro-close"]');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    });
+  }
+  overlay.addEventListener('click', (ev) => {
+    if (ev.target === overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+  });
+};
+
+LuminaEnergyCardEditor.prototype._scheduleProDonationWelcomeModalOnEditorOpen_ = function() {
+  if (this._proDonationWelcomeModalFired) return;
+  this._proDonationWelcomeModalFired = true;
+  const go = () => {
+    try {
+      this._openProDonationWelcomeModal_();
+    } catch (e) { /* ignore */ }
+  };
+  if (typeof requestAnimationFrame === 'function') {
+    requestAnimationFrame(() => { setTimeout(go, 0); });
+  } else {
+    setTimeout(go, 80);
+  }
+};
 
 if (!customElements.get('lumina-energy-card-editor')) {
   customElements.define('lumina-energy-card-editor', LuminaEnergyCardEditor);
@@ -38255,4 +38269,4 @@ LuminaEnergyCardEditor.prototype._shareToGallery_ = function() {
   };
 })();
 
-/* LUMINA_DIST_BUILD_ISO=2026-04-24T12:24:32.464Z file=lumina-energy-card.js (sec+main+gallery+giornonotte) */
+/* LUMINA_DIST_BUILD_ISO=2026-04-26T13:16:46.878Z file=lumina-energy-card.js (sec+main+gallery+giornonotte) */
