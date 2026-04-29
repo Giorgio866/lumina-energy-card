@@ -1,7 +1,7 @@
 # Lumina Energy Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-![Version](https://img.shields.io/badge/version-3.4.0-blue.svg)
+![Version](https://img.shields.io/badge/version-3.4.0.3-blue.svg)
 
 Repository: [https://github.com/Giorgio866/lumina-energy-card](https://github.com/Giorgio866/lumina-energy-card)
 
@@ -27,7 +27,21 @@ Commercial use / resale requires a separate agreement (`COMMERCIAL-LICENSE.md`).
 
 ### Overview
 
-Lumina Energy Card is a Home Assistant custom Lovelace card that displays animated energy flows (PV, battery, grid, load, heat pump, EV), aggregates PV strings and batteries, and supports optional EV charging and heat pump metrics. It includes **House Management** (cameras, lights, temperature, humidity, security keypad), **interactive popups** with toggles, round buttons (Echo Alive, Text toggle, HOME), **PRO** features (motion-based text visibility, overlay images, custom flows), **Import & Export** for config backup, and **version 3.4.0** enhancements.
+Lumina Energy Card is a Home Assistant custom Lovelace card that displays animated energy flows (PV, battery, grid, load, heat pump, EV), aggregates PV strings and batteries, and supports optional EV charging and heat pump metrics. It includes **House Management** (cameras, lights, temperature, humidity, security keypad), **interactive popups** with toggles, round buttons (Echo Alive, Text toggle, HOME), **PRO** features (motion-based text visibility, overlay images, custom flows), **Import & Export** for config backup, and **version 3.4.x** enhancements.
+
+### What's new in 3.4.0.3
+
+Patch release focused on translations, clearer automotive labeling, multi-account PRO on shared dashboards, numeric formatting, flow visuals, and editor UX polish.
+
+- **Spanish translation complete ([#310](https://github.com/Giorgio866/lumina-energy-card/issues/310)):** Filled gaps so Spanish (**ES**) covers the card UI and editor strings consistently — fewer mixed-language leftovers while browsing labels and dialogs.
+
+- **First-car label corrected ([#315](https://github.com/Giorgio866/lumina-energy-card/issues/315)):** Fixed an incorrect label for the **first vehicle** slot so “Car 1” naming matches what you configure for EV slot **one**.
+
+- **One dashboard, multiple Home Assistant users ([#316](https://github.com/Giorgio866/lumina-energy-card/issues/316)):** Shared dashboards can now honour **different PRO passwords per logged-in user**. In **Lumina PRO**, open the **password mapping** section (**Home Assistant user id → PRO password**): each row locks PRO features to that HA account while everyone sees the same card YAML. If only one user exists, keep using the single **`pro_password`** field as before.
+
+- **Decimal places on the card ([#305](https://github.com/Giorgio866/lumina-energy-card/issues/305)):** Under **General settings**, pick **how many digits after the decimal** (**0 / 1 / 2**) for power (kW), energy (kWh), and on-card temperatures — a compact dashboard stays tidy without sacrificing precision where you need it.
+
+- **Scale energy-flow strokes:** In **Animation styles**, adjust **Flow stroke width** (and **`fluid_flow` stroke width** when that style is active) to make animated flows finer or bolder without hacks — ideal when backgrounds are busy or you watch from afar.
 
 ### What's new in 3.4.0
 
@@ -301,6 +315,13 @@ PRO features require a **PRO password** (`pro_password`), unlocked via the edito
 
 ---
 
+### Privacy Policy
+
+The full privacy notice (**Italian, English, German, French, Spanish**) for Lumina Card — including payment/licensing purposes — is maintained in **[docs/index.md](docs/index.md)**.  
+For **PRO** verification in the card: the backend may process your **Home Assistant user ID** (`hass.user.id`) for validation; rolling retention policies are described in repository tooling/docs where applicable — see the linked policy for the authoritative wording.
+
+---
+
 ### Troubleshooting
 
 - **Card not showing:** Ensure the Lovelace resource is added and clear the browser cache.
@@ -315,7 +336,21 @@ PRO features require a **PRO password** (`pro_password`), unlocked via the edito
 
 ### Panoramica
 
-Lumina Energy Card è una scheda Lovelace personalizzata per Home Assistant che mostra flussi energetici animati (PV, batteria, rete, carico, pompa di calore, EV), aggrega stringhe FV e batterie e supporta metriche opzionali per EV e pompa di calore. Include **Gestione casa** (telecamere, luci, temperatura, umidità, keypad sicurezza), **popup interattivi** con toggle, pulsanti rotondi (Echo Alive, Toggle testi, HOME), funzioni **PRO** (visibilità testi con sensore movimento, overlay, flussi personalizzati), **Import & Export** per il backup della configurazione e le **novità 3.3.5**.
+Lumina Energy Card è una scheda Lovelace personalizzata per Home Assistant che mostra flussi energetici animati (PV, batteria, rete, carico, pompa di calore, EV), aggrega stringhe FV e batterie e supporta metriche opzionali per EV e pompa di calore. Include **Gestione casa** (telecamere, luci, temperatura, umidità, keypad sicurezza), **popup interattivi** con toggle, pulsanti rotondi (Echo Alive, Toggle testi, HOME), funzioni **PRO** (visibilità testi con sensore movimento, overlay, flussi personalizzati), **Import & Export** per il backup della configurazione e le novità della serie **3.4.x** (ultimo patch **3.4.0.3**).
+
+### Novità in 3.4.0.3
+
+Aggiornamento mirato a traduzioni, etichette EV, più account sulla stessa dashboard, formato numerico e resa grafica dei flussi — più chiaro anche nell’editor.
+
+- **Traduzione spagnola completata ([#310](https://github.com/Giorgio866/lumina-energy-card/issues/310)):** Colmate le stringhe mancanti: lo **spagnolo** copre in modo uniforme scheda e editor, con meno “mezze lingue” aprendo le impostazioni.
+
+- **Nome prima auto corretto ([#315](https://github.com/Giorgio866/lumina-energy-card/issues/315)):** Risolta un’etichetta errata per la **prima vettura** così il nome mostrato per lo slot auto **uno** coincide con quanto configurato.
+
+- **Stessa dashboard, più utenti Home Assistant ([#316](https://github.com/Giorgio866/lumina-energy-card/issues/316)):** Una configurazione YAML condivisa può riservare **password PRO diverse** a utenti diversi. In **Lumina PRO** usa il campo dedicato alla **mappa id utente HA → password PRO**: chi è loggato usa prima la propria riga; resta valido anche un solo campo **`pro_password`** quando serve una password per tutti.
+
+- **Decimali sulla scheda ([#305](https://github.com/Giorgio866/lumina-energy-card/issues/305)):** Da **Impostazioni generali** scegli **quante cifre dopo la virgola** (**0 / 1 / 2**) per potenza (kW), energia (kWh) e temperature sulla card — dashboard leggibile senza rinunciare al dettaglio dove serve.
+
+- **Scala spessore flussi animati:** Nella sezione **Stili animazioni** regola **spessore tratto flussi** (e lo **spessore fluid_flow** quando attivi quello stile) per rendere i flussi più sottili o più evidenti sul tuo sfondo.
 
 ### Novità in 3.3.5
 
@@ -554,6 +589,13 @@ Le funzioni PRO richiedono la **password PRO** (`pro_password`), sbloccabile dal
 | Previsione solare | Sezione **PRO** | Produzione stimata + sole olografico |
 | PRO (movimento, overlay, ecc.) | Sezione **PRO** + **`pro_password`** | Testi su movimento, overlay, flussi/testi custom |
 | Lingue | **Lingua** (editor) | EN, IT, DE, FR, NL, **RU**, **PT** |
+
+---
+
+### Privacy Policy / Informativa privacy
+
+L’informativa completa (**italiano, inglese, tedesco, francese, spagnolo**) è nel repository in **[docs/index.md](docs/index.md)**.  
+Per la **verifica PRO** nella card: il backend può elaborare l’**ID utente Home Assistant** (`hass.user.id`) per la validazione; per il testo ufficiale e il dettaglio sul trattamento dati vedi il documento collegato.
 
 ---
 
