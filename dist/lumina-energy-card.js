@@ -1,4 +1,4 @@
-function _0x2c23(_0x18676,_0x184dc3){_0x18676=_0x18676-0xf5;const _0x4a6309=_0x4a63();let _0x2c234a=_0x4a6309[_0x18676];if(_0x2c23['TyJJSo']===undefined){var _0xfb5bdb=function(_0xf1625c){const _0x2dbe2='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x562ad8='',_0x7f91e8='';for(let _0x3a66e5=0x0,_0x344018,_0x48738f,_0x3a2275=0x0;_0x48738f=_0xf1625c['charAt'](_0x3a2275++);~_0x48738f&&(_0x344018=_0x3a66e5%0x4?_0x344018*0x40+_0x48738f:_0x48738f,_0x3a66e5++%0x4)?_0x562ad8+=String['fromCharCode'](0xff&_0x344018>>(-0x2*_0x3a66e5&0x6)):0x0){_0x48738f=_0x2dbe2['indexOf'](_0x48738f);}for(let _0xa51c9=0x0,_0x390a2f=_0x562ad8['length'];_0xa51c9<_0x390a2f;_0xa51c9++){_0x7f91e8+='%'+('00'+_0x562ad8['charCodeAt'](_0xa51c9)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x7f91e8);};_0x2c23['IzfRjG']=_0xfb5bdb,_0x2c23['XroyEG']={},_0x2c23['TyJJSo']=!![];}const _0x376bad=_0x4a6309[0x0],_0x3a9820=_0x18676+_0x376bad,_0x1f3505=_0x2c23['XroyEG'][_0x3a9820];return!_0x1f3505?(_0x2c234a=_0x2c23['IzfRjG'](_0x2c234a),_0x2c23['XroyEG'][_0x3a9820]=_0x2c234a):_0x2c234a=_0x1f3505,_0x2c234a;}function _0x4a63(){const _0x225c84=['BgfZDevYCG','m2u1ngjHzwi','yuHsmgnitty','C3bSAxq','CMfUzg9T','q29Kzq','y3jLyxrLrwW','yxbWzw5Kq2G','Dgv4Da','ndeYmJaWwKrpven4','odLHyMnKzwy','zg9JDw1LBNq','CMvWBgfJzq','mtq2murLDML4rW','AwXK','yLDSBMnTrJa','yvC5EvOYBhy','mtGZndi5tNviD1vh','C3jJ','Aw5JBhvKzxm','tvrjnu1etMG','C2XPy2u','BNvTyMvY','Dg9vChbLCKm','oty2ofrLA3jTBa','BgfZDfn0yxq','mJC1mZi0mhPHExPtAG','rwXLBwvUDa','AwnLBNnLlxa','Aw5KzxHpzG','u2nYAxb0igW','mgrMotGWoty','DhjPBq','BgfZDenVDw4','vgLTzw91Da','zgqWmMrKmgu','mdeYmZq1nJC','tg1oDMjtouG','zgvSzxrLtM8','Aef0','BgfZDe9Rqxq','yxnL','wti5A1Prpt0','wLy5mK13pt0','zw1LBNq','C3rHCNrZv2K','ndqYmZm4nunqyKzisG','zwj1z19SAwm','mJe3yJi2yMi','BgfZDezLDgm','C3rHDhvZ','thK5BMfytJa','zM9Yy2u','p3q9','zee9pq','zfCXCgjTrMy','B25LCNjVCG','y2fSBgjHy2S','BhvTAw5HlwW','CM94Es4Zzha','yxrL','wdnwCfPbpt0','Bwf0y2G','zw5Zzq','otj2vu1Xwvi','lMrLDG','BhvTAw5Hx2O','ww5wELPysMO','BwfW','mtuXnJq2yuTWzwve','tevdlq','mJbLzdfIyJy','t0rzmKWYrM0','CMvHC29U','y21wEgrxvNO','y2HHCKnVzgu','mtCZmgLJuK54yq','BwvZC2fNzq','jNq9','yvC5Dq','zNvUy3rPB24','zfHcA1LyuMW','yJi1mfPxnta','zMXVB3i','ChvZAa','og56BhDQDG','zM9YrwfJAa','C3rYAw5N','C2v0sxrLBq','CMvTB3zLq2G','tg1KCgrhAde','yvC1Bwj3pt0','zvy5ALLysMS','yKHwDgfxnwG','wdjwDvPysM4','AxnbCNjHEq','Dg9mB3DLCKm','B2fKigvYCM8','yM9KEq','yJy0owjKmJi','z2v0sxrLBq','tNPnD01hvMO','txPNEe56ute','tdnkAgr5oxm','y2HHCKf0','Dg9tDhjPBMC','BhvTAw5Hx2q','mwq4mdaWzgm','Ahr0Chm6lY8','ztq0yZLMzti','C3rYAw5NAwy','lNDVCMTLCNm','yM9VBgvHBG','C29UCf8','C2nYAxb0','wM1nmLPQstu','B2jQzwn0','AxngAw5PDgu','zNjVBunOyxi','wKrKA1KYrMO','CgfYzw50tM8','BgvUz3rO','CMLUDdG2mty','BM93','mtG2mtfJuhzjDxa','zwj1z191Cgq'];_0x4a63=function(){return _0x225c84;};return _0x4a63();}const _0x3a2751=_0x2c23;(function(_0x37a99f,_0x427f04){const _0x3c3ff4=_0x2c23,_0x459bce=_0x37a99f();while(!![]){try{const _0x2911dd=-parseInt(_0x3c3ff4(0x15e))/0x1*(-parseInt(_0x3c3ff4(0x122))/0x2)+parseInt(_0x3c3ff4(0x16d))/0x3*(-parseInt(_0x3c3ff4(0xfa))/0x4)+-parseInt(_0x3c3ff4(0x110))/0x5+-parseInt(_0x3c3ff4(0x169))/0x6+-parseInt(_0x3c3ff4(0xfc))/0x7+-parseInt(_0x3c3ff4(0x137))/0x8*(parseInt(_0x3c3ff4(0x171))/0x9)+parseInt(_0x3c3ff4(0x12e))/0xa*(parseInt(_0x3c3ff4(0x127))/0xb);if(_0x2911dd===_0x427f04)break;else _0x459bce['push'](_0x459bce['shift']());}catch(_0xd86fb9){_0x459bce['push'](_0x459bce['shift']());}}}(_0x4a63,0xaa25f));const LUMINA_SHA256=_0x562ad8=>{const _0x299640=_0x2c23,_0x7f91e8=(_0x1fff6,_0x2612b6)=>{const _0x1b6f38=(0xffff&_0x1fff6)+(0xffff&_0x2612b6);return(_0x1fff6>>0x10)+(_0x2612b6>>0x10)+(_0x1b6f38>>0x10)<<0x10|0xffff&_0x1b6f38;},_0x3a66e5=(_0x546f23,_0x26a9d2)=>_0x546f23>>>_0x26a9d2|_0x546f23<<0x20-_0x26a9d2,_0x344018=(_0x8ca3f0,_0x4a6d7c)=>_0x8ca3f0>>>_0x4a6d7c,_0x48738f=(_0x1b0001,_0x59b3c7,_0x47ba74)=>_0x1b0001&_0x59b3c7^~_0x1b0001&_0x47ba74,_0x3a2275=(_0x4b1dc0,_0x23a9e2,_0x559590)=>_0x4b1dc0&_0x23a9e2^_0x4b1dc0&_0x559590^_0x23a9e2&_0x559590,_0xa51c9=_0x43f3ca=>_0x3a66e5(_0x43f3ca,0x2)^_0x3a66e5(_0x43f3ca,0xd)^_0x3a66e5(_0x43f3ca,0x16),_0x390a2f=_0xae864a=>_0x3a66e5(_0xae864a,0x6)^_0x3a66e5(_0xae864a,0xb)^_0x3a66e5(_0xae864a,0x19),_0x3b518e=_0x346994=>_0x3a66e5(_0x346994,0x7)^_0x3a66e5(_0x346994,0x12)^_0x344018(_0x346994,0x3),_0x48e6e2=_0x2853a5=>_0x3a66e5(_0x2853a5,0x11)^_0x3a66e5(_0x2853a5,0x13)^_0x344018(_0x2853a5,0xa),_0x29fe3c=(_0x568c7f=>{const _0x11ea73=_0x2c23;_0x568c7f=_0x568c7f[_0x11ea73(0x16c)](/\r\n/g,'\x0a');let _0x56b431='';for(let _0x3e1ffc=0x0;_0x3e1ffc<_0x568c7f[_0x11ea73(0x15b)];_0x3e1ffc++){const _0x8edbcd=_0x568c7f[_0x11ea73(0x12d)+'At'](_0x3e1ffc);_0x8edbcd<0x80?_0x56b431+=String[_0x11ea73(0x158)+_0x11ea73(0x165)](_0x8edbcd):_0x8edbcd>0x7f&&_0x8edbcd<0x800?(_0x56b431+=String[_0x11ea73(0x158)+_0x11ea73(0x165)](_0x8edbcd>>0x6|0xc0),_0x56b431+=String[_0x11ea73(0x158)+_0x11ea73(0x165)](0x3f&_0x8edbcd|0x80)):(_0x56b431+=String[_0x11ea73(0x158)+_0x11ea73(0x165)](_0x8edbcd>>0xc|0xe0),_0x56b431+=String[_0x11ea73(0x158)+_0x11ea73(0x165)](_0x8edbcd>>0x6&0x3f|0x80),_0x56b431+=String[_0x11ea73(0x158)+_0x11ea73(0x165)](0x3f&_0x8edbcd|0x80));}return _0x56b431;})(_0x562ad8);return(_0x2e1bcd=>{const _0x28ebf9=_0x2c23;let _0x23796c='';for(let _0x5456f5=0x0;_0x5456f5<0x4*_0x2e1bcd[_0x28ebf9(0x15b)];_0x5456f5++)_0x23796c+=(_0x28ebf9(0x106)+_0x28ebf9(0x16a))[_0x28ebf9(0x14a)](_0x2e1bcd[_0x5456f5>>0x2]>>0x8*(0x3-_0x5456f5%0x4)+0x4&0xf)+(_0x28ebf9(0x106)+_0x28ebf9(0x16a))[_0x28ebf9(0x14a)](_0x2e1bcd[_0x5456f5>>0x2]>>0x8*(0x3-_0x5456f5%0x4)&0xf);return _0x23796c;})(((_0x235433,_0xc7d549)=>{const _0x45eac0=_0x2c23,_0x190747=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0xfc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x6ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2],_0xe56087=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19],_0x8d6d98=new Array(0x40);let _0x287224,_0xee0edb,_0x567339,_0x3d3766,_0x313fec,_0x3f6bbb,_0x30e07b,_0x5e3848,_0x56f135,_0x91de52,_0x548c04,_0x348e2f;for(_0x235433[_0xc7d549>>0x5]|=0x80<<0x18-_0xc7d549%0x20,_0x235433[0xf+(_0xc7d549+0x40>>0x9<<0x4)]=_0xc7d549,_0x56f135=0x0;_0x56f135<_0x235433[_0x45eac0(0x15b)];_0x56f135+=0x10){for(_0x287224=_0xe56087[0x0],_0xee0edb=_0xe56087[0x1],_0x567339=_0xe56087[0x2],_0x3d3766=_0xe56087[0x3],_0x313fec=_0xe56087[0x4],_0x3f6bbb=_0xe56087[0x5],_0x30e07b=_0xe56087[0x6],_0x5e3848=_0xe56087[0x7],_0x91de52=0x0;_0x91de52<0x40;_0x91de52++)_0x8d6d98[_0x91de52]=_0x91de52<0x10?_0x235433[_0x91de52+_0x56f135]:_0x7f91e8(_0x7f91e8(_0x7f91e8(_0x48e6e2(_0x8d6d98[_0x91de52-0x2]),_0x8d6d98[_0x91de52-0x7]),_0x3b518e(_0x8d6d98[_0x91de52-0xf])),_0x8d6d98[_0x91de52-0x10]),_0x548c04=_0x7f91e8(_0x7f91e8(_0x7f91e8(_0x7f91e8(_0x5e3848,_0x390a2f(_0x313fec)),_0x48738f(_0x313fec,_0x3f6bbb,_0x30e07b)),_0x190747[_0x91de52]),_0x8d6d98[_0x91de52]),_0x348e2f=_0x7f91e8(_0xa51c9(_0x287224),_0x3a2275(_0x287224,_0xee0edb,_0x567339)),_0x5e3848=_0x30e07b,_0x30e07b=_0x3f6bbb,_0x3f6bbb=_0x313fec,_0x313fec=_0x7f91e8(_0x3d3766,_0x548c04),_0x3d3766=_0x567339,_0x567339=_0xee0edb,_0xee0edb=_0x287224,_0x287224=_0x7f91e8(_0x548c04,_0x348e2f);_0xe56087[0x0]=_0x7f91e8(_0x287224,_0xe56087[0x0]),_0xe56087[0x1]=_0x7f91e8(_0xee0edb,_0xe56087[0x1]),_0xe56087[0x2]=_0x7f91e8(_0x567339,_0xe56087[0x2]),_0xe56087[0x3]=_0x7f91e8(_0x3d3766,_0xe56087[0x3]),_0xe56087[0x4]=_0x7f91e8(_0x313fec,_0xe56087[0x4]),_0xe56087[0x5]=_0x7f91e8(_0x3f6bbb,_0xe56087[0x5]),_0xe56087[0x6]=_0x7f91e8(_0x30e07b,_0xe56087[0x6]),_0xe56087[0x7]=_0x7f91e8(_0x5e3848,_0xe56087[0x7]);}return _0xe56087;})((_0x521e8b=>{const _0x54d59d=_0x2c23,_0x1b223d=[];for(let _0x2a113a=0x0;_0x2a113a<0x8*_0x521e8b[_0x54d59d(0x15b)];_0x2a113a+=0x8)_0x1b223d[_0x2a113a>>0x5]|=(0xff&_0x521e8b[_0x54d59d(0x12d)+'At'](_0x2a113a/0x8))<<0x18-_0x2a113a%0x20;return _0x1b223d;})(_0x29fe3c),0x8*_0x29fe3c[_0x299640(0x15b)]));},LUMINA_REMOTE_URL=atob(_0x3a2751(0x162)+_0x3a2751(0x115)+_0x3a2751(0x13c)+_0x3a2751(0x125)+_0x3a2751(0x134)+_0x3a2751(0x107)+_0x3a2751(0x170)+_0x3a2751(0x12a)+_0x3a2751(0x155)+_0x3a2751(0x159)+_0x3a2751(0x148)+_0x3a2751(0xf6)+_0x3a2751(0x147)+_0x3a2751(0x149)+_0x3a2751(0x119)+_0x3a2751(0x10c));let LUMINA_AUTH_LIST_V1=null,LUMINA_AUTH_LIST_V2=null,LUMINA_AUTH_LIST_V3=null,LUMINA_FETCHING=!0x1,LUMINA_AUTH_META={'lastFetchAt':0x0,'lastOkAt':0x0,'lastErr':'','lastCount':0x0,'lastStatus':0x0};const LUMINA_UNLOCK_V1_IDS=[_0x3a2751(0x14f)+_0x3a2751(0x105)+_0x3a2751(0x161)+_0x3a2751(0x101)+_0x3a2751(0x145)+_0x3a2751(0x112)+_0x3a2751(0x129)+_0x3a2751(0x14d)],LUMINA_UNLOCK_V3_IDS=[],LUMINA_DEBUG_LICENSE=((()=>{const _0x2aeadf=_0x3a2751;try{return'1'===localStorage[_0x2aeadf(0x146)](_0x2aeadf(0x14c)+_0x2aeadf(0x111)+_0x2aeadf(0x121));}catch(_0x30eecd){return!0x1;}})()),LUMINA_UID_KEY=atob(_0x3a2751(0x13f)+_0x3a2751(0x140)+_0x3a2751(0x13e)+_0x3a2751(0x11f)),getLuminaUID=()=>{const _0x5d52d1=_0x3a2751;try{const _0xb8bb68=localStorage[_0x5d52d1(0x146)](LUMINA_UID_KEY);if(_0xb8bb68&&_0x5d52d1(0x139)==typeof _0xb8bb68&&_0xb8bb68[_0x5d52d1(0x10f)+'th'](_0x5d52d1(0x128)))return _0xb8bb68;const _0x4763a0=(Math[_0x5d52d1(0x164)]()[_0x5d52d1(0x14b)](0x10)[_0x5d52d1(0xf7)](0x2)+Math[_0x5d52d1(0x164)]()[_0x5d52d1(0x14b)](0x10)[_0x5d52d1(0xf7)](0x2))[_0x5d52d1(0xf9)+_0x5d52d1(0x10b)](),_0x522113=_0x5d52d1(0x128)+Date[_0x5d52d1(0x15d)]()[_0x5d52d1(0x14b)](0x10)[_0x5d52d1(0xf9)+_0x5d52d1(0x10b)]()+'-'+_0x4763a0[_0x5d52d1(0xf7)](0x0,0x10);return localStorage[_0x5d52d1(0x13a)](LUMINA_UID_KEY,_0x522113),_0x522113;}catch(_0x41059c){const _0x501599=Math[_0x5d52d1(0x164)]()[_0x5d52d1(0x14b)](0x10)[_0x5d52d1(0xf7)](0x2,0xa)[_0x5d52d1(0xf9)+_0x5d52d1(0x10b)]();return _0x5d52d1(0x128)+Date[_0x5d52d1(0x15d)]()[_0x5d52d1(0x14b)](0x10)[_0x5d52d1(0xf9)+_0x5d52d1(0x10b)]()+'-'+_0x501599;}},LUMINA_LICENSE_ENDPOINT=_0x3a2751(0x14e)+_0x3a2751(0x11c)+_0x3a2751(0xfe)+_0x3a2751(0x11d)+_0x3a2751(0x15c)+_0x3a2751(0x151)+_0x3a2751(0x123),LUMINA_ACT_REQ=atob(_0x3a2751(0x12c)+_0x3a2751(0x118)),LUMINA_ACT_MIG=atob(_0x3a2751(0x16f)+_0x3a2751(0x131)),LUMINA_ACT_UPDATEINFO=atob(_0x3a2751(0x133)+_0x3a2751(0x13d)),LUMINA_ACT_MIGRATE_V3=atob(_0x3a2751(0x16f)+_0x3a2751(0x10d)),LUMINA_DEBUG_UPDATE=((()=>{const _0x33e917=_0x3a2751;try{return'1'===localStorage[_0x33e917(0x146)](_0x33e917(0x14c)+_0x33e917(0x15f)+_0x33e917(0x11e));}catch(_0x51e67c){return!0x1;}})()),LUMINA_JSONP=(_0x28e330,_0xdca46=0x3a98)=>new Promise((_0x311cfc,_0x32b0e7)=>{const _0x588616=_0x3a2751;try{const _0x312863=_0x588616(0x124)+_0x588616(0x153)+Date[_0x588616(0x15d)]()+'_'+Math[_0x588616(0x135)](0x3b9aca00*Math[_0x588616(0x164)]()),_0x3b54b9=document[_0x588616(0x166)+_0x588616(0x10e)](_0x588616(0x154));let _0x246338=!0x1;const _0x43f389=_0x23a3e2=>{const _0x4a0e6f=_0x588616;if(!_0x246338){if(_0x246338=!0x0,_0x23a3e2&&_0x23a3e2[_0x4a0e6f(0x108)+'w'])try{delete window[_0x312863];}catch(_0x3c3c09){try{window[_0x312863]=void 0x0;}catch(_0x1abbb7){}}else{try{window[_0x312863]=()=>{};}catch(_0x535457){}try{setTimeout(()=>{try{delete window[_0x312863];}catch(_0x552fe0){}},0x1d4c0);}catch(_0x16b7db){}}try{_0x3b54b9&&_0x3b54b9[_0x4a0e6f(0x15a)+'de']&&_0x3b54b9[_0x4a0e6f(0x15a)+'de'][_0x4a0e6f(0x13b)+_0x4a0e6f(0x16e)](_0x3b54b9);}catch(_0x554e10){}}},_0x47ca24=setTimeout(()=>{const _0x4ca3a6=_0x588616;_0x43f389({'deleteNow':!0x1}),_0x32b0e7(new Error(_0x4ca3a6(0x104)));},_0xdca46);window[_0x312863]=_0x5d1443=>{clearTimeout(_0x47ca24),_0x43f389({'deleteNow':!0x0}),_0x311cfc(_0x5d1443);},_0x3b54b9[_0x588616(0x11a)]=()=>{const _0xebbf96=_0x588616;clearTimeout(_0x47ca24),_0x43f389({'deleteNow':!0x0}),_0x32b0e7(new Error(_0xebbf96(0x100)+_0xebbf96(0x143)+'r'));},_0x3b54b9[_0x588616(0x172)]=_0x28e330+(_0x28e330[_0x588616(0xff)]('?')>=0x0?'&':'?')+(_0x588616(0x11b)+'=')+_0x312863+_0x588616(0x130)+Date[_0x588616(0x15d)](),(document[_0x588616(0x144)]||document[_0x588616(0x16b)+_0x588616(0xfd)])[_0x588616(0x167)+_0x588616(0x16e)](_0x3b54b9);}catch(_0x4ad072){_0x32b0e7(_0x4ad072);}}),LUMINA_PACK=_0x999e60=>{const _0x438dc0=_0x3a2751;try{const _0x231314=JSON[_0x438dc0(0x150)+'y'](_0x999e60||{});return btoa(unescape(encodeURIComponent(_0x231314)))[_0x438dc0(0x16c)](/\+/g,'-')[_0x438dc0(0x16c)](/\//g,'_')[_0x438dc0(0x16c)](/=+$/g,'');}catch(_0x2c171c){return'';}},LUMINA_VERSION_CMP=(_0x77a8a6,_0xaa7da3)=>{const _0x1c5412=_0x3a2751,_0xe742bb=String(_0x77a8a6||'')[_0x1c5412(0x102)]()[_0x1c5412(0x163)]('.')[_0x1c5412(0x126)](_0x4e8f9d=>parseInt(_0x4e8f9d,0xa)),_0x2189fd=String(_0xaa7da3||'')[_0x1c5412(0x102)]()[_0x1c5412(0x163)]('.')[_0x1c5412(0x126)](_0x21d6c2=>parseInt(_0x21d6c2,0xa));for(let _0xd2a6b7=0x0;_0xd2a6b7<0x3;_0xd2a6b7++){const _0x290fe0=Number[_0x1c5412(0x157)](_0xe742bb[_0xd2a6b7])?_0xe742bb[_0xd2a6b7]:0x0,_0x272054=Number[_0x1c5412(0x157)](_0x2189fd[_0xd2a6b7])?_0x2189fd[_0xd2a6b7]:0x0;if(_0x290fe0<_0x272054)return-0x1;if(_0x290fe0>_0x272054)return 0x1;}return 0x0;},LUMINA_REFRESH_AUTH=async _0x2e760c=>{const _0x21bbe7=_0x3a2751;let _0x3b7a07=null,_0x10cc73=!0x1,_0x451546='';if(_0x21bbe7(0x132)==typeof _0x2e760c?_0x3b7a07=_0x2e760c:_0x21bbe7(0x152)==typeof _0x2e760c?_0x10cc73=_0x2e760c:_0x2e760c&&_0x21bbe7(0x156)==typeof _0x2e760c&&(_0x3b7a07=_0x21bbe7(0x132)==typeof _0x2e760c[_0x21bbe7(0x11b)]?_0x2e760c[_0x21bbe7(0x11b)]:null,_0x10cc73=!!_0x2e760c[_0x21bbe7(0x116)],_0x2e760c[_0x21bbe7(0x12b)]?String(_0x2e760c[_0x21bbe7(0x12b)]):''),!_0x10cc73&&null!==LUMINA_AUTH_LIST_V1&&null!==LUMINA_AUTH_LIST_V2&&null!==LUMINA_AUTH_LIST_V3)return LUMINA_AUTH_LIST_V1;if(LUMINA_FETCHING)return null;LUMINA_FETCHING=!0x0,LUMINA_AUTH_META[_0x21bbe7(0x113)+_0x21bbe7(0x109)]=Date[_0x21bbe7(0x15d)](),LUMINA_AUTH_META[_0x21bbe7(0x160)]='';try{const _0x479585=LUMINA_REMOTE_URL+_0x21bbe7(0x117)+Date[_0x21bbe7(0x15d)](),_0x298b45=await fetch(_0x479585);try{LUMINA_AUTH_META[_0x21bbe7(0xfb)+'us']=_0x298b45&&_0x21bbe7(0xf8)==typeof _0x298b45[_0x21bbe7(0x114)]?_0x298b45[_0x21bbe7(0x114)]:0x0;}catch(_0x1edb87){LUMINA_AUTH_META[_0x21bbe7(0xfb)+'us']=0x0;}const _0x1e9537=(await _0x298b45[_0x21bbe7(0x168)]())[_0x21bbe7(0x163)](/\r?\n/);LUMINA_AUTH_LIST_V1=[],LUMINA_AUTH_LIST_V2=[],LUMINA_AUTH_LIST_V3=[];for(let _0x195970=0x0;_0x195970<_0x1e9537[_0x21bbe7(0x15b)];_0x195970++){const _0x1ccb43=_0x1e9537[_0x195970][_0x21bbe7(0x102)](),_0x3e3846=_0x1ccb43[_0x21bbe7(0x120)](/v1:([0-9a-fA-F]{64})/);_0x3e3846&&_0x3e3846[0x1]&&LUMINA_AUTH_LIST_V1[_0x21bbe7(0x136)](String(_0x3e3846[0x1])[_0x21bbe7(0x142)+_0x21bbe7(0x10b)]());const _0x4a23a4=_0x1ccb43[_0x21bbe7(0x120)](/v2:([0-9a-fA-F]{64})/);_0x4a23a4&&_0x4a23a4[0x1]&&LUMINA_AUTH_LIST_V2[_0x21bbe7(0x136)](String(_0x4a23a4[0x1])[_0x21bbe7(0x142)+_0x21bbe7(0x10b)]());const _0x12275f=_0x1ccb43[_0x21bbe7(0x120)](/v3:([0-9a-fA-F]{64})/);_0x12275f&&_0x12275f[0x1]&&LUMINA_AUTH_LIST_V3[_0x21bbe7(0x136)](String(_0x12275f[0x1])[_0x21bbe7(0x142)+_0x21bbe7(0x10b)]());}Array[_0x21bbe7(0x141)](LUMINA_UNLOCK_V1_IDS)&&LUMINA_UNLOCK_V1_IDS[_0x21bbe7(0x138)](_0xa5354a=>{const _0x4ed829=_0x21bbe7;if(_0xa5354a&&_0x4ed829(0x139)==typeof _0xa5354a&&0x40===_0xa5354a[_0x4ed829(0x15b)]){const _0x8e997=_0xa5354a[_0x4ed829(0x142)+_0x4ed829(0x10b)]();LUMINA_AUTH_LIST_V1[_0x4ed829(0xf5)](_0x8e997)||LUMINA_AUTH_LIST_V1[_0x4ed829(0x136)](_0x8e997);}}),Array[_0x21bbe7(0x141)](LUMINA_UNLOCK_V3_IDS)&&LUMINA_UNLOCK_V3_IDS[_0x21bbe7(0x138)](_0x4e2ef6=>{const _0x7739fa=_0x21bbe7;if(_0x4e2ef6&&_0x7739fa(0x139)==typeof _0x4e2ef6&&0x40===_0x4e2ef6[_0x7739fa(0x15b)]){const _0x2cb7a7=_0x4e2ef6[_0x7739fa(0x142)+_0x7739fa(0x10b)]();LUMINA_AUTH_LIST_V3[_0x7739fa(0xf5)](_0x2cb7a7)||LUMINA_AUTH_LIST_V3[_0x7739fa(0x136)](_0x2cb7a7);}}),LUMINA_AUTH_META[_0x21bbe7(0x10a)]=Date[_0x21bbe7(0x15d)]();const _0x5795c5=Array[_0x21bbe7(0x141)](LUMINA_AUTH_LIST_V1)?LUMINA_AUTH_LIST_V1[_0x21bbe7(0x15b)]:0x0,_0x2935ff=Array[_0x21bbe7(0x141)](LUMINA_AUTH_LIST_V2)?LUMINA_AUTH_LIST_V2[_0x21bbe7(0x15b)]:0x0,_0x45f30a=Array[_0x21bbe7(0x141)](LUMINA_AUTH_LIST_V3)?LUMINA_AUTH_LIST_V3[_0x21bbe7(0x15b)]:0x0;LUMINA_AUTH_META[_0x21bbe7(0x103)+'t']=_0x5795c5+_0x2935ff+_0x45f30a,_0x3b7a07&&_0x3b7a07();}catch(_0x41b8df){LUMINA_AUTH_META[_0x21bbe7(0x160)]=_0x41b8df&&_0x41b8df[_0x21bbe7(0x12f)]?String(_0x41b8df[_0x21bbe7(0x12f)]):String(_0x41b8df),LUMINA_AUTH_LIST_V1=[],LUMINA_AUTH_LIST_V2=[],LUMINA_AUTH_LIST_V3=[],Array[_0x21bbe7(0x141)](LUMINA_UNLOCK_V1_IDS)&&LUMINA_UNLOCK_V1_IDS[_0x21bbe7(0x138)](_0x537a96=>{const _0x5480b8=_0x21bbe7;if(_0x537a96&&_0x5480b8(0x139)==typeof _0x537a96&&0x40===_0x537a96[_0x5480b8(0x15b)]){const _0x16d308=_0x537a96[_0x5480b8(0x142)+_0x5480b8(0x10b)]();LUMINA_AUTH_LIST_V1[_0x5480b8(0xf5)](_0x16d308)||LUMINA_AUTH_LIST_V1[_0x5480b8(0x136)](_0x16d308);}}),Array[_0x21bbe7(0x141)](LUMINA_UNLOCK_V3_IDS)&&LUMINA_UNLOCK_V3_IDS[_0x21bbe7(0x138)](_0x1fc556=>{const _0x17140e=_0x21bbe7;if(_0x1fc556&&_0x17140e(0x139)==typeof _0x1fc556&&0x40===_0x1fc556[_0x17140e(0x15b)]){const _0x5455f0=_0x1fc556[_0x17140e(0x142)+_0x17140e(0x10b)]();LUMINA_AUTH_LIST_V3[_0x17140e(0xf5)](_0x5455f0)||LUMINA_AUTH_LIST_V3[_0x17140e(0x136)](_0x5455f0);}}),_0x3b7a07&&_0x3b7a07();}finally{LUMINA_FETCHING=!0x1;}return LUMINA_AUTH_LIST_V1;};const __s = (...a) => a.join('');
+const _0x4ce3ec=_0x2e39;(function(_0x2e285f,_0x363322){const _0x4e0faf=_0x2e39,_0x440f99=_0x2e285f();while(!![]){try{const _0x1142af=-parseInt(_0x4e0faf(0x158))/0x1+parseInt(_0x4e0faf(0x199))/0x2*(-parseInt(_0x4e0faf(0x1ba))/0x3)+-parseInt(_0x4e0faf(0x161))/0x4*(parseInt(_0x4e0faf(0x19b))/0x5)+parseInt(_0x4e0faf(0x160))/0x6+-parseInt(_0x4e0faf(0x191))/0x7*(-parseInt(_0x4e0faf(0x185))/0x8)+parseInt(_0x4e0faf(0x180))/0x9+parseInt(_0x4e0faf(0x192))/0xa*(-parseInt(_0x4e0faf(0x184))/0xb);if(_0x1142af===_0x363322)break;else _0x440f99['push'](_0x440f99['shift']());}catch(_0x1376c2){_0x440f99['push'](_0x440f99['shift']());}}}(_0x552e,0xb3c90));const LUMINA_SHA256=_0x1e08a5=>{const _0x306a04=_0x2e39,_0x38f0db=(_0x2aa8bd,_0x4faccc)=>{const _0x13e0c1=(0xffff&_0x2aa8bd)+(0xffff&_0x4faccc);return(_0x2aa8bd>>0x10)+(_0x4faccc>>0x10)+(_0x13e0c1>>0x10)<<0x10|0xffff&_0x13e0c1;},_0x49dfed=(_0x5ea843,_0x792da6)=>_0x5ea843>>>_0x792da6|_0x5ea843<<0x20-_0x792da6,_0x241783=(_0x5c232f,_0xd8aca2)=>_0x5c232f>>>_0xd8aca2,_0x21ab69=(_0x579544,_0x4c8ba1,_0x53cf7d)=>_0x579544&_0x4c8ba1^~_0x579544&_0x53cf7d,_0x4df1dd=(_0x13fe91,_0x604899,_0x45edef)=>_0x13fe91&_0x604899^_0x13fe91&_0x45edef^_0x604899&_0x45edef,_0x41726f=_0x3492a4=>_0x49dfed(_0x3492a4,0x2)^_0x49dfed(_0x3492a4,0xd)^_0x49dfed(_0x3492a4,0x16),_0x4675eb=_0x2f3303=>_0x49dfed(_0x2f3303,0x6)^_0x49dfed(_0x2f3303,0xb)^_0x49dfed(_0x2f3303,0x19),_0x3e9e67=_0x13397b=>_0x49dfed(_0x13397b,0x7)^_0x49dfed(_0x13397b,0x12)^_0x241783(_0x13397b,0x3),_0x381dfb=_0x4275b=>_0x49dfed(_0x4275b,0x11)^_0x49dfed(_0x4275b,0x13)^_0x241783(_0x4275b,0xa),_0x112c5b=(_0x5938ea=>{const _0x5571c6=_0x2e39;_0x5938ea=_0x5938ea[_0x5571c6(0x196)](/\r\n/g,'\x0a');let _0x349950='';for(let _0x2d5d94=0x0;_0x2d5d94<_0x5938ea[_0x5571c6(0x19f)];_0x2d5d94++){const _0x25328c=_0x5938ea[_0x5571c6(0x140)+'At'](_0x2d5d94);_0x25328c<0x80?_0x349950+=String[_0x5571c6(0x18d)+_0x5571c6(0x172)](_0x25328c):_0x25328c>0x7f&&_0x25328c<0x800?(_0x349950+=String[_0x5571c6(0x18d)+_0x5571c6(0x172)](_0x25328c>>0x6|0xc0),_0x349950+=String[_0x5571c6(0x18d)+_0x5571c6(0x172)](0x3f&_0x25328c|0x80)):(_0x349950+=String[_0x5571c6(0x18d)+_0x5571c6(0x172)](_0x25328c>>0xc|0xe0),_0x349950+=String[_0x5571c6(0x18d)+_0x5571c6(0x172)](_0x25328c>>0x6&0x3f|0x80),_0x349950+=String[_0x5571c6(0x18d)+_0x5571c6(0x172)](0x3f&_0x25328c|0x80));}return _0x349950;})(_0x1e08a5);return(_0x281bc4=>{const _0x1128c3=_0x2e39;let _0x563c2a='';for(let _0x248b6a=0x0;_0x248b6a<0x4*_0x281bc4[_0x1128c3(0x19f)];_0x248b6a++)_0x563c2a+=(_0x1128c3(0x16a)+_0x1128c3(0x13e))[_0x1128c3(0x150)](_0x281bc4[_0x248b6a>>0x2]>>0x8*(0x3-_0x248b6a%0x4)+0x4&0xf)+(_0x1128c3(0x16a)+_0x1128c3(0x13e))[_0x1128c3(0x150)](_0x281bc4[_0x248b6a>>0x2]>>0x8*(0x3-_0x248b6a%0x4)&0xf);return _0x563c2a;})(((_0x57ccaa,_0x36164f)=>{const _0x134e31=_0x2e39,_0x5865c8=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0xfc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x6ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2],_0x57ecd7=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19],_0x3d6fb0=new Array(0x40);let _0x27a48a,_0x2c9e73,_0x34f504,_0x4c2541,_0x43a08d,_0xaee6c3,_0x1a3b9e,_0x57657a,_0x1cc596,_0xe2da8d,_0x909b6a,_0x5cd4d9;for(_0x57ccaa[_0x36164f>>0x5]|=0x80<<0x18-_0x36164f%0x20,_0x57ccaa[0xf+(_0x36164f+0x40>>0x9<<0x4)]=_0x36164f,_0x1cc596=0x0;_0x1cc596<_0x57ccaa[_0x134e31(0x19f)];_0x1cc596+=0x10){for(_0x27a48a=_0x57ecd7[0x0],_0x2c9e73=_0x57ecd7[0x1],_0x34f504=_0x57ecd7[0x2],_0x4c2541=_0x57ecd7[0x3],_0x43a08d=_0x57ecd7[0x4],_0xaee6c3=_0x57ecd7[0x5],_0x1a3b9e=_0x57ecd7[0x6],_0x57657a=_0x57ecd7[0x7],_0xe2da8d=0x0;_0xe2da8d<0x40;_0xe2da8d++)_0x3d6fb0[_0xe2da8d]=_0xe2da8d<0x10?_0x57ccaa[_0xe2da8d+_0x1cc596]:_0x38f0db(_0x38f0db(_0x38f0db(_0x381dfb(_0x3d6fb0[_0xe2da8d-0x2]),_0x3d6fb0[_0xe2da8d-0x7]),_0x3e9e67(_0x3d6fb0[_0xe2da8d-0xf])),_0x3d6fb0[_0xe2da8d-0x10]),_0x909b6a=_0x38f0db(_0x38f0db(_0x38f0db(_0x38f0db(_0x57657a,_0x4675eb(_0x43a08d)),_0x21ab69(_0x43a08d,_0xaee6c3,_0x1a3b9e)),_0x5865c8[_0xe2da8d]),_0x3d6fb0[_0xe2da8d]),_0x5cd4d9=_0x38f0db(_0x41726f(_0x27a48a),_0x4df1dd(_0x27a48a,_0x2c9e73,_0x34f504)),_0x57657a=_0x1a3b9e,_0x1a3b9e=_0xaee6c3,_0xaee6c3=_0x43a08d,_0x43a08d=_0x38f0db(_0x4c2541,_0x909b6a),_0x4c2541=_0x34f504,_0x34f504=_0x2c9e73,_0x2c9e73=_0x27a48a,_0x27a48a=_0x38f0db(_0x909b6a,_0x5cd4d9);_0x57ecd7[0x0]=_0x38f0db(_0x27a48a,_0x57ecd7[0x0]),_0x57ecd7[0x1]=_0x38f0db(_0x2c9e73,_0x57ecd7[0x1]),_0x57ecd7[0x2]=_0x38f0db(_0x34f504,_0x57ecd7[0x2]),_0x57ecd7[0x3]=_0x38f0db(_0x4c2541,_0x57ecd7[0x3]),_0x57ecd7[0x4]=_0x38f0db(_0x43a08d,_0x57ecd7[0x4]),_0x57ecd7[0x5]=_0x38f0db(_0xaee6c3,_0x57ecd7[0x5]),_0x57ecd7[0x6]=_0x38f0db(_0x1a3b9e,_0x57ecd7[0x6]),_0x57ecd7[0x7]=_0x38f0db(_0x57657a,_0x57ecd7[0x7]);}return _0x57ecd7;})((_0x14132c=>{const _0x1aed33=_0x2e39,_0x3681f1=[];for(let _0x40dc47=0x0;_0x40dc47<0x8*_0x14132c[_0x1aed33(0x19f)];_0x40dc47+=0x8)_0x3681f1[_0x40dc47>>0x5]|=(0xff&_0x14132c[_0x1aed33(0x140)+'At'](_0x40dc47/0x8))<<0x18-_0x40dc47%0x20;return _0x3681f1;})(_0x112c5b),0x8*_0x112c5b[_0x306a04(0x19f)]));},LUMINA_REMOTE_URL=atob(_0x4ce3ec(0x195)+_0x4ce3ec(0x14c)+_0x4ce3ec(0x18f)+_0x4ce3ec(0x197)+_0x4ce3ec(0x155)+_0x4ce3ec(0x18e)+_0x4ce3ec(0x188)+_0x4ce3ec(0x17c)+_0x4ce3ec(0x147)+_0x4ce3ec(0x1a4)+_0x4ce3ec(0x1a7)+_0x4ce3ec(0x149)+_0x4ce3ec(0x143)+_0x4ce3ec(0x17e)+_0x4ce3ec(0x162)+_0x4ce3ec(0x1b8));let LUMINA_AUTH_LIST_V1=null,LUMINA_AUTH_LIST_V2=null,LUMINA_AUTH_LIST_V3=null,LUMINA_FETCHING=!0x1,LUMINA_AUTH_META={'lastFetchAt':0x0,'lastOkAt':0x0,'lastErr':'','lastCount':0x0,'lastStatus':0x0};function _0x552e(){const _0x191ab7=['y2HHCKnVzgu','vgLTzw91Da','yM9KEq','tNPnD01hvMO','C2v0sxrLBq','CM94Es4Zzha','C3rHDhvZ','wM1nmLPQstu','C2nYAxb0','tvrjnu1etMG','C3bSAxq','wLy5mK13pt0','thK5BMfytJa','mwq4mdaWzgm','lNDVCMTLCNm','B2jQzwn0','y2HHCKf0','y2fSBgjHy2S','zvy5ALLysMS','zee9pq','CMvTB3zLq2G','yJi1mfPxnta','lMrLDG','zw1LBNq','mJi0ndy2tgfyzujb','zfHcA1LyuMW','zgvSzxrLtM8','wdnwCfPbpt0','zMXVB3i','BwfW','Aef0','zM9YrwfJAa','mJe4nZaXmMj2u0XHqW','nJmYELPUqxHg','zfCXCgjTrMy','Dgv4Da','Dg9tDhjPBMC','Dg9mB3DLCKm','C3rYAw5NAwy','mgrMotGWoty','C3rYAw5N','mJbLzdfIyJy','mdeYmZq1nJC','ChvZAa','u2nYAxb0igW','BhvTAw5HlwW','tevdlq','C29UCf8','Ahr0Chm6lY8','zM9Yy2u','q29Kzq','mJe3yJi2yMi','zg9JDw1LBNq','m2u1ngjHzwi','BgfZDezLDgm','BNvTyMvY','yxnL','DhjPBq','yLDSBMnTrJa','BhvTAw5Hx2q','t0rzmKWYrM0','zw5Zzq','tdnkAgr5oxm','p3q9','odCXnZeWm1nvBfDjDW','C2XPy2u','BgfZDenVDw4','Aw5KzxHpzG','nJa1suHABK9e','otC3odu5mKvSEKzxyq','yJy0owjKmJi','AxngAw5PDgu','yvC5EvOYBhy','B2fKigvYCM8','zNvUy3rPB24','BwvZC2fNzq','CMLUDdG2mty','zNjVBunOyxi','tg1oDMjtouG','tg1KCgrhAde','AwXK','n0zVwMvTCW','mJiWmdaWANnYAK5K','BgfZDe9Rqxq','z2v0sxrLBq','yuHsmgnitty','CMvWBgfJzq','ww5wELPysMO','Bwf0y2G','mJq5mdztrMn5BvK','yvC5Dq','otqXmgPrq2TADq','yKHwDgfxnwG','zwj1z191Cgq','jNq9','BgvUz3rO','zgqWmMrKmgu','BhvTAw5Hx2O','B25LCNjVCG','Aw5JBhvKzxm','wKrKA1KYrMO','wdjwDvPysM4','y21wEgrxvNO','txPNEe56ute','yxbWzw5Kq2G','Dg9vChbLCKm','C3jJ','rwXLBwvUDa','AwnLBNnLlxa','BgfZDfn0yxq','zwj1z19SAwm','yvC1Bwj3pt0','BgfZDevYCG','yxrL','C3rHCNrZv2K','CMfUzg9T','BM93','AxnbCNjHEq','CMvHC29U','CgfYzw50tM8','wti5A1Prpt0','y3jLyxrLrwW','mJfdvgflANi','ztq0yZLMzti','odLHyMnKzwy','yM9VBgvHBG'];_0x552e=function(){return _0x191ab7;};return _0x552e();}function _0x2e39(_0x166f6a,_0x563fd5){_0x166f6a=_0x166f6a-0x13e;const _0x552e6e=_0x552e();let _0x2e39cd=_0x552e6e[_0x166f6a];if(_0x2e39['KlyJTZ']===undefined){var _0x5d6148=function(_0xa226a6){const _0x536dc7='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x1e08a5='',_0x38f0db='';for(let _0x49dfed=0x0,_0x241783,_0x21ab69,_0x4df1dd=0x0;_0x21ab69=_0xa226a6['charAt'](_0x4df1dd++);~_0x21ab69&&(_0x241783=_0x49dfed%0x4?_0x241783*0x40+_0x21ab69:_0x21ab69,_0x49dfed++%0x4)?_0x1e08a5+=String['fromCharCode'](0xff&_0x241783>>(-0x2*_0x49dfed&0x6)):0x0){_0x21ab69=_0x536dc7['indexOf'](_0x21ab69);}for(let _0x41726f=0x0,_0x4675eb=_0x1e08a5['length'];_0x41726f<_0x4675eb;_0x41726f++){_0x38f0db+='%'+('00'+_0x1e08a5['charCodeAt'](_0x41726f)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x38f0db);};_0x2e39['DQxvKN']=_0x5d6148,_0x2e39['maePtl']={},_0x2e39['KlyJTZ']=!![];}const _0xb70a65=_0x552e6e[0x0],_0x295a29=_0x166f6a+_0xb70a65,_0x5dd269=_0x2e39['maePtl'][_0x295a29];return!_0x5dd269?(_0x2e39cd=_0x2e39['DQxvKN'](_0x2e39cd),_0x2e39['maePtl'][_0x295a29]=_0x2e39cd):_0x2e39cd=_0x5dd269,_0x2e39cd;}const LUMINA_UNLOCK_V1_IDS=[_0x4ce3ec(0x1bb)+_0x4ce3ec(0x1a0)+_0x4ce3ec(0x175)+_0x4ce3ec(0x167)+_0x4ce3ec(0x186)+_0x4ce3ec(0x173)+_0x4ce3ec(0x169)+_0x4ce3ec(0x14d)],LUMINA_UNLOCK_V3_IDS=[],LUMINA_DEBUG_LICENSE=((()=>{const _0x2cca61=_0x4ce3ec;try{return'1'===localStorage[_0x2cca61(0x194)](_0x2cca61(0x17b)+_0x2cca61(0x1ae)+_0x2cca61(0x17d));}catch(_0x3c7693){return!0x1;}})()),LUMINA_UID_KEY=atob(_0x4ce3ec(0x19c)+_0x4ce3ec(0x1a5)+_0x4ce3ec(0x152)+_0x4ce3ec(0x15b)),getLuminaUID=()=>{const _0x1032fc=_0x4ce3ec;try{const _0x4003df=localStorage[_0x1032fc(0x194)](LUMINA_UID_KEY);if(_0x4003df&&_0x1032fc(0x168)==typeof _0x4003df&&_0x4003df[_0x1032fc(0x1b2)+'th'](_0x1032fc(0x16e)))return _0x4003df;const _0x238291=(Math[_0x1032fc(0x1b3)]()[_0x1032fc(0x164)](0x10)[_0x1032fc(0x181)](0x2)+Math[_0x1032fc(0x1b3)]()[_0x1032fc(0x164)](0x10)[_0x1032fc(0x181)](0x2))[_0x1032fc(0x1a9)+_0x1032fc(0x178)](),_0xf10bda=_0x1032fc(0x16e)+Date[_0x1032fc(0x1b4)]()[_0x1032fc(0x164)](0x10)[_0x1032fc(0x1a9)+_0x1032fc(0x178)]()+'-'+_0x238291[_0x1032fc(0x181)](0x0,0x10);return localStorage[_0x1032fc(0x144)](LUMINA_UID_KEY,_0xf10bda),_0xf10bda;}catch(_0x5c898b){const _0x38a6da=Math[_0x1032fc(0x1b3)]()[_0x1032fc(0x164)](0x10)[_0x1032fc(0x181)](0x2,0xa)[_0x1032fc(0x1a9)+_0x1032fc(0x178)]();return _0x1032fc(0x16e)+Date[_0x1032fc(0x1b4)]()[_0x1032fc(0x164)](0x10)[_0x1032fc(0x1a9)+_0x1032fc(0x178)]()+'-'+_0x38a6da;}},LUMINA_LICENSE_ENDPOINT=_0x4ce3ec(0x170)+_0x4ce3ec(0x16d)+_0x4ce3ec(0x1ac)+_0x4ce3ec(0x145)+_0x4ce3ec(0x18c)+_0x4ce3ec(0x14e)+_0x4ce3ec(0x156),LUMINA_ACT_REQ=atob(_0x4ce3ec(0x1a6)+_0x4ce3ec(0x153)),LUMINA_ACT_MIG=atob(_0x4ce3ec(0x17a)+_0x4ce3ec(0x19a)),LUMINA_ACT_UPDATEINFO=atob(_0x4ce3ec(0x159)+_0x4ce3ec(0x1af)),LUMINA_ACT_MIGRATE_V3=atob(_0x4ce3ec(0x17a)+_0x4ce3ec(0x14b)),LUMINA_DEBUG_UPDATE=((()=>{const _0x2c6b86=_0x4ce3ec;try{return'1'===localStorage[_0x2c6b86(0x194)](_0x2c6b86(0x17b)+_0x2c6b86(0x19d)+_0x2c6b86(0x1b1));}catch(_0x57b46a){return!0x1;}})()),LUMINA_JSONP=(_0x2dc1ec,_0x124007=0x3a98)=>new Promise((_0x1d5f08,_0x29b329)=>{const _0x10ba55=_0x4ce3ec;try{const _0x4698f2=_0x10ba55(0x1a1)+_0x10ba55(0x16f)+Date[_0x10ba55(0x1b4)]()+'_'+Math[_0x10ba55(0x15c)](0x3b9aca00*Math[_0x10ba55(0x1b3)]()),_0x215ad1=document[_0x10ba55(0x1b9)+_0x10ba55(0x157)](_0x10ba55(0x148));let _0x116d32=!0x1;const _0x645113=_0x47d76e=>{const _0x2303e4=_0x10ba55;if(!_0x116d32){if(_0x116d32=!0x0,_0x47d76e&&_0x47d76e[_0x2303e4(0x15a)+'w'])try{delete window[_0x4698f2];}catch(_0x51090e){try{window[_0x4698f2]=void 0x0;}catch(_0x14c3c8){}}else{try{window[_0x4698f2]=()=>{};}catch(_0x11aeae){}try{setTimeout(()=>{try{delete window[_0x4698f2];}catch(_0x4d5370){}},0x1d4c0);}catch(_0x5c5f7f){}}try{_0x215ad1&&_0x215ad1[_0x2303e4(0x1b7)+'de']&&_0x215ad1[_0x2303e4(0x1b7)+'de'][_0x2303e4(0x154)+_0x2303e4(0x190)](_0x215ad1);}catch(_0x58461f){}}},_0x42db70=setTimeout(()=>{const _0x3b81b3=_0x10ba55;_0x645113({'deleteNow':!0x1}),_0x29b329(new Error(_0x3b81b3(0x141)));},_0x124007);window[_0x4698f2]=_0xcdc4e2=>{clearTimeout(_0x42db70),_0x645113({'deleteNow':!0x0}),_0x1d5f08(_0xcdc4e2);},_0x215ad1[_0x10ba55(0x1a2)]=()=>{const _0x40dc9b=_0x10ba55;clearTimeout(_0x42db70),_0x645113({'deleteNow':!0x0}),_0x29b329(new Error(_0x40dc9b(0x16c)+_0x40dc9b(0x189)+'r'));},_0x215ad1[_0x10ba55(0x1aa)]=_0x2dc1ec+(_0x2dc1ec[_0x10ba55(0x183)]('?')>=0x0?'&':'?')+(_0x10ba55(0x151)+'=')+_0x4698f2+_0x10ba55(0x19e)+Date[_0x10ba55(0x1b4)](),(document[_0x10ba55(0x142)]||document[_0x10ba55(0x174)+_0x10ba55(0x1ab)])[_0x10ba55(0x1a8)+_0x10ba55(0x190)](_0x215ad1);}catch(_0x5bc511){_0x29b329(_0x5bc511);}}),LUMINA_PACK=_0x27c639=>{const _0x2c7626=_0x4ce3ec;try{const _0x53ac49=JSON[_0x2c7626(0x166)+'y'](_0x27c639||{});return btoa(unescape(encodeURIComponent(_0x53ac49)))[_0x2c7626(0x196)](/\+/g,'-')[_0x2c7626(0x196)](/\//g,'_')[_0x2c7626(0x196)](/=+$/g,'');}catch(_0x2e1d97){return'';}},LUMINA_VERSION_CMP=(_0x14a049,_0x17d80d)=>{const _0x54052e=_0x4ce3ec,_0x4b918a=String(_0x14a049||'')[_0x54052e(0x179)]()[_0x54052e(0x14a)]('.')[_0x54052e(0x15d)](_0x5a8694=>parseInt(_0x5a8694,0xa)),_0x167be3=String(_0x17d80d||'')[_0x54052e(0x179)]()[_0x54052e(0x14a)]('.')[_0x54052e(0x15d)](_0x41f014=>parseInt(_0x41f014,0xa));for(let _0x356cc2=0x0;_0x356cc2<0x3;_0x356cc2++){const _0x28975a=Number[_0x54052e(0x187)](_0x4b918a[_0x356cc2])?_0x4b918a[_0x356cc2]:0x0,_0x406330=Number[_0x54052e(0x187)](_0x167be3[_0x356cc2])?_0x167be3[_0x356cc2]:0x0;if(_0x28975a<_0x406330)return-0x1;if(_0x28975a>_0x406330)return 0x1;}return 0x0;},LUMINA_REFRESH_AUTH=async _0x5d3eea=>{const _0x217c89=_0x4ce3ec;let _0x48517c=null,_0x299aac=!0x1,_0x2c45fe='';if(_0x217c89(0x18a)==typeof _0x5d3eea?_0x48517c=_0x5d3eea:_0x217c89(0x13f)==typeof _0x5d3eea?_0x299aac=_0x5d3eea:_0x5d3eea&&_0x217c89(0x14f)==typeof _0x5d3eea&&(_0x48517c=_0x217c89(0x18a)==typeof _0x5d3eea[_0x217c89(0x151)]?_0x5d3eea[_0x217c89(0x151)]:null,_0x299aac=!!_0x5d3eea[_0x217c89(0x171)],_0x5d3eea[_0x217c89(0x1b6)]?String(_0x5d3eea[_0x217c89(0x1b6)]):''),!_0x299aac&&null!==LUMINA_AUTH_LIST_V1&&null!==LUMINA_AUTH_LIST_V2&&null!==LUMINA_AUTH_LIST_V3)return LUMINA_AUTH_LIST_V1;if(LUMINA_FETCHING)return null;LUMINA_FETCHING=!0x0,LUMINA_AUTH_META[_0x217c89(0x176)+_0x217c89(0x15e)]=Date[_0x217c89(0x1b4)](),LUMINA_AUTH_META[_0x217c89(0x1b0)]='';try{const _0x1befd5=LUMINA_REMOTE_URL+_0x217c89(0x17f)+Date[_0x217c89(0x1b4)](),_0x455a3c=await fetch(_0x1befd5);try{LUMINA_AUTH_META[_0x217c89(0x1ad)+'us']=_0x455a3c&&_0x217c89(0x177)==typeof _0x455a3c[_0x217c89(0x146)]?_0x455a3c[_0x217c89(0x146)]:0x0;}catch(_0x9f16a2){LUMINA_AUTH_META[_0x217c89(0x1ad)+'us']=0x0;}const _0x51a5c5=(await _0x455a3c[_0x217c89(0x163)]())[_0x217c89(0x14a)](/\r?\n/);LUMINA_AUTH_LIST_V1=[],LUMINA_AUTH_LIST_V2=[],LUMINA_AUTH_LIST_V3=[];for(let _0x29fd6f=0x0;_0x29fd6f<_0x51a5c5[_0x217c89(0x19f)];_0x29fd6f++){const _0x530bb6=_0x51a5c5[_0x29fd6f][_0x217c89(0x179)](),_0x4d8168=_0x530bb6[_0x217c89(0x198)](/v1:([0-9a-fA-F]{64})/);_0x4d8168&&_0x4d8168[0x1]&&LUMINA_AUTH_LIST_V1[_0x217c89(0x16b)](String(_0x4d8168[0x1])[_0x217c89(0x165)+_0x217c89(0x178)]());const _0x344640=_0x530bb6[_0x217c89(0x198)](/v2:([0-9a-fA-F]{64})/);_0x344640&&_0x344640[0x1]&&LUMINA_AUTH_LIST_V2[_0x217c89(0x16b)](String(_0x344640[0x1])[_0x217c89(0x165)+_0x217c89(0x178)]());const _0x599e4a=_0x530bb6[_0x217c89(0x198)](/v3:([0-9a-fA-F]{64})/);_0x599e4a&&_0x599e4a[0x1]&&LUMINA_AUTH_LIST_V3[_0x217c89(0x16b)](String(_0x599e4a[0x1])[_0x217c89(0x165)+_0x217c89(0x178)]());}Array[_0x217c89(0x1b5)](LUMINA_UNLOCK_V1_IDS)&&LUMINA_UNLOCK_V1_IDS[_0x217c89(0x15f)](_0xa45c01=>{const _0x2f5672=_0x217c89;if(_0xa45c01&&_0x2f5672(0x168)==typeof _0xa45c01&&0x40===_0xa45c01[_0x2f5672(0x19f)]){const _0xc7d241=_0xa45c01[_0x2f5672(0x165)+_0x2f5672(0x178)]();LUMINA_AUTH_LIST_V1[_0x2f5672(0x1a3)](_0xc7d241)||LUMINA_AUTH_LIST_V1[_0x2f5672(0x16b)](_0xc7d241);}}),Array[_0x217c89(0x1b5)](LUMINA_UNLOCK_V3_IDS)&&LUMINA_UNLOCK_V3_IDS[_0x217c89(0x15f)](_0x170e33=>{const _0x29ee47=_0x217c89;if(_0x170e33&&_0x29ee47(0x168)==typeof _0x170e33&&0x40===_0x170e33[_0x29ee47(0x19f)]){const _0x371a59=_0x170e33[_0x29ee47(0x165)+_0x29ee47(0x178)]();LUMINA_AUTH_LIST_V3[_0x29ee47(0x1a3)](_0x371a59)||LUMINA_AUTH_LIST_V3[_0x29ee47(0x16b)](_0x371a59);}}),LUMINA_AUTH_META[_0x217c89(0x193)]=Date[_0x217c89(0x1b4)]();const _0x50f3b0=Array[_0x217c89(0x1b5)](LUMINA_AUTH_LIST_V1)?LUMINA_AUTH_LIST_V1[_0x217c89(0x19f)]:0x0,_0xf4369f=Array[_0x217c89(0x1b5)](LUMINA_AUTH_LIST_V2)?LUMINA_AUTH_LIST_V2[_0x217c89(0x19f)]:0x0,_0x5f5294=Array[_0x217c89(0x1b5)](LUMINA_AUTH_LIST_V3)?LUMINA_AUTH_LIST_V3[_0x217c89(0x19f)]:0x0;LUMINA_AUTH_META[_0x217c89(0x182)+'t']=_0x50f3b0+_0xf4369f+_0x5f5294,_0x48517c&&_0x48517c();}catch(_0x11a75d){LUMINA_AUTH_META[_0x217c89(0x1b0)]=_0x11a75d&&_0x11a75d[_0x217c89(0x18b)]?String(_0x11a75d[_0x217c89(0x18b)]):String(_0x11a75d),LUMINA_AUTH_LIST_V1=[],LUMINA_AUTH_LIST_V2=[],LUMINA_AUTH_LIST_V3=[],Array[_0x217c89(0x1b5)](LUMINA_UNLOCK_V1_IDS)&&LUMINA_UNLOCK_V1_IDS[_0x217c89(0x15f)](_0x51310b=>{const _0x35d3ee=_0x217c89;if(_0x51310b&&_0x35d3ee(0x168)==typeof _0x51310b&&0x40===_0x51310b[_0x35d3ee(0x19f)]){const _0x16d264=_0x51310b[_0x35d3ee(0x165)+_0x35d3ee(0x178)]();LUMINA_AUTH_LIST_V1[_0x35d3ee(0x1a3)](_0x16d264)||LUMINA_AUTH_LIST_V1[_0x35d3ee(0x16b)](_0x16d264);}}),Array[_0x217c89(0x1b5)](LUMINA_UNLOCK_V3_IDS)&&LUMINA_UNLOCK_V3_IDS[_0x217c89(0x15f)](_0x567858=>{const _0x2aa58e=_0x217c89;if(_0x567858&&_0x2aa58e(0x168)==typeof _0x567858&&0x40===_0x567858[_0x2aa58e(0x19f)]){const _0x395b96=_0x567858[_0x2aa58e(0x165)+_0x2aa58e(0x178)]();LUMINA_AUTH_LIST_V3[_0x2aa58e(0x1a3)](_0x395b96)||LUMINA_AUTH_LIST_V3[_0x2aa58e(0x16b)](_0x395b96);}}),_0x48517c&&_0x48517c();}finally{LUMINA_FETCHING=!0x1;}return LUMINA_AUTH_LIST_V1;};const __s = (...a) => a.join('');
 const __b64 = (s) => {
   try {
     return (typeof atob === 'function') ? atob(s) : s;
@@ -488,6 +488,15 @@ const toNumber = (value) => {
   }
   const num = Number(value);
   return Number.isFinite(num) ? num : null;
+};
+
+/** Fraction digits for standard card labels (General settings: 0 / 1 / 2). */
+const luminaUiDecimalPlaces = (config) => {
+  if (!config || typeof config !== 'object') return 2;
+  const raw = toNumber(config.display_decimal_places);
+  if (raw === null) return 2;
+  const v = Math.floor(Number(raw));
+  return Number.isFinite(v) ? Math.min(2, Math.max(0, v)) : 2;
 };
 
 /**
@@ -1094,6 +1103,38 @@ const buildArrowGroupSvg = (key, flowState, count) => {
   return `<g class="flow-arrow" data-arrow-key="${key}" style="opacity:${activeOpacity};">${segments}</g>`;
 };
 
+/** Shared PRO helpers: `pro_password_by_user` maps HA user.id → password; falls back to `pro_password`. */
+function luminaHasProPasswordConfigured(config) {
+  if (!config || typeof config !== 'object') return false;
+  if (config.pro_password && typeof config.pro_password === 'string' && config.pro_password.trim()) return true;
+  const m = config.pro_password_by_user;
+  if (m && typeof m === 'object' && !Array.isArray(m)) {
+    const keys = Object.keys(m);
+    for (let i = 0; i < keys.length; i++) {
+      const v = m[keys[i]];
+      if (v != null && String(v).trim()) return true;
+    }
+  }
+  return false;
+}
+
+function luminaResolveProPassword(config, hass) {
+  try {
+    const cfg = config || {};
+    const haId = (hass && hass.user && hass.user.id) ? String(hass.user.id || '').trim() : '';
+    const mapRaw = cfg.pro_password_by_user;
+    if (haId && mapRaw && typeof mapRaw === 'object' && !Array.isArray(mapRaw)) {
+      if (Object.prototype.hasOwnProperty.call(mapRaw, haId)) {
+        const v = mapRaw[haId];
+        if (v != null && String(v).trim()) return String(v).trim();
+      }
+    }
+    const main = cfg.pro_password;
+    if (main != null && typeof main === 'string' && main.trim()) return main.trim();
+  } catch (e) { /* ignore */ }
+  return '';
+}
+
 class LuminaEnergyCard extends HTMLElement {
   constructor() {
     super();
@@ -1149,7 +1190,8 @@ class LuminaEnergyCard extends HTMLElement {
     this._flowPathLengthSig = new Map(); // flowKey -> current path 'd' (for cache invalidation)
     this._animationSpeedFactor = 1;
     this._animationStyle = FLOW_STYLE_DEFAULT;
-    this._fluidFlowStrokeWidthPx = 5;
+    this._fluidFlowStrokeWidthPx = 3;
+    this._displayDecimalPlaces = 2;
     this._fluidFlowOuterGlowEnabled = false;
     this._defaults = (typeof LuminaEnergyCard.getStubConfig === 'function')
       ? { ...LuminaEnergyCard.getStubConfig() }
@@ -1569,12 +1611,11 @@ class LuminaEnergyCard extends HTMLElement {
       return;
     }
     const merged = this.config || this._defaults || {};
-    const pw = merged.pro_password;
-    if (!pw || typeof pw !== 'string' || !pw.trim()) {
+    const trimmed = luminaResolveProPassword(merged, this._hass);
+    if (!trimmed) {
       this._isAuthorized = false;
       return;
     }
-    const trimmed = pw.trim();
     const haUserId = (this._hass && this._hass.user && this._hass.user.id) ? String(this._hass.user.id || '').trim() : '';
     const hashV3 = haUserId ? LUMINA_SHA256(trimmed + haUserId) : '';
     const v3Used = haUserId && typeof localStorage !== 'undefined' && localStorage.getItem('lumina_energy_card:v3_used:' + haUserId);
@@ -1615,7 +1656,7 @@ class LuminaEnergyCard extends HTMLElement {
         imageKeys.push(`overlay_image${s}`, `overlay_image${s}_enabled`, `overlay_image${s}_x`, `overlay_image${s}_y`, `overlay_image${s}_width`, `overlay_image${s}_height`, `overlay_image${s}_opacity`);
       }
       for (let i = 1; i <= LUMINA_CUSTOM_FLOW_TEXT_SLOTS; i++) {
-        imageKeys.push('custom_text_' + i + '_enabled', 'custom_text_' + i + '_text', 'custom_text_' + i + '_sensor', 'custom_text_' + i + '_x', 'custom_text_' + i + '_y', 'custom_text_' + i + '_color', 'custom_text_' + i + '_size', 'custom_text_' + i + '_rotate', 'custom_text_' + i + '_skew_x', 'custom_text_' + i + '_skew_y');
+        imageKeys.push('custom_text_' + i + '_enabled', 'custom_text_' + i + '_text', 'custom_text_' + i + '_sensor', 'custom_text_' + i + '_decimals', 'custom_text_' + i + '_x', 'custom_text_' + i + '_y', 'custom_text_' + i + '_color', 'custom_text_' + i + '_size', 'custom_text_' + i + '_rotate', 'custom_text_' + i + '_skew_x', 'custom_text_' + i + '_skew_y');
       }
       for (const key of imageKeys) {
         const incoming = config[key];
@@ -1626,6 +1667,16 @@ class LuminaEnergyCard extends HTMLElement {
         const prevBool = typeof prev === 'boolean';
         const keepPrev = (incomingMissing || incomingEmpty) && (prevHasValue || prevBool);
         if (keepPrev) merged[key] = prev;
+      }
+      {
+        const key = 'pro_password_by_user';
+        const incoming = config[key];
+        const prev = this.config[key];
+        const incomingMissing = !(key in config);
+        const incomingEmpty = incoming === undefined || incoming === null ||
+          (typeof incoming === 'object' && !Array.isArray(incoming) && Object.keys(incoming).length === 0);
+        const prevHasObj = prev && typeof prev === 'object' && !Array.isArray(prev) && Object.keys(prev).length > 0;
+        if ((incomingMissing || incomingEmpty) && prevHasObj) merged[key] = prev;
       }
     }
     this.config = merged;
@@ -1680,9 +1731,8 @@ class LuminaEnergyCard extends HTMLElement {
     if (isPreview) {
       this._isAuthorized = true;
     } else {
-      const pw = merged.pro_password;
-      if (pw && typeof pw === 'string' && pw.trim()) {
-        const trimmed = pw.trim();
+      const trimmed = luminaResolveProPassword(merged, this._hass);
+      if (trimmed) {
         const haUserId = (this._hass && this._hass.user && this._hass.user.id) ? String(this._hass.user.id || '').trim() : '';
         const hashV3 = haUserId ? LUMINA_SHA256(trimmed + haUserId) : '';
         const v3Used = haUserId && typeof localStorage !== 'undefined' && localStorage.getItem('lumina_energy_card:v3_used:' + haUserId);
@@ -1793,6 +1843,12 @@ class LuminaEnergyCard extends HTMLElement {
         try { this.render(); } catch (e) {
           throw e;
         }
+      } else {
+        // Visual editor without dev_* / popup_* layout keys: HA sends config-only updates without hass churn;
+        // e.g. display_decimal_places must refresh formatted numbers on the card (popups often rebuild on open).
+        try { this.render(); } catch (e) {
+          throw e;
+        }
       }
     } else {
       if (isPreview || hasDeveloperValues) {
@@ -1881,7 +1937,7 @@ class LuminaEnergyCard extends HTMLElement {
     const prevHass = this._hass;
     this._hass = hass;
     try { this._hassSeq = (Number(this._hassSeq) || 0) + 1; } catch (e) { /* ignore */ }
-    if (!prevHass && hass && this.config && this.config.pro_password && typeof this._revalidateAuthFromConfig_ === 'function') {
+    if (!prevHass && hass && this.config && luminaHasProPasswordConfigured(this.config) && typeof this._revalidateAuthFromConfig_ === 'function') {
       this._revalidateAuthFromConfig_();
     }
     if (this._isEditorActive && this._previewCardEl && hass) {
@@ -2375,6 +2431,7 @@ class LuminaEnergyCard extends HTMLElement {
       ai_openai_api_key: '',
       ai_provider: 'huggingface',
       pro_password: null,
+      pro_password_by_user: null,
       overlay_image_enabled: false,
       overlay_image: '/local/community/lumina-energy-card/car.png',
       overlay_image_x: 0,
@@ -2812,6 +2869,7 @@ class LuminaEnergyCard extends HTMLElement {
           ];
         }).flat()
       ),
+      ...Object.fromEntries(Array.from({ length: LUMINA_CUSTOM_FLOW_TEXT_SLOTS }, (_, j) => [`custom_text_${j + 1}_decimals`, null])),
       // Solar Forecast
       solar_forecast_enabled: false,
       sensor_solar_forecast: null,
@@ -3040,7 +3098,10 @@ class LuminaEnergyCard extends HTMLElement {
       heat_pump_flow_color: '#FFA500',
       heat_pump_text_color: '#00f9f9',
       show_car_soc: false,
+      show_car: false,
       show_car2: false,
+      car_label: null,
+      car_name: null,
       car1_bidirectional: false,
       car2_bidirectional: false,
       car1_invert_flow: false,
@@ -3094,6 +3155,7 @@ class LuminaEnergyCard extends HTMLElement {
       pv_string_array2_8_label: 'A2-S8',
       pv_string_array2_9_label: 'A2-S9',
       display_unit: 'kW',
+      display_decimal_places: 2,
       update_interval: 3,
       performance_mode: 'auto', // 'auto' | 'high' | 'balanced' | 'low'
       enable_echo_alive: false,
@@ -6431,14 +6493,78 @@ class LuminaEnergyCard extends HTMLElement {
     return decPart ? (withThousands + ',' + decPart) : withThousands;
   }
 
+  /** General-settings decimals for PV/grid/battery/load/kWh/temps on the card (0–2). */
+  _getUiDecimalPlaces() {
+    const v = this._displayDecimalPlaces;
+    if (v !== undefined && v !== null && Number.isFinite(Number(v))) {
+      return Math.min(2, Math.max(0, Math.floor(Number(v))));
+    }
+    return 2;
+  }
+
   formatPower(watts, use_kw) {
+    const dp = this._getUiDecimalPlaces();
     if (use_kw) {
-      return this.formatNumberLocale(watts / 1000, 2) + ' kW';
+      return this.formatNumberLocale(watts / 1000, dp) + ' kW';
     }
     return this.formatNumberLocale(Math.round(watts), 0) + ' W';
   }
 
-  formatPopupValue(_unused, sensorId) {
+  /** Derive fractional decimal count from input_number / number step (e.g. 0.25 → 2). */
+  _decimalsFromNumericStep(step) {
+    if (typeof step !== 'number' || !Number.isFinite(step) || step <= 0) return null;
+    const s = String(step);
+    if (/e/i.test(s)) {
+      let x = step;
+      let d = 0;
+      while (d < 20 && Math.abs(Math.round(x) - x) > 1e-9) {
+        x *= 10;
+        d++;
+      }
+      return Math.min(20, d);
+    }
+    const dot = s.indexOf('.');
+    if (dot === -1) return 0;
+    const frac = s.slice(dot + 1).replace(/0+$/, '');
+    return frac.length ? Math.min(20, frac.length) : 0;
+  }
+
+  /** Home Assistant: suggested_display_precision / display_precision; fallback step-based for input_number. */
+  _getNumericDisplayDecimalsForEntity(entity) {
+    if (!entity || !entity.attributes) return null;
+    const a = entity.attributes;
+    const keys = ['suggested_display_precision', 'display_precision'];
+    for (let ki = 0; ki < keys.length; ki++) {
+      const v = a[keys[ki]];
+      if (v !== undefined && v !== null && String(v).trim() !== '') {
+        const n = Number(v);
+        if (Number.isFinite(n)) {
+          const d = Math.floor(n);
+          if (d >= 0 && d <= 20) return d;
+        }
+      }
+    }
+    const st = a.step;
+    if (st !== undefined && st !== null && String(st).trim() !== '') {
+      const sn = Number(st);
+      if (Number.isFinite(sn) && sn > 0) {
+        const fromStep = this._decimalsFromNumericStep(sn);
+        if (fromStep !== null) return fromStep;
+      }
+    }
+    return null;
+  }
+
+  /** Custom text slot: empty/null → auto (entity); integer ≥0 forces decimal count. */
+  _resolveCustomTextDecimalsOverride(raw) {
+    if (raw === undefined || raw === null || raw === '') return undefined;
+    const n = Number(raw);
+    if (!Number.isFinite(n)) return undefined;
+    if (n < 0) return undefined;
+    return Math.min(20, Math.floor(n));
+  }
+
+  formatPopupValue(_unused, sensorId, decimalsOverride) {
     if (!sensorId || !this._hass || !this._hass.states) {
       return '';
     }
@@ -6465,7 +6591,14 @@ class LuminaEnergyCard extends HTMLElement {
     const unit = (typeof unitAttr === 'string') ? unitAttr.trim() : '';
     const num = Number(rawState);
     if (Number.isFinite(num)) {
-      const formatted = this.formatNumberLocale(num, 2);
+      let dec;
+      if (decimalsOverride !== undefined && decimalsOverride !== null && Number.isFinite(Number(decimalsOverride))) {
+        dec = Math.min(20, Math.max(0, Math.floor(Number(decimalsOverride))));
+      } else {
+        const fromEntity = this._getNumericDisplayDecimalsForEntity(entity);
+        dec = (fromEntity !== null && fromEntity !== undefined) ? fromEntity : this._getUiDecimalPlaces();
+      }
+      const formatted = this.formatNumberLocale(num, dec);
       return unit ? `${formatted} ${unit}` : formatted;
     }
     return unit ? `${rawState} ${unit}` : rawState;
@@ -6641,7 +6774,7 @@ class LuminaEnergyCard extends HTMLElement {
     }
 
     // Format temperature value: round to 1 decimal place (locale: comma as decimal separator)
-    const formatted = this.formatNumberLocale(Number(currentValue), 1);
+    const formatted = this.formatNumberLocale(Number(currentValue), this._getUiDecimalPlaces());
     const digits = formatted.split('');
     const digitWidth = 10; // Width per digit
     const digitHeight = 16; // Height for digit container
@@ -6780,7 +6913,7 @@ class LuminaEnergyCard extends HTMLElement {
       }
 
       const prevFormatted = previousValue !== null && previousValue !== undefined 
-        ? this.formatNumberLocale(Number(previousValue), 1).split('') 
+        ? this.formatNumberLocale(Number(previousValue), this._getUiDecimalPlaces()).split('') 
         : [];
       const prevDigit = prevFormatted[index] ?? null;
       
@@ -7047,7 +7180,8 @@ class LuminaEnergyCard extends HTMLElement {
     
     const config = this.config;
     const rawConfig = this._rawConfig || {};
-    if (!this._isAuthorized && config && config.pro_password && typeof this._revalidateAuthFromConfig_ === 'function') {
+    this._displayDecimalPlaces = luminaUiDecimalPlaces(config);
+    if (!this._isAuthorized && config && luminaHasProPasswordConfigured(config) && typeof this._revalidateAuthFromConfig_ === 'function') {
       this._revalidateAuthFromConfig_();
     }
     const hasDeveloperValues = this.config && Object.keys(this.config).some(key => 
@@ -7227,7 +7361,7 @@ class LuminaEnergyCard extends HTMLElement {
           if (!Number.isFinite(fi)) fi = 0;
           hiFontH = Math.round(fi);
         } catch (eF) { hiFontH = 0; }
-        const dataHash = `${pvH}|${batH}|${gridH}|${loadH}|${socH}|${heatH}|cf:${cfH}|cpp:${cppH}|mcam:${mcamH}|hif:${hiFontH}`;
+        const dataHash = `${pvH}|${batH}|${gridH}|${loadH}|${socH}|${heatH}|cf:${cfH}|cpp:${cppH}|mcam:${mcamH}|hif:${hiFontH}|dec:${luminaUiDecimalPlaces(config)}`;
         
         if (this._lastDataHash === dataHash) {
           // Data unchanged, skip render but update timestamp
@@ -7320,7 +7454,9 @@ class LuminaEnergyCard extends HTMLElement {
     // EV Cars
     // Optimized: using shared helper functions instead of local definitions
     // Phase A Optimization: Early exit for car calculations if not needed
-    const showCar1 = Boolean(config.show_car_soc);
+    const showCar1 = Boolean(config.show_car_soc !== undefined && config.show_car_soc !== null
+      ? config.show_car_soc
+      : config.show_car);
     const showCar2Toggle = Boolean(config.show_car_soc2 !== undefined ? config.show_car_soc2 : config.show_car2);
     
     // Only resolve entity IDs if cars are enabled (saves string operations)
@@ -7333,7 +7469,14 @@ class LuminaEnergyCard extends HTMLElement {
     let showDebugGrid = false;
     
     // Only calculate car values if cars are enabled (saves getStateSafe calls)
-    const car1LabelCfg = (config.car1_label !== undefined && config.car1_label !== null) ? config.car1_label : config.car1_name;
+    const car1LabelCfg = (() => {
+      const c = config;
+      if (c.car1_label !== undefined && c.car1_label !== null) return c.car1_label;
+      if (c.car_label !== undefined && c.car_label !== null) return c.car_label;
+      if (c.car1_name !== undefined && c.car1_name !== null) return c.car1_name;
+      if (c.car_name !== undefined && c.car_name !== null) return c.car_name;
+      return undefined;
+    })();
     const car2LabelCfg = (config.car2_label !== undefined && config.car2_label !== null) ? config.car2_label : config.car2_name;
     const car1Label = showCar1 ? resolveLabel(car1LabelCfg, 'CAR 1') : '';
     const car2Label = showCar2 ? resolveLabel(car2LabelCfg, 'CAR 2') : '';
@@ -7435,7 +7578,7 @@ class LuminaEnergyCard extends HTMLElement {
     // Optimized: using shared resolveColor function instead of local definition
     
     // Check if premium features are enabled
-    const authInput = config.pro_password;
+    const authInput = luminaResolveProPassword(config, this._hass);
     const verifyFeatureAuthSafe = (typeof verifyFeatureAuth === 'function')
       ? verifyFeatureAuth
       : (() => false);
@@ -7444,7 +7587,7 @@ class LuminaEnergyCard extends HTMLElement {
     // so custom texts/flows/overlays remain visible while the user is configuring them.
     const authVerified = verifyFeatureAuthSafe(authInput);
     const authListsLoading = (typeof LUMINA_AUTH_LIST_V1 === 'undefined' || LUMINA_AUTH_LIST_V1 === null || LUMINA_AUTH_LIST_V2 === null || LUMINA_AUTH_LIST_V3 === null);
-    const hasPwTrimmed = !!(authInput && typeof authInput === 'string' && authInput.trim());
+    const hasPwTrimmed = luminaHasProPasswordConfigured(config);
     // While auth lists are loading, if user has password set, show PRO features (avoid hiding custom texts on first paint)
     const isProEnabled = authVerified || isPreviewCardRender || (hasPwTrimmed && authListsLoading);
     showDebugGrid = isProEnabled && Boolean(config.pro_debug_grid);
@@ -7508,6 +7651,16 @@ class LuminaEnergyCard extends HTMLElement {
     })();
     this._flowStrokeWidthPx = flow_stroke_width;
 
+    // - fluid_flow_stroke_width: base stroke for animation_style: fluid_flow (mask/overlay widths derive from this)
+    const fluid_flow_stroke_width = (() => {
+      const raw = toNumber(config.fluid_flow_stroke_width);
+      if (raw === null) return 3;
+      const v = Number(raw);
+      if (!Number.isFinite(v)) return 3;
+      return Math.min(Math.max(v, 0.5), 30);
+    })();
+    this._fluidFlowStrokeWidthPx = fluid_flow_stroke_width;
+
     // Flow path offsets (for manual positioning)
     this._flowOffsets = {
       pv1: { x: Number(config.pv1_flow_offset_x) || 0, y: Number(config.pv1_flow_offset_y) || 0 },
@@ -7563,32 +7716,32 @@ class LuminaEnergyCard extends HTMLElement {
     }
     // Fallback to small built-in dictionaries if locales don't provide values
     if (!label_daily) {
-      const dict_daily = { it: 'PRODUZIONE OGGI', en: 'DAILY YIELD', de: 'TAGESERTRAG', fr: 'PRODUCTION DU JOUR', nl: 'DAGOPBRENGST' };
+      const dict_daily = { it: 'PRODUZIONE OGGI', en: 'DAILY YIELD', de: 'TAGESERTRAG', fr: 'PRODUCTION DU JOUR', nl: 'DAGOPBRENGST', es: 'RENDIMIENTO DIARIO' };
       label_daily = dict_daily[lang] || dict_daily['en'];
     }
     if (!label_pv_tot) {
-      const dict_pv_tot = { it: 'PV Totale', en: 'PV Total', de: 'PV Gesamt', fr: 'PV Total', nl: 'PV Totaal' };
+      const dict_pv_tot = { it: 'PV Totale', en: 'PV Total', de: 'PV Gesamt', fr: 'PV Total', nl: 'PV Totaal', es: 'Total PV' };
       label_pv_tot = dict_pv_tot[lang] || dict_pv_tot['en'];
     }
     if (!label_importing) {
-      const dict_importing = { it: 'IMPORTAZIONE', en: 'IMPORTING', de: 'IMPORTIEREN', fr: 'IMPORTATION', nl: 'IMPORTEREN' };
+      const dict_importing = { it: 'IMPORTAZIONE', en: 'IMPORTING', de: 'IMPORTIEREN', fr: 'IMPORTATION', nl: 'IMPORTEREN', es: 'IMPORTACIÓN' };
       label_importing = dict_importing[lang] || dict_importing['en'];
     }
     if (!label_exporting) {
-      const dict_exporting = { it: 'ESPORTAZIONE', en: 'EXPORTING', de: 'EXPORTIEREN', fr: 'EXPORTATION', nl: 'EXPORTEREN' };
+      const dict_exporting = { it: 'ESPORTAZIONE', en: 'EXPORTING', de: 'EXPORTIEREN', fr: 'EXPORTATION', nl: 'EXPORTEREN', es: 'EXPORTACIÓN' };
       label_exporting = dict_exporting[lang] || dict_exporting['en'];
     }
     let label_import_day = null;
     let label_export_day = null;
     let label_daily_production = null;
-    const dict_import_day = { it: 'Importazione giornaliera', en: 'Daily import', de: 'Täglicher Import', fr: 'Import journalier', nl: 'Dagelijkse import' };
-    const dict_export_day = { it: 'Esportazione giornaliera', en: 'Daily export', de: 'Täglicher Export', fr: 'Export journalier', nl: 'Dagelijkse export' };
-    const dict_daily_production = { it: 'Produzione giornaliera', en: 'Daily production', de: 'Tagesproduktion', fr: 'Production journalière', nl: 'Dagelijkse productie' };
+    const dict_import_day = { it: 'Importazione giornaliera', en: 'Daily import', de: 'Täglicher Import', fr: 'Import journalier', nl: 'Dagelijkse import', es: 'Importación diaria' };
+    const dict_export_day = { it: 'Esportazione giornaliera', en: 'Daily export', de: 'Täglicher Export', fr: 'Export journalier', nl: 'Dagelijkse export', es: 'Exportación diaria' };
+    const dict_daily_production = { it: 'Produzione giornaliera', en: 'Daily production', de: 'Tagesproduktion', fr: 'Production journalière', nl: 'Dagelijkse productie', es: 'Producción diaria' };
     label_import_day = dict_import_day[lang] || dict_import_day['en'];
     label_export_day = dict_export_day[lang] || dict_export_day['en'];
     label_daily_production = dict_daily_production[lang] || dict_daily_production['en'];
     if (!label_battery_power) {
-      const dict_battery_power = { it: 'Potenza batteria', en: 'Battery Power', de: 'Batterieleistung', fr: 'Puissance batterie', nl: 'Batterij vermogen' };
+      const dict_battery_power = { it: 'Potenza batteria', en: 'Battery Power', de: 'Batterieleistung', fr: 'Puissance batterie', nl: 'Batterij vermogen', es: 'Potencia batería' };
       label_battery_power = dict_battery_power[lang] || dict_battery_power['en'];
     }
 
@@ -8048,7 +8201,8 @@ class LuminaEnergyCard extends HTMLElement {
         let displayText = staticText;
 
         if (sensorId && typeof sensorId === 'string' && sensorId.trim()) {
-          const formatted = this.formatPopupValue(null, sensorId.trim());
+          const decOv = this._resolveCustomTextDecimalsOverride(config[`custom_text_${i}_decimals`]);
+          const formatted = this.formatPopupValue(null, sensorId.trim(), decOv);
           if (formatted !== '') {
             displayText = staticText ? `${staticText}: ${formatted}` : formatted;
           } else {
@@ -8207,8 +8361,8 @@ class LuminaEnergyCard extends HTMLElement {
           if (dayTomorrow == null) dayTomorrow = fromArray ? fromArray.tomorrow : null;
           if (dayToday == null) dayToday = readDayFromKeys(['energy_production_today', 'forecast_today', 'today_estimate', 'today', 'daily_today', 'estimated_energy_production_today']);
           if (dayTomorrow == null) dayTomorrow = readDayFromKeys(['energy_production_tomorrow', 'forecast_tomorrow', 'tomorrow_estimate', 'tomorrow', 'daily_tomorrow', 'estimated_energy_production_tomorrow', 'next_day']);
-          const dayTodayTxt = dayToday == null ? '--' : `${this.formatNumberLocale(dayToday, 2)} kWh`;
-          const dayTomorrowTxt = dayTomorrow == null ? '--' : `${this.formatNumberLocale(dayTomorrow, 2)} kWh`;
+          const dayTodayTxt = dayToday == null ? '--' : `${this.formatNumberLocale(dayToday, this._getUiDecimalPlaces())} kWh`;
+          const dayTomorrowTxt = dayTomorrow == null ? '--' : `${this.formatNumberLocale(dayTomorrow, this._getUiDecimalPlaces())} kWh`;
           displayText = `${dayTodayTxt} | ${dayTomorrowTxt}`;
           const weekArrRaw = attrs.forecast || attrs.daily_forecast || attrs.daily || attrs.forecasts;
           const weekFromArray = [];
@@ -8586,7 +8740,7 @@ class LuminaEnergyCard extends HTMLElement {
         const gridBoxTextColor = g.textColor || '#00f9f9';
         
         const gridLineLabels = [label_importing || 'Import', label_exporting || 'Export', label_import_day, label_export_day];
-        const gridLineValues = [this.formatPower(gridImport, use_kw), this.formatPower(gridExport, use_kw), `${this.formatNumberLocale(gridImportDaily / 1000, 2)} kWh`, `${this.formatNumberLocale(gridExportDaily / 1000, 2)} kWh`];
+        const gridLineValues = [this.formatPower(gridImport, use_kw), this.formatPower(gridExport, use_kw), `${this.formatNumberLocale(gridImportDaily / 1000, this._getUiDecimalPlaces())} kWh`, `${this.formatNumberLocale(gridExportDaily / 1000, this._getUiDecimalPlaces())} kWh`];
         return {
           visible: hasGridSensor && showGridBox,
           ...g,
@@ -8618,7 +8772,7 @@ class LuminaEnergyCard extends HTMLElement {
           startY: 14 * scale,
           lines: [
             { label: label_pv_tot, value: this.formatPower(total_pv_w, use_kw), fill: defaultTextColor, visible: config.show_pv_box_line_0 !== false },
-            { label: label_daily_production, value: `${this.formatNumberLocale(dailyTotal / 1000, 2)} kWh`, fill: defaultTextColor, visible: config.show_pv_box_line_1 !== false }
+            { label: label_daily_production, value: `${this.formatNumberLocale(dailyTotal / 1000, this._getUiDecimalPlaces())} kWh`, fill: defaultTextColor, visible: config.show_pv_box_line_1 !== false }
           ]
         };
       })(),
@@ -8933,7 +9087,7 @@ class LuminaEnergyCard extends HTMLElement {
     const textToggleButtonY = (rawY !== null && rawY <= 450) ? Math.max(0, Math.min(450, rawY)) : null;
     const textToggleButtonScale = Math.max(0.5, Math.min(2.0, Number(this.config && this.config.text_toggle_button_scale) || 1.0));
     const textVisibilitySensorId = this.config && this.config.text_visibility_sensor ? this.config.text_visibility_sensor.trim() : null;
-    const authInput = config.pro_password;
+    const authInput = luminaResolveProPassword(config, this._hass);
     const verifyFeatureAuthSafe = (typeof verifyFeatureAuth === 'function')
       ? verifyFeatureAuth
       : (() => false);
@@ -9789,7 +9943,7 @@ class LuminaEnergyCard extends HTMLElement {
               const rowPct = (val != null && dayMax > 0) ? Math.max(0, Math.min(100, (val / dayMax) * 100)) : (idx === 0 ? percentage : 0);
               const fillW = Math.round((barW * rowPct) / 100);
               const rowLabel = row.key === 'tomorrow' ? dayLabels.tomorrow : dayLabels.today;
-              const rowKwhNum = val == null ? '--' : String(this.formatNumberLocale(val, 2)).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+              const rowKwhNum = val == null ? '--' : String(this.formatNumberLocale(val, this._getUiDecimalPlaces())).replace(/&/g, '&amp;').replace(/</g, '&lt;');
               const rowValFs = popupTextSize;
               const rowUnitFs = Math.max(8, popupTextSize - 2);
               const rowLabelX = idx === 0 ? todayLabelX : tomorrowLabelX;
@@ -10372,7 +10526,7 @@ class LuminaEnergyCard extends HTMLElement {
               const dayScale = Math.max(0.4, Math.min(3, readOptPosWs(config[`solar_forecast_week_${slot}_day_scale`], 1)));
               const dateScale = Math.max(0.4, Math.min(3, readOptPosWs(config[`solar_forecast_week_${slot}_date_scale`], 1)));
               const barScale = Math.max(0.4, Math.min(3, readOptPosWs(config[`solar_forecast_week_${slot}_bar_scale`], 1)));
-              const numTxt = vNum == null ? '--' : esc(this.formatNumberLocale(vNum, 1));
+              const numTxt = vNum == null ? '--' : esc(this.formatNumberLocale(vNum, this._getUiDecimalPlaces()));
               const dayFill = wi === 0 ? weekAccentColor : weekTextColor;
               const baseFsValue = 15 * baseTextScale * valueScale;
               const baseFsKwh = 15 * baseTextScale * kwhScale;
@@ -10462,7 +10616,7 @@ class LuminaEnergyCard extends HTMLElement {
               ? (todayLabelDict[lang] || todayLabelDict.en)
               : String(dt.toLocaleDateString(localeTag, { weekday: 'short' })).replace('.', '');
             const dateLbl = String(dt.toLocaleDateString(localeTag, { day: '2-digit', month: '2-digit' }));
-            const val = (d && Number.isFinite(Number(d.value))) ? this.formatNumberLocale(Number(d.value), 1) : '--';
+            const val = (d && Number.isFinite(Number(d.value))) ? this.formatNumberLocale(Number(d.value), this._getUiDecimalPlaces()) : '--';
             return `<div class="forecast-hud-day"><div class="forecast-hud-day-name">${esc(dayLbl)}</div><div class="forecast-hud-day-stack"><span class="forecast-hud-day-num">${esc(val)}</span><span class="forecast-hud-day-unit">kWh</span></div><div class="forecast-hud-day-date">${esc(dateLbl)}</div></div>`;
           }).join('');
           const daysRowClass = 'forecast-hud-days' + (hudWeek ? '' : ' forecast-hud-days--2');
@@ -14952,7 +15106,7 @@ class LuminaEnergyCard extends HTMLElement {
         refs.houseTemperatureGroup.style.display = tempVisible ? 'inline' : 'none';
       }
       const val = ht && ht.value;
-      const text = tempVisible ? (val != null ? `${this.formatNumberLocale(Number(val), 1)} °C` : '--') : '';
+      const text = tempVisible ? (val != null ? `${this.formatNumberLocale(Number(val), this._getUiDecimalPlaces())} °C` : '--') : '';
       if (refs.houseTempText.textContent !== text) refs.houseTempText.textContent = text;
       if (ht && ht.fill && refs.houseTempText.getAttribute('fill') !== ht.fill) refs.houseTempText.setAttribute('fill', ht.fill);
       if (ht && ht.fontSize != null && refs.houseTempText.getAttribute('font-size') !== String(ht.fontSize)) refs.houseTempText.setAttribute('font-size', String(ht.fontSize));
@@ -17219,7 +17373,7 @@ class LuminaEnergyCard extends HTMLElement {
           currentLabel.textContent = 'CURRENT';
           const currentValue = document.createElement('div');
           currentValue.className = 'lumina-thermostat-temp-value';
-          currentValue.textContent = `${this.formatNumberLocale(Number(currentTemp), 1)}${unit}`;
+          currentValue.textContent = `${this.formatNumberLocale(Number(currentTemp), this._getUiDecimalPlaces())}${unit}`;
           currentGroup.appendChild(currentLabel);
           currentGroup.appendChild(currentValue);
           temps.appendChild(currentGroup);
@@ -17233,7 +17387,7 @@ class LuminaEnergyCard extends HTMLElement {
           targetLabel.textContent = 'TARGET';
           const targetValue = document.createElement('div');
           targetValue.className = 'lumina-thermostat-temp-value';
-          targetValue.textContent = `${this.formatNumberLocale(Number(targetTemp), 1)}${unit}`;
+          targetValue.textContent = `${this.formatNumberLocale(Number(targetTemp), this._getUiDecimalPlaces())}${unit}`;
           targetValue.setAttribute('data-target-temp', 'true');
           targetGroup.appendChild(targetLabel);
           targetGroup.appendChild(targetValue);
@@ -17250,7 +17404,7 @@ class LuminaEnergyCard extends HTMLElement {
           const updateTargetDisplay = (t) => {
             currentTargetTemp = t;
             const targetValueEl = card.querySelector('[data-target-temp="true"]');
-            if (targetValueEl) targetValueEl.textContent = `${this.formatNumberLocale(t, 1)}${unit}`;
+            if (targetValueEl) targetValueEl.textContent = `${this.formatNumberLocale(t, this._getUiDecimalPlaces())}${unit}`;
           };
           
           // Decrease button
@@ -17304,7 +17458,7 @@ class LuminaEnergyCard extends HTMLElement {
             if (isDragging) {
               const t = handleSliderChange(e);
               const targetValueEl = card.querySelector('[data-target-temp="true"]');
-              if (targetValueEl) targetValueEl.textContent = `${this.formatNumberLocale(t, 1)}${unit}`;
+              if (targetValueEl) targetValueEl.textContent = `${this.formatNumberLocale(t, this._getUiDecimalPlaces())}${unit}`;
             }
           };
           
@@ -18004,7 +18158,7 @@ class LuminaEnergyCard extends HTMLElement {
         return ok;
       } catch (e) { return false; }
     };
-    const authInput = config.pro_password;
+    const authInput = luminaResolveProPassword(config, this._hass);
     const isPreviewCardUpd = !!(this.classList && this.classList.contains('editor-preview-card'));
     const isProEnabled = verifyFeatureAuth(authInput) || isPreviewCardUpd;
     const hasTextVisibilitySensor = isProEnabled && textVisibilitySensorId && this._hass && this._hass.states && this._hass.states[textVisibilitySensorId];
@@ -22587,7 +22741,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
     exportConfigBtn.type = 'button';
     exportConfigBtn.className = 'editor-preview-export-config';
     exportConfigBtn.textContent = exportConfigLabel;
-    exportConfigBtn.title = (localeStrings && localeStrings.fields && localeStrings.fields.editor_export_config_helper) || 'Backup full card config (background, overlays, sensors, flows) as JSON. Use before updating to restore later.';
+    exportConfigBtn.title = (localeStrings && localeStrings.fields && localeStrings.fields.editor_export_config_helper) || 'Download your full Lumina card setup as JSON. Recommended before every Lumina/card update.';
     exportConfigBtn.style.cssText = 'padding: 6px 10px; font-size: 10px; border-radius: 6px; background: rgba(180,200,100,0.2); color: #b4c864; border: 1px solid rgba(180,200,100,0.5); cursor: pointer;';
     exportConfigBtn.addEventListener('click', () => {
       try {
@@ -22607,7 +22761,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
     importConfigBtn.type = 'button';
     importConfigBtn.className = 'editor-preview-import-config';
     importConfigBtn.textContent = importConfigLabel;
-    importConfigBtn.title = (localeStrings && localeStrings.fields && localeStrings.fields.editor_import_config_helper) || 'Restore config from a previously exported JSON backup. Merges with current config.';
+    importConfigBtn.title = (localeStrings && localeStrings.fields && localeStrings.fields.editor_import_config_helper) || 'Load a JSON backup created with Export config; merges with this card.';
     importConfigBtn.style.cssText = 'padding: 6px 10px; font-size: 10px; border-radius: 6px; background: rgba(180,220,120,0.2); color: #b4dc78; border: 1px solid rgba(180,220,120,0.5); cursor: pointer;';
     const importConfigInput = document.createElement('input');
     importConfigInput.type = 'file';
@@ -23955,6 +24109,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pv_string_9_label: { label: 'String 9 label', helper: 'Label for ninth string (e.g. S9).' },
           card_title: { label: 'Card Title', helper: 'Title displayed at the top of the card. Leave blank to disable.' },
           pro_password: { label: 'PRO Password', helper: 'Enter PRO password to unlock premium features like Overlay Image. To unlock: pay 5€ via PayPal (donation) or GitHub Sponsors, then request your license.' },
+          pro_password_by_user_title: 'Several HA accounts, several PRO passwords (optional)',
+          pro_password_by_user: { label: 'Map (user id → password)', helper: 'Use only when more than one Home Assistant login shares this same card/dashboard YAML and each person has their own PRO password.\n\nHow it works: each KEY is a Home Assistant user id. Each VALUE is that user\'s PRO password. Whoever is logged in uses their row first; if there is no row for them, the single password field above is used.\n\nWhere to find the user id: Settings → People → Users — click or tap the user\'s name; the id is shown at the top.\n\nLicenses: everyone still needs a valid PRO seat/hash on the license server — this option only stores more passwords in one card config. Leave empty if only one user uses Home Assistant.' },
           overlay_image_enabled: { label: 'Enable Overlay Image 1', helper: 'Enable or disable the first overlay image. Toggle to show/hide the image on your card.' },
           overlay_image: { label: 'Overlay Image 1 Path', helper: 'Path to your PNG image. Default example: /local/community/lumina-energy-card/car.png. Upload custom images to /config/www/ and reference as /local/filename.png. Supports transparent PNG for realistic overlay effects.' },
           overlay_image_x: { label: 'Overlay Image 1 X Position (px)', helper: 'Horizontal position from left edge. Use negative values to move left, positive to move right. Adjust in real-time using the visual editor. Range: -800 to 1600. Default: 0.' },
@@ -23992,11 +24148,14 @@ class LuminaEnergyCardEditor extends HTMLElement {
           overlay_image_5_opacity: { label: 'Overlay Image 5 Opacity', helper: 'Opacity of the fifth overlay image (0.0 to 1.0). Default: 1.0.' },
           language: { label: 'Language', helper: 'Choose the editor language.' },
           display_unit: { label: 'Display Unit', helper: 'Unit used when formatting power values.' },
+          display_decimal_places: { label: 'Decimal places (card)', helper: 'How many digits after the decimal for PV, grid, battery, house load (kW/kWh) and on-card temperatures. Popups prefer Home Assistant precision when set on the entity. Custom Text slots use their own per-slot decimals.' },
           update_interval: { label: 'Update Interval', helper: 'Refresh cadence for card updates (0 disables throttling).' },
           performance_mode: { label: 'Performance Mode', helper: 'Auto = balanced by default (may switch to low on weak devices). Low keeps the UI responsive by simplifying heavy animations (shimmer/arrows/fluid_flow -> dots). High = smoothest but heavier.' },
           animation_speed_factor: { label: 'Animation Speed Factor', helper: 'Adjust animation speed multiplier (-3x to 3x). Set 0 to pause; negatives reverse direction.' },
           animation_style: { label: 'Animation Style', helper: 'Choose the flow animation motif (dashes, dots, arrows, shimmer). Note: in Performance Mode = low, heavy styles may be simplified to keep the UI responsive.' },
           flow_stroke_width: { label: 'Flow Stroke Width (px)', helper: 'Optional override for the animated flow stroke width (no SVG edits). Leave blank to keep SVG defaults.' },
+          fluid_flow_stroke_width: { label: 'Fluid Flow Stroke Width (px)', helper: 'Base stroke width when animation_style is fluid_flow; overlay/mask widths are derived from this.' },
+          custom_text_decimals: { label: 'Decimals', helper: 'Custom Text slots: Auto (-1) matches Home Assistant precision (suggested_display_precision, else step for input_number). Set 0–10 to force fraction digits. Popups use the same auto precision when no override is set.' },
           
           // Flow Path offsets
           pv1_flow_offset_x: { label: 'PV1 Flow Offset X (px)', helper: 'Horizontal offset for PV1 flow path. Positive = right, negative = left.' },
@@ -24192,7 +24351,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           car_range: { label: 'Car Range', helper: 'Sensor for EV range.' },
           car_efficiency: { label: 'Car Efficiency', helper: 'Sensor for EV efficiency.' },
           car_charger_power: { label: 'Car Charger Power', helper: 'Sensor for EV charger power.' },
-          car1_label: { label: 'Car 1 Label', helper: 'Text displayed next to the first EV values.' },
+          car1_label: { label: 'Car 1 Label', helper: 'Text displayed next to the first EV values. YAML alias: car_label (same meaning; pairs with sensor_car_* keys).' },
           sensor_car2_power: { label: 'Car 2 Power Sensor' },
           car2_power: { label: 'Car 2 Power', helper: 'Sensor for EV 2 charge/discharge power.' },
           sensor_car2_soc: { label: 'Car 2 SOC Sensor' },
@@ -24201,7 +24360,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           car2_efficiency: { label: 'Car 2 Efficiency', helper: 'Sensor for EV 2 efficiency.' },
           car2_charger_power: { label: 'Car 2 Charger Power', helper: 'Sensor for EV 2 charger power.' },
           car2_label: { label: 'Car 2 Label', helper: 'Text displayed next to the second EV values.' },
-          show_car_soc: { label: 'Show Car 1', helper: 'Toggle to render the first EV metrics.' },
+          show_car_soc: { label: 'Show Car 1', helper: 'Toggle to render the first EV metrics. YAML alias: show_car (same meaning).' },
           show_car2: { label: 'Show Car 2', helper: 'Enable to render the second EV metrics when sensors are provided.' },
           car1_bidirectional: { label: 'Car 1 Bidirectional Capacity', helper: 'Enable if Car 1 has V2X capability (can charge and discharge like a home battery).' },
           car2_bidirectional: { label: 'Car 2 Bidirectional Capacity', helper: 'Enable if Car 2 has V2X capability (can charge and discharge like a home battery).' },
@@ -24250,7 +24409,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           unlock_pro_features: 'Unlock PRO Features',
           pro_hero_active: 'PRO already active',
           pro_hero_unlock: 'Unlock Lumina PRO in 1 minute - 5EUR',
-          pro_hero_desc: 'Overlay images, advanced popups, custom flows and PRO drag-and-drop tools.',
+          pro_hero_desc: 'Overlay images, advanced popups, custom flows and PRO drag-and-drop tools. Each license is tied to one Home Assistant user. Several users can share the same card—each needs their own PRO license and password; under License & Payment map user IDs to passwords (pro_password_by_user).',
           pro_hero_discover: 'Discover PRO features',
           pro_hero_pay: 'PayPal — 5EUR',
           pro_hero_pay_github: 'GitHub — 5EUR',
@@ -24528,8 +24687,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           editor_gallery_desc_section_title: 'Describe your custom elements (required for gallery)',
           editor_gallery_author_name: 'Your name (shown under the card)',
           editor_gallery_email: 'Email (not shown; we may contact you)',
-          editor_export_config_helper: 'Backup full card config (background, overlays, sensors, flows) as JSON. Use before updating to restore later.',
-          editor_import_config_helper: 'Restore config from a previously exported JSON backup. Merges with current config.',
+          editor_export_config_helper: 'Download your full Lumina card setup as JSON (sensors, backgrounds, overlays, custom flows, PRO settings). Recommended before every Lumina/card update (HACS or manual file).',
+          editor_import_config_helper: 'Pick a JSON file created with Export config to reload settings here; merges with the current card. Use after reinstall or if an upgrade resets options.',
+          editor_config_backup_section_title: 'Save & restore your layout',
+          editor_config_backup_section_desc: 'Export writes every card option to a file on your computer. Import reads that file back into this editor. Best practice: export once before each Lumina update — if something breaks or defaults come back, import brings your dashboard exactly as before.',
           house_camera_1: { label: 'Camera 1', helper: 'Camera entity for streaming. Up to 6 cameras. Click camera icon to open popup.' },
           house_camera_2: { label: 'Camera 2', helper: '' },
           house_camera_3: { label: 'Camera 3', helper: '' },
@@ -24849,11 +25010,13 @@ class LuminaEnergyCardEditor extends HTMLElement {
           overlay_image_5_opacity: { label: 'Opacità immagine overlay 5', helper: 'Opacità della quinta immagine overlay (0.0 a 1.0). Predefinito: 1.0.' },
           language: { label: 'Lingua', helper: 'Seleziona la lingua dell editor.' },
           display_unit: { label: 'Unita di visualizzazione', helper: 'Unita usata per i valori di potenza.' },
+          display_decimal_places: { label: 'Cifre decimali (scheda)', helper: 'Quante cifre dopo la virgola per PV, rete, batteria, carico (kW/kWh) e temperature sulla scheda. Nei popup prevale la precisione HA se impostata sul sensore. Il testo personalizzato usa il controllo per slot.' },
           update_interval: { label: 'Intervallo di aggiornamento', helper: 'Frequenza di aggiornamento della scheda (0 disattiva il limite).' },
           performance_mode: { label: 'Modalità performance', helper: 'Auto = bilanciata (può scendere a low su device deboli). Low mantiene la UI reattiva semplificando le animazioni pesanti (shimmer/arrows/fluid_flow -> dots). High = più fluida ma più pesante.' },
           animation_speed_factor: { label: 'Fattore velocita animazioni', helper: 'Regola il moltiplicatore (-3x a 3x). Usa 0 per mettere in pausa; valori negativi invertono il flusso.' },
           animation_style: { label: 'Stile animazione', helper: 'Scegli il motivo dei flussi (tratteggi, punti, frecce, shimmer). Nota: con Modalità performance = low alcuni stili pesanti possono essere semplificati per mantenere la UI reattiva.' },
           flow_stroke_width: { label: 'Larghezza tratto flusso (px)', helper: 'Override opzionale per la larghezza del tratto animato (nessuna modifica SVG). Lascia vuoto per mantenere i default SVG.' },
+          fluid_flow_stroke_width: { label: 'Spessore tratto fluid_flow (px)', helper: 'Spessore base quando animation_style è fluid_flow; overlay/mask sono ricavati da questo valore.' },
           
           // Flow Path offsets
           pv1_flow_offset_x: { label: 'Offset flusso PV1 X (px)', helper: 'Offset orizzontale per il percorso flusso PV1. Positivo = destra, negativo = sinistra.' },
@@ -25054,7 +25217,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           car_range: { label: 'Autonomia Auto', helper: 'Sensore per autonomia EV.' },
           car_efficiency: { label: 'Efficienza Auto', helper: 'Sensore per efficienza EV.' },
           car_charger_power: { label: 'Potenza Caricabatterie Auto', helper: 'Sensore per potenza caricabatterie EV.' },
-          car1_label: { label: 'Etichetta Auto 1', helper: 'Testo mostrato vicino ai valori della prima EV.' },
+          car1_label: { label: 'Etichetta Auto 1', helper: 'Testo vicino ai valori della prima EV. Alias YAML: car_label (stesso significato; coerente con sensor_car_*).' },
           sensor_car2_power: { label: 'Sensore potenza auto 2' },
           car2_power: { label: 'Potenza Auto 2', helper: 'Sensore per potenza carica/scarica EV 2.' },
           sensor_car2_soc: { label: 'Sensore SOC auto 2' },
@@ -25089,6 +25252,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
             custom_text_5_rotate: { label: 'Testo 5: Rotazione (°)', helper: 'Angolo di rotazione per Testo 5 (-180..180).' },
             custom_text_5_skew_x: { label: 'Testo 5: Inclinazione X (°)', helper: 'Angolo di inclinazione (skew) sull’asse X (-60..60).' },
             custom_text_5_skew_y: { label: 'Testo 5: Inclinazione Y (°)', helper: 'Angolo di inclinazione (skew) sull’asse Y (-60..60).' },
+            custom_text_decimals: { label: 'Decimali', helper: 'Slot Testo personalizzato: Auto (-1) usa la precisione Home Assistant (suggested_display_precision, altrimenti step per input_number). 0–10 forza le cifre decimali. Anche i popup usano la stessa logica automatica.' },
           car_pct_color: { label: 'Colore SOC auto', helper: 'Colore esadecimale per il testo SOC EV (es. #00FFFF).' },
           car2_pct_color: { label: 'Colore SOC Auto 2', helper: 'Colore esadecimale per il testo SOC della seconda EV (usa Car SOC se vuoto).' },
           car1_name_color: { label: 'Colore nome Auto 1', helper: 'Colore applicato all etichetta del nome Auto 1.' },
@@ -25103,6 +25267,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_sun_entity: { label: 'Entità sole', helper: 'Entità sun (es. sun.sun). Quando lo stato è below_horizon si mostra l\'immagine notte.' },
           night_mode_override: { label: 'Forza vista notte', helper: 'Toggle per mostrare subito lo sfondo notte (per test).' },
           pro_password: { label: 'Password PRO', helper: '⚠️ FUNZIONE PRO: Questa è una funzione premium.' },
+          pro_password_by_user_title: 'Più account HA, più password PRO (opzionale)',
+          pro_password_by_user: { label: 'Mappa (id utente → password)', helper: 'Serve solo se più login Home Assistant condividono questa stessa dashboard/card e ognuno ha una password PRO diversa.\n\nCome funziona: ogni CHIAVE è l\'id utente HA. ogni VALORE è la password PRO di quella persona. Chi è loggato usa prima la sua riga; se non c\'è, vale il campo password singolo sopra.\n\nDove trovare l\'id utente: Impostazioni → Persone → Utenti — aprite il nome dell\'utente; in alto compare l\'id.\n\nLicenze: ognuno deve avere comunque licenza/hash valido sul server — qui memorizzi solo più password nella stessa config. Lascia vuoto se usi un solo utente HA.' },
           license_status: 'Stato licenza',
           license_active: 'PRO attivo',
           license_inactive: 'Non attivo',
@@ -25112,7 +25278,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           unlock_pro_features: 'Sblocca Funzioni PRO',
           pro_hero_active: 'PRO gia attivo',
           pro_hero_unlock: 'Sblocca Lumina PRO in 1 minuto - 5EUR',
-          pro_hero_desc: 'Overlay immagini, popup avanzati, flow personalizzati e strumenti drag and drop PRO.',
+          pro_hero_desc: 'Overlay immagini, popup avanzati, flow personalizzati e strumenti drag and drop PRO. Ogni licenza è legata a un utente Home Assistant. Più utenti possono usare la stessa card: serve una licenza e una password per persona; in Licenza e pagamento imposta la tabella utente → password (pro_password_by_user).',
           pro_hero_discover: 'Scopri funzioni PRO',
           pro_hero_pay: 'PayPal — 5€',
           pro_hero_pay_github: 'GitHub — 5€',
@@ -25390,8 +25556,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           editor_gallery_desc_section_title: 'Descrivi i tuoi elementi personalizzati (obbligatorio per la galleria)',
           editor_gallery_author_name: 'Il tuo nome (visibile sotto la card)',
           editor_gallery_email: 'Email (non mostrata; per contatto)',
-          editor_export_config_helper: 'Backup della config completa (sfondo, overlay, sensori, flussi) come JSON. Usa prima degli aggiornamenti per ripristinare dopo.',
-          editor_import_config_helper: 'Ripristina config da un backup JSON precedentemente esportato. Unisce con la config corrente.',
+          editor_export_config_helper: 'Scarica tutta la configurazione Lumina in JSON (sensori, sfondi, overlay, flussi custom, impostazioni PRO). Consigliato prima di ogni aggiornamento della scheda (HACS o file manuale).',
+          editor_import_config_helper: 'Seleziona il JSON creato con Esporta per ricaricare le impostazioni qui; si unisce alla scheda attuale. Utile dopo reinstall o se un aggiornamento resetta le opzioni.',
+          editor_config_backup_section_title: 'Salvataggio e ripristino',
+          editor_config_backup_section_desc: 'Esporta salva tutte le opzioni della scheda in un file sul PC. Importa rilegge quel file nell\'editor. Ti conviene esportare prima di ogni aggiornamento Lumina: se qualcosa va storto o tornano i default, importi e recuperi la dashboard com\'era.',
           house_camera_1: { label: 'Camera 1', helper: 'Entità camera per streaming. Fino a 6. Clic sull\'icona per aprire il popup.' },
           house_camera_2: { label: 'Camera 2', helper: '' },
           house_camera_3: { label: 'Camera 3', helper: '' },
@@ -25824,8 +25992,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           editor_reset_flows_helper: 'Alle benutzerdefinierten Fluss-Pfade und Optionen löschen.',
           editor_export_config: 'Config exportieren',
           editor_import_config: 'Config importieren',
-          editor_export_config_helper: 'Vollständige Karten-Konfiguration (Hintergrund, Overlays, Sensoren, Flüsse) als JSON sichern. Vor Updates verwenden, um später wiederherzustellen.',
-          editor_import_config_helper: 'Konfiguration aus einer zuvor exportierten JSON-Sicherung wiederherstellen. Wird mit der aktuellen Config zusammengeführt.',
+          editor_export_config_helper: 'Komplette Lumina-Kartenkonfiguration als JSON herunterladen (Sensoren, Hintergründe, Overlays, eigene Flüsse, PRO-Einstellungen). Empfohlen vor jedem Update (HACS oder manuelle Datei).',
+          editor_import_config_helper: 'JSON von Export auswählen, um die Einstellungen hier neu zu laden; wird mit der aktuellen Karte zusammengeführt. Nach Neuinstallation oder wenn ein Update Einstellungen zurücksetzt.',
+          editor_config_backup_section_title: 'Sichern und wiederherstellen',
+          editor_config_backup_section_desc: 'Export speichert alle Kartenoptionen als Datei am Computer. Import lädt diese Datei zurück in den Editor. Vor jedem Lumina-Update einmal exportieren — bei Problemen können Sie mit Import die Ansicht wiederherstellen.',
           editor_browse_gallery: 'Galerie durchsuchen',
           editor_share_gallery: 'In Galerie teilen',
           editor_gallery_title: 'Galerie',
@@ -25936,7 +26106,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           animation_style: { label: 'Animationsstil', helper: 'Motiv der Flussanimation waehlen (Striche, Punkte, Pfeile, Shimmer). Hinweis: In Performance-Modus = Low können schwere Stile vereinfacht werden, um die UI reaktionsschnell zu halten.' },
           fluid_flow_outer_glow: { label: 'Fluid Flow Outer Glow', helper: 'Aktiviert die zusätzliche äußere Halo/Glühen-Schicht für animation_style: fluid_flow.' },
           flow_stroke_width: { label: 'Fluss Strichbreite (px)', helper: 'Optionale Überschreibung für die animierte Fluss-Strichbreite (keine SVG-Bearbeitung). Leer lassen für SVG-Standardwerte.' },
-          fluid_flow_stroke_width: { label: 'Fluid Flow Strichbreite (px)', helper: 'Basis-Strichbreite für animation_style: fluid_flow. Overlay/Mask-Breiten werden daraus abgeleitet (Standard 5).' },
+          fluid_flow_stroke_width: { label: 'Fluid Flow Strichbreite (px)', helper: 'Basis-Strichbreite für animation_style: fluid_flow. Overlay/Mask-Breiten werden daraus abgeleitet (Standard 3).' },
           
           // Flow Path offsets
           pv1_flow_offset_x: { label: 'PV1 Fluss Offset X (px)', helper: 'Horizontaler Offset für PV1 Flusspfad. Positiv = rechts, negativ = links.' },
@@ -26090,7 +26260,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           car_range: { label: 'Fahrzeug Reichweite', helper: 'Sensor für EV-Reichweite.' },
           car_efficiency: { label: 'Fahrzeug Effizienz', helper: 'Sensor für EV-Effizienz.' },
           car_charger_power: { label: 'Fahrzeug Ladegerät Leistung', helper: 'Sensor für EV-Ladegerät Leistung.' },
-          car1_label: { label: 'Bezeichnung Fahrzeug 1', helper: 'Text neben den Werten des ersten EV.' },
+          car1_label: { label: 'Bezeichnung Fahrzeug 1', helper: 'Text neben den Werten des ersten EV. YAML-Alias: car_label (gleiche Bedeutung; passt zu sensor_car_*).' },
           sensor_car2_power: { label: 'Fahrzeugleistung Sensor 2' },
           sensor_car2_soc: { label: 'Fahrzeug SOC Sensor 2' },
           car2_soc: { label: 'Fahrzeug 2 SOC', helper: 'Sensor für EV 2-Batterie SOC.' },
@@ -26139,12 +26309,14 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_sun_entity: { label: 'Sonnen-Entität', helper: 'Sun-Entität (z. B. sun.sun). Bei below_horizon wird das Nachtbild angezeigt.' },
           night_mode_override: { label: 'Nachtansicht erzwingen', helper: 'Toggle zum sofortigen Anzeigen des Nacht-Hintergrunds (zum Testen).' },
           pro_password: { label: 'PRO-Passwort', helper: '⚠️ PRO-FUNKTION: Dies ist eine Premium-Funktion.' },
+          pro_password_by_user_title: 'Mehrere HA-Konten, mehrere PRO-Passwörter (optional)',
+          pro_password_by_user: { label: 'Zuordnung (Benutzer-ID → Passwort)', helper: 'Nur wenn mehrere Home-Assistant-Anmeldungen dieselbe Karte/Dashboard-YAML nutzen und jede ihre eigene PRO-Passwort hat.\n\nSo geht\'s: Jeder SCHLÜSSEL ist eine HA-Benutzer-ID. Jeder WERT ist das PRO-Passwort dieser Person. Der eingeloggte Nutzer nutzt zuerst seinen Eintrag; fehlt er, gilt das einzelne Passwortfeld oben.\n\nWo Sie die Benutzer-ID finden: Einstellungen → Personen → Benutzer — auf den Namen klicken; die ID wird oben angezeigt.\n\nLizenzen: Für jeden gilt weiterhin eine gültige PRO-Lizenz/Hash auf dem Server — hier legen Sie nur mehrere Passwörter in einer Konfiguration ab. Leer lassen bei nur einem Benutzer.' },
           paypal_button: 'PRO-Funktionen freischalten (5€)',
           paypal_note: 'WICHTIG: Du kannst per PayPal (nur als SPENDE, nicht „Waren & Dienstleistungen“) oder über GitHub Sponsors zahlen. Automatisches System: Wenn keine Übereinstimmung gefunden wird, wird das Passwort NICHT gesendet. Nach der Zahlung unten die PRO-Lizenz anfordern und die Methode wählen (PayPal / GitHub).',
           unlock_pro_features: 'PRO-Funktionen freischalten',
           pro_hero_active: 'PRO bereits aktiv',
           pro_hero_unlock: 'Lumina PRO in 1 Minute freischalten - 5EUR',
-          pro_hero_desc: 'Overlay-Bilder, erweiterte Popups, benutzerdefinierte Flows und PRO Drag-and-Drop-Tools.',
+          pro_hero_desc: 'Overlay-Bilder, erweiterte Popups, benutzerdefinierte Flows und PRO Drag-and-Drop-Tools. Jede Lizenz ist einem Home-Assistant-Benutzer zugeordnet. Mehrere Nutzer können dieselbe Karte teilen—pro Person eigene PRO-Lizenz und Passwort; unter Lizenz & Zahlung Benutzer-IDs zu Passwörtern zuordnen (pro_password_by_user).',
           pro_hero_discover: 'PRO-Funktionen entdecken',
           pro_hero_pay: 'PayPal — 5€',
           pro_hero_pay_github: 'GitHub — 5€',
@@ -26597,8 +26769,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           editor_reset_flows_helper: 'Effacer tous les chemins et options des flux personnalisés.',
           editor_export_config: 'Exporter config',
           editor_import_config: 'Importer config',
-          editor_export_config_helper: 'Sauvegarder la config complète (fond, overlays, capteurs, flux) en JSON. À utiliser avant les mises à jour pour restaurer ensuite.',
-          editor_import_config_helper: 'Restaurer la config depuis une sauvegarde JSON précédemment exportée. Fusionne avec la config actuelle.',
+          editor_export_config_helper: 'Téléchargez la configuration Lumina complète en JSON (capteurs, fonds, overlays, flux perso, réglages PRO). Recommandé avant chaque mise à jour (HACS ou fichier manuel).',
+          editor_import_config_helper: 'Choisissez le JSON créé avec Exporter pour recharger les réglages ici ; fusionne avec la carte actuelle. Utile après réinstallation ou si une mise à jour réinitialise les options.',
+          editor_config_backup_section_title: 'Sauvegarde et restauration',
+          editor_config_backup_section_desc: 'Exporter enregistre toutes les options sur un fichier. Importer relit ce fichier dans l\'éditeur. Bon réflexe avant chaque mise à jour Lumina : en cas de problème ou de retour aux défauts, l\'import restaure votre tableau de bord.',
           editor_browse_gallery: 'Parcourir la galerie',
           editor_share_gallery: 'Partager dans la galerie',
           editor_gallery_title: 'Galerie',
@@ -26708,6 +26882,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           animation_speed_factor: { label: 'Facteur de vitesse d animation', helper: 'Ajuste le multiplicateur de vitesse d animation (-3x à 3x). Mettre 0 pour pause; les négatifs inversent la direction.' },
           animation_style: { label: 'Style d animation', helper: 'Choisissez le motif d animation des flux (tirets, points, flèches, scintillement). Note : en Mode performance = Low, certains styles lourds peuvent être simplifiés pour garder l’interface réactive.' },
           flow_stroke_width: { label: 'Largeur trait flux (px)', helper: 'Override optionnel pour la largeur du trait animé (pas de modification SVG). Laisser vide pour conserver les valeurs par défaut SVG.' },
+          fluid_flow_stroke_width: { label: 'Épaisseur trait fluid_flow (px)', helper: 'Épaisseur de base lorsque animation_style est fluid_flow ; overlay/masque en découlent.' },
           
           // Flow Path offsets
           pv1_flow_offset_x: { label: 'PV1 Décalage Flux X (px)', helper: 'Décalage horizontal pour le chemin de flux PV1. Positif = droite, négatif = gauche.' },
@@ -26858,7 +27033,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           car_range: { label: 'Autonomie Véhicule', helper: 'Capteur pour autonomie EV.' },
           car_efficiency: { label: 'Efficacité Véhicule', helper: 'Capteur pour efficacité EV.' },
           car_charger_power: { label: 'Puissance Chargeur Véhicule', helper: 'Capteur pour puissance chargeur EV.' },
-          car1_label: { label: 'Libellé Véhicule 1', helper: 'Texte affiché à côté des valeurs du premier EV.' },
+          car1_label: { label: 'Libellé Véhicule 1', helper: 'Texte à côté du premier véhicule. Alias YAML : car_label (même sens ; cohérent avec sensor_car_*).' },
           sensor_car2_power: { label: 'Capteur puissance Véhicule 2' },
           sensor_car2_soc: { label: 'Capteur SOC Véhicule 2' },
           car2_soc: { label: 'SOC Véhicule 2', helper: 'Capteur pour SOC batterie EV 2.' },
@@ -26907,12 +27082,14 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_sun_entity: { label: 'Entité soleil', helper: 'Entité sun (ex. sun.sun). Quand l\'état est below_horizon, l\'image nuit s\'affiche.' },
           night_mode_override: { label: 'Forcer vue nuit', helper: 'Toggle pour afficher immédiatement le fond nuit (test).' },
           pro_password: { label: 'Mot de passe PRO', helper: '⚠️ FONCTION PRO : C est une fonction premium.' },
+          pro_password_by_user_title: 'Plusieurs comptes HA, plusieurs mots de passe PRO (optionnel)',
+          pro_password_by_user: { label: 'Tableau (id utilisateur → mot de passe)', helper: 'Uniquement si plusieurs connexions Home Assistant partagent la même carte/tableau de bord et ont chacune un mot de passe PRO différent.\n\nFonctionnement : chaque CLÉ est un identifiant utilisateur HA. chaque VALEUR est le mot de passe PRO de cette personne. L’utilisateur connecté utilise d’abord sa ligne ; sinon le champ mot de passe unique ci-dessus s’applique.\n\nOù trouver l’identifiant : Paramètres → Personnes → Utilisateurs — ouvrez le nom de l’utilisateur ; l’identifiant s’affiche en haut.\n\nLicences : chacun doit toujours avoir une licence/hash valide côté serveur — cette option range plusieurs mots de passe dans une seule configuration. Laisser vide pour un seul utilisateur.' },
           paypal_button: 'Débloquer les fonctions PRO (5€)',
           paypal_note: 'IMPORTANT : Vous pouvez payer via PayPal (uniquement en DON, ne pas utiliser « Biens et services ») ou via GitHub Sponsors. Système automatique : si aucune correspondance n’est trouvée, le mot de passe ne sera PAS envoyé. Après le paiement, demandez la licence PRO ci-dessous et choisissez la méthode (PayPal / GitHub).',
           unlock_pro_features: 'Débloquer les fonctions PRO',
           pro_hero_active: 'PRO deja actif',
           pro_hero_unlock: 'Debloquez Lumina PRO en 1 minute - 5EUR',
-          pro_hero_desc: 'Images overlay, popups avances, flux personnalises et outils PRO drag and drop.',
+          pro_hero_desc: 'Images en incrustation, popups avancés, flux personnalisés et outils PRO glisser-déposer. Chaque licence est liée à un utilisateur Home Assistant. Plusieurs utilisateurs peuvent partager la même carte : une licence et un mot de passe par personne ; sous Licence et paiement associez les IDs utilisateur aux mots de passe (pro_password_by_user).',
           pro_hero_discover: 'Decouvrir les fonctions PRO',
           pro_hero_pay: 'PayPal — 5€',
           pro_hero_pay_github: 'GitHub — 5€',
@@ -27369,8 +27546,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           editor_reset_flows_helper: 'Alle aangepaste flowpaden en opties wissen.',
           editor_export_config: 'Config exporteren',
           editor_import_config: 'Config importeren',
-          editor_export_config_helper: 'Back-up van volledige kaartconfig (achtergrond, overlays, sensoren, flows) als JSON. Gebruik vóór updates om later te herstellen.',
-          editor_import_config_helper: 'Config herstellen uit een eerder geëxporteerde JSON-back-up. Samengevoegd met de huidige config.',
+          editor_export_config_helper: 'Download de volledige Lumina-config als JSON (sensoren, achtergronden, overlays, eigen flows, PRO-instellingen). Aanbevolen vóór elke kaartupdate (HACS of handmatig bestand).',
+          editor_import_config_helper: 'Kies een JSON van Export om hier opnieuw te laden; wordt samengevoegd met de huidige kaart. Na herinstallatie of als een update instellingen reset.',
+          editor_config_backup_section_title: 'Opslaan en terugzetten',
+          editor_config_backup_section_desc: 'Export schrijft alle kaartopties naar een bestand. Import leest dat bestand terug in deze editor. Exporteer vóór elke Lumina-update; bij problemen of teruggevallen defaults zet Import uw dashboard weer goed.',
           editor_browse_gallery: 'Galerij doorbladeren',
           editor_share_gallery: 'Delen in galerij',
           editor_gallery_title: 'Galerij',
@@ -27480,6 +27659,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           animation_speed_factor: { label: 'Animatie snelheid factor', helper: 'Pas de animatie snelheid multiplier aan (-3x tot 3x). Stel in op 0 voor pauze; negatieven keren richting om.' },
           animation_style: { label: 'Animatie stijl', helper: 'Kies het patroon voor flow animaties (strepen, stippen, pijlen, shimmer). Let op: in Performance-modus = Low kunnen zware stijlen vereenvoudigd worden om de UI responsief te houden.' },
           flow_stroke_width: { label: 'Flow lijnbreedte (px)', helper: 'Optionele overschrijving voor de geanimeerde flow lijnbreedte (geen SVG-bewerkingen). Laat leeg om SVG-standaardwaarden te behouden.' },
+          fluid_flow_stroke_width: { label: 'Fluid_flow lijndikte (px)', helper: 'Basislijndikte bij animation_style: fluid_flow; overlay/mask-leiden hieruit af.' },
           
           // Flow Path offsets
           pv1_flow_offset_x: { label: 'PV1 Stroom Offset X (px)', helper: 'Horizontale offset voor PV1 stroompad. Positief = rechts, negatief = links.' },
@@ -27630,7 +27810,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           car_range: { label: 'Voertuig bereik', helper: 'Sensor voor EV bereik.' },
           car_efficiency: { label: 'Voertuig efficiëntie', helper: 'Sensor voor EV efficiëntie.' },
           car_charger_power: { label: 'Voertuig lader vermogen', helper: 'Sensor voor EV lader vermogen.' },
-          car1_label: { label: 'Voertuig 1 label', helper: 'Tekst weergegeven naast de waarden van de eerste EV.' },
+          car1_label: { label: 'Voertuig 1 label', helper: 'Tekst bij de eerste EV. YAML-alias: car_label (zelfde betekenis; hoort bij sensor_car_*).' },
           sensor_car2_power: { label: 'Voertuig 2 vermogen sensor' },
           sensor_car2_soc: { label: 'Voertuig 2 SOC sensor' },
           car2_soc: { label: 'Voertuig 2 SOC', helper: 'Sensor voor EV 2 batterij SOC.' },
@@ -27679,12 +27859,14 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_sun_entity: { label: 'Zon-entiteit', helper: 'Sun-entiteit (bijv. sun.sun). Bij below_horizon wordt de nachtafbeelding getoond.' },
           night_mode_override: { label: 'Nachtweergave forceren', helper: 'Toggle om direct de nacht-achtergrond te testen.' },
           pro_password: { label: 'PRO-wachtwoord', helper: '⚠️ PRO-FUNCTIE: Dit is een premium-functie.' },
+          pro_password_by_user_title: 'Meerdere HA-accounts, meerdere PRO-wachtwoorden (optioneel)',
+          pro_password_by_user: { label: 'Toewijzing (gebruikers-id → wachtwoord)', helper: 'Alleen als meerdere Home Assistant-logins hetzelfde dashboard/dezelfde kaart YAML delen en elk een eigen PRO-wachtwoord hebben.\n\nWerking: elke SLEUTEL is een HA-gebruikers-id. elke WAARDE is het PRO-wachtwoord van die persoon. Wie is ingelogd gebruikt eerst zijn regel; ontbreekt die, dan telt het enkele wachtwoordveld hierboven.\n\nWaar vind je het gebruikers-id: Instellingen → Personen → Gebruikers — klik op de naam; bovenaan zie je het id.\n\nLicenties: iedereen moet nog steeds een geldige PRO-licentie/hash op de server hebben — dit slaat alleen meerdere wachtwoorden in één configuratie op. Leeg laten bij één gebruiker.' },
           paypal_button: 'PRO-functies ontgrendelen (5€)',
           paypal_note: 'BELANGRIJK: Je kunt betalen via PayPal (alleen als DONATIE, geen "Goederen en diensten") of via GitHub Sponsors. Automatisch systeem: als er geen match wordt gevonden, wordt het wachtwoord NIET verstuurd. Vraag na betaling hieronder de PRO-licentie aan en kies de methode (PayPal / GitHub).',
           unlock_pro_features: 'PRO-functies ontgrendelen',
           pro_hero_active: 'PRO al actief',
           pro_hero_unlock: 'Ontgrendel Lumina PRO in 1 minuut - 5EUR',
-          pro_hero_desc: 'Overlay-afbeeldingen, geavanceerde popups, aangepaste flows en PRO drag-and-drop-tools.',
+          pro_hero_desc: 'Overlay-afbeeldingen, geavanceerde popups, aangepaste flows en PRO drag-and-drop-tools. Elke licentie hoort bij één Home Assistant-gebruiker. Meerdere gebruikers kunnen dezelfde kaart delen—ieder een eigen PRO-licentie en wachtwoord; onder Licentie & betaling gebruikers-ID\'s aan wachtwoorden koppelen (pro_password_by_user).',
           pro_hero_discover: 'Ontdek PRO-functies',
           pro_hero_pay: 'PayPal — 5€',
           pro_hero_pay_github: 'GitHub — 5€',
@@ -28140,8 +28322,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           editor_reset_flows_helper: 'Очистить все пути и настройки пользовательских потоков.',
           editor_export_config: 'Экспорт конфига',
           editor_import_config: 'Импорт конфига',
-          editor_export_config_helper: 'Резервная копия полной конфигурации (фон, оверлеи, датчики, потоки) в JSON. Использовать перед обновлениями для восстановления.',
-          editor_import_config_helper: 'Восстановить конфиг из ранее экспортированной резервной копии JSON. Объединяется с текущей конфигурацией.',
+          editor_export_config_helper: 'Скачать полную конфигурацию Lumina в JSON (датчики, фоны, оверлеи, свои потоки, настройки PRO). Рекомендуется перед каждым обновлением карты (HACS или вручную).',
+          editor_import_config_helper: 'Выберите JSON из Экспорт чтобы загрузить настройки сюда; объединяется с текущей картой. После переустановки или если обновление сбросило параметры.',
+          editor_config_backup_section_title: 'Сохранение и восстановление',
+          editor_config_backup_section_desc: 'Экспорт сохраняет все параметры карты в файл. Импорт загружает этот файл обратно в редактор. Перед каждым обновлением Lumina делайте экспорт — при сбое или сбросе настроек импорт вернёт всё как было.',
           editor_browse_gallery: 'Обзор галереи',
           editor_share_gallery: 'Поделиться в галерее',
           editor_gallery_title: 'Галерея',
@@ -28188,7 +28372,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           unlock_pro_features: 'Разблокировать PRO функции',
           pro_hero_active: 'PRO уже активен',
           pro_hero_unlock: 'Разблокируйте Lumina PRO за 1 минуту - 5EUR',
-          pro_hero_desc: 'Overlay-изображения, расширенные popup, кастомные потоки и PRO drag-and-drop инструменты.',
+          pro_hero_desc: 'Overlay-изображения, расширенные всплывающие окна, пользовательские потоки и инструменты PRO drag-and-drop. Каждая лицензия привязана к одному пользователю Home Assistant. Несколько пользователей могут использовать одну карту — у каждого своя лицензия и пароль; в разделе «Лицензия и оплата» задайте таблицу id пользователя → пароль (pro_password_by_user).',
           pro_hero_discover: 'Показать функции PRO',
           pro_hero_pay: 'PayPal — 5€',
           pro_hero_pay_github: 'GitHub — 5€',
@@ -28233,6 +28417,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           migrate_v3_requesting: 'Запрос…',
           migrate_v3_failed: 'Миграция не удалась.',
           migrate_v3_error: 'Ошибка: ',
+          pro_password_by_user_title: 'Несколько учётных записей HA и паролей PRO (опционально)',
+          pro_password_by_user: { label: 'Таблица (id пользователя → пароль)', helper: 'Только если несколько входов Home Assistant используют одну и ту же карту/YAML панели и у каждого свой пароль PRO.\n\nКак работает: каждый КЛЮЧ — id пользователя HA. каждое ЗНАЧЕНИЕ — пароль PRO этого человека. Вошедший пользователь сначала берёт свою строку; если её нет — используется одно поле пароля выше.\n\nГде найти id пользователя: Настройки → Люди → Пользователи — откройте имя пользователя; id показан вверху экрана.\n\nЛицензии: у каждого по-прежнему должна быть действующая PRO-лицензия/хеш на сервере — здесь просто хранится несколько паролей в одном конфиге. Оставьте пустым для одного пользователя.' },
           pro_password_placeholder: 'Введите ваш PRO пароль',
           your_email_placeholder: 'your@email.com',
           github_username_placeholder: 'например, octocat',
@@ -28461,8 +28647,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           editor_reset_flows_helper: 'Limpar todos os caminhos e opções dos fluxos personalizados.',
           editor_export_config: 'Exportar config',
           editor_import_config: 'Importar config',
-          editor_export_config_helper: 'Cópia de segurança da config completa (fundo, overlays, sensores, fluxos) como JSON. Use antes de atualizações para restaurar depois.',
-          editor_import_config_helper: 'Restaurar config de uma cópia de segurança JSON previamente exportada. Faz merge com a config atual.',
+          editor_export_config_helper: 'Transferir toda a config Lumina em JSON (sensores, fundos, overlays, fluxos personalizados, definições PRO). Recomendado antes de cada atualização (HACS ou ficheiro manual).',
+          editor_import_config_helper: 'Escolha o JSON criado em Exportar para recarregar aqui; faz merge com o cartão atual. Após reinstalação ou se uma atualização repuser opções.',
+          editor_config_backup_section_title: 'Guardar e repor',
+          editor_config_backup_section_desc: 'Exportar grava todas as opções da cartão num ficheiro. Importar lê esse ficheiro de volta neste editor. Exporte antes de cada atualização Lumina; se algo falhar ou os predefinidos voltarem, importe para recuperar o painel.',
           editor_browse_gallery: 'Ver galeria',
           editor_share_gallery: 'Partilhar na galeria',
           editor_gallery_title: 'Galeria',
@@ -28509,7 +28697,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           unlock_pro_features: 'Desbloquear Funções PRO',
           pro_hero_active: 'PRO ja ativo',
           pro_hero_unlock: 'Desbloqueie o Lumina PRO em 1 minuto - 5EUR',
-          pro_hero_desc: 'Imagens overlay, popups avancados, fluxos personalizados e ferramentas PRO drag and drop.',
+          pro_hero_desc: 'Imagens overlay, popups avançados, fluxos personalizados e ferramentas PRO de arrastar e largar. Cada licença está associada a um utilizador Home Assistant. Vários utilizadores podem partilhar o mesmo cartão — cada um precisa da sua licença e palavra-passe; em Licença e pagamento mapeie IDs de utilizador para palavras-passe (pro_password_by_user).',
           pro_hero_discover: 'Ver funcoes PRO',
           pro_hero_pay: 'PayPal — 5€',
           pro_hero_pay_github: 'GitHub — 5€',
@@ -28554,6 +28742,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           migrate_v3_requesting: 'A pedir…',
           migrate_v3_failed: 'Migração falhou.',
           migrate_v3_error: 'Erro: ',
+          pro_password_by_user_title: 'Várias contas HA, várias palavras-passe PRO (opcional)',
+          pro_password_by_user: { label: 'Mapa (id de utilizador → palavra-passe)', helper: 'Só se vários logins Home Assistant partilham o mesmo cartão/dashboard YAML e cada um tem a sua palavra-passe PRO.\n\nFuncionamento: cada CHAVE é um id de utilizador HA. cada VALOR é a palavra-passe PRO dessa pessoa. Quem está ligado usa primeiro a sua linha; se não existir, usa-se o campo único acima.\n\nOnde encontrar o id: Definições → Pessoas → Utilizadores — abra o nome do utilizador; o id aparece no topo.\n\nLicenças: cada utilizador continua a precisar de licença/hash válidos no servidor — aqui apenas guarda várias palavras-passe numa configuração. Deixe vazio para um só utilizador.' },
           pro_password_placeholder: 'Introduza a sua palavra-passe PRO',
           your_email_placeholder: 'o_seu@email.com',
           github_username_placeholder: 'ex.: octocat',
@@ -28661,6 +28851,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           pv_string_9_label: { label: 'Etiqueta cadena 9', helper: 'Etiqueta de la novena cadena (p. ej. S9).' },
           card_title: { label: 'Título de la tarjeta', helper: 'Título mostrado en la parte superior de la tarjeta. Déjelo en blanco para desactivarlo.' },
           pro_password: { label: 'Contraseña PRO', helper: 'Ingrese la contraseña PRO para desbloquear funciones premium como Imagen superpuesta. Para desbloquear: paga 5€ vía PayPal (donación) o Patrocinadores de GitHub, luego solicita tu licencia.' },
+          pro_password_by_user_title: 'Varias cuentas HA, varias contraseñas PRO (opcional)',
+          pro_password_by_user: { label: 'Mapa (id usuario → contraseña)', helper: 'Úselo solo si varios usuarios de Home Assistant comparten la misma tarjeta/dashboard YAML y cada uno tiene su propia contraseña PRO.\n\nCómo funciona: cada CLAVE es el id de usuario HA. cada VALOR es la contraseña PRO de esa persona. Quien inicie sesión usa primero su fila; si no existe, se usa el campo de contraseña único de arriba.\n\nDónde encontrar el id: Ajustes → Personas → Usuarios — pulse el nombre del usuario; el id aparece arriba.\n\nLicencias: cada uno sigue necesitando licencia/hash válido en el servidor — esto solo guarda varias contraseñas en una configuración. Déjelo vacío si solo hay un usuario.' },
           overlay_image_enabled: { label: 'Habilitar imagen superpuesta 1', helper: 'Habilite o deshabilite la primera imagen superpuesta. Alternar para mostrar/ocultar la imagen en su tarjeta.' },
           overlay_image: { label: 'Imagen superpuesta 1 ruta', helper: 'Ruta a tu imagen PNG. Ejemplo predeterminado: /local/community/lumina-energy-card/car.png. Cargue imágenes personalizadas en /config/www/ y haga referencia a /local/filename.png. Admite PNG transparente para efectos de superposición realistas.' },
           overlay_image_x: { label: 'Imagen superpuesta 1 X Posición (px)', helper: 'Posición horizontal desde el borde izquierdo. Utilice valores negativos para moverse hacia la izquierda y positivos para moverse hacia la derecha. Ajuste en tiempo real usando el editor visual. Rango: -800 a 1600. Predeterminado: 0.' },
@@ -28703,6 +28895,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           animation_speed_factor: { label: 'Factor de velocidad de animación', helper: 'Ajuste el multiplicador de velocidad de animación (-3x a 3x). Establezca 0 para pausar; los negativos invierten la dirección.' },
           animation_style: { label: 'Estilo de animación', helper: 'Elija el motivo de la animación del flujo (guiones, puntos, flechas, brillo). Nota: en Modo de rendimiento = bajo, los estilos pesados ​​se pueden simplificar para mantener la interfaz de usuario receptiva.' },
           flow_stroke_width: { label: 'Ancho del trazo de flujo (px)', helper: 'Anulación opcional para el ancho del trazo de flujo animado (sin ediciones SVG). Déjelo en blanco para mantener los valores predeterminados de SVG.' },
+          fluid_flow_stroke_width: { label: 'Grosor del trazo fluid_flow (px)', helper: 'Grosor base cuando animation_style es fluid_flow; anchuras de overlay/máscara se derivan de este valor.' },
           
           // Flow Path offsets
           pv1_flow_offset_x: { label: 'Compensación de flujo PV1 X (px)', helper: 'Desplazamiento horizontal para la ruta de flujo PV1. Positivo = derecha, negativo = izquierda.' },
@@ -28862,7 +29055,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           car_range: { label: 'Gama de coches', helper: 'Sensor de autonomía EV.' },
           car_efficiency: { label: 'Eficiencia del coche', helper: 'Sensor de eficiencia de vehículos eléctricos.' },
           car_charger_power: { label: 'Alimentación del cargador de coche', helper: 'Sensor de potencia del cargador de vehículos eléctricos.' },
-          car1_label: { label: 'Etiqueta del coche 1', helper: 'Texto que se muestra junto a los primeros valores EV.' },
+          car1_label: { label: 'Etiqueta del coche 1', helper: 'Texto junto al primer EV. Alias en YAML: car_label (mismo significado; alineado con sensor_car_*).' },
           sensor_car2_power: { label: 'Sensor de potencia del coche 2' },
           car2_power: { label: 'Coche 2 poder', helper: 'Sensor de potencia de carga/descarga EV 2.' },
           sensor_car2_soc: { label: 'Sensor SOC del coche 2' },
@@ -28911,6 +29104,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
           sensor_sun_entity: { label: 'entidad solar', helper: 'ID de entidad para sun (por ejemplo, sun.sun). Cuando el estado está debajo del horizonte, se muestra la imagen nocturna.' },
           night_mode_override: { label: 'Forzar vista nocturna', helper: 'Cambie para mostrar el fondo nocturno inmediatamente para realizar pruebas.' },
           pro_password: { label: 'Contraseña PRO', helper: '⚠️ FUNCIÓN PRO: Esta es una función premium.' },
+          pro_password_by_user_title: 'Varias cuentas HA, varias contraseñas PRO (opcional)',
+          pro_password_by_user: { label: 'Mapa (id usuario → contraseña)', helper: 'Úselo solo si varios usuarios de Home Assistant comparten la misma tarjeta/dashboard YAML y cada uno tiene su propia contraseña PRO.\n\nCómo funciona: cada CLAVE es el id de usuario HA. cada VALOR es la contraseña PRO de esa persona. Quien inicie sesión usa primero su fila; si no existe, se usa el campo de contraseña único de arriba.\n\nDónde encontrar el id: Ajustes → Personas → Usuarios — pulse el nombre del usuario; el id aparece arriba.\n\nLicencias: cada uno sigue necesitando licencia/hash válido en el servidor — esto solo guarda varias contraseñas en una configuración. Déjelo vacío si solo hay un usuario.' },
           license_status: 'License Status',
           license_active: 'PRO Active',
           license_inactive: 'Not Active',
@@ -28920,7 +29115,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           unlock_pro_features: 'Unlock PRO Features',
           pro_hero_active: 'PRO ya activo',
           pro_hero_unlock: 'Desbloquea Lumina PRO en 1 minuto - 5EUR',
-          pro_hero_desc: 'Imagenes overlay, popups avanzados, flujos personalizados y herramientas PRO de drag and drop.',
+          pro_hero_desc: 'Imágenes en overlay, ventanas emergentes avanzadas, flujos personalizados y herramientas PRO de arrastrar y soltar. Cada licencia está vinculada a un usuario de Home Assistant. Varios usuarios pueden compartir la misma tarjeta: cada uno necesita su licencia y contraseña; en Licencia y pago asigne IDs de usuario a contraseñas (pro_password_by_user).',
           pro_hero_discover: 'Descubrir funciones PRO',
           pro_hero_pay: 'PayPal — 5€',
           pro_hero_pay_github: 'GitHub — 5€',
@@ -29159,8 +29354,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
           editor_gallery_desc_section_title: 'Describe tus elementos personalizados (requeridos para la galería)',
           editor_gallery_author_name: 'Su nombre (que aparece debajo de la tarjeta)',
           editor_gallery_email: 'Correo electrónico (no se muestra; podemos comunicarnos con usted)',
-          editor_export_config_helper: 'Copia de seguridad de la configuración completa de la tarjeta (fondo, superposiciones, sensores, flujos) como JSON. Úselo antes de actualizar para restaurar más tarde.',
-          editor_import_config_helper: 'Restaure la configuración desde una copia de seguridad JSON previamente exportada. Se fusiona con la configuración actual.',
+          editor_export_config_helper: 'Descargue la configuración completa de Lumina en JSON (sensores, fondos, superposiciones, flujos personalizados, ajustes PRO). Recomendado antes de cada actualización de la tarjeta (HACS o archivo manual).',
+          editor_import_config_helper: 'Elija el JSON creado con Exportar para volver a cargar aquí; se fusiona con la tarjeta actual. Tras reinstalar o si una actualización restablece opciones.',
+          editor_config_backup_section_title: 'Copia de seguridad y restauración',
+          editor_config_backup_section_desc: 'Exportar guarda todas las opciones de la tarjeta en un archivo. Importar lee ese archivo de nuevo en el editor. Exporte antes de cada actualización Lumina: si algo falla o vuelven los valores por defecto, importe para recuperar el panel.',
           house_camera_1: { label: 'Cámara 1', helper: 'Entidad de cámara para streaming. Hasta 6 cámaras. Haga clic en el icono de la cámara para abrir la ventana emergente.' },
           house_camera_2: { label: 'Cámara 2', helper: '' },
           house_camera_3: { label: 'Cámara 3', helper: '' },
@@ -29383,11 +29580,11 @@ class LuminaEnergyCardEditor extends HTMLElement {
       ,
       view: {
         daily: 'RENDIMIENTO DIARIO',
-        pv_tot: 'VP TOTAL',
+        pv_tot: 'TOTAL PV',
         car1: 'COCHE 1',
         car2: 'COCHE 2',
-        importing: 'IMPORTADOR',
-        exporting: 'EXPORTADOR'
+        importing: 'IMPORTACIÓN',
+        exporting: 'EXPORTACIÓN'
       }
       },
     };
@@ -29410,7 +29607,8 @@ class LuminaEnergyCardEditor extends HTMLElement {
     const merged = {
       sections: { ...(base.sections || {}), ...(selected.sections || {}) },
       fields: { ...(base.fields || {}), ...(selected.fields || {}) },
-      options: { ...(base.options || {}), ...(selected.options || {}) }
+      options: { ...(base.options || {}), ...(selected.options || {}) },
+      view: { ...(base.view || {}), ...(selected.view || {}) }
     };
     return merged;
   }
@@ -29437,9 +29635,23 @@ class LuminaEnergyCardEditor extends HTMLElement {
       ];
     };
 
+    const langDp = this._currentLanguage();
+    const displayDecimalPlacesOptions = (langDp === 'it')
+      ? [
+        { value: 0, label: '0 decimali' },
+        { value: 1, label: '1 decimale' },
+        { value: 2, label: '2 decimali' }
+      ]
+      : [
+        { value: 0, label: '0 decimals' },
+        { value: 1, label: '1 decimal' },
+        { value: 2, label: '2 decimals' }
+      ];
+
     return {
       language: this._getAvailableLanguageOptions(localeStrings),
       display_unit: localeStrings.options.display_units,
+      display_decimal_places: displayDecimalPlacesOptions,
       performance_mode: localeStrings.options.performance_modes,
       animation_style: localeStrings.options.animation_styles,
       layout_fields: {
@@ -29708,6 +29920,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
       general: define([
         { name: 'card_title', label: fields.card_title.label, helper: fields.card_title.helper, selector: { text: { mode: 'blur' } } },
         { name: 'display_unit', label: fields.display_unit.label, helper: fields.display_unit.helper, selector: { select: { options: optionDefs.display_unit } } },
+        { name: 'display_decimal_places', label: (fields.display_decimal_places && fields.display_decimal_places.label) || 'Decimal places', helper: (fields.display_decimal_places && fields.display_decimal_places.helper) || 'Fraction digits for kW/kWh and temperatures on the card.', selector: { select: { options: optionDefs.display_decimal_places } }, default: 2 },
         { name: 'update_interval', label: fields.update_interval.label, helper: fields.update_interval.helper, selector: { number: { min: 0, max: 60, step: 5, mode: 'slider', unit_of_measurement: 's' } } },
         { name: 'animation_speed_factor', label: fields.animation_speed_factor.label, helper: fields.animation_speed_factor.helper, selector: { number: { min: -3, max: 3, step: 0.25, mode: 'slider', unit_of_measurement: 'x' } } },
         { name: 'hide_home_button', label: (fields.hide_home_button && fields.hide_home_button.label) || 'Hide home button', helper: (fields.hide_home_button && fields.hide_home_button.helper) || 'Hide the HOME button and house icons row on the card.', selector: { boolean: {} }, default: false },
@@ -30006,7 +30219,9 @@ class LuminaEnergyCardEditor extends HTMLElement {
         { name: 'heat_pump_flow_color', label: fields.heat_pump_flow_color.label, helper: fields.heat_pump_flow_color.helper, selector: { color_picker: {} } }
       ]),
       animation_styles: define([
-        { name: 'animation_style', label: fields.animation_style.label, helper: fields.animation_style.helper, selector: { select: { options: optionDefs.animation_style } }, default: 'shimmer' }
+        { name: 'animation_style', label: fields.animation_style.label, helper: fields.animation_style.helper, selector: { select: { options: optionDefs.animation_style } }, default: 'shimmer' },
+        { name: 'flow_stroke_width', label: (fields.flow_stroke_width && fields.flow_stroke_width.label) || 'Flow stroke width (px)', helper: (fields.flow_stroke_width && fields.flow_stroke_width.helper) || '', selector: { number: { min: 0.5, max: 30, step: 0.5, mode: 'slider', unit_of_measurement: 'px' } }, default: 1 },
+        { name: 'fluid_flow_stroke_width', label: (fields.fluid_flow_stroke_width && fields.fluid_flow_stroke_width.label) || 'Fluid flow stroke width (px)', helper: (fields.fluid_flow_stroke_width && fields.fluid_flow_stroke_width.helper) || '', selector: { number: { min: 0.5, max: 30, step: 0.5, mode: 'slider', unit_of_measurement: 'px' } }, default: 3 }
       ]),
       flow_path_custom: define([
         { name: 'pv1_flow_path', label: (fields.pv1_flow_path && fields.pv1_flow_path.label) || 'PV1 Flow Path (SVG)', helper: (fields.pv1_flow_path && fields.pv1_flow_path.helper) || `Custom SVG path string for PV1 flow. Leave empty to use default. Default: ${FLOW_PATHS.pv1}`, selector: { text: { multiline: true, placeholder: FLOW_PATHS.pv1 } }, default: FLOW_PATHS.pv1 },
@@ -30416,6 +30631,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
       { name: 'custom_text_1_enabled', label: `Custom Text 1: Enabled`, selector: { boolean: {} } },
       { name: 'custom_text_1_text', label: `Text 1: Label/Prefix`, selector: { text: {} } },
       { name: 'custom_text_1_sensor', label: `Text 1: Sensor`, selector: entitySelector },
+      { name: 'custom_text_1_decimals', label: (fields.custom_text_decimals && fields.custom_text_decimals.label) ? `Text 1: ${fields.custom_text_decimals.label}` : 'Text 1: Decimals', helper: (fields.custom_text_decimals && fields.custom_text_decimals.helper) || 'Auto (-1) uses HA precision; 0–10 forces digits.', selector: { number: { min: -1, max: 10, step: 1, mode: 'slider' } }, default: -1 },
       { name: 'custom_text_1_x', label: `Text 1: X Position`, selector: { number: { min: 0, max: 800, step: 1, mode: 'slider' } } },
       { name: 'custom_text_1_y', label: `Text 1: Y Position`, selector: { number: { min: 0, max: 450, step: 1, mode: 'slider' } } },
       { name: 'custom_text_1_rotate', label: (fields.custom_text_1_rotate && fields.custom_text_1_rotate.label) || `Text 1: Rotation (°)`, helper: (fields.custom_text_1_rotate && fields.custom_text_1_rotate.helper) || 'Rotation angle for Text 1 (-180..180).', selector: { number: { min: -180, max: 180, step: 1, mode: 'slider', unit_of_measurement: '°' } }, default: 0 },
@@ -30427,6 +30643,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
       { name: 'custom_text_2_enabled', label: `Custom Text 2: Enabled`, selector: { boolean: {} } },
       { name: 'custom_text_2_text', label: `Text 2: Label/Prefix`, selector: { text: {} } },
       { name: 'custom_text_2_sensor', label: `Text 2: Sensor`, selector: entitySelector },
+      { name: 'custom_text_2_decimals', label: (fields.custom_text_decimals && fields.custom_text_decimals.label) ? `Text 2: ${fields.custom_text_decimals.label}` : 'Text 2: Decimals', helper: (fields.custom_text_decimals && fields.custom_text_decimals.helper) || 'Auto (-1) uses HA precision; 0–10 forces digits.', selector: { number: { min: -1, max: 10, step: 1, mode: 'slider' } }, default: -1 },
       { name: 'custom_text_2_x', label: `Text 2: X Position`, selector: { number: { min: 0, max: 800, step: 1, mode: 'slider' } } },
       { name: 'custom_text_2_y', label: `Text 2: Y Position`, selector: { number: { min: 0, max: 450, step: 1, mode: 'slider' } } },
       { name: 'custom_text_2_rotate', label: (fields.custom_text_2_rotate && fields.custom_text_2_rotate.label) || `Text 2: Rotation (°)`, helper: (fields.custom_text_2_rotate && fields.custom_text_2_rotate.helper) || 'Rotation angle for Text 2 (-180..180).', selector: { number: { min: -180, max: 180, step: 1, mode: 'slider', unit_of_measurement: '°' } }, default: 0 },
@@ -30438,6 +30655,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
       { name: 'custom_text_3_enabled', label: `Custom Text 3: Enabled`, selector: { boolean: {} } },
       { name: 'custom_text_3_text', label: `Text 3: Label/Prefix`, selector: { text: {} } },
       { name: 'custom_text_3_sensor', label: `Text 3: Sensor`, selector: entitySelector },
+      { name: 'custom_text_3_decimals', label: (fields.custom_text_decimals && fields.custom_text_decimals.label) ? `Text 3: ${fields.custom_text_decimals.label}` : 'Text 3: Decimals', helper: (fields.custom_text_decimals && fields.custom_text_decimals.helper) || 'Auto (-1) uses HA precision; 0–10 forces digits.', selector: { number: { min: -1, max: 10, step: 1, mode: 'slider' } }, default: -1 },
       { name: 'custom_text_3_x', label: `Text 3: X Position`, selector: { number: { min: 0, max: 800, step: 1, mode: 'slider' } } },
       { name: 'custom_text_3_y', label: `Text 3: Y Position`, selector: { number: { min: 0, max: 450, step: 1, mode: 'slider' } } },
       { name: 'custom_text_3_rotate', label: (fields.custom_text_3_rotate && fields.custom_text_3_rotate.label) || `Text 3: Rotation (°)`, helper: (fields.custom_text_3_rotate && fields.custom_text_3_rotate.helper) || 'Rotation angle for Text 3 (-180..180).', selector: { number: { min: -180, max: 180, step: 1, mode: 'slider', unit_of_measurement: '°' } }, default: 0 },
@@ -30449,6 +30667,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
       { name: 'custom_text_4_enabled', label: `Custom Text 4: Enabled`, selector: { boolean: {} } },
       { name: 'custom_text_4_text', label: `Text 4: Label/Prefix`, selector: { text: {} } },
       { name: 'custom_text_4_sensor', label: `Text 4: Sensor`, selector: entitySelector },
+      { name: 'custom_text_4_decimals', label: (fields.custom_text_decimals && fields.custom_text_decimals.label) ? `Text 4: ${fields.custom_text_decimals.label}` : 'Text 4: Decimals', helper: (fields.custom_text_decimals && fields.custom_text_decimals.helper) || 'Auto (-1) uses HA precision; 0–10 forces digits.', selector: { number: { min: -1, max: 10, step: 1, mode: 'slider' } }, default: -1 },
       { name: 'custom_text_4_x', label: `Text 4: X Position`, selector: { number: { min: 0, max: 800, step: 1, mode: 'slider' } } },
       { name: 'custom_text_4_y', label: `Text 4: Y Position`, selector: { number: { min: 0, max: 450, step: 1, mode: 'slider' } } },
       { name: 'custom_text_4_rotate', label: (fields.custom_text_4_rotate && fields.custom_text_4_rotate.label) || `Text 4: Rotation (°)`, helper: (fields.custom_text_4_rotate && fields.custom_text_4_rotate.helper) || 'Rotation angle for Text 4 (-180..180).', selector: { number: { min: -180, max: 180, step: 1, mode: 'slider', unit_of_measurement: '°' } }, default: 0 },
@@ -30460,6 +30679,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
       { name: 'custom_text_5_enabled', label: `Custom Text 5: Enabled`, selector: { boolean: {} } },
       { name: 'custom_text_5_text', label: `Text 5: Label/Prefix`, selector: { text: {} } },
       { name: 'custom_text_5_sensor', label: `Text 5: Sensor`, selector: entitySelector },
+      { name: 'custom_text_5_decimals', label: (fields.custom_text_decimals && fields.custom_text_decimals.label) ? `Text 5: ${fields.custom_text_decimals.label}` : 'Text 5: Decimals', helper: (fields.custom_text_decimals && fields.custom_text_decimals.helper) || 'Auto (-1) uses HA precision; 0–10 forces digits.', selector: { number: { min: -1, max: 10, step: 1, mode: 'slider' } }, default: -1 },
       { name: 'custom_text_5_x', label: `Text 5: X Position`, selector: { number: { min: 0, max: 800, step: 1, mode: 'slider' } } },
       { name: 'custom_text_5_y', label: `Text 5: Y Position`, selector: { number: { min: 0, max: 450, step: 1, mode: 'slider' } } },
       { name: 'custom_text_5_rotate', label: (fields.custom_text_5_rotate && fields.custom_text_5_rotate.label) || `Text 5: Rotation (°)`, helper: (fields.custom_text_5_rotate && fields.custom_text_5_rotate.helper) || 'Rotation angle for Text 5 (-180..180).', selector: { number: { min: -180, max: 180, step: 1, mode: 'slider', unit_of_measurement: '°' } }, default: 0 },
@@ -30471,6 +30691,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
         { name: `custom_text_${i}_enabled`, label: `Custom Text ${i}: Enabled`, selector: { boolean: {} } },
         { name: `custom_text_${i}_text`, label: `Text ${i}: Label/Prefix`, selector: { text: {} } },
         { name: `custom_text_${i}_sensor`, label: `Text ${i}: Sensor`, selector: entitySelector },
+        { name: `custom_text_${i}_decimals`, label: (fields.custom_text_decimals && fields.custom_text_decimals.label) ? `Text ${i}: ${fields.custom_text_decimals.label}` : `Text ${i}: Decimals`, helper: (fields.custom_text_decimals && fields.custom_text_decimals.helper) || 'Auto (-1) uses HA precision; 0–10 forces digits.', selector: { number: { min: -1, max: 10, step: 1, mode: 'slider' } }, default: -1 },
         { name: `custom_text_${i}_x`, label: `Text ${i}: X Position`, selector: { number: { min: 0, max: 800, step: 1, mode: 'slider' } } },
         { name: `custom_text_${i}_y`, label: `Text ${i}: Y Position`, selector: { number: { min: 0, max: 450, step: 1, mode: 'slider' } } },
         { name: `custom_text_${i}_rotate`, label: (fields[`custom_text_${i}_rotate`] && fields[`custom_text_${i}_rotate`].label) || `Text ${i}: Rotation (°)`, selector: { number: { min: -180, max: 180, step: 1, mode: 'slider', unit_of_measurement: '°' } }, default: 0 },
@@ -30741,11 +30962,11 @@ _createSectionDefs(localeStrings, schemaDefs) {
         }
       } },
       { id: 'people', title: peopleTitleByLang[lang] || peopleTitleByLang.en, helper: peopleHelperByLang[lang] || peopleHelperByLang.en, schema: schemaDefs.people, defaultOpen: false },
-      { id: 'video_guides', title: (localeStrings.fields && localeStrings.fields.editor_section_video_guides) || 'Video Guides', helper: (localeStrings.fields && localeStrings.fields.editor_video_guides_guide) || 'Quick tutorials for Lumina setup and PRO features.', schema: null, defaultOpen: true, renderContent: () => this._createVideoGuidesSectionContent_() },
-      { id: 'updates', title: (sections.updates && sections.updates.title) ? sections.updates.title : 'Updates', helper: (sections.updates && sections.updates.helper) ? sections.updates.helper : '', schema: null, defaultOpen: true, renderContent: () => this._createUpdatesContent_() },
-      { id: 'language', title: sections.language.title, helper: sections.language.helper, schema: schemaDefs.language, defaultOpen: true },
-      { id: 'installation_type', title: sections.installation_type.title, helper: sections.installation_type.helper, renderContent: () => this._createInstallationTypeSection(), defaultOpen: true },
-      { id: 'performance_mode', title: (sections.performance_mode && sections.performance_mode.title) || 'Performance Mode', helper: (sections.performance_mode && sections.performance_mode.helper) || 'Choose how heavy the animations are. Low keeps the UI responsive by simplifying heavy styles (shimmer/arrows/fluid_flow -> dots).', schema: schemaDefs.performance_mode, defaultOpen: true },
+      { id: 'video_guides', title: (localeStrings.fields && localeStrings.fields.editor_section_video_guides) || 'Video Guides', helper: (localeStrings.fields && localeStrings.fields.editor_video_guides_guide) || 'Quick tutorials for Lumina setup and PRO features.', schema: null, defaultOpen: false, renderContent: () => this._createVideoGuidesSectionContent_() },
+      { id: 'updates', title: (sections.updates && sections.updates.title) ? sections.updates.title : 'Updates', helper: (sections.updates && sections.updates.helper) ? sections.updates.helper : '', schema: null, defaultOpen: false, renderContent: () => this._createUpdatesContent_() },
+      { id: 'language', title: sections.language.title, helper: sections.language.helper, schema: schemaDefs.language, defaultOpen: false },
+      { id: 'installation_type', title: sections.installation_type.title, helper: sections.installation_type.helper, renderContent: () => this._createInstallationTypeSection(), defaultOpen: false },
+      { id: 'performance_mode', title: (sections.performance_mode && sections.performance_mode.title) || 'Performance Mode', helper: (sections.performance_mode && sections.performance_mode.helper) || 'Choose how heavy the animations are. Low keeps the UI responsive by simplifying heavy styles (shimmer/arrows/fluid_flow -> dots).', schema: schemaDefs.performance_mode, defaultOpen: false },
       { id: 'array1', title: sections.array1.title, helper: sections.array1.helper, schema: schemaDefs.array1, defaultOpen: false },
       { id: 'array2', title: sections.array2.title, helper: sections.array2.helper, renderContent: () => {
         const wrapper = document.createElement('div');
@@ -31119,7 +31340,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
         const exportConfigBtnPro = document.createElement('button');
         exportConfigBtnPro.type = 'button';
         exportConfigBtnPro.textContent = exportConfigLabelPro;
-        exportConfigBtnPro.title = (localeStrings && localeStrings.fields && localeStrings.fields.editor_export_config_helper) || 'Backup full card config (background, overlays, sensors, flows) as JSON. Use before updating to restore later.';
+        exportConfigBtnPro.title = (localeStrings && localeStrings.fields && localeStrings.fields.editor_export_config_helper) || 'Download your full Lumina card setup as JSON. Recommended before every Lumina/card update.';
         exportConfigBtnPro.style.cssText = 'padding: 8px 12px; font-size: 12px; border-radius: 6px; background: rgba(180,200,100,0.2); color: #b4c864; border: 1px solid rgba(180,200,100,0.5); cursor: pointer;';
         exportConfigBtnPro.addEventListener('click', () => {
           try {
@@ -31138,7 +31359,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
         const importConfigBtnPro = document.createElement('button');
         importConfigBtnPro.type = 'button';
         importConfigBtnPro.textContent = importConfigLabelPro;
-        importConfigBtnPro.title = (localeStrings && localeStrings.fields && localeStrings.fields.editor_import_config_helper) || 'Restore config from a previously exported JSON backup. Merges with current config.';
+        importConfigBtnPro.title = (localeStrings && localeStrings.fields && localeStrings.fields.editor_import_config_helper) || 'Load a JSON backup created with Export config; merges with this card.';
         importConfigBtnPro.style.cssText = 'padding: 8px 12px; font-size: 12px; border-radius: 6px; background: rgba(180,220,120,0.2); color: #b4dc78; border: 1px solid rgba(180,220,120,0.5); cursor: pointer;';
         const importConfigInputPro = document.createElement('input');
         importConfigInputPro.type = 'file';
@@ -32043,7 +32264,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
     }
 
     let isAuthorized = false;
-    const pw = config.pro_password;
+    const pw = luminaResolveProPassword(config, this._hass);
     if (pw && typeof pw === 'string' && pw.trim()) {
       const trimmedPw = pw.trim();
       const haUserIdEd = (this._hass && this._hass.user && this._hass.user.id) ? String(this._hass.user.id || '').trim() : '';
@@ -32207,7 +32428,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
       ,
       pro_hero_active: fields.pro_hero_active || 'PRO already active',
       pro_hero_unlock: fields.pro_hero_unlock || 'Unlock Lumina PRO in 1 minute - 5EUR',
-      pro_hero_desc: fields.pro_hero_desc || 'Overlay images, advanced popups, custom flows and PRO drag-and-drop tools.',
+      pro_hero_desc: fields.pro_hero_desc || 'Overlay images, advanced popups, custom flows and PRO drag-and-drop tools. Each license is tied to one Home Assistant user. Several users can share the same card—each needs their own PRO license and password; under License & Payment map user IDs to passwords (pro_password_by_user).',
       pro_hero_discover: fields.pro_hero_discover || 'Discover PRO features',
       pro_hero_pay: fields.pro_hero_pay || 'PayPal — 5EUR',
       pro_hero_pay_github: fields.pro_hero_pay_github || 'GitHub — 5EUR',
@@ -32250,7 +32471,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
     // Determine license status (supports v1 + v2 + v3; v3 lock: once v3 used on this device, only v3 accepted)
     let isLicenseActive = false;
     let isAlreadyV3 = false;
-    const proPassword = config.pro_password;
+    const proPassword = luminaResolveProPassword(config, this._hass);
     if (proPassword && typeof proPassword === 'string' && proPassword.trim()) {
       const trimmedPw = proPassword.trim();
       const v3UsedPro = haUserIdPro && typeof localStorage !== 'undefined' && localStorage.getItem('lumina_energy_card:v3_used:' + haUserIdPro);
@@ -32369,7 +32590,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
     pwWrap.style.cssText = 'display:flex; gap:8px;';
     const pwInput = document.createElement('input');
     pwInput.type = 'text';
-    pwInput.value = config.pro_password || '';
+    pwInput.value = luminaResolveProPassword(config, this._hass) || '';
     pwInput.placeholder = labels.pro_password_placeholder;
     pwInput.style.cssText = 'flex:1; padding:12px; background: var(--ha-card-background, var(--card-background-color, rgba(0,0,0,0.06))); border:1px solid var(--divider-color); border-radius:6px; color: var(--primary-text-color); font-size:14px; box-sizing:border-box;';
     const activateBtn = document.createElement('button');
@@ -32393,8 +32614,22 @@ _createSectionDefs(localeStrings, schemaDefs) {
 
     const doActivate = async () => {
       const entered = (pwInput.value || '').trim();
-      const newConfig = { ...this._config, pro_password: entered };
-      this._debouncedConfigChanged(newConfig, true);
+      const haIdEarly = (this._hass && this._hass.user && this._hass.user.id) ? String(this._hass.user.id || '').trim() : '';
+      const prevCfg = this._config || {};
+      const prevMap = (prevCfg.pro_password_by_user && typeof prevCfg.pro_password_by_user === 'object' && !Array.isArray(prevCfg.pro_password_by_user))
+        ? { ...prevCfg.pro_password_by_user } : {};
+      let pendingConfig = { ...prevCfg };
+      if (entered && haIdEarly) {
+        prevMap[haIdEarly] = entered;
+        pendingConfig.pro_password_by_user = prevMap;
+        const otherIds = Object.keys(prevMap).filter((id) => id !== haIdEarly);
+        if (otherIds.length === 0) {
+          pendingConfig.pro_password = entered;
+        }
+      } else {
+        pendingConfig.pro_password = entered;
+      }
+      this._debouncedConfigChanged(pendingConfig, true);
 
       activateBtn.disabled = true;
       const prevText = activateBtn.textContent;
@@ -32466,6 +32701,22 @@ _createSectionDefs(localeStrings, schemaDefs) {
     licenseContent.appendChild(pwRow);
     licenseContent.appendChild(pwMsg);
 
+    // Optional map: sempre subito sotto il campo password PRO (prima della migrazione v3).
+    const multiUserWrap = document.createElement('div');
+    multiUserWrap.style.cssText = 'margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(0,249,249,0.22);';
+    const multiTitle = document.createElement('div');
+    multiTitle.textContent = (fields && fields.pro_password_by_user_title) || 'Several HA accounts, several PRO passwords (optional)';
+    multiTitle.style.cssText = 'font-size: 15px; font-weight: 700; color: #00f9f9; margin-bottom: 10px; line-height: 1.35;';
+    multiUserWrap.appendChild(multiTitle);
+    const multiUserSchema = [{
+      name: 'pro_password_by_user',
+      label: (fields.pro_password_by_user && fields.pro_password_by_user.label) || 'Map (user id → password)',
+      helper: (fields.pro_password_by_user && fields.pro_password_by_user.helper) || 'Use when several Home Assistant accounts share this card YAML and each has their own PRO password. Keys = user id; values = PRO password. Find the user id under Settings → People → Users — open the user\'s name; the id is shown at the top. Logged-in user matches their row first; otherwise the single password field above applies. Each user still needs a valid license on the server.',
+      selector: { object: {} }
+    }];
+    multiUserWrap.appendChild(this._createForm(multiUserSchema));
+    licenseContent.appendChild(multiUserWrap);
+
     // --- PULSANTE v3 (migrazione da password vecchia): visibile solo se PRO attivo con v1/v2 (NON v3) ---
     // Migrate to v3 (ha_user_id-bound): show only when user has v1/v2, NOT when already on v3
     if (isLicenseActive && haUserIdPro && !isAlreadyV3) {
@@ -32511,7 +32762,13 @@ _createSectionDefs(localeStrings, schemaDefs) {
               pwInput.value = data.new_password;
               migrateMsg.innerHTML = labels.migration_v3_success_refresh || 'New v3 password set. Click "Save", then refresh the page (F5) to load the new license.';
               migrateMsg.style.color = '#00cc00';
-              this._debouncedConfigChanged({ ...this._config, pro_password: data.new_password }, true);
+              const haM = (this._hass && this._hass.user && this._hass.user.id) ? String(this._hass.user.id || '').trim() : '';
+              const mergedMap = { ...(this._config.pro_password_by_user && typeof this._config.pro_password_by_user === 'object' && !Array.isArray(this._config.pro_password_by_user) ? this._config.pro_password_by_user : {}) };
+              if (haM) mergedMap[haM] = data.new_password;
+              const otherIdsM = haM ? Object.keys(mergedMap).filter((id) => id !== haM) : Object.keys(mergedMap);
+              const nextMigr = { ...this._config, pro_password_by_user: mergedMap };
+              if (!haM || otherIdsM.length === 0) nextMigr.pro_password = data.new_password;
+              this._debouncedConfigChanged(nextMigr, true);
             } else {
               migrateMsg.textContent = (data && data.message) || (data && data.error) || labels.migrate_v3_failed;
               migrateMsg.style.color = '#ff4444';
@@ -33192,7 +33449,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
         Number(this._previewSelectedTextSlot || (config && config._preview_text_slot) || 1) || 1
       ));
 
-      const groupSchemaByIndexPrefix = (partSchema, prefix, totalSlots, groupTitlePrefix, includeGeneral, preferredIndex) => {
+      const groupSchemaByIndexPrefix = (partSchema, prefix, totalSlots, groupTitlePrefix, includeGeneral, _preferredIndex) => {
         const byIdx = new Map();
         const general = [];
         (Array.isArray(partSchema) ? partSchema : []).forEach((field) => {
@@ -33209,12 +33466,12 @@ _createSectionDefs(localeStrings, schemaDefs) {
         });
         const out = [];
         if (includeGeneral && general.length) {
-          out.push({ title: 'General', schema: general, defaultOpen: true });
+          out.push({ title: 'General', schema: general, defaultOpen: false });
         }
         for (let i = 1; i <= totalSlots; i++) {
           const sch = byIdx.get(i);
           if (!sch || !sch.length) continue;
-          out.push({ title: `${groupTitlePrefix} ${i}`, schema: sch, defaultOpen: Number(preferredIndex) === i });
+          out.push({ title: `${groupTitlePrefix} ${i}`, schema: sch, defaultOpen: false });
         }
         return out;
       };
@@ -33224,8 +33481,8 @@ _createSectionDefs(localeStrings, schemaDefs) {
       const customTextGroups = groupSchemaByIndexPrefix(schemaText, 'custom_text', LUMINA_CUSTOM_FLOW_TEXT_SLOTS, 'Custom Text', false, preferredTextSlot);
       const customPopupGroups = groupSchemaByIndexPrefix(schemaCustomPopups, 'custom_popup', LUMINA_CUSTOM_POPUP_SLOTS, 'Custom popup', false, preferredPopupSlot);
 
-      addSubSection('General', schemaGeneral, true);
-      addSubSection((fields.solar_forecast && fields.solar_forecast.title) || 'Solar Forecast', schemaSolarForecastHud, true, 'solar_forecast');
+      addSubSection('General', schemaGeneral, false);
+      addSubSection((fields.solar_forecast && fields.solar_forecast.title) || 'Solar Forecast', schemaSolarForecastHud, false, 'solar_forecast');
       addSubSection('Overlay Images', schemaImages, false);
       addGroupedSubSection((fields.mini_cam_subsection_title) || 'Mini Cam', miniCamGroups, false, 'mini_cam');
       addGroupedSubSection('Custom Flows', customFlowGroups, false);
@@ -33554,7 +33811,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
     const newConfig = { ...this._config };
     // For some label fields, empty string is a meaningful value (user wants to hide the label).
     // Keep '' instead of deleting the key, otherwise the card falls back to default labels.
-    const preserveEmptyStringFields = new Set(['car1_label', 'car2_label', 'car1_name', 'car2_name']);
+    const preserveEmptyStringFields = new Set(['car1_label', 'car2_label', 'car1_name', 'car2_name', 'car_label', 'car_name']);
     schema.forEach((field) => {
       if (!field.name) {
         return;
@@ -33587,7 +33844,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
       this._convertThresholdValues(newConfig, prevDisplayUnit, nextDisplayUnit);
     }
 
-    const proPassword = newConfig.pro_password;
+    const proPassword = luminaResolveProPassword(newConfig, this._hass);
     const overlayEnabledChanged = (this._config.overlay_image_enabled !== newConfig.overlay_image_enabled);
     const batteryOverlayEnabledChanged = (prevBatteryOverlayEnabled !== Boolean(newConfig.battery_overlay_enabled));
     
@@ -33723,8 +33980,8 @@ _createSectionDefs(localeStrings, schemaDefs) {
   }
 
   _editorIsProActive_(config) {
-    if (!config || !config.pro_password || typeof config.pro_password !== 'string' || !config.pro_password.trim()) return false;
-    const trimmedPw = config.pro_password.trim();
+    const trimmedPw = luminaResolveProPassword(config, this._hass);
+    if (!trimmedPw) return false;
     const haUserIdPro = (this._hass && this._hass.user && this._hass.user.id) ? String(this._hass.user.id || '').trim() : '';
     const v3UsedPro = haUserIdPro && typeof localStorage !== 'undefined' && localStorage.getItem('lumina_energy_card:v3_used:' + haUserIdPro);
     if (v3UsedPro) {
@@ -34355,16 +34612,24 @@ _createSectionDefs(localeStrings, schemaDefs) {
     const configForPro = this._configWithDefaults();
     const isProForPreview = this._editorIsProActive_(configForPro);
 
-    /* ── Free section: Export / Import config ── */
+    /* ── Backup: Export / Import config (visible guidance + buttons) ── */
+    const backupWrap = document.createElement('div');
+    backupWrap.style.cssText = 'margin-top:10px;margin-bottom:8px;padding:12px 14px;border-radius:10px;border:1px solid rgba(160,200,120,0.38);background:rgba(35,48,32,0.22);';
+    const backupTitleEl = document.createElement('div');
+    backupTitleEl.textContent = fieldText('editor_config_backup_section_title', 'Save & restore your layout');
+    backupTitleEl.style.cssText = 'font-weight:700;font-size:13px;margin:0 0 8px 0;line-height:1.35;color:var(--primary-text-color,#e8eef5);';
+    const backupDescEl = document.createElement('div');
+    backupDescEl.textContent = fieldText('editor_config_backup_section_desc', 'Export writes every card option to a file on your computer. Import reads that file back into this editor. Best practice: export once before each Lumina update — if something breaks or defaults come back, import brings your dashboard exactly as before.');
+    backupDescEl.style.cssText = 'font-size:12px;line-height:1.48;margin:0 0 12px 0;color:var(--secondary-text-color, rgba(210,220,230,0.92));';
     const freeRow = document.createElement('div');
-    freeRow.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px;';
+    freeRow.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;align-items:center;';
     const exportConfigLabel2 = (localeStrings && localeStrings.fields && localeStrings.fields.editor_export_config) || 'Export config';
     const importConfigLabel2 = (localeStrings && localeStrings.fields && localeStrings.fields.editor_import_config) || 'Import config';
     const freeBtnCss = 'padding:8px 16px;font-size:12px;font-weight:600;border-radius:8px;cursor:pointer;transition:all .2s;';
     const exportConfigBtn2 = document.createElement('button');
     exportConfigBtn2.type = 'button';
     exportConfigBtn2.textContent = exportConfigLabel2;
-    exportConfigBtn2.title = (localeStrings && localeStrings.fields && localeStrings.fields.editor_export_config_helper) || 'Backup full card config as JSON.';
+    exportConfigBtn2.title = (localeStrings && localeStrings.fields && localeStrings.fields.editor_export_config_helper) || 'Download your full Lumina card setup as JSON. Recommended before every Lumina/card update.';
     exportConfigBtn2.style.cssText = freeBtnCss + 'background:rgba(180,200,100,0.15);color:#b4c864;border:1px solid rgba(180,200,100,0.4);';
     exportConfigBtn2.addEventListener('mouseenter', () => { exportConfigBtn2.style.background = 'rgba(180,200,100,0.3)'; });
     exportConfigBtn2.addEventListener('mouseleave', () => { exportConfigBtn2.style.background = 'rgba(180,200,100,0.15)'; });
@@ -34385,7 +34650,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
     const importConfigBtn2 = document.createElement('button');
     importConfigBtn2.type = 'button';
     importConfigBtn2.textContent = importConfigLabel2;
-    importConfigBtn2.title = (localeStrings && localeStrings.fields && localeStrings.fields.editor_import_config_helper) || 'Restore config from a JSON backup.';
+    importConfigBtn2.title = (localeStrings && localeStrings.fields && localeStrings.fields.editor_import_config_helper) || 'Load a JSON backup created with Export config; merges with this card.';
     importConfigBtn2.style.cssText = freeBtnCss + 'background:rgba(180,220,120,0.15);color:#b4dc78;border:1px solid rgba(180,220,120,0.4);';
     importConfigBtn2.addEventListener('mouseenter', () => { importConfigBtn2.style.background = 'rgba(180,220,120,0.3)'; });
     importConfigBtn2.addEventListener('mouseleave', () => { importConfigBtn2.style.background = 'rgba(180,220,120,0.15)'; });
@@ -34424,7 +34689,10 @@ _createSectionDefs(localeStrings, schemaDefs) {
     freeRow.appendChild(exportConfigBtn2);
     freeRow.appendChild(importConfigBtn2);
     freeRow.appendChild(importConfigInput2);
-    container.appendChild(freeRow);
+    backupWrap.appendChild(backupTitleEl);
+    backupWrap.appendChild(backupDescEl);
+    backupWrap.appendChild(freeRow);
+    container.appendChild(backupWrap);
 
     // Render sections FIRST so that _createInstallationTypeSection() sets this._personalBackgroundEl
     // before the Ultra section tries to use it.
@@ -34732,6 +35000,8 @@ _createSectionDefs(localeStrings, schemaDefs) {
     }
 
     this.shadowRoot.innerHTML = '';
+    // Fresh editor UI: collapse all sections every full render (reopening dashboard edit dialog keeps element alive — avoids persisted-open accordion drift).
+    this._sectionOpenState = {};
     // Reset preview refs (preview is inside editor and can be toggled on/off)
     this._previewCardEl = null;
     this._previewStageEl = null;
@@ -36154,7 +36424,7 @@ LuminaEnergyCardEditor.prototype._openProDonationWelcomeModal_ = function() {
   const config = this._configWithDefaults();
   const haUserIdPro = (this._hass && this._hass.user && this._hass.user.id) ? String(this._hass.user.id || '').trim() : '';
   let isLicenseActive = false;
-  const proPassword = config.pro_password;
+  const proPassword = luminaResolveProPassword(config, this._hass);
   if (proPassword && typeof proPassword === 'string' && proPassword.trim()) {
     const trimmedPw = proPassword.trim();
     const v3UsedPro = haUserIdPro && typeof localStorage !== 'undefined' && localStorage.getItem('lumina_energy_card:v3_used:' + haUserIdPro);
@@ -36804,7 +37074,7 @@ LuminaEnergyCardEditor.prototype._applyGalleryConfig_ = function(importedConfig)
   const newConfig = { ...currentConfig };
 
   // Keys that must NEVER be overwritten from a gallery template (would break the importer's PRO auth)
-  const PROTECTED_KEYS = new Set(['pro_password', 'version', 'gallery_descriptions']);
+  const PROTECTED_KEYS = new Set(['pro_password', 'pro_password_by_user', 'version', 'gallery_descriptions']);
 
   // Generic merge: apply all imported keys (skip protected keys)
   Object.keys(importedConfig).forEach((k) => { if (k && !k.startsWith('_') && !PROTECTED_KEYS.has(k)) newConfig[k] = importedConfig[k]; });
@@ -37145,7 +37415,7 @@ LuminaEnergyCardEditor.prototype._shareToGallery_ = function() {
     /* Build config: export only user-configured keys (not all defaults, keeps config small for HA save) */
     const rawCfgForExport = this._config || {};
     const config = {};
-    const EXPORT_SKIP = new Set(['version', 'pro_password']);
+    const EXPORT_SKIP = new Set(['version', 'pro_password', 'pro_password_by_user']);
     Object.keys(rawCfgForExport).forEach((k) => { if (k && !k.startsWith('_') && rawCfgForExport[k] !== undefined && !EXPORT_SKIP.has(k)) config[k] = rawCfgForExport[k]; });
     /* Custom text/flow keys are already in rawCfgForExport – no extra loop needed */
 
@@ -38269,4 +38539,4 @@ LuminaEnergyCardEditor.prototype._shareToGallery_ = function() {
   };
 })();
 
-/* LUMINA_DIST_BUILD_ISO=2026-04-26T13:16:46.878Z file=lumina-energy-card.js (sec+main+gallery+giornonotte) */
+/* LUMINA_DIST_BUILD_ISO=2026-04-29T13:32:15.635Z file=lumina-energy-card.js (sec+main+gallery+giornonotte) */
