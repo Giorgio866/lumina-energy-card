@@ -1,7 +1,7 @@
 # Lumina Energy Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-![Version](https://img.shields.io/badge/version-3.4.0.3-blue.svg)
+![Version](https://img.shields.io/badge/version-3.5.5-blue.svg)
 
 Repository: [https://github.com/Giorgio866/lumina-energy-card](https://github.com/Giorgio866/lumina-energy-card)
 
@@ -27,7 +27,35 @@ Commercial use / resale requires a separate agreement (`COMMERCIAL-LICENSE.md`).
 
 ### Overview
 
-Lumina Energy Card is a Home Assistant custom Lovelace card that displays animated energy flows (PV, battery, grid, load, heat pump, EV), aggregates PV strings and batteries, and supports optional EV charging and heat pump metrics. It includes **House Management** (cameras, lights, temperature, humidity, security keypad), **interactive popups** with toggles, round buttons (Echo Alive, Text toggle, HOME), **PRO** features (motion-based text visibility, overlay images, custom flows), **Import & Export** for config backup, and **version 3.4.x** enhancements.
+Lumina Energy Card is a Home Assistant custom Lovelace card that displays animated energy flows (PV, battery, grid, load, heat pump, EV), aggregates PV strings and batteries, and supports optional EV charging and heat pump metrics. It includes **House Management** (cameras, lights, temperature, humidity, security keypad), **interactive popups** with toggles, round buttons (Echo Alive, Text toggle, HOME), **PRO** features (motion-based text visibility, overlay images, custom flows), **Import & Export** for config backup, an optional **Tech** schematic dashboard, and **version 3.5.x** enhancements.
+
+### What's new in 3.5.5
+
+Tech Dashboard (image_style: tech)
+The SVG schematic view offers a comprehensive visual representation of your energy system with the following features:
+
+Solar Tracking: A day arc displaying the sun position synchronized with daytime hours.
+
+PV Management: Includes PV1/PV2 power labels and a total PV bubble, with a straight flow from the sun directly to the inverter.
+
+Battery Storage: Support for up to four battery packs, featuring SOC (State of Charge) fill levels and individual per-pack sensors.
+
+Energy Flows:
+
+PV: Green flow from sun to inverter.
+
+Battery: Green when charging and red when discharging.
+
+Grid: Red when importing and green when exporting (aligns with the Invert grid flow toggle).
+
+Customization:
+
+Select from up to six inverter brand images directly from the dashboard with a single touch.
+
+Choose custom icons for Grid and Home within the editor.
+
+Bottom Panels: Optional displays for temperatures, cell stats, or inverter daily kWh metrics.
+<img width="1706" height="724" alt="Screenshot 2026-05-07 144750" src="https://github.com/user-attachments/assets/e62f4960-ccac-4c79-ac3a-64dd7757cfe8" />
 
 ### What's new in 3.4.0.3
 
@@ -311,6 +339,7 @@ PRO features require a **PRO password** (`pro_password`), unlocked via the edito
 | Gallery | Editor → **Gallery** | Share your template to the gallery; browse and apply templates from others; Top & 30-day winner |
 | Solar forecast | **PRO** section | Estimated solar production + holographic sun (icon always visible) |
 | PRO (motion, overlay, etc.) | **PRO** section + **`pro_password`** | Motion-based text, overlay images, custom flows/text |
+| Tech schematic | Editor → **Image style** = `tech` | Alternate SVG energy-flow diagram with arc, multi-battery layout, coloured flows |
 | Languages | **Language** (editor) | EN, IT, DE, FR, NL, **RU**, **PT**, **ES** |
 
 ---
@@ -336,7 +365,11 @@ For **PRO** verification in the card: the backend may process your **Home Assist
 
 ### Panoramica
 
-Lumina Energy Card è una scheda Lovelace personalizzata per Home Assistant che mostra flussi energetici animati (PV, batteria, rete, carico, pompa di calore, EV), aggrega stringhe FV e batterie e supporta metriche opzionali per EV e pompa di calore. Include **Gestione casa** (telecamere, luci, temperatura, umidità, keypad sicurezza), **popup interattivi** con toggle, pulsanti rotondi (Echo Alive, Toggle testi, HOME), funzioni **PRO** (visibilità testi con sensore movimento, overlay, flussi personalizzati), **Import & Export** per il backup della configurazione e le novità della serie **3.4.x** (ultimo patch **3.4.0.3**).
+Lumina Energy Card è una scheda Lovelace personalizzata per Home Assistant che mostra flussi energetici animati (PV, batteria, rete, carico, pompa di calore, EV), aggrega stringhe FV e batterie e supporta metriche opzionali per EV e pompa di calore. Include **Gestione casa** (telecamere, luci, temperatura, umidità, keypad sicurezza), **popup interattivi** con toggle, pulsanti rotondi (Echo Alive, Toggle testi, HOME), funzioni **PRO** (visibilità testi con sensore movimento, overlay, flussi personalizzati), **Import & Export** per il backup della configurazione, la **dashboard Tech** (schema SVG opzionale) e le novità della serie **3.5.x** (release **3.5.5**).
+
+### Novità in 3.5.5
+
+- **Dashboard Tech (`image_style: tech`):** Vista alternativa a **schema SVG** — arco giorno/notte con **posizione del sole**, etichette **PV1/PV2**, **bolla PV totale**, **flusso FV** dal sole all’**inverter**, fino a **quattro batterie** con riempimento SOC e sensori dedicati, flussi **rete** e **casa**, e **pannelli inferiori** opzionali (temperature, celle, riepilogo inverter giornaliero). Colori flussi: **FV** verde (sole → inverter), **batteria** verde in carica e rossa in scarica, **rete** rossa in import e verde in export (coerente con **Inverti flusso rete** se attivo). Editor: icone rete/casa e immagine marca inverter opzionale.
 
 ### Novità in 3.4.0.3
 
@@ -588,6 +621,7 @@ Le funzioni PRO richiedono la **password PRO** (`pro_password`), sbloccabile dal
 | Stile animazioni | **`animation_style`** | `shimmer`, `dashes`, `dots`, `arrows` |
 | Previsione solare | Sezione **PRO** | Produzione stimata + sole olografico |
 | PRO (movimento, overlay, ecc.) | Sezione **PRO** + **`pro_password`** | Testi su movimento, overlay, flussi/testi custom |
+| Dashboard Tech | Editor → **Tipo immagine / Image style** = `tech` | Schema SVG alternativo con arco solare, più batterie, flussi colorati |
 | Lingue | **Lingua** (editor) | EN, IT, DE, FR, NL, **RU**, **PT** |
 
 ---
