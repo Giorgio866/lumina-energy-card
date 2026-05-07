@@ -1,4 +1,4 @@
-const _0x410845=_0x4cb2;(function(_0x1cb169,_0xa5d449){const _0x5a2438=_0x4cb2,_0x1a2815=_0x1cb169();while(!![]){try{const _0x2b203f=-parseInt(_0x5a2438(0x181))/0x1+-parseInt(_0x5a2438(0x1b8))/0x2+parseInt(_0x5a2438(0x171))/0x3+parseInt(_0x5a2438(0x1ca))/0x4*(parseInt(_0x5a2438(0x19b))/0x5)+parseInt(_0x5a2438(0x17c))/0x6*(-parseInt(_0x5a2438(0x169))/0x7)+parseInt(_0x5a2438(0x1da))/0x8+-parseInt(_0x5a2438(0x1cf))/0x9;if(_0x2b203f===_0xa5d449)break;else _0x1a2815['push'](_0x1a2815['shift']());}catch(_0x13abf7){_0x1a2815['push'](_0x1a2815['shift']());}}}(_0x2003,0xd2561));const LUMINA_SHA256=_0x3e866b=>{const _0x4aa691=_0x4cb2,_0x19f721=(_0x2f4b36,_0x219203)=>{const _0x1c7679=(0xffff&_0x2f4b36)+(0xffff&_0x219203);return(_0x2f4b36>>0x10)+(_0x219203>>0x10)+(_0x1c7679>>0x10)<<0x10|0xffff&_0x1c7679;},_0x13ac94=(_0x5aca72,_0x11aa4b)=>_0x5aca72>>>_0x11aa4b|_0x5aca72<<0x20-_0x11aa4b,_0x177f6c=(_0x271fdc,_0x2ad698)=>_0x271fdc>>>_0x2ad698,_0x3648ae=(_0x2ce3a9,_0x182af2,_0x29a112)=>_0x2ce3a9&_0x182af2^~_0x2ce3a9&_0x29a112,_0xd48ef9=(_0xf04e56,_0x257d28,_0x671308)=>_0xf04e56&_0x257d28^_0xf04e56&_0x671308^_0x257d28&_0x671308,_0x109562=_0xf531f4=>_0x13ac94(_0xf531f4,0x2)^_0x13ac94(_0xf531f4,0xd)^_0x13ac94(_0xf531f4,0x16),_0x147ad2=_0x4553a4=>_0x13ac94(_0x4553a4,0x6)^_0x13ac94(_0x4553a4,0xb)^_0x13ac94(_0x4553a4,0x19),_0x35a4c2=_0x2df601=>_0x13ac94(_0x2df601,0x7)^_0x13ac94(_0x2df601,0x12)^_0x177f6c(_0x2df601,0x3),_0xdb6b86=_0x2c064e=>_0x13ac94(_0x2c064e,0x11)^_0x13ac94(_0x2c064e,0x13)^_0x177f6c(_0x2c064e,0xa),_0x1404d4=(_0x3ed709=>{const _0xc21796=_0x4cb2;_0x3ed709=_0x3ed709[_0xc21796(0x188)](/\r\n/g,'\x0a');let _0x1d421a='';for(let _0xbcdc48=0x0;_0xbcdc48<_0x3ed709[_0xc21796(0x190)];_0xbcdc48++){const _0x28cbb5=_0x3ed709[_0xc21796(0x185)+'At'](_0xbcdc48);_0x28cbb5<0x80?_0x1d421a+=String[_0xc21796(0x1a4)+_0xc21796(0x184)](_0x28cbb5):_0x28cbb5>0x7f&&_0x28cbb5<0x800?(_0x1d421a+=String[_0xc21796(0x1a4)+_0xc21796(0x184)](_0x28cbb5>>0x6|0xc0),_0x1d421a+=String[_0xc21796(0x1a4)+_0xc21796(0x184)](0x3f&_0x28cbb5|0x80)):(_0x1d421a+=String[_0xc21796(0x1a4)+_0xc21796(0x184)](_0x28cbb5>>0xc|0xe0),_0x1d421a+=String[_0xc21796(0x1a4)+_0xc21796(0x184)](_0x28cbb5>>0x6&0x3f|0x80),_0x1d421a+=String[_0xc21796(0x1a4)+_0xc21796(0x184)](0x3f&_0x28cbb5|0x80));}return _0x1d421a;})(_0x3e866b);return(_0x26aa4b=>{const _0x37e66d=_0x4cb2;let _0xe4494c='';for(let _0x2d01ba=0x0;_0x2d01ba<0x4*_0x26aa4b[_0x37e66d(0x190)];_0x2d01ba++)_0xe4494c+=(_0x37e66d(0x1cc)+_0x37e66d(0x187))[_0x37e66d(0x170)](_0x26aa4b[_0x2d01ba>>0x2]>>0x8*(0x3-_0x2d01ba%0x4)+0x4&0xf)+(_0x37e66d(0x1cc)+_0x37e66d(0x187))[_0x37e66d(0x170)](_0x26aa4b[_0x2d01ba>>0x2]>>0x8*(0x3-_0x2d01ba%0x4)&0xf);return _0xe4494c;})(((_0x426d4d,_0x34ad38)=>{const _0x254651=_0x4cb2,_0x3890ef=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0xfc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x6ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2],_0x10eee0=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19],_0x2582b6=new Array(0x40);let _0x434a58,_0x41960a,_0x27d3f0,_0x4f8a5d,_0x2db49b,_0x262d14,_0x67b138,_0x3370f2,_0x87473,_0x171a6f,_0x4a9b2a,_0x36a604;for(_0x426d4d[_0x34ad38>>0x5]|=0x80<<0x18-_0x34ad38%0x20,_0x426d4d[0xf+(_0x34ad38+0x40>>0x9<<0x4)]=_0x34ad38,_0x87473=0x0;_0x87473<_0x426d4d[_0x254651(0x190)];_0x87473+=0x10){for(_0x434a58=_0x10eee0[0x0],_0x41960a=_0x10eee0[0x1],_0x27d3f0=_0x10eee0[0x2],_0x4f8a5d=_0x10eee0[0x3],_0x2db49b=_0x10eee0[0x4],_0x262d14=_0x10eee0[0x5],_0x67b138=_0x10eee0[0x6],_0x3370f2=_0x10eee0[0x7],_0x171a6f=0x0;_0x171a6f<0x40;_0x171a6f++)_0x2582b6[_0x171a6f]=_0x171a6f<0x10?_0x426d4d[_0x171a6f+_0x87473]:_0x19f721(_0x19f721(_0x19f721(_0xdb6b86(_0x2582b6[_0x171a6f-0x2]),_0x2582b6[_0x171a6f-0x7]),_0x35a4c2(_0x2582b6[_0x171a6f-0xf])),_0x2582b6[_0x171a6f-0x10]),_0x4a9b2a=_0x19f721(_0x19f721(_0x19f721(_0x19f721(_0x3370f2,_0x147ad2(_0x2db49b)),_0x3648ae(_0x2db49b,_0x262d14,_0x67b138)),_0x3890ef[_0x171a6f]),_0x2582b6[_0x171a6f]),_0x36a604=_0x19f721(_0x109562(_0x434a58),_0xd48ef9(_0x434a58,_0x41960a,_0x27d3f0)),_0x3370f2=_0x67b138,_0x67b138=_0x262d14,_0x262d14=_0x2db49b,_0x2db49b=_0x19f721(_0x4f8a5d,_0x4a9b2a),_0x4f8a5d=_0x27d3f0,_0x27d3f0=_0x41960a,_0x41960a=_0x434a58,_0x434a58=_0x19f721(_0x4a9b2a,_0x36a604);_0x10eee0[0x0]=_0x19f721(_0x434a58,_0x10eee0[0x0]),_0x10eee0[0x1]=_0x19f721(_0x41960a,_0x10eee0[0x1]),_0x10eee0[0x2]=_0x19f721(_0x27d3f0,_0x10eee0[0x2]),_0x10eee0[0x3]=_0x19f721(_0x4f8a5d,_0x10eee0[0x3]),_0x10eee0[0x4]=_0x19f721(_0x2db49b,_0x10eee0[0x4]),_0x10eee0[0x5]=_0x19f721(_0x262d14,_0x10eee0[0x5]),_0x10eee0[0x6]=_0x19f721(_0x67b138,_0x10eee0[0x6]),_0x10eee0[0x7]=_0x19f721(_0x3370f2,_0x10eee0[0x7]);}return _0x10eee0;})((_0x4631d3=>{const _0xf31636=_0x4cb2,_0x2a8d03=[];for(let _0x18107a=0x0;_0x18107a<0x8*_0x4631d3[_0xf31636(0x190)];_0x18107a+=0x8)_0x2a8d03[_0x18107a>>0x5]|=(0xff&_0x4631d3[_0xf31636(0x185)+'At'](_0x18107a/0x8))<<0x18-_0x18107a%0x20;return _0x2a8d03;})(_0x1404d4),0x8*_0x1404d4[_0x4aa691(0x190)]));},LUMINA_REMOTE_URL=atob(_0x410845(0x1b3)+_0x410845(0x1b5)+_0x410845(0x1db)+_0x410845(0x16e)+_0x410845(0x183)+_0x410845(0x19f)+_0x410845(0x189)+_0x410845(0x18c)+_0x410845(0x1a8)+_0x410845(0x1c6)+_0x410845(0x1dd)+_0x410845(0x1a2)+_0x410845(0x186)+_0x410845(0x193)+_0x410845(0x1c8)+_0x410845(0x174));function _0x4cb2(_0x2b5e0e,_0xfe44e7){_0x2b5e0e=_0x2b5e0e-0x168;const _0x200329=_0x2003();let _0x4cb2f0=_0x200329[_0x2b5e0e];if(_0x4cb2['zuYFWf']===undefined){var _0x3ce613=function(_0x410e0d){const _0x2517ff='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x3e866b='',_0x19f721='';for(let _0x13ac94=0x0,_0x177f6c,_0x3648ae,_0xd48ef9=0x0;_0x3648ae=_0x410e0d['charAt'](_0xd48ef9++);~_0x3648ae&&(_0x177f6c=_0x13ac94%0x4?_0x177f6c*0x40+_0x3648ae:_0x3648ae,_0x13ac94++%0x4)?_0x3e866b+=String['fromCharCode'](0xff&_0x177f6c>>(-0x2*_0x13ac94&0x6)):0x0){_0x3648ae=_0x2517ff['indexOf'](_0x3648ae);}for(let _0x109562=0x0,_0x147ad2=_0x3e866b['length'];_0x109562<_0x147ad2;_0x109562++){_0x19f721+='%'+('00'+_0x3e866b['charCodeAt'](_0x109562)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x19f721);};_0x4cb2['NQmgQW']=_0x3ce613,_0x4cb2['groUij']={},_0x4cb2['zuYFWf']=!![];}const _0x3ac956=_0x200329[0x0],_0x4c0c19=_0x2b5e0e+_0x3ac956,_0x116584=_0x4cb2['groUij'][_0x4c0c19];return!_0x116584?(_0x4cb2f0=_0x4cb2['NQmgQW'](_0x4cb2f0),_0x4cb2['groUij'][_0x4c0c19]=_0x4cb2f0):_0x4cb2f0=_0x116584,_0x4cb2f0;}function _0x2003(){const _0x45d7e3=['zNjVBunOyxi','CMvHC29U','wdjwDvPysM4','AxnbCNjHEq','wM1nmLPQstu','lMrLDG','jNq9','BhvTAw5HlwW','BwvZC2fNzq','BgfZDfn0yxq','yM9VBgvHBG','zfHcA1LyuMW','yJy0owjKmJi','zM9YrwfJAa','y3jLyxrLrwW','yuHsmgnitty','tevdlq','thK5BMfytJa','BgfZDenVDw4','yxrL','mtuZmJC4nMfoA0nHAG','DhjPBq','yxnL','wLy5mK13pt0','Dg9tDhjPBMC','C3rYAw5NAwy','y2fSBgjHy2S','zwj1z191Cgq','Ahr0Chm6lY8','CMfUzg9T','p3q9','zee9pq','Dg9vChbLCKm','C3jJ','wKrKA1KYrMO','mJe3yJi2yMi','zfCXCgjTrMy','C2v0sxrLBq','mteXnta4yMXotgHl','Bwf0y2G','mdeYmZq1nJC','B25LCNjVCG','zg9JDw1LBNq','mta3odCWnfnKu09PyW','BNvTyMvY','BM93','C3rYAw5N','yxbWzw5Kq2G','BgfZDezLDgm','z2v0sxrLBq','B2jQzwn0','zgqWmMrKmgu','Aef0','lNDVCMTLCNm','ndy5mZeYyK1vEgjk','tg1KCgrhAde','C3bSAxq','txPNEe56ute','ztq0yZLMzti','yM9KEq','mJbLzdfIyJy','C2XPy2u','y21wEgrxvNO','m2u1ngjHzwi','yvC1Bwj3pt0','ndm5otyZm2LLueLqva','BwfW','Aw5KzxHpzG','BhvTAw5Hx2O','zM9Yy2u','ww5wELPysMO','Aw5JBhvKzxm','y2HHCKf0','mJK5mtuXm3Dot1rKrW','Dg9mB3DLCKm','yvC5Dq','wti5A1Prpt0','mwq4mdaWzgm','BgfZDe9Rqxq','yKHwDgfxnwG','zvy5ALLysMS','vgLTzw91Da','ChvZAa','CM94Es4Zzha','nKXtwwTuqq','C3rHCNrZv2K','u2nYAxb0igW','zw1LBNq','yLDSBMnTrJa','mZi0mJCZsMPsANPS','CgfYzw50tM8','yJi1mfPxnta','q29Kzq','y2HHCKnVzgu','tNPnD01hvMO','odLHyMnKzwy','CMvWBgfJzq','yvC5EvOYBhy','rwXLBwvUDa','mgrMotGWoty','t0rzmKWYrM0','CMLUDdG2mty','BgfZDevYCG','Dgv4Da','BgvUz3rO','zwj1z19SAwm','C29UCf8','tdnkAgr5oxm','AwnLBNnLlxa','CMvTB3zLq2G','C2nYAxb0','wdnwCfPbpt0','AwXK','B2fKigvYCM8','AxngAw5PDgu','mJK1Cu5KsLjS','zw5Zzq','C3rHDhvZ','zNvUy3rPB24','tg1oDMjtouG','BhvTAw5Hx2q','zMXVB3i','tvrjnu1etMG','zgvSzxrLtM8'];_0x2003=function(){return _0x45d7e3;};return _0x2003();}let LUMINA_AUTH_LIST_V1=null,LUMINA_AUTH_LIST_V2=null,LUMINA_AUTH_LIST_V3=null,LUMINA_FETCHING=!0x1,LUMINA_AUTH_META={'lastFetchAt':0x0,'lastOkAt':0x0,'lastErr':'','lastCount':0x0,'lastStatus':0x0};const LUMINA_UNLOCK_V1_IDS=[_0x410845(0x1de)+_0x410845(0x1d7)+_0x410845(0x1e3)+_0x410845(0x18b)+_0x410845(0x1b0)+_0x410845(0x1c7)+_0x410845(0x1e0)+_0x410845(0x175)],LUMINA_UNLOCK_V3_IDS=[],LUMINA_DEBUG_LICENSE=((()=>{const _0x3728d4=_0x410845;try{return'1'===localStorage[_0x3728d4(0x1d5)](_0x3728d4(0x1a0)+_0x3728d4(0x191)+_0x3728d4(0x19c));}catch(_0x54bd3a){return!0x1;}})()),LUMINA_UID_KEY=atob(_0x410845(0x177)+_0x410845(0x1a6)+_0x410845(0x178)+_0x410845(0x197)),getLuminaUID=()=>{const _0x9668e2=_0x410845;try{const _0x2d2ed1=localStorage[_0x9668e2(0x1d5)](LUMINA_UID_KEY);if(_0x2d2ed1&&_0x9668e2(0x1d2)==typeof _0x2d2ed1&&_0x2d2ed1[_0x9668e2(0x17d)+'th'](_0x9668e2(0x1b4)))return _0x2d2ed1;const _0x56728b=(Math[_0x9668e2(0x1c1)]()[_0x9668e2(0x1bc)](0x10)[_0x9668e2(0x1e1)](0x2)+Math[_0x9668e2(0x1c1)]()[_0x9668e2(0x1bc)](0x10)[_0x9668e2(0x1e1)](0x2))[_0x9668e2(0x1c4)+_0x9668e2(0x1ba)](),_0x4d33d5=_0x9668e2(0x1b4)+Date[_0x9668e2(0x1d1)]()[_0x9668e2(0x1bc)](0x10)[_0x9668e2(0x1c4)+_0x9668e2(0x1ba)]()+'-'+_0x56728b[_0x9668e2(0x1e1)](0x0,0x10);return localStorage[_0x9668e2(0x1c9)](LUMINA_UID_KEY,_0x4d33d5),_0x4d33d5;}catch(_0xa2cd56){const _0x9fd36c=Math[_0x9668e2(0x1c1)]()[_0x9668e2(0x1bc)](0x10)[_0x9668e2(0x1e1)](0x2,0xa)[_0x9668e2(0x1c4)+_0x9668e2(0x1ba)]();return _0x9668e2(0x1b4)+Date[_0x9668e2(0x1d1)]()[_0x9668e2(0x1bc)](0x10)[_0x9668e2(0x1c4)+_0x9668e2(0x1ba)]()+'-'+_0x9fd36c;}},LUMINA_LICENSE_ENDPOINT=_0x410845(0x1c0)+_0x410845(0x1ab)+_0x410845(0x194)+_0x410845(0x17b)+_0x410845(0x18d)+_0x410845(0x1d9)+_0x410845(0x1a9),LUMINA_ACT_REQ=atob(_0x410845(0x1e2)+_0x410845(0x1c3)),LUMINA_ACT_MIG=atob(_0x410845(0x180)+_0x410845(0x173)),LUMINA_ACT_UPDATEINFO=atob(_0x410845(0x1af)+_0x410845(0x168)),LUMINA_ACT_MIGRATE_V3=atob(_0x410845(0x180)+_0x410845(0x1bb)),LUMINA_DEBUG_UPDATE=((()=>{const _0x31ec3b=_0x410845;try{return'1'===localStorage[_0x31ec3b(0x1d5)](_0x31ec3b(0x1a0)+_0x31ec3b(0x1bf)+_0x31ec3b(0x1b7));}catch(_0x55b4c0){return!0x1;}})()),LUMINA_JSONP=(_0x4aed69,_0x571145=0x3a98)=>new Promise((_0x442f55,_0x181860)=>{const _0x310ed8=_0x410845;try{const _0x5ee2a4=_0x310ed8(0x16c)+_0x310ed8(0x192)+Date[_0x310ed8(0x1d1)]()+'_'+Math[_0x310ed8(0x1a1)](0x3b9aca00*Math[_0x310ed8(0x1c1)]()),_0x3b5e4=document[_0x310ed8(0x1b2)+_0x310ed8(0x17f)](_0x310ed8(0x196));let _0x596a5e=!0x1;const _0x178219=_0x58289c=>{const _0x150a08=_0x310ed8;if(!_0x596a5e){if(_0x596a5e=!0x0,_0x58289c&&_0x58289c[_0x150a08(0x1a3)+'w'])try{delete window[_0x5ee2a4];}catch(_0x13de28){try{window[_0x5ee2a4]=void 0x0;}catch(_0x4e2ef9){}}else{try{window[_0x5ee2a4]=()=>{};}catch(_0x4100c0){}try{setTimeout(()=>{try{delete window[_0x5ee2a4];}catch(_0x18355e){}},0x1d4c0);}catch(_0x2925cd){}}try{_0x3b5e4&&_0x3b5e4[_0x150a08(0x182)+'de']&&_0x3b5e4[_0x150a08(0x182)+'de'][_0x150a08(0x195)+_0x150a08(0x198)](_0x3b5e4);}catch(_0x54057c){}}},_0x5ab58d=setTimeout(()=>{const _0x3b44c5=_0x310ed8;_0x178219({'deleteNow':!0x1}),_0x181860(new Error(_0x3b44c5(0x179)));},_0x571145);window[_0x5ee2a4]=_0x1a08ac=>{clearTimeout(_0x5ab58d),_0x178219({'deleteNow':!0x0}),_0x442f55(_0x1a08ac);},_0x3b5e4[_0x310ed8(0x1cd)]=()=>{const _0x53b46a=_0x310ed8;clearTimeout(_0x5ab58d),_0x178219({'deleteNow':!0x0}),_0x181860(new Error(_0x53b46a(0x17e)+_0x53b46a(0x199)+'r'));},_0x3b5e4[_0x310ed8(0x1c5)]=_0x4aed69+(_0x4aed69[_0x310ed8(0x16b)]('?')>=0x0?'&':'?')+(_0x310ed8(0x1be)+'=')+_0x5ee2a4+_0x310ed8(0x1aa)+Date[_0x310ed8(0x1d1)](),(document[_0x310ed8(0x1df)]||document[_0x310ed8(0x1ce)+_0x310ed8(0x18a)])[_0x310ed8(0x1d3)+_0x310ed8(0x198)](_0x3b5e4);}catch(_0x356c55){_0x181860(_0x356c55);}}),LUMINA_PACK=_0x2d71a7=>{const _0x206aa6=_0x410845;try{const _0x24a394=JSON[_0x206aa6(0x1bd)+'y'](_0x2d71a7||{});return btoa(unescape(encodeURIComponent(_0x24a394)))[_0x206aa6(0x188)](/\+/g,'-')[_0x206aa6(0x188)](/\//g,'_')[_0x206aa6(0x188)](/=+$/g,'');}catch(_0x2cbc2b){return'';}},LUMINA_VERSION_CMP=(_0xbc212c,_0x3b8565)=>{const _0x275a13=_0x410845,_0x577b3f=String(_0xbc212c||'')[_0x275a13(0x1b9)]()[_0x275a13(0x1dc)]('.')[_0x275a13(0x16a)](_0x99ab58=>parseInt(_0x99ab58,0xa)),_0x172ba4=String(_0x3b8565||'')[_0x275a13(0x1b9)]()[_0x275a13(0x1dc)]('.')[_0x275a13(0x16a)](_0x4663fb=>parseInt(_0x4663fb,0xa));for(let _0x13323b=0x0;_0x13323b<0x3;_0x13323b++){const _0x8c9e0b=Number[_0x275a13(0x19a)](_0x577b3f[_0x13323b])?_0x577b3f[_0x13323b]:0x0,_0x56fd3a=Number[_0x275a13(0x19a)](_0x172ba4[_0x13323b])?_0x172ba4[_0x13323b]:0x0;if(_0x8c9e0b<_0x56fd3a)return-0x1;if(_0x8c9e0b>_0x56fd3a)return 0x1;}return 0x0;},LUMINA_REFRESH_AUTH=async _0x4a06dd=>{const _0x4d74ee=_0x410845;let _0x142458=null,_0x1b0f10=!0x1,_0x10bff1='';if(_0x4d74ee(0x19e)==typeof _0x4a06dd?_0x142458=_0x4a06dd:_0x4d74ee(0x1ae)==typeof _0x4a06dd?_0x1b0f10=_0x4a06dd:_0x4a06dd&&_0x4d74ee(0x1d6)==typeof _0x4a06dd&&(_0x142458=_0x4d74ee(0x19e)==typeof _0x4a06dd[_0x4d74ee(0x1be)]?_0x4a06dd[_0x4d74ee(0x1be)]:null,_0x1b0f10=!!_0x4a06dd[_0x4d74ee(0x16d)],_0x4a06dd[_0x4d74ee(0x1a5)]?String(_0x4a06dd[_0x4d74ee(0x1a5)]):''),!_0x1b0f10&&null!==LUMINA_AUTH_LIST_V1&&null!==LUMINA_AUTH_LIST_V2&&null!==LUMINA_AUTH_LIST_V3)return LUMINA_AUTH_LIST_V1;if(LUMINA_FETCHING)return null;LUMINA_FETCHING=!0x0,LUMINA_AUTH_META[_0x4d74ee(0x1d4)+_0x4d74ee(0x1d8)]=Date[_0x4d74ee(0x1d1)](),LUMINA_AUTH_META[_0x4d74ee(0x18e)]='';try{const _0x18ec56=LUMINA_REMOTE_URL+_0x4d74ee(0x1c2)+Date[_0x4d74ee(0x1d1)](),_0x2da7e8=await fetch(_0x18ec56);try{LUMINA_AUTH_META[_0x4d74ee(0x1ad)+'us']=_0x2da7e8&&_0x4d74ee(0x1d0)==typeof _0x2da7e8[_0x4d74ee(0x19d)]?_0x2da7e8[_0x4d74ee(0x19d)]:0x0;}catch(_0x3905e7){LUMINA_AUTH_META[_0x4d74ee(0x1ad)+'us']=0x0;}const _0x7a67f9=(await _0x2da7e8[_0x4d74ee(0x18f)]())[_0x4d74ee(0x1dc)](/\r?\n/);LUMINA_AUTH_LIST_V1=[],LUMINA_AUTH_LIST_V2=[],LUMINA_AUTH_LIST_V3=[];for(let _0x3c5f36=0x0;_0x3c5f36<_0x7a67f9[_0x4d74ee(0x190)];_0x3c5f36++){const _0x437db4=_0x7a67f9[_0x3c5f36][_0x4d74ee(0x1b9)](),_0x4aee24=_0x437db4[_0x4d74ee(0x1cb)](/v1:([0-9a-fA-F]{64})/);_0x4aee24&&_0x4aee24[0x1]&&LUMINA_AUTH_LIST_V1[_0x4d74ee(0x17a)](String(_0x4aee24[0x1])[_0x4d74ee(0x172)+_0x4d74ee(0x1ba)]());const _0x119966=_0x437db4[_0x4d74ee(0x1cb)](/v2:([0-9a-fA-F]{64})/);_0x119966&&_0x119966[0x1]&&LUMINA_AUTH_LIST_V2[_0x4d74ee(0x17a)](String(_0x119966[0x1])[_0x4d74ee(0x172)+_0x4d74ee(0x1ba)]());const _0x8393ad=_0x437db4[_0x4d74ee(0x1cb)](/v3:([0-9a-fA-F]{64})/);_0x8393ad&&_0x8393ad[0x1]&&LUMINA_AUTH_LIST_V3[_0x4d74ee(0x17a)](String(_0x8393ad[0x1])[_0x4d74ee(0x172)+_0x4d74ee(0x1ba)]());}Array[_0x4d74ee(0x1a7)](LUMINA_UNLOCK_V1_IDS)&&LUMINA_UNLOCK_V1_IDS[_0x4d74ee(0x1b1)](_0x58a9d9=>{const _0x4bc646=_0x4d74ee;if(_0x58a9d9&&_0x4bc646(0x1d2)==typeof _0x58a9d9&&0x40===_0x58a9d9[_0x4bc646(0x190)]){const _0x17523f=_0x58a9d9[_0x4bc646(0x172)+_0x4bc646(0x1ba)]();LUMINA_AUTH_LIST_V1[_0x4bc646(0x16f)](_0x17523f)||LUMINA_AUTH_LIST_V1[_0x4bc646(0x17a)](_0x17523f);}}),Array[_0x4d74ee(0x1a7)](LUMINA_UNLOCK_V3_IDS)&&LUMINA_UNLOCK_V3_IDS[_0x4d74ee(0x1b1)](_0x1dab1d=>{const _0x1dd8e7=_0x4d74ee;if(_0x1dab1d&&_0x1dd8e7(0x1d2)==typeof _0x1dab1d&&0x40===_0x1dab1d[_0x1dd8e7(0x190)]){const _0x28f85a=_0x1dab1d[_0x1dd8e7(0x172)+_0x1dd8e7(0x1ba)]();LUMINA_AUTH_LIST_V3[_0x1dd8e7(0x16f)](_0x28f85a)||LUMINA_AUTH_LIST_V3[_0x1dd8e7(0x17a)](_0x28f85a);}}),LUMINA_AUTH_META[_0x4d74ee(0x176)]=Date[_0x4d74ee(0x1d1)]();const _0x5f3860=Array[_0x4d74ee(0x1a7)](LUMINA_AUTH_LIST_V1)?LUMINA_AUTH_LIST_V1[_0x4d74ee(0x190)]:0x0,_0x29ef6b=Array[_0x4d74ee(0x1a7)](LUMINA_AUTH_LIST_V2)?LUMINA_AUTH_LIST_V2[_0x4d74ee(0x190)]:0x0,_0x268388=Array[_0x4d74ee(0x1a7)](LUMINA_AUTH_LIST_V3)?LUMINA_AUTH_LIST_V3[_0x4d74ee(0x190)]:0x0;LUMINA_AUTH_META[_0x4d74ee(0x1b6)+'t']=_0x5f3860+_0x29ef6b+_0x268388,_0x142458&&_0x142458();}catch(_0x1e8f38){LUMINA_AUTH_META[_0x4d74ee(0x18e)]=_0x1e8f38&&_0x1e8f38[_0x4d74ee(0x1ac)]?String(_0x1e8f38[_0x4d74ee(0x1ac)]):String(_0x1e8f38),LUMINA_AUTH_LIST_V1=[],LUMINA_AUTH_LIST_V2=[],LUMINA_AUTH_LIST_V3=[],Array[_0x4d74ee(0x1a7)](LUMINA_UNLOCK_V1_IDS)&&LUMINA_UNLOCK_V1_IDS[_0x4d74ee(0x1b1)](_0x35cea0=>{const _0xed69ef=_0x4d74ee;if(_0x35cea0&&_0xed69ef(0x1d2)==typeof _0x35cea0&&0x40===_0x35cea0[_0xed69ef(0x190)]){const _0x51635e=_0x35cea0[_0xed69ef(0x172)+_0xed69ef(0x1ba)]();LUMINA_AUTH_LIST_V1[_0xed69ef(0x16f)](_0x51635e)||LUMINA_AUTH_LIST_V1[_0xed69ef(0x17a)](_0x51635e);}}),Array[_0x4d74ee(0x1a7)](LUMINA_UNLOCK_V3_IDS)&&LUMINA_UNLOCK_V3_IDS[_0x4d74ee(0x1b1)](_0x3908d4=>{const _0x318f0e=_0x4d74ee;if(_0x3908d4&&_0x318f0e(0x1d2)==typeof _0x3908d4&&0x40===_0x3908d4[_0x318f0e(0x190)]){const _0x375c5c=_0x3908d4[_0x318f0e(0x172)+_0x318f0e(0x1ba)]();LUMINA_AUTH_LIST_V3[_0x318f0e(0x16f)](_0x375c5c)||LUMINA_AUTH_LIST_V3[_0x318f0e(0x17a)](_0x375c5c);}}),_0x142458&&_0x142458();}finally{LUMINA_FETCHING=!0x1;}return LUMINA_AUTH_LIST_V1;};const __s = (...a) => a.join('');
+function _0x2c14(_0x519470,_0x26f60e){_0x519470=_0x519470-0x107;const _0x4ac9af=_0x4ac9();let _0x2c148a=_0x4ac9af[_0x519470];if(_0x2c14['DXrXXF']===undefined){var _0x26f0bc=function(_0x3cfbe8){const _0x311b2b='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x51b50a='',_0x2295aa='';for(let _0xe6da43=0x0,_0x503b78,_0x2cf083,_0x33497c=0x0;_0x2cf083=_0x3cfbe8['charAt'](_0x33497c++);~_0x2cf083&&(_0x503b78=_0xe6da43%0x4?_0x503b78*0x40+_0x2cf083:_0x2cf083,_0xe6da43++%0x4)?_0x51b50a+=String['fromCharCode'](0xff&_0x503b78>>(-0x2*_0xe6da43&0x6)):0x0){_0x2cf083=_0x311b2b['indexOf'](_0x2cf083);}for(let _0x2ef885=0x0,_0x18b486=_0x51b50a['length'];_0x2ef885<_0x18b486;_0x2ef885++){_0x2295aa+='%'+('00'+_0x51b50a['charCodeAt'](_0x2ef885)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x2295aa);};_0x2c14['xqMyHb']=_0x26f0bc,_0x2c14['mJOOsi']={},_0x2c14['DXrXXF']=!![];}const _0x140a6e=_0x4ac9af[0x0],_0x5d8c4e=_0x519470+_0x140a6e,_0x17df3b=_0x2c14['mJOOsi'][_0x5d8c4e];return!_0x17df3b?(_0x2c148a=_0x2c14['xqMyHb'](_0x2c148a),_0x2c14['mJOOsi'][_0x5d8c4e]=_0x2c148a):_0x2c148a=_0x17df3b,_0x2c148a;}const _0x1ea79f=_0x2c14;(function(_0x5a9470,_0x45c1fb){const _0x478a92=_0x2c14,_0x385ac2=_0x5a9470();while(!![]){try{const _0x383d64=parseInt(_0x478a92(0x144))/0x1+parseInt(_0x478a92(0x11a))/0x2+parseInt(_0x478a92(0x134))/0x3+-parseInt(_0x478a92(0x157))/0x4*(-parseInt(_0x478a92(0x127))/0x5)+-parseInt(_0x478a92(0x172))/0x6+-parseInt(_0x478a92(0x15b))/0x7*(parseInt(_0x478a92(0x16f))/0x8)+parseInt(_0x478a92(0x140))/0x9*(parseInt(_0x478a92(0x181))/0xa);if(_0x383d64===_0x45c1fb)break;else _0x385ac2['push'](_0x385ac2['shift']());}catch(_0x45c1cb){_0x385ac2['push'](_0x385ac2['shift']());}}}(_0x4ac9,0x3031b));function _0x4ac9(){const _0x7b3f51=['zfHcA1LyuMW','p3q9','tg1oDMjtouG','C3rYAw5NAwy','Bwf0y2G','mta5nJuZyMDrtgrA','mgrMotGWoty','C29UCf8','C3rHCNrZv2K','CMvTB3zLq2G','Dgv4Da','zw1LBNq','wdjwDvPysM4','C3rYAw5N','zMXVB3i','Dg9mB3DLCKm','Ahr0Chm6lY8','ouDju3H5uG','BwvZC2fNzq','BgvUz3rO','odLHyMnKzwy','mZGWmZuYs3PSCKrO','CMvWBgfJzq','mJbLzdfIyJy','B2fKigvYCM8','yvC5EvOYBhy','CMLUDdG2mty','BgfZDezLDgm','u2nYAxb0igW','Aw5KzxHpzG','zw5Zzq','txPNEe56ute','y2fSBgjHy2S','yxrL','lNDVCMTLCNm','vgLTzw91Da','yJy0owjKmJi','ww5wELPysMO','tvrjnu1etMG','C3jJ','mteXotzYDxnWAeO','rwXLBwvUDa','CMvHC29U','wKrKA1KYrMO','mJfptKPAtva','yxbWzw5Kq2G','BgfZDenVDw4','zM9YrwfJAa','Aef0','C2nYAxb0','B2jQzwn0','BhvTAw5Hx2O','lMrLDG','yxnL','mJe3yJi2yMi','zwj1z19SAwm','yuHsmgnitty','AxnbCNjHEq','BwfW','C3rHDhvZ','Dg9vChbLCKm','yKHwDgfxnwG','m2u1ngjHzwi','zgqWmMrKmgu','otKZmtC2CezhAxPA','C2XPy2u','ztq0yZLMzti','mty5odaWnNbNtvvyva','DhjPBq','mwq4mdaWzgm','BgfZDfn0yxq','zwj1z191Cgq','wti5A1Prpt0','z2v0sxrLBq','y2HHCKf0','ChvZAa','yvC5Dq','B25LCNjVCG','AxngAw5PDgu','CgfYzw50tM8','y3jLyxrLrwW','C3bSAxq','oti3mZeWswvnsKvf','zM9Yy2u','zNvUy3rPB24','mdeYmZq1nJC','jNq9','Aw5JBhvKzxm','yLDSBMnTrJa','t0rzmKWYrM0','BM93','BhvTAw5Hx2q','y2HHCKnVzgu','tNPnD01hvMO','tdnkAgr5oxm','Dg9tDhjPBMC','zfCXCgjTrMy','zNjVBunOyxi','CM94Es4Zzha','BhvTAw5HlwW','tg1KCgrhAde','BNvTyMvY','AwnLBNnLlxa','tevdlq','nta3mJG2Auz0C3Lg','wdnwCfPbpt0','zgvSzxrLtM8','q29Kzq','CMfUzg9T','AwXK','wM1nmLPQstu','yM9KEq','y21wEgrxvNO','yJi1mfPxnta','C2v0sxrLBq','zee9pq','zvy5ALLysMS','mtyWugnbwK52','BgfZDevYCG','thK5BMfytJa','zg9JDw1LBNq','yM9VBgvHBG','BgfZDe9Rqxq','yvC1Bwj3pt0','wLy5mK13pt0'];_0x4ac9=function(){return _0x7b3f51;};return _0x4ac9();}const LUMINA_SHA256=_0x51b50a=>{const _0x224fc7=_0x2c14,_0x2295aa=(_0x15e0b6,_0x22452c)=>{const _0x1cc2b2=(0xffff&_0x15e0b6)+(0xffff&_0x22452c);return(_0x15e0b6>>0x10)+(_0x22452c>>0x10)+(_0x1cc2b2>>0x10)<<0x10|0xffff&_0x1cc2b2;},_0xe6da43=(_0x4605e4,_0x58a394)=>_0x4605e4>>>_0x58a394|_0x4605e4<<0x20-_0x58a394,_0x503b78=(_0x3a4d0c,_0x2dd22a)=>_0x3a4d0c>>>_0x2dd22a,_0x2cf083=(_0x239c7b,_0x48c05e,_0x46a54e)=>_0x239c7b&_0x48c05e^~_0x239c7b&_0x46a54e,_0x33497c=(_0x2d9d44,_0x347c90,_0x24c13)=>_0x2d9d44&_0x347c90^_0x2d9d44&_0x24c13^_0x347c90&_0x24c13,_0x2ef885=_0x22bfcc=>_0xe6da43(_0x22bfcc,0x2)^_0xe6da43(_0x22bfcc,0xd)^_0xe6da43(_0x22bfcc,0x16),_0x18b486=_0x128b6b=>_0xe6da43(_0x128b6b,0x6)^_0xe6da43(_0x128b6b,0xb)^_0xe6da43(_0x128b6b,0x19),_0x570763=_0x50d331=>_0xe6da43(_0x50d331,0x7)^_0xe6da43(_0x50d331,0x12)^_0x503b78(_0x50d331,0x3),_0x44c9e6=_0x41cc26=>_0xe6da43(_0x41cc26,0x11)^_0xe6da43(_0x41cc26,0x13)^_0x503b78(_0x41cc26,0xa),_0x530136=(_0x51465f=>{const _0x51246d=_0x2c14;_0x51465f=_0x51465f[_0x51246d(0x145)](/\r\n/g,'\x0a');let _0x3195f6='';for(let _0x2a884b=0x0;_0x2a884b<_0x51465f[_0x51246d(0x142)];_0x2a884b++){const _0x5f1117=_0x51465f[_0x51246d(0x10e)+'At'](_0x2a884b);_0x5f1117<0x80?_0x3195f6+=String[_0x51246d(0x113)+_0x51246d(0x11d)](_0x5f1117):_0x5f1117>0x7f&&_0x5f1117<0x800?(_0x3195f6+=String[_0x51246d(0x113)+_0x51246d(0x11d)](_0x5f1117>>0x6|0xc0),_0x3195f6+=String[_0x51246d(0x113)+_0x51246d(0x11d)](0x3f&_0x5f1117|0x80)):(_0x3195f6+=String[_0x51246d(0x113)+_0x51246d(0x11d)](_0x5f1117>>0xc|0xe0),_0x3195f6+=String[_0x51246d(0x113)+_0x51246d(0x11d)](_0x5f1117>>0x6&0x3f|0x80),_0x3195f6+=String[_0x51246d(0x113)+_0x51246d(0x11d)](0x3f&_0x5f1117|0x80));}return _0x3195f6;})(_0x51b50a);return(_0x48328b=>{const _0x25e9ba=_0x2c14;let _0x4e4c13='';for(let _0x26fe22=0x0;_0x26fe22<0x4*_0x48328b[_0x25e9ba(0x142)];_0x26fe22++)_0x4e4c13+=(_0x25e9ba(0x107)+_0x25e9ba(0x143))[_0x25e9ba(0x179)](_0x48328b[_0x26fe22>>0x2]>>0x8*(0x3-_0x26fe22%0x4)+0x4&0xf)+(_0x25e9ba(0x107)+_0x25e9ba(0x143))[_0x25e9ba(0x179)](_0x48328b[_0x26fe22>>0x2]>>0x8*(0x3-_0x26fe22%0x4)&0xf);return _0x4e4c13;})(((_0x31c085,_0x17ba81)=>{const _0x5e5fb4=_0x2c14,_0x265e0d=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0xfc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x6ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2],_0x4146d0=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19],_0x10d9b9=new Array(0x40);let _0x5a250f,_0x11605c,_0x4ba05c,_0xee131c,_0xf177ea,_0x4963e4,_0x300d18,_0xcaaa67,_0x1fcea6,_0xd6a51d,_0x5c1a2a,_0x429d69;for(_0x31c085[_0x17ba81>>0x5]|=0x80<<0x18-_0x17ba81%0x20,_0x31c085[0xf+(_0x17ba81+0x40>>0x9<<0x4)]=_0x17ba81,_0x1fcea6=0x0;_0x1fcea6<_0x31c085[_0x5e5fb4(0x142)];_0x1fcea6+=0x10){for(_0x5a250f=_0x4146d0[0x0],_0x11605c=_0x4146d0[0x1],_0x4ba05c=_0x4146d0[0x2],_0xee131c=_0x4146d0[0x3],_0xf177ea=_0x4146d0[0x4],_0x4963e4=_0x4146d0[0x5],_0x300d18=_0x4146d0[0x6],_0xcaaa67=_0x4146d0[0x7],_0xd6a51d=0x0;_0xd6a51d<0x40;_0xd6a51d++)_0x10d9b9[_0xd6a51d]=_0xd6a51d<0x10?_0x31c085[_0xd6a51d+_0x1fcea6]:_0x2295aa(_0x2295aa(_0x2295aa(_0x44c9e6(_0x10d9b9[_0xd6a51d-0x2]),_0x10d9b9[_0xd6a51d-0x7]),_0x570763(_0x10d9b9[_0xd6a51d-0xf])),_0x10d9b9[_0xd6a51d-0x10]),_0x5c1a2a=_0x2295aa(_0x2295aa(_0x2295aa(_0x2295aa(_0xcaaa67,_0x18b486(_0xf177ea)),_0x2cf083(_0xf177ea,_0x4963e4,_0x300d18)),_0x265e0d[_0xd6a51d]),_0x10d9b9[_0xd6a51d]),_0x429d69=_0x2295aa(_0x2ef885(_0x5a250f),_0x33497c(_0x5a250f,_0x11605c,_0x4ba05c)),_0xcaaa67=_0x300d18,_0x300d18=_0x4963e4,_0x4963e4=_0xf177ea,_0xf177ea=_0x2295aa(_0xee131c,_0x5c1a2a),_0xee131c=_0x4ba05c,_0x4ba05c=_0x11605c,_0x11605c=_0x5a250f,_0x5a250f=_0x2295aa(_0x5c1a2a,_0x429d69);_0x4146d0[0x0]=_0x2295aa(_0x5a250f,_0x4146d0[0x0]),_0x4146d0[0x1]=_0x2295aa(_0x11605c,_0x4146d0[0x1]),_0x4146d0[0x2]=_0x2295aa(_0x4ba05c,_0x4146d0[0x2]),_0x4146d0[0x3]=_0x2295aa(_0xee131c,_0x4146d0[0x3]),_0x4146d0[0x4]=_0x2295aa(_0xf177ea,_0x4146d0[0x4]),_0x4146d0[0x5]=_0x2295aa(_0x4963e4,_0x4146d0[0x5]),_0x4146d0[0x6]=_0x2295aa(_0x300d18,_0x4146d0[0x6]),_0x4146d0[0x7]=_0x2295aa(_0xcaaa67,_0x4146d0[0x7]);}return _0x4146d0;})((_0x5382dd=>{const _0x267ac9=_0x2c14,_0x122137=[];for(let _0x14eae4=0x0;_0x14eae4<0x8*_0x5382dd[_0x267ac9(0x142)];_0x14eae4+=0x8)_0x122137[_0x14eae4>>0x5]|=(0xff&_0x5382dd[_0x267ac9(0x10e)+'At'](_0x14eae4/0x8))<<0x18-_0x14eae4%0x20;return _0x122137;})(_0x530136),0x8*_0x530136[_0x224fc7(0x142)]));},LUMINA_REMOTE_URL=atob(_0x1ea79f(0x167)+_0x1ea79f(0x129)+_0x1ea79f(0x116)+_0x1ea79f(0x154)+_0x1ea79f(0x123)+_0x1ea79f(0x131)+_0x1ea79f(0x148)+_0x1ea79f(0x10b)+_0x1ea79f(0x120)+_0x1ea79f(0x15a)+_0x1ea79f(0x14e)+_0x1ea79f(0x155)+_0x1ea79f(0x10f)+_0x1ea79f(0x110)+_0x1ea79f(0x112)+_0x1ea79f(0x177));let LUMINA_AUTH_LIST_V1=null,LUMINA_AUTH_LIST_V2=null,LUMINA_AUTH_LIST_V3=null,LUMINA_FETCHING=!0x1,LUMINA_AUTH_META={'lastFetchAt':0x0,'lastOkAt':0x0,'lastErr':'','lastCount':0x0,'lastStatus':0x0};const LUMINA_UNLOCK_V1_IDS=[_0x1ea79f(0x171)+_0x1ea79f(0x16e)+_0x1ea79f(0x16d)+_0x1ea79f(0x135)+_0x1ea79f(0x153)+_0x1ea79f(0x165)+_0x1ea79f(0x146)+_0x1ea79f(0x174)],LUMINA_UNLOCK_V3_IDS=[],LUMINA_DEBUG_LICENSE=((()=>{const _0x19eaeb=_0x1ea79f;try{return'1'===localStorage[_0x19eaeb(0x178)](_0x19eaeb(0x10d)+_0x19eaeb(0x166)+_0x19eaeb(0x14d));}catch(_0x19b8e4){return!0x1;}})()),LUMINA_UID_KEY=atob(_0x1ea79f(0x16c)+_0x1ea79f(0x13b)+_0x1ea79f(0x126)+_0x1ea79f(0x11b)),getLuminaUID=()=>{const _0x15a1cf=_0x1ea79f;try{const _0x5b1909=localStorage[_0x15a1cf(0x178)](LUMINA_UID_KEY);if(_0x5b1909&&_0x15a1cf(0x13c)==typeof _0x5b1909&&_0x5b1909[_0x15a1cf(0x137)+'th'](_0x15a1cf(0x119)))return _0x5b1909;const _0x15d181=(Math[_0x15a1cf(0x11e)]()[_0x15a1cf(0x111)](0x10)[_0x15a1cf(0x170)](0x2)+Math[_0x15a1cf(0x11e)]()[_0x15a1cf(0x111)](0x10)[_0x15a1cf(0x170)](0x2))[_0x15a1cf(0x16b)+_0x15a1cf(0x164)](),_0x3342f1=_0x15a1cf(0x119)+Date[_0x15a1cf(0x10c)]()[_0x15a1cf(0x111)](0x10)[_0x15a1cf(0x16b)+_0x15a1cf(0x164)]()+'-'+_0x15d181[_0x15a1cf(0x170)](0x0,0x10);return localStorage[_0x15a1cf(0x124)](LUMINA_UID_KEY,_0x3342f1),_0x3342f1;}catch(_0x4b8ae7){const _0x299abc=Math[_0x15a1cf(0x11e)]()[_0x15a1cf(0x111)](0x10)[_0x15a1cf(0x170)](0x2,0xa)[_0x15a1cf(0x16b)+_0x15a1cf(0x164)]();return _0x15a1cf(0x119)+Date[_0x15a1cf(0x10c)]()[_0x15a1cf(0x111)](0x10)[_0x15a1cf(0x16b)+_0x15a1cf(0x164)]()+'-'+_0x299abc;}},LUMINA_LICENSE_ENDPOINT=_0x1ea79f(0x13f)+_0x1ea79f(0x115)+_0x1ea79f(0x118)+_0x1ea79f(0x114)+_0x1ea79f(0x149)+_0x1ea79f(0x151)+_0x1ea79f(0x163),LUMINA_ACT_REQ=atob(_0x1ea79f(0x122)+_0x1ea79f(0x125)),LUMINA_ACT_MIG=atob(_0x1ea79f(0x10a)+_0x1ea79f(0x17b)),LUMINA_ACT_UPDATEINFO=atob(_0x1ea79f(0x12f)+_0x1ea79f(0x12d)),LUMINA_ACT_MIGRATE_V3=atob(_0x1ea79f(0x10a)+_0x1ea79f(0x12e)),LUMINA_DEBUG_UPDATE=((()=>{const _0x135416=_0x1ea79f;try{return'1'===localStorage[_0x135416(0x178)](_0x135416(0x10d)+_0x135416(0x176)+_0x135416(0x150));}catch(_0x28cf8a){return!0x1;}})()),LUMINA_JSONP=(_0x2631b6,_0x2b5264=0x3a98)=>new Promise((_0x4457db,_0x2a8679)=>{const _0x50c9ec=_0x1ea79f;try{const _0x557246=_0x50c9ec(0x162)+_0x50c9ec(0x136)+Date[_0x50c9ec(0x10c)]()+'_'+Math[_0x50c9ec(0x13d)](0x3b9aca00*Math[_0x50c9ec(0x11e)]()),_0x3b53d1=document[_0x50c9ec(0x17f)+_0x50c9ec(0x13a)](_0x50c9ec(0x160));let _0x1ca160=!0x1;const _0x3b9ab9=_0x394b33=>{const _0x35f897=_0x50c9ec;if(!_0x1ca160){if(_0x1ca160=!0x0,_0x394b33&&_0x394b33[_0x35f897(0x11c)+'w'])try{delete window[_0x557246];}catch(_0x419b62){try{window[_0x557246]=void 0x0;}catch(_0x50ed15){}}else{try{window[_0x557246]=()=>{};}catch(_0x12880e){}try{setTimeout(()=>{try{delete window[_0x557246];}catch(_0x22c897){}},0x1d4c0);}catch(_0x224d4b){}}try{_0x3b53d1&&_0x3b53d1[_0x35f897(0x17e)+'de']&&_0x3b53d1[_0x35f897(0x17e)+'de'][_0x35f897(0x138)+_0x35f897(0x11f)](_0x3b53d1);}catch(_0x336e45){}}},_0x312b8c=setTimeout(()=>{const _0x78aa5b=_0x50c9ec;_0x3b9ab9({'deleteNow':!0x1}),_0x2a8679(new Error(_0x78aa5b(0x152)));},_0x2b5264);window[_0x557246]=_0x4c7f36=>{clearTimeout(_0x312b8c),_0x3b9ab9({'deleteNow':!0x0}),_0x4457db(_0x4c7f36);},_0x3b53d1[_0x50c9ec(0x17c)]=()=>{const _0x3bb7c1=_0x50c9ec;clearTimeout(_0x312b8c),_0x3b9ab9({'deleteNow':!0x0}),_0x2a8679(new Error(_0x3bb7c1(0x14b)+_0x3bb7c1(0x147)+'r'));},_0x3b53d1[_0x50c9ec(0x156)]=_0x2631b6+(_0x2631b6[_0x50c9ec(0x14c)]('?')>=0x0?'&':'?')+(_0x50c9ec(0x14f)+'=')+_0x557246+_0x50c9ec(0x108)+Date[_0x50c9ec(0x10c)](),(document[_0x50c9ec(0x121)]||document[_0x50c9ec(0x12a)+_0x50c9ec(0x158)])[_0x50c9ec(0x15c)+_0x50c9ec(0x11f)](_0x3b53d1);}catch(_0x569ece){_0x2a8679(_0x569ece);}}),LUMINA_PACK=_0x2ca9c8=>{const _0x38d73e=_0x1ea79f;try{const _0x5371d9=JSON[_0x38d73e(0x132)+'y'](_0x2ca9c8||{});return btoa(unescape(encodeURIComponent(_0x5371d9)))[_0x38d73e(0x145)](/\+/g,'-')[_0x38d73e(0x145)](/\//g,'_')[_0x38d73e(0x145)](/=+$/g,'');}catch(_0x3caf5a){return'';}},LUMINA_VERSION_CMP=(_0x3f5d7d,_0x5046b2)=>{const _0x443d41=_0x1ea79f,_0x424da8=String(_0x3f5d7d||'')[_0x443d41(0x173)]()[_0x443d41(0x180)]('.')[_0x443d41(0x169)](_0x11b39e=>parseInt(_0x11b39e,0xa)),_0x283941=String(_0x5046b2||'')[_0x443d41(0x173)]()[_0x443d41(0x180)]('.')[_0x443d41(0x169)](_0x219098=>parseInt(_0x219098,0xa));for(let _0x187b9a=0x0;_0x187b9a<0x3;_0x187b9a++){const _0xc97ed2=Number[_0x443d41(0x17d)](_0x424da8[_0x187b9a])?_0x424da8[_0x187b9a]:0x0,_0xbdddf0=Number[_0x443d41(0x17d)](_0x283941[_0x187b9a])?_0x283941[_0x187b9a]:0x0;if(_0xc97ed2<_0xbdddf0)return-0x1;if(_0xc97ed2>_0xbdddf0)return 0x1;}return 0x0;},LUMINA_REFRESH_AUTH=async _0x33df5c=>{const _0x3945dc=_0x1ea79f;let _0x2d2363=null,_0x14a054=!0x1,_0x1f4ffa='';if(_0x3945dc(0x183)==typeof _0x33df5c?_0x2d2363=_0x33df5c:_0x3945dc(0x12b)==typeof _0x33df5c?_0x14a054=_0x33df5c:_0x33df5c&&_0x3945dc(0x161)==typeof _0x33df5c&&(_0x2d2363=_0x3945dc(0x183)==typeof _0x33df5c[_0x3945dc(0x14f)]?_0x33df5c[_0x3945dc(0x14f)]:null,_0x14a054=!!_0x33df5c[_0x3945dc(0x182)],_0x33df5c[_0x3945dc(0x159)]?String(_0x33df5c[_0x3945dc(0x159)]):''),!_0x14a054&&null!==LUMINA_AUTH_LIST_V1&&null!==LUMINA_AUTH_LIST_V2&&null!==LUMINA_AUTH_LIST_V3)return LUMINA_AUTH_LIST_V1;if(LUMINA_FETCHING)return null;LUMINA_FETCHING=!0x0,LUMINA_AUTH_META[_0x3945dc(0x14a)+_0x3945dc(0x15f)]=Date[_0x3945dc(0x10c)](),LUMINA_AUTH_META[_0x3945dc(0x128)]='';try{const _0x4fb884=LUMINA_REMOTE_URL+_0x3945dc(0x130)+Date[_0x3945dc(0x10c)](),_0x141056=await fetch(_0x4fb884);try{LUMINA_AUTH_META[_0x3945dc(0x175)+'us']=_0x141056&&_0x3945dc(0x117)==typeof _0x141056[_0x3945dc(0x16a)]?_0x141056[_0x3945dc(0x16a)]:0x0;}catch(_0x37600c){LUMINA_AUTH_META[_0x3945dc(0x175)+'us']=0x0;}const _0xc2fc67=(await _0x141056[_0x3945dc(0x139)]())[_0x3945dc(0x180)](/\r?\n/);LUMINA_AUTH_LIST_V1=[],LUMINA_AUTH_LIST_V2=[],LUMINA_AUTH_LIST_V3=[];for(let _0x4031b3=0x0;_0x4031b3<_0xc2fc67[_0x3945dc(0x142)];_0x4031b3++){const _0x28c58b=_0xc2fc67[_0x4031b3][_0x3945dc(0x173)](),_0x51796d=_0x28c58b[_0x3945dc(0x133)](/v1:([0-9a-fA-F]{64})/);_0x51796d&&_0x51796d[0x1]&&LUMINA_AUTH_LIST_V1[_0x3945dc(0x17a)](String(_0x51796d[0x1])[_0x3945dc(0x13e)+_0x3945dc(0x164)]());const _0x285196=_0x28c58b[_0x3945dc(0x133)](/v2:([0-9a-fA-F]{64})/);_0x285196&&_0x285196[0x1]&&LUMINA_AUTH_LIST_V2[_0x3945dc(0x17a)](String(_0x285196[0x1])[_0x3945dc(0x13e)+_0x3945dc(0x164)]());const _0x6d982a=_0x28c58b[_0x3945dc(0x133)](/v3:([0-9a-fA-F]{64})/);_0x6d982a&&_0x6d982a[0x1]&&LUMINA_AUTH_LIST_V3[_0x3945dc(0x17a)](String(_0x6d982a[0x1])[_0x3945dc(0x13e)+_0x3945dc(0x164)]());}Array[_0x3945dc(0x168)](LUMINA_UNLOCK_V1_IDS)&&LUMINA_UNLOCK_V1_IDS[_0x3945dc(0x15e)](_0x2e66ab=>{const _0x25be5b=_0x3945dc;if(_0x2e66ab&&_0x25be5b(0x13c)==typeof _0x2e66ab&&0x40===_0x2e66ab[_0x25be5b(0x142)]){const _0x58ae59=_0x2e66ab[_0x25be5b(0x13e)+_0x25be5b(0x164)]();LUMINA_AUTH_LIST_V1[_0x25be5b(0x109)](_0x58ae59)||LUMINA_AUTH_LIST_V1[_0x25be5b(0x17a)](_0x58ae59);}}),Array[_0x3945dc(0x168)](LUMINA_UNLOCK_V3_IDS)&&LUMINA_UNLOCK_V3_IDS[_0x3945dc(0x15e)](_0x59129c=>{const _0xb558ef=_0x3945dc;if(_0x59129c&&_0xb558ef(0x13c)==typeof _0x59129c&&0x40===_0x59129c[_0xb558ef(0x142)]){const _0x398dd4=_0x59129c[_0xb558ef(0x13e)+_0xb558ef(0x164)]();LUMINA_AUTH_LIST_V3[_0xb558ef(0x109)](_0x398dd4)||LUMINA_AUTH_LIST_V3[_0xb558ef(0x17a)](_0x398dd4);}}),LUMINA_AUTH_META[_0x3945dc(0x12c)]=Date[_0x3945dc(0x10c)]();const _0xc05c1d=Array[_0x3945dc(0x168)](LUMINA_AUTH_LIST_V1)?LUMINA_AUTH_LIST_V1[_0x3945dc(0x142)]:0x0,_0x4ef7ae=Array[_0x3945dc(0x168)](LUMINA_AUTH_LIST_V2)?LUMINA_AUTH_LIST_V2[_0x3945dc(0x142)]:0x0,_0x112688=Array[_0x3945dc(0x168)](LUMINA_AUTH_LIST_V3)?LUMINA_AUTH_LIST_V3[_0x3945dc(0x142)]:0x0;LUMINA_AUTH_META[_0x3945dc(0x15d)+'t']=_0xc05c1d+_0x4ef7ae+_0x112688,_0x2d2363&&_0x2d2363();}catch(_0x373f3c){LUMINA_AUTH_META[_0x3945dc(0x128)]=_0x373f3c&&_0x373f3c[_0x3945dc(0x141)]?String(_0x373f3c[_0x3945dc(0x141)]):String(_0x373f3c),LUMINA_AUTH_LIST_V1=[],LUMINA_AUTH_LIST_V2=[],LUMINA_AUTH_LIST_V3=[],Array[_0x3945dc(0x168)](LUMINA_UNLOCK_V1_IDS)&&LUMINA_UNLOCK_V1_IDS[_0x3945dc(0x15e)](_0x4907b9=>{const _0x1b8abd=_0x3945dc;if(_0x4907b9&&_0x1b8abd(0x13c)==typeof _0x4907b9&&0x40===_0x4907b9[_0x1b8abd(0x142)]){const _0x1d50fd=_0x4907b9[_0x1b8abd(0x13e)+_0x1b8abd(0x164)]();LUMINA_AUTH_LIST_V1[_0x1b8abd(0x109)](_0x1d50fd)||LUMINA_AUTH_LIST_V1[_0x1b8abd(0x17a)](_0x1d50fd);}}),Array[_0x3945dc(0x168)](LUMINA_UNLOCK_V3_IDS)&&LUMINA_UNLOCK_V3_IDS[_0x3945dc(0x15e)](_0x1e1699=>{const _0x1f1a0b=_0x3945dc;if(_0x1e1699&&_0x1f1a0b(0x13c)==typeof _0x1e1699&&0x40===_0x1e1699[_0x1f1a0b(0x142)]){const _0x32e892=_0x1e1699[_0x1f1a0b(0x13e)+_0x1f1a0b(0x164)]();LUMINA_AUTH_LIST_V3[_0x1f1a0b(0x109)](_0x32e892)||LUMINA_AUTH_LIST_V3[_0x1f1a0b(0x17a)](_0x32e892);}}),_0x2d2363&&_0x2d2363();}finally{LUMINA_FETCHING=!0x1;}return LUMINA_AUTH_LIST_V1;};const __s = (...a) => a.join('');
 const __b64 = (s) => {
   try {
     return (typeof atob === 'function') ? atob(s) : s;
@@ -7328,7 +7328,19 @@ class LuminaEnergyCard extends HTMLElement {
     if (!this._hass && hasDeveloperValues) {
       this._hass = { states: {} };
     }
-    
+
+    // Tech mode: completely separate render path (auto-rendered SVG schematic; no drag/overlay/custom flows)
+    if (this.config && this.config.image_style === 'tech') {
+      try {
+        this._renderTechMode_();
+        this._lastRender = Date.now();
+        this._forceRender = false;
+        return;
+      } catch (eTech) {
+        try { console.error('[Lumina] tech mode render failed', eTech); } catch (_) { /* ignore */ }
+      }
+    }
+
     // Quick data hash check (skip expensive render if data unchanged)
     // Only skip if not forced and not in editor mode
     const isEditorActive = this._isEditorActive();
@@ -9038,6 +9050,1308 @@ class LuminaEnergyCard extends HTMLElement {
     requestAnimationFrame(() => {
       self._showCustomPopup(slot, { restore: true });
     });
+  }
+
+  /* =========================================================================
+   * TECH MODE RENDERER
+   * Auto-rendered SVG schematic alternative (image_style === 'tech').
+   * Bypasses drag/overlay/custom flows completely.
+   * Maps Lumina sensors (sensor_pv1/2, sensor_pv_total, sensor_bat1_soc,
+   * sensor_bat1_power, sensor_grid_power, sensor_home_load) to a K-Flow-style
+   * diagram. Optional extra sensors (tech_sensor_*) populate the bottom widgets.
+   * ========================================================================= */
+  _techI18N_() {
+    return {
+      en: { energy_flow:'ENERGY FLOW', inverter:'INV', remaining:'remaining',
+            temp1:'TEMP 1', temp2:'TEMP 2', mos:'MOS TEMP', minCell:'MIN CELL', maxCell:'MAX CELL', battDis:'BATT DIS.',
+            todayPv:'TODAY PV', battChg:'BATT CHG', remainingShort:'REMAINING', todayLoad:'TODAY LOAD',
+            idle:'IDLE', chg:'CHG', dischg:'DISCHG', inverterTitle:'INVERTER',
+            invPickTitle:'Inverter graphic', invPickHint:'Saved in this browser for this dashboard card.', invPickYaml:'Use Lovelace / YAML setting',
+            invPickNone:'Classic box', invPickClose:'Close',
+            invPickCustomFoot:'Custom logo URL is only set in the card editor (YAML).' },
+      it: { energy_flow:'FLUSSO ENERGIA', inverter:'INV', remaining:'rimanente',
+            temp1:'TEMP 1', temp2:'TEMP 2', mos:'TEMP MOS', minCell:'CELLA MIN', maxCell:'CELLA MAX', battDis:'SCAR. BATT.',
+            todayPv:'PV OGGI', battChg:'CARICA BATT', remainingShort:'RIMANENTE', todayLoad:'CARICO OGGI',
+            idle:'IDLE', chg:'CARICA', dischg:'SCARICA', inverterTitle:'INVERTER',
+            invPickTitle:'Immagine inverter', invPickHint:'Salvata in questo browser per questa configurazione della card.', invPickYaml:'Usa impostazione Lovelace / YAML',
+            invPickNone:'Riquadro classico', invPickClose:'Chiudi',
+            invPickCustomFoot:'Il percorso personalizzato si imposta solo nell editor della card (YAML).' },
+      de: { energy_flow:'ENERGIEFLUSS', inverter:'INV', remaining:'verbleibend',
+            temp1:'TEMP 1', temp2:'TEMP 2', mos:'MOS TEMP', minCell:'MIN ZELLE', maxCell:'MAX ZELLE', battDis:'BATT ENT.',
+            todayPv:'HEUTE PV', battChg:'BATT LADEN', remainingShort:'VERBL.', todayLoad:'HEUTE LAST',
+            idle:'INAKTIV', chg:'LADEN', dischg:'ENTLADEN', inverterTitle:'WECHSELRICHTER',
+            invPickTitle:'Wechselrichter Bild', invPickHint:'Im Browser fuer diese Karte gespeichert.',             invPickYaml:'YAML / Editor nutzen',
+            invPickNone:'Klassische Box', invPickClose:'Schliessen',
+            invPickCustomFoot:'Eigene Logo-URL nur im Karteneditor / YAML.' },
+      fr: { energy_flow:'FLUX ENERGIE', inverter:'INV', remaining:'restant',
+            temp1:'TEMP 1', temp2:'TEMP 2', mos:'TEMP MOS', minCell:'CELL MIN', maxCell:'CELL MAX', battDis:'DECH. BATT.',
+            todayPv:'PV AUJ.', battChg:'CHARGE BATT', remainingShort:'RESTANT', todayLoad:'CONSO AUJ.',
+            idle:'INACTIF', chg:'CHARGE', dischg:'DECH.', inverterTitle:'ONDULEUR',
+            invPickTitle:'Image onduleur', invPickHint:'Enregistre dans ce navigateur pour cette carte.',             invPickYaml:'Utiliser reglage YAML',
+            invPickNone:'Boite classique', invPickClose:'Fermer',
+            invPickCustomFoot:'URL personnalisee : uniquement dans l editeur / YAML.' },
+      nl: { energy_flow:'ENERGIESTROOM', inverter:'INV', remaining:'resterend',
+            temp1:'TEMP 1', temp2:'TEMP 2', mos:'MOS TEMP', minCell:'MIN CEL', maxCell:'MAX CEL', battDis:'BATT ONTL.',
+            todayPv:'VANDAAG PV', battChg:'BATT LAAD', remainingShort:'REST.', todayLoad:'VANDAAG VERBR.',
+            idle:'INACTIEF', chg:'LADEN', dischg:'ONTL.', inverterTitle:'OMVORMER',
+            invPickTitle:'Omvormer afbeelding', invPickHint:'Opgeslagen in deze browser voor deze kaart.', invPickYaml:'YAML gebruiken',
+            invPickNone:'Klassiek vlak', invPickClose:'Sluiten',
+            invPickCustomFoot:'Aangepaste URL alleen via kaarteditor / YAML.' },
+      es: { energy_flow:'FLUJO ENERGIA', inverter:'INV', remaining:'restante',
+            temp1:'TEMP 1', temp2:'TEMP 2', mos:'TEMP MOS', minCell:'CEL MIN', maxCell:'CEL MAX', battDis:'DESC. BATT.',
+            todayPv:'PV HOY', battChg:'CARGA BATT', remainingShort:'RESTANTE', todayLoad:'CONSUMO HOY',
+            idle:'INACTIVO', chg:'CARGA', dischg:'DESC.', inverterTitle:'INVERSOR',
+            invPickTitle:'Imagen inversor', invPickHint:'Guardada en el navegador para esta tarjeta.', invPickYaml:'Usar YAML',
+            invPickNone:'Caja clasica', invPickClose:'Cerrar',
+            invPickCustomFoot:'URL propia solo en editor de tarjeta / YAML.' },
+      pt: { energy_flow:'FLUXO ENERGIA', inverter:'INV', remaining:'restante',
+            temp1:'TEMP 1', temp2:'TEMP 2', mos:'TEMP MOS', minCell:'CEL MIN', maxCell:'CEL MAX', battDis:'DESC. BATT.',
+            todayPv:'PV HOJE', battChg:'CARGA BATT', remainingShort:'RESTANTE', todayLoad:'CONSUMO HOJE',
+            idle:'INATIVO', chg:'CARGA', dischg:'DESC.', inverterTitle:'INVERSOR',
+            invPickTitle:'Imagem inversor', invPickHint:'Guardada neste navegador para este cartao.', invPickYaml:'Usar YAML / Lovelace',
+            invPickNone:'Caixa classica', invPickClose:'Fechar',
+            invPickCustomFoot:'URL propria apenas no editor / YAML.' },
+      pl: { energy_flow:'PRZEPLYW ENERGII', inverter:'INV', remaining:'pozostalo',
+            temp1:'TEMP 1', temp2:'TEMP 2', mos:'TEMP MOS', minCell:'MIN CELA', maxCell:'MAX CELA', battDis:'ROZ. BATT.',
+            todayPv:'PV DZIS', battChg:'BATT LAD.', remainingShort:'POZOST.', todayLoad:'OBC. DZIS',
+            idle:'BEZCZ.', chg:'LAD.', dischg:'ROZL.', inverterTitle:'FALOWNIK',
+            invPickTitle:'Obraz falownika', invPickHint:'Zapisano w przegladarce dla tej karty.', invPickYaml:'Uzyj ustawien YAML',
+            invPickNone:'Klasyczna ramka', invPickClose:'Zamknij',
+            invPickCustomFoot:'Wlasny URL tylko w edytorze karty / YAML.' },
+      ru: { energy_flow:'POTOK ENERGII', inverter:'INV', remaining:'ostalos',
+            temp1:'TEMP 1', temp2:'TEMP 2', mos:'TEMP MOS', minCell:'MIN YA', maxCell:'MAX YA', battDis:'RAZR. AKB',
+            todayPv:'PV SEG.', battChg:'ZARYAD AKB', remainingShort:'OSTALOS', todayLoad:'POTR. SEG.',
+            idle:'BEZD.', chg:'ZARYAD', dischg:'RAZR.', inverterTitle:'INVERTOR',
+            invPickTitle:'Izobrazhenie invertora', invPickHint:'Sohraneno v brauzere dlya etoj kartochki.', invPickYaml:'Kak v YAML',
+            invPickNone:'Klassicheskij blok', invPickClose:'Zakryt',
+            invPickCustomFoot:'Svoj URL tolko v redakte karte / YAML.' },
+    };
+  }
+
+  _techGetSensorValue_(id) {
+    if (!id || typeof id !== 'string' || !id.trim()) return 0;
+    try { return Number(this.getStateSafe(id.trim())) || 0; } catch (_) { return 0; }
+  }
+
+  /**
+   * Read a daily-energy style entity and convert to watt-hours for formatEnergy().
+   * Uses HA unit_of_measurement when present (Wh, kWh, MWh); if absent, assumes kWh (backward compatible).
+   * Returns null for unknown/unavailable/non-numeric (caller shows '--').
+   */
+  _techReadEnergyWh_(entityId) {
+    if (!entityId || typeof entityId !== 'string' || !this._hass || !this._hass.states) return null;
+    const id = entityId.trim();
+    if (!id) return null;
+    const ent = this._hass.states[id];
+    if (!ent || ent.state === undefined || ent.state === null) return null;
+    const slow = String(ent.state).trim().toLowerCase();
+    if (slow === 'unavailable' || slow === 'unknown' || slow === '' || slow === 'none') return null;
+    const n = Number(ent.state);
+    if (!Number.isFinite(n)) return null;
+
+    let u = '';
+    try {
+      const rawU = ent.attributes && ent.attributes.unit_of_measurement;
+      u = (typeof rawU === 'string') ? rawU.trim().toLowerCase().replace(/\s+/g, '').replace(/·/g, '') : '';
+    } catch (_) { u = ''; }
+
+    if (u === 'wh' || u === 'watth' || u === 'w·h') return n;
+    if (u === 'kwh') return n * 1000;
+    if (u === 'mwh') return n * 1e6;
+    if (u === 'mj') return (n / 3.6) * 1000;
+    if (!u) return n * 1000;
+    return n * 1000;
+  }
+
+  _techEnumerateTechBatteries_(config) {
+    const cfg = config || {};
+    const out = [];
+    for (let i = 1; i <= 4; i++) {
+      const soc = cfg[`sensor_bat${i}_soc`];
+      const pw = cfg[`sensor_bat${i}_power`];
+      const sTrim = soc != null && typeof soc !== 'undefined' ? String(soc).trim() : '';
+      const pTrim = pw != null && typeof pw !== 'undefined' ? String(pw).trim() : '';
+      if (sTrim.length > 0 || pTrim.length > 0) {
+        out.push({
+          n: i,
+          socKey: `sensor_bat${i}_soc`,
+          powKey: `sensor_bat${i}_power`
+        });
+      }
+    }
+    return out;
+  }
+
+  /** SVG chunk: clipPaths, cyan flows per pack, stacked hi-tech cells. Empty when no battery entities configured. */
+  _techBuildBatteryLayerHtml_(config) {
+    const bats = this._techEnumerateTechBatteries_(config);
+    const INV_EDGE_X = 290;
+    const LINK_Y = 280;
+    if (!bats.length) {
+      return { defs: '', flows: '', bank: '', bats };
+    }
+    const m = bats.length;
+    const gap = (m >= 4) ? 5 : 6;
+    const baseOuterW = 70;
+    const bankLeftMin = 6;
+    let sf = 1;
+    if (m >= 4) sf = 0.62;
+    else if (m === 3) sf = 0.72;
+    else if (m === 2) sf = 0.84;
+    const maxBankRight = 154;
+    const invClearLeft = 290;
+    let cellScaledW = baseOuterW * sf;
+    let totalW = m * cellScaledW + (m - 1) * gap;
+    while (totalW > maxBankRight - bankLeftMin - 4 && sf > 0.36) {
+      sf *= 0.92;
+      cellScaledW = baseOuterW * sf;
+      totalW = m * cellScaledW + (m - 1) * gap;
+    }
+    const bankLeftFromArc = maxBankRight - totalW - 4;
+    const bankLeftFromInv = invClearLeft - totalW - 14;
+    const bankLeft = Math.max(bankLeftMin, Math.min(bankLeftFromArc, bankLeftFromInv));
+    let defsParts = '';
+    let flowParts = '';
+    let bankParts = '';
+    bats.forEach((b, ji) => {
+      const cid = `lecTechBattLiquidClip_${b.n}`;
+      defsParts += `<clipPath id="${cid}"><rect data-tech-role="batt-liquid-clip-${b.n}" x="62" y="338" width="56" height="0" rx="5"/></clipPath>`;
+
+      const delta = bankLeft + ji * (cellScaledW + gap);
+      const sinkY = LINK_Y * (1 - sf);
+      if (ji === 0) {
+        const flowStart = delta + 70 * sf + Math.max(2, sf * 4);
+        const dPath = `M ${flowStart.toFixed(1)} ${LINK_Y} L ${INV_EDGE_X} ${LINK_Y}`;
+        flowParts += `
+    <g data-tech-role="flow-bat-slot-${b.n}">
+      <path class="lec-flow-rim-bg lec-flow-bat-chg" data-tech-role="flow-bat-rim-bg-${b.n}" d="${dPath}" />
+      <path class="lec-flow-rim lec-flow-bat-chg" data-tech-role="flow-bat-rim-${b.n}" d="${dPath}" />
+      <path class="lec-flow-base lec-flow-bat-chg" data-tech-role="flow-bat-base-${b.n}" d="${dPath}" />
+      <path class="lec-flow-shim lec-flow-bat-chg" data-tech-role="flow-bat-line-${b.n}" d="${dPath}" pathLength="100" stroke-dasharray="17.5 82.5" />
+    </g>`;
+      }
+
+      const tr = `translate(${(delta - 55 * sf).toFixed(2)},${sinkY.toFixed(2)}) scale(${sf.toFixed(3)})`;
+      bankParts += `
+    <g class="lec-tech-tap" data-tech-role="batt-tap-${b.n}" transform="${tr}">
+      <rect class="lec-batt-hitech-glow" x="55" y="215" width="70" height="130" rx="13" ry="13"/>
+      <rect class="lec-batt-hitech-shell" x="57" y="217" width="66" height="126" rx="12" ry="12"/>
+      <rect class="lec-batt-hitech-face" x="60" y="220" width="60" height="120" rx="8"/>
+      <line class="lec-batt-hitech-tick" x1="62" y1="234" x2="62" y2="332"/>
+      <line class="lec-batt-hitech-tick" x1="118" y1="234" x2="118" y2="332"/>
+      <rect class="lec-batt-fill" data-tech-role="batt-fill-${b.n}" x="62" y="338" width="56" height="0" rx="5" fill="#22c55e" style="color:#22c55e"/>
+      <g clip-path="url(#${cid})" style="pointer-events:none;">
+        <rect x="-50" y="190" width="220" height="220" fill="url(#lecTechFluidVert)" opacity="0.6"/>
+        <rect x="-50" y="190" width="220" height="220" fill="url(#lecTechFluidPat)" opacity="0.45"/>
+      </g>
+      <rect class="lec-batt-hitech-cap" x="74" y="206" width="32" height="14" rx="5" ry="5" fill="url(#lecTechBattCapSilver)" stroke="#5f6673" stroke-width="0.9"/>
+      <text class="lec-batt-brand" x="90" y="239">LUMINA</text>
+      <text class="lec-batt-soc-tech" data-tech-role="batt-soc-${b.n}" x="90" y="292" fill="#86efac">--</text>
+      <text data-tech-role="batt-volts-${b.n}" x="90" y="358" text-anchor="middle" fill="#dbe6ff" font-size="11" font-weight="700">--</text>
+      <text data-tech-role="bat-amps-${b.n}" x="90" y="374" text-anchor="middle" fill="#dbe6ff" font-size="9.5" font-weight="700">--</text>
+      <text data-tech-role="bat-watts-${b.n}" x="90" y="390" text-anchor="middle" fill="#dbe6ff" font-size="9.5" font-weight="700">--</text>
+    </g>`;
+    });
+    return { defs: defsParts, flows: flowParts, bank: bankParts, bats };
+  }
+
+  _techComputeFingerprint_(config, T) {
+    const parts = [
+      config.language || 'en',
+      config.tech_show_temps !== false ? '1' : '0',
+      config.tech_show_cells !== false ? '1' : '0',
+      config.tech_show_inverter !== false ? '1' : '0',
+      config.tech_show_solar_arc !== false ? '1' : '0',
+      config.tech_show_pv_labels !== false ? '1' : '0',
+      String(config.tech_grid_icon_path || ''),
+      String(config.tech_home_icon_path || ''),
+      String(config.sensor_pv1 || ''),
+      String(config.sensor_pv2 || ''),
+      String(config.sensor_pv_total || ''),
+      String(config.sensor_bat1_soc || ''),
+      String(config.sensor_bat1_power || ''),
+      String(config.sensor_bat2_soc || ''),
+      String(config.sensor_bat2_power || ''),
+      String(config.sensor_bat3_soc || ''),
+      String(config.sensor_bat3_power || ''),
+      String(config.sensor_bat4_soc || ''),
+      String(config.sensor_bat4_power || ''),
+      String(config.sensor_grid_power || ''),
+      String(config.sensor_home_load || ''),
+      String(config.tech_sensor_battery_voltage || ''),
+      String(config.tech_sensor_battery_current || ''),
+      String(config.tech_sensor_bat2_voltage || ''),
+      String(config.tech_sensor_bat2_current || ''),
+      String(config.tech_sensor_bat3_voltage || ''),
+      String(config.tech_sensor_bat3_current || ''),
+      String(config.tech_sensor_bat4_voltage || ''),
+      String(config.tech_sensor_bat4_current || ''),
+      String(config.tech_sensor_battery_temp1 || ''),
+      String(config.tech_sensor_battery_temp2 || ''),
+      String(config.tech_sensor_battery_mos || ''),
+      String(config.tech_sensor_battery_min_cell || ''),
+      String(config.tech_sensor_battery_max_cell || ''),
+      String(config.tech_sensor_inverter_temperature || ''),
+      String(config.tech_sensor_today_pv || ''),
+      String(config.tech_sensor_today_batt_chg || ''),
+      String(config.tech_sensor_today_batt_dis || ''),
+      String(config.tech_sensor_today_load || ''),
+      config.tech_flow_invert_battery ? '1' : '0',
+      config.tech_flow_invert_grid ? '1' : '0',
+      config.tech_flow_invert_home_load ? '1' : '0',
+      String(config.tech_flow_animation_style || ''),
+      String(this._techInvertBrandLsReadRaw_(config) || '')
+    ];
+    return parts.join('|');
+  }
+
+  _techResolveFlowAnimationStyle_(config) {
+    try {
+      const cfg = config || {};
+      const accept = (s) => ((s === 'dashes' || s === 'dots' || s === 'arrows' || s === 'shimmer') ? s : null);
+      const mode = cfg.tech_flow_animation_style;
+      // Vista Tech: lo scintillio (shimmer) è sempre lo stile predefinito; non eredita dalla card globale.
+      if (mode === 'inherit' || mode == null || mode === '') {
+        return 'shimmer';
+      }
+      return accept(mode) || 'shimmer';
+    } catch (_) {
+      return 'shimmer';
+    }
+  }
+
+  _techBuildScaffold_(config, T) {
+    const showSolarArc = config.tech_show_solar_arc !== false;
+    const showPvLabels = config.tech_show_pv_labels !== false;
+    const showTempsBox = config.tech_show_temps !== false;
+    const showCellsBox = config.tech_show_cells !== false;
+    const showInverterBox = config.tech_show_inverter !== false;
+
+    const gridIconPath = String(config.tech_grid_icon_path || '/local/community/lumina-energy-card/grid.png');
+    const homeIconPath = String(config.tech_home_icon_path || '/local/community/lumina-energy-card/home.png');
+    const escAttr = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+    const gridIconAttr = escAttr(gridIconPath);
+    const homeIconAttr = escAttr(homeIconPath);
+
+    const batLayer = this._techBuildBatteryLayerHtml_(config);
+    const invTitleLbl = T.inverterTitle;
+    const techFlowStyleAttr = this._techResolveFlowAnimationStyle_(config);
+
+    return `
+<style>
+  :host { display:block; }
+  .lec-tech-wrap{ position:relative; padding:8px 10px 10px; border-radius:14px;
+    background:radial-gradient(circle at 50% 0%, #0b1326 0%, #060912 60%, #03040a 100%);
+    color:#dbe6ff; font-family: 'Roboto','Segoe UI',system-ui,-apple-system,sans-serif;
+    box-shadow: 0 0 30px rgba(0, 200, 255, 0.05) inset, 0 4px 20px rgba(0,0,0,0.4);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .lec-tech-header{ display:flex; align-items:center; justify-content:space-between;
+    padding: 2px 2px 6px; flex-wrap: wrap; gap: 4px; }
+  .lec-tech-title{ font-size:11px; letter-spacing:1.6px; color:#fbbf24; font-weight:700;
+    text-transform:uppercase; display:flex; align-items:center; gap:4px; }
+  .lec-tech-title .lec-tech-bolt{ width:12px; height:12px; }
+  .lec-tech-state{ background:rgba(34,197,94,0.18); color:#22c55e; font-weight:800;
+    padding:3px 10px; border-radius:12px; font-size:11px; letter-spacing:1.1px; border:1px solid rgba(34,197,94,0.4); }
+  .lec-tech-state.dischg{ background:rgba(239,68,68,0.18); color:#ef4444; border-color:rgba(239,68,68,0.4); }
+  .lec-tech-state.idle{ background:rgba(156,163,175,0.18); color:#9ca3af; border-color:rgba(156,163,175,0.4); }
+  /* Diagramma: piu alto su desktop; su telefono altezza proporzionale alla larghezza (aspect-ratio) */
+  .lec-tech-svg{
+    width:100%;
+    max-width: 100%;
+    aspect-ratio: 760 / 470;
+    height: auto;
+    display:block;
+    max-height: min(68vh, 680px);
+    min-height: clamp(220px, 38vw, 400px);
+    margin: 0 auto;
+  }
+  @media (max-width: 900px){
+    .lec-tech-svg{ max-height: min(56vh, 560px); min-height: clamp(200px, 52vw, 340px); }
+  }
+  .lec-tech-tap{ cursor:pointer; }
+  .lec-tech-tap:hover{ filter: drop-shadow(0 0 8px rgba(255,200,80,0.7)); }
+  /* Sensori + riepilogo inverter affiancati: meno altezza totale su layout larghi */
+  .lec-tech-panels{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 10px;
+    margin-top: 6px;
+    align-items: start;
+  }
+  .lec-tech-panels .lec-tech-stats{ margin-top: 0; }
+  .lec-tech-col-stats, .lec-tech-col-inv{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    align-items: stretch;
+    min-width: 0;
+  }
+  .lec-tech-panel-row-spacer{
+    flex-shrink:0;
+    min-height:28px;
+    margin-bottom:5px;
+    box-sizing:border-box;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  /* Un solo blocco tra sensori/inverter → usa tutta la larghezza */
+  .lec-tech-panels > :only-child{ grid-column: 1 / -1; }
+  @media (max-width: 560px){
+    .lec-tech-panels{ grid-template-columns: 1fr; }
+  }
+  .lec-tech-stats{ margin-top:8px; display:grid; grid-template-columns: repeat(3, 1fr); gap:6px; }
+  .lec-tech-stat, .lec-tech-inv-cell{
+    background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
+    border-radius:8px; padding:8px 8px; box-sizing:border-box;
+    min-height:68px; display:flex; flex-direction:column; justify-content:center; gap:4px;
+  }
+  .lec-tech-stat{ align-items:flex-start; text-align:left; }
+  .lec-tech-stat .lbl{ font-size:9px; color:#9ca3af; letter-spacing:1px; text-transform:uppercase; line-height:1.2; }
+  .lec-tech-stat .val{ font-size:13px; font-weight:800; color:#fb923c; margin-top:0; line-height:1.2; }
+  .lec-tech-inv{ margin-top:0; }
+  .lec-tech-inv-title{ font-size:10px; color:#9ca3af; letter-spacing:1.2px; text-transform:uppercase;
+    display:flex; align-items:center; gap:6px; margin-bottom:5px; flex-shrink:0;
+    min-height:28px; box-sizing:border-box; }
+  .lec-tech-inv-title::before{ content:''; width:12px; height:12px; background:#fbbf24; border-radius:50%; box-shadow:0 0 8px #fbbf24; }
+  .lec-tech-inv-grid{ display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:6px; }
+  .lec-tech-inv-cell{ text-align:center; align-items:center; }
+  .lec-tech-inv-cell .ico{ font-size:12px; margin-bottom:0; line-height:1; flex-shrink:0; opacity:0.95; }
+  .lec-tech-inv-cell .lbl{ font-size:9px; color:#9ca3af; letter-spacing:0.8px; text-transform:uppercase; line-height:1.2; }
+  .lec-tech-inv-cell .val{ font-size:13px; font-weight:800; margin-top:0; line-height:1.2; }
+  .lec-tech-inv-cell .yw{ color:#fbbf24; }
+  .lec-tech-inv-cell .gn{ color:#22c55e; }
+  .lec-tech-inv-cell .or{ color:#fb923c; }
+  .lec-tech-inv-cell .ic{ color:#22d3ee; }
+
+  .lec-tech-inv-brand-overlay{
+    position:absolute; inset:0; z-index:40; display:flex; align-items:center; justify-content:center;
+    background:rgba(0,12,28,0.78); backdrop-filter:blur(4px); padding:10px;
+  }
+  .lec-tech-inv-brand-panel{
+    width:100%; max-width:340px; box-sizing:border-box;
+    background:rgba(10,18,36,0.98); border:1px solid rgba(103,232,249,0.35); border-radius:12px;
+    padding:12px 12px 10px; box-shadow:0 14px 42px rgba(0,0,0,0.55);
+  }
+  .lec-tech-inv-brand-title{
+    font-size:12px; font-weight:800; color:#e8f0ff; text-transform:uppercase; letter-spacing:0.1em; margin:0 0 5px;
+  }
+  .lec-tech-inv-brand-sub{ font-size:10px; color:#8a9cbb; margin:0 0 10px; line-height:1.4; }
+  .lec-tech-inv-brand-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:6px; }
+  .lec-tech-inv-brand-btn{
+    font-family:inherit; font-size:11px; font-weight:700;
+    padding:8px 8px; border-radius:8px; border:1px solid rgba(255,255,255,0.12);
+    background:rgba(255,255,255,0.06); color:#dbe6ff; cursor:pointer; text-align:center;
+  }
+  .lec-tech-inv-brand-btn:hover{ border-color:rgba(103,232,249,0.55); color:#fff; }
+  .lec-tech-inv-brand-btn.sel{ border-color:rgba(251,191,36,0.9); box-shadow:0 0 12px rgba(251,191,36,0.18); }
+  .lec-tech-inv-brand-row{ display:flex; flex-wrap:wrap; gap:6px; justify-content:space-between; margin-top:10px; }
+  .lec-tech-inv-brand-foot{ font-size:9px; color:#6a7899; margin-top:8px; line-height:1.35; }
+
+  .lec-flow-pv{ stroke:#22c55e; color:#22c55e; }
+  .lec-flow-grid-imp{ stroke:#ef4444; color:#ef4444; }
+  .lec-flow-grid-exp{ stroke:#22c55e; color:#22c55e; }
+  .lec-flow-load{ stroke:#fb923c; color:#fb923c; }
+  .lec-tech-svg .lec-flow-bat-chg{ stroke:#22c55e; color:#22c55e; }
+  .lec-tech-svg .lec-flow-bat-dischg{ stroke:#ef4444; color:#ef4444; }
+  .lec-tech-svg .lec-flow-bat-idle{ stroke:#64748b; color:#64748b; }
+  .lec-flow-base{ fill:none; stroke-width:2; opacity:0.30; stroke-linecap:round; }
+  /* Contorno luminoso interno lungo il tracciato (solo Tech) — offset percettivo rispetto al tratto colorato */
+  .lec-flow-rim{
+    fill:none;
+    stroke: rgba(255,255,255,0.88);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.92;
+    filter: drop-shadow(0 0 3px rgba(255,255,255,1)) drop-shadow(0 0 10px rgba(255,255,255,0.65))
+            drop-shadow(0 0 18px rgba(255,255,255,0.35));
+    pointer-events: none;
+  }
+  .lec-flow-rim.lec-flow-pv{
+    stroke: rgba(34,197,94,0.88);
+    filter: drop-shadow(0 0 3px rgba(34,197,94,0.95)) drop-shadow(0 0 10px rgba(34,197,94,0.55))
+            drop-shadow(0 0 18px rgba(34,197,94,0.35));
+  }
+  .lec-flow-rim.lec-flow-bat-chg{
+    stroke: rgba(34,197,94,0.88);
+    filter: drop-shadow(0 0 3px rgba(34,197,94,0.95)) drop-shadow(0 0 10px rgba(34,197,94,0.55))
+            drop-shadow(0 0 18px rgba(34,197,94,0.35));
+  }
+  .lec-flow-rim.lec-flow-bat-dischg{
+    stroke: rgba(239,68,68,0.9);
+    filter: drop-shadow(0 0 3px rgba(239,68,68,0.95)) drop-shadow(0 0 10px rgba(239,68,68,0.55))
+            drop-shadow(0 0 18px rgba(239,68,68,0.35));
+  }
+  .lec-flow-rim.lec-flow-bat-idle{
+    stroke: rgba(148,163,184,0.85);
+    filter: drop-shadow(0 0 3px rgba(148,163,184,0.8)) drop-shadow(0 0 10px rgba(148,163,184,0.45));
+  }
+  .lec-flow-rim-bg.lec-flow-pv{
+    stroke: rgba(34,197,94,0.28);
+  }
+  .lec-flow-rim-bg{
+    fill:none;
+    stroke: rgba(255,255,255,0.18);
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.9;
+    filter: blur(0.4px);
+    pointer-events: none;
+  }
+  /* Stili flusso Tech: stessi motivi della card (Impostazioni generali > Animation style) */
+  .lec-flow-shim{
+    fill:none;
+    stroke-width:5;
+    stroke-linecap:round;
+    opacity:0.95;
+  }
+  .lec-tech-svg[data-tech-flow-style="shimmer"] .lec-flow-shim{
+    stroke-dasharray: 17.5 82.5;
+    filter: drop-shadow(0 0 9px currentColor) drop-shadow(0 0 20px currentColor)
+            drop-shadow(0 0 32px currentColor);
+    animation: lecShimmer 2.6s linear infinite;
+    animation-direction: normal;
+  }
+  .lec-tech-svg[data-tech-flow-style="shimmer"] .lec-flow-shim.rev{
+    animation-name: lecShimmerRev;
+  }
+  /* Tratteggio (FLOW_STYLE_PATTERNS.dashes analogo) */
+  .lec-tech-svg[data-tech-flow-style="dashes"] .lec-flow-shim{
+    stroke-dasharray: 18 12;
+    filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor);
+    animation: lecTechDashMarch 1.85s linear infinite;
+    animation-direction: normal;
+  }
+  /* Punti */
+  .lec-tech-svg[data-tech-flow-style="dots"] .lec-flow-shim{
+    stroke-dasharray: 2 14;
+    filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor);
+    animation: lecTechDotMarch 1.25s linear infinite;
+    animation-direction: normal;
+  }
+  /* Frecce: tacche triangolari (stroke-linecap: triangle dove supportato; altrimenti fallback) */
+  .lec-tech-svg[data-tech-flow-style="arrows"] .lec-flow-shim{
+    stroke-dasharray: 9 17;
+    stroke-linecap: triangle;
+    filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor);
+    animation: lecTechArrowMarch 1.65s linear infinite;
+    animation-direction: normal;
+  }
+  @supports not (stroke-linecap: triangle) {
+    .lec-tech-svg[data-tech-flow-style="arrows"] .lec-flow-shim{
+      stroke-linecap: round;
+      stroke-dasharray: 4 20;
+    }
+  }
+  .lec-tech-svg[data-tech-flow-style="dashes"] .lec-flow-shim.rev,
+  .lec-tech-svg[data-tech-flow-style="dots"] .lec-flow-shim.rev,
+  .lec-tech-svg[data-tech-flow-style="arrows"] .lec-flow-shim.rev{
+    animation-direction: reverse;
+  }
+  @keyframes lecTechDashMarch { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -30; } }
+  @keyframes lecTechDotMarch { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -16; } }
+  @keyframes lecTechArrowMarch { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -26; } }
+
+  .lec-flow-shim.idle{ animation-duration: 9s !important; opacity:0.65;
+    filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 9px currentColor); }
+  .lec-tech-svg[data-tech-flow-style="dashes"] .lec-flow-shim.idle,
+  .lec-tech-svg[data-tech-flow-style="dots"] .lec-flow-shim.idle,
+  .lec-tech-svg[data-tech-flow-style="arrows"] .lec-flow-shim.idle{
+    filter: drop-shadow(0 0 3px currentColor);
+  }
+  .lec-flow-shim.lec-flow-still{
+    animation:none !important;
+    opacity:0.22;
+    filter: none;
+    stroke-width: 3;
+  }
+
+  @keyframes lecShimmer    { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0;   } }
+  @keyframes lecShimmerRev { from { stroke-dashoffset: 0;   } to { stroke-dashoffset: 100; } }
+
+  .lec-tech-node{ fill:#0b1530; stroke:#fbbf24; stroke-width:2.4;
+    filter: drop-shadow(0 0 8px rgba(251,191,36,0.45)); }
+  .lec-tech-node-label{ fill:#fbbf24; font-weight:800; font-size:18px; letter-spacing:1px; text-anchor:middle; }
+  .lec-tech-node-sub{ fill:#22c55e; font-weight:700; font-size:14px; text-anchor:middle; }
+  .lec-tech-node-sub2{ fill:#fb923c; font-weight:600; font-size:13px; text-anchor:middle; }
+  .lec-tech-inv-band{ filter: drop-shadow(0 0 4px rgba(0,0,0,0.55)); }
+  .lec-tech-tap.lec-inv-img-mode .lec-tech-node-sub2{ font-size:11px; }
+  .lec-tech-tap.lec-inv-img-mode .lec-tech-node-sub{ font-size:12px; }
+  .lec-tech-tap.lec-inv-img-mode [data-tech-role="inv-temp"]{ paint-order: stroke; stroke: rgba(0,0,0,0.7); stroke-width:2.6; }
+  .lec-tech-tap.lec-inv-img-mode [data-tech-role="inv-load"]{ paint-order: stroke; stroke: rgba(0,0,0,0.7); stroke-width:2.6; }
+
+  .lec-arc{ fill:none; stroke:rgba(251,191,36,0.45); stroke-width:1.5; stroke-dasharray:6 4; }
+  .lec-arc-glow{ fill:none; stroke:#fbbf24; stroke-width:2.6; opacity:0.85;
+    filter: drop-shadow(0 0 8px #fbbf24); }
+  .lec-arc-tick{ fill:#fbbf24; opacity:0.7; }
+  .lec-arc-tick-lbl{ fill:#9ca3af; font-size:10px; }
+  .lec-sun{ fill:#fde68a; filter: drop-shadow(0 0 14px #fbbf24); }
+
+  .lec-batt-outline{ fill:none; stroke:#dbe6ff; stroke-width:2.2; }
+  .lec-batt-cap{ fill:#dbe6ff; }
+  .lec-batt-fill{ filter: drop-shadow(0 0 8px currentColor); }
+  /* Batteria Tech — look hi-tech */
+  .lec-batt-hitech-glow{
+    fill: none;
+    stroke: rgba(34,211,238,0.45);
+    stroke-width: 4;
+    filter: blur(6px);
+    opacity: 0.85;
+    pointer-events: none;
+  }
+  .lec-batt-hitech-shell{
+    fill: rgba(4,10,26,0.92);
+    stroke: rgba(186,230,253,0.55);
+    stroke-width: 1.6;
+    filter: drop-shadow(0 0 10px rgba(34,211,238,0.35)) inset;
+  }
+  .lec-batt-hitech-face{
+    fill: rgba(0,12,28,0.55);
+    stroke: rgba(255,255,255,0.12);
+    stroke-width: 0.85;
+    pointer-events: none;
+  }
+  .lec-batt-hitech-cap{
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.55));
+    pointer-events: none;
+  }
+  .lec-batt-hitech-tick{
+    stroke: rgba(34,211,238,0.35);
+    stroke-width: 1;
+    pointer-events: none;
+  }
+  @keyframes lecTechLuminaPulse {
+    0%, 100% { opacity: 0.52; fill: #aef1ff;
+      filter: drop-shadow(0 0 2px rgba(103,232,249,0.45)); }
+    50% { opacity: 1; fill: #ffffff;
+      filter: drop-shadow(0 0 10px rgba(103,232,249,1)) drop-shadow(0 0 18px rgba(255,255,255,0.55)); }
+  }
+  .lec-batt-brand{
+    font-family: 'Roboto Mono',ui-monospace,monospace;
+    font-size: 6.5px;
+    font-weight: 900;
+    letter-spacing: 2.8px;
+    text-anchor: middle;
+    text-transform: uppercase;
+    animation: lecTechLuminaPulse 2.35s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .lec-batt-soc-tech{
+    font-size: 20px;
+    font-weight: 900;
+    text-anchor: middle;
+    paint-order: stroke fill;
+    stroke: rgba(0,6,14,0.88);
+    stroke-width: 2.8px;
+  }
+
+  .lec-grid-pole, .lec-home-fallback{ filter: drop-shadow(0 0 6px rgba(251,191,36,0.45)); }
+  .lec-tech-pv-line{ fill:#fbbf24; font-size:13px; font-weight:800; }
+  .lec-tech-pv-num{ fill:#fbbf24; font-size:15px; font-weight:900; }
+  .lec-tech-pv-top-label{ fill:#fbbf24; font-size:12px; font-weight:800; text-anchor:middle; }
+  .lec-tech-pv-top-num{ fill:#fbbf24; font-size:14px; font-weight:900; text-anchor:middle; }
+  .lec-tech-state-svg{ font-size:10.5px; font-weight:800; text-anchor:middle; letter-spacing:1.1px; text-transform:uppercase;
+    paint-order: stroke; stroke:rgba(0,0,0,0.65); stroke-width:3px; }
+  .lec-tech-state-svg.idle{ fill:#9ca3af; }
+  .lec-tech-state-svg.chg{ fill:#22c55e; }
+  .lec-tech-state-svg.dischg{ fill:#ef4444; }
+
+  .lec-pv-bubble-bg{ fill:#0b1530; stroke:#fbbf24; stroke-width:1.6;
+    filter: drop-shadow(0 0 8px rgba(251,191,36,0.55)); }
+  .lec-pv-bubble-text{ fill:#fbbf24; font-weight:900; font-size:14px; text-anchor:middle; }
+
+  @media (max-width: 520px){
+    .lec-tech-wrap{ padding: 6px 6px 8px; border-radius: 12px; }
+    .lec-tech-title{ font-size: 10px; letter-spacing: 1.2px; }
+    .lec-tech-stats{ grid-template-columns: repeat(3, 1fr); }
+    .lec-tech-inv-grid{ grid-template-columns: repeat(2, 1fr); }
+    .lec-tech-svg{
+      max-height: none;
+      min-height: unset;
+      width: 100%;
+    }
+    .lec-tech-stat, .lec-tech-inv-cell{ min-height: 62px; padding: 7px 7px; }
+    .lec-tech-stat .val, .lec-tech-inv-cell .val{ font-size: 12px; }
+    .lec-tech-inv-cell .ico{ font-size: 11px; }
+  }
+</style>
+<div class="lec-tech-wrap">
+
+  <svg class="lec-tech-svg" data-tech-flow-style="${techFlowStyleAttr}" viewBox="0 0 760 470" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="lecBattGrad" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#67e8f9" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="lecTechBattCapSilver" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f4f6fa"/>
+        <stop offset="42%" stop-color="#b8c0d0"/>
+        <stop offset="100%" stop-color="#7f8a99"/>
+      </linearGradient>
+      <radialGradient id="lecGridGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="lecTechFluidVert" gradientUnits="userSpaceOnUse" x1="90" y1="200" x2="90" y2="400">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+        <stop offset="45%" stop-color="#ffffff" stop-opacity="0.12"/>
+        <stop offset="50%" stop-color="#ffffff" stop-opacity="0.38"/>
+        <stop offset="55%" stop-color="#ffffff" stop-opacity="0.12"/>
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        <animate attributeName="y1" values="165;348;165" dur="4.1s" repeatCount="indefinite"/>
+        <animate attributeName="y2" values="360;520;360" dur="4.1s" repeatCount="indefinite"/>
+      </linearGradient>
+      <pattern id="lecTechFluidPat" width="52" height="14" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
+        <g>
+          <path d="M0,7 Q13,0 26,7 T52,7" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.15"/>
+          <animateTransform attributeName="transform" type="translate" from="0 0" to="-52 0" dur="3.15s" repeatCount="indefinite"/>
+        </g>
+      </pattern>
+      ${batLayer.defs}
+    </defs>
+
+    <g data-tech-role="flow-pv">
+      <path class="lec-flow-rim-bg lec-flow-pv" data-tech-role="flow-pv-rim-bg"
+            d="M 168 250 L 380 230" />
+      <path class="lec-flow-rim lec-flow-pv" data-tech-role="flow-pv-rim"
+            d="M 168 250 L 380 230" />
+      <path class="lec-flow-base lec-flow-pv" data-tech-role="flow-pv-base"
+            d="M 168 250 L 380 230" />
+      <path class="lec-flow-shim lec-flow-pv" data-tech-role="flow-pv-line"
+            d="M 168 250 L 380 230"
+            pathLength="100" stroke-dasharray="17.5 82.5" />
+    </g>
+
+    ${showPvLabels ? `
+    <g data-tech-role="pv-labels" class="lec-tech-pv-top">
+      <text class="lec-tech-pv-top-label" x="305" y="12" data-tech-role="pv1-label">PV1</text>
+      <text class="lec-tech-pv-top-num"  x="305" y="28" data-tech-role="pv1-value">--</text>
+      <text class="lec-tech-pv-top-label" x="455" y="12" data-tech-role="pv2-label">PV2</text>
+      <text class="lec-tech-pv-top-num"  x="455" y="28" data-tech-role="pv2-value">--</text>
+    </g>` : ''}
+
+    ${showSolarArc ? `
+    <g data-tech-role="solar-arc">
+      <path class="lec-arc" d="M 160 250 A 220 220 0 0 1 600 250" />
+      <path class="lec-arc-glow" data-tech-role="solar-arc-glow" d="M 160 250 A 220 220 0 0 1 600 250"
+            stroke-dasharray="0 800" />
+      <circle class="lec-arc-tick" cx="160" cy="250" r="3"/>
+      <circle class="lec-arc-tick" cx="380" cy="30" r="3"/>
+      <circle class="lec-arc-tick" cx="600" cy="250" r="3"/>
+      <text class="lec-arc-tick-lbl" x="160" y="266" text-anchor="middle">05:00</text>
+      <text class="lec-arc-tick-lbl" x="380" y="22" text-anchor="middle">12:00</text>
+      <text class="lec-arc-tick-lbl" x="600" y="266" text-anchor="middle">21:00</text>
+      <circle class="lec-sun" data-tech-role="sun" cx="160" cy="250" r="8"/>
+      <g data-tech-role="sun-bubble">
+        <rect class="lec-pv-bubble-bg" data-tech-role="sun-bubble-rect" x="335" y="96" width="90" height="26" rx="13"/>
+        <text class="lec-pv-bubble-text" data-tech-role="sun-bubble-text" x="380" y="114">--</text>
+      </g>
+    </g>` : ''}
+
+    ${batLayer.flows}
+    ${batLayer.bank}
+
+    <g class="lec-tech-tap" data-tech-role="inv-tap">
+      <image data-tech-role="inv-image" href="" xlink:href=""
+             x="272" y="233" width="216" height="94" preserveAspectRatio="xMidYMid meet" style="display:none;"/>
+      <rect class="lec-tech-node" data-tech-role="inv-rect" x="290" y="230" width="180" height="100" rx="14"/>
+      <text class="lec-tech-node-label" data-tech-role="inv-label" x="380" y="280">${invTitleLbl}</text>
+    </g>
+
+    <g data-tech-role="flow-grid">
+      <path class="lec-flow-rim-bg lec-flow-grid-imp" data-tech-role="flow-grid-rim-bg"
+            d="M 469 280 L 628 280" />
+      <path class="lec-flow-rim lec-flow-grid-imp" data-tech-role="flow-grid-rim"
+            d="M 469 280 L 628 280" />
+      <path class="lec-flow-base lec-flow-grid-imp" data-tech-role="flow-grid-base"
+            d="M 469 280 L 628 280" />
+      <path class="lec-flow-shim lec-flow-grid-imp" data-tech-role="flow-grid-line"
+            d="M 469 280 L 628 280"
+            pathLength="100" stroke-dasharray="17.5 82.5" />
+    </g>
+    <g data-tech-role="flow-load">
+      <path class="lec-flow-rim-bg lec-flow-load" data-tech-role="flow-load-rim-bg"
+            d="M 380 330 L 380 410" />
+      <path class="lec-flow-rim lec-flow-load" data-tech-role="flow-load-rim"
+            d="M 380 330 L 380 410" />
+      <path class="lec-flow-base lec-flow-load" data-tech-role="flow-load-base"
+            d="M 380 330 L 380 410" />
+      <path class="lec-flow-shim lec-flow-load" data-tech-role="flow-load-line"
+            d="M 380 330 L 380 410"
+            pathLength="100" stroke-dasharray="17.5 82.5" />
+    </g>
+
+    <g class="lec-tech-tap" data-tech-role="grid-tap">
+      <circle cx="660" cy="280" r="72" fill="url(#lecGridGlow)"/>
+      <image data-tech-role="grid-icon" href="${gridIconAttr}" xlink:href="${gridIconAttr}"
+             x="600" y="220" width="120" height="120" preserveAspectRatio="xMidYMid meet"/>
+      <g data-tech-role="grid-fallback" class="lec-grid-pole" style="display:none;">
+        <line x1="660" y1="240" x2="660" y2="320" stroke="#fbbf24" stroke-width="3"/>
+        <line x1="635" y1="260" x2="685" y2="260" stroke="#fbbf24" stroke-width="2.4"/>
+        <line x1="630" y1="280" x2="690" y2="280" stroke="#fbbf24" stroke-width="2.4"/>
+        <line x1="625" y1="300" x2="695" y2="300" stroke="#fbbf24" stroke-width="2.4"/>
+      </g>
+      <text data-tech-role="grid-power" x="555" y="240" text-anchor="middle"
+            fill="#ef4444" font-size="13" font-weight="800">--</text>
+    </g>
+
+    <g class="lec-tech-tap" data-tech-role="home-tap">
+      <image data-tech-role="home-icon" href="${homeIconAttr}" xlink:href="${homeIconAttr}"
+             x="308" y="360" width="144" height="120" preserveAspectRatio="xMidYMid meet"/>
+      <g data-tech-role="home-fallback" class="lec-home-fallback" style="display:none;">
+        <polygon points="380,372 320,422 340,422 340,460 420,460 420,422 440,422" fill="#0b1530" stroke="#fbbf24" stroke-width="2.4"/>
+      </g>
+      <text data-tech-role="home-power" x="475" y="425" text-anchor="start"
+            fill="#fb923c" font-size="14" font-weight="800">--</text>
+    </g>
+
+  </svg>
+
+  ${(showTempsBox || showCellsBox || showInverterBox) ? `
+  <div class="lec-tech-panels">
+  ${showTempsBox || showCellsBox ? `
+  <div class="lec-tech-col-stats">
+    ${showInverterBox ? `<div class="lec-tech-panel-row-spacer" aria-hidden="true"></div>` : ''}
+  <div class="lec-tech-stats">
+    ${showTempsBox ? `
+      <div class="lec-tech-stat"><div class="lbl">${T.temp1}</div><div class="val" data-tech-role="w-temp1">--</div></div>
+      <div class="lec-tech-stat"><div class="lbl">${T.temp2}</div><div class="val" data-tech-role="w-temp2">--</div></div>
+      <div class="lec-tech-stat"><div class="lbl">${T.mos}</div><div class="val" data-tech-role="w-mos">--</div></div>` : ''}
+    ${showCellsBox ? `
+      <div class="lec-tech-stat"><div class="lbl">${T.minCell}</div><div class="val" data-tech-role="w-mincell">--</div></div>
+      <div class="lec-tech-stat"><div class="lbl">${T.maxCell}</div><div class="val" data-tech-role="w-maxcell">--</div></div>
+      <div class="lec-tech-stat"><div class="lbl">${T.battDis}</div><div class="val" data-tech-role="w-battdis">--</div></div>` : ''}
+  </div>
+  </div>` : ''}
+  ${showInverterBox ? `
+  <div class="lec-tech-col-inv">
+    <div class="lec-tech-inv-title">${invTitleLbl}</div>
+    <div class="lec-tech-inv-grid">
+      <div class="lec-tech-inv-cell"><div class="ico yw">&#9728;</div><div class="lbl">${T.todayPv}</div><div class="val yw" data-tech-role="w-todaypv">--</div></div>
+      <div class="lec-tech-inv-cell"><div class="ico gn">&#128267;</div><div class="lbl">${T.battChg}</div><div class="val gn" data-tech-role="w-battchg">--</div></div>
+      <div class="lec-tech-inv-cell"><div class="ico yw">&#9889;</div><div class="lbl">${T.remainingShort}</div><div class="val gn" data-tech-role="w-rem">--</div></div>
+      <div class="lec-tech-inv-cell"><div class="ico ic">&#127968;</div><div class="lbl">${T.todayLoad}</div><div class="val or" data-tech-role="w-todayload">--</div></div>
+    </div>
+  </div>` : ''}
+  </div>` : ''}
+</div>`;
+  }
+
+  _techWireTaps_(root) {
+    if (!root) return;
+    const wire = (sel, fn) => {
+      const el = root.querySelector(sel);
+      if (!el || el.__lecTechWired) return;
+      el.__lecTechWired = true;
+      el.addEventListener('click', (ev) => { ev.stopPropagation(); try { fn(); } catch (_) { /* ignore */ } });
+    };
+    wire('[data-tech-role="inv-tap"]',  () => { try { this._techHandleInverterTap_(); } catch (_) {} });
+    wire('[data-tech-role="grid-tap"]', () => { try { this._showGridPopup(); } catch (_) {} });
+    wire('[data-tech-role="home-tap"]', () => { try { this._showHousePopup(); } catch (_) {} });
+    for (let bi = 1; bi <= 4; bi++) {
+      wire(`[data-tech-role="batt-tap-${bi}"]`, () => { try { this._showBatteryPopup(); } catch (_) {} });
+    }
+    wire('[data-tech-role="sun-bubble"]', () => { try { this._showPvPopup(); } catch (_) {} });
+    wire('[data-tech-role="pv-labels"]', () => { try { this._showPvPopup(); } catch (_) {} });
+    const gridIcon = root.querySelector('[data-tech-role="grid-icon"]');
+    if (gridIcon && !gridIcon.__lecTechErr) {
+      gridIcon.__lecTechErr = true;
+      gridIcon.addEventListener('error', () => {
+        gridIcon.style.display = 'none';
+        const fb = root.querySelector('[data-tech-role="grid-fallback"]');
+        if (fb) fb.style.display = '';
+      });
+    }
+    const homeIcon = root.querySelector('[data-tech-role="home-icon"]');
+    if (homeIcon && !homeIcon.__lecTechErr) {
+      homeIcon.__lecTechErr = true;
+      homeIcon.addEventListener('error', () => {
+        homeIcon.style.display = 'none';
+        const fb = root.querySelector('[data-tech-role="home-fallback"]');
+        if (fb) fb.style.display = '';
+      });
+    }
+  }
+
+  _techInvertBrandLsKey_(cfg) {
+    const c = cfg || {};
+    const parts = [
+      c.sensor_pv1, c.sensor_pv2, c.sensor_pv_total, c.sensor_home_load,
+      c.sensor_grid_power, c.sensor_bat1_power
+    ].map((x) => String(x == null ? '' : x).trim().toLowerCase());
+    const s = parts.join('|');
+    let h = 5381;
+    for (let i = 0; i < s.length; i++) {
+      h = ((h << 5) + h) + s.charCodeAt(i);
+      h |= 0;
+    }
+    return 'lumina_energy_card:tech_inv_brand:' + (h >>> 0);
+  }
+
+  _techInvertBrandLsReadRaw_(cfg) {
+    try {
+      if (typeof localStorage === 'undefined') return '';
+      return localStorage.getItem(this._techInvertBrandLsKey_(cfg)) || '';
+    } catch (_) {
+      return '';
+    }
+  }
+
+  _techStoredTechInverterBrand_(cfg) {
+    try {
+      const raw = this._techInvertBrandLsReadRaw_(cfg);
+      if (!raw) return null;
+      const v = String(raw).toLowerCase().trim();
+      const ok = { none: 1, deye: 1, luxpower: 1, huawei: 1, vtac: 1, growatt: 1, powmr: 1 };
+      return ok[v] ? v : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  _techPersistTechInverterBrand_(cfg, brandOrNull) {
+    try {
+      if (typeof localStorage === 'undefined') return;
+      const k = this._techInvertBrandLsKey_(cfg);
+      if (brandOrNull == null || brandOrNull === '') {
+        localStorage.removeItem(k);
+      } else {
+        localStorage.setItem(k, String(brandOrNull).toLowerCase().trim());
+      }
+    } catch (_) { /* ignore */ }
+  }
+
+  _techResolvedTechInverterBrand_(cfg) {
+    const yamlBrand = String((cfg && cfg.tech_inverter_brand) ? cfg.tech_inverter_brand : 'none').toLowerCase();
+    const st = this._techStoredTechInverterBrand_(cfg);
+    if (st != null) return st;
+    return yamlBrand;
+  }
+
+  _techCloseInvBrandPicker_(root) {
+    try {
+      const wrap = root && root.querySelector ? root.querySelector('.lec-tech-wrap') : null;
+      const el = wrap && wrap.querySelector('.lec-tech-inv-brand-overlay');
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      if (this._techInvBrandEscHandler) {
+        document.removeEventListener('keydown', this._techInvBrandEscHandler);
+        this._techInvBrandEscHandler = null;
+      }
+    } catch (_) { /* ignore */ }
+  }
+
+  _techRefreshTechAfterBrandPick_() {
+    try {
+      this._techLastFingerprint_ = null;
+      this._forceRender = true;
+      this._scheduleRender();
+    } catch (_) {
+      try { this.render(); } catch (__) { /* ignore */ }
+    }
+  }
+
+  _techHandleInverterTap_() {
+    try {
+      const cfg = this.config || {};
+      const root = this.shadowRoot;
+      if (cfg.image_style === 'tech' && root && root.querySelector && root.querySelector('.lec-tech-wrap')) {
+        this._showTechInverterBrandPicker_(root);
+        return;
+      }
+    } catch (_) { /* fall through */ }
+    this._showInverterPopup();
+  }
+
+  _showTechInverterBrandPicker_(root) {
+    const cfg = this.config || {};
+    const wrap = root && root.querySelector ? root.querySelector('.lec-tech-wrap') : null;
+    if (!wrap) return;
+    this._techCloseInvBrandPicker_(root);
+    const lang = String((cfg.language || 'en')).toLowerCase();
+    const TI = this._techI18N_();
+    const T = TI[lang] || TI.en;
+    const cur = String(this._techResolvedTechInverterBrand_(cfg)).toLowerCase();
+    const yamlBrand = String(cfg.tech_inverter_brand || 'none').toLowerCase();
+
+    const overlay = document.createElement('div');
+    overlay.className = 'lec-tech-inv-brand-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.addEventListener('click', (ev) => {
+      if (ev.target === overlay) this._techCloseInvBrandPicker_(root);
+    });
+
+    const panel = document.createElement('div');
+    panel.className = 'lec-tech-inv-brand-panel';
+    panel.addEventListener('click', (ev) => ev.stopPropagation());
+
+    const h1 = document.createElement('div');
+    h1.className = 'lec-tech-inv-brand-title';
+    h1.textContent = T.invPickTitle || 'Inverter';
+
+    const sub = document.createElement('div');
+    sub.className = 'lec-tech-inv-brand-sub';
+    sub.textContent = T.invPickHint || '';
+
+    const grid = document.createElement('div');
+    grid.className = 'lec-tech-inv-brand-grid';
+
+    const rows = [
+      { v: 'none', label: T.invPickNone || 'Classic box' },
+      { v: 'deye', label: 'Deye' },
+      { v: 'luxpower', label: 'LuxPower' },
+      { v: 'huawei', label: 'Huawei' },
+      { v: 'vtac', label: 'V-TAC' },
+      { v: 'growatt', label: 'Growatt' },
+      { v: 'powmr', label: 'PowMr' }
+    ];
+
+    rows.forEach((row) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'lec-tech-inv-brand-btn' + ((cur === row.v) ? ' sel' : '');
+      btn.textContent = row.label;
+      btn.addEventListener('click', () => {
+        this._techPersistTechInverterBrand_(cfg, row.v);
+        this._techCloseInvBrandPicker_(root);
+        this._techRefreshTechAfterBrandPick_();
+      });
+      grid.appendChild(btn);
+    });
+
+    const rowActs = document.createElement('div');
+    rowActs.className = 'lec-tech-inv-brand-row';
+
+    const btnYaml = document.createElement('button');
+    btnYaml.type = 'button';
+    btnYaml.className = 'lec-tech-inv-brand-btn';
+    btnYaml.style.flex = '1';
+    btnYaml.textContent = T.invPickYaml || 'YAML';
+    btnYaml.addEventListener('click', () => {
+      this._techPersistTechInverterBrand_(cfg, null);
+      this._techCloseInvBrandPicker_(root);
+      this._techRefreshTechAfterBrandPick_();
+    });
+
+    const btnClose = document.createElement('button');
+    btnClose.type = 'button';
+    btnClose.className = 'lec-tech-inv-brand-btn';
+    btnClose.style.flex = '1';
+    btnClose.textContent = T.invPickClose || 'Close';
+    btnClose.addEventListener('click', () => this._techCloseInvBrandPicker_(root));
+
+    rowActs.appendChild(btnYaml);
+    rowActs.appendChild(btnClose);
+
+    const foot = document.createElement('div');
+    foot.className = 'lec-tech-inv-brand-foot';
+    if (yamlBrand === 'custom') {
+      foot.textContent = T.invPickCustomFoot || 'Custom logo: set in the card editor (YAML).';
+    }
+
+    panel.appendChild(h1);
+    panel.appendChild(sub);
+    panel.appendChild(grid);
+    panel.appendChild(rowActs);
+    if (foot.textContent) panel.appendChild(foot);
+
+    overlay.appendChild(panel);
+    wrap.appendChild(overlay);
+
+    this._techInvBrandEscHandler = (ev) => {
+      if (ev.key === 'Escape') {
+        ev.preventDefault();
+        this._techCloseInvBrandPicker_(root);
+      }
+    };
+    document.addEventListener('keydown', this._techInvBrandEscHandler);
+  }
+
+  _techApplyDynamic_(root, config, T) {
+    if (!root) return;
+    const get = (id) => this._techGetSensorValue_(id);
+    const setText = (sel, val) => { const el = root.querySelector(sel); if (el) el.textContent = val; };
+    const setAttr = (sel, name, val) => { const el = root.querySelector(sel); if (el) el.setAttribute(name, val); };
+
+    try {
+      const fs = this._techResolveFlowAnimationStyle_(config);
+      const svgEl = root.querySelector('.lec-tech-svg');
+      if (svgEl && svgEl.getAttribute('data-tech-flow-style') !== fs) svgEl.setAttribute('data-tech-flow-style', fs);
+    } catch (_) { /* ignore */ }
+
+    const pv1 = get(config.sensor_pv1);
+    const pv2 = get(config.sensor_pv2);
+    let pvTotal = config.sensor_pv_total ? get(config.sensor_pv_total) : (pv1 + pv2);
+
+    const gridW = config.sensor_grid_power ? get(config.sensor_grid_power) : 0;
+    const loadW = config.sensor_home_load ? get(config.sensor_home_load) : 0;
+
+    const batsConfigured = this._techEnumerateTechBatteries_(config);
+    let sumBatW = 0;
+    batsConfigured.forEach((slot) => {
+      let batW = config[slot.powKey] ? get(config[slot.powKey]) : 0;
+      if (config.invert_battery === true) batW = -batW;
+      sumBatW += batW;
+
+      const batSocRaw = config[slot.socKey] ? get(config[slot.socKey]) : 0;
+      const batSoc = Math.max(0, Math.min(100, Number(batSocRaw) || 0));
+      /* Liquid inside face inset: ticks start y≈234, bottom inset to y 338 (~2px inside face bottom 340). */
+      const innerTop = 234;
+      const innerBottom = 338;
+      const availH = innerBottom - innerTop;
+      const fillH = Math.max(0.5, Math.round((batSoc / 100) * availH));
+      const fillY = innerBottom - fillH;
+      const n = slot.n;
+      const battFillEl = root.querySelector(`[data-tech-role="batt-fill-${n}"]`);
+      if (battFillEl) {
+        battFillEl.setAttribute('y', String(fillY));
+        battFillEl.setAttribute('height', String(fillH));
+        let color = '#22c55e';
+        if (batSoc < 20) color = '#ef4444';
+        else if (batSoc < 50) color = '#f59e0b';
+        battFillEl.setAttribute('fill', color);
+        battFillEl.style.color = color;
+      }
+      try {
+        const liqClip = root.querySelector(`[data-tech-role="batt-liquid-clip-${n}"]`);
+        if (liqClip) {
+          const h = Math.max(fillH, 0.5);
+          const rad = Math.min(5, Math.max(1.2, Math.min(h / 2, 5)));
+          liqClip.setAttribute('x', '62');
+          liqClip.setAttribute('width', '56');
+          liqClip.setAttribute('y', String(fillY));
+          liqClip.setAttribute('height', String(h));
+          liqClip.setAttribute('rx', String(rad));
+        }
+      } catch (_) { /* ignore */ }
+      const battSocEl = root.querySelector(`[data-tech-role="batt-soc-${n}"]`);
+      if (battSocEl) {
+        battSocEl.textContent = `${Math.round(batSoc)}%`;
+        let sfill = '#86efac';
+        if (batSoc < 20) sfill = '#fecaca';
+        else if (batSoc < 50) sfill = '#fde047';
+        battSocEl.setAttribute('fill', sfill);
+      }
+      const vKey = (n === 1) ? 'tech_sensor_battery_voltage' : (`tech_sensor_bat${n}_voltage`);
+      const aKey = (n === 1) ? 'tech_sensor_battery_current' : (`tech_sensor_bat${n}_current`);
+      const battV = config[vKey] ? get(config[vKey]) : null;
+      const battA = config[aKey] ? get(config[aKey]) : null;
+      setText(`[data-tech-role="batt-volts-${n}"]`, battV != null ? `${this.formatNumberLocale(battV, 1)} V` : '--');
+      setText(`[data-tech-role="bat-amps-${n}"]`, battA != null ? `${this.formatNumberLocale(battA, 1)} A` : '--');
+      setText(`[data-tech-role="bat-watts-${n}"]`, `${this.formatPower(Math.abs(batW))}`);
+    });
+
+    try {
+      const brand = String(this._techResolvedTechInverterBrand_(config)).toLowerCase();
+      const allowedBrands = ['deye', 'luxpower', 'huawei', 'vtac', 'growatt', 'powmr'];
+      let invImgUrl = '';
+      if (brand === 'custom') {
+        invImgUrl = String(config.tech_inverter_image_path || '').trim();
+      } else if (allowedBrands.indexOf(brand) >= 0) {
+        invImgUrl = `/local/community/lumina-energy-card/${brand}.png`;
+      }
+      const invTap   = root.querySelector('[data-tech-role="inv-tap"]');
+      const invImage = root.querySelector('[data-tech-role="inv-image"]');
+      const invRect  = root.querySelector('[data-tech-role="inv-rect"]');
+      const invLabel = root.querySelector('[data-tech-role="inv-label"]');
+      if (invImage && invRect && invLabel) {
+        if (invImgUrl) {
+          if (invImage.getAttribute('href') !== invImgUrl) {
+            invImage.setAttribute('href', invImgUrl);
+            try { invImage.setAttribute('xlink:href', invImgUrl); } catch (_) {}
+          }
+          invImage.style.display = '';
+          invRect.style.display = 'none';
+          invLabel.style.display = 'none';
+          if (invTap) invTap.classList.add('lec-inv-img-mode');
+        } else {
+          invImage.style.display = 'none';
+          invRect.style.display = '';
+          invLabel.style.display = '';
+          if (invTap) invTap.classList.remove('lec-inv-img-mode');
+        }
+      }
+    } catch (_) { /* ignore inverter image errors */ }
+
+    const flipGridCol = !!(config.tech_flow_invert_grid);
+    const gridExporting = flipGridCol ? (gridW > 5) : (gridW < -5);
+    setText('[data-tech-role="grid-power"]',
+      Math.abs(gridW) < 1 ? this.formatPower(0) : this.formatPower(Math.abs(gridW)));
+    const gridLine = root.querySelector('[data-tech-role="flow-grid-line"]');
+    const gridBase = root.querySelector('[data-tech-role="flow-grid-base"]');
+    const gridRim = root.querySelector('[data-tech-role="flow-grid-rim"]');
+    const gridRimBg = root.querySelector('[data-tech-role="flow-grid-rim-bg"]');
+    [gridLine, gridBase, gridRim, gridRimBg].forEach((el) => {
+      if (!el) return;
+      // applyFlow handles idle/reverse on the shim; we only swap color (red=import, green=export) on both layers
+      el.classList.toggle('lec-flow-grid-imp', !gridExporting);
+      el.classList.toggle('lec-flow-grid-exp', gridExporting);
+    });
+
+    setText('[data-tech-role="home-power"]', this.formatPower(Math.abs(loadW)));
+
+    setText('[data-tech-role="pv1-value"]', this.formatPower(Math.abs(pv1)));
+    setText('[data-tech-role="pv2-value"]', this.formatPower(Math.abs(pv2)));
+
+    const sunBubble = root.querySelector('[data-tech-role="sun-bubble-text"]');
+    if (sunBubble) sunBubble.textContent = this.formatPower(Math.abs(pvTotal));
+
+    // Sun position on the arc (5:00 -> 21:00 maps to 0..1 along the half-circle)
+    const _now = new Date();
+    const _minutesNow = _now.getHours() * 60 + _now.getMinutes();
+    const _dawn = 5 * 60, _dusk = 21 * 60;
+    const sunFrac = Math.max(0, Math.min(1, (_minutesNow - _dawn) / (_dusk - _dawn)));
+    const _arcCx = 380, _arcCy = 250, _arcR = 220;
+    const _ang = Math.PI * (1 - sunFrac);
+    const sunX = _arcCx + _arcR * Math.cos(_ang);
+    const sunY = _arcCy - _arcR * Math.sin(_ang);
+
+    const sunEl = root.querySelector('[data-tech-role="sun"]');
+    const sunRect = root.querySelector('[data-tech-role="sun-bubble-rect"]');
+    if (sunEl) {
+      sunEl.setAttribute('cx', String(sunX));
+      sunEl.setAttribute('cy', String(sunY));
+      if (sunRect) {
+        const w = 90;
+        sunRect.setAttribute('width', String(w));
+        sunRect.setAttribute('x', String(380 - w / 2));
+        sunRect.setAttribute('y', '96');
+        const txt = root.querySelector('[data-tech-role="sun-bubble-text"]');
+        if (txt) {
+          txt.setAttribute('x', '380');
+          txt.setAttribute('y', '114');
+        }
+      }
+      const arcGlow = root.querySelector('[data-tech-role="solar-arc-glow"]');
+      if (arcGlow) {
+        try {
+          const len = arcGlow.getTotalLength ? arcGlow.getTotalLength() : 700;
+          const dash = Math.max(0, Math.min(len, sunFrac * len));
+          arcGlow.setAttribute('stroke-dasharray', `${dash} ${len}`);
+        } catch (_) { /* ignore */ }
+      }
+    }
+
+    // PV flow: one straight segment from sun disc → inverter (updates with sun arc position).
+    {
+      const invX = 380;
+      const invY = 230;
+      const sunR = 8;
+      const dx = invX - sunX;
+      const dy = invY - sunY;
+      const segLen = Math.hypot(dx, dy);
+      let sx0 = sunX;
+      let sy0 = sunY;
+      if (segLen > 0.5) {
+        sx0 = sunX + (dx / segLen) * sunR;
+        sy0 = sunY + (dy / segLen) * sunR;
+      }
+      const sx = sx0.toFixed(2), sy = sy0.toFixed(2);
+      const ix = invX.toFixed(2), iy = invY.toFixed(2);
+      const pvD = `M ${sx} ${sy} L ${ix} ${iy}`;
+      const pvBase = root.querySelector('[data-tech-role="flow-pv-base"]');
+      const pvShim = root.querySelector('[data-tech-role="flow-pv-line"]');
+      const pvRim = root.querySelector('[data-tech-role="flow-pv-rim"]');
+      const pvRimBg = root.querySelector('[data-tech-role="flow-pv-rim-bg"]');
+      if (pvBase) pvBase.setAttribute('d', pvD);
+      if (pvShim) pvShim.setAttribute('d', pvD);
+      if (pvRim) pvRim.setAttribute('d', pvD);
+      if (pvRimBg) pvRimBg.setAttribute('d', pvD);
+    }
+
+    const techT1 = config.tech_sensor_battery_temp1 ? get(config.tech_sensor_battery_temp1) : null;
+    const techT2 = config.tech_sensor_battery_temp2 ? get(config.tech_sensor_battery_temp2) : null;
+    const techMos = config.tech_sensor_battery_mos ? get(config.tech_sensor_battery_mos) : null;
+    const techMinC = config.tech_sensor_battery_min_cell ? get(config.tech_sensor_battery_min_cell) : null;
+    const techMaxC = config.tech_sensor_battery_max_cell ? get(config.tech_sensor_battery_max_cell) : null;
+    const techTodayPv = config.tech_sensor_today_pv ? this._techReadEnergyWh_(config.tech_sensor_today_pv) : null;
+    const techTodayChg = config.tech_sensor_today_batt_chg ? this._techReadEnergyWh_(config.tech_sensor_today_batt_chg) : null;
+    const techTodayDis = config.tech_sensor_today_batt_dis ? this._techReadEnergyWh_(config.tech_sensor_today_batt_dis) : null;
+    const techTodayLoad = config.tech_sensor_today_load ? this._techReadEnergyWh_(config.tech_sensor_today_load) : null;
+
+    setText('[data-tech-role="w-temp1"]', techT1 != null ? `${this.formatNumberLocale(techT1, 1)} \u00B0C` : '--');
+    setText('[data-tech-role="w-temp2"]', techT2 != null ? `${this.formatNumberLocale(techT2, 1)} \u00B0C` : '--');
+    setText('[data-tech-role="w-mos"]',   techMos != null ? `${this.formatNumberLocale(techMos, 1)} \u00B0C` : '--');
+    setText('[data-tech-role="w-mincell"]', techMinC != null ? `${this.formatNumberLocale(techMinC, 3)} V` : '--');
+    setText('[data-tech-role="w-maxcell"]', techMaxC != null ? `${this.formatNumberLocale(techMaxC, 3)} V` : '--');
+    setText('[data-tech-role="w-battdis"]', techTodayDis != null ? this.formatEnergy(techTodayDis) : '--');
+    setText('[data-tech-role="w-todaypv"]', techTodayPv != null ? this.formatEnergy(techTodayPv) : '--');
+    setText('[data-tech-role="w-battchg"]', techTodayChg != null ? this.formatEnergy(techTodayChg) : '--');
+    setText('[data-tech-role="w-rem"]', '--');
+    setText('[data-tech-role="w-todayload"]', techTodayLoad != null ? this.formatEnergy(techTodayLoad) : '--');
+
+    const flowSpeed = (w) => {
+      const abs = Math.abs(Number(w) || 0);
+      if (abs < 5) return { idle: true, dur: 9 };
+      if (abs < 200) return { idle: false, dur: 4.5 };
+      if (abs < 800) return { idle: false, dur: 3.0 };
+      if (abs < 2000) return { idle: false, dur: 2.0 };
+      if (abs < 5000) return { idle: false, dur: 1.3 };
+      return { idle: false, dur: 0.8 };
+    };
+    const applyFlow = (sel, watt, opts) => {
+      const el = root.querySelector(sel);
+      if (!el) return;
+      if (opts && opts.still) {
+        el.classList.add('lec-flow-still');
+        el.classList.remove('idle', 'rev');
+        el.style.animationDuration = '';
+        return;
+      }
+      el.classList.remove('lec-flow-still');
+      const sp = flowSpeed(watt);
+      el.classList.toggle('idle', !!sp.idle);
+      const reverse = !!(opts && opts.reverse);
+      el.classList.toggle('rev', reverse);
+      el.style.animationDuration = sp.dur + 's';
+    };
+    // Direction conventions:
+    //  - PV → INV: positive = downward (default). Always default direction.
+    //  - Battery: positive watts = charging (battery -> inverter), animation flows toward INV (default).
+    //              negative = discharging (inverter -> battery), animation reverse.
+    //    Optional tech_flow_invert_battery flips shimmer direction without changing sensor math.
+    //  - Grid: positive = importing (grid -> inverter), default direction.
+    //          negative = exporting, reverse direction (line color also switches).
+    //    Optional tech_flow_invert_grid flips shimmer direction.
+    //  - Load: positive = consuming, default direction. tech_flow_invert_home_load flips it.
+    const flipBat = !!(config.tech_flow_invert_battery);
+    const flipGrid = flipGridCol;
+    const flipHome = !!(config.tech_flow_invert_home_load);
+
+    const batAggW = sumBatW;
+    const firstBatN = batsConfigured.length ? batsConfigured[0].n : 0;
+    if (firstBatN) {
+      applyFlow(`[data-tech-role="flow-bat-line-${firstBatN}"]`, batAggW, { reverse: (batAggW < 0) !== flipBat });
+      const batSt = (Math.abs(batAggW) < 5) ? 'idle' : (batAggW > 0 ? 'chg' : 'dischg');
+      ['flow-bat-rim-bg', 'flow-bat-rim', 'flow-bat-base', 'flow-bat-line'].forEach((role) => {
+        const el = root.querySelector(`[data-tech-role="${role}-${firstBatN}"]`);
+        if (!el) return;
+        el.classList.remove('lec-flow-bat-chg', 'lec-flow-bat-dischg', 'lec-flow-bat-idle');
+        el.classList.add(`lec-flow-bat-${batSt}`);
+      });
+    }
+    const gridFlowStill = Math.abs(Number(gridW) || 0) < 5;
+    applyFlow('[data-tech-role="flow-grid-line"]', gridW,
+      gridFlowStill ? { still: true } : { reverse: (gridW < 0) !== flipGrid });
+    applyFlow('[data-tech-role="flow-load-line"]', loadW, { reverse: flipHome });
+  }
+
+  _renderTechMode_() {
+    if (!this.shadowRoot) return;
+    const config = this.config || {};
+    const lang = (config.language || 'en').toLowerCase();
+    const I18N = this._techI18N_();
+    const T = I18N[lang] || I18N.en;
+
+    const fingerprint = this._techComputeFingerprint_(config, T);
+    if (this._techLastFingerprint_ !== fingerprint || this._forceRender) {
+      this.shadowRoot.innerHTML = this._techBuildScaffold_(config, T);
+      this._techLastFingerprint_ = fingerprint;
+      this._techWireTaps_(this.shadowRoot);
+    }
+    this._techApplyDynamic_(this.shadowRoot, config, T);
   }
 
   _buildTemplate(viewState) {
@@ -30825,6 +32139,419 @@ class LuminaEnergyCardEditor extends HTMLElement {
     return 'en';
   }
 
+  _techLocaleOverrides_() {
+    // Tech mode: editor section/field translations in 9 languages, kept centrally so we don't
+    // have to patch 9 separate _buildStrings blocks. Each language overrides English.
+    const F = (label, helper) => ({ label, helper });
+    return {
+      en: {
+        sections: {
+          tech_view:   { title: 'Tech (view)',    helper: 'Toggles for the Tech schematic: solar arc, PV labels, flow animation (explicit styles match General; default Tech preset is Shimmer), bottom widget boxes and custom grid/home icon paths. Visible only when Installation Type is Tech.' },
+          tech_root:   { title: 'Tech',           helper: 'Hi-tech schematic: open to set view options, PV, batteries (up to four side by side), grid & home exchange, and extras. Shown in the editor whenever the card uses the Tech style.' },
+          tech_sensors:{ title: 'Tech (sensors)', helper: '(Legacy grouping — editor now uses PV / Batteries / Grid & home / Extras below.) PV1/PV2/PV total, battery, grid and optional details mirror other sections.' },
+          tech_sensors_pv: { title: 'Tech — PV', helper: 'PV total and PV1/PV2 string powers (labels above the solar arc and bubble). Same entity keys as Array 1.' },
+          tech_sensors_battery: { title: 'Tech — Batteries', helper: 'Up to four packs side by side when configured: SOC and/or power per pack; optional V/A per pack.' },
+          tech_sensors_grid_home: { title: 'Tech — Grid & home', helper: 'Grid exchange, home load, and schematic flow inversion toggles.' },
+          tech_sensors_extra: { title: 'Tech — Extras', helper: 'Battery temps/cells, inverter temperature (widgets), daily energy totals.' }
+        },
+        fields: {
+          tech_show_solar_arc:           F('Show solar arc',           'Day/night arc with sun position and PV total bubble at the top of the schematic.'),
+          tech_show_pv_labels:           F('Show PV1/PV2 labels',      'String 1/2 instantaneous power labels (above the solar arc).'),
+          tech_flow_animation_style:       F('Flow animation (Tech)',    'Explicit choices use the same motifs as General > Animation style. Same as card (General) uses the Tech preset: Shimmer (card-wide Animation style does not apply to Tech flow lines).'),
+          tech_flow_animation_style_inherit: F('Same as card (General)', 'Tech preset: Shimmer — ignores card-wide Animation style for the schematic flows.'),
+          tech_flow_style_dashes:          F('Dashes', ''),
+          tech_flow_style_dots:            F('Dots', ''),
+          tech_flow_style_arrows:          F('Arrows', ''),
+          tech_flow_style_shimmer:         F('Shimmer', ''),
+          tech_show_temps:               F('Show Temp/MOS box',        'Bottom widget row with Temp 1, Temp 2, MOS Temp.'),
+          tech_show_cells:               F('Show Cells/BattDis box',   'Min cell, Max cell and daily battery discharge.'),
+          tech_show_inverter:            F('Show Inverter daily box',  'Today PV / Batt Charge / Remaining / Today Load.'),
+          tech_grid_icon_path:           F('Grid icon path',           'Optional. Path to a PNG/SVG used for the grid node. If missing, an inline SVG fallback is shown.'),
+          tech_home_icon_path:           F('Home icon path',           'Optional. Path to a PNG/SVG used for the home node. If missing, an inline SVG fallback is shown.'),
+          tech_inverter_brand:           F('Inverter image (brand)',   'Replace the central INV box with a brand logo (deye, luxpower, huawei, V-TAC, growatt, powmr) from /local/community/lumina-energy-card/. Choose Custom path for any URL.'),
+          tech_inverter_brand_none:      F('No image (classic box)',   ''),
+          tech_inverter_brand_custom:    F('Custom path...',           ''),
+          tech_inverter_image_path:      F('Inverter image path (custom)', 'Used only when Inverter image (brand) = Custom path. Example: /local/myinverter.png'),
+          tech_flow_invert_battery:      F('Invert battery flow animation', 'Reverse the direction of the animated shimmer on the battery link only (diagram). Independent of sensor sign / Invert battery.'),
+          tech_flow_invert_grid:          F('Invert grid flow animation',    'Reverse the direction of the animated shimmer on the grid link.'),
+          tech_flow_invert_home_load:    F('Invert home load flow animation','Reverse the direction of the animated shimmer on the home load link.'),
+          tech_sensor_battery_voltage:   F('Battery voltage (V)',      'Optional. Sensor with the battery pack voltage.'),
+          tech_sensor_battery_current:   F('Battery current (A)',      'Optional. Sensor with the battery current.'),
+          tech_sensor_battery_temp1:     F('Battery temp 1',           'Optional. Battery temperature probe 1.'),
+          tech_sensor_battery_temp2:     F('Battery temp 2',           'Optional. Battery temperature probe 2.'),
+          tech_sensor_battery_mos:       F('Battery MOS temp',         'Optional. MOSFET / BMS temperature.'),
+          tech_sensor_battery_min_cell:  F('Min cell voltage (V)',     'Optional. Lowest cell voltage in the pack.'),
+          tech_sensor_battery_max_cell:  F('Max cell voltage (V)',     'Optional. Highest cell voltage in the pack.'),
+          tech_sensor_inverter_temperature: F('Inverter temperature',  'Optional. Shown inside the central inverter node.'),
+          tech_sensor_today_pv:          F('Today PV (kWh)',           'Optional. Daily PV total. Uses entity unit_of_measurement: Wh, kWh or MWh (if missing, kWh is assumed).'),
+          tech_sensor_today_batt_chg:    F('Today battery charge (kWh)','Optional. Daily charge. Uses Wh / kWh / MWh from the entity; if missing, kWh is assumed.'),
+          tech_sensor_today_batt_dis:    F('Today battery discharge (kWh)','Optional. Daily discharge (Cells box). Uses Wh / kWh / MWh from the entity; if missing, kWh is assumed.'),
+          tech_sensor_today_load:        F('Today load (kWh)',         'Optional. Daily home use. Uses Wh / kWh / MWh from the entity; if missing, kWh is assumed.')
+        }
+      },
+      it: {
+        sections: {
+          tech_view:   { title: 'Tech (vista)',    helper: 'Interruttori per lo schema Tech: arco solare, etichette PV, riquadri widget in basso e percorsi icona grid/casa personalizzati. Visibile solo quando il Tipo di Impianto e impostato su Tech.' },
+          tech_root:   { title: 'Tech',            helper: 'Schema hi-tech: espandi per vista, PV, batterie (fino a quattro affiancate), scambio rete/casa ed extra. Nel editor compare con stile Tech sulla card.' },
+          tech_sensors:{ title: 'Tech (sensori)',  helper: '(Raggruppamento legacy — leditor usa le sotto-sezioni PV / Batterie / Rete e casa / Extra sotto.)' },
+          tech_sensors_pv: { title: 'Tech — Fotovoltaico (PV)', helper: 'PV totale e potenze stringhe PV1/PV2 (sopra larco solare). Stesse chiavi entita di Array 1.' },
+          tech_sensors_battery: { title: 'Tech — Batterie', helper: 'Fino a 4 pacchi affiancati: ogni slot compare se imposti SOC e/o potenza per quel pacco; V/A opzionali per pacco.' },
+          tech_sensors_grid_home: { title: 'Tech — Rete e casa', helper: 'Scambio rete, carico casa e inversione animazione sui collegamenti dello schema.' },
+          tech_sensors_extra: { title: 'Tech — Extra', helper: 'Temperature/celle batteria, inverter (widget), energie giornaliere.' }
+        },
+        fields: {
+          tech_show_solar_arc:           F('Mostra arco solare',       'Arco giorno/notte con posizione del sole e bolla PV totale in cima allo schema.'),
+          tech_show_pv_labels:           F('Mostra etichette PV1/PV2', 'Potenze istantanee delle stringhe 1 e 2 sopra larco solare.'),
+          tech_flow_animation_style:       F('Animazione flussi (Tech)', 'Le scelte esplicite riusano i motivi di Impostazioni generali > Stile animazione. Stesso della scheda applica il predefinito Tech: Scintillio (lo stile globale della card non vale sui flussi Tech).'),
+          tech_flow_animation_style_inherit: F('Stesso della scheda (Generale)', 'Predefinito Tech: Scintillio — ignora lo stile animazione globale della card per i flussi dello schema.'),
+          tech_flow_style_dashes:          F('Tratteggio', ''),
+          tech_flow_style_dots:            F('Punti', ''),
+          tech_flow_style_arrows:          F('Frecce', ''),
+          tech_flow_style_shimmer:         F('Scintillio', ''),
+          tech_show_temps:               F('Mostra riquadro Temp/MOS', 'Riga widget in basso con Temp 1, Temp 2, Temp MOS.'),
+          tech_show_cells:               F('Mostra riquadro Celle/Scarica',   'Cella min, cella max e scarica batteria giornaliera.'),
+          tech_show_inverter:            F('Mostra riquadro Inverter giornaliero', 'PV oggi / Carica batt / Rimanente / Carico oggi.'),
+          tech_grid_icon_path:           F('Percorso icona Rete',      'Opzionale. Path a un PNG/SVG per il nodo rete. Se manca, viene mostrato un fallback SVG inline.'),
+          tech_home_icon_path:           F('Percorso icona Casa',      'Opzionale. Path a un PNG/SVG per il nodo casa. Se manca, viene mostrato un fallback SVG inline.'),
+          tech_inverter_brand:           F('Immagine inverter (marca)','Sostituisci il riquadro INV centrale con un logo di marca (deye, luxpower, huawei, V-TAC, growatt, powmr) da /local/community/lumina-energy-card/. Scegli Percorso personalizzato per un URL libero.'),
+          tech_inverter_brand_none:      F('Nessuna immagine (riquadro classico)', ''),
+          tech_inverter_brand_custom:    F('Percorso personalizzato...', ''),
+          tech_inverter_image_path:      F('Percorso immagine inverter (personalizzato)', 'Usato solo quando Immagine inverter = Percorso personalizzato. Esempio: /local/myinverter.png'),
+          tech_flow_invert_battery:      F('Inverti animazione flusso batteria', 'Inverte solo il senso dello shimmer sulla linea batteria nel diagramma. Indipendente dal segno sensore / Inverti batteria.'),
+          tech_flow_invert_grid:          F('Inverti animazione flusso rete', 'Inverte il senso dello shimmer sulla linea di scambio con la rete.'),
+          tech_flow_invert_home_load:    F('Inverti animazione flusso carico casa', 'Inverte il senso dello shimmer sulla linea del consumo casa.'),
+          tech_sensor_battery_voltage:   F('Tensione batteria (V)',    'Opzionale. Sensore della tensione del pacco batteria.'),
+          tech_sensor_battery_current:   F('Corrente batteria (A)',    'Opzionale. Sensore della corrente di batteria.'),
+          tech_sensor_battery_temp1:     F('Temperatura batteria 1',   'Opzionale. Sonda di temperatura batteria 1.'),
+          tech_sensor_battery_temp2:     F('Temperatura batteria 2',   'Opzionale. Sonda di temperatura batteria 2.'),
+          tech_sensor_battery_mos:       F('Temperatura MOS batteria', 'Opzionale. Temperatura MOSFET / BMS.'),
+          tech_sensor_battery_min_cell:  F('Tensione cella minima (V)','Opzionale. Cella con tensione piu bassa nel pacco.'),
+          tech_sensor_battery_max_cell:  F('Tensione cella massima (V)','Opzionale. Cella con tensione piu alta nel pacco.'),
+          tech_sensor_inverter_temperature: F('Temperatura inverter',  'Opzionale. Mostrata dentro il nodo inverter centrale.'),
+          tech_sensor_today_pv:          F('PV oggi (kWh)',            'Opzionale. Totale PV giornaliero: si usa unit_of_measurement dell entita (Wh, kWh o MWh); se manca si assume kWh.'),
+          tech_sensor_today_batt_chg:    F('Carica batteria oggi (kWh)','Opzionale. Carica giornaliera; unita da attributo entita (Wh/kWh/MWh), default kWh.'),
+          tech_sensor_today_batt_dis:    F('Scarica batteria oggi (kWh)','Opzionale. Scarica giornaliera (riquadro Celle); unita da entita, default kWh.'),
+          tech_sensor_today_load:        F('Carico oggi (kWh)',        'Opzionale. Consumo casa giornaliero; unita da entita, default kWh.')
+        }
+      },
+      de: {
+        sections: {
+          tech_view:   { title: 'Tech (Ansicht)',  helper: 'Schalter fuer die Tech-Ansicht: Sonnenbogen, PV-Bezeichnungen, untere Widget-Felder und Pfade fuer eigene Grid/Home-Icons. Nur sichtbar, wenn der Installationstyp auf Tech steht.' },
+          tech_root:   { title: 'Tech',            helper: 'Hi-Tech-Schema: aufklappen fuer Ansicht, PV, Batterien (bis zu vier), Netz & Haus und Extras. Im Editor sichtbar bei Tech-Stil der Karte.' },
+          tech_sensors:{ title: 'Tech (Sensoren)', helper: '(Legacy — Editor nutzt jetzt PV / Batterien / Netz & Haus / Extras unten.)' },
+          tech_sensors_pv: { title: 'Tech — PV', helper: 'PV gesamt und Stringleistungen PV1/PV2 (oben ueber dem Sonnenbogen). Gleiche Schluesse wie Array 1.' },
+          tech_sensors_battery: { title: 'Tech — Batterien', helper: 'Bis zu vier Packe nebeneinander: jeder Slot erscheint mit SOC und/oder Leistung; optional V/A pro Pack.' },
+          tech_sensors_grid_home: { title: 'Tech — Netz & Haus', helper: 'Netzbezug/-einspeisung, Hauslast und Richtungs-Toggles fuer die Animationsfluesse.' },
+          tech_sensors_extra: { title: 'Tech — Extras', helper: 'Batterietemperaturen/-zellen, Wechselrichtertemp. (Widgets), Tagesenergien.' }
+        },
+        fields: {
+          tech_show_solar_arc:           F('Sonnenbogen anzeigen',     'Tag/Nacht-Bogen mit Sonnenposition und PV-Gesamtanzeige oben im Schema.'),
+          tech_show_pv_labels:           F('PV1/PV2 Beschriftung',     'Momentanleistung der Strings 1 und 2 oberhalb des Sonnenbogens.'),
+          tech_flow_animation_style:       F('Fluss-Animation (Tech)',   'Explizite Auswahl wie Allgemein > Animationsstil. Wie Karte nutzt Tech-Voreinstellung Shimmer (kartenweiter Animationsstil gilt nicht fuer Tech-Linien).'),
+          tech_flow_animation_style_inherit: F('Wie Karte (Allgemein)', 'Tech-Voreinstellung Shimmer — ignoriert kartenweiten Animationsstil fuer Flusslinien.'),
+          tech_flow_style_dashes:          F('Striche', ''),
+          tech_flow_style_dots:            F('Punkte', ''),
+          tech_flow_style_arrows:          F('Pfeile', ''),
+          tech_flow_style_shimmer:         F('Shimmer', ''),
+          tech_show_temps:               F('Temp/MOS-Feld zeigen',     'Untere Widget-Reihe: Temp 1, Temp 2, MOS Temp.'),
+          tech_show_cells:               F('Zellen/Entladung zeigen',  'Min/Max Zelle und Tages-Entladung.'),
+          tech_show_inverter:            F('Wechselrichter-Tagesdaten','Heute PV / Batt-Ladung / Verbleibend / Heute Last.'),
+          tech_grid_icon_path:           F('Netz-Icon Pfad',           'Optional. Pfad zu PNG/SVG fuer den Netz-Knoten. Bei Fehlen wird ein Inline-SVG-Fallback genutzt.'),
+          tech_home_icon_path:           F('Home-Icon Pfad',           'Optional. Pfad zu PNG/SVG fuer den Home-Knoten. Bei Fehlen wird ein Inline-SVG-Fallback genutzt.'),
+          tech_inverter_brand:           F('Wechselrichter-Bild (Marke)', 'Ersetzt die zentrale WR-Box durch ein Markenlogo (deye, luxpower, huawei, V-TAC, growatt, powmr) aus /local/community/lumina-energy-card/. Benutzerdefinierter Pfad fuer beliebige URL.'),
+          tech_inverter_brand_none:      F('Kein Bild (klassische Box)', ''),
+          tech_inverter_brand_custom:    F('Benutzerdefinierter Pfad...', ''),
+          tech_inverter_image_path:      F('Pfad Wechselrichter-Bild (benutzerdef.)', 'Nur verwendet wenn Marke = Benutzerdef. Pfad. Beispiel: /local/mywr.png'),
+          tech_flow_invert_battery:      F('Batterie-Flussanimation invertieren', 'Kehrt nur die Laufrichtung entlang der Batterie-Linie um (Diagramm). Unabhaengig vom Sensor-Vorzeichen.'),
+          tech_flow_invert_grid:          F('Netz-Flussanimation invertieren', 'Kehrt die Laufrichtung entlang der Netz-Linie um.'),
+          tech_flow_invert_home_load:    F('Hauslast-Flussanimation invertieren', 'Kehrt die Laufrichtung entlang der Hausverbrauchs-Linie um.'),
+          tech_sensor_battery_voltage:   F('Batteriespannung (V)',     'Optional. Sensor fuer die Pack-Spannung.'),
+          tech_sensor_battery_current:   F('Batteriestrom (A)',        'Optional. Sensor fuer den Batteriestrom.'),
+          tech_sensor_battery_temp1:     F('Batterie-Temp 1',          'Optional. Temperatur-Sonde 1.'),
+          tech_sensor_battery_temp2:     F('Batterie-Temp 2',          'Optional. Temperatur-Sonde 2.'),
+          tech_sensor_battery_mos:       F('Batterie MOS-Temp',        'Optional. MOSFET / BMS Temperatur.'),
+          tech_sensor_battery_min_cell:  F('Min Zellspannung (V)',     'Optional. Niedrigste Zellspannung.'),
+          tech_sensor_battery_max_cell:  F('Max Zellspannung (V)',     'Optional. Hoechste Zellspannung.'),
+          tech_sensor_inverter_temperature: F('Wechselrichter-Temp',   'Optional. Wird im zentralen Wechselrichter-Knoten angezeigt.'),
+          tech_sensor_today_pv:          F('PV heute (kWh)',           'Optional. Tagesproduktion PV (kWh).'),
+          tech_sensor_today_batt_chg:    F('Batterie geladen heute (kWh)','Optional. Tageswert Batterie-Ladung (kWh).'),
+          tech_sensor_today_batt_dis:    F('Batterie entladen heute (kWh)','Optional. Tageswert Batterie-Entladung (kWh).'),
+          tech_sensor_today_load:        F('Verbrauch heute (kWh)',    'Optional. Tagesverbrauch (kWh).')
+        }
+      },
+      fr: {
+        sections: {
+          tech_view:   { title: 'Tech (vue)',      helper: "Interrupteurs pour le schema Tech : arc solaire, etiquettes PV, panneaux de widgets et chemins d'icones grid/maison personnalises. Visible uniquement si le Type d'installation est Tech." },
+          tech_root:   { title: 'Tech',            helper: 'Schema hi-tech : deroulez pour vue, PV, batteries (quatre maximum), reseau/maison et extras. Dans l editeur si style Tech actif.' },
+          tech_sensors:{ title: 'Tech (capteurs)', helper: '(Ancienne section — utilisez PV / Batteries / Reseau & maison / Extras ci-dessous.)' },
+          tech_sensors_pv: { title: 'Tech — PV', helper: 'PV total et puissances string PV1/PV2 (au-dessus de l arc solaire). Memes clefs que Array 1.' },
+          tech_sensors_battery: { title: 'Tech — Batteries', helper: 'Jusqu a 4 packs cote a cote : chaque creneau avec SOC et/ou puissance ; option V/A par pack.' },
+          tech_sensors_grid_home: { title: 'Tech — Reseau & maison', helper: 'Echange reseau, charge maison et inversion d animation sur les liaisons.' },
+          tech_sensors_extra: { title: 'Tech — Extras', helper: 'Temps./cellules batterie, temp. onduleur (widgets), energies journalieres.' }
+        },
+        fields: {
+          tech_show_solar_arc:           F('Afficher arc solaire',     'Arc jour/nuit avec position du soleil et bulle PV total en haut du schema.'),
+          tech_show_pv_labels:           F('Afficher etiquettes PV1/PV2','Puissances instantanees des strings 1 et 2 au-dessus de l arc solaire.'),
+          tech_flow_animation_style:       F('Animation flux (Tech)',   'Choix explicites comme Réglages generaux > Style d animation. Comme la carte applique le preregle Tech: scintillement (le style global ne s applique pas aux lignes Tech).'),
+          tech_flow_animation_style_inherit: F('Comme la carte (General)', 'Prereglage Tech: scintillement — ignore le style d animation global pour les flux.'),
+          tech_flow_style_dashes:          F('Tirets', ''),
+          tech_flow_style_dots:            F('Points', ''),
+          tech_flow_style_arrows:          F('Fleches', ''),
+          tech_flow_style_shimmer:         F('Scintillement', ''),
+          tech_show_temps:               F('Afficher bloc Temp/MOS',   'Ligne de widgets en bas : Temp 1, Temp 2, Temp MOS.'),
+          tech_show_cells:               F('Afficher Cellules/Decharge','Cellule min, cellule max et decharge batterie du jour.'),
+          tech_show_inverter:            F('Afficher bloc Onduleur jour','PV aujourd hui / Charge batt / Restant / Conso aujourd hui.'),
+          tech_grid_icon_path:           F('Chemin icone Reseau',      'Optionnel. PNG/SVG pour le noeud reseau. Si absent, un SVG inline est utilise.'),
+          tech_home_icon_path:           F('Chemin icone Maison',      'Optionnel. PNG/SVG pour le noeud maison. Si absent, un SVG inline est utilise.'),
+          tech_inverter_brand:           F('Image onduleur (marque)',  'Remplace la boite INV centrale par un logo de marque (deye, luxpower, huawei, V-TAC, growatt, powmr) depuis /local/community/lumina-energy-card/. Choisir Chemin personnalise pour une URL libre.'),
+          tech_inverter_brand_none:      F("Pas d'image (boite classique)", ''),
+          tech_inverter_brand_custom:    F('Chemin personnalise...',   ''),
+          tech_inverter_image_path:      F('Chemin image onduleur (personnalise)', 'Utilise uniquement si Image onduleur = Chemin personnalise. Exemple: /local/myonduleur.png'),
+          tech_flow_invert_battery:      F('Inverser animation flux batterie', 'Inverse uniquement le sens du shimmer sur la liaison batterie (diagramme). Independant du signe capteur.'),
+          tech_flow_invert_grid:          F('Inverser animation flux reseau', 'Inverse le sens du shimmer sur la liaison reseau.'),
+          tech_flow_invert_home_load:    F('Inverser animation flux maison', 'Inverse le sens du shimmer sur la liaison consommation maison.'),
+          tech_sensor_battery_voltage:   F('Tension batterie (V)',     'Optionnel. Capteur de tension du pack.'),
+          tech_sensor_battery_current:   F('Courant batterie (A)',     'Optionnel. Capteur de courant batterie.'),
+          tech_sensor_battery_temp1:     F('Temperature batterie 1',   'Optionnel. Sonde 1.'),
+          tech_sensor_battery_temp2:     F('Temperature batterie 2',   'Optionnel. Sonde 2.'),
+          tech_sensor_battery_mos:       F('Temp MOS batterie',        'Optionnel. Temperature MOSFET / BMS.'),
+          tech_sensor_battery_min_cell:  F('Tension cellule min (V)',  'Optionnel. Plus basse tension de cellule.'),
+          tech_sensor_battery_max_cell:  F('Tension cellule max (V)',  'Optionnel. Plus haute tension de cellule.'),
+          tech_sensor_inverter_temperature: F('Temperature onduleur',  'Optionnel. Affichee dans le noeud onduleur central.'),
+          tech_sensor_today_pv:          F('PV aujourd hui (kWh)',     'Optionnel. Production PV journaliere (kWh).'),
+          tech_sensor_today_batt_chg:    F('Charge batt aujourd hui (kWh)','Optionnel. Charge batterie journaliere (kWh).'),
+          tech_sensor_today_batt_dis:    F('Decharge batt aujourd hui (kWh)','Optionnel. Decharge batterie journaliere (kWh).'),
+          tech_sensor_today_load:        F('Conso aujourd hui (kWh)',  'Optionnel. Conso maison journaliere (kWh).')
+        }
+      },
+      nl: {
+        sections: {
+          tech_view:   { title: 'Tech (weergave)', helper: 'Schakelaars voor het Tech-schema: zonneboog, PV-labels, onderste widgetvakken en aangepaste grid/home iconpaden. Alleen zichtbaar als Installatietype op Tech staat.' },
+          tech_root:   { title: 'Tech',           helper: 'Hi-tech schema: klappen voor weergave, PV, batterijen (tot vier), net & huis en extra. Zichtbaar in editor bij Tech-stijl.' },
+          tech_sensors:{ title: 'Tech (sensoren)', helper: '(Verouderd — editor gebruikt nu PV / Batterijen / Net & huis / Extra hieronder.)' },
+          tech_sensors_pv: { title: 'Tech — PV', helper: 'PV totaal en stringvermogens PV1/PV2 (boven de zonneboog). Zelfde sleutels als Array 1.' },
+          tech_sensors_battery: { title: 'Tech — Batterijen', helper: 'Tot vier packs naast elkaar: elke slot met SOC en/of vermogen; optioneel V/A per pack.' },
+          tech_sensors_grid_home: { title: 'Tech — Net & huis', helper: 'Netuitwisseling, huisverbruik en omgekeerde animatie op de lijnen.' },
+          tech_sensors_extra: { title: 'Tech — Extra', helper: 'Batterijtemp./cellen, omvormertemp. (widgets), dagenergie.' }
+        },
+        fields: {
+          tech_show_solar_arc:           F('Zonneboog tonen',          'Dag/nacht-boog met zonnepositie en PV-totaal bel bovenaan.'),
+          tech_show_pv_labels:           F('PV1/PV2 labels tonen',     'Momentaan vermogen string 1/2 boven de zonneboog.'),
+          tech_flow_animation_style:       F('Stroom-animatie (Tech)', 'Expliciete keuzes zoals Algemeen > Animatiestijl. Zelfde als kaart gebruikt Tech-standaard Shimmer (kaartbrede animatiestijl geldt niet voor Tech-lijnen).'),
+          tech_flow_animation_style_inherit: F('Zelfde als kaart (Algemeen)', 'Tech-standaard Shimmer — negeert kaartbrede animatiestijl voor stroomlijnen.'),
+          tech_flow_style_dashes:          F('Strepen', ''),
+          tech_flow_style_dots:            F('Stippen', ''),
+          tech_flow_style_arrows:          F('Pijlen', ''),
+          tech_flow_style_shimmer:         F('Shimmer', ''),
+          tech_show_temps:               F('Temp/MOS vak tonen',       'Onderste rij: Temp 1, Temp 2, MOS Temp.'),
+          tech_show_cells:               F('Cellen/Ontlading vak tonen','Min/Max cel en dagelijkse ontlading.'),
+          tech_show_inverter:            F('Omvormer dagvak tonen',    'Vandaag PV / Batt laden / Resterend / Vandaag verbruik.'),
+          tech_grid_icon_path:           F('Pad netwerk-icoon',        'Optioneel. PNG/SVG voor het netknooppunt. Bij ontbreken wordt een inline-SVG gebruikt.'),
+          tech_home_icon_path:           F('Pad home-icoon',           'Optioneel. PNG/SVG voor het home-knooppunt. Bij ontbreken wordt een inline-SVG gebruikt.'),
+          tech_inverter_brand:           F('Omvormer-afbeelding (merk)', 'Vervangt de centrale OMV-box door een merklogo (deye, luxpower, huawei, V-TAC, growatt, powmr) uit /local/community/lumina-energy-card/. Aangepast pad voor een eigen URL.'),
+          tech_inverter_brand_none:      F('Geen afbeelding (klassiek vak)', ''),
+          tech_inverter_brand_custom:    F('Aangepast pad...',         ''),
+          tech_inverter_image_path:      F('Pad omvormer-afbeelding (aangepast)', 'Alleen gebruikt als Merk = Aangepast pad. Voorbeeld: /local/myinverter.png'),
+          tech_flow_invert_battery:      F('Batterijstroom animatie omkeren', 'Keert alleen de shimmer-richting op de batterijkabel om (diagram). Los van het sensorteken.'),
+          tech_flow_invert_grid:          F('Netstroom animatie omkeren', 'Keert de shimmer-richting op de netverbinding om.'),
+          tech_flow_invert_home_load:    F('Huisbelasting animatie omkeren', 'Keert de shimmer-richting op de huislaslijn om.'),
+          tech_sensor_battery_voltage:   F('Accuspanning (V)',         'Optioneel.'),
+          tech_sensor_battery_current:   F('Accustroom (A)',           'Optioneel.'),
+          tech_sensor_battery_temp1:     F('Accu temp 1',              'Optioneel.'),
+          tech_sensor_battery_temp2:     F('Accu temp 2',              'Optioneel.'),
+          tech_sensor_battery_mos:       F('Accu MOS temp',            'Optioneel.'),
+          tech_sensor_battery_min_cell:  F('Min celspanning (V)',      'Optioneel.'),
+          tech_sensor_battery_max_cell:  F('Max celspanning (V)',      'Optioneel.'),
+          tech_sensor_inverter_temperature: F('Omvormertemperatuur',   'Optioneel. Getoond in het centrale omvormerknooppunt.'),
+          tech_sensor_today_pv:          F('PV vandaag (kWh)',         'Optioneel.'),
+          tech_sensor_today_batt_chg:    F('Accu laden vandaag (kWh)', 'Optioneel.'),
+          tech_sensor_today_batt_dis:    F('Accu ontladen vandaag (kWh)','Optioneel.'),
+          tech_sensor_today_load:        F('Verbruik vandaag (kWh)',   'Optioneel.')
+        }
+      },
+      es: {
+        sections: {
+          tech_view:   { title: 'Tech (vista)',     helper: 'Interruptores para el esquema Tech: arco solar, etiquetas PV, paneles de widgets inferiores y rutas de icono grid/casa personalizadas. Visible solo cuando el Tipo de instalacion esta en Tech.' },
+          tech_root:   { title: 'Tech',             helper: 'Esquema hi-tech: despliegue para vista, PV, baterias (hasta cuatro), red/hogar y extras. Visible en el editor con estilo Tech.' },
+          tech_sensors:{ title: 'Tech (sensores)',  helper: '(Agrupacion anterior — usa PV / Baterias / Red y hogar / Extras abajo.)' },
+          tech_sensors_pv: { title: 'Tech — PV', helper: 'PV total y potencias string PV1/PV2 (encima del arco solar). Las mismas claves que Array 1.' },
+          tech_sensors_battery: { title: 'Tech — Baterias', helper: 'Hasta cuatro packs en fila: cada hueco con SOC y/o potencia; opcional V/A por pack.' },
+          tech_sensors_grid_home: { title: 'Tech — Red y hogar', helper: 'Intercambio de red, consumo domestico e inversion de animacion en las lineas.' },
+          tech_sensors_extra: { title: 'Tech — Extras', helper: 'Temps./celdas de bateria, inverter temp. (widgets), energias diarias.' }
+        },
+        fields: {
+          tech_show_solar_arc:           F('Mostrar arco solar',       'Arco dia/noche con posicion del sol y burbuja PV total arriba.'),
+          tech_show_pv_labels:           F('Mostrar etiquetas PV1/PV2','Potencias instantaneas string 1/2 sobre el arco solar.'),
+          tech_flow_animation_style:       F('Animacion flujo (Tech)', 'Opciones explicitas como Ajustes generales > Estilo de animacion. Igual que la tarjeta usa el predeterminado Tech: brillo (el estilo global no aplica a lineas Tech).'),
+          tech_flow_animation_style_inherit: F('Igual que la tarjeta (General)', 'Predeterminado Tech: brillo — ignora el estilo global de animacion en los flujos.'),
+          tech_flow_style_dashes:          F('Guiones', ''),
+          tech_flow_style_dots:            F('Puntos', ''),
+          tech_flow_style_arrows:          F('Flechas', ''),
+          tech_flow_style_shimmer:         F('Brillo', ''),
+          tech_show_temps:               F('Mostrar caja Temp/MOS',    'Fila inferior: Temp 1, Temp 2, Temp MOS.'),
+          tech_show_cells:               F('Mostrar Celdas/Descarga',  'Celda min, celda max y descarga bateria diaria.'),
+          tech_show_inverter:            F('Mostrar Inversor diario',  'PV hoy / Carga batt / Restante / Consumo hoy.'),
+          tech_grid_icon_path:           F('Ruta icono Red',           'Opcional. PNG/SVG para el nodo red. Si falta se usa SVG inline.'),
+          tech_home_icon_path:           F('Ruta icono Casa',          'Opcional. PNG/SVG para el nodo casa. Si falta se usa SVG inline.'),
+          tech_inverter_brand:           F('Imagen inversor (marca)',  'Reemplaza la caja INV central con un logo (deye, luxpower, huawei, V-TAC, growatt, powmr) desde /local/community/lumina-energy-card/. Elige Ruta personalizada para una URL libre.'),
+          tech_inverter_brand_none:      F('Sin imagen (caja clasica)', ''),
+          tech_inverter_brand_custom:    F('Ruta personalizada...',    ''),
+          tech_inverter_image_path:      F('Ruta imagen inversor (personalizada)', 'Solo se usa cuando Imagen inversor = Ruta personalizada. Ejemplo: /local/miinversor.png'),
+          tech_flow_invert_battery:      F('Invertir animacion flujo bateria', 'Invierte solo el sentido del brillo en la linea de bateria (diagrama). Independiente del signo del sensor.'),
+          tech_flow_invert_grid:          F('Invertir animacion flujo red', 'Invierte el sentido del brillo en la linea de red.'),
+          tech_flow_invert_home_load:    F('Invertir animacion consumo hogar', 'Invierte el sentido del brillo en la linea del consumo de la casa.'),
+          tech_sensor_battery_voltage:   F('Voltaje bateria (V)',      'Opcional.'),
+          tech_sensor_battery_current:   F('Corriente bateria (A)',    'Opcional.'),
+          tech_sensor_battery_temp1:     F('Temp bateria 1',           'Opcional.'),
+          tech_sensor_battery_temp2:     F('Temp bateria 2',           'Opcional.'),
+          tech_sensor_battery_mos:       F('Temp MOS bateria',         'Opcional.'),
+          tech_sensor_battery_min_cell:  F('Voltaje celda min (V)',    'Opcional.'),
+          tech_sensor_battery_max_cell:  F('Voltaje celda max (V)',    'Opcional.'),
+          tech_sensor_inverter_temperature: F('Temperatura inversor',  'Opcional. Mostrada dentro del nodo central.'),
+          tech_sensor_today_pv:          F('PV hoy (kWh)',             'Opcional.'),
+          tech_sensor_today_batt_chg:    F('Carga bateria hoy (kWh)',  'Opcional.'),
+          tech_sensor_today_batt_dis:    F('Descarga bateria hoy (kWh)','Opcional.'),
+          tech_sensor_today_load:        F('Consumo hoy (kWh)',        'Opcional.')
+        }
+      },
+      pt: {
+        sections: {
+          tech_view:   { title: 'Tech (vista)',     helper: 'Interruptores para o esquema Tech: arco solar, etiquetas PV, paineis de widgets inferiores e caminhos de icones grid/casa personalizados. Visivel apenas quando o Tipo de instalacao esta definido como Tech.' },
+          tech_root:   { title: 'Tech',             helper: 'Esquema hi-tech: expanda vista, PV, baterias (ate quatro), rede/casa e extras. Visivel no editor com estilo Tech.' },
+          tech_sensors:{ title: 'Tech (sensores)',  helper: '(Antigo — use PV / Baterias / Rede e casa / Extras abaixo.)' },
+          tech_sensors_pv: { title: 'Tech — PV', helper: 'PV total e potencias string PV1/PV2 (acima do arco solar). Mesmas chaves que Array 1.' },
+          tech_sensors_battery: { title: 'Tech — Baterias', helper: 'Ate quatro packs lado a lado: SOC e/ou potencia cada um; V/A opcional por pack.' },
+          tech_sensors_grid_home: { title: 'Tech — Rede e casa', helper: 'Trocas com a rede, consumo domestico e inversao da animacao nas ligacoes.' },
+          tech_sensors_extra: { title: 'Tech — Extras', helper: 'Temps./celulas bateria, inverter temp. (widgets), energias diarias.' }
+        },
+        fields: {
+          tech_show_solar_arc:           F('Mostrar arco solar',       'Arco dia/noite com posicao do sol e bolha PV total no topo.'),
+          tech_show_pv_labels:           F('Mostrar etiquetas PV1/PV2','Potencias instantaneas string 1/2 acima do arco solar.'),
+          tech_flow_animation_style:       F('Animacao fluxo (Tech)', 'Escolhas explicitas como Definicoes gerais > Estilo de animacao. Igual ao cartao usa o predefinido Tech: brilho (o estilo global nao se aplica as linhas Tech).'),
+          tech_flow_animation_style_inherit: F('Igual ao cartao (Geral)', 'Predefinido Tech: brilho — ignora animation_style global nas linhas do esquema.'),
+          tech_flow_style_dashes:          F('Tracos', ''),
+          tech_flow_style_dots:            F('Pontos', ''),
+          tech_flow_style_arrows:          F('Setas', ''),
+          tech_flow_style_shimmer:         F('Brilho', ''),
+          tech_show_temps:               F('Mostrar caixa Temp/MOS',   'Linha inferior: Temp 1, Temp 2, Temp MOS.'),
+          tech_show_cells:               F('Mostrar Celulas/Descarga', 'Celula min, celula max e descarga diaria.'),
+          tech_show_inverter:            F('Mostrar Inversor diario',  'PV hoje / Carga batt / Restante / Consumo hoje.'),
+          tech_grid_icon_path:           F('Caminho icone Rede',       'Opcional. PNG/SVG para o no de rede. Se faltar usa-se SVG inline.'),
+          tech_home_icon_path:           F('Caminho icone Casa',       'Opcional. PNG/SVG para o no de casa. Se faltar usa-se SVG inline.'),
+          tech_inverter_brand:           F('Imagem inversor (marca)',  'Substitui a caixa INV central por um logo (deye, luxpower, huawei, V-TAC, growatt, powmr) em /local/community/lumina-energy-card/. Escolha Caminho personalizado para um URL livre.'),
+          tech_inverter_brand_none:      F('Sem imagem (caixa classica)', ''),
+          tech_inverter_brand_custom:    F('Caminho personalizado...', ''),
+          tech_inverter_image_path:      F('Caminho imagem inversor (personalizado)', 'Usado apenas quando Imagem inversor = Caminho personalizado. Exemplo: /local/meuinversor.png'),
+          tech_flow_invert_battery:      F('Inverter animacao fluxo bateria', 'Inverte apenas o sentido do brilho na linha da bateria (diagrama). Independente do sinal do sensor.'),
+          tech_flow_invert_grid:          F('Inverter animacao fluxo rede', 'Inverte o sentido do brilho na linha da rede.'),
+          tech_flow_invert_home_load:    F('Inverter animacao fluxo casa', 'Inverte o sentido do brilho na linha de consumo residencial.'),
+          tech_sensor_battery_voltage:   F('Tensao bateria (V)',       'Opcional.'),
+          tech_sensor_battery_current:   F('Corrente bateria (A)',     'Opcional.'),
+          tech_sensor_battery_temp1:     F('Temp bateria 1',           'Opcional.'),
+          tech_sensor_battery_temp2:     F('Temp bateria 2',           'Opcional.'),
+          tech_sensor_battery_mos:       F('Temp MOS bateria',         'Opcional.'),
+          tech_sensor_battery_min_cell:  F('Tensao celula min (V)',    'Opcional.'),
+          tech_sensor_battery_max_cell:  F('Tensao celula max (V)',    'Opcional.'),
+          tech_sensor_inverter_temperature: F('Temperatura inversor',  'Opcional. Mostrada dentro do no central.'),
+          tech_sensor_today_pv:          F('PV hoje (kWh)',            'Opcional.'),
+          tech_sensor_today_batt_chg:    F('Carga bateria hoje (kWh)', 'Opcional.'),
+          tech_sensor_today_batt_dis:    F('Descarga bateria hoje (kWh)','Opcional.'),
+          tech_sensor_today_load:        F('Consumo hoje (kWh)',       'Opcional.')
+        }
+      },
+      pl: {
+        sections: {
+          tech_view:   { title: 'Tech (widok)',     helper: 'Przelaczniki dla schematu Tech: luk slonca, etykiety PV, dolne panele widgetow oraz niestandardowe sciezki ikon grid/dom. Widoczne tylko gdy Typ instalacji = Tech.' },
+          tech_root:   { title: 'Tech',             helper: 'Schema hi-tech: rozwin ustawienia widoku, PV, baterie (do czterech), siec/dom i dodatki. W edytorze przy stylu Tech karty.' },
+          tech_sensors:{ title: 'Tech (czujniki)',  helper: '(Stare grupowanie — edytor uzywa PV / Baterie / Siec i dom / Dodatki ponizej.)' },
+          tech_sensors_pv: { title: 'Tech — PV', helper: 'PV total i moce stringow PV1/PV2 (nad lukiem slonca). Te same pola co Array 1.' },
+          tech_sensors_battery: { title: 'Tech — Baterie', helper: 'Do czterech pakietow obok siebie: SOC i/lub moc dla paczki; opcja V/A na paczke.' },
+          tech_sensors_grid_home: { title: 'Tech — Siec i dom', helper: 'Wymiana z siecia, obciazenie domu i odwrocenie animacji na liniach.' },
+          tech_sensors_extra: { title: 'Tech — Dodatki', helper: 'Temperatury/komorki baterii, temp. falownika (widgety), energie dzienne.' }
+        },
+        fields: {
+          tech_show_solar_arc:           F('Pokaz luk slonca',         'Luk dzien/noc z pozycja slonca i etykieta PV total u gory.'),
+          tech_show_pv_labels:           F('Pokaz etykiety PV1/PV2',   'Moce chwilowe stringow 1/2 nad lukiem slonca.'),
+          tech_flow_animation_style:       F('Animacja przeplywu (Tech)', 'Jawny wybor jak w Ogolne > Styl animacji. Jak karta stosuje domyslnie dla Tech polysk (globalny styl animacji nie obowiazuje linii Tech).'),
+          tech_flow_animation_style_inherit: F('Jak karta (Ogolne)', 'Domyslne Tech: polysk — ignoruje globalny animation_style dla przeplywow.'),
+          tech_flow_style_dashes:          F('Kreski', ''),
+          tech_flow_style_dots:            F('Kropki', ''),
+          tech_flow_style_arrows:          F('Strzalki', ''),
+          tech_flow_style_shimmer:         F('Polysk', ''),
+          tech_show_temps:               F('Pokaz panel Temp/MOS',     'Dolny rzad: Temp 1, Temp 2, MOS Temp.'),
+          tech_show_cells:               F('Pokaz Ogniwa/Rozladowanie','Ogniwo min, ogniwo max i dzienne rozladowanie.'),
+          tech_show_inverter:            F('Pokaz panel Falownik dzien','PV dzis / Lad. baterii / Pozostalo / Obc. dzis.'),
+          tech_grid_icon_path:           F('Sciezka ikony Sieci',      'Opcjonalne. PNG/SVG dla wezla sieci. Jesli brak, uzywany jest fallback inline-SVG.'),
+          tech_home_icon_path:           F('Sciezka ikony Dom',        'Opcjonalne. PNG/SVG dla wezla domu. Jesli brak, uzywany jest fallback inline-SVG.'),
+          tech_inverter_brand:           F('Obraz falownika (marka)',  'Zastepuje srodkowa ramke INV logiem marki (deye, luxpower, huawei, V-TAC, growatt, powmr) z /local/community/lumina-energy-card/. Wybierz Niestandardowa sciezka dla dowolnego URL.'),
+          tech_inverter_brand_none:      F('Bez obrazu (klasyczna ramka)', ''),
+          tech_inverter_brand_custom:    F('Niestandardowa sciezka...', ''),
+          tech_inverter_image_path:      F('Sciezka obrazu falownika (niestandardowa)', 'Uzywane tylko gdy Obraz falownika = Niestandardowa sciezka. Przyklad: /local/myinverter.png'),
+          tech_flow_invert_battery:      F('Odwracanie animacji przeplywu baterii', 'Odwraca kierunek efektu na linii baterii (diagram). Nie zmienia znaku czujnika.'),
+          tech_flow_invert_grid:          F('Odwracanie animacji przeplywu sieci', 'Odwraca kierunek efektu na linii sieci.'),
+          tech_flow_invert_home_load:    F('Odwracanie animacji poboru domu', 'Odwraca kierunek efektu na linii poboru domu.'),
+          tech_sensor_battery_voltage:   F('Napiecie baterii (V)',     'Opcjonalne.'),
+          tech_sensor_battery_current:   F('Prad baterii (A)',         'Opcjonalne.'),
+          tech_sensor_battery_temp1:     F('Temp baterii 1',           'Opcjonalne.'),
+          tech_sensor_battery_temp2:     F('Temp baterii 2',           'Opcjonalne.'),
+          tech_sensor_battery_mos:       F('Temp MOS baterii',         'Opcjonalne.'),
+          tech_sensor_battery_min_cell:  F('Napiecie min ogniwa (V)',  'Opcjonalne.'),
+          tech_sensor_battery_max_cell:  F('Napiecie max ogniwa (V)',  'Opcjonalne.'),
+          tech_sensor_inverter_temperature: F('Temperatura falownika', 'Opcjonalne.'),
+          tech_sensor_today_pv:          F('PV dzis (kWh)',            'Opcjonalne.'),
+          tech_sensor_today_batt_chg:    F('Ladowanie baterii dzis (kWh)','Opcjonalne.'),
+          tech_sensor_today_batt_dis:    F('Rozladowanie baterii dzis (kWh)','Opcjonalne.'),
+          tech_sensor_today_load:        F('Obc. dzis (kWh)',          'Opcjonalne.')
+        }
+      },
+      ru: {
+        sections: {
+          tech_view:   { title: 'Tech (вид)',       helper: 'Переключатели для схемы Tech: солнечная дуга, метки PV, нижние блоки виджетов и пути к иконкам grid/home. Видна только когда Тип установки = Tech.' },
+          tech_root:   { title: 'Tech',             helper: 'Hi-tech схема: раскройте для вида, PV, батарей (до четырёх), сети/дома и доп. В редакторе при стиле Tech.' },
+          tech_sensors:{ title: 'Tech (датчики)',   helper: '(Старый блок — см. PV / Батареи / Сеть и дом / Доп. ниже.)' },
+          tech_sensors_pv: { title: 'Tech — PV', helper: 'PV суммарно и струны PV1/PV2 (над дугой солнца). Те же ключи, что Array 1.' },
+          tech_sensors_battery: { title: 'Tech — Батареи', helper: 'До четырёх пакетов в ряд при настройке SOC и/или мощности; опционально V/A.' },
+          tech_sensors_grid_home: { title: 'Tech — Сеть и дом', helper: 'Обмен с сетью, домашняя нагрузка и инверсия анимации линий.' },
+          tech_sensors_extra: { title: 'Tech — Дополнительно', helper: 'Температуры/ячейки АКБ, температура инвертора (виджеты), суточная энергия.' }
+        },
+        fields: {
+          tech_show_solar_arc:           F('Показывать дугу солнца',   'Дуга день/ночь с позицией солнца и бабблом PV total вверху.'),
+          tech_show_pv_labels:           F('Показывать метки PV1/PV2', 'Мгновенная мощность string 1/2 над дугой.'),
+          tech_flow_animation_style:       F('Анимация потока (Tech)', 'Явный выбор — те же мотивы что и в Основные > Стиль анимации. Как у карты — пресет Tech: блики (глобальный стиль анимации на линиях Tech не действует).'),
+          tech_flow_animation_style_inherit: F('Как у карты (Основные)', 'Пресет Tech: блики — игнорирует глобальный animation_style для линий схемы.'),
+          tech_flow_style_dashes:          F('Штрихи', ''),
+          tech_flow_style_dots:            F('Точки', ''),
+          tech_flow_style_arrows:          F('Стрелки', ''),
+          tech_flow_style_shimmer:         F('Блик', ''),
+          tech_show_temps:               F('Показывать блок Temp/MOS', 'Нижний ряд: Temp 1, Temp 2, MOS Temp.'),
+          tech_show_cells:               F('Показывать Ячейки/Разряд', 'Мин/Макс ячейка и суточный разряд.'),
+          tech_show_inverter:            F('Показывать суточный блок Инвертор','PV сегодня / Заряд АКБ / Остаток / Потр. сегодня.'),
+          tech_grid_icon_path:           F('Путь иконки сети',         'Опционально. PNG/SVG для узла сети. При отсутствии используется inline SVG.'),
+          tech_home_icon_path:           F('Путь иконки дома',         'Опционально. PNG/SVG для узла дома. При отсутствии используется inline SVG.'),
+          tech_inverter_brand:           F('Изображение инвертора (бренд)', 'Заменяет центральный блок INV логотипом бренда (deye, luxpower, huawei, V-TAC, growatt, powmr) из /local/community/lumina-energy-card/. Выберите Свой путь для произвольного URL.'),
+          tech_inverter_brand_none:      F('Без изображения (классический блок)', ''),
+          tech_inverter_brand_custom:    F('Свой путь...',             ''),
+          tech_inverter_image_path:      F('Путь изображения инвертора (свой)', 'Используется только когда Изображение инвертора = Свой путь. Пример: /local/myinverter.png'),
+          tech_flow_invert_battery:      F('Инверсия анимации потока АКБ', 'Меняет только направление подсветки на линии батареи (схема). Знак сенсора не меняется.'),
+          tech_flow_invert_grid:          F('Инверсия анимации потока сети', 'Меняет направление подсветки на линии сети.'),
+          tech_flow_invert_home_load:    F('Инверсия анимации нагрузки дома', 'Меняет направление подсветки на линии потребления дома.'),
+          tech_sensor_battery_voltage:   F('Напряжение АКБ (V)',       'Опционально.'),
+          tech_sensor_battery_current:   F('Ток АКБ (A)',              'Опционально.'),
+          tech_sensor_battery_temp1:     F('Темп. АКБ 1',              'Опционально.'),
+          tech_sensor_battery_temp2:     F('Темп. АКБ 2',              'Опционально.'),
+          tech_sensor_battery_mos:       F('Темп. MOS АКБ',            'Опционально.'),
+          tech_sensor_battery_min_cell:  F('Мин. напр. ячейки (V)',    'Опционально.'),
+          tech_sensor_battery_max_cell:  F('Макс. напр. ячейки (V)',   'Опционально.'),
+          tech_sensor_inverter_temperature: F('Температура инвертора', 'Опционально.'),
+          tech_sensor_today_pv:          F('PV сегодня (kWh)',         'Опционально.'),
+          tech_sensor_today_batt_chg:    F('Заряд АКБ сегодня (kWh)',  'Опционально.'),
+          tech_sensor_today_batt_dis:    F('Разряд АКБ сегодня (kWh)', 'Опционально.'),
+          tech_sensor_today_load:        F('Потр. сегодня (kWh)',      'Опционально.')
+        }
+      }
+    };
+  }
+
   _getLocaleStrings() {
     const lang = this._currentLanguage();
     const base = this._strings.en || {};
@@ -30836,6 +32563,16 @@ class LuminaEnergyCardEditor extends HTMLElement {
       options: { ...(base.options || {}), ...(selected.options || {}) },
       view: { ...(base.view || {}), ...(selected.view || {}) }
     };
+    // Apply Tech-mode translations on top (en first, then the active lang overrides en).
+    try {
+      const tech = (typeof this._techLocaleOverrides_ === 'function') ? this._techLocaleOverrides_() : null;
+      if (tech && typeof tech === 'object') {
+        const tEn = tech.en || {};
+        const tLang = tech[lang] || {};
+        merged.sections = { ...merged.sections, ...(tEn.sections || {}), ...(tLang.sections || {}) };
+        merged.fields   = { ...merged.fields,   ...(tEn.fields   || {}), ...(tLang.fields   || {}) };
+      }
+    } catch (_) { /* ignore */ }
     return merged;
   }
 
@@ -31656,6 +33393,76 @@ class LuminaEnergyCardEditor extends HTMLElement {
           ];
         }).flat()
       ),
+      tech_view: define([
+        { name: 'tech_show_solar_arc', label: (fields.tech_show_solar_arc && fields.tech_show_solar_arc.label) || 'Tech: show solar arc', helper: (fields.tech_show_solar_arc && fields.tech_show_solar_arc.helper) || 'Day/night arc with sun position and PV total bubble at the top of the schematic.', selector: { boolean: {} }, default: true },
+        { name: 'tech_show_pv_labels', label: (fields.tech_show_pv_labels && fields.tech_show_pv_labels.label) || 'Tech: show PV1/PV2 labels', helper: (fields.tech_show_pv_labels && fields.tech_show_pv_labels.helper) || 'String 1/2 instantaneous power labels (above the solar arc).', selector: { boolean: {} }, default: true },
+        { name: 'tech_flow_animation_style', label: (fields.tech_flow_animation_style && fields.tech_flow_animation_style.label) || 'Tech flow animation style', helper: (fields.tech_flow_animation_style && fields.tech_flow_animation_style.helper) || 'Motif on Tech flow lines: dashes, dots, arrows or shimmer—same motifs as General > Animation style when explicitly selected. Same as card (General) uses the Tech default (Shimmer) and ignores the card-wide Animation style.', selector: { select: { options: [
+          { value: 'inherit', label: (fields.tech_flow_animation_style_inherit && fields.tech_flow_animation_style_inherit.label) || 'Same as card (General)' },
+          { value: 'dashes', label: (fields.tech_flow_style_dashes && fields.tech_flow_style_dashes.label) || 'Dashes' },
+          { value: 'dots', label: (fields.tech_flow_style_dots && fields.tech_flow_style_dots.label) || 'Dots' },
+          { value: 'arrows', label: (fields.tech_flow_style_arrows && fields.tech_flow_style_arrows.label) || 'Arrows' },
+          { value: 'shimmer', label: (fields.tech_flow_style_shimmer && fields.tech_flow_style_shimmer.label) || 'Shimmer' }
+        ] } }, default: 'inherit' },
+        { name: 'tech_show_temps', label: (fields.tech_show_temps && fields.tech_show_temps.label) || 'Tech: show Temp/MOS box', helper: (fields.tech_show_temps && fields.tech_show_temps.helper) || 'Bottom widget row with Temp 1, Temp 2, MOS Temp.', selector: { boolean: {} }, default: true },
+        { name: 'tech_show_cells', label: (fields.tech_show_cells && fields.tech_show_cells.label) || 'Tech: show Cells box', helper: (fields.tech_show_cells && fields.tech_show_cells.helper) || 'Min cell, Max cell, daily battery discharge.', selector: { boolean: {} }, default: true },
+        { name: 'tech_show_inverter', label: (fields.tech_show_inverter && fields.tech_show_inverter.label) || 'Tech: show Inverter daily box', helper: (fields.tech_show_inverter && fields.tech_show_inverter.helper) || 'Today PV / Battery charge / Remaining / Today load.', selector: { boolean: {} }, default: true },
+        { name: 'tech_inverter_brand', label: (fields.tech_inverter_brand && fields.tech_inverter_brand.label) || 'Inverter image (brand)', helper: (fields.tech_inverter_brand && fields.tech_inverter_brand.helper) || 'Replace the central INV box with a brand logo from /local/community/lumina-energy-card/. Choose Custom path to use any URL.', selector: { select: { options: [
+          { value: 'none',     label: (fields.tech_inverter_brand_none     && fields.tech_inverter_brand_none.label)     || 'No image (classic box)' },
+          { value: 'deye',     label: 'Deye' },
+          { value: 'luxpower', label: 'LuxPower' },
+          { value: 'huawei',   label: 'Huawei' },
+          { value: 'vtac',     label: 'V-TAC' },
+          { value: 'growatt',  label: 'Growatt' },
+          { value: 'powmr',    label: 'PowMr' },
+          { value: 'custom',   label: (fields.tech_inverter_brand_custom   && fields.tech_inverter_brand_custom.label)   || 'Custom path...' }
+        ] } }, default: 'none' },
+        { name: 'tech_inverter_image_path', label: (fields.tech_inverter_image_path && fields.tech_inverter_image_path.label) || 'Inverter image path (custom)', helper: (fields.tech_inverter_image_path && fields.tech_inverter_image_path.helper) || 'Used only when Inverter image (brand) = Custom path. Example: /local/myinverter.png', selector: { text: { mode: 'blur' } } },
+        { name: 'tech_grid_icon_path', label: (fields.tech_grid_icon_path && fields.tech_grid_icon_path.label) || 'Tech: grid icon path', helper: (fields.tech_grid_icon_path && fields.tech_grid_icon_path.helper) || 'Optional. Path to a PNG/SVG used for the grid node (default: /local/community/lumina-energy-card/grid.png). If missing or empty, an inline SVG fallback is shown.', selector: { text: { mode: 'blur' } }, default: '/local/community/lumina-energy-card/grid.png' },
+        { name: 'tech_home_icon_path', label: (fields.tech_home_icon_path && fields.tech_home_icon_path.label) || 'Tech: home icon path', helper: (fields.tech_home_icon_path && fields.tech_home_icon_path.helper) || 'Optional. Path to a PNG/SVG used for the home node (default: /local/community/lumina-energy-card/home.png). If missing or empty, an inline SVG fallback is shown.', selector: { text: { mode: 'blur' } }, default: '/local/community/lumina-energy-card/home.png' }
+      ]),
+      tech_sensors_pv: define([
+        { name: 'sensor_pv_total', label: (fields.sensor_pv_total && fields.sensor_pv_total.label) || 'PV Total Sensor', helper: (fields.sensor_pv_total && fields.sensor_pv_total.helper) || 'Optional aggregate production sensor (W). Used for the central PV bubble.', selector: entitySelector },
+        { name: 'sensor_pv1', label: (fields.sensor_pv1 && fields.sensor_pv1.label) || 'PV String 1 (Array 1)', helper: (fields.sensor_pv1 && fields.sensor_pv1.helper) || 'Primary PV string power (W). Shown as PV1 label at the top of the Tech schematic.', selector: entitySelector },
+        { name: 'sensor_pv2', label: (fields.sensor_pv2 && fields.sensor_pv2.label) || 'PV String 2 (Array 1)', helper: (fields.sensor_pv2 && fields.sensor_pv2.helper) || 'Secondary PV string power (W). Shown as PV2 label at the top of the Tech schematic.', selector: entitySelector },
+      ]),
+      tech_sensors_battery: define([
+        { name: 'sensor_bat1_soc', label: (fields.sensor_bat1_soc && fields.sensor_bat1_soc.label) || 'Battery 1 SOC', helper: 'State of charge 0–100.', selector: entitySelector },
+        { name: 'sensor_bat1_power', label: (fields.sensor_bat1_power && fields.sensor_bat1_power.label) || 'Battery 1 Power', helper: 'Battery power (W). Sign convention follows invert battery below.', selector: entitySelector },
+        { name: 'sensor_bat2_soc', label: (fields.sensor_bat2_soc && fields.sensor_bat2_soc.label) || 'Battery 2 SOC', helper: 'Optional pack 2. When SOC or Power is set, a second Tech cell appears.', selector: entitySelector },
+        { name: 'sensor_bat2_power', label: (fields.sensor_bat2_power && fields.sensor_bat2_power.label) || 'Battery 2 Power', helper: 'Optional.', selector: entitySelector },
+        { name: 'sensor_bat3_soc', label: (fields.sensor_bat3_soc && fields.sensor_bat3_soc.label) || 'Battery 3 SOC', helper: 'Optional pack 3.', selector: entitySelector },
+        { name: 'sensor_bat3_power', label: (fields.sensor_bat3_power && fields.sensor_bat3_power.label) || 'Battery 3 Power', helper: 'Optional.', selector: entitySelector },
+        { name: 'sensor_bat4_soc', label: (fields.sensor_bat4_soc && fields.sensor_bat4_soc.label) || 'Battery 4 SOC', helper: 'Optional pack 4.', selector: entitySelector },
+        { name: 'sensor_bat4_power', label: (fields.sensor_bat4_power && fields.sensor_bat4_power.label) || 'Battery 4 Power', helper: 'Optional.', selector: entitySelector },
+        { name: 'invert_battery', label: (fields.invert_battery && fields.invert_battery.label) || 'Invert battery sign', helper: (fields.invert_battery && fields.invert_battery.helper) || 'Flip the sign of all Battery Power sensors if your integration uses the opposite convention.', selector: { boolean: {} }, default: false },
+        { name: 'tech_flow_invert_battery', label: (fields.tech_flow_invert_battery && fields.tech_flow_invert_battery.label) || 'Invert battery flow animation', helper: (fields.tech_flow_invert_battery && fields.tech_flow_invert_battery.helper) || 'Reverse the animated flow direction on battery links.', selector: { boolean: {} }, default: false },
+        { name: 'tech_sensor_battery_voltage', label: (fields.tech_sensor_battery_voltage && fields.tech_sensor_battery_voltage.label) || 'Battery 1 voltage (V)', helper: (fields.tech_sensor_battery_voltage && fields.tech_sensor_battery_voltage.helper) || 'Optional voltage for battery pack 1.', selector: entitySelector },
+        { name: 'tech_sensor_battery_current', label: (fields.tech_sensor_battery_current && fields.tech_sensor_battery_current.label) || 'Battery 1 current (A)', helper: (fields.tech_sensor_battery_current && fields.tech_sensor_battery_current.helper) || 'Optional current for battery pack 1.', selector: entitySelector },
+        { name: 'tech_sensor_bat2_voltage', label: (fields.tech_sensor_bat2_voltage && fields.tech_sensor_bat2_voltage.label) || 'Battery 2 voltage (V)', helper: (fields.tech_sensor_bat2_voltage && fields.tech_sensor_bat2_voltage.helper) || 'Optional. Pack 2 only.', selector: entitySelector },
+        { name: 'tech_sensor_bat2_current', label: (fields.tech_sensor_bat2_current && fields.tech_sensor_bat2_current.label) || 'Battery 2 current (A)', helper: (fields.tech_sensor_bat2_current && fields.tech_sensor_bat2_current.helper) || 'Optional. Pack 2 only.', selector: entitySelector },
+        { name: 'tech_sensor_bat3_voltage', label: (fields.tech_sensor_bat3_voltage && fields.tech_sensor_bat3_voltage.label) || 'Battery 3 voltage (V)', helper: (fields.tech_sensor_bat3_voltage && fields.tech_sensor_bat3_voltage.helper) || 'Optional.', selector: entitySelector },
+        { name: 'tech_sensor_bat3_current', label: (fields.tech_sensor_bat3_current && fields.tech_sensor_bat3_current.label) || 'Battery 3 current (A)', helper: (fields.tech_sensor_bat3_current && fields.tech_sensor_bat3_current.helper) || 'Optional.', selector: entitySelector },
+        { name: 'tech_sensor_bat4_voltage', label: (fields.tech_sensor_bat4_voltage && fields.tech_sensor_bat4_voltage.label) || 'Battery 4 voltage (V)', helper: (fields.tech_sensor_bat4_voltage && fields.tech_sensor_bat4_voltage.helper) || 'Optional.', selector: entitySelector },
+        { name: 'tech_sensor_bat4_current', label: (fields.tech_sensor_bat4_current && fields.tech_sensor_bat4_current.label) || 'Battery 4 current (A)', helper: (fields.tech_sensor_bat4_current && fields.tech_sensor_bat4_current.helper) || 'Optional.', selector: entitySelector },
+      ]),
+      tech_sensors_grid_home: define([
+        { name: 'sensor_grid_power', label: (fields.sensor_grid_power && fields.sensor_grid_power.label) || 'Grid Power', helper: 'Net grid power (W). Positive = import (red flow), negative = export (green flow).', selector: entitySelector },
+        { name: 'tech_flow_invert_grid', label: (fields.tech_flow_invert_grid && fields.tech_flow_invert_grid.label) || 'Invert grid flow animation', helper: (fields.tech_flow_invert_grid && fields.tech_flow_invert_grid.helper) || 'Reverse the animated flow direction along the grid link.', selector: { boolean: {} }, default: false },
+        { name: 'sensor_home_load', label: (fields.sensor_home_load && fields.sensor_home_load.label) || 'Home Load', helper: 'House consumption (W). Drives the load flow and Home label.', selector: entitySelector },
+        { name: 'tech_flow_invert_home_load', label: (fields.tech_flow_invert_home_load && fields.tech_flow_invert_home_load.label) || 'Invert home load flow animation', helper: (fields.tech_flow_invert_home_load && fields.tech_flow_invert_home_load.helper) || 'Reverse the animated flow direction along the home consumption link.', selector: { boolean: {} }, default: false },
+      ]),
+      tech_sensors_extra: define([
+        { name: 'tech_sensor_battery_temp1', label: (fields.tech_sensor_battery_temp1 && fields.tech_sensor_battery_temp1.label) || 'Battery temp 1', helper: (fields.tech_sensor_battery_temp1 && fields.tech_sensor_battery_temp1.helper) || 'Optional. Bottom widget.', selector: entitySelector },
+        { name: 'tech_sensor_battery_temp2', label: (fields.tech_sensor_battery_temp2 && fields.tech_sensor_battery_temp2.label) || 'Battery temp 2', helper: (fields.tech_sensor_battery_temp2 && fields.tech_sensor_battery_temp2.helper) || 'Optional.', selector: entitySelector },
+        { name: 'tech_sensor_battery_mos', label: (fields.tech_sensor_battery_mos && fields.tech_sensor_battery_mos.label) || 'Battery MOS temperature', helper: (fields.tech_sensor_battery_mos && fields.tech_sensor_battery_mos.helper) || 'Optional.', selector: entitySelector },
+        { name: 'tech_sensor_battery_min_cell', label: (fields.tech_sensor_battery_min_cell && fields.tech_sensor_battery_min_cell.label) || 'Min cell voltage (V)', helper: (fields.tech_sensor_battery_min_cell && fields.tech_sensor_battery_min_cell.helper) || 'Optional.', selector: entitySelector },
+        { name: 'tech_sensor_battery_max_cell', label: (fields.tech_sensor_battery_max_cell && fields.tech_sensor_battery_max_cell.label) || 'Max cell voltage (V)', helper: (fields.tech_sensor_battery_max_cell && fields.tech_sensor_battery_max_cell.helper) || 'Optional.', selector: entitySelector },
+        { name: 'tech_sensor_inverter_temperature', label: (fields.tech_sensor_inverter_temperature && fields.tech_sensor_inverter_temperature.label) || 'Inverter temperature', helper: (fields.tech_sensor_inverter_temperature && fields.tech_sensor_inverter_temperature.helper) || 'Optional. Stored for widgets/other views (not drawn on the central inverter graphic in Tech).', selector: entitySelector },
+        { name: 'tech_sensor_today_pv', label: (fields.tech_sensor_today_pv && fields.tech_sensor_today_pv.label) || 'Today PV (kWh)', helper: (fields.tech_sensor_today_pv && fields.tech_sensor_today_pv.helper) || 'Optional. Daily PV total.', selector: entitySelector },
+        { name: 'tech_sensor_today_batt_chg', label: (fields.tech_sensor_today_batt_chg && fields.tech_sensor_today_batt_chg.label) || 'Today battery charge (kWh)', helper: (fields.tech_sensor_today_batt_chg && fields.tech_sensor_today_batt_chg.helper) || 'Optional.', selector: entitySelector },
+        { name: 'tech_sensor_today_batt_dis', label: (fields.tech_sensor_today_batt_dis && fields.tech_sensor_today_batt_dis.label) || 'Today battery discharge (kWh)', helper: (fields.tech_sensor_today_batt_dis && fields.tech_sensor_today_batt_dis.helper) || 'Optional.', selector: entitySelector },
+        { name: 'tech_sensor_today_load', label: (fields.tech_sensor_today_load && fields.tech_sensor_today_load.label) || 'Today load (kWh)', helper: (fields.tech_sensor_today_load && fields.tech_sensor_today_load.helper) || 'Optional.', selector: entitySelector },
+      ]),
       lumina_pro: define([
       { name: 'text_visibility_sensor', label: fields.text_visibility_sensor.label, helper: fields.text_visibility_sensor.helper, selector: motionSensorSelector },
       { name: 'pro_debug_grid', label: (fields.pro_debug_grid && fields.pro_debug_grid.label) || 'Enable Positioning Grid (PRO)', helper: (fields.pro_debug_grid && fields.pro_debug_grid.helper) || 'Show an on-screen grid + coordinates to position texts more precisely (PRO tool).', selector: { boolean: {} }, default: false },
@@ -32173,7 +33980,57 @@ _createUpdatesContent_() {
     return wrap;
   }
 
-_createSectionDefs(localeStrings, schemaDefs) {
+  _createTechEditorNestedSections_(schemaDefs, localeStrings) {
+    const wrap = document.createElement('div');
+    wrap.className = 'lumina-tech-nested-wrap';
+    wrap.style.cssText = 'display:flex;flex-direction:column;gap:8px;margin-top:4px;padding:4px 0 10px 10px;border-left:3px solid rgba(103,232,249,0.25);';
+    const loc = localeStrings || {};
+    const sections = loc.sections || {};
+    const sub = [
+      {
+        id: 'tech_view',
+        title: (sections.tech_view && sections.tech_view.title) || 'Tech (view)',
+        helper: (sections.tech_view && sections.tech_view.helper) || 'Toggles for the Tech schematic view.',
+        schema: schemaDefs.tech_view
+      },
+      {
+        id: 'tech_sensors_pv',
+        title: (sections.tech_sensors_pv && sections.tech_sensors_pv.title) || 'Tech — PV',
+        helper: (sections.tech_sensors_pv && sections.tech_sensors_pv.helper) || 'PV total and PV strings.',
+        schema: schemaDefs.tech_sensors_pv
+      },
+      {
+        id: 'tech_sensors_battery',
+        title: (sections.tech_sensors_battery && sections.tech_sensors_battery.title) || 'Tech — Batteries',
+        helper: (sections.tech_sensors_battery && sections.tech_sensors_battery.helper) || 'Battery packs and flow options.',
+        schema: schemaDefs.tech_sensors_battery
+      },
+      {
+        id: 'tech_sensors_grid_home',
+        title: (sections.tech_sensors_grid_home && sections.tech_sensors_grid_home.title) || 'Tech — Grid & home',
+        helper: (sections.tech_sensors_grid_home && sections.tech_sensors_grid_home.helper) || 'Grid, home load, flow inversion.',
+        schema: schemaDefs.tech_sensors_grid_home
+      },
+      {
+        id: 'tech_sensors_extra',
+        title: (sections.tech_sensors_extra && sections.tech_sensors_extra.title) || 'Tech — Extras',
+        helper: (sections.tech_sensors_extra && sections.tech_sensors_extra.helper) || 'Temperatures, cells, daily totals.',
+        schema: schemaDefs.tech_sensors_extra
+      }
+    ];
+    sub.forEach((defItem) => {
+      wrap.appendChild(this._createSection({
+        id: defItem.id,
+        title: defItem.title,
+        helper: defItem.helper,
+        schema: defItem.schema,
+        defaultOpen: false
+      }));
+    });
+    return wrap;
+  }
+
+  _createSectionDefs(localeStrings, schemaDefs) {
     const sections = localeStrings.sections;
     const lang = String((this._config && this._config.language) || 'en').toLowerCase();
     const peopleTitleByLang = {
@@ -32215,6 +34072,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
       { id: 'updates', title: (sections.updates && sections.updates.title) ? sections.updates.title : 'Updates', helper: (sections.updates && sections.updates.helper) ? sections.updates.helper : '', schema: null, defaultOpen: false, renderContent: () => this._createUpdatesContent_() },
       { id: 'language', title: sections.language.title, helper: sections.language.helper, schema: schemaDefs.language, defaultOpen: false },
       { id: 'installation_type', title: sections.installation_type.title, helper: sections.installation_type.helper, renderContent: () => this._createInstallationTypeSection(), defaultOpen: false },
+      { id: 'tech', title: ((localeStrings.sections && localeStrings.sections.tech_root && localeStrings.sections.tech_root.title) || 'Tech'), helper: ((localeStrings.sections && localeStrings.sections.tech_root && localeStrings.sections.tech_root.helper) || 'Hi-tech schematic: open for view options, PV, batteries, grid & home, and extras.'), schema: null, defaultOpen: false, renderContent: () => this._createTechEditorNestedSections_(schemaDefs, localeStrings) },
       { id: 'performance_mode', title: (sections.performance_mode && sections.performance_mode.title) || 'Performance Mode', helper: (sections.performance_mode && sections.performance_mode.helper) || 'Choose how heavy the animations are. Low keeps the UI responsive by simplifying heavy styles (shimmer/arrows/fluid_flow -> dots).', schema: schemaDefs.performance_mode, defaultOpen: false },
       { id: 'array1', title: sections.array1.title, helper: sections.array1.helper, schema: schemaDefs.array1, defaultOpen: false },
       { id: 'array2', title: sections.array2.title, helper: sections.array2.helper, renderContent: () => {
@@ -32956,15 +34814,20 @@ _createSectionDefs(localeStrings, schemaDefs) {
     
     const config = this._configWithDefaults();
     const currentType = config.installation_type || '1';
-    const currentStyle = (config.image_style === 'real' ? 'real' : 'holographic');
+    const allowedImageStyles_ = ['holographic', 'real', 'tech'];
+    const currentStyle = allowedImageStyles_.includes(config.image_style) ? config.image_style : 'holographic';
     const lang = (config.language || 'en').toLowerCase();
     
     const styleLabels = {
-      en: ['Holographic image', 'Real image'],
-      it: ['Immagine olografica', 'Immagine reale'],
-      de: ['Holografisches Bild', 'Reales Bild'],
-      fr: ['Image holographique', 'Image réelle'],
-      nl: ['Holografische afbeelding', 'Echte afbeelding']
+      en: ['Holographic image', 'Real image', 'Tech (schematic flow diagram)'],
+      it: ['Immagine olografica', 'Immagine reale', 'Tech (schema con flussi animati)'],
+      de: ['Holografisches Bild', 'Reales Bild', 'Tech (Schaltbild mit Flüssen)'],
+      fr: ['Image holographique', 'Image réelle', 'Tech (schéma avec flux animés)'],
+      nl: ['Holografische afbeelding', 'Echte afbeelding', 'Tech (schematisch flow-diagram)'],
+      es: ['Imagen holográfica', 'Imagen real', 'Tech (esquema con flujos)'],
+      pt: ['Imagem holográfica', 'Imagem real', 'Tech (esquema com fluxos)'],
+      pl: ['Obraz holograficzny', 'Realny obraz', 'Tech (schemat z przepływami)'],
+      ru: ['Голографическое изображение', 'Реальное изображение', 'Tech (схема потоков)']
     };
     const typeLabels = {
       en: ['1. PV Installation + Car', '2. PV Installation without Car', '3. No PV, no Car', '4. Personal (custom background)'],
@@ -33024,7 +34887,8 @@ _createSectionDefs(localeStrings, schemaDefs) {
     
     const styleOptions = [
       { value: 'holographic', label: sl[0] },
-      { value: 'real', label: sl[1] }
+      { value: 'real', label: sl[1] },
+      { value: 'tech', label: (sl[2] != null ? sl[2] : (styleLabels.en && styleLabels.en[2]) || 'Tech (schematic flow diagram)') }
     ];
     const typeOptions = [
       { value: '1', label: tl[0] },
@@ -33472,7 +35336,7 @@ _createSectionDefs(localeStrings, schemaDefs) {
     const config = this._configWithDefaults();
     config.image_style = style;
     const type = config.installation_type || '1';
-    if (type !== '4') {
+    if (type !== '4' && style !== 'tech') {
       const paths = this._getBackgroundPaths(type, style);
       config.background_image = paths.background_image;
       config.background_image_heat_pump = paths.background_image_heat_pump;
@@ -33539,11 +35403,17 @@ _createSectionDefs(localeStrings, schemaDefs) {
     // Hide/show sections based on installation type
     const cfg = this._configWithDefaults();
     const batteryOverlayEnabled = Boolean(cfg && cfg.battery_overlay_enabled);
+    const isTechStyle = (cfg && cfg.image_style === 'tech');
     const sections = this.shadowRoot.querySelectorAll('details.section');
     sections.forEach((section) => {
       const sectionId = section.dataset.sectionId;
       if (!sectionId) return;
-      
+
+      if (sectionId === 'tech') {
+        section.style.display = isTechStyle ? '' : 'none';
+        return;
+      }
+
       if (type === '3') {
         // Only show: general, grid (for sensor_home_load, sensor_house_temperature), housePopup
         // Hide all sections related to PV and battery
@@ -40346,4 +42216,4 @@ LuminaEnergyCardEditor.prototype._shareToGallery_ = function() {
   };
 })();
 
-/* LUMINA_DIST_BUILD_ISO=2026-05-03T10:21:01.686Z file=lumina-energy-card.js (sec+main+gallery+giornonotte) */
+/* LUMINA_DIST_BUILD_ISO=2026-05-07T12:45:56.510Z file=lumina-energy-card.js (sec+main+gallery+giornonotte) */
