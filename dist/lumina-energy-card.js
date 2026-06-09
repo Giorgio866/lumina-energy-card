@@ -1090,8 +1090,12 @@ const FLOW_STYLE_PATTERNS = {
   // The gaps must be large enough that blur doesn't fill them in, otherwise
   // the mask becomes nearly solid and motion is hard/impossible to perceive.
   smooth: { dasharray: '0 1000', cycle: 1 },
-  shimmer: { dasharray: null, cycle: 276 } // Uses animated gradient instead of dasharray (slower by 50%)
+  shimmer: { dasharray: null, cycle: 276 }, // Uses animated gradient instead of dasharray (slower by 50%)
+  // Short mask window travels fast along the path (lightning bolt / serpent segment).
+  lightning: { dasharray: null, cycle: 100 }
 };
+
+const isOverlayFlowStyle = (style) => style === 'shimmer' || style === 'lightning';
 
 const FLOW_BASE_LOOP_RATE = 0.0025;
 const FLOW_MIN_GLOW_SCALE = 0.2;
@@ -2241,7 +2245,7 @@ class LuminaEnergyCard extends HTMLElement {
     const lowPower = Boolean(perf && perf.resolved === 'low');
     if (!reduce && !lowPower) return style;
     // Accessibility: if the user/browser requests reduced motion, fall back from heavy styles.
-    if (style === 'arrows' || style === 'shimmer' || style === 'fluid_flow') {
+    if (style === 'arrows' || style === 'shimmer' || style === 'lightning' || style === 'fluid_flow') {
       return 'dots';
     }
     return style;
@@ -3749,6 +3753,8 @@ class LuminaEnergyCard extends HTMLElement {
   _syncFlowAnimation(flowKey, element, seconds, flowState) {
     const animationStyle = this._animationStyle || FLOW_STYLE_DEFAULT;
     const isShimmer = animationStyle === 'shimmer';
+    const isLightning = animationStyle === 'lightning';
+    const isOverlayStyle = isOverlayFlowStyle(animationStyle);
     
     if (flowState && flowState.active && this._flowTweens) {
       const entry = this._flowTweens.get(flowKey);
@@ -3792,6 +3798,10 @@ class LuminaEnergyCard extends HTMLElement {
       // Slower animation = lower loopRate, so divide by cycle ratio compared to default
       const defaultCycle = 110; // Original shimmer cycle
       loopRate = baseLoopRate * (defaultCycle / shimmerCycle); // 110/276 = ~0.4 (50% slower)
+    } else if (animationStyle === 'lightning') {
+      const boltCycle = pattern && Number.isFinite(Number(pattern.cycle)) ? Number(pattern.cycle) : 100;
+      const defaultCycle = 110;
+      loopRate = baseLoopRate * (defaultCycle / boltCycle) * 2.85;
     }
     const baseDirection = flowState && typeof flowState.direction === 'number' && flowState.direction !== 0 ? Math.sign(flowState.direction) : 1;
     const elementDirectionMultiplier = (() => {
@@ -3924,6 +3934,7 @@ class LuminaEnergyCard extends HTMLElement {
       const targets = element.tagName === 'g' ? element.querySelectorAll('path') : [element];
       const isFluid = false;
       const isShimmer = animationStyle === 'shimmer';
+      const isLightning = animationStyle === 'lightning';
       // Brighten and saturate color for phosphorescent effect - use same color for perimeter and fluid
       // For animated part, use even brighter color for maximum visibility
       const fluidBaseColor = isFluid ? this._brightenColor(strokeColor, 1.6, 1.7) : strokeColor;
@@ -3947,8 +3958,12 @@ class LuminaEnergyCard extends HTMLElement {
         this._removeShimmerGradient(flowKey, element);
         this._removeShimmerOverlay(flowKey, element);
       }
+      if (!isLightning) {
+        this._removeLightningOverlay(flowKey, element);
+      }
       const overlay = isFluid ? this._ensureFluidFlowOverlay(flowKey, element) : null;
       const shimmerOverlay = isShimmer ? this._ensureShimmerOverlay(flowKey, element, strokeColor, effectiveDirection) : null;
+      const lightningOverlay = isLightning ? this._ensureLightningOverlay(flowKey, element, strokeColor, effectiveDirection) : null;
       const maskInfo = (isFluid && pattern && pattern.dasharray)
         ? this._ensureFluidFlowMask(flowKey, element, pattern.dasharray, fluidWidths.mask)
         : (isFluid ? this._ensureFluidFlowMask(flowKey, element, '12 18', fluidWidths.mask) : null);
@@ -4011,6 +4026,15 @@ class LuminaEnergyCard extends HTMLElement {
             if (configuredFlowStrokeWidthPx !== null) {
               target.style.strokeWidth = `${configuredFlowStrokeWidthPx}px`;
             }
+          }
+          if (isLightning) {
+            const shellColor = this._brightenColor(strokeColor, 0.38, 0.85);
+            target.style.stroke = shellColor;
+            target.style.strokeOpacity = '0.5';
+            const baseW = configuredFlowStrokeWidthPx !== null
+              ? configuredFlowStrokeWidthPx
+              : (intrinsicFlowStrokeWidthPx !== null ? intrinsicFlowStrokeWidthPx : 2);
+            target.style.strokeWidth = `${Math.max(1, baseW * 1.35)}px`;
           }
         });
       });
@@ -4238,6 +4262,12 @@ class LuminaEnergyCard extends HTMLElement {
           // Apply stronger glow to shimmer overlay for more brightness
           this._setFlowGlow(shimmerOverlay.group, strokeColor, isActive ? 3.0 : 0.5);
         }
+      } else if (animationStyle === 'lightning') {
+        const lightningOverlay = this._ensureLightningOverlay(flowKey, element, strokeColor, effectiveDirection);
+        if (lightningOverlay && lightningOverlay.group) {
+          lightningOverlay.group.style.opacity = isActive ? '1' : '0';
+          this._setFlowGlow(lightningOverlay.group, strokeColor, isActive ? 2.6 : 0.35);
+        }
       }
       if (!useArrows) {
         if (element.tagName === 'g') {
@@ -4259,19 +4289,19 @@ class LuminaEnergyCard extends HTMLElement {
       const glowState = { value: isActive ? 0.8 : 0.25 };
       // For shimmer style, ALL flows should start phase at 0 to ensure they always start from the beginning
       // Also for battery and inverter flows regardless of style
-      const shouldStartAtZero = animationStyle === 'shimmer' ? true : (flowKey === 'bat' || flowKey === 'inv1' || flowKey === 'inv2');
+      const shouldStartAtZero = isOverlayStyle ? true : (flowKey === 'bat' || flowKey === 'inv1' || flowKey === 'inv2');
       // For shimmer flows, ALWAYS start at 0 regardless of active state, so when they become active they start from beginning
       // For other flows that should start at zero, only do so if active
-      let initialPhase = (animationStyle === 'shimmer') ? 0 : ((shouldStartAtZero && isActive) ? 0 : Math.random());
+      let initialPhase = isOverlayStyle ? 0 : ((shouldStartAtZero && isActive) ? 0 : Math.random());
       // CRITICAL: For shimmer flows, ALWAYS force phase to 0 regardless of any other conditions
-      if (animationStyle === 'shimmer') {
+      if (isOverlayStyle) {
         initialPhase = 0;
       }
       const motionState = { phase: initialPhase, distance: 0 };
       const directionState = { value: effectiveDirection };
       
       // For shimmer flows, ensure phase is always 0
-      if (animationStyle === 'shimmer' && motionState.phase !== 0) {
+      if (isOverlayStyle && motionState.phase !== 0) {
         motionState.phase = 0;
       }
       
@@ -4297,6 +4327,7 @@ class LuminaEnergyCard extends HTMLElement {
         maskPaths: [],
         shimmerGradient: null,
         shimmerOverlay: null,
+        lightningOverlay: null,
         shimmerWasActive: false, // Track if shimmer was active to detect activation - always start as false so first activation triggers reset
         shimmerLastDirection: undefined, // Track last direction to detect direction changes
         shimmerFirstTick: true, // Track if this is the first tick for shimmer - used to reset phase at first animation frame
@@ -4345,6 +4376,15 @@ class LuminaEnergyCard extends HTMLElement {
         if (newEntry.motionState && newEntry.motionState.phase !== 0) {
           newEntry.motionState.phase = 0;
         }
+      } else if (animationStyle === 'lightning') {
+        const lightningOverlay = this._ensureLightningOverlay(flowKey, element, strokeColor, effectiveDirection);
+        newEntry.lightningOverlay = lightningOverlay;
+        if (newEntry.shimmerFirstTick === undefined) {
+          newEntry.shimmerFirstTick = isActive;
+        }
+        if (newEntry.motionState && newEntry.motionState.phase !== 0) {
+          newEntry.motionState.phase = 0;
+        }
       }
       if (false) {
         this._setFluidFlowRaf(flowKey, {
@@ -4360,7 +4400,7 @@ class LuminaEnergyCard extends HTMLElement {
       // For shimmer style, ALL flows should immediately update motion BEFORE adding to ticker
       // This ensures the gradient is positioned correctly from the start
       // Also for battery and inverter flows regardless of style
-      const shouldUpdateImmediately = (animationStyle === 'shimmer' ? true : (flowKey === 'bat' || flowKey === 'inv1' || flowKey === 'inv2')) && isActive;
+      const shouldUpdateImmediately = (isOverlayStyle ? true : (flowKey === 'bat' || flowKey === 'inv1' || flowKey === 'inv2')) && isActive;
       if (shouldUpdateImmediately && newEntry.motionState) {
         // Ensure phase is 0 before updating motion
         newEntry.motionState.phase = 0;
@@ -4505,11 +4545,36 @@ class LuminaEnergyCard extends HTMLElement {
         if (phaseWasReset) {
           this._updateFlowMotion(entry);
         }
+      } else if (animationStyle === 'lightning') {
+        const lightningOverlay = this._ensureLightningOverlay(flowKey, element, strokeColor, effectiveDirection);
+        entry.lightningOverlay = lightningOverlay;
+        const directionChanged = entry.shimmerLastDirection !== undefined && entry.shimmerLastDirection !== effectiveDirection;
+        let phaseWasReset = false;
+        const wasInactive = entry.shimmerWasActive === false || entry.shimmerWasActive === undefined;
+        const justBecameActive = wasInactive && isActive;
+        if (entry.motionState && isActive) {
+          if (wasInactive || directionChanged) {
+            entry.motionState.phase = 0;
+            phaseWasReset = true;
+          }
+        }
+        if (justBecameActive) {
+          entry.shimmerFirstTick = true;
+        }
+        entry.shimmerWasActive = isActive;
+        entry.shimmerLastDirection = effectiveDirection;
+        entry.direction = effectiveDirection;
+        if (phaseWasReset) {
+          this._updateFlowMotion(entry);
+        }
       } else if (entry.shimmerOverlay) {
         this._removeShimmerOverlay(flowKey, element);
         this._removeShimmerGradient(flowKey, element);
         entry.shimmerOverlay = null;
         entry.shimmerGradient = null;
+      } else if (entry.lightningOverlay) {
+        this._removeLightningOverlay(flowKey, element);
+        entry.lightningOverlay = null;
       } else if (entry.overlayGroup || (entry.overlayPaths && entry.overlayPaths.length)) {
         this._removeFluidFlowOverlay(flowKey, element);
         this._removeFluidFlowMask(flowKey, element);
@@ -4521,13 +4586,13 @@ class LuminaEnergyCard extends HTMLElement {
       if (!entry.motionState) {
         // For shimmer style, ALL flows should start phase at 0 to ensure they always start from the beginning
         // Also for battery and inverter flows regardless of style
-        const shouldStartAtZero = animationStyle === 'shimmer' ? true : (flowKey === 'bat' || flowKey === 'inv1' || flowKey === 'inv2');
+        const shouldStartAtZero = isOverlayStyle ? true : (flowKey === 'bat' || flowKey === 'inv1' || flowKey === 'inv2');
         const initialPhase = (shouldStartAtZero && isActive) ? 0 : Math.random();
         entry.motionState = { phase: initialPhase, distance: 0 };
       } else {
         // For shimmer style, ALL flows should reset phase to 0 when path becomes active
         // Also for battery and inverter flows regardless of style
-        const shouldResetPhase = animationStyle === 'shimmer' ? true : (flowKey === 'bat' || flowKey === 'inv1' || flowKey === 'inv2');
+        const shouldResetPhase = isOverlayStyle ? true : (flowKey === 'bat' || flowKey === 'inv1' || flowKey === 'inv2');
         let phaseWasReset = false;
         // Reset phase when flow becomes active (transition from inactive to active)
         // Also reset if shimmerWasActive is undefined (first time)
@@ -4540,7 +4605,7 @@ class LuminaEnergyCard extends HTMLElement {
           }
         }
         // Track shimmer active state for all flows when using shimmer style
-        if (animationStyle === 'shimmer') {
+        if (isOverlayStyle) {
           entry.shimmerWasActive = isActive;
         }
         // Immediately update motion to ensure flow starts from the beginning
@@ -4909,6 +4974,13 @@ class LuminaEnergyCard extends HTMLElement {
         // ignore
       }
     }
+    if (entry.mode === 'lightning' && entry.element) {
+      try {
+        this._removeLightningOverlay(entry.flowKey, entry.element);
+      } catch (e) {
+        // ignore
+      }
+    }
     if (entry.tween) {
       entry.tween.kill();
     }
@@ -5107,15 +5179,17 @@ class LuminaEnergyCard extends HTMLElement {
           }
         });
       }
-    } else if (entry.mode === 'shimmer') {
-      const shimmerOverlay = entry.shimmerOverlay;
-      if (shimmerOverlay && shimmerOverlay.group) {
+    } else if (entry.mode === 'shimmer' || entry.mode === 'lightning') {
+      const isBolt = entry.mode === 'lightning';
+      const flowOverlay = isBolt ? entry.lightningOverlay : entry.shimmerOverlay;
+      if (flowOverlay && flowOverlay.group) {
         const perf = this._getPerfSettings();
         const lite = perf && perf.resolved && perf.resolved !== 'high';
-        let maskPath = shimmerOverlay.maskPath || (shimmerOverlay.group ? shimmerOverlay.group._luminaShimmerMaskPath : null);
+        const maskCacheKey = isBolt ? '_luminaLightningMaskPath' : '_luminaShimmerMaskPath';
+        let maskPath = flowOverlay.maskPath || (flowOverlay.group ? flowOverlay.group[maskCacheKey] : null);
         if (!maskPath) {
           try {
-            const maskAttr = shimmerOverlay.group.getAttribute('mask');
+            const maskAttr = flowOverlay.group.getAttribute('mask');
             if (maskAttr) {
               const maskId = String(maskAttr).replace(/url\(#(.+)\)/, '$1');
               const svgRoot = entry.element.ownerSVGElement;
@@ -5124,8 +5198,8 @@ class LuminaEnergyCard extends HTMLElement {
                 try { maskPath = svgRoot.querySelector(`#${escapeFn(maskId)} path`); } catch (eQ) { maskPath = svgRoot.querySelector(`#${maskId} path`); }
               }
               if (maskPath) {
-                shimmerOverlay.maskPath = maskPath;
-                try { shimmerOverlay.group._luminaShimmerMaskPath = maskPath; } catch (eS) { /* ignore */ }
+                flowOverlay.maskPath = maskPath;
+                try { flowOverlay.group[maskCacheKey] = maskPath; } catch (eS) { /* ignore */ }
               }
             }
           } catch (e0) { /* ignore */ }
@@ -5138,69 +5212,75 @@ class LuminaEnergyCard extends HTMLElement {
           const directionSign = directionValue >= 0 ? 1 : -1;
           const phase01 = ((phase % 1) + 1) % 1;
           const normalizedPhase = directionSign >= 0 ? phase01 : (1 - phase01);
-          const waveOffset = lite ? 0 : (Math.sin(normalizedPhase * Math.PI * 4) * 2);
+          const waveFreq = isBolt ? 9 : 4;
+          const waveAmp = isBolt ? (lite ? 0 : 5.5) : (lite ? 0 : 2);
+          const waveOffset = Math.sin(normalizedPhase * Math.PI * waveFreq) * waveAmp;
           const off = 100 - normalizedPhase * 100 + waveOffset;
           const offStr = String(off);
-          if (entry._shimmerMaskDashOffset !== offStr) {
-            entry._shimmerMaskDashOffset = offStr;
+          const cacheKey = isBolt ? '_lightningMaskDashOffset' : '_shimmerMaskDashOffset';
+          if (entry[cacheKey] !== offStr) {
+            entry[cacheKey] = offStr;
             maskPath.style.strokeDashoffset = offStr;
           }
         }
-        // Update opacity based on active state to hide shimmer when flow is off
         const desiredOpacity = entry.active ? '1' : '0';
-        if (shimmerOverlay.group.style.opacity !== desiredOpacity) {
-          shimmerOverlay.group.style.opacity = desiredOpacity;
+        if (flowOverlay.group.style.opacity !== desiredOpacity) {
+          flowOverlay.group.style.opacity = desiredOpacity;
         }
 
-        // Balanced/Low: keep shimmer movement but skip per-frame glow + trail animation.
         if (lite) {
           return;
         }
-        
-        // Add pulsing glow effect based on phase for more dynamic shimmer
-        if (entry.active && shimmerOverlay.paths && shimmerOverlay.paths.length) {
+
+        if (entry.active && flowOverlay.paths && flowOverlay.paths.length) {
           const directionValue = entry.directionState && Number.isFinite(entry.directionState.value)
             ? entry.directionState.value
             : (entry.direction || 1);
           const directionSign = directionValue >= 0 ? 1 : -1;
           const phase01 = ((phase % 1) + 1) % 1;
           const normalizedPhase = directionSign >= 0 ? phase01 : (1 - phase01);
-          const pulseIntensity = 2.5 + Math.sin(normalizedPhase * Math.PI * 2) * 0.75; // Varies between 2.5 and 3.25
-          // Get color from entry or fallback to strokeColor from element
           const glowColor = entry.color || (entry.element && entry.element.getAttribute ? entry.element.getAttribute('stroke') : null) || '#00ffff';
-          // Throttle expensive filter updates (drop-shadow) to reduce INP impact.
+          const pulseBase = isBolt ? 2.4 : 2.5;
+          const pulseIntensity = pulseBase + Math.sin(normalizedPhase * Math.PI * (isBolt ? 3 : 2)) * (isBolt ? 0.9 : 0.75);
           try {
             const now = (typeof performance !== 'undefined' && typeof performance.now === 'function') ? performance.now() : Date.now();
-            const minMs = 80;
+            const minMs = isBolt ? 60 : 80;
             const last = entry._lastShimmerGlowTs || 0;
             if (!last || (now - last) >= minMs) {
               entry._lastShimmerGlowTs = now;
-              this._setFlowGlow(shimmerOverlay.group, glowColor, pulseIntensity);
+              this._setFlowGlow(flowOverlay.group, glowColor, pulseIntensity);
             }
           } catch (eG) { /* ignore */ }
-          
-          // Animate trail layers with different opacities for depth effect
-          shimmerOverlay.paths.forEach((path) => {
+
+          flowOverlay.paths.forEach((path) => {
             if (!path || !path.getAttribute) return;
-            // Phase A Optimization: Add will-change for animated shimmer paths
             if (entry.active && path.style) {
               path.style.willChange = 'opacity';
             }
-            const layer = path.getAttribute('data-shimmer-layer');
+            const layer = path.getAttribute(isBolt ? 'data-lightning-layer' : 'data-shimmer-layer');
+            if (isBolt) {
+              if (layer === 'bolt-flash') {
+                const flashOpacity = 0.75 + Math.sin(normalizedPhase * Math.PI * 5) * 0.25;
+                const s = String(Math.max(0, Math.min(1, flashOpacity)));
+                if (path.style.opacity !== s) path.style.opacity = s;
+              } else if (layer === 'bolt-outer') {
+                const outerOpacity = 0.7 + Math.sin(normalizedPhase * Math.PI * 2 + 0.4) * 0.2;
+                const s = String(Math.max(0, Math.min(1, outerOpacity)));
+                if (path.style.opacity !== s) path.style.opacity = s;
+              }
+              return;
+            }
             if (layer === 'trail-1') {
-              // Outer trail: subtle pulse with phase offset
               const trail1Opacity = 0.2 + Math.sin(normalizedPhase * Math.PI * 2 + Math.PI / 3) * 0.15;
               const v = Math.max(0, Math.min(1, trail1Opacity));
               const s = String(v);
               if (path.style.opacity !== s) path.style.opacity = s;
             } else if (layer === 'trail-2') {
-              // Mid trail: moderate pulse with phase offset
               const trail2Opacity = 0.4 + Math.sin(normalizedPhase * Math.PI * 2 + Math.PI / 6) * 0.2;
               const v = Math.max(0, Math.min(1, trail2Opacity));
               const s = String(v);
               if (path.style.opacity !== s) path.style.opacity = s;
             } else if (layer === 'highlight') {
-              // Highlight: strong pulse for sparkle effect
               const highlightOpacity = 0.7 + Math.sin(normalizedPhase * Math.PI * 2) * 0.3;
               const v = Math.max(0, Math.min(1, highlightOpacity));
               const s = String(v);
@@ -5269,8 +5349,8 @@ class LuminaEnergyCard extends HTMLElement {
       if (directionValue === 0) {
         return;
       }
-      // For shimmer, keep phase increasing and apply direction in _updateFlowMotion to avoid negative-wrap glitches.
-      const delta = entry.mode === 'shimmer'
+      // For overlay styles, keep phase increasing and apply direction in _updateFlowMotion to avoid negative-wrap glitches.
+      const delta = isOverlayFlowStyle(entry.mode)
         ? (deltaTime * loopRate * Math.abs(directionValue))
         : (deltaTime * loopRate * directionValue);
       if (!Number.isFinite(delta) || delta === 0) {
@@ -5300,13 +5380,13 @@ class LuminaEnergyCard extends HTMLElement {
       const currentDirection = entry.directionState && Number.isFinite(entry.directionState.value)
         ? entry.directionState.value
         : (entry.direction || 0);
-      const shouldResetPhase = entry.mode === 'shimmer' ? true : (entry.flowKey === 'bat' || entry.flowKey === 'inv1' || entry.flowKey === 'inv2');
+      const shouldResetPhase = isOverlayFlowStyle(entry.mode) ? true : (entry.flowKey === 'bat' || entry.flowKey === 'inv1' || entry.flowKey === 'inv2');
       const directionChanged = shouldResetPhase && entry.shimmerLastDirection !== undefined && entry.shimmerLastDirection !== currentDirection;
       let phaseWasReset = false;
       
       // NEW APPROACH: For shimmer, reset phase on first tick when active
       // This ensures phase starts at 0 even if entry was created when already active
-      if (entry.mode === 'shimmer' && entry.active && entry.motionState) {
+      if (isOverlayFlowStyle(entry.mode) && entry.active && entry.motionState) {
         if (entry.shimmerFirstTick !== undefined && entry.shimmerFirstTick) {
           entry.motionState.phase = 0;
           entry.shimmerFirstTick = false;
@@ -5327,11 +5407,7 @@ class LuminaEnergyCard extends HTMLElement {
         phaseWasReset = true;
       }
       
-      if (entry.mode === 'shimmer' && entry.active && entry.motionState) {
-        entry.motionState.phase = (Number(entry.motionState.phase) || 0) + delta;
-      } else {
-        entry.motionState.phase = (Number(entry.motionState.phase) || 0) + delta;
-      }
+      entry.motionState.phase = (Number(entry.motionState.phase) || 0) + delta;
       // Track active state for shimmer flows and reset flows
       if (shouldResetPhase) {
         entry.shimmerWasActive = entry.active;
@@ -5340,7 +5416,7 @@ class LuminaEnergyCard extends HTMLElement {
       
       // Phase update is already done above for shimmer flows (with debug logging)
       // For non-shimmer flows, update phase here if not reset
-      if (!phaseWasReset && entry.mode !== 'shimmer') {
+      if (!phaseWasReset && !isOverlayFlowStyle(entry.mode)) {
         entry.motionState.phase = (Number(entry.motionState.phase) || 0) + delta;
       }
       
@@ -5435,7 +5511,7 @@ class LuminaEnergyCard extends HTMLElement {
             entry.motionState.phase = Number(this._parallelFlowPhase) || 0;
           } else {
             // For shimmer, keep phase increasing and apply direction in _updateFlowMotion.
-            const delta = entry.mode === 'shimmer'
+            const delta = isOverlayFlowStyle(entry.mode)
               ? (usedDeltaMs * loopRate * Math.abs(directionValue))
               : (usedDeltaMs * loopRate * directionValue);
             entry.motionState.phase = (Number(entry.motionState.phase) || 0) + delta;
@@ -6245,6 +6321,256 @@ class LuminaEnergyCard extends HTMLElement {
     } else if (group && group.parentNode) {
       group.parentNode.removeChild(group);
     }
+  }
+
+  _ensureLightningOverlay(flowKey, element, strokeColor, direction = 1) {
+    if (!flowKey || !element) {
+      return { group: null, paths: [], maskPath: null };
+    }
+    const ns = __NS_SVG;
+    const container = element.tagName === 'g' ? element : element.parentNode;
+    if (!container || typeof container.querySelector !== 'function') {
+      return { group: null, paths: [], maskPath: null };
+    }
+
+    const key = String(flowKey);
+    const baseD = (typeof element.getAttribute === 'function' ? (element.getAttribute('d') || '') : '');
+    const escapeFn = (typeof CSS !== 'undefined' && CSS.escape) ? CSS.escape : (v) => v;
+    let group = null;
+    try {
+      group = container.querySelector(`[data-lightning-overlay="${escapeFn(key)}"]`);
+    } catch (e) {
+      group = container.querySelector(`[data-lightning-overlay="${key}"]`);
+    }
+
+    if (group) {
+      try {
+        const lastD = group.getAttribute('data-lightning-base-d') || '';
+        if (lastD !== baseD) {
+          if (typeof group.remove === 'function') {
+            group.remove();
+          } else if (group.parentNode) {
+            group.parentNode.removeChild(group);
+          }
+          group = null;
+        } else {
+          const lastColor = group.getAttribute('data-lightning-color') || '';
+          if (lastColor !== String(strokeColor || '')) {
+            group.setAttribute('data-lightning-color', String(strokeColor || ''));
+            const shell = this._brightenColor(strokeColor, 0.38, 0.85);
+            const mid = this._brightenColor(strokeColor, 0.72, 1.05);
+            const core = this._brightenColor(strokeColor, 1.35, 1.25);
+            try {
+              Array.from(group.querySelectorAll('path')).forEach((p) => {
+                if (!p || !p.getAttribute) return;
+                const layer = p.getAttribute('data-lightning-layer') || '';
+                if (layer === 'bolt-outer') p.setAttribute('stroke', shell);
+                else if (layer === 'bolt-shell') p.setAttribute('stroke', mid);
+                else if (layer === 'bolt-core') p.setAttribute('stroke', core);
+              });
+            } catch (eC) { /* ignore */ }
+          }
+        }
+      } catch (e0) { /* ignore */ }
+    }
+
+    if (!group) {
+      const shellColor = this._brightenColor(strokeColor, 0.38, 0.85);
+      const midColor = this._brightenColor(strokeColor, 0.72, 1.05);
+      const coreColor = this._brightenColor(strokeColor, 1.35, 1.25);
+
+      group = document.createElementNS(ns, 'g');
+      group.setAttribute('data-lightning-overlay', key);
+      group.setAttribute('data-lightning-base-d', baseD);
+      group.setAttribute('data-lightning-color', String(strokeColor || ''));
+      group.style.pointerEvents = 'none';
+      group.style.opacity = '0';
+
+      const svgRoot = element.ownerSVGElement;
+      if (svgRoot) {
+        let defs = svgRoot.querySelector('defs');
+        if (!defs) {
+          defs = document.createElementNS(ns, 'defs');
+          svgRoot.insertBefore(defs, svgRoot.firstChild);
+        }
+
+        const maskId = `lumina-lightning-mask-${key.replace(/[^a-z0-9_-]/gi, '_')}`;
+        let mask = defs.querySelector(`#${escapeFn(maskId)}`);
+        if (mask) mask.remove();
+
+        mask = document.createElementNS(ns, 'mask');
+        mask.setAttribute('id', maskId);
+
+        const maskPath = document.createElementNS(ns, 'path');
+        maskPath.setAttribute('d', baseD);
+        maskPath.setAttribute('fill', 'none');
+        maskPath.setAttribute('stroke', 'white');
+        maskPath.setAttribute('stroke-width', '22');
+        maskPath.setAttribute('stroke-linecap', 'round');
+        maskPath.setAttribute('pathLength', '100');
+        maskPath.setAttribute('stroke-dasharray', '7 93');
+        maskPath.setAttribute('stroke-dashoffset', '100');
+
+        const filterId = `lumina-lightning-blur-${key.replace(/[^a-z0-9_-]/gi, '_')}`;
+        let filter = defs.querySelector(`#${escapeFn(filterId)}`);
+        if (!filter) {
+          filter = document.createElementNS(ns, 'filter');
+          filter.setAttribute('id', filterId);
+          filter.setAttribute('x', '-60%');
+          filter.setAttribute('y', '-60%');
+          filter.setAttribute('width', '220%');
+          filter.setAttribute('height', '220%');
+          filter.setAttribute('color-interpolation-filters', 'sRGB');
+          const blur = document.createElementNS(ns, 'feGaussianBlur');
+          blur.setAttribute('in', 'SourceGraphic');
+          blur.setAttribute('stdDeviation', '2.2');
+          blur.setAttribute('result', 'blur');
+          filter.appendChild(blur);
+          const merge = document.createElementNS(ns, 'feMerge');
+          const m1 = document.createElementNS(ns, 'feMergeNode');
+          m1.setAttribute('in', 'blur');
+          merge.appendChild(m1);
+          const m2 = document.createElementNS(ns, 'feMergeNode');
+          m2.setAttribute('in', 'SourceGraphic');
+          merge.appendChild(m2);
+          filter.appendChild(merge);
+          defs.appendChild(filter);
+        }
+        maskPath.setAttribute('filter', `url(#${filterId})`);
+        mask.appendChild(maskPath);
+        defs.appendChild(mask);
+        group.setAttribute('mask', `url(#${maskId})`);
+        try {
+          group._luminaLightningMaskPath = maskPath;
+          group._luminaLightningMaskId = maskId;
+        } catch (eP) { /* ignore */ }
+      }
+
+      const geometry = this._getFlowGeometryPaths(element);
+      geometry.forEach((path) => {
+        try {
+          const clone = path.cloneNode(true);
+          clone.removeAttribute('id');
+          clone.removeAttribute('class');
+          clone.removeAttribute('data-flow-key');
+          clone.removeAttribute('data-direction');
+          clone.removeAttribute('data-arrow-key');
+          clone.removeAttribute('data-arrow-shape');
+          clone.setAttribute('fill', 'none');
+          clone.setAttribute('pathLength', path.getAttribute('pathLength') || '100');
+          clone.style.strokeLinecap = 'round';
+          clone.style.strokeLinejoin = 'round';
+
+          const basePath = element.tagName === 'g' ? element.querySelector('path') : element;
+          let baseW = 2;
+          if (basePath && basePath.style && basePath.style.strokeWidth) {
+            baseW = parseFloat(basePath.style.strokeWidth) || 2;
+          }
+
+          const outer = clone.cloneNode(true);
+          outer.setAttribute('stroke', shellColor);
+          outer.style.strokeWidth = `${baseW * 2.5}px`;
+          outer.style.opacity = '0.9';
+          outer.setAttribute('data-lightning-layer', 'bolt-outer');
+          group.appendChild(outer);
+
+          const shell = clone.cloneNode(true);
+          shell.setAttribute('stroke', midColor);
+          shell.style.strokeWidth = `${baseW * 1.65}px`;
+          shell.style.opacity = '0.95';
+          shell.setAttribute('data-lightning-layer', 'bolt-shell');
+          group.appendChild(shell);
+
+          const core = clone.cloneNode(true);
+          core.setAttribute('stroke', coreColor);
+          core.style.strokeWidth = `${baseW * 0.95}px`;
+          core.style.opacity = '1';
+          core.setAttribute('data-lightning-layer', 'bolt-core');
+          group.appendChild(core);
+
+          const flash = clone.cloneNode(true);
+          flash.setAttribute('stroke', '#ffffff');
+          flash.style.strokeWidth = `${Math.max(0.5, baseW * 0.38)}px`;
+          flash.style.opacity = '1';
+          flash.setAttribute('data-lightning-layer', 'bolt-flash');
+          group.appendChild(flash);
+        } catch (err) { /* ignore */ }
+      });
+
+      container.appendChild(group);
+    }
+
+    const paths = Array.from(group.querySelectorAll('path'));
+    let maskPathRef = null;
+    let maskIdRef = null;
+    try {
+      const maskAttr = group.getAttribute && group.getAttribute('mask');
+      if (maskAttr) {
+        maskIdRef = String(maskAttr).replace(/url\(#(.+)\)/, '$1');
+      }
+      maskPathRef = group._luminaLightningMaskPath || null;
+      if (!maskPathRef) {
+        const svgRoot = element.ownerSVGElement;
+        if (svgRoot && maskIdRef) {
+          try {
+            maskPathRef = svgRoot.querySelector(`#${escapeFn(maskIdRef)} path`);
+          } catch (eQ) {
+            maskPathRef = svgRoot.querySelector(`#${maskIdRef} path`);
+          }
+        }
+        if (maskPathRef) {
+          try {
+            group._luminaLightningMaskPath = maskPathRef;
+            group._luminaLightningMaskId = maskIdRef;
+          } catch (eS) { /* ignore */ }
+        }
+      }
+    } catch (eM) { /* ignore */ }
+
+    return { group, paths, color: strokeColor, maskId: maskIdRef, maskPath: maskPathRef };
+  }
+
+  _removeLightningOverlay(flowKey, element) {
+    if (!flowKey || !element) {
+      return;
+    }
+    const container = element.tagName === 'g' ? element : element.parentNode;
+    if (!container || typeof container.querySelector !== 'function') {
+      return;
+    }
+    const key = String(flowKey);
+    const escapeFn = (typeof CSS !== 'undefined' && CSS.escape) ? CSS.escape : (v) => v;
+    let group = null;
+    try {
+      group = container.querySelector(`[data-lightning-overlay="${escapeFn(key)}"]`);
+    } catch (e) {
+      group = container.querySelector(`[data-lightning-overlay="${key}"]`);
+    }
+    if (group && typeof group.remove === 'function') {
+      group.remove();
+    } else if (group && group.parentNode) {
+      group.parentNode.removeChild(group);
+    }
+    const svgRoot = element.ownerSVGElement || null;
+    if (!svgRoot) return;
+    const defs = svgRoot.querySelector('defs');
+    if (!defs) return;
+    const safeKey = key.replace(/[^a-z0-9_-]/gi, '_');
+    const maskId = `lumina-lightning-mask-${safeKey}`;
+    const filterId = `lumina-lightning-blur-${safeKey}`;
+    [maskId, filterId].forEach((id) => {
+      let el = null;
+      try {
+        el = defs.querySelector(`#${escapeFn(id)}`);
+      } catch (eQ) {
+        el = defs.querySelector(`#${id}`);
+      }
+      if (el && typeof el.remove === 'function') {
+        el.remove();
+      } else if (el && el.parentNode) {
+        el.parentNode.removeChild(el);
+      }
+    });
   }
 
   _removeFluidFlowMask(flowKey, element) {
@@ -7669,9 +7995,10 @@ class LuminaEnergyCard extends HTMLElement {
 
     // Display settings: single background always (no heat-pump–specific image). Day/Night: use resolver when available (giornonotte module).
     const defaultBg = '/local/community/lumina-energy-card/lumina_background1.png';
-    const bg_img = (typeof this._getResolvedDayNightBackground_ === 'function')
+    const bg_raw = (typeof this._getResolvedDayNightBackground_ === 'function')
       ? this._getResolvedDayNightBackground_(config, this._hass)
       : ((config.installation_type === '4') ? (config.background_image || '') : (config.background_image || defaultBg));
+    const bg_img = this._resolveHaMediaPath_(bg_raw);
     // Night mode: when day/night is enabled and night image is shown (sun below_horizon or override). Hide solar forecast at night.
     const isNight = (function() {
       const enabled = config && config.night_mode_enabled === true;
@@ -15803,9 +16130,10 @@ class LuminaEnergyCard extends HTMLElement {
 
     if (refs.background) {
       if (prev.backgroundImage !== viewState.backgroundImage) {
-        refs.background.setAttribute('href', viewState.backgroundImage || '');
-        refs.background.setAttribute('xlink:href', viewState.backgroundImage || '');
-        refs.background.style.display = viewState.backgroundImage ? 'inline' : 'none';
+        const bgHref = this._resolveHaMediaPath_(viewState.backgroundImage || '');
+        refs.background.setAttribute('href', bgHref);
+        refs.background.setAttribute('xlink:href', bgHref);
+        refs.background.style.display = bgHref ? 'inline' : 'none';
       }
       if (prev.backgroundImageX !== viewState.backgroundImageX) {
         refs.background.setAttribute('x', String(viewState.backgroundImageX));
@@ -16826,13 +17154,15 @@ class LuminaEnergyCard extends HTMLElement {
       }
       // Update data-direction attribute for shimmer flows (CSS handles animation direction)
       const animationStyle = element.getAttribute('data-flow-style');
-      if (animationStyle === 'shimmer' && directionChanged) {
+      if (isOverlayFlowStyle(animationStyle) && directionChanged) {
         const directionAttr = (flowState.direction < 0) ? '-1' : '1';
         element.setAttribute('data-direction', directionAttr);
-        // Also update shimmer overlay paths if they exist
         const entry = this._flowTweens.get(key);
-        if (entry && entry.shimmerOverlay && entry.shimmerOverlay.paths) {
-          entry.shimmerOverlay.paths.forEach((path) => {
+        const overlayPaths = entry && entry.mode === 'lightning'
+          ? (entry.lightningOverlay && entry.lightningOverlay.paths)
+          : (entry && entry.shimmerOverlay && entry.shimmerOverlay.paths);
+        if (overlayPaths && overlayPaths.length) {
+          overlayPaths.forEach((path) => {
             if (path) {
               path.setAttribute('data-direction', directionAttr);
             }
@@ -16846,8 +17176,9 @@ class LuminaEnergyCard extends HTMLElement {
       }
       // Update base path opacity. For shimmer, we use a very faint background path
       // so only the shimmer pulse is clearly visible.
-      const isShimmer = animationStyle === 'shimmer';
-      const pathOpacity = flowState.active ? (isShimmer ? '0.1' : '1') : '0';
+      const pathOpacity = flowState.active
+        ? (animationStyle === 'shimmer' ? '0.1' : (animationStyle === 'lightning' ? '0.85' : '1'))
+        : '0';
       // Always update opacity to ensure visibility is correct, especially for battery flow
       element.style.opacity = pathOpacity;
       
@@ -16911,9 +17242,14 @@ class LuminaEnergyCard extends HTMLElement {
           
           // Reset shimmer overlay if it exists
           const entry = this._flowTweens.get(key);
-          if (entry && entry.mode === 'shimmer') {
-            this._removeShimmerOverlay(key, element);
-            entry.shimmerOverlay = null;
+          if (entry && (entry.mode === 'shimmer' || entry.mode === 'lightning')) {
+            if (entry.mode === 'shimmer') {
+              this._removeShimmerOverlay(key, element);
+              entry.shimmerOverlay = null;
+            } else {
+              this._removeLightningOverlay(key, element);
+              entry.lightningOverlay = null;
+            }
             // Force re-sync
             this._syncFlowAnimation(key, element, viewState.flows[key] && viewState.flows[key].active ? 1 : 0, viewState.flows[key]);
           }
@@ -18184,6 +18520,34 @@ class LuminaEnergyCard extends HTMLElement {
     const currentM = now.getHours() * 60 + now.getMinutes();
     if (fromM <= toM) return currentM >= fromM && currentM < toM;
     return currentM >= fromM || currentM < toM;
+  }
+
+  /**
+   * Turn /local/... or /api/image/serve/... paths into absolute URLs for SVG <image href>.
+   * Relative /api/ paths often fail silently inside SVG without hassUrl().
+   */
+  _resolveHaMediaPath_(path) {
+    if (path == null) return '';
+    const p = String(path).trim();
+    if (!p) return '';
+    if (p.startsWith('data:') || /^https?:\/\//i.test(p)) return p;
+    let base = '';
+    try {
+      if (this._hass && typeof this._hass.hassUrl === 'function') {
+        base = String(this._hass.hassUrl() || '');
+      }
+    } catch (e0) { /* ignore */ }
+    if (!base && typeof window !== 'undefined' && window.location && window.location.origin) {
+      base = window.location.origin;
+    }
+    if (base && base.endsWith('/')) base = base.slice(0, -1);
+    const pathPart = p.startsWith('/') ? p : '/' + p;
+    const full = base ? (base + pathPart) : pathPart;
+    if (pathPart.indexOf('/api/') === 0) {
+      const sep = full.indexOf('?') >= 0 ? '&' : '?';
+      return full + sep + 't=' + Date.now();
+    }
+    return full;
   }
 
   _getCameraPreviewUrl_(entityId, preferStream) {
@@ -20048,7 +20412,7 @@ class LuminaEnergyCard extends HTMLElement {
 
   static get version() {
     // Build marker (helps verify HA loaded the updated JS)
-    return '3.4.0';
+    return '3.5.5';
   }
 
   // Debug helper: force the custom-popup hotspot rects visible with a bright red outline
@@ -20918,6 +21282,10 @@ class LuminaEnergyCardEditor extends HTMLElement {
         this._remoteUiPollTimer = null;
       }
     } catch (e1) { /* ignore */ }
+
+    try {
+      this._cleanupLuminaEditorModals_();
+    } catch (eMod) { /* ignore */ }
   }
 
   _getRemoteUiControl_() {
@@ -25512,7 +25880,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           inverterPopup: { title: 'Inverter Popup', helper: 'Configure entities for the inverter popup display.' },
           colors: { title: 'Color & Thresholds', helper: 'Configure grid thresholds and accent colours for flows and EV display.' },
           flow_colors: { title: 'Flow Colors', helper: 'Configure colors for energy flow animations.' },
-          animation_styles: { title: 'Animation Styles', helper: 'Flow animation style (dashes, dots, arrows, shimmer). Default: shimmer.' },
+          animation_styles: { title: 'Animation Styles', helper: 'Flow animation style (dashes, dots, arrows, lightning bolt, shimmer). Default: shimmer.' },
           typography: { title: 'Typography', helper: 'Fine tune the font sizes used across the card.' },
           flow_path_custom: { title: 'Custom Flow Paths', helper: 'Customize flow paths by modifying SVG path strings. Leave empty to use default paths. You can combine custom paths with offsets from the Flow Path section.' },
           lumina_pro: { title: 'Lumina PRO Password', helper: 'Lumina PRO turns your card into a tailored energy dashboard—overlays, animated flows, rich popups and advanced editing tools aligned with your setup.\n\nWhat you get:\n• Custom overlay images (up to 5) with free positioning\n• Custom flows, custom popups (Classic / Tactical / Life Sign) and custom text\n• Personal background, advanced drag‑and‑drop editor and PRO tools\n• More visual options, layouts and detailed UI control\n• Mini Cam: camera stream on the map with label and position\n• Custom popups with advanced styles (Classic, Tactical, Life Sign, …)\n• People section: show Home Assistant “person” entities on the card\n• Solar forecast: production forecast service and on-card HUD\n\nPlus: community gallery and layout sharing.' },
@@ -25591,7 +25959,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           update_interval: { label: 'Update Interval', helper: 'Refresh cadence for card updates (0 disables throttling).' },
           performance_mode: { label: 'Performance Mode', helper: 'Auto = balanced by default (may switch to low on weak devices). Low keeps the UI responsive by simplifying heavy animations (shimmer/arrows/fluid_flow -> dots). High = smoothest but heavier.' },
           animation_speed_factor: { label: 'Animation Speed Factor', helper: 'Adjust animation speed multiplier (-3x to 3x). Set 0 to pause; negatives reverse direction.' },
-          animation_style: { label: 'Animation Style', helper: 'Choose the flow animation motif (dashes, dots, arrows, shimmer). Note: in Performance Mode = low, heavy styles may be simplified to keep the UI responsive.' },
+          animation_style: { label: 'Animation Style', helper: 'Choose the flow animation motif (dashes, dots, arrows, lightning bolt, shimmer). Note: in Performance Mode = low, heavy styles may be simplified to keep the UI responsive.' },
           flow_stroke_width: { label: 'Flow Stroke Width (px)', helper: 'Optional override for the animated flow stroke width (no SVG edits). Leave blank to keep SVG defaults.' },
           fluid_flow_stroke_width: { label: 'Fluid Flow Stroke Width (px)', helper: 'Base stroke width when animation_style is fluid_flow; overlay/mask widths are derived from this.' },
           custom_text_decimals: { label: 'Decimals', helper: 'Custom Text slots: Auto (-1) matches Home Assistant precision (suggested_display_precision, else step for input_number). Set 0–10 to force fraction digits. Popups use the same auto precision when no override is set.' },
@@ -26372,6 +26740,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Dashes (default)' },
             { value: 'dots', label: 'Dots' },
             { value: 'arrows', label: 'Arrows' },
+            { value: 'lightning', label: 'Lightning bolt' },
             { value: 'shimmer', label: 'Shimmer' }
           ],
           performance_modes: [
@@ -26413,7 +26782,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           inverterPopup: { title: 'Popup Inverter', helper: 'Configura le entita per la visualizzazione del popup inverter.' },
           colors: { title: 'Colori e soglie', helper: 'Configura soglie della rete e colori di accento per i flussi.' },
           flow_colors: { title: 'Colori Flussi', helper: 'Configura i colori per le animazioni dei flussi di energia.' },
-          animation_styles: { title: 'Stili Animazioni', helper: 'Stile animazione flussi (tratteggi, punti, frecce, shimmer). Predefinito: shimmer.' },
+          animation_styles: { title: 'Stili Animazioni', helper: 'Stile animazione flussi (tratteggi, punti, frecce, fulmine, shimmer). Predefinito: shimmer.' },
           typography: { title: 'Tipografia', helper: 'Regola le dimensioni dei caratteri utilizzate nella scheda.' },
           flow_path_custom: { title: 'Percorsi Flussi Personalizzati', helper: 'Personalizza i percorsi dei flussi modificando le stringhe SVG. Lascia vuoto per usare i percorsi predefiniti. Puoi combinare percorsi personalizzati con gli offset della sezione Percorso Flussi.' },
           lumina_pro: { title: 'Lumina PRO Password', helper: 'Con Lumina PRO trasformi la card in un cruscotto energetico su misura: overlay, flussi animati, popup ricchi e strumenti di editing avanzati, tutti allineati al tuo impianto.\n\nCosa include:\n• Immagini overlay personalizzate (fino a 5) con posizionamento libero\n• Custom flow, popup personalizzati (Classico / Tactical / Life Sign) e testo personalizzato\n• Sfondo personale, editor drag‑and‑drop avanzato e strumenti PRO\n• Più opzioni visive, layout e controllo dettagliato dell’interfaccia\n• Mini Cam: stream della telecamera sulla mappa, con etichetta e posizione\n• Popup personalizzati con stili avanzati (Classico, Tactical, Life Sign, …)\n• Sezione Persone: aggiungi e mostra le entità «person» di Home Assistant sulla card\n• Previsione solare: servizio di previsione della produzione e HUD sulla card\n\nIn più: galleria community e condivisione dei layout.' },
@@ -26479,7 +26848,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
           update_interval: { label: 'Intervallo di aggiornamento', helper: 'Frequenza di aggiornamento della scheda (0 disattiva il limite).' },
           performance_mode: { label: 'Modalità performance', helper: 'Auto = bilanciata (può scendere a low su device deboli). Low mantiene la UI reattiva semplificando le animazioni pesanti (shimmer/arrows/fluid_flow -> dots). High = più fluida ma più pesante.' },
           animation_speed_factor: { label: 'Fattore velocita animazioni', helper: 'Regola il moltiplicatore (-3x a 3x). Usa 0 per mettere in pausa; valori negativi invertono il flusso.' },
-          animation_style: { label: 'Stile animazione', helper: 'Scegli il motivo dei flussi (tratteggi, punti, frecce, shimmer). Nota: con Modalità performance = low alcuni stili pesanti possono essere semplificati per mantenere la UI reattiva.' },
+          animation_style: { label: 'Stile animazione', helper: 'Scegli il motivo dei flussi (tratteggi, punti, frecce, fulmine, shimmer). Nota: con Modalità performance = low alcuni stili pesanti possono essere semplificati per mantenere la UI reattiva.' },
           flow_stroke_width: { label: 'Larghezza tratto flusso (px)', helper: 'Override opzionale per la larghezza del tratto animato (nessuna modifica SVG). Lascia vuoto per mantenere i default SVG.' },
           fluid_flow_stroke_width: { label: 'Spessore tratto fluid_flow (px)', helper: 'Spessore base quando animation_style è fluid_flow; overlay/mask sono ricavati da questo valore.' },
           
@@ -27288,6 +27657,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Tratteggi (predefinito)' },
             { value: 'dots', label: 'Punti' },
             { value: 'arrows', label: 'Frecce' },
+            { value: 'lightning', label: 'Fulmine' },
             { value: 'shimmer', label: 'Scintillio' }
           ],
           performance_modes: [
@@ -28091,6 +28461,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Striche (Standard)' },
             { value: 'dots', label: 'Punkte' },
             { value: 'arrows', label: 'Pfeile' },
+            { value: 'lightning', label: 'Blitz' },
             { value: 'shimmer', label: 'Schimmern' }
           ],
           performance_modes: [
@@ -28894,6 +29265,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dots', label: 'Points' },
             { value: 'arrows', label: 'Flèches' },
             { value: 'fluid_flow', label: 'Flux fluide' },
+            { value: 'lightning', label: 'Éclair' },
             { value: 'shimmer', label: 'Scintillement' }
           ],
           performance_modes: [
@@ -29696,6 +30068,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Strepen (standaard)' },
             { value: 'dots', label: 'Stippen' },
             { value: 'arrows', label: 'Pijlen' },
+            { value: 'lightning', label: 'Bliksem' },
             { value: 'shimmer', label: 'Glinsteren' }
           ],
           performance_modes: [
@@ -30045,6 +30418,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Штрихи (по умолчанию)' },
             { value: 'dots', label: 'Точки' },
             { value: 'arrows', label: 'Стрелки' },
+            { value: 'lightning', label: 'Молния' },
             { value: 'shimmer', label: 'Свечение' }
           ],
           performance_modes: [
@@ -30394,6 +30768,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Traços (padrão)' },
             { value: 'dots', label: 'Pontos' },
             { value: 'arrows', label: 'Setas' },
+            { value: 'lightning', label: 'Relâmpago' },
             { value: 'shimmer', label: 'Brilho' }
           ],
           performance_modes: [
@@ -31208,6 +31583,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Guiones (predeterminado)' },
             { value: 'dots', label: 'Puntos' },
             { value: 'arrows', label: 'Flechas' },
+            { value: 'lightning', label: 'Relámpago' },
             { value: 'shimmer', label: 'Brillar' }
           ],
           performance_modes: [
@@ -32108,6 +32484,7 @@ class LuminaEnergyCardEditor extends HTMLElement {
             { value: 'dashes', label: 'Kreski (domyślne)' },
             { value: 'dots', label: 'Kropki' },
             { value: 'arrows', label: 'Strzałki' },
+            { value: 'lightning', label: 'Błyskawica' },
             { value: 'shimmer', label: 'Migotać' }
           ],
           performance_modes: [
@@ -34630,39 +35007,171 @@ _createUpdatesContent_() {
     });
   }
 
-  /**
-   * Upload a user-selected image as the personal background.
-   * Tries Home Assistant's built-in image API (POST /api/image/upload), which saves the file
-   * on disk inside HA and returns an id. The card stores only the resulting URL
-   * (`/api/image/serve/<id>/original`), keeping the card config small.
-   * Falls back to a compressed base64 data URL if the API is unavailable (e.g. proxy without auth).
-   */
-  async _uploadPersonalBackgroundFileToHa_(file) {
-    if (!file) return null;
-    try {
-      const token = (this._hass && this._hass.auth && this._hass.auth.data && this._hass.auth.data.access_token)
-        ? this._hass.auth.data.access_token : null;
-      if (token) {
-        const fd = new FormData();
-        fd.append('file', file);
-        const res = await fetch('/api/image/upload', {
-          method: 'POST',
-          headers: { 'Authorization': 'Bearer ' + token },
-          body: fd
-        });
-        if (res && res.ok) {
-          const json = await res.json().catch(() => null);
-          if (json && json.id) return '/api/image/serve/' + json.id + '/original';
-        }
-      }
-    } catch (eUp) { /* fall through to base64 fallback */ }
+  _getHaAuthToken_() {
+    const auth = this._hass && this._hass.auth;
+    if (!auth) return null;
+    const data = auth.data || auth;
+    return (data && (data.access_token || data.accessToken))
+      || auth.accessToken
+      || auth.access_token
+      || null;
+  }
+
+  async _convertImageFileForHaUpload_(file) {
+    const allowed = new Set(['image/jpeg', 'image/png', 'image/gif']);
+    if (file && allowed.has(file.type)) {
+      return file;
+    }
     const dataUrl = await new Promise((resolve, reject) => {
       const r = new FileReader();
       r.onload = () => resolve(r.result);
       r.onerror = () => reject(new Error('Read error'));
       r.readAsDataURL(file);
     });
-    return await this._compressBackgroundImage(dataUrl);
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onerror = () => reject(new Error('Unsupported image format (use JPEG, PNG or GIF)'));
+      img.onload = () => {
+        try {
+          const w = img.naturalWidth || img.width;
+          const h = img.naturalHeight || img.height;
+          if (!w || !h) {
+            reject(new Error('Invalid image dimensions'));
+            return;
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) {
+            reject(new Error('Canvas not available'));
+            return;
+          }
+          ctx.drawImage(img, 0, 0, w, h);
+          canvas.toBlob((blob) => {
+            if (!blob) {
+              reject(new Error('Image conversion failed'));
+              return;
+            }
+            const baseName = (file && file.name) ? String(file.name).replace(/\.[^.]+$/, '') : 'background';
+            resolve(new File([blob], baseName + '.jpg', { type: 'image/jpeg' }));
+          }, 'image/jpeg', 0.92);
+        } catch (e) {
+          reject(e);
+        }
+      };
+      img.src = dataUrl;
+    });
+  }
+
+  _createPersonalBackgroundFormData_(file) {
+    const fd = new FormData();
+    const name = (file && file.name) ? String(file.name) : 'lumina-background.jpg';
+    fd.append('file', file, name);
+    return fd;
+  }
+
+  async _postHaImageUpload_(file) {
+    const hass = this._hass;
+    const fd = this._createPersonalBackgroundFormData_(file);
+    let res = null;
+    if (hass && typeof hass.fetchWithAuth === 'function') {
+      res = await hass.fetchWithAuth('/api/image/upload', { method: 'POST', body: fd });
+    } else {
+      const token = this._getHaAuthToken_();
+      if (!token) {
+        return { ok: false, status: 0, detail: 'no_auth_token' };
+      }
+      let url = '/api/image/upload';
+      try {
+        if (hass && typeof hass.hassUrl === 'function') {
+          url = hass.hassUrl('/api/image/upload');
+        }
+      } catch (eUrl) { /* keep relative */ }
+      res = await fetch(url, {
+        method: 'POST',
+        headers: { Authorization: 'Bearer ' + token },
+        body: fd
+      });
+    }
+    if (!res || !res.ok) {
+      let detail = '';
+      try {
+        const errJson = await res.json();
+        detail = (errJson && (errJson.message || errJson.error)) ? String(errJson.message || errJson.error) : '';
+      } catch (eJ) {
+        try {
+          detail = await res.text();
+        } catch (eT) { /* ignore */ }
+      }
+      return {
+        ok: false,
+        status: res ? res.status : 0,
+        detail: detail || (res && res.status ? 'HTTP ' + res.status : 'upload_failed')
+      };
+    }
+    const json = await res.json().catch(() => null);
+    const id = json && (json.id || json.image_id);
+    if (!id) {
+      return { ok: false, status: res.status, detail: 'missing_image_id' };
+    }
+    return { ok: true, id: String(id) };
+  }
+
+  /**
+   * Upload a user-selected image as the personal background.
+   * Tries Home Assistant image_upload (POST /api/image/upload) → disk: config/image/<id>/original
+   * URL stored in card config: /api/image/serve/<id>/original
+   * Falls back to compressed base64 in config if the API fails.
+   * @returns {Promise<{ok:boolean,url?:string,mode?:'ha_disk'|'config_base64',detail?:string}>}
+   */
+  async _uploadPersonalBackgroundFileToHa_(file) {
+    if (!file) return { ok: false, detail: 'no_file' };
+    const maxBytes = 10 * 1024 * 1024;
+    if (file.size > maxBytes) {
+      return { ok: false, detail: 'max_10mb' };
+    }
+    let uploadFile = file;
+    try {
+      uploadFile = await this._convertImageFileForHaUpload_(file);
+    } catch (eFmt) {
+      return { ok: false, detail: (eFmt && eFmt.message) ? eFmt.message : 'invalid_format' };
+    }
+    let apiDetail = '';
+    try {
+      const up = await this._postHaImageUpload_(uploadFile);
+      if (up && up.ok && up.id) {
+        return {
+          ok: true,
+          url: '/api/image/serve/' + up.id + '/original',
+          mode: 'ha_disk',
+          id: up.id
+        };
+      }
+      apiDetail = (up && up.detail) ? String(up.detail) : 'upload_failed';
+    } catch (eUp) {
+      apiDetail = (eUp && eUp.message) ? eUp.message : String(eUp);
+    }
+    try {
+      const dataUrl = await new Promise((resolve, reject) => {
+        const r = new FileReader();
+        r.onload = () => resolve(r.result);
+        r.onerror = () => reject(new Error('Read error'));
+        r.readAsDataURL(file);
+      });
+      const compressed = await this._compressBackgroundImage(dataUrl);
+      if (!compressed) {
+        return { ok: false, detail: apiDetail || 'read_failed' };
+      }
+      return {
+        ok: true,
+        url: compressed,
+        mode: 'config_base64',
+        detail: apiDetail
+      };
+    } catch (eRead) {
+      return { ok: false, detail: apiDetail || ((eRead && eRead.message) ? eRead.message : 'read_failed') };
+    }
   }
 
   async _callOpenAiDalleBackground(apiKey, prompt) {
@@ -34854,11 +35363,18 @@ _createUpdatesContent_() {
     };
     const personalUploadingLabels = { en: 'Uploading', it: 'Caricamento in corso', de: 'Wird hochgeladen', fr: 'Téléversement', nl: 'Uploaden' };
     const personalUploadedLabels = {
-      en: 'Background uploaded and saved in Home Assistant',
-      it: 'Sfondo caricato e salvato in Home Assistant',
-      de: 'Hintergrund hochgeladen und in Home Assistant gespeichert',
-      fr: 'Fond téléversé et enregistré dans Home Assistant',
-      nl: 'Achtergrond geüpload en opgeslagen in Home Assistant'
+      en: 'Saved on Home Assistant disk (config/image/) — URL in card config',
+      it: 'Salvato su disco Home Assistant (config/image/) — URL nella config card',
+      de: 'Auf Home-Assistant-Festplatte gespeichert (config/image/)',
+      fr: 'Enregistré sur le disque Home Assistant (config/image/)',
+      nl: 'Opgeslagen op Home Assistant-schijf (config/image/)'
+    };
+    const personalUploadedBase64Labels = {
+      en: 'Saved inside card config only (HA upload failed). Use JPEG/PNG/GIF under 10 MB, or copy file to /config/www/ manually.',
+      it: 'Salvato solo nella config della card (upload HA fallito). Usa JPEG/PNG/GIF max 10 MB, oppure copia il file in /config/www/ a mano.',
+      de: 'Nur in der Karten-Config gespeichert (HA-Upload fehlgeschlagen). JPEG/PNG/GIF unter 10 MB oder Datei nach /config/www/ kopieren.',
+      fr: 'Enregistré dans la config de la carte seulement (échec upload HA). JPEG/PNG/GIF max 10 Mo.',
+      nl: 'Alleen in kaartconfig opgeslagen (HA-upload mislukt). JPEG/PNG/GIF max 10 MB.'
     };
     const personalUploadErrorLabels = { en: 'Upload failed', it: 'Caricamento fallito', de: 'Upload fehlgeschlagen', fr: 'Échec du téléversement', nl: 'Upload mislukt' };
     const personalNeedsProLabels = {
@@ -35025,21 +35541,36 @@ _createUpdatesContent_() {
       personalClearBtn.disabled = true;
       personalStatus.style.color = '#00E5FF';
       personalStatus.textContent = (personalUploadingLabels[lang] || personalUploadingLabels.en) + '\u2026';
-      self._uploadPersonalBackgroundFileToHa_(file).then((url) => {
+      self._uploadPersonalBackgroundFileToHa_(file).then((result) => {
         personalUploadBtn.disabled = false;
         personalClearBtn.disabled = false;
-        if (!url) {
+        if (!result || !result.ok || !result.url) {
           personalStatus.style.color = '#ff6688';
-          personalStatus.textContent = '\u2717 ' + (personalUploadErrorLabels[lang] || personalUploadErrorLabels.en);
+          const detail = (result && result.detail) ? (': ' + result.detail) : '';
+          personalStatus.textContent = '\u2717 ' + (personalUploadErrorLabels[lang] || personalUploadErrorLabels.en) + detail;
           return;
         }
         const config = self._configWithDefaults();
         config.installation_type = '4';
-        config.background_image = url;
+        config.background_image = result.url;
         self._config = { ...config };
         self._debouncedConfigChanged(config, true);
-        personalStatus.style.color = '#00ff88';
-        personalStatus.textContent = '\u2713 ' + (personalUploadedLabels[lang] || personalUploadedLabels.en);
+        if (result.mode === 'config_base64') {
+          personalStatus.style.color = '#ffcc66';
+          const warn = (personalUploadedBase64Labels[lang] || personalUploadedBase64Labels.en);
+          const extra = result.detail ? (' (' + result.detail + ')') : '';
+          personalStatus.textContent = '\u26a0 ' + warn + extra;
+        } else {
+          personalStatus.style.color = '#00ff88';
+          const saveHint = {
+            en: ' Salva la card (in alto a destra). Tipo impianto: 4. Personale.',
+            it: ' Salva la card (in alto a destra). Tipo impianto: 4. Personale.',
+            de: ' Karte speichern (oben rechts). Installationstyp: 4. Personal.',
+            fr: ' Enregistrez la carte (en haut a droite). Type 4. Personnel.',
+            nl: ' Sla de kaart op (rechtsboven). Type 4. Persoonlijk.'
+          };
+          personalStatus.textContent = '\u2713 ' + (personalUploadedLabels[lang] || personalUploadedLabels.en) + (saveHint[lang] || saveHint.it);
+        }
         setTimeout(() => {
           self._rendered = false;
           self.render();
@@ -37827,9 +38358,14 @@ _createUpdatesContent_() {
       const safeLinks = inLinks.filter((x) => typeof x === 'string' && x.indexOf('http') === 0);
       if (!safeLinks.length) return;
 
+      try { this._cleanupLuminaEditorModals_(); } catch (eCl) { /* ignore */ }
+      const modalHost = (typeof this._getLuminaEditorModalHost_ === 'function') ? this._getLuminaEditorModalHost_() : (document.body || document.documentElement);
+      if (!modalHost) return;
+
       const overlay = document.createElement('div');
       overlay.id = 'lumina-video-guides-modal';
-      overlay.style.cssText = 'position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,0.72);display:flex;align-items:center;justify-content:center;padding:16px;';
+      overlay.setAttribute('data-lumina-editor-modal', '1');
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,0.72);display:flex;align-items:center;justify-content:center;padding:16px;pointer-events:auto;touch-action:manipulation;';
 
       const card = document.createElement('div');
       card.style.cssText = 'width:min(700px,96vw);max-height:90vh;overflow:auto;border-radius:14px;border:1px solid rgba(0,229,255,0.35);background:linear-gradient(145deg,rgba(4,24,34,0.98),rgba(5,12,22,0.98));box-shadow:0 12px 34px rgba(0,0,0,0.55);padding:16px;';
@@ -37903,9 +38439,8 @@ _createUpdatesContent_() {
       closeBtn.type = 'button';
       closeBtn.textContent = t('editor_video_guides_close', 'Close');
       closeBtn.style.cssText = 'padding:8px 12px;border-radius:9px;border:1px solid rgba(148,163,184,0.55);background:rgba(148,163,184,0.12);color:#d6dde8;font-size:12px;font-weight:700;cursor:pointer;';
-      closeBtn.addEventListener('click', () => {
-        try { if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay); } catch (e) { /* ignore */ }
-      });
+      const dismiss = this._bindLuminaEditorModalDismiss_(overlay, card);
+      closeBtn.addEventListener('click', dismiss);
       actions.appendChild(openAllBtn);
       actions.appendChild(closeBtn);
 
@@ -37914,12 +38449,7 @@ _createUpdatesContent_() {
       card.appendChild(list);
       card.appendChild(actions);
       overlay.appendChild(card);
-      overlay.addEventListener('click', (ev) => {
-        if (ev && ev.target === overlay) {
-          try { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); } catch (e) { /* ignore */ }
-        }
-      });
-      document.body.appendChild(overlay);
+      modalHost.appendChild(overlay);
     } catch (e) { /* ignore */ }
   }
 
@@ -39839,6 +40369,79 @@ _createUpdatesContent_() {
   }
 }
 
+/** Prefer editor shadowRoot so modals stay inside the HA card dialog (avoids trapping the Lovelace UI). */
+LuminaEnergyCardEditor.prototype._getLuminaEditorModalHost_ = function() {
+  try {
+    if (this.shadowRoot) return this.shadowRoot;
+  } catch (e0) { /* ignore */ }
+  try {
+    const dialogs = (typeof this._findAllHaDialogNodes_ === 'function') ? this._findAllHaDialogNodes_() : [];
+    for (let i = 0; i < dialogs.length; i++) {
+      const d = dialogs[i];
+      if (d && d.shadowRoot) return d.shadowRoot;
+    }
+  } catch (e1) { /* ignore */ }
+  return document.body || document.documentElement;
+};
+
+LuminaEnergyCardEditor.prototype._cleanupLuminaEditorModals_ = function() {
+  const ids = ['lumina-pro-welcome-modal', 'lumina-gallery-teaser-modal', 'lumina-video-guides-modal'];
+  const roots = [];
+  try { if (this.shadowRoot) roots.push(this.shadowRoot); } catch (e0) { /* ignore */ }
+  try { if (document && document.body) roots.push(document.body); } catch (e1) { /* ignore */ }
+  ids.forEach((id) => {
+    roots.forEach((root) => {
+      try {
+        if (!root || !root.querySelector) return;
+        const el = root.querySelector('#' + id);
+        if (el && el.parentNode) el.parentNode.removeChild(el);
+      } catch (e2) { /* ignore */ }
+    });
+  });
+  try {
+    if (this._luminaModalEscHandler) {
+      document.removeEventListener('keydown', this._luminaModalEscHandler, true);
+      this._luminaModalEscHandler = null;
+    }
+  } catch (e3) { /* ignore */ }
+};
+
+LuminaEnergyCardEditor.prototype._bindLuminaEditorModalDismiss_ = function(overlay, panel, beforeDismiss) {
+  const dismiss = () => {
+    try { if (typeof beforeDismiss === 'function') beforeDismiss(); } catch (e0) { /* ignore */ }
+    try { if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay); } catch (e1) { /* ignore */ }
+    try {
+      if (this._luminaModalEscHandler) {
+        document.removeEventListener('keydown', this._luminaModalEscHandler, true);
+        this._luminaModalEscHandler = null;
+      }
+    } catch (e2) { /* ignore */ }
+  };
+  if (panel) {
+    const stop = (ev) => { try { ev.stopPropagation(); } catch (e) { /* ignore */ } };
+    panel.addEventListener('click', stop);
+    panel.addEventListener('mousedown', stop);
+    panel.addEventListener('touchstart', stop, { passive: true });
+  }
+  overlay.addEventListener('click', (ev) => {
+    if (ev.target === overlay) dismiss();
+  });
+  try {
+    if (this._luminaModalEscHandler) {
+      document.removeEventListener('keydown', this._luminaModalEscHandler, true);
+      this._luminaModalEscHandler = null;
+    }
+  } catch (eRm) { /* ignore */ }
+  const escHandler = (ev) => {
+    if (!ev || (ev.key !== 'Escape' && ev.key !== 'Esc')) return;
+    try { ev.preventDefault(); ev.stopPropagation(); } catch (eP) { /* ignore */ }
+    dismiss();
+  };
+  this._luminaModalEscHandler = escHandler;
+  document.addEventListener('keydown', escHandler, true);
+  return dismiss;
+};
+
 /** PRO donation intro modal — PayPal: only Colletta (LUMINA_PAYPAL_COLLETTA_URL). */
 LuminaEnergyCardEditor.prototype._openProDonationWelcomeModal_ = function() {
   const ui = (typeof this._getRemoteUiControl_ === 'function') ? this._getRemoteUiControl_() : null;
@@ -39887,19 +40490,22 @@ LuminaEnergyCardEditor.prototype._openProDonationWelcomeModal_ = function() {
     pro_welcome_paypal: proWelcomePaypalLabel,
     pro_welcome_github: wl('pro_welcome_github', 'GitHub Sponsors')
   };
-  const host = document.body || document.documentElement;
+  const host = (typeof this._getLuminaEditorModalHost_ === 'function') ? this._getLuminaEditorModalHost_() : (document.body || document.documentElement);
   if (!host) return;
-  const existing = host.querySelector('#lumina-pro-welcome-modal');
-  if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+  try { this._cleanupLuminaEditorModals_(); } catch (eCl) { /* ignore */ }
   const overlay = document.createElement('div');
   overlay.id = 'lumina-pro-welcome-modal';
-  overlay.style.cssText = 'position:fixed; inset:0; z-index:999999; background:rgba(4,10,18,0.76); backdrop-filter:blur(3px); display:flex; align-items:center; justify-content:center; padding:16px;';
+  overlay.setAttribute('data-lumina-editor-modal', '1');
+  overlay.style.cssText = 'position:fixed; inset:0; z-index:999999; background:rgba(4,10,18,0.76); backdrop-filter:blur(3px); display:flex; align-items:center; justify-content:center; padding:16px; pointer-events:auto; touch-action:manipulation;';
   const modal = document.createElement('div');
-  modal.style.cssText = 'width:min(680px,96vw); max-height:90vh; overflow:auto; border-radius:14px; background:linear-gradient(160deg, rgba(8,18,30,0.98), rgba(7,22,36,0.98)); border:1px solid rgba(0,249,249,0.45); box-shadow:0 0 28px rgba(0,249,249,0.25), inset 0 0 0 1px rgba(0,255,255,0.08); color:#eaffff; padding:18px 18px 16px;';
+  modal.style.cssText = 'position:relative; width:min(680px,96vw); max-height:90vh; overflow:auto; border-radius:14px; background:linear-gradient(160deg, rgba(8,18,30,0.98), rgba(7,22,36,0.98)); border:1px solid rgba(0,249,249,0.45); box-shadow:0 0 28px rgba(0,249,249,0.25), inset 0 0 0 1px rgba(0,255,255,0.08); color:#eaffff; padding:18px 18px 16px; pointer-events:auto;';
   modal.innerHTML =
     '<div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;">' +
       '<div style="font-size:19px; font-weight:900; color:#00f9f9;">' + labels.pro_welcome_title + '</div>' +
-      '<div style="font-size:12px; color:#98f3ff; font-weight:700; padding:4px 9px; border-radius:999px; border:1px solid rgba(0,249,249,0.4); background:rgba(0,249,249,0.08);">' + labels.pro_welcome_badge + '</div>' +
+      '<div style="display:flex; align-items:center; gap:8px;">' +
+        '<div style="font-size:12px; color:#98f3ff; font-weight:700; padding:4px 9px; border-radius:999px; border:1px solid rgba(0,249,249,0.4); background:rgba(0,249,249,0.08);">' + labels.pro_welcome_badge + '</div>' +
+        '<button type="button" data-role="pro-close-x" aria-label="' + labels.pro_welcome_close + '" style="background:transparent; color:#9efbff; border:1px solid rgba(0,249,249,0.4); width:30px; height:30px; line-height:1; border-radius:50%; cursor:pointer; font-size:18px; font-weight:700;">\u00d7</button>' +
+      '</div>' +
     '</div>' +
     '<div style="font-size:13px; color:#c8f8ff; line-height:1.55; margin-bottom:10px;">' + labels.pro_welcome_desc + '</div>' +
     '<ul style="margin:0 0 12px 18px; padding:0; color:#d8fbff; font-size:13px; line-height:1.6;">' +
@@ -39920,22 +40526,25 @@ LuminaEnergyCardEditor.prototype._openProDonationWelcomeModal_ = function() {
     '<div style="font-size:11px; color:#9ddbe4;">' + labels.pro_welcome_after_note + '</div>';
   overlay.appendChild(modal);
   host.appendChild(overlay);
+  const markSeen = () => {
+    try { if (typeof sessionStorage !== 'undefined') sessionStorage.setItem('lumina_pro_welcome_seen_v1', '1'); } catch (eS) { /* ignore */ }
+  };
+  const dismiss = this._bindLuminaEditorModalDismiss_(overlay, modal, markSeen);
   const closeBtn = modal.querySelector('[data-role="pro-close"]');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-    });
-  }
-  overlay.addEventListener('click', (ev) => {
-    if (ev.target === overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
-  });
+  if (closeBtn) closeBtn.addEventListener('click', dismiss);
+  const closeX = modal.querySelector('[data-role="pro-close-x"]');
+  if (closeX) closeX.addEventListener('click', dismiss);
 };
 
 LuminaEnergyCardEditor.prototype._scheduleProDonationWelcomeModalOnEditorOpen_ = function() {
   if (this._proDonationWelcomeModalFired) return;
   this._proDonationWelcomeModalFired = true;
+  try {
+    if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('lumina_pro_welcome_seen_v1') === '1') return;
+  } catch (eSeen) { /* ignore */ }
   const go = () => {
     try {
+      if (!this.isConnected) return;
       // Try to launch the gallery teaser first (1x per browser session, only when not PRO).
       // If the teaser actually starts (or is already in flight), skip the donation welcome to avoid stacking modals.
       let willShowTeaser = false;
@@ -39947,11 +40556,8 @@ LuminaEnergyCardEditor.prototype._scheduleProDonationWelcomeModalOnEditorOpen_ =
       }
     } catch (e) { /* ignore */ }
   };
-  if (typeof requestAnimationFrame === 'function') {
-    requestAnimationFrame(() => { setTimeout(go, 0); });
-  } else {
-    setTimeout(go, 80);
-  }
+  // Defer so the HA card dialog finishes opening and is not blocked by a body-level overlay.
+  setTimeout(go, 900);
 };
 
 /** Returns true if the gallery teaser is going to be shown (so caller can skip donation welcome). */
@@ -40008,15 +40614,15 @@ LuminaEnergyCardEditor.prototype._openLuminaGalleryTeaserModal_ = function(items
   const labelLock = fields.editor_section_pro_password_required || 'PRO password required';
 
   const galleryBase = (typeof LUMINA_LICENSE_ENDPOINT === 'string' && LUMINA_LICENSE_ENDPOINT) ? String(LUMINA_LICENSE_ENDPOINT).replace(/\/$/, '') : '';
-  const host = document.body || document.documentElement;
+  const host = (typeof this._getLuminaEditorModalHost_ === 'function') ? this._getLuminaEditorModalHost_() : (document.body || document.documentElement);
   if (!host) return;
 
-  const existing = host.querySelector('#lumina-gallery-teaser-modal');
-  if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+  try { this._cleanupLuminaEditorModals_(); } catch (eCl) { /* ignore */ }
 
   const overlay = document.createElement('div');
   overlay.id = 'lumina-gallery-teaser-modal';
-  overlay.style.cssText = 'position:fixed; inset:0; z-index:999999; background:rgba(4,10,18,0.78); backdrop-filter:blur(3px); display:flex; align-items:center; justify-content:center; padding:16px;';
+  overlay.setAttribute('data-lumina-editor-modal', '1');
+  overlay.style.cssText = 'position:fixed; inset:0; z-index:999999; background:rgba(4,10,18,0.78); backdrop-filter:blur(3px); display:flex; align-items:center; justify-content:center; padding:16px; pointer-events:auto; touch-action:manipulation;';
 
   const modal = document.createElement('div');
   modal.style.cssText = 'width:min(560px,96vw); max-height:92vh; overflow:hidden; border-radius:14px; background:linear-gradient(160deg,rgba(8,18,30,0.98),rgba(7,22,36,0.98)); border:1px solid rgba(168,85,247,0.45); box-shadow:0 0 28px rgba(0,212,255,0.25), inset 0 0 0 1px rgba(168,85,247,0.12); color:#eaffff; display:flex; flex-direction:column;';
@@ -40122,14 +40728,12 @@ LuminaEnergyCardEditor.prototype._openLuminaGalleryTeaserModal_ = function(items
     }, 3500);
   }
 
-  const dismiss = () => {
+  const dismiss = this._bindLuminaEditorModalDismiss_(overlay, modal, () => {
     try { if (rotateTimer) { clearInterval(rotateTimer); rotateTimer = null; } } catch (eT) { /* ignore */ }
-    try { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); } catch (eR) { /* ignore */ }
-  };
+  });
 
   closeX.addEventListener('click', dismiss);
   closeEl.addEventListener('click', dismiss);
-  overlay.addEventListener('click', (ev) => { if (ev.target === overlay) dismiss(); });
 
   unlockEl.addEventListener('click', () => {
     dismiss();
@@ -42216,4 +42820,4 @@ LuminaEnergyCardEditor.prototype._shareToGallery_ = function() {
   };
 })();
 
-/* LUMINA_DIST_BUILD_ISO=2026-05-07T12:45:56.510Z file=lumina-energy-card.js (sec+main+gallery+giornonotte) */
+/* LUMINA_DIST_BUILD_ISO=2026-06-09T12:56:23.527Z file=lumina-energy-card.js (sec+main+gallery+giornonotte) */
