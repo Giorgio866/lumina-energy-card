@@ -70,7 +70,7 @@ const __URL_GH_SPONSORS = __b64(__s(
   'aW84NjY='
 ));
 /** All user-facing PayPal payment CTAs in the editor use this money-pool (colletta) link. */
-const LUMINA_PAYPAL_COLLETTA_URL = 'https://www.paypal.com/pool/9mz595V3BW?sr=ancr';
+const LUMINA_PAYPAL_COLLETTA_URL = 'https://www.paypal.com/pool/9q2zQdL3kI?sr=accr';
 
 /** Max slots for PRO custom flows and custom texts (editor + card). */
 const LUMINA_CUSTOM_FLOW_TEXT_SLOTS = 20;
@@ -18530,24 +18530,14 @@ class LuminaEnergyCard extends HTMLElement {
     if (path == null) return '';
     const p = String(path).trim();
     if (!p) return '';
+    // Absolute URLs and data URIs are used as-is.
     if (p.startsWith('data:') || /^https?:\/\//i.test(p)) return p;
-    let base = '';
-    try {
-      if (this._hass && typeof this._hass.hassUrl === 'function') {
-        base = String(this._hass.hassUrl() || '');
-      }
-    } catch (e0) { /* ignore */ }
-    if (!base && typeof window !== 'undefined' && window.location && window.location.origin) {
-      base = window.location.origin;
-    }
-    if (base && base.endsWith('/')) base = base.slice(0, -1);
-    const pathPart = p.startsWith('/') ? p : '/' + p;
-    const full = base ? (base + pathPart) : pathPart;
-    if (pathPart.indexOf('/api/') === 0) {
-      const sep = full.indexOf('?') >= 0 ? '&' : '?';
-      return full + sep + 't=' + Date.now();
-    }
-    return full;
+    // Keep HA media paths RELATIVE so the browser resolves them against the current
+    // page origin. Forcing an absolute URL via hass.hassUrl() breaks behind HTTPS
+    // reverse proxies / Nabu Casa (mixed-content & SSL errors when the resolved base
+    // is an internal http:// URL). Relative paths always match the active connection.
+    if (p.startsWith('/')) return p;
+    return '/' + p;
   }
 
   _getCameraPreviewUrl_(entityId, preferStream) {
@@ -20412,7 +20402,7 @@ class LuminaEnergyCard extends HTMLElement {
 
   static get version() {
     // Build marker (helps verify HA loaded the updated JS)
-    return '3.5.5';
+    return '3.5.6';
   }
 
   // Debug helper: force the custom-popup hotspot rects visible with a bright red outline
@@ -42820,4 +42810,4 @@ LuminaEnergyCardEditor.prototype._shareToGallery_ = function() {
   };
 })();
 
-/* LUMINA_DIST_BUILD_ISO=2026-06-09T12:56:23.527Z file=lumina-energy-card.js (sec+main+gallery+giornonotte) */
+/* LUMINA_DIST_BUILD_ISO=2026-06-14T09:37:26.918Z file=lumina-energy-card.js (sec+main+gallery+giornonotte) */
