@@ -1,7 +1,7 @@
 # Lumina Energy Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-![Version](https://img.shields.io/badge/version-3.5.5-blue.svg)
+![Version](https://img.shields.io/badge/version-3.6.5-blue.svg)
 
 Repository: [https://github.com/Giorgio866/lumina-energy-card](https://github.com/Giorgio866/lumina-energy-card)
 
@@ -27,35 +27,28 @@ Commercial use / resale requires a separate agreement (`COMMERCIAL-LICENSE.md`).
 
 ### Overview
 
-Lumina Energy Card is a Home Assistant custom Lovelace card that displays animated energy flows (PV, battery, grid, load, heat pump, EV), aggregates PV strings and batteries, and supports optional EV charging and heat pump metrics. It includes **House Management** (cameras, lights, temperature, humidity, security keypad), **interactive popups** with toggles, round buttons (Echo Alive, Text toggle, HOME), **PRO** features (motion-based text visibility, overlay images, custom flows), **Import & Export** for config backup, an optional **Tech** schematic dashboard, and **version 3.5.x** enhancements.
+Lumina Energy Card is a Home Assistant custom Lovelace card that displays animated energy flows (PV, battery, grid, load, heat pump, EV), aggregates PV strings and batteries, and supports optional EV charging and heat pump metrics. It includes **House Management** (cameras, lights, temperature, humidity, security keypad), **interactive popups** with toggles, round buttons (Echo Alive, Text toggle, HOME), **PRO** features (motion-based text visibility, overlay images, custom flows), **Import & Export** for config backup, an optional **Tech** schematic dashboard, a **first-setup wizard**, **editor diagnostics**, and ongoing **3.6.x** enhancements.
+
+### What's new in 3.6.5
+
+
+- **Energy Comet flow animation:** New style **Energy comet** — a bright head with a fading tail travels along each energy path (mask-based overlay, phosphorescent glow). Pick it under **Animation styles**.
+- **Plasma Flow animation:** New style **Plasma flow** — dual-wave cyan/magenta pulse with soft bloom along the paths; ideal for a sci-fi / holographic look.
+- **Performance-aware styles:** On **Low** performance mode or when the browser requests reduced motion, heavy styles (including comet and plasma) automatically fall back to **Dots** so kiosks and weak tablets stay responsive.
+- **Translations:** Comet and plasma labels are available in all supported editor languages (EN, IT, DE, FR, NL, ES, PT, PL, RU).
+
+### What's new in 3.6.x (3.6.0 – 3.6.4)
+
+- **First-setup wizard:** On first open of the card editor, a guided **multi-step wizard** helps you choose language, installation type (PV / battery / grid / EV / heat pump), image style, and map the main sensors step by step. Re-open it anytime from **Diagnostics → Open setup wizard**.
+- **Diagnostics section (editor):** New area with **debug mode** (extra console logs), **entity validation** badges on sensor fields (missing / unavailable), **background image health check**, config summary, and quick actions.
+- **Wizard & i18n fixes:** Changing language inside the wizard no longer closes it; wizard and diagnostics strings are localized across **9 languages**.
+- **PRO welcome after wizard:** Sponsor / PRO donation popup is shown correctly after completing the wizard without stacking on first install.
+- **Automated tests & CI:** `npm test` runs helper/unit checks; GitHub Actions runs tests on push/PR. Build pipeline runs tests before shipping the bundle.
+- **Modular build (maintainers):** Card logic is split into maintainable parts (`flows`, `diagnostics`, `setup-wizard`, etc.) and concatenated into the single HACS `lumina-energy-card.js` — same install, easier development.
 
 ### What's new in 3.5.5
 
-Tech Dashboard (image_style: tech)
-The SVG schematic view offers a comprehensive visual representation of your energy system with the following features:
-
-Solar Tracking: A day arc displaying the sun position synchronized with daytime hours.
-
-PV Management: Includes PV1/PV2 power labels and a total PV bubble, with a straight flow from the sun directly to the inverter.
-
-Battery Storage: Support for up to four battery packs, featuring SOC (State of Charge) fill levels and individual per-pack sensors.
-
-Energy Flows:
-
-PV: Green flow from sun to inverter.
-
-Battery: Green when charging and red when discharging.
-
-Grid: Red when importing and green when exporting (aligns with the Invert grid flow toggle).
-
-Customization:
-
-Select from up to six inverter brand images directly from the dashboard with a single touch.
-
-Choose custom icons for Grid and Home within the editor.
-
-Bottom Panels: Optional displays for temperatures, cell stats, or inverter daily kWh metrics.
-<img width="1706" height="724" alt="Screenshot 2026-05-07 144750" src="https://github.com/user-attachments/assets/e62f4960-ccac-4c79-ac3a-64dd7757cfe8" />
+- **Tech dashboard (`image_style: tech`):** Alternative **SVG schematic** view — day arc with **sun position** along daytime hours, **PV1/PV2** power labels, **total PV** bubble, **straight PV flow** from the sun to the **inverter**, **battery** packs (up to four) with SOC fill and per-pack sensors, **grid** and **house** flows, and optional **bottom panels** (temperatures / cell stats / inverter daily kWh). Flow colours: **PV** green (sun → inverter), **battery** green when charging and red when discharging, **grid** red when importing and green when exporting (aligned with **Invert grid flow** when used). Icon picks for grid/home and optional inverter brand image are supported in the editor.
 
 ### What's new in 3.4.0.3
 
@@ -238,10 +231,10 @@ Use the card’s visual editor (Edit → Lumina) to configure entities, colors, 
 
 ---
 
-#### 6. Animation style (shimmer, dashes, dots, arrows)
+#### 6. Animation style (shimmer, dashes, dots, arrows, lightning, comet, plasma)
 
 - **`animation_style`** (in **Colori flussi** / Flow colors, or **Stili animazioni**):  
-  **`shimmer`** (default), **`dashes`**, **`dots`**, **`arrows`**.
+  **`shimmer`** (default), **`dashes`**, **`dots`**, **`arrows`**, **`lightning`**, **`comet`** (Energy comet), **`plasma`** (Plasma flow).
 - **`animation_speed_factor`:** Adjust speed (e.g. `1` = normal, `2` = faster). Use `0` to pause animations.
 
 ---
@@ -335,12 +328,14 @@ PRO features require a **PRO password** (`pro_password`), unlocked via the edito
 | Performance mode | **General Settings** → **`performance_mode`** | Choose `auto` / `low` / `high` performance profile |
 | Battery mode | **`battery_power_mode`** | `flow` or `charge_discharge` |
 | Battery SOC grid | **`battery_overlay_enabled`** | Toggle battery overlay + 6‑segment SOC grid |
-| Animation style | **`animation_style`** | `shimmer`, `dashes`, `dots`, `arrows` |
+| Animation style | **`animation_style`** | `shimmer`, `dashes`, `dots`, `arrows`, `lightning`, `comet`, `plasma` |
+| Setup wizard | Editor (first open) / **Diagnostics** | Guided first-time configuration by installation type |
+| Diagnostics | Editor → **Diagnostics** | Debug mode, entity validation, image health, config summary |
 | Gallery | Editor → **Gallery** | Share your template to the gallery; browse and apply templates from others; Top & 30-day winner |
 | Solar forecast | **PRO** section | Estimated solar production + holographic sun (icon always visible) |
 | PRO (motion, overlay, etc.) | **PRO** section + **`pro_password`** | Motion-based text, overlay images, custom flows/text |
 | Tech schematic | Editor → **Image style** = `tech` | Alternate SVG energy-flow diagram with arc, multi-battery layout, coloured flows |
-| Languages | **Language** (editor) | EN, IT, DE, FR, NL, **RU**, **PT**, **ES** |
+| Lingue | **Lingua** (editor) | EN, IT, DE, FR, NL, **RU**, **PT**, **ES**, **PL** |
 
 ---
 
@@ -365,7 +360,23 @@ For **PRO** verification in the card: the backend may process your **Home Assist
 
 ### Panoramica
 
-Lumina Energy Card è una scheda Lovelace personalizzata per Home Assistant che mostra flussi energetici animati (PV, batteria, rete, carico, pompa di calore, EV), aggrega stringhe FV e batterie e supporta metriche opzionali per EV e pompa di calore. Include **Gestione casa** (telecamere, luci, temperatura, umidità, keypad sicurezza), **popup interattivi** con toggle, pulsanti rotondi (Echo Alive, Toggle testi, HOME), funzioni **PRO** (visibilità testi con sensore movimento, overlay, flussi personalizzati), **Import & Export** per il backup della configurazione, la **dashboard Tech** (schema SVG opzionale) e le novità della serie **3.5.x** (release **3.5.5**).
+Lumina Energy Card è una scheda Lovelace personalizzata per Home Assistant che mostra flussi energetici animati (PV, batteria, rete, carico, pompa di calore, EV), aggrega stringhe FV e batterie e supporta metriche opzionali per EV e pompa di calore. Include **Gestione casa** (telecamere, luci, temperatura, umidità, keypad sicurezza), **popup interattivi** con toggle, pulsanti rotondi (Echo Alive, Toggle testi, HOME), funzioni **PRO** (visibilità testi con sensore movimento, overlay, flussi personalizzati), **Import & Export** per il backup della configurazione, la **dashboard Tech** (schema SVG opzionale), un **wizard di prima configurazione**, **diagnostica nell’editor** e le novità della serie **3.6.x** (release **3.6.5**).
+
+### Novità in 3.6.5
+
+- **Animazione Cometa energetica:** Nuovo stile **Cometa energetica** — testa luminosa e coda sfumata che scorre lungo ogni percorso di flusso (overlay a maschera, bagliore fosforescente). Si sceglie in **Stili animazioni**.
+- **Animazione Flusso plasma:** Nuovo stile **Flusso plasma** — doppia onda cyan/magenta con alone morbido lungo i percorsi; look sci-fi / olografico.
+- **Prestazioni:** In modalità **Bassa** o con *riduzione movimento* del browser, gli stili pesanti (inclusi cometa e plasma) passano automaticamente ai **Punti** per tablet e kiosk più deboli.
+- **Traduzioni:** Etichette cometa e plasma in tutte le lingue supportate dall’editor (EN, IT, DE, FR, NL, ES, PT, PL, RU).
+
+### Novità in 3.6.x (3.6.0 – 3.6.4)
+
+- **Wizard prima configurazione:** Alla prima apertura dell’editor, un **wizard guidato** aiuta a scegliere lingua, tipo impianto (FV / batteria / rete / EV / pompa di calore), stile immagine e mappare i sensori principali passo passo. Riapribile da **Diagnostica → Apri wizard configurazione**.
+- **Sezione Diagnostica (editor):** **Modalità debug** (log extra in console), **validazione entità** sui campi sensore (mancante / non disponibile), **controllo salute immagini** di sfondo, riepilogo config e azioni rapide.
+- **Correzioni wizard e i18n:** Cambiare lingua nel wizard non lo chiude più; stringhe wizard e diagnostica in **9 lingue**.
+- **Popup PRO dopo wizard:** Il messaggio sponsor / donazione PRO compare correttamente dopo il wizard senza sovrapposizioni alla prima installazione.
+- **Test automatici e CI:** `npm test` verifica helper/moduli; GitHub Actions esegue i test su push/PR. La build lancia i test prima di generare il bundle.
+- **Build modulare (manutentori):** Logica spezzata in parti (`flows`, `diagnostics`, `setup-wizard`, ecc.) e ricomposta nel singolo `lumina-energy-card.js` per HACS — stessa installazione, sviluppo più semplice.
 
 ### Novità in 3.5.5
 
@@ -533,10 +544,10 @@ Usa l’**editor visivo** della scheda (Modifica → Lumina) per configurare ent
 
 ---
 
-#### 6. Stile animazioni (shimmer, tratteggi, punti, frecce)
+#### 6. Stile animazioni (shimmer, tratteggi, punti, frecce, fulmine, cometa, plasma)
 
 - **`animation_style`** (in **Colori flussi** o **Stili animazioni**):  
-  **`shimmer`** (predefinito), **`dashes`**, **`dots`**, **`arrows`**.
+  **`shimmer`** (predefinito), **`dashes`**, **`dots`**, **`arrows`**, **`lightning`**, **`comet`** (Cometa energetica), **`plasma`** (Flusso plasma).
 - **`animation_speed_factor`:** Regola la velocità (es. `1` = normale, `2` = più veloce). Con `0` le animazioni sono in pausa.
 
 ---
@@ -618,11 +629,13 @@ Le funzioni PRO richiedono la **password PRO** (`pro_password`), sbloccabile dal
 | Prestazioni | **Impostazioni generali** → **`performance_mode`** | Scegli profilo `auto` / `low` / `high` |
 | Modalità batteria | **`battery_power_mode`** | `flow` o `charge_discharge` |
 | Griglia SOC batteria | **`battery_overlay_enabled`** | Toggle overlay batteria + griglia SOC a 6 segmenti |
-| Stile animazioni | **`animation_style`** | `shimmer`, `dashes`, `dots`, `arrows` |
+| Stile animazioni | **`animation_style`** | `shimmer`, `dashes`, `dots`, `arrows`, `lightning`, `comet`, `plasma` |
+| Wizard configurazione | Editor (prima apertura) / **Diagnostica** | Configurazione guidata per tipo impianto |
+| Diagnostica | Editor → **Diagnostica** | Debug, validazione entità, salute immagini, riepilogo config |
 | Previsione solare | Sezione **PRO** | Produzione stimata + sole olografico |
 | PRO (movimento, overlay, ecc.) | Sezione **PRO** + **`pro_password`** | Testi su movimento, overlay, flussi/testi custom |
 | Dashboard Tech | Editor → **Tipo immagine / Image style** = `tech` | Schema SVG alternativo con arco solare, più batterie, flussi colorati |
-| Lingue | **Lingua** (editor) | EN, IT, DE, FR, NL, **RU**, **PT** |
+| Lingue | **Lingua** (editor) | EN, IT, DE, FR, NL, **RU**, **PT**, **ES**, **PL** |
 
 ---
 
