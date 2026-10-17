@@ -1,16 +1,41 @@
 # Lumina Energy Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-![Version](https://img.shields.io/badge/version-3.6.5-blue.svg)
+![Version](https://img.shields.io/badge/version-3.6.7-blue.svg)
 
 Repository: [https://github.com/Giorgio866/lumina-energy-card](https://github.com/Giorgio866/lumina-energy-card)
+
+> [!IMPORTANT]
+> ## Avviso HACS (17 ottobre 2026) — non più nello store predefinito
+>
+> **Lumina Energy Card non è più disponibile nello store HACS predefinito.**
+> L'installazione e gli aggiornamenti restano pienamente supportati come **repository HACS Custom** (o installazione manuale).
+>
+> ### Come installare / aggiornare ora
+> 1. Apri **HACS → Frontend** (o Lovelace / Dashboard)
+> 2. Menu **⋮ → Custom repositories**
+> 3. Aggiungi: `https://github.com/Giorgio866/lumina-energy-card`
+> 4. Categoria: **Dashboard** (Lovelace)
+> 5. Cerca **Lumina Energy Card** → Installa / Aggiorna
+>
+> Oppure usa il badge qui sotto (aggiunge il repo come Custom repository nella tua istanza).
+>
+> ### Perché è stata rimossa dallo store di default
+> Il 17 ottobre 2026 la card è stata rimossa dal catalogo predefinito HACS ([hacs/default#12095](https://github.com/hacs/default/pull/12095)), con motivazione riportata come *"owner request"*.
+>
+> **Non è stata una richiesta dell'autore attuale (Giorgio866).** La rimozione segue segnalazioni di terze parti legate anche al modello PRO / licenza a pagamento (vedi [hacs/integration#5038](https://github.com/hacs/integration/issues/5038) e [hacs/integration#5502](https://github.com/hacs/integration/issues/5502)). Offrire funzionalità PRO a pagamento è una scelta legittima dell'autore; la card rimane open source e installabile.
+>
+> ---
+>
+> ### English — HACS notice (2026-10-17)
+> **Lumina Energy Card is no longer in the default HACS store.** Install/update via **HACS → Custom repositories** → add `https://github.com/Giorgio866/lumina-energy-card` (category **Dashboard**), or manually. Removal via [hacs/default#12095](https://github.com/hacs/default/pull/12095) was attributed as an "owner request"; **the current owner did not request it**. It followed third-party complaints about paid PRO licensing ([#5038](https://github.com/hacs/integration/issues/5038), [#5502](https://github.com/hacs/integration/issues/5502)). Custom install still works.
 
 ## License
 
 This project is licensed under the **PolyForm Noncommercial License 1.0.0** (`LICENSE`).
 Commercial use / resale requires a separate agreement (`COMMERCIAL-LICENSE.md`).
 
-**[Install directly (HACS)][install]** · Support: [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?style=for-the-badge&logo=paypal)](https://paypal.me/giorgiosalierno) · [![GitHub Sponsors](https://img.shields.io/badge/Sponsor-Giorgio866-pink?style=for-the-badge&logo=github-sponsors)](https://github.com/sponsors/Giorgio866)  
+**[Add as HACS Custom repository][install]** · Support: [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?style=for-the-badge&logo=paypal)](https://paypal.me/giorgiosalierno) · [![GitHub Sponsors](https://img.shields.io/badge/Sponsor-Giorgio866-pink?style=for-the-badge&logo=github-sponsors)](https://github.com/sponsors/Giorgio866)  
 *Send as donation; other payment methods will be refunded.*
 
 [install]: https://my.home-assistant.io/redirect/hacs_repository/?owner=Giorgio866&repository=lumina-energy-card&category=frontend
@@ -142,14 +167,16 @@ Patch release focused on translations, clearer automotive labeling, multi-accoun
 
 ### Installation
 
-**One-click install (HACS):**  
-[![Open your Home Assistant instance and add this repository to HACS](https://my.home-assistant.io/badges/hacs_repository.svg)][install]  
-Click the badge → your Home Assistant opens → the repo is added to HACS. Then go to **HACS → Frontend**, search **Lumina Energy Card**, and install. Finally: **Dashboard → Edit → Add card → Lumina Energy Card**.
+> **Not in the default HACS store** (since 2026-10-17). Use a **Custom repository** (steps below) or manual install.
 
-**HACS (manual):**
-1. HACS → Frontend → Custom repositories → Add `https://github.com/Giorgio866/lumina-energy-card` (category: Dashboard).
-2. Search **Lumina Energy Card**, install it.
-3. Dashboard → Edit → Add card → **Lumina Energy Card**.
+**HACS Custom repository (recommended):**
+1. HACS → Frontend → **⋮ → Custom repositories**
+2. Add `https://github.com/Giorgio866/lumina-energy-card` (category: **Dashboard**)
+3. Search **Lumina Energy Card**, install / update
+4. Dashboard → Edit → Add card → **Lumina Energy Card**
+
+**Quick add (opens HA and adds this repo as Custom):**  
+[![Open your Home Assistant instance and add this repository to HACS](https://my.home-assistant.io/badges/hacs_repository.svg)][install]
 
 **Manual (no HACS):** Place `lumina-energy-card.js` and `lumina_background.png` in `/config/www/community/lumina-energy-card/`, add the Lovelace resource, restart Home Assistant.
 
@@ -455,14 +482,16 @@ Aggiornamento mirato a traduzioni, etichette EV, più account sulla stessa dashb
 
 ### Installazione
 
-**Installa direttamente (HACS, un clic):**  
-[![Apri Home Assistant e aggiungi questo repository a HACS](https://my.home-assistant.io/badges/hacs_repository.svg)][install]  
-Clicca il badge → si apre la tua istanza Home Assistant → il repository viene aggiunto a HACS. Poi vai in **HACS → Frontend**, cerca **Lumina Energy Card** e installala. Infine: **Dashboard → Modifica → Aggiungi scheda → Lumina Energy Card**.
+> **Non più nello store HACS predefinito** (dal 17/10/2026). Usa un **repository Custom** (passi sotto) oppure l'installazione manuale.
 
-**HACS (manuale):**
-1. HACS → Frontend → Custom repositories → Aggiungi `https://github.com/Giorgio866/lumina-energy-card` (categoria: Dashboard).
-2. Cerca **Lumina Energy Card**, installala.
-3. Dashboard → Modifica → Aggiungi scheda → **Lumina Energy Card**.
+**HACS — repository Custom (consigliato):**
+1. HACS → Frontend → **⋮ → Custom repositories**
+2. Aggiungi `https://github.com/Giorgio866/lumina-energy-card` (categoria: **Dashboard**)
+3. Cerca **Lumina Energy Card**, installa / aggiorna
+4. Dashboard → Modifica → Aggiungi scheda → **Lumina Energy Card**
+
+**Aggiunta rapida (apre HA e aggiunge questo repo come Custom):**  
+[![Apri Home Assistant e aggiungi questo repository a HACS](https://my.home-assistant.io/badges/hacs_repository.svg)][install]
 
 **Manuale (senza HACS):** Copia `lumina-energy-card.js` e `lumina_background.png` in `/config/www/community/lumina-energy-card/`, aggiungi la risorsa Lovelace e riavvia Home Assistant.
 
