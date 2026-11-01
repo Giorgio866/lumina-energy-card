@@ -1,7 +1,9 @@
 # Lumina Energy Card
 
+[![Apri il repository in HACS e installa Lumina Energy Card.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Giorgio866&repository=lumina-energy-card&category=plugin)
+
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-![Version](https://img.shields.io/badge/version-3.6.7-blue.svg)
+![Version](https://img.shields.io/badge/version-3.6.9-blue.svg)
 
 Repository: [https://github.com/Giorgio866/lumina-energy-card](https://github.com/Giorgio866/lumina-energy-card)
 
@@ -71,9 +73,7 @@ Commercial use / resale requires a separate agreement (`COMMERCIAL-LICENSE.md`).
 **[Add as HACS Custom repository][install]** · Support: [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?style=for-the-badge&logo=paypal)](https://paypal.me/giorgiosalierno) · [![GitHub Sponsors](https://img.shields.io/badge/Sponsor-Giorgio866-pink?style=for-the-badge&logo=github-sponsors)](https://github.com/sponsors/Giorgio866)  
 *Send as donation; other payment methods will be refunded.*
 
-[install]: https://my.home-assistant.io/redirect/hacs_repository/?owner=Giorgio866&repository=lumina-energy-card&category=frontend
-
-[![Open your Home Assistant instance and add this repository to HACS](https://my.home-assistant.io/badges/hacs_repository.svg)][install]
+[install]: https://my.home-assistant.io/redirect/hacs_repository/?owner=Giorgio866&repository=lumina-energy-card&category=plugin
 
 ![Lumina Energy Card](https://raw.githubusercontent.com/Giorgio866/lumina-energy-card/main/Images/screen.jpeg)
 
