@@ -1,7 +1,5 @@
 # Lumina Energy Card
 
-[![Apri il repository in HACS e installa Lumina Energy Card.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Giorgio866&repository=lumina-energy-card&category=plugin)
-
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
 ![Version](https://img.shields.io/badge/version-3.6.9-blue.svg)
 
@@ -21,6 +19,8 @@ Repository: [https://github.com/Giorgio866/lumina-energy-card](https://github.co
 > 5. Cerca **Lumina Energy Card** → Installa / Aggiorna
 >
 > Oppure usa il badge qui sotto (aggiunge il repo come Custom repository nella tua istanza).
+>
+> [![Apri il repository in HACS e installa Lumina Energy Card.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Giorgio866&repository=lumina-energy-card&category=plugin)
 >
 > ### Perché è stata rimossa dallo store di default
 > Il 17 ottobre 2026 la card è stata rimossa dal catalogo predefinito HACS ([hacs/default#12095](https://github.com/hacs/default/pull/12095)), con motivazione riportata come *"owner request"*.
