@@ -30,6 +30,39 @@ Repository: [https://github.com/Giorgio866/lumina-energy-card](https://github.co
 > ### English — HACS notice (2026-10-17)
 > **Lumina Energy Card is no longer in the default HACS store.** Install/update via **HACS → Custom repositories** → add `https://github.com/Giorgio866/lumina-energy-card` (category **Dashboard**), or manually. Removal via [hacs/default#12095](https://github.com/hacs/default/pull/12095) was attributed as an "owner request"; **the current owner did not request it**. It followed third-party complaints about paid PRO licensing ([#5038](https://github.com/hacs/integration/issues/5038), [#5502](https://github.com/hacs/integration/issues/5502)). Custom install still works.
 
+---
+
+## LuminaLux — discendente di Lumina
+
+**LuminaLux** è l'app Android nata dall'esperienza di Lumina Energy Card. Mostra l'impianto fotovoltaico con i flussi energetici in tempo reale, con dati da **LuxPower LuxCloud** e/o **Home Assistant**, e permette di disegnare i flussi sopra la foto della propria casa.
+
+**Scarica su Google Play:** https://play.google.com/store/apps/details?id=com.luminalux.app
+
+- Flussi animati tra fotovoltaico, inverter, casa, batteria, rete, auto elettrica e pompa di calore
+- Disegno dei flussi direttamente sulla foto della propria casa, con angolazione libera
+- Collegamento a LuxCloud e/o Home Assistant, anche con indirizzi diversi in casa e fuori
+- Prova gratuita di 7 giorni, poi abbonamento annuale
+
+<p align="center">
+  <img src="Images/luminalux/energia-tempo-reale.png" width="220" alt="LuminaLux: energia in tempo reale">
+  <img src="Images/luminalux/luxpower.png" width="220" alt="LuminaLux: inverter LuxPower">
+  <img src="Images/luminalux/home-assistant.png" width="220" alt="LuminaLux: Home Assistant">
+  <img src="Images/luminalux/flussi.png" width="220" alt="LuminaLux: flussi di energia">
+</p>
+
+### English
+
+**LuminaLux** is the Android app born from the experience with Lumina Energy Card. It shows the solar system with real-time energy flows, using data from **LuxPower LuxCloud** and/or **Home Assistant**, and lets you draw the flows directly on a photo of your home.
+
+**Get it on Google Play:** https://play.google.com/store/apps/details?id=com.luminalux.app
+
+- Animated flows between solar, inverter, home, battery, grid, EV and heat pump
+- Flow drawing directly on your house photo, with free angle
+- Connects to LuxCloud and/or Home Assistant, with different addresses at home and away
+- 7-day free trial, then annual subscription
+
+---
+
 ## License
 
 This project is licensed under the **PolyForm Noncommercial License 1.0.0** (`LICENSE`).
