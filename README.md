@@ -81,6 +81,23 @@ Commercial use / resale requires a separate agreement (`COMMERCIAL-LICENSE.md`).
 
 ---
 
+## 📱 LuminaLux (app Android)
+
+**LuminaLux** è l'app Android sviluppata insieme alla card, pensata per consultare il tuo impianto energetico direttamente dal telefono.
+
+**Funzioni principali**
+- **Dati in tempo reale** dell'impianto: produzione, consumo e stato dei dispositivi.
+- **Collegamento a LuxCloud** per leggere i dati del tuo impianto.
+- **Collegamento a Home Assistant**, inserendo tu l'indirizzo e il token, come alternativa o complemento a LuxCloud.
+- **Personalizzazione**: layout, sfondo e stile dei flussi energetici.
+- **Abbonamento** gestito tramite Google Play.
+
+**Privacy**
+LuminaLux non ha un server proprio e non raccoglie né trasmette i tuoi dati all'autore. Credenziali e preferenze restano sul dispositivo. L'app non contiene pubblicità né strumenti di analisi di terze parti.
+Informativa completa: [github.com/Giorgio866/luminalux-privacy](https://github.com/Giorgio866/luminalux-privacy)
+
+---
+
 ## English
 
 ### Overview
